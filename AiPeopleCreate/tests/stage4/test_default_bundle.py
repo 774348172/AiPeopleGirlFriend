@@ -25,7 +25,7 @@ def _load_bundle() -> dict:
 def _bundle_package_set(profile_id: str) -> PackageSetV4:
     return PackageSetV4(
         profile_package_ref=f"pkg:profile.fixture.{profile_id}@1.0.0",
-        protocol_bundle_ref="pkg:protocol.relationship.runtime.v1@1.1.0",
+        protocol_bundle_ref="pkg:protocol.relationship.runtime.v1@1.2.0",
         dataset_recipe_ref=f"pkg:recipe.fixture.{profile_id}@1.0.0",
         release_policy_ref=f"pkg:release.fixture.{profile_id}@1.0.0",
     )

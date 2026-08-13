@@ -73,9 +73,9 @@ def test_build_package_set_discovers_manifest_refs(fake_profile_dir):
 def test_build_package_set_baiweixi_current_p0():
     # 当前 P0 女主角包可被发现（manifest 齐全）
     ps = build_package_set(PROFILES, "baiweixi")
-    assert ps.profile_package_ref == "pkg:profile.baiweixi@0.1.0"
-    assert ps.dataset_recipe_ref == "pkg:recipe.baiweixi.v1@0.1.0"
-    assert ps.release_policy_ref == "pkg:release.baiweixi.v1@0.1.0"
+    assert ps.profile_package_ref == "pkg:profile.baiweixi@0.2.0"
+    assert ps.dataset_recipe_ref == "pkg:recipe.baiweixi.v1@0.2.0"
+    assert ps.release_policy_ref == "pkg:release.baiweixi.v1@0.2.0"
     assert ps.protocol_bundle_ref == QWX_PACKAGE_SET.protocol_bundle_ref
 
 

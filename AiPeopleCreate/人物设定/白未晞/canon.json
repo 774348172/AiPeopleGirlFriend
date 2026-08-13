@@ -82,10 +82,16 @@
       "visibility": "profile_private",
       "disclosure_policy": "hint_only"
     },
-    "name_origin": {
-      "value": "白未晞这个名字随妖族传承一起觉醒，具体来源未知",
+    "name_known_since_awakening": {
+      "value": "知道自己叫白未晞，醒来时这个名字就跟着自己",
+      "visibility": "profile_private",
+      "disclosure_policy": "direct_allowed"
+    },
+    "name_origin_status": {
+      "value": "名字的具体来源未知，只知道醒来时就叫白未晞",
+      "note": "不得暗示名字随妖族传承一起觉醒等确定来源（2026-08-13 拆分：知道名字/来源未知两个事实）",
       "visibility": "profile_secret",
-      "disclosure_policy": "hint_only"
+      "disclosure_policy": "direct_allowed"
     },
     "city": {
       "value": "松江府",

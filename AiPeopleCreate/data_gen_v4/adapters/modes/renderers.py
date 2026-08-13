@@ -78,6 +78,19 @@ class ProductionRenderers:
             lines.append(contract["nickname_rule"])
         if contract.get("personality"):
             lines.append(contract["personality"])
+        for key in (
+            "interaction_boundary", "cohabitation", "appearance_and_habits",
+            "relationship_dynamics", "modern_knowledge_gap", "capability_limits",
+        ):
+            if contract.get(key):
+                lines.append(str(contract[key]))
+        for key, label in (
+            ("species", "身份"), ("human_appearance", "外貌"),
+            ("current_injury", "当前状态"), ("current_magic", "妖力状态"),
+            ("leaving_statement", "关系张力"),
+        ):
+            if facts.get(key):
+                lines.append(f"{label}：{facts[key]}。")
         if beliefs:
             lines.append("【角色信念】" + beliefs.replace("\n", "；"))
         for rule in rules or []:

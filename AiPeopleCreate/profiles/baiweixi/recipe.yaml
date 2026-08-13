@@ -1,11 +1,11 @@
 package_id: recipe.baiweixi.v1
 package_type: recipe
 schema_version: aip.recipe.v4
-package_version: 0.1.0
+package_version: 0.2.0
 compatible_core_range: '>=0.1.0'
 dependencies:
-- pkg:profile.baiweixi@0.1.0
-- pkg:protocol.relationship.runtime.v1@1.1.0
+- pkg:profile.baiweixi@0.2.0
+- pkg:protocol.relationship.runtime.v1@1.2.0
 created_at: '2026-08-08T00:00:00Z'
 status: approved
 recipe_id: recipe.baiweixi.v1

@@ -89,14 +89,21 @@ def distill_candidates(
     if len(all_candidates) >= pool_size:
         # 候选超过 pool_size：环形轮转取 pool_size 个（seed 决定起点，均衡覆盖）
         if memory_pool:
-            return all_candidates  # 显式锚点：全部保留（补足分支处理）
+            # 显式 memory_pool 是运行时给出的严格 allowlist。不能为了凑满
+            # pool_size 把未请求的记忆混进来，否则 labels 会覆盖错误候选。
+            return all_candidates
         all_candidates = sorted(all_candidates, key=lambda c: c["memory_id"])
         start = seed % len(all_candidates)
         all_candidates = all_candidates[start:] + all_candidates[:start]
         return all_candidates[:pool_size]
     if not memory_pool:
         return all_candidates  # 全库不足 pool_size：全部返回
-    # 补足：从全库（含 memory_pool 之外）确定性取满 pool_size
+    # 显式 memory_pool 即使候选不足也不能从全库补足；空结果由调用方报告
+    # precondition_failed。否则 reranker 会训练出“候选池”之外的标签。
+    if memory_pool:
+        return all_candidates
+
+    # 无显式 pool 时，从全库确定性取满 pool_size
     full: list[dict] = []
     full_seen: set[str] = set()
     for snapshot in snapshots.values():

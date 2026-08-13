@@ -31,7 +31,7 @@ POOLS_PATH = PROFILES_ROOT / "qinweixi" / "pools.yaml"
 
 QWX_PACKAGE_SET = PackageSetV4(
     profile_package_ref="pkg:profile.qinweixi@1.2.0",
-    protocol_bundle_ref="pkg:protocol.relationship.runtime.v1@1.1.0",
+    protocol_bundle_ref="pkg:protocol.relationship.runtime.v1@1.2.0",
     dataset_recipe_ref="pkg:recipe.qinweixi.v2.3@2.5.0",
     release_policy_ref="pkg:release.qinweixi.v2.3@2.5.0",
 )

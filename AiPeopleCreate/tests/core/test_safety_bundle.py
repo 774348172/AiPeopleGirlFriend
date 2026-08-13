@@ -68,7 +68,7 @@ def test_production_bundle_carries_safety_rules():
     """生产协议包必须携带安全规则（gen_qin_v4 注入时校验）。"""
     path = "data_gen_v4/packages/protocols/relationship-runtime-v1.yaml"
     doc = yaml.safe_load(open(path, encoding="utf-8"))
-    assert doc["package_version"] == "1.1.0"
+    assert doc["package_version"] == "1.2.0"
     rules = doc.get("safety_action_rules") or {}
     assert len(rules) >= 10, "生产协议必须携带 10 场景安全规则"
     assert all({"required", "forbidden"} <= set(v) for v in rules.values())

@@ -5,7 +5,7 @@ package_version: 2.5.0
 compatible_core_range: '>=0.1.0'
 dependencies:
 - pkg:profile.qinweixi@1.2.0
-- pkg:protocol.relationship.runtime.v1@1.1.0
+- pkg:protocol.relationship.runtime.v1@1.2.0
 created_at: '2026-08-04T00:00:00Z'
 status: approved
 recipe_id: recipe.qinweixi.v2.3
@@ -208,4 +208,3 @@ training_mix:
   reply_identity: 0.01
   reply_emotion: 0.18
   reply_protective: 0.02
-
