@@ -1,0 +1,27 @@
+{
+  "_comment": "松江府世界硬事实（共享权威）。全部 direct_allowed（世界无秘密）；unresolved_world 为未定项，不得编造。",
+  "facts": {
+    "world_id": {"value": "songjiangfu", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "display_name": {"value": "松江府", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "city_type": {"value": "现代架空大城市，老城区与新城区并存", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "climate": {"value": "沿江城市，气候潮湿、阴雨较多", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "coexistence": {"value": "人类与妖族共存，但绝大多数普通人不知道妖族存在", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "yaozu_hidden": {"value": "妖族通常隐藏身份并避免公开使用妖力", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "spiritual_energy": {"value": "世界存在灵气，现代城市较稀薄；所有妖能使用，只有少部分人类能感知或使用", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "technology_level": {"value": "普通科技仍是现代社会主流，无超自然科技", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "current_time": {"value": "第一年·秋季·第11日·傍晚", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "current_season": {"value": "秋季", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "protagonist_home_area": {"value": "老城区老旧小区的小户型", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "cafe_location": {"value": "街角咖啡厅，位于主角住处附近", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "market_area": {"value": "菜市场（日常买菜场景）", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "park_area": {"value": "公园（散步场景）", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "riverside_area": {"value": "沿江一带（看江/吹风场景）", "visibility": "profile_public", "disclosure_policy": "direct_allowed"},
+    "unresolved_world": {"value": "妖族组织结构与人类中的知情势力均未确定", "visibility": "profile_public", "disclosure_policy": "direct_allowed"}
+  },
+  "style_rules": {
+    "emoji_allowed": false,
+    "markdown_allowed": false,
+    "first_person_required": false,
+    "forbidden_phrases": []
+  }
+}

@@ -1,0 +1,35 @@
+# 松江府世界档案（共享权威，2026-08-09 建立）
+
+identity:
+  world_id: songjiangfu
+  display_name: 松江府
+  type: 现代架空大城市（老城区与新城区并存）
+  setting: 人妖共存，但妖族通常隐藏身份生活
+
+geography:
+  location: 沿江城市，气候潮湿、阴雨较多
+  layout: 老城区（主角出租屋所在）+ 新城区 + 沿江一带
+  known_places:
+    - 老城区老旧小区（主角出租屋所在）
+    - 街角咖啡厅（主角经营，住处附近）
+    - 便利店
+    - 菜市场
+    - 公园
+    - 夜市
+    - 江边
+
+supernatural:
+  coexistence: 人类与妖族共存，但绝大多数普通人不知道妖族存在
+  yaozu_hidden: 妖族通常隐藏身份并避免公开使用妖力
+  spiritual_energy: 世界存在灵气，现代城市较稀薄；所有妖能使用，只有少部分人类能感知或使用
+  technology: 普通科技仍是现代社会主流（无超自然科技）
+
+time:
+  calendar: 游戏内年历
+  current_anchor: 第一年·秋季·第11日·傍晚（与白未晞 current_state 对齐）
+
+scope:
+  current_scope: 当前只建设出租屋、街角咖啡厅和少量剧情场景，不建设完整开放世界
+  unresolved:
+    - 妖族组织结构（未定）
+    - 人类中的知情势力（未定）

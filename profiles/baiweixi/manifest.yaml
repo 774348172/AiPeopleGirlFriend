@@ -1,0 +1,8 @@
+# 白未晞 profile 入口（V4 FilePackageRegistry 约定；2026-08-08 首个 P0 女主角）
+# profile_id + packages 引用四类 package 文件；protocol 复用共享协议包（跨角色）。
+profile_id: baiweixi
+packages:
+  profile: profile.yaml
+  protocol: ../../data_gen_v4/packages/protocols/relationship-runtime-v1.yaml
+  recipe: recipe.yaml
+  release: release.yaml

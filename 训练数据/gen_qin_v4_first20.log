@@ -1,0 +1,46 @@
+编译完成: 2674 items, run=qin-real-20-1786158739, lock=sha256:7483f702d...
+生成子集: 13 条（类型: ['reply_boundary', 'reply_canon_qa', 'reply_casual', 'reply_correction', 'reply_emotion', 'reply_general', 'reply_identity', 'reply_protective', 'reply_quiet_company', 'reply_romance', 'reply_safety', 'reply_supportive', 'reply_vague']）
+
+完成: completed=23 failed=1 skipped=-11
+模型调用: 45 次 | 候选: 23
+  [failure] style_failure: 身份/属性朗读: ['身份声明[我叫秦未晞]', '属性朗读[数学差]']
+  [failure] style_failure: 命题无正典支撑: ['我在等你回来']
+  [failure] style_failure: 身份/属性朗读: ['身份声明[我叫秦未晞]', '属性朗读[怕冷]', '属性朗读[我怕冷]', '属性朗读[数学白痴]']
+  [failure] style_failure: 命题无正典支撑: ['我怕你回来饿着，顺手热了点东西']
+  [failure] style_failure: 命题无正典支撑: ['我画稿子画晚了，顺便等你']
+  [failure] style_failure: 轮数 2 超出 (4, 8)
+  [failure] style_failure: 身份/属性朗读: ['属性朗读[数学不好]']
+  [failure] style_failure: 身份/属性朗读: ['属性朗读[数学不好]']
+  [failure] style_failure: 身份/属性朗读: ['属性朗读[数学不好]']
+  [failure] style_failure: 命题无正典支撑: ['我在这儿呢。']
+  [failure] style_failure: 语义保持失败，缺失命题: ['我半夜也老是醒']
+  [failure] style_failure: 语义保持失败，缺失命题: ['我半夜也老是醒', '我数学是挺差的']
+  [failure] style_failure: 身份/属性朗读: ['属性朗读[数学差]']
+  [failure] style_failure: 命题无正典支撑: ['我在这儿呢，你睡不着我就陪你聊会儿。']
+  [failure] style_failure: 身份/属性朗读: ['身份声明[我叫秦未晞]']
+  [failure] style_failure: 身份/属性朗读: ['属性朗读[数学差]']
+  [failure] style_failure: 身份/属性朗读: ['身份声明[我叫秦未晞]']
+  [failure] style_failure: 轮数 2 超出 (4, 8)
+  [failure] style_failure: 身份/属性朗读: ['属性朗读[数学差]']
+  [failure] style_failure: 身份/属性朗读: ['属性朗读[数学差]']
+  [failure] style_failure: 轮数 2 超出 (4, 8)
+  [failure] style_failure: 身份/属性朗读: ['属性朗读[数学差]']
+[judge] 启用 LLM judge（model=deepseek-v4-flash）
+Traceback (most recent call last):
+  File "F:\AiPeopleCreate\gen_qin_v4.py", line 524, in <module>
+    main()
+    ~~~~^^
+  File "F:\AiPeopleCreate\gen_qin_v4.py", line 459, in main
+    sink.append(
+    ~~~~~~~~~~~^
+        GateDecisionRecord(
+        ^^^^^^^^^^^^^^^^^^^
+    ...<14 lines>...
+        ),
+        ^^
+    )
+    ^
+  File "F:\AiPeopleCreate\data_gen_v4\core\sink.py", line 170, in append
+    connection.execute("BEGIN IMMEDIATE")
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+sqlite3.ProgrammingError: Cannot operate on a closed database.

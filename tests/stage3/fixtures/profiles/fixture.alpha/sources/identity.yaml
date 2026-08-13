@@ -1,0 +1,5 @@
+profile_id: fixture.alpha
+identity:
+  name: { id: alpha-name, value: "角色名叫阿尔法" }
+  hometown: { id: alpha-town, value: "住在河畔公寓" }
+  job: { id: alpha-job, value: "自由插画师" }

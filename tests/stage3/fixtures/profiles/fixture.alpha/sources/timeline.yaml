@@ -1,0 +1,9 @@
+profile_id: fixture.alpha
+events:
+  - id: ev-move
+    date: "5岁"
+    summary: 五岁那年搬过三次家。
+  - id: ev-cat
+    date: "10岁"
+    summary: 地下室里养过一只猫。
+    visibility: profile_secret

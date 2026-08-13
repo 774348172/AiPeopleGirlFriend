@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipeople.local/schemas/mode_v4/memory_propose_input.schema.json",
+  "title": "MemoryProposeInputV4",
+  "description": "MEMORY_PROPOSE mode 的模型输入（§10.3）：只含生产协议允许的已提交事件与当前投影，不含 oracle。",
+  "type": "object",
+  "required": ["mode_system_input", "committed_events", "current_projection"],
+  "properties": {
+    "mode_system_input": { "type": "string" },
+    "committed_events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["event_id", "actor", "text"],
+        "properties": {
+          "event_id": { "type": "string" },
+          "actor": { "type": "string" },
+          "text": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "current_projection": { "type": "object" }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,601 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipeople.local/schemas/record_v4.schema.json",
+  "title": "RecordV4",
+  "description": "V4 追加式记录判别联合：RunEvent | CallRecord | CandidateRecordV4 | FailureRecord | GateDecisionRecord。阶段 0 冻结（2026-08-04），对应《数据生成器v4设计》§8。",
+  "type": "object",
+  "oneOf": [
+    {
+      "$ref": "#/definitions/RunEvent"
+    },
+    {
+      "$ref": "#/definitions/CallRecord"
+    },
+    {
+      "$ref": "#/definitions/CandidateRecordV4"
+    },
+    {
+      "$ref": "#/definitions/FailureRecord"
+    },
+    {
+      "$ref": "#/definitions/GateDecisionRecord"
+    }
+  ],
+  "definitions": {
+    "LineageHeaderV4": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "record_type",
+        "record_id",
+        "run_id",
+        "package_lock_hash",
+        "generator_version",
+        "created_at"
+      ],
+      "properties": {
+        "schema_version": {
+          "type": "string"
+        },
+        "record_type": {
+          "type": "string"
+        },
+        "record_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "plan_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "package_lock_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "profile_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "profile_snapshot_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "protocol_bundle_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "recipe_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "mode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "task_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "family_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "generator_version": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": true
+    },
+    "RunEvent": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/LineageHeaderV4"
+        },
+        {
+          "type": "object",
+          "required": [
+            "record_type",
+            "event_name"
+          ],
+          "properties": {
+            "record_type": {
+              "const": "run"
+            },
+            "event_name": {
+              "type": "string",
+              "enum": [
+                "run_started",
+                "generation_completed",
+                "gates_completed",
+                "release_created"
+              ]
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
+    },
+    "CallRecord": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/LineageHeaderV4"
+        },
+        {
+          "type": "object",
+          "required": [
+            "record_type",
+            "attempt_no",
+            "candidate_no",
+            "stage",
+            "model",
+            "prompt_hash",
+            "input_hash",
+            "output_hash",
+            "finish_reason",
+            "seed"
+          ],
+          "properties": {
+            "record_type": {
+              "const": "call"
+            },
+            "attempt_no": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "candidate_no": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 1
+            },
+            "stage": {
+              "type": "string"
+            },
+            "model": {
+              "type": "object"
+            },
+            "prompt_hash": {
+              "type": "string"
+            },
+            "input_hash": {
+              "type": "string"
+            },
+            "output_hash": {
+              "type": "string"
+            },
+            "finish_reason": {
+              "type": "string"
+            },
+            "seed": {
+              "type": [
+                "integer",
+                "string"
+              ]
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
+    },
+    "CandidateRecordV4": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/LineageHeaderV4"
+        },
+        {
+          "type": "object",
+          "required": [
+            "record_type",
+            "sample_id",
+            "family_id",
+            "question_family_id",
+            "scene_family_id",
+            "mode",
+            "task_type",
+            "profile_id",
+            "profile_snapshot_id",
+            "protocol_bundle_id",
+            "recipe_id",
+            "run_id",
+            "plan_id",
+            "attempt_no",
+            "candidate_no",
+            "parent_sample_id",
+            "fixture_id",
+            "fixture_hash",
+            "source_refs",
+            "source_event_ids",
+            "support_spans",
+            "knowledge_scope",
+            "visibility_scope",
+            "evidence_state",
+            "desired_policy",
+            "required_behaviors",
+            "forbidden_behaviors",
+            "expected_outcomes",
+            "input",
+            "target",
+            "model",
+            "prompt_hash",
+            "prompt_template_version",
+            "config_hash",
+            "render_profile_id",
+            "representation_ids",
+            "seed",
+            "review_status",
+            "provenance"
+          ],
+          "properties": {
+            "record_type": {
+              "const": "candidate"
+            },
+            "sample_id": {
+              "type": "string"
+            },
+            "family_id": {
+              "type": "string"
+            },
+            "question_family_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "scene_family_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mode": {
+              "type": "string"
+            },
+            "task_type": {
+              "type": "string"
+            },
+            "profile_id": {
+              "type": "string"
+            },
+            "profile_snapshot_id": {
+              "type": "string"
+            },
+            "protocol_bundle_id": {
+              "type": "string"
+            },
+            "recipe_id": {
+              "type": "string"
+            },
+            "run_id": {
+              "type": "string"
+            },
+            "plan_id": {
+              "type": "string"
+            },
+            "attempt_no": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "candidate_no": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "parent_sample_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "fixture_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "fixture_hash": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "source_refs": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "source_event_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "support_spans": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "knowledge_scope": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "visibility_scope": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "evidence_state": {
+              "type": "string"
+            },
+            "desired_policy": {
+              "type": "string"
+            },
+            "required_behaviors": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "forbidden_behaviors": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "expected_outcomes": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            },
+            "input": {
+              "type": "object"
+            },
+            "target": {
+              "type": "object"
+            },
+            "model": {
+              "type": "object"
+            },
+            "prompt_hash": {
+              "type": "string"
+            },
+            "prompt_template_version": {
+              "type": "string"
+            },
+            "config_hash": {
+              "type": "string"
+            },
+            "render_profile_id": {
+              "type": "string"
+            },
+            "representation_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "seed": {
+              "type": [
+                "integer",
+                "string"
+              ]
+            },
+            "review_status": {
+              "const": "pending"
+            },
+            "provenance": {
+              "type": "object",
+              "required": [
+                "calls"
+              ],
+              "properties": {
+                "calls": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "additionalProperties": true
+            },
+            "claims": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "claim_id",
+                  "text",
+                  "used_facts"
+                ],
+                "properties": {
+                  "claim_id": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "used_facts": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "evidence_role": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": true
+              }
+            },
+            "quality": {
+              "type": "object",
+              "description": "质量向量（judge soft 分；空 = 未打分）",
+              "additionalProperties": true
+            },
+            "split_anchor_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
+    },
+    "FailureRecord": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/LineageHeaderV4"
+        },
+        {
+          "type": "object",
+          "required": [
+            "record_type",
+            "attempt_no",
+            "candidate_no",
+            "stage",
+            "error_code",
+            "retryable",
+            "reason"
+          ],
+          "properties": {
+            "record_type": {
+              "const": "failure"
+            },
+            "attempt_no": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "candidate_no": {
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "stage": {
+              "type": "string"
+            },
+            "error_code": {
+              "type": "string",
+              "enum": [
+                "package_invalid",
+                "package_incompatible",
+                "source_snapshot_failed",
+                "precondition_failed",
+                "mode_not_registered",
+                "provider_error",
+                "timeout",
+                "truncated_output",
+                "parse_error",
+                "schema_error",
+                "unsupported_claim",
+                "policy_mismatch",
+                "style_failure",
+                "no_acceptable_candidate"
+              ]
+            },
+            "retryable": {
+              "type": "boolean"
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
+    },
+    "GateDecisionRecord": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/LineageHeaderV4"
+        },
+        {
+          "type": "object",
+          "required": [
+            "record_type",
+            "subject_sample_id",
+            "subject_candidate_record_id",
+            "gate_id",
+            "decision",
+            "reason_codes",
+            "validator_id",
+            "reviewed_at"
+          ],
+          "properties": {
+            "record_type": {
+              "const": "gate_decision"
+            },
+            "subject_sample_id": {
+              "type": "string"
+            },
+            "subject_candidate_record_id": {
+              "type": "string"
+            },
+            "gate_id": {
+              "type": "string"
+            },
+            "decision": {
+              "type": "string",
+              "enum": [
+                "approved",
+                "rejected",
+                "needs_revision"
+              ]
+            },
+            "reason_codes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "validator_id": {
+              "type": "string"
+            },
+            "reviewer": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "reviewed_at": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "additionalProperties": true
+        }
+      ]
+    }
+  }
+}

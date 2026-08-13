@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipeople.local/schemas/mode_v4/memory_propose_target.schema.json",
+  "title": "MemoryProposeTargetV4",
+  "description": "MEMORY_PROPOSE mode 的目标（§10.3）：只提出带证据的派生候选；禁止删除指令、禁止把候选标成已确认事实。",
+  "type": "object",
+  "required": ["action"],
+  "properties": {
+    "action": { "type": "string", "enum": ["propose", "NO_OP"] },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim_type", "subject", "predicate", "object", "status"],
+        "properties": {
+          "claim_type": {
+            "type": "string",
+            "enum": ["fact", "preference", "relationship", "episode", "correction"]
+          },
+          "subject": { "type": "string" },
+          "predicate": { "type": "string" },
+          "object": { "type": ["string", "number", "boolean"] },
+          "status": { "const": "proposed" },
+          "supersedes_claim_id": { "type": ["string", "null"] },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["event_id", "role", "excerpt_start", "excerpt_end"],
+              "properties": {
+                "event_id": { "type": "string" },
+                "role": { "type": "string", "enum": ["support", "contradict", "correction"] },
+                "excerpt_start": { "type": "integer", "minimum": 0 },
+                "excerpt_end": { "type": "integer", "minimum": 0 }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "reason": { "type": ["string", "null"] }
+  },
+  "additionalProperties": true
+}

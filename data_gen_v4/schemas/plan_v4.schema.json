@@ -1,0 +1,203 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipeople.local/schemas/plan_v4.schema.json",
+  "title": "PlanV4",
+  "description": "V4 不可变生成计划：GenerationPlanV4 与 plan item。阶段 0 冻结（2026-08-04），对应《数据生成器v4设计》§7.1、§9。",
+  "type": "object",
+  "definitions": {
+    "EvidenceState": {
+      "type": "string",
+      "enum": ["supported", "insufficient", "false_premise", "conflicted", "not_required"]
+    },
+    "DesiredPolicy": {
+      "type": "string",
+      "enum": [
+        "answer",
+        "hint_only",
+        "answer_with_uncertainty",
+        "ask_for_evidence",
+        "correct_premise",
+        "surface_conflict",
+        "withhold",
+        "safety_first_answer",
+        "refuse_unsafe_and_redirect",
+        "no_op"
+      ]
+    },
+    "KnowledgeScopeValue": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": ["runtime_evidence", "general_knowledge", "realtime_external", "safety_critical"]
+        },
+        { "type": "string", "pattern": "^[a-z0-9]+:[a-z0-9_.-]+$" }
+      ]
+    },
+    "VisibilityScopeValue": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": ["profile_public", "profile_private", "profile_secret"]
+        },
+        { "type": "string", "pattern": "^[a-z0-9]+:[a-z0-9_.-]+$" }
+      ]
+    },
+    "SupportSpanV4": {
+      "type": "object",
+      "required": [
+        "source_kind",
+        "source_id",
+        "snapshot_id",
+        "field_pointer",
+        "offset_unit",
+        "start",
+        "end",
+        "quote",
+        "supported_claim_id",
+        "evidence_role"
+      ],
+      "properties": {
+        "source_kind": { "type": "string" },
+        "source_id": { "type": "string" },
+        "snapshot_id": { "type": "string" },
+        "field_pointer": { "type": "string" },
+        "offset_unit": { "const": "unicode_code_point" },
+        "start": { "type": "integer", "minimum": 0 },
+        "end": { "type": "integer", "minimum": 0 },
+        "quote": { "type": "string" },
+        "supported_claim_id": { "type": "string" },
+        "evidence_role": { "type": "string", "enum": ["support", "contradict", "correction"] }
+      },
+      "additionalProperties": true
+    },
+    "SourceRef": {
+      "type": "object",
+      "required": ["source_kind", "source_id", "snapshot_id", "field_pointer"],
+      "properties": {
+        "source_kind": { "type": "string" },
+        "source_id": { "type": "string" },
+        "snapshot_id": { "type": "string" },
+        "field_pointer": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "PlanItemV4": {
+      "type": "object",
+      "required": [
+        "family_id",
+        "question_family_id",
+        "scene_family_id",
+        "mode",
+        "task_type",
+        "family_role",
+        "knowledge_scope",
+        "visibility_scope",
+        "evidence_state",
+        "desired_policy",
+        "required_behaviors",
+        "forbidden_behaviors",
+        "expected_outcomes",
+        "refusal_required",
+        "fixture_id",
+        "fixture_hash",
+        "representation_ids",
+        "render_profile_id",
+        "prompt_template_version",
+        "config_hash",
+        "seed",
+        "candidate_count",
+        "max_attempts",
+        "risk_level",
+        "required_review",
+        "split_anchor_ids"
+      ],
+      "properties": {
+        "plan_id": { "type": "string" },
+        "profile_id": { "type": "string" },
+        "profile_snapshot_id": { "type": "string" },
+        "protocol_bundle_id": { "type": "string" },
+        "recipe_id": { "type": "string" },
+        "family_id": { "type": "string" },
+        "question_family_id": { "type": ["string", "null"] },
+        "scene_family_id": { "type": ["string", "null"] },
+        "mode": { "type": "string" },
+        "task_type": { "type": "string" },
+        "family_role": {
+          "type": "string",
+          "enum": ["positive_control", "boundary_variant", "standalone"]
+        },
+        "source_refs": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/SourceRef" }
+        },
+        "support_spans": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/SupportSpanV4" }
+        },
+        "knowledge_scope": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/KnowledgeScopeValue" }
+        },
+        "visibility_scope": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/VisibilityScopeValue" }
+        },
+        "evidence_state": { "$ref": "#/definitions/EvidenceState" },
+        "desired_policy": { "$ref": "#/definitions/DesiredPolicy" },
+        "required_behaviors": { "type": "array", "items": { "type": "string" } },
+        "forbidden_behaviors": { "type": "array", "items": { "type": "string" } },
+        "expected_outcomes": { "type": "array", "items": { "type": "object" } },
+        "refusal_required": { "type": "boolean" },
+        "fixture_id": { "type": ["string", "null"] },
+        "fixture_hash": { "type": ["string", "null"] },
+        "representation_ids": { "type": "array", "items": { "type": "string" } },
+        "render_profile_id": { "type": "string" },
+        "prompt_template_version": { "type": "string" },
+        "config_hash": { "type": "string" },
+        "seed": { "type": ["integer", "string"] },
+        "candidate_count": { "type": "integer", "minimum": 1 },
+        "max_attempts": { "type": "integer", "minimum": 1 },
+        "risk_level": { "type": "string", "enum": ["low", "medium", "high"] },
+        "required_review": {
+          "type": "string",
+          "enum": ["full", "family_sample", "cluster_sample", "auto"]
+        },
+        "split_anchor_ids": { "type": "array", "items": { "type": "string" } },
+        "input": {
+          "type": "object",
+          "description": "mode 决定的计划期输入（REPLY：scene/topic/player_view；协议样本：fixture 引用），阶段 2 扩展",
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "properties": {
+    "plan_id": { "type": "string" },
+    "run_id": { "type": "string" },
+    "profile_id": { "type": "string" },
+    "profile_snapshot_id": { "type": "string" },
+    "protocol_bundle_id": { "type": "string" },
+    "recipe_id": { "type": "string" },
+    "package_lock_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/PlanItemV4" }
+    }
+  },
+  "required": [
+    "plan_id",
+    "run_id",
+    "profile_id",
+    "profile_snapshot_id",
+    "protocol_bundle_id",
+    "recipe_id",
+    "package_lock_hash",
+    "created_at",
+    "items"
+  ]
+}

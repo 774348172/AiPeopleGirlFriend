@@ -1,0 +1,54 @@
+# DatasetRecipe：fixture.alpha（4 条 REPLY：2 个 family 对照成对 + 2 个 standalone）
+package_id: recipe.fixture.alpha
+package_type: recipe
+schema_version: aip.recipe.v4
+package_version: 1.0.0
+compatible_core_range: "*"
+dependencies: []
+status: approved
+recipe_id: recipe:fixture:alpha
+strata:
+  - task_type: casual
+    mode_id: REPLY
+    target_count: 4
+    min_family_count: 2
+    evidence_state_distribution: {not_required: 1.0}
+    policy_distribution: {answer: 1.0}
+    # 大块 B（阶段 2）：fixture 单候选（K 候选由专用测试覆盖）
+    candidate_count: 1
+    risk_level: low
+    review_requirement: auto
+contrast_suites: []
+memory_selection_policy: {}
+refusal_bounds: {}
+training_mix: {}
+# recipe 扩展字段：计划期输入（schema additionalProperties 允许）
+sample_inputs:
+  - family_id: "fam:alpha:1"
+    # 大块 B（阶段 2）：fixture 单候选
+    candidate_count: 1
+    family_role: positive_control
+    scene: "晚上在客厅，她在打游戏你在加班"
+    topic: "今天吃什么"
+    player_view: "你们合租，今晚加班回来晚了"
+  - family_id: "fam:alpha:1"
+    # 大块 B（阶段 2）：fixture 单候选
+    candidate_count: 1
+    family_role: boundary_variant
+    scene: "晚上在客厅，她在打游戏你在加班"
+    topic: "今天吃什么"
+    player_view: "你们合租，今晚加班回来晚了；你带了一份夜宵回来"
+  - family_id: "fam:alpha:2"
+    # 大块 B（阶段 2）：fixture 单候选
+    candidate_count: 1
+    family_role: standalone
+    scene: "周末下午，她霸占沙发你坐地上"
+    topic: "周末干什么"
+    player_view: "周末在家，没什么安排"
+  - family_id: "fam:alpha:3"
+    # 大块 B（阶段 2）：fixture 单候选
+    candidate_count: 1
+    family_role: standalone
+    scene: "她在画画，你端了杯水过去"
+    topic: "最近在画什么"
+    player_view: "她最近总是画到很晚"

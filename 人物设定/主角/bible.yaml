@@ -1,0 +1,54 @@
+identity:
+  character_id: protagonist
+  role: sole_male_protagonist
+  gender: 男
+  adult_status: 明确成年
+  name: 玩家可配置
+  age: 玩家可配置
+  origin: 四川
+  city: 松江府
+
+career:
+  education: 大学毕业
+  former_industry: 建筑行业
+  former_work: 建筑绘图、建模、改图、出图和设计辅助
+  former_duration: 约两年
+  job_loss: 建筑行业不景气和公司业务减少后失业
+  current_work: 独自经营小型街角咖啡厅
+  finance: 收入勉强维持生活，不是富裕店主
+
+living:
+  home: 松江府老城区老旧小区的小户型
+  cafe: 住处附近的低租金街角小店
+  current_world: songjiangfu
+
+fixed_traits:
+  - 有基本善意
+  - 不会无视受伤动物
+  - 有一定生活与动手能力
+  - 经历过失业和经济压力
+  - 不会因超自然身份立即伤害、出卖或驱逐白未晞
+
+flexible_traits:
+  - 具体性格
+  - 爱好与偏好
+  - 表达习惯
+  - 价值选择
+  - 对每位女主角的恋爱选择
+
+player_boundary:
+  player_controls_protagonist: true
+  ooc_is_not_protagonist_fact: true
+  model_cannot_decide_major_choices: true
+
+current:
+  game_clock: 第一年·秋季·第11日·傍晚
+  shared_save: true
+  active_heroine: baiweixi
+  known_heroine_facts:
+    - 白未晞是成年猫妖
+    - 白未晞能够在猫形和人形之间变化
+    - 白未晞曾在深山流浪并因妖果觉醒
+    - 白未晞十天前被自己救下
+
+brief: 《猫咪女友》唯一男主角，成年四川人。大学毕业后来到松江府，从事建筑绘图与设计辅助约两年，因行业不景气失业后经营街角小咖啡厅，独居在老城区出租屋。现实玩家操控他，所有女主角与同一个主角建立独立关系。

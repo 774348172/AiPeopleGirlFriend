@@ -1,0 +1,8 @@
+# 秦未晞 profile 入口（V4 FilePackageRegistry 约定）
+# 阶段 3 冻结约定：profile_id + packages 引用四类 package 文件。
+profile_id: qinweixi
+packages:
+  profile: profile.yaml
+  protocol: ../../data_gen_v4/packages/protocols/relationship-runtime-v1.yaml
+  recipe: recipe.yaml
+  release: release.yaml

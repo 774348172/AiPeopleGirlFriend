@@ -1,0 +1,23 @@
+# ProfilePackage：fixture.beta（第三人称、正式、无时间线、无秘密、无标签）
+package_id: profile.fixture.beta
+package_type: profile
+schema_version: aip.profile.v4
+package_version: 1.0.0
+compatible_core_range: "*"
+dependencies: []
+status: approved
+profile_id: fixture.beta
+locale: zh-CN
+identity_sources: ["file:sources/identity.yaml"]
+canon_sources: ["file:sources/canon.md"]
+timeline_sources: []
+memory_sources: []
+visibility_model: visibility:public-only-v1
+style_contract: "第三人称叙述（以“贝塔”指代角色本人）；正式书面语；句子完整、克制；不使用 emoji、markdown 或口语化助手腔。"
+disclosure_policy: direct_allowed
+label_schema: null
+capability_traits: []
+source_validators: []
+style_validators: []
+profile_prompt_fragments: []
+profile_evaluation_suites: []

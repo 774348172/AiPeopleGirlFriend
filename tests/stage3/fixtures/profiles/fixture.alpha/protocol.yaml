@@ -1,0 +1,18 @@
+# ProtocolBundle：fixture.alpha（默认 REPLY 协议）
+package_id: protocol.fixture.rel
+package_type: protocol
+schema_version: aip.protocol.v4
+package_version: 1.0.0
+compatible_core_range: "*"
+dependencies: []
+status: approved
+protocol_bundle_id: protocol:fixture:rel
+modes:
+  - mode_id: REPLY
+    mode_adapter_id: mode.reply.v1
+    input_schema_ref: schemas/mode_v4/reply_input.schema.json
+    target_schema_ref: schemas/mode_v4/reply_target.schema.json
+    grammar_ref: null
+    render_profile_id: reply-runtime-v1
+    scheduling_semantics: blocking
+    failure_policy: retry

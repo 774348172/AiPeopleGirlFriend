@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipeople.local/schemas/mode_v4/recall_plan_input.schema.json",
+  "title": "RecallPlanInputV4",
+  "description": "RECALL_PLAN mode 的模型输入（§10.2）：只含模型可见线索，不含未召回事件正文与 oracle（§10.4）。",
+  "type": "object",
+  "required": ["mode_system_input", "visible_cues", "current_input"],
+  "properties": {
+    "mode_system_input": { "type": "string" },
+    "visible_cues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["cue_type", "text"],
+        "properties": {
+          "cue_type": { "type": "string" },
+          "text": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "current_input": { "type": "string" }
+  },
+  "additionalProperties": true
+}

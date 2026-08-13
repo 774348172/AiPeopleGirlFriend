@@ -1,0 +1,7 @@
+{
+  "profile_id": "fixture.alpha",
+  "facts": {
+    "cat": {"id": "cat-name", "value": "河畔公寓的猫叫豆包", "visibility": "profile_public"},
+    "game": {"id": "game-love", "value": "阿尔法很喜欢打游戏", "visibility": "profile_public"}
+  }
+}

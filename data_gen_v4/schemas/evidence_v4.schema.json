@@ -1,0 +1,154 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipeople.local/schemas/evidence_v4.schema.json",
+  "title": "EvidenceV4",
+  "description": "V4 规范化来源模型：SourceSnapshot、EvidenceUnitV4、SupportSpanV4。阶段 0 冻结（2026-08-04），对应《数据生成器v4设计》§6、§8.3。",
+  "type": "object",
+  "definitions": {
+    "StandardVisibilityScope": {
+      "type": "string",
+      "enum": ["profile_public", "profile_private", "profile_secret"]
+    },
+    "StandardKnowledgeScope": {
+      "type": "string",
+      "enum": ["runtime_evidence", "general_knowledge", "realtime_external", "safety_critical"]
+    },
+    "DisclosurePolicy": {
+      "type": "string",
+      "enum": ["direct_allowed", "hint_only", "withhold"]
+    },
+    "EvidenceState": {
+      "type": "string",
+      "enum": ["supported", "insufficient", "false_premise", "conflicted", "not_required"]
+    },
+    "DesiredPolicy": {
+      "type": "string",
+      "enum": [
+        "answer",
+        "hint_only",
+        "answer_with_uncertainty",
+        "ask_for_evidence",
+        "correct_premise",
+        "surface_conflict",
+        "withhold",
+        "safety_first_answer",
+        "refuse_unsafe_and_redirect",
+        "no_op"
+      ]
+    },
+    "SourceSnapshot": {
+      "type": "object",
+      "required": ["snapshot_id", "source_adapter_id", "content_hash", "loaded_at", "units"],
+      "properties": {
+        "snapshot_id": { "type": "string" },
+        "source_adapter_id": { "type": "string" },
+        "content_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "loaded_at": { "type": "string", "format": "date-time" },
+        "units": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/EvidenceUnitV4" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "EvidenceUnitV4": {
+      "type": "object",
+      "required": [
+        "source_kind",
+        "source_id",
+        "profile_id",
+        "snapshot_id",
+        "field_pointer",
+        "value",
+        "visibility_scope",
+        "disclosure_policy"
+      ],
+      "properties": {
+        "source_kind": {
+          "type": "string",
+          "enum": [
+            "identity_fact",
+            "canon_fact",
+            "timeline_event",
+            "memory_event",
+            "runtime_event",
+            "runtime_claim",
+            "runtime_plan",
+            "custom"
+          ]
+        },
+        "source_id": { "type": "string" },
+        "profile_id": { "type": "string" },
+        "snapshot_id": { "type": "string" },
+        "field_pointer": { "type": "string" },
+        "value": { "type": ["string", "number", "boolean", "object", "array", "null"] },
+        "occurred_at": { "type": ["string", "null"], "format": "date-time" },
+        "valid_from": { "type": ["string", "null"] },
+        "valid_to": { "type": ["string", "null"] },
+        "visibility_scope": {
+          "oneOf": [
+            { "$ref": "#/definitions/StandardVisibilityScope" },
+            { "type": "string", "pattern": "^[a-z0-9]+:[a-z0-9_.-]+$" }
+          ]
+        },
+        "knowledge_scope": {
+          "type": ["array", "null"],
+          "items": {
+            "oneOf": [
+              { "$ref": "#/definitions/StandardKnowledgeScope" },
+              { "type": "string", "pattern": "^[a-z0-9]+:[a-z0-9_.-]+$" }
+            ]
+          }
+        },
+        "disclosure_policy": { "$ref": "#/definitions/DisclosurePolicy" },
+        "supersedes_source_id": { "type": ["string", "null"] },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "metadata": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "SupportSpanV4": {
+      "type": "object",
+      "required": [
+        "source_kind",
+        "source_id",
+        "snapshot_id",
+        "field_pointer",
+        "offset_unit",
+        "start",
+        "end",
+        "quote",
+        "supported_claim_id",
+        "evidence_role"
+      ],
+      "properties": {
+        "source_kind": {
+          "type": "string",
+          "enum": [
+            "identity_fact",
+            "canon_fact",
+            "timeline_event",
+            "memory_event",
+            "runtime_event",
+            "runtime_claim",
+            "runtime_plan",
+            "custom"
+          ]
+        },
+        "source_id": { "type": "string" },
+        "snapshot_id": { "type": "string" },
+        "field_pointer": { "type": "string" },
+        "offset_unit": { "const": "unicode_code_point" },
+        "start": { "type": "integer", "minimum": 0 },
+        "end": { "type": "integer", "minimum": 0 },
+        "quote": { "type": "string" },
+        "supported_claim_id": { "type": "string" },
+        "evidence_role": {
+          "type": "string",
+          "enum": ["support", "contradict", "correction"]
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

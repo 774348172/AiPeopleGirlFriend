@@ -1,0 +1,118 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipeople.local/schemas/lock_v4.schema.json",
+  "title": "LockV4",
+  "description": "V4 运行时冻结的 PackageLockV4。阶段 0 冻结（2026-08-04），对应《数据生成器v4设计》§5.5。",
+  "type": "object",
+  "required": [
+    "lock_hash",
+    "packages",
+    "source_snapshots",
+    "schema_refs",
+    "prompt_refs",
+    "validator_refs",
+    "adapter_revisions",
+    "created_at"
+  ],
+  "properties": {
+    "lock_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "packages": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["package_version", "content_hash", "status"],
+        "properties": {
+          "package_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+          "content_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+          "status": { "type": "string", "enum": ["approved"] }
+        },
+        "additionalProperties": true
+      }
+    },
+    "source_snapshots": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["source_adapter_id", "content_hash"],
+        "properties": {
+          "source_adapter_id": { "type": "string" },
+          "content_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "schema_refs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["content_hash"],
+        "properties": {
+          "content_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "prompt_refs": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["template_version", "content_hash"],
+        "properties": {
+          "template_version": { "type": "string" },
+          "content_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validator_refs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["status", "content_hash"],
+        "properties": {
+          "status": { "type": "string", "enum": ["declared", "registered"] },
+          "content_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "model_refs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["model_id", "revision"],
+        "properties": {
+          "model_id": { "type": "string" },
+          "revision": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "exporter_refs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["exporter_id", "version"],
+        "properties": {
+          "exporter_id": { "type": "string" },
+          "version": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "adapter_revisions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["revision"],
+        "properties": {
+          "revision": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "created_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true
+}

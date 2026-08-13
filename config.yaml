@@ -1,0 +1,40 @@
+# AiPeopleCreate（生成器侧）配置。
+# 2026-08-07 目录整理：生成器从 F:\AiPeople 独立至此。
+# 与 AI 程序侧 config.yaml 的关系：
+#   - model 段：本仓库 API 调用配置（教师模型），可被环境变量覆盖。
+#   - paths 段：权威正典在 AI 程序侧（F:\AiPeople\人物设定\秦），只读引用；
+#     本仓库数据目录（data/life_corpus、data/sft）已随生成器移入。
+
+model:
+  base_url: ""
+  api_key_env: "OPENAI_API_KEY"
+  model: "gpt-4o-mini"
+  temperature: 0.8
+  max_tokens: 2048
+  request_timeout: 120
+
+paths:
+  # 正典唯一物理副本（2026-08-07 迁移；AI 程序侧为 junction 链接）
+  persona_dir: "人物设定/秦"
+  bible: "人物设定/秦/bible.yaml"
+  timeline: "人物设定/秦/timeline.yaml"
+  canon: "人物设定/秦/canon.json"
+  # 本仓库数据
+  life_corpus_dir: "data/life_corpus"
+  sft_dir: "data/sft"
+  consolidated_dir: "data/consolidated"
+  # 训练数据产物（V4 生成器输出）
+  train_data_dir: "训练数据"
+
+generation:
+  max_chats_per_node: 2
+  chat_turns_min: 4
+  chat_turns_max: 8
+  seed: 42
+
+consistency:
+  assistant_sake_max_ratio: 0.05
+  structure_leak_max_ratio: 0.05
+  emoji_max_ratio: 0.05
+  use_llm_judge: true
+  llm_judge_sample_size: 20

@@ -1,0 +1,89 @@
+package_id: release.qinweixi.v2.3
+package_type: release
+schema_version: aip.release.v4
+package_version: 2.5.0
+compatible_core_range: '>=0.1.0'
+dependencies:
+- pkg:profile.qinweixi@1.2.0
+- pkg:recipe.qinweixi.v2.3@2.5.0
+created_at: '2026-08-04T00:00:00Z'
+status: approved
+release_policy_id: release.qinweixi.v2.3
+required_core_gates:
+- G0
+- G1
+- G2
+- G3
+- G4
+- G5
+- G6
+- G7
+required_profile_validators:
+- validator:qinweixi-canon-consistency-v1
+- validator:qinweixi-voice-v1
+- validator:qinweixi-secret-disclosure-v1
+required_protocol_validators:
+- validator:reply-schema-v1
+- validator:reply-loss-mask-v1
+human_review_rules:
+- protective 类 100% 人工审核（回避方式符合人设，不冷漠不说教）
+- 记忆 detail 抽取 10 条人工核对（与正典一致，不新增事实）
+- 异世界暗示场景抽取 10 条核对（细节来自正典记忆，无异世界原词）
+metric_thresholds:
+  assistant_style_ratio:
+    max: 0.05
+  no_first_person_ratio:
+    max: 0.05
+  canon_contradiction_ratio:
+    max: 0.05
+  structure_leak_ratio:
+    max: 0.05
+  emoji_ratio:
+    max: 0.05
+  one_turn_ratio:
+    max: 0.05
+  otherworld_keyword_count:
+    max: 0
+  death_disclosure_count:
+    max: 0
+  old_canon_leftover_count:
+    max: 0
+  false_refusal_ratio:
+    max: 0.1
+sealed_evaluation_refs:
+- suite:qinweixi-sealed-v1
+allowed_export_profiles:
+- export:sharegpt-reply-v1
+- export:raw-audit-jsonl-v1
+# 阶段 3（C-3）：候选级选择阈值（soft 各轴下限 + judge 一致率；先质量阈值再覆盖选择）
+# 阶段 3（C-4）：judge 模型配置（null = 同教师模型；可配独立更强模型如 STRONG_MODEL）
+judge_config:
+  model_id: null
+  api_key_env: OPENAI_API_KEY
+selection_thresholds:
+  soft_minimums:
+    instruction_fulfillment: 0.8
+    persona_naturalness: 0.8
+    relationship_fit: 0.8
+    conversational_progress: 0.7
+    style_restraint: 0.8
+  judge_agreement: 0.7
+  abstain_policy: mark_for_human_review
+curation_policy:
+  exact_normalization: nfkc:strip_whitespace
+  ngram_range:
+  - 3
+  - 5
+  minhash_params:
+    num_perm: 128
+    threshold: 0.9
+  embedding_model_ref: null
+  allowed_dedup_modes:
+  - exact
+  - minhash
+split_policy:
+  initial_ratios:
+  - 0.8
+  - 0.1
+  - 0.1
+  max_component_ratio: 0.3

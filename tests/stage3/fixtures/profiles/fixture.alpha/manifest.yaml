@@ -1,0 +1,7 @@
+# fixture.alpha 包清单：四类 package 文件引用与版本（阶段 3 fixture）
+profile_id: fixture.alpha
+packages:
+  profile: profile.yaml
+  protocol: protocol.yaml
+  recipe: recipe.yaml
+  release: release.yaml

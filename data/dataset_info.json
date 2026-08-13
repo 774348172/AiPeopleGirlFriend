@@ -1,0 +1,11 @@
+{
+  "_comment": "LLaMA-Factory 数据集注册。把本文件与 aipeople_persona.jsonl 一起放到 LLaMA-Factory 的 data/ 目录。sharegpt 格式：conversations=[{from,value}]，from=human/gpt。LF 对 sharegpt 默认识别 from/value 与 human/gpt 角色，故 columns 只需映射 messages->conversations。",
+
+  "aipeople_persona": {
+    "file_name": "aipeople_persona.jsonl",
+    "format": "sharegpt",
+    "columns": {
+      "messages": "conversations"
+    }
+  }
+}

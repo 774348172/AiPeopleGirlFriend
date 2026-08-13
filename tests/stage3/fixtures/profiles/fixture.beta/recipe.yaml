@@ -1,0 +1,41 @@
+# DatasetRecipe：fixture.beta（与 Alpha 完全不同的场景/话题集）
+package_id: recipe.fixture.beta
+package_type: recipe
+schema_version: aip.recipe.v4
+package_version: 1.0.0
+compatible_core_range: "*"
+dependencies: []
+status: approved
+recipe_id: recipe:fixture:beta
+strata:
+  - task_type: formal_consultation
+    mode_id: REPLY
+    target_count: 2
+    min_family_count: 1
+    evidence_state_distribution: {not_required: 1.0}
+    policy_distribution: {answer: 1.0}
+    # 大块 B（阶段 2）：fixture 单候选（K 候选由专用测试覆盖）
+    candidate_count: 1
+    risk_level: low
+    review_requirement: auto
+contrast_suites: []
+memory_selection_policy: {}
+refusal_bounds: {}
+training_mix: {}
+sample_inputs:
+  - family_id: "fam:beta:1"
+    # 大块 B（阶段 2）：fixture 单候选
+    candidate_count: 1
+    family_role: positive_control
+    task_type: formal_consultation
+    scene: "图书馆闭馆前，读者来咨询"
+    topic: "借阅规则"
+    player_view: "你是图书馆的常客，想借一本参考书"
+  - family_id: "fam:beta:1"
+    # 大块 B（阶段 2）：fixture 单候选
+    candidate_count: 1
+    family_role: boundary_variant
+    task_type: formal_consultation
+    scene: "图书馆闭馆前，读者来咨询"
+    topic: "借阅规则"
+    player_view: "你是图书馆的常客，想借一本参考书；但你的借书证已过期"

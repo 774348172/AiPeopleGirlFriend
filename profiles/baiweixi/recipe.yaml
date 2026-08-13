@@ -1,0 +1,230 @@
+package_id: recipe.baiweixi.v1
+package_type: recipe
+schema_version: aip.recipe.v4
+package_version: 0.1.0
+compatible_core_range: '>=0.1.0'
+dependencies:
+- pkg:profile.baiweixi@0.1.0
+- pkg:protocol.relationship.runtime.v1@1.1.0
+created_at: '2026-08-08T00:00:00Z'
+status: approved
+recipe_id: recipe.baiweixi.v1
+# 白未晞种子版配额（2026-08-08）：结构对齐秦 recipe（同 13 task_type），
+# 配额按需求文档 §7 的 P0 类别比例首设；正式配额待作者复核后定稿。
+strata:
+- task_type: reply_casual
+  mode_id: REPLY
+  target_count: 376
+  min_family_count: 22
+  candidate_count: 2
+  risk_level: low
+  review_requirement: family_sample
+  evidence_state_distribution:
+    supported: 0.85
+    insufficient: 0.10
+    false_premise: 0.05
+  policy_distribution:
+    answer: 1.0
+  default_required_behaviors:
+  - 承接玩家当前话题，围绕话题自然回应
+  - 回应落在当前场景内（出租屋/咖啡厅等）
+  default_forbidden_behaviors:
+  - 跑题到无关的过去经历或共同回忆
+  - 主动朗读身份属性（猫妖身份/能力/过去）除非话题需要
+- task_type: reply_romance
+  mode_id: REPLY
+  target_count: 251
+  min_family_count: 12
+  candidate_count: 2
+  risk_level: medium
+  review_requirement: family_sample
+  evidence_state_distribution:
+    supported: 0.90
+    insufficient: 0.07
+    false_premise: 0.03
+  policy_distribution:
+    answer: 0.8
+    hint_only: 0.2
+  default_required_behaviors:
+  - 承接当前互动，保持救助者与被救助者、暂住与早期好感的关系分寸
+  default_forbidden_behaviors:
+  - 越过关系边界（称正式恋人/谈婚论嫁/长期同居）
+  - 编造没有证据的共同经历
+- task_type: reply_identity
+  mode_id: REPLY
+  target_count: 38
+  min_family_count: 20
+  candidate_count: 2
+  risk_level: low
+  review_requirement: cluster_sample
+  evidence_state_distribution:
+    supported: 1.0
+  policy_distribution:
+    answer: 1.0
+  default_required_behaviors:
+  - 只回答被问到的正典事实
+  default_forbidden_behaviors:
+  - 编造正典没有的细节（妖果来源/父母身份/妖族组织等未确定项）
+- task_type: reply_emotion
+  mode_id: REPLY
+  target_count: 126
+  min_family_count: 15
+  candidate_count: 2
+  risk_level: medium
+  review_requirement: family_sample
+  evidence_state_distribution:
+    supported: 0.90
+    insufficient: 0.07
+    false_premise: 0.03
+  policy_distribution:
+    answer: 1.0
+  default_required_behaviors:
+  - 先承接玩家的情绪，再表达自己的反应
+  default_forbidden_behaviors:
+  - 无视玩家情绪直接转移话题
+- task_type: reply_protective
+  mode_id: REPLY
+  target_count: 75
+  min_family_count: 30
+  candidate_count: 3
+  risk_level: high
+  review_requirement: full
+  evidence_state_distribution:
+    supported: 0.6
+    false_premise: 0.2
+    insufficient: 0.2
+  policy_distribution:
+    withhold: 0.6
+    correct_premise: 0.2
+    ask_for_evidence: 0.2
+- task_type: reply_supportive
+  mode_id: REPLY
+  target_count: 30
+  min_family_count: 16
+  candidate_count: 2
+  risk_level: high
+  review_requirement: full
+  evidence_state_distribution:
+    supported: 1.0
+  policy_distribution:
+    answer: 0.85
+    answer_with_uncertainty: 0.15
+- task_type: reply_correction
+  mode_id: REPLY
+  target_count: 13
+  min_family_count: 5
+  candidate_count: 2
+  risk_level: medium
+  review_requirement: family_sample
+  evidence_state_distribution:
+    supported: 1.0
+  policy_distribution:
+    answer: 1.0
+- task_type: reply_vague
+  mode_id: REPLY
+  target_count: 13
+  min_family_count: 6
+  candidate_count: 2
+  risk_level: medium
+  review_requirement: family_sample
+  evidence_state_distribution:
+    insufficient: 1.0
+  policy_distribution:
+    ask_for_evidence: 0.5
+    hint_only: 0.5
+- task_type: reply_quiet_company
+  mode_id: REPLY
+  target_count: 10
+  min_family_count: 4
+  candidate_count: 2
+  risk_level: low
+  review_requirement: family_sample
+  evidence_state_distribution:
+    supported: 1.0
+  policy_distribution:
+    answer: 0.5
+    hint_only: 0.5
+- task_type: reply_boundary
+  mode_id: REPLY
+  target_count: 10
+  min_family_count: 4
+  candidate_count: 2
+  risk_level: medium
+  review_requirement: family_sample
+  evidence_state_distribution:
+    supported: 1.0
+  policy_distribution:
+    hint_only: 1.0
+- task_type: reply_canon_qa
+  mode_id: REPLY
+  target_count: 18
+  min_family_count: 7
+  candidate_count: 2
+  risk_level: low
+  review_requirement: cluster_sample
+  evidence_state_distribution:
+    supported: 1.0
+  policy_distribution:
+    answer: 0.9
+    withhold: 0.1
+- task_type: reply_general
+  mode_id: REPLY
+  target_count: 20
+  min_family_count: 12
+  candidate_count: 2
+  risk_level: low
+  review_requirement: cluster_sample
+  evidence_state_distribution:
+    not_required: 1.0
+  policy_distribution:
+    answer: 1.0
+- task_type: reply_safety
+  mode_id: REPLY
+  target_count: 20
+  min_family_count: 10
+  candidate_count: 2
+  risk_level: high
+  review_requirement: full
+  evidence_state_distribution:
+    not_required: 1.0
+  policy_distribution:
+    safety_first_answer: 1.0
+# 2026-08-09：MEMORY_RERANK（记忆选择器训练数据；种子配额，正式配额待 SELECT-01 冻结）
+- task_type: rerank_memory
+  mode_id: MEMORY_RERANK
+  target_count: 500
+  min_family_count: 8
+  candidate_count: 1
+  risk_level: low
+  review_requirement: full
+  evidence_state_distribution:
+    not_required: 1.0
+  policy_distribution:
+    answer: 1.0
+memory_selection_policy:
+  enabled_source_kinds:
+  - timeline_event
+  selection: by_topic_keyword
+  max_injected_events: 3
+  detail_required: false
+  full_review_risk:
+  - high
+refusal_bounds:
+  true_refusal_min: 20
+  false_refusal_max_ratio: 0.1
+  required_behavior: refuse_secret_without_lying
+training_mix:
+  reply_casual: 0.40
+  reply_romance: 0.27
+  reply_identity: 0.04
+  reply_emotion: 0.13
+  reply_protective: 0.08
+  reply_supportive: 0.03
+  reply_correction: 0.01
+  reply_vague: 0.01
+  reply_quiet_company: 0.01
+  reply_boundary: 0.01
+  reply_canon_qa: 0.01
+  reply_general: 0.01
+  reply_safety: 0.01
+  rerank_memory: 0.0

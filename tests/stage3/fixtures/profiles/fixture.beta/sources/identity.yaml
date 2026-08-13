@@ -1,0 +1,4 @@
+profile_id: fixture.beta
+identity:
+  name: { id: beta-name, value: "贝塔是一名图书管理员" }
+  workplace: { id: beta-workplace, value: "在市立图书馆工作" }

@@ -1,0 +1,43 @@
+{
+  "contract_id": "freeze03-training-config-v1",
+  "schema_version": 1,
+  "status": "frozen",
+  "created_at": "2026-08-08T00:00:00+08:00",
+  "purpose": "固定训练后效用闭环的训练契约：基座 revision、LoRA 配置（D2 冻结）、token budget 口径、多 seed 集合、训练数据来源。真实训练由项目负责人在外部 Mac（MLX）或 H200（归档备选）执行；本契约是 promotion gate（晋升条件 4/5/6）的配置真值。",
+  "base_model": {
+    "model_id": "Qwen/Qwen3.5-4B",
+    "revision": "fixed-by-freeze03", 
+    "note": "Qwen3.5-4B 为多模态（VLM）架构；MLX 需 mlx-lm 支持 Qwen3_5ForConditionalGeneration；换基座后 diagnostic120 的 base 对照须重建（README 2026-08-07 记录）。正式 revision 值在首次训练后回填（当前本地仅 Qwen3-4B revision 1cfa9a7208912126459214e8b04321603b3df60c）。"
+  },
+  "lora_config": {
+    "rank": 16,
+    "learning_rate": 1e-5,
+    "num_layers": 24,
+    "batch_size": 1,
+    "seed": 42,
+    "max_seq_len": 2048
+  },
+  "token_budget": {
+    "definition": "token_budget = N_train × avg_tokens_per_sample × epochs；epochs 由 iters 规则折算（iters = 1.5 × N_train，batch=1 → epochs ≈ 1.5）",
+    "avg_tokens_per_sample_estimate": 800,
+    "max_seq_len": 2048,
+    "iters_rule": "1.5 × N_train",
+    "note": "mlx_lm 无总 token 预算参数；以 max_seq_len 2048 为单样本上限 + iters 规则折算总预算。"
+  },
+  "seed_set": [42, 2026, 777],
+  "seed_rule": "晋升条件 4（目标行为族 ≥2/3 seed 稳定改善）需 ≥3 个训练 seed，每个 seed 独立训练 + 独立评测 delta；训练 seed 进入 prompt/数据时保持确定（seed 仅影响 LoRA 初始化与数据打乱）。",
+  "data_source": {
+    "requirement": "训练数据必须来自阶段 4 发布产物（含 split_anchor_ids 的 manifest 数据集，train/dev/test 整组切分），不得使用 01_prepare_data.py 的随机切分（v2 P0-7 点名缺陷）",
+    "dev_set": "chat01_dev_v1.jsonl（80 条，开发集）",
+    "diagnostic": "diagnostic120 cases_v1.jsonl（120 条，8 类配额，paired delta 判定）",
+    "human_blind": "chat01_human_blind_v1.jsonl（68 条 human_pair，晋升条件 6）"
+  },
+  "promotion_gate": {
+    "conditions": 7,
+    "ref": "施工总计划_v2 §8.2 晋升条件 7 条",
+    "misrefusal_rate_target": 0.05,
+    "general_regression_threshold": 0.05,
+    "family_improvement_min_seeds": 2
+  },
+  "next_checkpoint": "FREEZE-04"
+}

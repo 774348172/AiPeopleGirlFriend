@@ -1,0 +1,7 @@
+# fixture.beta 包清单
+profile_id: fixture.beta
+packages:
+  profile: profile.yaml
+  protocol: protocol.yaml
+  recipe: recipe.yaml
+  release: release.yaml

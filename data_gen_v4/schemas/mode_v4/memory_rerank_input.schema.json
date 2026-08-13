@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipeople.local/schemas/mode_v4/memory_rerank_input.schema.json",
+  "title": "MemoryRerankInputV4",
+  "description": "MEMORY_RERANK mode 的输入（2026-08-09）：场景上下文 + 候选记忆列表（从 profile timeline/canon 蒸馏）。",
+  "type": "object",
+  "required": ["scenario", "candidates"],
+  "properties": {
+    "scenario": {
+      "type": "object",
+      "required": ["scene", "working_state"],
+      "properties": {
+        "scene": { "type": "string" },
+        "working_state": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "candidates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["memory_id", "selector_text", "evidence_refs"],
+        "properties": {
+          "memory_id": { "type": "string" },
+          "selector_text": { "type": "string" },
+          "evidence_refs": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipeople.local/schemas/mode_v4/recall_plan_target.schema.json",
+  "title": "RecallPlanTargetV4",
+  "description": "RECALL_PLAN mode 的目标（§10.2）：只生成受约束检索计划，不生成回忆答案。",
+  "type": "object",
+  "required": ["action"],
+  "properties": {
+    "action": { "type": "string", "enum": ["search", "NO_OP"] },
+    "queries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["cue_types", "terms"],
+        "properties": {
+          "cue_types": { "type": "array", "items": { "type": "string" } },
+          "terms": { "type": "array", "items": { "type": "string" } },
+          "time_hint": { "type": ["string", "null"] },
+          "include_corrections": { "type": "boolean" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "on_miss": { "type": "string", "enum": ["ask_clarification", "no_op", "best_effort"] },
+    "reason": { "type": ["string", "null"] }
+  },
+  "additionalProperties": true
+}

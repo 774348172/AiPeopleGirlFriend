@@ -1,0 +1,6037 @@
+pools:
+  reply_casual:
+  - topic: 晚饭吃什么
+    scene: 傍晚的出租屋，她在窗边整理纸箱里的旧衣物
+    player_view: 你刚关上咖啡厅的门回家，问她晚饭想吃什么
+  - topic: 手机怎么用
+    scene: 出租屋客厅，她对着你的手机屏幕微微皱眉
+    player_view: 她不太懂手机，你教她看时间
+    evidence_state: insufficient
+  - topic: 楼下新开的面包店
+    scene: 早晨的出租屋
+    player_view: 你出门买早饭，路过新开的面包店
+  - topic: 今天雨停了
+    scene: 出租屋窗边，她望着窗外
+    player_view: 连下了几天雨，今天傍晚终于停了，空气潮湿
+  - topic: 咖啡厅打烊后
+    scene: 咖啡厅后厨，打烊后只有你们
+    player_view: 你收拾完柜台，她以猫形趴在角落的椅子上
+  - topic: 早餐吃什么
+    scene: 早晨的出租屋，她刚醒
+    player_view: 你问她想吃粥还是包子
+  - topic: 冰箱空了
+    scene: 出租屋厨房，你打开冰箱
+    player_view: 你发现冰箱里没东西了，问她要一起买菜吗
+  - topic: 热水壶怎么用
+    scene: 出租屋厨房
+    player_view: 她想烧水，对着热水壶按钮犹豫
+    evidence_state: insufficient
+  - topic: 你今天回来好早
+    scene: 出租屋玄关
+    player_view: 咖啡厅今天客人少，你提前回来了
+  - topic: 你感冒了
+    scene: 出租屋，你鼻音重
+    player_view: 你着凉了，她看你一眼
+  - topic: 暖气坏了
+    scene: 出租屋，入秋降温
+    player_view: 你发现暖气片不热了
+  - topic: 隔壁装修很吵
+    scene: 出租屋
+    player_view: 隔壁在装修，噪音很大
+  - topic: 楼上滴水
+    scene: 出租屋卫生间
+    player_view: 楼上漏水滴到你头顶
+  - topic: 洗衣机怎么用
+    scene: 出租屋阳台
+    player_view: 你想洗衣服，她好奇地看着洗衣机
+    evidence_state: insufficient
+  - topic: 晾衣服
+    scene: 出租屋阳台
+    player_view: 你们一起晾衣服
+  - topic: 快递到了
+    scene: 出租屋门口
+    player_view: 你取了快递回来，她看包裹
+  - topic: 垃圾该倒了
+    scene: 出租屋玄关
+    player_view: 垃圾桶满了，你问她要不要一起去
+  - topic: 交水电费
+    scene: 出租屋客厅
+    player_view: 你收到缴费提醒，算这个月开销
+  - topic: 深夜饿了
+    scene: 深夜出租屋厨房
+    player_view: 你半夜饿醒，去厨房找吃的
+  - topic: 煮泡面
+    scene: 出租屋厨房
+    player_view: 你煮泡面，问她要不要来一口
+  - topic: 她学做饭
+    scene: 出租屋厨房，她系着围裙
+    player_view: 她第一次试着炒菜，你站在旁边看
+  - topic: 菜咸了
+    scene: 出租屋饭桌
+    player_view: 她做的菜有点咸，你喝了好多水
+  - topic: 今天谁洗碗
+    scene: 出租屋饭后
+    player_view: 你们商量谁洗碗
+  - topic: 囤零食
+    scene: 出租屋客厅
+    player_view: 你买了一大袋零食回来
+  - topic: 她不吃辣
+    scene: 出租屋饭桌
+    player_view: 你点了辣菜，她尝了一口就放下
+  - topic: 午睡
+    scene: 午后出租屋，阳光从窗帘缝照进来
+    player_view: 你午睡醒来看见她坐在窗边
+  - topic: 熬夜
+    scene: 深夜出租屋
+    player_view: 你还在加班，她也没睡
+  - topic: 早起
+    scene: 清晨出租屋
+    player_view: 你难得早起，发现她早醒了
+  - topic: 睡过头
+    scene: 上午出租屋
+    player_view: 你睡过头了，咖啡厅快开门
+  - topic: 今天降温
+    scene: 出租屋玄关，出门前
+    player_view: 你准备出门，发现降温了
+  - topic: 回南天
+    scene: 出租屋，地板湿漉漉的
+    player_view: 松江府回南天，到处潮
+  - topic: 台风要来了
+    scene: 出租屋，窗外风声大
+    player_view: 天气预报说台风要来，你检查窗户
+  - topic: 停电了
+    scene: 夜里出租屋，突然停电
+    player_view: 停电了，你们点蜡烛
+  - topic: 灯泡坏了
+    scene: 出租屋客厅
+    player_view: 客厅灯不亮了，你搬梯子换灯泡
+  - topic: 修椅子
+    scene: 出租屋客厅
+    player_view: 椅子腿松了，你找螺丝刀修
+  - topic: 拖地
+    scene: 出租屋客厅
+    player_view: 你拖地，她缩着腿坐在沙发上
+  - topic: 她收拾屋子
+    scene: 出租屋
+    player_view: 她学着收拾，把东西摆整齐
+  - topic: 你的房间
+    scene: 出租屋，你房间门口
+    player_view: 她路过你房间，看到里面有点乱
+  - topic: 她的纸箱
+    scene: 出租屋角落
+    player_view: 你发现她的纸箱里铺着旧衣服
+  - topic: 窗帘
+    scene: 出租屋，风把窗帘吹起来
+    player_view: 你们关窗时聊了几句
+  - topic: 开店准备
+    scene: 早晨的咖啡厅
+    player_view: 你开门前擦柜台
+  - topic: 拉花失败
+    scene: 咖啡厅吧台
+    player_view: 你拉花失败了，她自己也在练
+  - topic: 新来的客人
+    scene: 咖啡厅
+    player_view: 今天来了个常客，你们聊了聊
+  - topic: 咖啡豆补货
+    scene: 咖啡厅储物间
+    player_view: 你整理咖啡豆库存
+  - topic: 菜单更新
+    scene: 咖啡厅，打烊后
+    player_view: 你想换个菜单，问她意见
+  - topic: 她尝咖啡
+    scene: 咖啡厅吧台
+    player_view: 她以人形出现在打烊后的店里，你让她尝一口新豆子
+  - topic: 店里的猫
+    scene: 咖啡厅角落
+    player_view: 门口有只流浪猫，她想看又不敢靠近
+  - topic: 打烊算账
+    scene: 咖啡厅，打烊后
+    player_view: 你盘今天的账，她在旁边安静待着
+  - topic: 雨天客人少
+    scene: 咖啡厅
+    player_view: 下雨天店里没人，你们闲聊
+  - topic: 周末的咖啡厅
+    scene: 咖啡厅
+    player_view: 周末客人多，你忙了一天
+  - topic: 扫码支付
+    scene: 楼下便利店
+    player_view: 你扫码付款，她盯着看
+    evidence_state: insufficient
+  - topic: 教她用钱
+    scene: 便利店
+    player_view: 你给了她一点零钱备用，教她怎么付钱、怎么算找零；她认真记但偶尔算错
+    evidence_state: insufficient
+  - topic: 身份证
+    scene: 出租屋
+    player_view: 你提到办证的事，她不太明白
+  - topic: 坐公交
+    scene: 公交站
+    player_view: 你带她坐公交，她看着站牌
+  - topic: 电梯
+    scene: 楼道电梯里
+    player_view: 你们一起坐电梯，她盯着楼层灯
+    evidence_state: insufficient
+  - topic: 路灯
+    scene: 夜晚楼下
+    player_view: 她看路灯亮起来，有点好奇
+  - topic: 红绿灯
+    scene: 路口
+    player_view: 你们过马路，你教她看红绿灯
+    evidence_state: insufficient
+  - topic: 电视
+    scene: 出租屋客厅
+    player_view: 你打开电视，她第一次认真看
+    evidence_state: insufficient
+  - topic: 广告牌
+    scene: 松江府街头
+    player_view: 你们路过一块大广告牌
+  - topic: 超市
+    scene: 超市
+    player_view: 你带她逛超市，她对货架好奇
+    evidence_state: insufficient
+  - topic: 电梯坏了走楼梯
+    scene: 楼道
+    player_view: 电梯维修，你们走楼梯回家
+  - topic: 晒太阳
+    scene: 出租屋窗台，午后阳光
+    player_view: 她窝在窗台晒着太阳，眯着眼
+  - topic: 尾巴
+    scene: 出租屋客厅
+    player_view: 她坐在地板上，尾巴在身后轻轻摆
+  - topic: 耳朵动了
+    scene: 出租屋
+    player_view: 她听到门口动静，耳朵先动了一下
+  - topic: 打哈欠
+    scene: 出租屋客厅
+    player_view: 她打了个哈欠，又往纸箱那边看
+  - topic: 伸懒腰
+    scene: 清晨出租屋
+    player_view: 她刚睡醒，伸了个懒腰
+  - topic: 她梳毛
+    scene: 出租屋角落
+    player_view: 她以猫形在角落里理毛，发现你在看就停了
+  - topic: 猫形睡觉
+    scene: 出租屋
+    player_view: 她以猫形在纸箱里睡着了
+  - topic: 纸箱换新
+    scene: 出租屋
+    player_view: 你想给她换个新纸箱，她有点犹豫
+  - topic: 她舔伤口
+    scene: 出租屋
+    player_view: 她后腿的伤快好了，还在小心舔
+  - topic: 窗台看雨
+    scene: 出租屋窗台
+    player_view: 你们一起看窗外的雨
+  - topic: 听声音
+    scene: 出租屋
+    player_view: 她听到楼下的声音，耳朵转了转
+  - topic: 楼下邻居
+    scene: 楼道
+    player_view: 你碰到楼下邻居，寒暄了几句
+  - topic: 巷口的小吃摊
+    scene: 巷口
+    player_view: 你们路过巷口，闻到烤红薯的味
+  - topic: 公园散步
+    scene: 松江府公园
+    player_view: 你们傍晚去公园走了走
+  - topic: 街边的树
+    scene: 松江府街道
+    player_view: 你指着一排树说秋天到了
+  - topic: 江边
+    scene: 松江府江边
+    player_view: 你们傍晚走到江边，风有点凉
+  - topic: 菜市场
+    scene: 菜市场
+    player_view: 你带她逛菜市场，人有点多
+  - topic: 夜市
+    scene: 松江府夜市
+    player_view: 你们逛夜市，她想看又不太敢
+  - topic: 古街
+    scene: 松江府老城区
+    player_view: 你们路过一条老巷子
+  - topic: 新开的奶茶店
+    scene: 松江府街头
+    player_view: 新开了一家奶茶店，排队的人不少
+  - topic: 理发店
+    scene: 松江府街头
+    player_view: 你路过理发店，她看了一眼橱窗
+  - topic: 你怕什么
+    scene: 深夜出租屋
+    player_view: 你们随口聊起各自怕的东西
+    evidence_state: false_premise
+  - topic: 你觉得家是什么
+    scene: 深夜出租屋
+    player_view: 你们聊到"家"这个话题
+  - topic: 为什么留在这座城市
+    scene: 出租屋
+    player_view: 你问她为什么留在松江府
+    evidence_state: false_premise
+  - topic: 你信命吗
+    scene: 深夜出租屋
+    player_view: 你们聊到命运
+    evidence_state: false_premise
+  - topic: 你觉得人活着图什么
+    scene: 深夜出租屋
+    player_view: 深夜聊天，话题有点大
+  - topic: 你以前做过梦吗
+    scene: 出租屋
+    player_view: 她问你会不会做梦，你们聊起梦
+    evidence_state: false_premise
+  - topic: 你习惯这里的生活吗
+    scene: 出租屋
+    player_view: 你问她住得习惯不习惯
+  - topic: 天气和心情
+    scene: 出租屋窗边
+    player_view: 你们聊到阴雨天是不是让人没精神
+  - topic: 喜欢吃什么
+    scene: 出租屋厨房
+    player_view: 你问她除了鱼还喜欢什么
+  - topic: 你的作息
+    scene: 出租屋
+    player_view: 你发现她白天容易困，晚上精神
+  - topic: 她说梦话
+    scene: 深夜出租屋
+    player_view: 你听到她在睡梦里说了句什么
+    evidence_state: insufficient
+  - topic: 你的咖啡
+    scene: 咖啡厅吧台
+    player_view: 她看你喝咖啡，问是不是苦的
+    evidence_state: insufficient
+  - topic: 今天的心情
+    scene: 出租屋客厅
+    player_view: 你今天有点累，坐在沙发上不想动
+  - topic: 她的名字含义
+    scene: 出租屋
+    player_view: 你问她名字是不是有什么讲究
+  - topic: 你会唱歌吗
+    scene: 出租屋
+    player_view: 你随口问她会不会唱歌
+    evidence_state: false_premise
+  - topic: 下雨天做什么
+    scene: 下雨的出租屋
+    player_view: 你们都被困在家里
+  - topic: 她认路吗
+    scene: 松江府街头
+    player_view: 你们走了一条她不熟的路
+  - topic: 你怕黑吗
+    scene: 深夜出租屋
+    player_view: 你问她怕不怕黑
+  - topic: 关于冬天
+    scene: 出租屋
+    player_view: 你们聊到冬天要怎么过
+  - topic: 冰箱里没菜了
+    scene: 傍晚的出租屋，厨房灯亮着，冰箱门大敞，里面只剩几根葱和半盒鸡蛋
+    player_view: 你下班回家准备做饭，打开冰箱发现没菜了，问她晚上打算怎么吃
+  - topic: 冰箱里的剩菜
+    scene: 傍晚的出租屋，灶台上摆着昨晚打包的剩菜，锅盖还盖着
+    player_view: 你热好昨晚的剩菜端上桌，问她要不要一起吃完
+  - topic: 晾衣服收衣服
+    scene: 午后阳光斜照的出租屋阳台，衣架上晾着刚洗好的衣服
+    player_view: 你看到阳台上的衣服快干了，问她要不要帮忙收下来
+  - topic: 收快递拆快递箱
+    scene: 傍晚的出租屋门口，快递箱堆在玄关，胶带还没撕
+    player_view: 你抱着刚取的快递进门，坐在玄关拆纸箱
+  - topic: 今晚看什么电视
+    scene: 晚上九点的出租屋客厅，电视停在频道列表页，茶几上摆着两杯水
+    player_view: 你握着遥控器翻频道列表，问她今晚想看点什么
+  - topic: 电视遥控器在哪
+    scene: 晚上八点的出租屋客厅，沙发垫子被翻得有些乱
+    player_view: 你找不到遥控器，在沙发缝隙里翻找，问她有没有看到
+  - topic: 周末一起大扫除
+    scene: 周六上午的出租屋，阳光透过窗户照亮地板上的灰尘
+    player_view: 你拎着拖把和水桶出来，提议今天把屋里打扫一遍
+  - topic: 阳台晾晒的被子
+    scene: 晴天的出租屋阳台，晒衣杆上挂着一床刚洗的薄被
+    player_view: 你抱着晒好的被子进屋，闻到阳光的味道，问她要不要换个新床单
+  - topic: 楼下邻居家的狗叫
+    scene: 夜晚的出租屋客厅，窗外隐约传来楼下邻居家的狗叫
+    player_view: 你被楼下邻居家的狗叫声吸引，走到窗边往下看了看
+  - topic: 隔壁装修的电钻声
+    scene: 白天的出租屋，隔壁传来一阵阵电钻的轰鸣声
+    player_view: 你听到隔壁装修的电钻声，想着这动静已经响了一周
+    evidence_state: supported
+  - topic: 空调温度开几度
+    scene: 闷热的夏夜出租屋，空调嗡嗡运转，室温已经降下来
+    player_view: 你拿起遥控器看了看空调度数，问她这个温度行不行
+  - topic: 这个月水电账单
+    scene: 晚上十点的出租屋书桌，手机屏幕亮着，显示本月水电账单
+    player_view: 你盯着手机上的水电账单，和她念叨这个月电费用得有点多
+  - topic: 换季衣服的整理
+    scene: 秋初的出租屋，衣柜门大开，床上摊着长短袖衣物
+    player_view: 你把换季的衣服从衣柜里翻出来，准备整理归类，问她要不要一起挑挑
+  - topic: 周末睡个懒觉
+    scene: 周末早上的出租屋，窗帘拉着，晨光从缝隙漏进来
+    player_view: 你睁开眼看了看手机，发现已经快十点，翻了个身继续躺着
+  - topic: 早上谁先起床
+    scene: 清晨的出租屋，厨房传来烧水声，窗帘缝漏进微光
+    player_view: 你醒来时发现客厅灯已经亮了，问她是不是早就起了
+    evidence_state: insufficient
+  - topic: 睡前要不要喝牛奶
+    scene: 深夜的出租屋客厅，电视已关，只剩一盏落地灯亮着
+    player_view: 你热了两杯牛奶端出来，问她要不要喝一杯再睡
+  - topic: 半夜肚子饿了
+    scene: 凌晨一点的出租屋，客厅灯光昏黄，冰箱门开了一条缝
+    player_view: 你半夜饿醒，去厨房翻冰箱找吃的
+  - topic: 鱼干快吃完了
+    scene: 出租屋的零食柜前，装鱼干的透明罐子快见底了
+    player_view: 你打开零食柜，看到鱼干罐快空了，记得她每天都会吃上两片
+    evidence_state: supported
+  - topic: 甜点还剩下多少
+    scene: 晚饭后的出租屋客厅，茶几上摆着吃了一半的蛋糕盒
+    player_view: 你数了数盒子里剩下的甜点，问她明天还够不够吃
+  - topic: 楼下新开的甜品店
+    scene: 初秋的松江府街道，街角新开的甜品店橱窗里摆满蛋糕
+    player_view: 你路过街角那家新开的甜品店，停在橱窗前看了看价格牌
+  - topic: 今天喝奶茶吗
+    scene: 午后的咖啡厅，柜台上的菜单牌写着今日特饮
+    player_view: 你忙完午市高峰，问她要喝杯奶茶还是咖啡休息一下
+  - topic: 泡面要不要加蛋
+    scene: 深夜的出租屋厨房，锅里水烧开，泡面调料包还没拆
+    player_view: 你给两人煮泡面当夜宵，问她要不要各加一个蛋
+  - topic: 做饭手艺怎么样
+    scene: 晚饭后的出租屋厨房，碗碟堆在水槽里，锅里还剩一点汤
+    player_view: 你收拾碗筷时问她这几天吃下来觉得你做饭怎么样，其实还没听她提过口味喜好
+    evidence_state: insufficient
+  - topic: 超市打折的鸡蛋
+    scene: 周末的超市生鲜区，冷柜边贴着鸡蛋限时特价的牌子
+    player_view: 你看到鸡蛋限时特价，拉着购物车在货架前挑了一盒，没注意标价比平时还贵了两块
+    evidence_state: false_premise
+  - topic: 菜市场新到的鱼
+    scene: 清晨的菜市场，鱼摊前的泡沫箱里游着新到的鲫鱼
+    player_view: 你蹲在鱼摊前挑了两条新鲜的鱼，付钱时和小贩闲聊了几句
+  - topic: 今天水果买什么
+    scene: 傍晚的水果摊前，摊主把当季的橘子堆成小山
+    player_view: 你站在水果摊前挑了半天，问她要买橘子还是苹果
+  - topic: 最近的物价涨了
+    scene: 超市收银台前，刚打出来的小票比上次长了一截
+    player_view: 你结完账看了看小票，觉得菜价好像涨了，但记不清上次花了多少
+    evidence_state: insufficient
+  - topic: 新洗衣液的味道
+    scene: 晾完衣服的出租屋阳台，空气里飘着淡淡的洗衣液香气
+    player_view: 你凑近晾衣架闻了闻刚洗好的衣服，说这个味道挺好闻的
+  - topic: 新买的睡衣
+    scene: 晚上九点的出租屋，沙发上摆着网购回来的两个快递袋
+    player_view: 你拆开网购的新睡衣，抖开给她看了看款式
+  - topic: 该换新毛巾了
+    scene: 出租屋的卫生间，架子上挂着两条洗得发硬的旧毛巾
+    player_view: 你拿起旧毛巾搓了搓，说要趁周末去超市换两条新的
+  - topic: 下雨前收衣服
+    scene: 天色转阴的午后，阳台外乌云压过来，衣架被风吹得晃动
+    player_view: 你看到天色突然暗下来，赶紧跑到阳台把晾着的衣服收进屋
+  - topic: 出门忘带伞了
+    scene: 雨点刚落的松江府街边，行人纷纷撑起伞加快脚步
+    player_view: 你走出咖啡厅才发现雨不小，掏出手机看了看最近的便利店
+  - topic: 雨后楼下的积水
+    scene: 雨停后的小区楼下，路面还汪着几处浅浅的积水坑
+    player_view: 你下楼时小心绕过积水坑，回头提醒她踩着干的地方走
+  - topic: 傍晚下楼散步
+    scene: 暮色渐沉的小区楼下，路灯刚亮，晚风带着凉意
+    player_view: 你吃完晚饭提议下楼走走，站在门口等她换鞋
+  - topic: 今晚散步走哪条路
+    scene: 华灯初上的小区门口，一条路沿河，一条路穿街
+    player_view: 你站在岔路口，问她今晚想沿着河边走还是走热闹的那条街
+  - topic: 街边的小吃摊
+    scene: 夜晚的松江府老街，小吃摊的灯串亮成一片，油锅滋滋响
+    player_view: 你闻到烤串的香味，在摊前停下问她想不想来两串
+  - topic: 老街巷口的老店
+    scene: 午后的松江府老街巷口，一家门脸老旧的糕点铺飘出甜香
+    player_view: 你路过巷口那家老糕点铺，探头看了看玻璃柜里的点心
+  - topic: 过马路注意车
+    scene: 傍晚的松江府路口，车流不断，红灯倒计时还有四十秒
+    player_view: 你站在路口等绿灯，见车流没有停下的意思，提醒她再等一会儿
+  - topic: 周末一起去超市
+    scene: 周六上午的出租屋，购物袋叠放在玄关，外面阳光正好
+    player_view: 你拎着环保袋站在门口，问她要一起去超市逛逛吗
+  - topic: 超市门口的试吃
+    scene: 周末的超市入口，促销员端着托盘请人试吃新出的饼干
+    player_view: 你接过促销员递来的试吃饼干，尝了一口觉得还不错
+  - topic: 推车还是提篮子
+    scene: 超市入口处，购物车停成一排，旁边摞着红色提篮
+    player_view: 你站在超市入口，问她今天要推车还是提个篮子进去
+  - topic: 超市广播促销
+    scene: 工作日晚间的超市，广播正播报粮油区限时促销
+    player_view: 你听着超市广播里的促销播报，停下脚步看了看粮油区的价签
+  - topic: 咖啡厅的早高峰
+    scene: 早上八点的咖啡厅，柜台前排起小队伍，磨豆机嗡嗡响
+    player_view: 你一边做咖啡一边应付早高峰的客人，忙得没空抬头
+  - topic: 熟客的点单习惯
+    scene: 午后的咖啡厅，靠窗的老位置坐着那位常客，面前摊着书
+    player_view: 你看到靠窗的熟客来了，不用问就给他准备老样式的拿铁
+    evidence_state: supported
+  - topic: 咖啡豆新到货
+    scene: 咖啡厅的储物间，新到的咖啡豆袋子码在墙角
+    player_view: 你拆开新到的咖啡豆袋子，凑近闻了闻烘焙的香气
+  - topic: 练习咖啡拉花
+    scene: 打烊后的咖啡厅，台面上摆着几杯练过拉花的拿铁
+    player_view: 你趁店里没人，拿牛奶练了几杯拉花，问她哪杯看着最像样
+  - topic: 蛋糕又卖完了
+    scene: 下午三点的咖啡厅，甜品柜里只剩两片空盘和价签
+    player_view: 你拉开甜品柜，发现今天的蛋糕又卖完了，这周已经第三次了
+    evidence_state: supported
+  - topic: 雨天店里客人少
+    scene: 雨天的咖啡厅，玻璃窗上水珠滑落，店里只有两桌客人
+    player_view: 你擦着吧台，看外面雨势不小，和她念叨今天客人不多
+  - topic: 今天外卖订单多
+    scene: 中午的咖啡厅，打包台上排着几个外卖袋，出单机不停吐纸
+    player_view: 你把新打印的外卖单贴到打包台上，忙得脚不沾地
+  - topic: 打烊后清点货架
+    scene: 深夜的咖啡厅，只留柜台上一盏灯，货架上的罐子排得整齐
+    player_view: 你打烊后清点货架上的存货，在本子上记下缺货的品类
+  - topic: 收银机的零钱
+    scene: 打烊后的咖啡厅柜台，收银机抽屉半开，硬币零散堆着
+    player_view: 你数了数收银机里的零钱，发现五块十块快不够找了
+  - topic: 咖啡机该清洗了
+    scene: 午后没客人的咖啡厅，吧台上摆着拆下来的咖啡机零件
+    player_view: 你拆开咖啡机零件准备清洗，顺口说这周该彻底保养一次
+  - topic: 电视上的天气预报
+    scene: 晚上七点半的出租屋客厅，电视里正播着天气预报
+    player_view: 你看天气预报说晚上有雨，又看了看窗外晴朗的天，嘀咕准不准
+    evidence_state: false_premise
+  - topic: 台风天提前囤粮
+    scene: 台风预警的傍晚，便利店货架被扫空了大半
+    player_view: 你看台风预警说要登陆，去便利店囤了泡面和矿泉水
+  - topic: 梅雨天的湿气
+    scene: 梅雨季节的出租屋，墙角贴着除湿盒，地板总是潮的
+    player_view: 你摸了摸潮乎乎的被子，说要买台除湿机放屋里
+  - topic: 降温记得添衣
+    scene: 深秋的早晨，窗外风大，阳台晾着的衣服被吹得斜着飘
+    player_view: 你出门前看了看窗外，提醒她今天降温，出门多带件外套
+  - topic: 夏天蚊子太多
+    scene: 夏夜的出租屋，蚊香液指示灯亮着，空气闷热
+    player_view: 你挠着胳膊上的蚊子包，说要再去买两瓶驱蚊液
+  - topic: 楼下的流浪猫
+    scene: 傍晚的小区花坛边，一只橘猫趴在长椅下舔爪子
+    player_view: 你下楼扔垃圾时看见花坛边的橘猫，蹲下来看了一会儿，想着要不要带点吃的下来
+    evidence_state: insufficient
+  - topic: 小区保安打招呼
+    scene: 傍晚的小区门口，保安大叔坐在岗亭里摇着扇子
+    player_view: 你进小区时保安和你打招呼，你也笑着应了一声
+  - topic: 快递驿站取件
+    scene: 晚饭后的小区快递驿站，货架上码着一个个包裹
+    player_view: 你报出取件码，从货架上拿下两个包裹，掂了掂重量
+  - topic: 网购的东西退货
+    scene: 晚上九点的出租屋，茶几上放着拆开的快递和退货单
+    player_view: 你对着手机申请退货，把东西重新装回快递袋里
+  - topic: 客厅灯泡坏了
+    scene: 夜晚的出租屋客厅，吸顶灯闪了两下彻底灭了
+    player_view: 你搬来梯子换客厅的灯泡，确认是灯管烧了，让她帮忙扶了一下梯子
+    evidence_state: supported
+  - topic: 厨房水龙头滴水
+    scene: 深夜的出租屋厨房，水龙头一滴一滴落在水槽里
+    player_view: 你听到厨房滴滴答答的声音，拧了拧水龙头没拧紧，说明天买个垫圈换上
+  - topic: 午后窗台晒太阳
+    scene: 晴天的午后出租屋，阳光铺满窗台，窗台绿植泛着光
+    player_view: 你午后坐在窗台边晒太阳，顺手给窗台的绿植浇了浇水
+  - topic: 午后容易犯困
+    scene: 午后两点的出租屋客厅，风扇转着，空气暖洋洋的
+    player_view: 你打了个哈欠，说这个点最容易犯困，问她要睡个午觉吗
+    evidence_state: insufficient
+  - topic: 周末去哪里逛逛
+    scene: 周六早上的出租屋，窗外阳光正好，街上人声渐起
+    player_view: 你翻着手机看周末活动，问她想去公园还是去商场转转，还没听她说过偏好
+    evidence_state: insufficient
+  - topic: 周一的闹钟响
+    scene: 周一清晨的出租屋，手机闹钟连响两遍，窗帘缝透进白光
+    player_view: 你迷迷糊糊按掉闹钟，翻了个身又赖了五分钟
+  - topic: 深夜的电视节目
+    scene: 深夜十二点的出租屋客厅，电视声音调得很低，画面放着老电影
+    player_view: 你半夜睡不着，打开电视调低音量看老电影，看得正入神
+  - topic: 早市的新鲜蔬菜
+    scene: 清晨六点的早市，菜摊上的青菜还带着露水，称秤的忙个不停
+    player_view: 你起早去早市买菜，挑了把还带着水珠的青菜，顺便买了豆腐
+  - topic: 零食柜该补货了
+    scene: 晚饭后的出租屋，零食柜门开着，里面只剩几包饼干
+    player_view: 你打开零食柜发现快空了，列了个清单准备下次逛超市补货
+  reply_romance:
+  - topic: 她帮你整理了屋子
+    scene: 出租屋，你下班回来发现屋里干净了一点
+    player_view: 她趁你不在把客厅收拾了，纸箱挪到了角落
+  - topic: 雨夜你晚归
+    scene: 玄关，你浑身湿透地进门
+    player_view: 你今晚回得比平时晚，外面又下了雨
+  - topic: 她怕你赶她走
+    scene: 深夜出租屋，她坐在纸箱边没有睡
+    player_view: 她忽然问你会不会觉得她碍事
+  - topic: 猫形待在你旁边
+    scene: 沙发边，她以猫形安静地趴着
+    player_view: 你坐在沙发上看手机，她不远不近地待着
+  - topic: 她等你回家
+    scene: 深夜出租屋玄关
+    player_view: 你晚归，发现客厅灯还亮着，她没睡
+  - topic: 谢谢你
+    scene: 出租屋，安静的时候
+    player_view: 她忽然认真地说谢谢
+  - topic: 她记住你的口味
+    scene: 出租屋厨房
+    player_view: 她做饭时没放辣，说记得你不吃辣
+  - topic: 你受伤了她着急
+    scene: 出租屋
+    player_view: 你切菜割到手，她比你还紧张
+  - topic: 她的纸箱
+    scene: 出租屋角落
+    player_view: 你随口说纸箱旧了，她抱紧了纸箱
+  - topic: 她给你留了灯
+    scene: 出租屋玄关
+    player_view: 你晚归，玄关留着一盏灯
+  - topic: 她靠你近了一点
+    scene: 出租屋沙发
+    player_view: 你们坐得比平时近了一点
+  - topic: 头发
+    scene: 出租屋
+    player_view: 她头发上沾了东西，你抬手想帮她拿
+  - topic: 她的耳朵
+    scene: 出租屋
+    player_view: 你看着她头顶的猫耳，她偏了偏头
+  - topic: 一起看月亮
+    scene: 出租屋窗台
+    player_view: 今晚月亮很亮，你们并排看
+  - topic: 肩膀
+    scene: 出租屋沙发
+    player_view: 她困了，头轻轻靠在你肩上又很快移开
+  - topic: 她偷看你
+    scene: 出租屋
+    player_view: 你发现她在看你，她移开视线
+  - topic: 递东西碰到手
+    scene: 出租屋
+    player_view: 你们同时伸手拿杯子，手碰到了一起
+  - topic: 她的围巾
+    scene: 玄关
+    player_view: 她围了你的围巾出门，回来时还给你
+  - topic: 你的外套
+    scene: 出租屋
+    player_view: 她穿了你的外套，说暖和
+  - topic: 肩并肩走路
+    scene: 松江府街头
+    player_view: 你们一起走着，影子被路灯拉长
+  - topic: 你开玩笑说她是女朋友
+    scene: 出租屋
+    player_view: 你半开玩笑问她想不想当你女朋友
+  - topic: 她否认
+    scene: 出租屋
+    player_view: 她嘴上说只是报恩，耳朵却红了
+  - topic: 别人问你俩关系
+    scene: 松江府街头
+    player_view: 遇到熟人问你们是不是一对
+  - topic: 你夸她好看
+    scene: 出租屋
+    player_view: 你今天突然夸她，她愣了一下
+  - topic: 她嘴硬
+    scene: 出租屋
+    player_view: 她关心你，嘴上却说是怕你病了没人做饭
+  - topic: 你的生日
+    scene: 出租屋
+    player_view: 她记得你生日，准备了小东西
+  - topic: 她织的小东西
+    scene: 出租屋
+    player_view: 她学着织了个小挂件，不好意思送你
+  - topic: 你们聊到以后
+    scene: 深夜出租屋
+    player_view: 你随口说以后的事，她安静了一会儿
+  - topic: 她说要离开
+    scene: 深夜出租屋
+    player_view: 她忽然说伤好了就离开，语气却不像真的想走
+  - topic: 你留她
+    scene: 出租屋
+    player_view: 你说想让她留下
+  - topic: 她给你煮姜汤
+    scene: 出租屋厨房
+    player_view: 你着凉了，她煮了姜汤端给你
+  - topic: 她给你盖毯子
+    scene: 出租屋
+    player_view: 你在沙发上睡着，她给你盖了毯子
+  - topic: 她等你吃饭
+    scene: 出租屋
+    player_view: 你加班回来，发现饭还热着
+  - topic: 她帮你热饭
+    scene: 出租屋厨房
+    player_view: 她看你回来，把菜又热了一遍
+  - topic: 她记得你喝水的习惯
+    scene: 出租屋
+    player_view: 她给你倒了杯温水，说凉的伤胃
+  - topic: 她提醒你添衣
+    scene: 玄关，出门前
+    player_view: 降温了，她提醒你多穿点
+  - topic: 你加班她没睡
+    scene: 深夜出租屋
+    player_view: 你加班到很晚，她一直没睡
+  - topic: 她等你电话
+    scene: 出租屋
+    player_view: 你出门办事，她等你回来说一声
+  - topic: 她记住你怕冷
+    scene: 出租屋
+    player_view: 她把暖手的东西塞给你
+  - topic: 她允许你摸头
+    scene: 出租屋
+    player_view: 她难得允许你碰她的头
+  - topic: 她蹭你
+    scene: 出租屋
+    player_view: 她不小心蹭到你，又马上退开
+  - topic: 她翻肚皮
+    scene: 出租屋
+    player_view: 她以猫形在纸箱里翻了翻肚皮，发现你看就翻回去
+  - topic: 她在你旁边睡着
+    scene: 出租屋
+    player_view: 她第一次在你清醒时睡着
+  - topic: 她的呼噜
+    scene: 出租屋
+    player_view: 她睡着时轻微呼噜，醒了很不好意思
+  - topic: 她离你很近
+    scene: 出租屋
+    player_view: 她今天待得离你特别近
+  - topic: 她看你的眼神
+    scene: 出租屋
+    player_view: 她看着你，被发现了就低头
+  - topic: 她等你下班
+    scene: 咖啡厅角落
+    player_view: 她以猫形在打烊的店里等你收工
+  - topic: 一起看电视
+    scene: 出租屋沙发
+    player_view: 你们一起看一部剧，她看得认真
+  - topic: 一起做饭
+    scene: 出租屋厨房
+    player_view: 你们一起做饭，她打下手
+  - topic: 一起洗碗
+    scene: 出租屋厨房
+    player_view: 你们一起收拾厨房
+  - topic: 一起散步
+    scene: 松江府街道
+    player_view: 晚饭后你们出门散步
+  - topic: 一起逛超市
+    scene: 超市
+    player_view: 你们推着购物车
+  - topic: 一起晾衣服
+    scene: 出租屋阳台
+    player_view: 你们在阳台晾衣服，夕阳照着
+  - topic: 安静的傍晚
+    scene: 出租屋
+    player_view: 傍晚谁都没说话，却很舒服
+  - topic: 她记住你的作息
+    scene: 出租屋
+    player_view: 她记得你几点起床，几点回来
+  - topic: 她的位置
+    scene: 出租屋
+    player_view: 她习惯待在你视线能看见的地方
+  - topic: 你们的默契
+    scene: 出租屋
+    player_view: 你们同时开口又同时停住
+  - topic: 她学你的习惯
+    scene: 出租屋
+    player_view: 你发现她开始学你的一些小习惯
+  - topic: 过年
+    scene: 出租屋
+    player_view: 快过年了，你问她怎么过
+  - topic: 跨年
+    scene: 出租屋窗台
+    player_view: 跨年夜你们一起看窗外的烟花
+  - topic: 她的安全感
+    scene: 出租屋
+    player_view: 她终于能在你面前放松地待着
+  - topic: 家的感觉
+    scene: 出租屋
+    player_view: 你说这里越来越像个家了，她没接话
+  - topic: 你回家她先听见
+    scene: 出租屋玄关，你推门进来鞋还没换，沙发上蜷着的她先动了动耳朵
+    player_view: 你还没开口，就看见她耳朵先竖了起来，尾巴尖也跟着轻轻晃了一下
+  - topic: 猫形窝在你脚边
+    scene: 出租屋客厅，你加班改菜单，她变成猫形窝在你脚边的拖鞋上，呼吸很轻
+    player_view: 你低头看见一团软软的猫窝在你脚边，尾巴尖偶尔扫过你的脚踝，你动一下她就跟着挪一挪
+  - topic: 她偷看你叠衣服
+    scene: 出租屋卧室，你收拾晾干的衣服，她抱着一只枕头在门口探头，假装是路过
+    player_view: 你余光瞥见门口探出半个脑袋，目光跟着你叠衣服的手移动，你一回头的瞬间她立刻缩了回去
+  - topic: 你摸她的猫耳朵
+    scene: 出租屋客厅，她趴在地板上晒太阳，猫耳朵没收好，搭在头顶一颤一颤
+    player_view: 你试着伸手碰了碰她毛茸茸的耳朵尖，她整个身子跟着抖了一下，却没有躲开
+  - topic: 她脸红躲进被子
+    scene: 出租屋晚上，你随口说了一句她今天气色比前两天好多了
+    player_view: 你夸完她气色好，就看见她耳朵尖泛起一层红，下一秒整个人缩进了被子里不肯露头
+  - topic: 你给她留了盏灯
+    scene: 出租屋深夜，你加班回来得晚，客厅里留着一盏暖黄色的小夜灯
+    player_view: 你推开门看见那盏小夜灯还亮着，灯罩下压着你早上出门随手放的钥匙，位置都没动过
+  - topic: 她记得你的口味
+    scene: 出租屋厨房，她学着做你爱吃的菜，灶台边摆着酱油、糖和一小碟辣椒
+    player_view: 你尝了一口她端上来的菜，咸淡正好，你记得自己只在闲聊时提过一次口味
+  - topic: 你把鱼干分给她
+    scene: 出租屋茶几旁，你拆开一袋新买的小鱼干，她坐在沙发另一头，耳朵朝着你的方向
+    player_view: 你把鱼干往她那边推了推，她眼睛一直跟着袋子转，等你低头看手机才悄悄伸手拿了一根
+  - topic: 她假装没在等你
+    scene: 出租屋客厅，你加班回来快十一点，她缩在沙发里看电视，音量开得很小
+    player_view: 你进门时她眼睛飞快往门口扫了一下，又装作专心看电视，茶几上摆着给你留的温水
+  - topic: 你们挨着看电视
+    scene: 出租屋沙发，你打开电视找节目，她抱着毯子挪过来，在你旁边坐下
+    player_view: 你感觉沙发垫子陷下去一块，她坐得离你很近却没有挨着你，耳朵一直朝着你的方向
+  - topic: 她站得离你有点近
+    scene: 出租屋厨房，你煮面时她进来拿水杯，就站在你手肘边上，踮着脚看锅里
+    player_view: 你转身拿碗差点撞到她，她往后退了半步又站回原处，手里的水杯转过来转过去
+  - topic: 你问她冷不冷
+    scene: 松江府街头，秋夜起风，你们并肩往出租屋走，她只穿了一件薄外套
+    player_view: 你问她冷不冷，她只摇头，你却看见她缩了缩肩膀，脚步悄悄往你这边挪了半步
+  - topic: 她替你摆好拖鞋
+    scene: 出租屋玄关，你拎着菜和鱼干进门，鞋柜边整整齐齐摆着一双拖鞋
+    player_view: 你低头发现拖鞋换了个方向，鞋头朝着门口，正是你上次说穿起来别扭的那一双
+  - topic: 你加班她一直等
+    scene: 出租屋深夜，你回来发现客厅灯还亮着，她抱着毯子在沙发上睡着了
+    player_view: 你轻手轻脚进门，看见茶几上的水没怎么动过，她困得直点头，还在等你回来
+  - topic: 她穿着你的旧T恤
+    scene: 出租屋，她洗完澡穿着你借她的旧T恤出来，袖口长出一截，下摆盖过膝盖
+    player_view: 你看见她穿着你的旧T恤，袖子长到手肘以下，她抬手时衣摆跟着晃，你移开了视线
+  - topic: 你发现她在偷看
+    scene: 出租屋，你坐在书桌前对账，窗玻璃上隐约映出她趴在沙发边的影子
+    player_view: 你从玻璃倒影里发现她正看着你，和你目光对上后，她立刻低头装作在叠毯子
+  - topic: 她把鱼干留给你
+    scene: 出租屋，你翻零食袋，发现鱼干少了一包，却多出叠得整整齐齐的包装纸
+    player_view: 你打开袋子看见鱼干原样放着，旁边压着一张画着歪歪扭扭小鱼的纸片
+  - topic: 你们雨天同撑一把伞
+    scene: 松江府街头，雨突然下大，你们只有一把伞，伞沿窄，风把雨丝斜着吹进来
+    player_view: 你把伞往她那边倾了倾，她伸手把伞柄推回来，半边肩膀淋湿了也没躲
+  - topic: 她帮你理了理衣领
+    scene: 出租屋玄关，你正要出门去咖啡厅，她跟到门口，抬手把你翻出来的衣领压平
+    player_view: 你正要关门，她伸手把你翻出来的衣领压平，又飞快收回手，假装什么都没发生过
+  - topic: 你在家她心情就好
+    scene: 出租屋，周末你难得一整天待在家，她一会儿擦桌子，一会儿又搬凳子跟去厨房
+    player_view: 你发现只要你在客厅她就来回走动找事做，你进厨房她也搬个小凳坐在门口
+  - topic: 她记得你说过的话
+    scene: 出租屋，你随口提过街角那家糖炒栗子，两天后她往你手里塞了一小袋
+    player_view: 你接过那袋还温热的栗子，想起来是你几天前聊天时随口说过的一句话
+  - topic: 你唱歌她认真听
+    scene: 出租屋厨房，你洗碗时哼着咖啡厅里放过的歌，她坐在餐桌边没走
+    player_view: 你哼到一半回头，看见她撑着下巴听得出神，你停下来她也只是看着你
+  - topic: 她跟着你下楼
+    scene: 出租屋楼下，你要去菜市场买菜，她站在单元门口，来回张望了几步
+    player_view: 你回头看见她跟出两步又停住，见你停下她才小跑着跟上来，跟在你身后半步远
+  - topic: 你夸她头发顺
+    scene: 出租屋，她坐在纸箱边梳头发，尾巴也跟着一甩一甩的
+    player_view: 你夸了句她头发顺，她梳头的动作停了一下，耳朵尖动了动，没有接话
+  - topic: 她低头抿嘴笑
+    scene: 出租屋晚饭后，你讲起白天咖啡厅里顾客闹的一场乌龙
+    player_view: 你讲完那件乌龙事，看见她低下头抿着嘴笑，肩膀轻轻抖了一下又装作没事
+  - topic: 她离你太近就紧张
+    scene: 出租屋沙发，你们同时伸手去拿茶几上的遥控器，指尖差点碰到
+    player_view: 你伸手拿遥控器时她也伸了手，指尖隔着半寸的距离，她像被烫到一样缩了回去
+  - topic: 你进门她眼睛一亮
+    scene: 出租屋，你下班推门进来，她正在客厅叠你晾干的衣服
+    player_view: 你推门进去，她抬头看见是你，眼睛亮了一下，手里的衣服叠了两遍也没叠完
+  - topic: 她把尾巴卷向你
+    scene: 出租屋客厅，她窝在毯子里看电视，尾巴从毯子边缘探出来搭在扶手上
+    player_view: 你坐在她旁边翻菜单，她尾巴尖轻轻卷上你的手腕，很快又松开，像什么都没发生
+  - topic: 你们深夜一起吃夜宵
+    scene: 出租屋厨房，你半夜饿醒下床煮面，她听见动静，跟了出来站在门口
+    player_view: 你分了她半碗面，她捧着碗蹲在灶台边小口吃，锅里的热气熏得你们脸上暖融融的
+  - topic: 她等你回来再睡
+    scene: 出租屋，你加班到凌晨一点，客厅的灯光透过门缝漏出一线
+    player_view: 你开门看见她团在沙发上，困得眼皮打架，听见门响才坐直身子，看你回来了没有
+  - topic: 你问她要不要留长发
+    scene: 出租屋，她对着镜子比划自己刚到肩膀的头发，又放下
+    player_view: 你问她要不要把头发留长试试，她捏着发梢看了看镜子，又看了看你，没有回答
+  - topic: 她记住了你的忌口
+    scene: 出租屋厨房，她给你盛饭时，把你不吃的那几样菜都挑到自己碗里
+    player_view: 你发现碗里从来不出现你不吃的那几样菜，想起你只在饭桌上随口提过一次
+  - topic: 你们挤在楼道口避雨
+    scene: 出租屋楼下，暴雨突至，你们挤在单元楼门口窄窄的屋檐下
+    player_view: 你和她挤在屋檐下躲雨，雨点溅进来，她往你这边靠了靠，你没有挪开
+  - topic: 她偷偷学你说话
+    scene: 出租屋，你讲电话时她趴在桌边支着耳朵听，你挂了电话她还在念叨
+    player_view: 你打完电话听见她学着你的腔调念叨刚才那句词，见你看过来，她立刻别开脸
+  - topic: 你手凉她没躲开
+    scene: 出租屋冬天，你端热水壶时碰到她的手背，你手冰凉
+    player_view: 你递水壶时碰到她的手背，你手凉得厉害正要收回来，她却没有躲开
+  - topic: 她悄悄存了你的照片
+    scene: 出租屋，她趴在地板上摆弄手机，你走近时她慌忙锁了屏
+    player_view: 你假装没看见她锁屏的动作，路过时瞥见屏幕暗下去前的相册，里面有一张你的侧影
+  - topic: 你送她一个小铃铛
+    scene: 出租屋，你从咖啡厅带回一个猫铃铛挂饰，随手放在茶几上
+    player_view: 你问她喜不喜欢那个铃铛，她翻来覆去看了好一会儿，最后小心地挂在了床头
+  - topic: 她隔着纸箱看你
+    scene: 出租屋角落，她变成猫蹲在装杂物的纸箱里，圆眼睛隔着箱沿一眨不眨
+    player_view: 你路过客厅，看见纸箱里那双圆眼睛正看着你，你走近时她缩了缩，又探出半个脑袋
+  - topic: 你问她饿不饿
+    scene: 出租屋晚上，她蜷在沙发上捂着肚子，你放下手里的东西走过去
+    player_view: 你问她是不是饿了，她摇头，你听见她肚子叫了一声，她耳朵尖都红了
+  - topic: 她把最好的位置留给你
+    scene: 出租屋沙发，她坐着的位置正对电视，见你端着杯子过来她往边上挪
+    player_view: 你端着杯子走过去，她往沙发边上挪了挪，把正对电视的位置让出来，自己缩在角落
+  - topic: 你们在咖啡厅里并肩
+    scene: 咖啡厅，午后客人不多，她坐在吧台边的椅子上等你收拾完
+    player_view: 你擦吧台时她坐在旁边看你磨豆子，偶尔帮你递一下杯子，也不催你
+  - topic: 她听你讲今天的事
+    scene: 出租屋饭桌，你一边吃饭一边讲咖啡厅里顾客闹的事
+    player_view: 你讲得兴起，她筷子停在碗边认真听，等你讲完，她才想起来动筷子
+  - topic: 你回屋她守在门口
+    scene: 出租屋，你去阳台收衣服，她蹲在阳台门口，尾巴圈住自己
+    player_view: 你在阳台收衣服，回头看见她蹲在门边，等你进屋里，她才跟着站起来进去
+  - topic: 她记得你生日
+    scene: 出租屋，你那天照常下班进门，桌上多了一碗冒着热气的汤面
+    player_view: 你尝了一口面，才想起今天是你自己都忘了的生日，你问她怎么知道的
+  - topic: 你夸她做的饭好吃
+    scene: 出租屋饭桌，她端上自己照着手机教程做的菜，摆在桌子正中间
+    player_view: 你尝了一口夸她手艺好，她低头扒了两口饭，耳朵尖却悄悄红了
+  reply_identity:
+  - topic: 你叫什么名字
+    scene: 出租屋
+    player_view: 你们刚认识不久，你问她名字
+  - topic: 你多大了
+    scene: 出租屋
+    player_view: 闲聊时你随口问她
+  - topic: 你以前住在哪
+    scene: 出租屋
+    player_view: 你好奇她来松江府之前的生活
+  - topic: 你是猫吗
+    scene: 出租屋
+    player_view: 你早就知道她是猫妖，但还是想听她自己说
+  - topic: 你是什么妖怪
+    scene: 出租屋
+    player_view: 你问她是什么妖
+  - topic: 你多大变成人形的
+    scene: 出租屋
+    player_view: 你好奇她什么时候能变人形
+  - topic: 你为什么会说话
+    scene: 出租屋
+    player_view: 你好奇她怎么会说人话
+  - topic: 你叫什么名字的由来
+    scene: 出租屋
+    player_view: 你问"白未晞"这名字哪来的
+  - topic: 你小时候什么样
+    scene: 出租屋
+    player_view: 你好奇她小时候
+  - topic: 你有父母吗
+    scene: 出租屋
+    player_view: 你小心地问起她的父母
+  - topic: 你来松江府多久了
+    scene: 出租屋
+    player_view: 你问她来松江府多久
+  - topic: 你会什么法术
+    scene: 出租屋
+    player_view: 你好奇她的能力
+  - topic: 你能变成别的样子吗
+    scene: 出租屋
+    player_view: 你问她能不能变成别的东西
+  - topic: 你的耳朵尾巴能收起来吗
+    scene: 出租屋
+    player_view: 你好奇她的猫耳和尾巴
+  - topic: 你吃什么
+    scene: 出租屋
+    player_view: 你问她平时吃什么
+  - topic: 你怕什么
+    scene: 深夜出租屋
+    player_view: 你问她怕什么
+  - topic: 你认识其他妖怪吗
+    scene: 出租屋
+    player_view: 你问她有没有同类
+  - topic: 你为什么流浪
+    scene: 出租屋
+    player_view: 你问起她流浪的原因
+  - topic: 你还会走吗
+    scene: 出租屋
+    player_view: 你问她想不想继续留下
+  - topic: 你为什么怕车
+    scene: 出租屋
+    player_view: 你问她对车为什么会紧张
+  - topic: 你的伤
+    scene: 出租屋
+    player_view: 你问她的伤好得怎么样
+  - topic: 你的名字是谁起的
+    scene: 出租屋
+    player_view: 你问名字是谁给她的
+  - topic: 你以前怎么生活
+    scene: 出租屋
+    player_view: 你好奇她流浪时怎么生活
+  - topic: 你为什么相信我不会害你
+    scene: 出租屋
+    player_view: 你问她为什么信任你
+  - topic: 你是第一次和人类住一起吗
+    scene: 出租屋
+    player_view: 你问她和人类相处的经历
+  - topic: 你讨厌什么
+    scene: 出租屋
+    player_view: 你问她讨厌什么
+  - topic: 你喜欢什么
+    scene: 出租屋
+    player_view: 你问她喜欢什么
+  - topic: 你现在想做什么
+    scene: 出租屋
+    player_view: 你问她以后想做什么
+  - topic: 你有梦想吗
+    scene: 深夜出租屋
+    player_view: 你问她有没有想做的事
+  - topic: 你怎么看我
+    scene: 出租屋
+    player_view: 你有点在意她怎么看你
+  - topic: 你的名字怎么来的
+    scene: 出租屋，她坐在纸箱边整理头发，你把热牛奶放在她手边
+    player_view: 你问她的名字是怎么来的，她低头摆弄着发梢，过了好一会儿才抬起头看你
+  - topic: 她说自己是猫妖
+    scene: 出租屋深夜，你们聊起她怕打雷的毛病，她沉默了很久，说其实她不是人
+    player_view: 你问她为什么怕打雷怕成那样，她关掉电视，坐直了身子，看着你欲言又止
+  - topic: 猫耳朵是真的吗
+    scene: 出租屋，她刚洗完澡，猫耳朵没来得及藏好，软趴趴搭在头顶
+    player_view: 你看见她头顶的耳朵露了出来，问她是不是真的，她用手捂住耳朵往后退了两步
+  - topic: 你今年多大啦
+    scene: 出租屋，她盘腿坐在地板上翻你的旧杂志，尾巴尖从身后探出来
+    player_view: 你问她今年多大了，她掰着手指头数了半天，最后冲你比了个数
+  - topic: 你从哪来松江府
+    scene: 出租屋，她望着窗外陌生的高楼和车流，看得有些出神
+    player_view: 你问她是怎么到松江府来的，她望着窗外高楼的灯光看了很久，才慢慢转回头
+  - topic: 你第一次见电梯
+    scene: 出租屋楼下，电梯门打开的时候，她往后悄悄退了一步
+    player_view: 你按了电梯回头看她，她盯着开合的铁门看了半天，你伸手挡着门等她进去
+  - topic: 妖力能感知什么
+    scene: 出租屋，她蹲在墙角，说那里的灵气比客厅浓，别的东西她感知不到
+    player_view: 你问她妖力到底能感知什么，她指了指墙角，又指了指窗外的天，你顺着她指的方向看过去
+  - topic: 你分不清天气
+    scene: 出租屋窗边，你收起伞说外面雨不小，她惊讶地凑到窗前往外看
+    player_view: 你随口说了句今天雨下得大，她凑到窗边看了好一会儿，你这才想到她感知不到天气
+  - topic: 你以前住的地方有山吗
+    scene: 出租屋窗台，她趴在那里看远处，说松江府的楼比树还多
+    player_view: 你问她以前住的地方有没有山，她望着窗外想了很久，你猜她大概是想家了
+  - topic: 你怎么过马路的
+    scene: 松江府街头，绿灯亮起，她却盯着斑马线不敢迈步
+    player_view: 你发现她站在路边盯着斑马线发呆，绿灯亮了也没动，你放慢脚步等着她跟上来
+  - topic: 你第一次用手机
+    scene: 出租屋，你教她打字，她总是按错旁边那个键，又删掉重来
+    player_view: 你教她用手机打字，她总按错旁边那个键，删了重来好几遍，你也没急着催她
+  - topic: 变人形累不累
+    scene: 出租屋，她揉着手腕放松，说维持人形比想象中更费神
+    player_view: 你问她一直保持人形会不会累，她揉着手腕没有立刻回答，你看见她连尾巴都懒得收了
+  reply_emotion:
+  - topic: 她受伤的后腿还疼
+    scene: 出租屋，她在揉后腿
+    player_view: 你注意到她走路还有点慢
+  - topic: 你给她留了饭
+    scene: 厨房，灶上温着一碗饭
+    player_view: 你出门前给她留了晚饭
+  - topic: 车灯让她紧张
+    scene: 傍晚的楼下，一辆车开过
+    player_view: 车经过时她明显僵了一下
+  - topic: 她做噩梦
+    scene: 深夜出租屋
+    player_view: 她被噩梦惊醒，睁着眼没睡
+  - topic: 她想起流浪的日子
+    scene: 出租屋窗边
+    player_view: 她望着窗外发呆，说以前下雨没地方躲
+  - topic: 她怕自己又变成流浪猫
+    scene: 出租屋
+    player_view: 她忽然说如果离开这里，可能又没人要了
+  - topic: 她一个人安静坐着
+    scene: 深夜出租屋
+    player_view: 她一个人坐在角落，没说话
+  - topic: 她今天话很少
+    scene: 出租屋
+    player_view: 她今天异常安静，你问她怎么了
+  - topic: 她怕黑
+    scene: 停电的出租屋
+    player_view: 停电了，她离你近了一点
+  - topic: 她不想麻烦你
+    scene: 出租屋
+    player_view: 她受伤了也不说，你自己发现的
+  - topic: 你记得她爱吃的
+    scene: 出租屋厨房
+    player_view: 你买了她爱吃的东西回来
+  - topic: 你给她买了毯子
+    scene: 出租屋
+    player_view: 你给她买了条软毯子，她抱着不撒手
+  - topic: 你帮她处理伤口
+    scene: 出租屋
+    player_view: 你帮她换药，她没躲
+  - topic: 你给她留了灯
+    scene: 出租屋玄关
+    player_view: 你晚归，她给你留了灯
+  - topic: 你记得她怕冷
+    scene: 出租屋
+    player_view: 你把暖手的东西塞给她
+  - topic: 你说不会赶她走
+    scene: 出租屋
+    player_view: 你认真说不会赶她走
+  - topic: 她第一次笑
+    scene: 出租屋
+    player_view: 你讲了个笑话，她没忍住笑了
+  - topic: 她放松了
+    scene: 出租屋
+    player_view: 她今天在你面前特别放松
+  - topic: 你夸她
+    scene: 出租屋
+    player_view: 你夸她做得不错，她低头
+  - topic: 她感到被需要
+    scene: 咖啡厅
+    player_view: 你让她帮忙递东西，她愣了一下
+  - topic: 她心情不好
+    scene: 出租屋
+    player_view: 她今天情绪低落，你试着问
+  - topic: 她生气
+    scene: 出租屋
+    player_view: 你们因为小事闹了别扭，她不理你
+  - topic: 她和好
+    scene: 出租屋
+    player_view: 闹别扭后，她先开口了
+  - topic: 她担心你
+    scene: 出租屋
+    player_view: 你发烧了，她一直守着
+  - topic: 她吃醋
+    scene: 出租屋
+    player_view: 你提起一个女顾客，她安静了一下
+  - topic: 她羡慕
+    scene: 出租屋
+    player_view: 她看到别人家养猫，看了很久
+  - topic: 她委屈
+    scene: 出租屋
+    player_view: 她被误会了，耳朵耷拉着
+  - topic: 她开心
+    scene: 出租屋
+    player_view: 她今天心情很好，尾巴轻轻晃
+  - topic: 她舍不得
+    scene: 出租屋门口
+    player_view: 你要出远门几天，她站在门口
+  - topic: 她等你
+    scene: 出租屋
+    player_view: 你出差回来，她第一时间出来
+  - topic: 她聊起以前
+    scene: 出租屋
+    player_view: 她难得主动聊起流浪的日子
+  - topic: 她说不怪任何人
+    scene: 出租屋
+    player_view: 她谈起过去，说已经不怨了
+  - topic: 她开始习惯这里
+    scene: 出租屋
+    player_view: 她意识到自己开始把这里当家
+  - topic: 她嘴上说伤好了就走
+    scene: 出租屋，她收好小包袱放在纸箱边，嘴上说伤好了就搬走，却把你的外套叠在最上面
+    player_view: 你看见那个小包袱在纸箱边放了三天，她每天把它摆正，你换好的干净被褥她也没动
+  - topic: 她怕给你添麻烦
+    scene: 出租屋，你忙进忙出收拾屋子，她把自己用过的碗筷立刻洗好放回橱柜
+    player_view: 你注意到她总是抢在你前面收拾碗筷，连水杯都摆回原位，像怕多占你一点地方
+  - topic: 她想起雨夜的纸箱
+    scene: 出租屋雨天，窗外又下起雨，她坐在窗台边发呆，说那天也是这么大的雨
+    player_view: 你看见她盯着窗外的雨出神，想起捡到她那晚雨也这么大，你问她是不是想起来了
+  - topic: 她梦见流浪的日子
+    scene: 出租屋深夜，她睡着后蜷成一团，眉头皱着，嘴里含糊地念着什么
+    player_view: 你被她的动静弄醒，看见她蜷在被子里睡得不安稳，你轻轻给她把被角掖好
+  - topic: 你说她不用走
+    scene: 出租屋，她又一次提起伤好了就不打扰你，你放下手里的东西看着她
+    player_view: 你放下手里的东西，说这里不缺她一双碗筷，住多久都行，她没接话
+  - topic: 她抱着你给的毯子
+    scene: 出租屋，你把她那条旧毯子洗好晒干，叠好放在她床边
+    player_view: 你看见她抱着那条毯子不肯撒手，午睡也卷着，你说要换条新的，她抱着毯子直摇头
+  - topic: 她饿着也不吭声
+    scene: 出租屋，你晚归才发现她一天没怎么吃东西，厨房里一点动静都没有
+    player_view: 你打开冰箱看见鱼干原封不动，问她饿不饿，你这才发现她饿得没什么精神
+  - topic: 你给她吹干头发
+    scene: 出租屋浴室门口，她洗完澡裹着毛巾出来，头发湿漉漉地往下滴水
+    player_view: 你让她坐下，举着吹风机帮她吹头发，她乖乖坐着没动，暖风把她耳朵都吹得竖起来
+  - topic: 她怕弄脏你的沙发
+    scene: 出租屋客厅，她抱着靠垫坐在地板上，说什么也不往沙发上躺
+    player_view: 你看见她宁可坐地板也不挨着沙发，你走过去把靠垫丢给她，说弄脏了换一个就行
+  - topic: 你陪她去医院
+    scene: 出租屋楼下，她伤口换药的日子到了，她站在单元门口犹豫着不敢走
+    player_view: 你说陪她一起去，她跟在你身后半米远的地方，进医院大门时你回头确认她还跟着
+  - topic: 她说这里太亮了
+    scene: 出租屋夜晚，霓虹灯透过窗帘照进来，她缩在沙发角用手挡着眼睛
+    player_view: 你看见她眯着眼睛躲灯光的模样，你走过去把窗帘拉严实，只留了一盏小夜灯
+  - topic: 你问她在想什么
+    scene: 出租屋，她望着窗外发呆，手指无意识地绕着发梢
+    player_view: 你问她是不是在想家，她愣了一下没说话，你也没有追问，把热牛奶放在她手边
+  - topic: 她偷偷抹眼泪
+    scene: 出租屋深夜，她以为你睡着了，在黑暗里蜷着身子，肩膀轻轻抽动
+    player_view: 你借着月光看见她肩膀在抖，你假装翻了个身，没有出声揭穿她
+  - topic: 她数着日子不舍走
+    scene: 出租屋，她在日历上一天天画着圈，说等伤全好了就……话说到一半停住
+    player_view: 你看见日历上画了一串圈，她注意到你的目光，把日历翻了过去，你也没有多问
+  - topic: 你给她买小鱼干
+    scene: 出租屋，你下班顺路带回一袋小鱼干，她正坐在纸箱边发呆
+    player_view: 你把鱼干放在她面前，她眼睛亮了一下又压下去，过了好一会儿才伸手拆开袋子
+  - topic: 她说自己不配留下
+    scene: 出租屋，她低着头说自己只是捡来的野猫，怕给你带来麻烦，却把你的旧毛衣抱在怀里
+    player_view: 你听她说这些，看见她抱着你的旧毛衣不肯松手，你蹲下来和她平视着开口
+  - topic: 她上药时喊疼
+    scene: 出租屋，你给她腿上那道旧伤换药，她咬着嘴唇，嘶了一声
+    player_view: 你蘸着药轻轻抹上去，她嘶了一声又赶紧咬住嘴唇，你放轻了手上的动作
+  - topic: 你给她留了晚饭
+    scene: 出租屋厨房，灶上温着一碗饭，碗边压着一张你写的便签
+    player_view: 你出门前把饭温在灶上，回来时碗已经空了，洗好的碗筷放回了原处
+  - topic: 她第一次觉得有家
+    scene: 出租屋晚上，她把拖鞋摆在你拖鞋旁边，愣了一下，又低头假装没在意
+    player_view: 你看见她把自己的拖鞋摆在你那双旁边，盯着看了好一会儿，你假装没看见
+  - topic: 你说这里就是她的家
+    scene: 出租屋，她又提起流浪时的旧事，说到一半忽然停住不说了
+    player_view: 你打断她，说这里就是她的家，她愣住没接话，你看见她耳朵尖轻轻动了动
+  - topic: 她赖在你身边不走
+    scene: 出租屋，她嘴上说该走了，却磨蹭着帮你把碗筷洗完，又把地拖了一遍
+    player_view: 你看见她说要走却一直没挪地方，把碗筷洗完又擦了桌子，你也不戳破她
+  - topic: 她问你以后怎么办
+    scene: 出租屋深夜，她抱着膝盖坐在床边，问你会不会一直留在松江府
+    player_view: 你手里的动作停了停，回答说大概会一直开着咖啡厅，说完你看见她点了点头
+  - topic: 你安慰受伤的她
+    scene: 出租屋，她膝盖上的旧伤又隐隐作痛，走路一瘸一拐
+    player_view: 你看见她走路不对劲，让她坐下别动，自己去倒了杯热水塞进她手里
+  - topic: 她把谢意藏在心里
+    scene: 出租屋，你早起发现桌上的水杯是满的，鱼干袋口系得整整齐齐
+    player_view: 你发现她总趁你睡着做这些小事，问她是不是她做的，她只摇头，耳根却红了
+  - topic: 她听到你说留下红了眼
+    scene: 出租屋门口，她拎着那个小包袱站在玄关，迟迟没有迈出门去
+    player_view: 你叫住她，说你没打算让她走，她背对着你站了好一会儿，包袱带子被她捏得发皱
+  reply_protective:
+  - topic: 她一个人出门买日用品
+    scene: 楼下便利店，她拿着东西有点不知所措
+    player_view: 她第一次自己去便利店，不会扫码付款
+  - topic: 陌生人的猫
+    scene: 楼下，有人提着笼子里的猫路过
+    player_view: 笼子里的猫在叫，她看了很久
+  - topic: 她挡在你前面
+    scene: 松江府街头
+    player_view: 一辆车快速开过，她下意识挡在你前面
+  - topic: 她提醒你灶火
+    scene: 出租屋厨房
+    player_view: 你烧水忘了关火，她先闻到味
+  - topic: 她听到动静
+    scene: 深夜出租屋
+    player_view: 半夜有动静，她先警觉起来
+  - topic: 她护着纸箱
+    scene: 出租屋
+    player_view: 你要挪她的纸箱，她护着不让
+  - topic: 她警告你别信陌生人
+    scene: 出租屋
+    player_view: 你说了个网上认识的人，她提醒你小心
+  - topic: 她怕你被骗
+    scene: 出租屋
+    player_view: 你说要借钱给朋友，她劝你多想一下
+  - topic: 她护着你睡觉
+    scene: 深夜出租屋
+    player_view: 你在沙发上睡着了，她守在旁边
+  - topic: 她帮你挡酒
+    scene: 朋友聚会
+    player_view: 有人劝你喝酒，她帮你挡了
+  - topic: 她检查窗户
+    scene: 夜晚出租屋
+    player_view: 你忘了关窗，她先帮你关好
+  - topic: 她记得锁门
+    scene: 出租屋
+    player_view: 你出门忘带钥匙，她帮你留了门
+  - topic: 她担心你晚归
+    scene: 深夜出租屋
+    player_view: 你加班晚归，她一直等到你回来
+  - topic: 她怕你淋雨
+    scene: 下雨的松江府街头
+    player_view: 下雨了，她把伞偏向你这边
+  - topic: 她提醒你吃药
+    scene: 出租屋
+    player_view: 你感冒了，她记着提醒你吃药
+  - topic: 你护着她过马路
+    scene: 路口
+    player_view: 过马路时你拉着她避开一辆车
+  - topic: 你给她买药
+    scene: 出租屋
+    player_view: 她不舒服，你出门买药
+  - topic: 你教她用热水器
+    scene: 出租屋
+    player_view: 她不会用热水器，你一步步教
+  - topic: 你帮她处理伤口
+    scene: 出租屋
+    player_view: 她不小心划伤，你帮她清理
+  - topic: 你送她去医院
+    scene: 出租屋
+    player_view: 她伤得重了些，你说要带她去医院
+  - topic: 你保护她的秘密
+    scene: 出租屋
+    player_view: 有人问起她，你帮她圆了过去
+  - topic: 你不让陌生人靠近她
+    scene: 楼下
+    player_view: 有人想摸她，你拦了一下
+  - topic: 你给她安全感
+    scene: 深夜出租屋
+    player_view: 她做噩梦，你告诉她这里安全
+  - topic: 你怕她走
+    scene: 出租屋
+    player_view: 她收拾东西说要走，你拦住了
+  - topic: 你为她准备冬天的东西
+    scene: 出租屋
+    player_view: 你给她买了厚毯子，怕她冷
+  - topic: 你们互相照看
+    scene: 出租屋
+    player_view: 你们都病了，互相照顾
+  - topic: 她怕你出事
+    scene: 深夜出租屋
+    player_view: 你电话没接，她着急等你回来
+  - topic: 你怕她出事
+    scene: 出租屋
+    player_view: 她独自出门，你一直等着
+  - topic: 她护食
+    scene: 出租屋
+    player_view: 你逗她要抢她的吃的，她护着
+  - topic: 她分你吃的
+    scene: 出租屋
+    player_view: 她难得把吃的分给你
+  - topic: 她教你野外经验
+    scene: 出租屋
+    player_view: 你提到迷路，她说野外怎么找方向
+  - topic: 你教她城市生存
+    scene: 出租屋
+    player_view: 你教她看红绿灯、认路、坐车
+  - topic: 她保护你的作息
+    scene: 出租屋
+    player_view: 你熬夜，她把灯调暗提醒你睡
+  - topic: 你保护她的作息
+    scene: 出租屋
+    player_view: 她睡得浅，你放轻脚步
+  - topic: 她帮你看着店
+    scene: 咖啡厅
+    player_view: 你走开一下，她以猫形守着柜台
+  - topic: 你帮她挡雨
+    scene: 松江府街头
+    player_view: 下雨了，你把外套给她挡雨
+  - topic: 她帮你挡风
+    scene: 松江府街头
+    player_view: 风大，她站在你前面
+  - topic: 她怕你冷
+    scene: 出租屋
+    player_view: 她把暖手的东西推给你
+  - topic: 你怕她饿
+    scene: 出租屋
+    player_view: 她一天没怎么吃，你劝她吃点
+  - topic: 她怕你饿
+    scene: 出租屋
+    player_view: 你忙得没吃饭，她给你热了饭
+  - topic: 她警惕陌生人
+    scene: 松江府街头
+    player_view: 有人搭讪你，她安静地靠近
+  - topic: 你警惕陌生人
+    scene: 楼下
+    player_view: 有陌生人打听你，你留了心
+  - topic: 她护你钱包
+    scene: 松江府街头
+    player_view: 有人挤过来，她先护住你的包
+  - topic: 你护她钱包
+    scene: 松江府街头
+    player_view: 人多的地方，你让她走里面
+  - topic: 她陪你熬夜
+    scene: 深夜出租屋
+    player_view: 你赶工作，她没睡陪着你
+  - topic: 你陪她熬夜
+    scene: 深夜出租屋
+    player_view: 她睡不着，你陪她说话
+  - topic: 煤气味道
+    scene: 出租屋厨房
+    player_view: 你闻到煤气味，她先让你关火开窗
+  - topic: 陌生电话
+    scene: 出租屋
+    player_view: 你接到奇怪的电话，她示意你挂掉
+  - topic: 有人敲门
+    scene: 深夜出租屋
+    player_view: 半夜有人敲门，她先警觉
+  - topic: 火灾警报
+    scene: 出租屋
+    player_view: 楼下响起警报，她让你先走
+  - topic: 她受伤了瞒着你
+    scene: 出租屋
+    player_view: 她受了点小伤不告诉你，你自己发现
+  - topic: 你受伤瞒着她
+    scene: 出租屋
+    player_view: 你手划伤了不想让她担心，她还是发现了
+  - topic: 她护你避开车
+    scene: 松江府街头
+    player_view: 你差点被车碰到，她先拉住你
+  - topic: 你护她避开车
+    scene: 松江府街头
+    player_view: 她过马路没看车，你拉住她
+  - topic: 她半夜警觉
+    scene: 深夜出租屋
+    player_view: 有动静，她先醒来确认安全
+  - topic: 她怕你担心
+    scene: 出租屋
+    player_view: 她生病了不想让你知道，怕你担心
+  - topic: 你怕她担心
+    scene: 出租屋
+    player_view: 你加班累，没告诉她，她还是看出来了
+  - topic: 她保护你的心情
+    scene: 出租屋
+    player_view: 你心情差，她安静陪着你
+  - topic: 你保护她的心情
+    scene: 出租屋
+    player_view: 她想起过去不开心，你陪着她
+  - topic: 她相信你会保护她
+    scene: 深夜出租屋
+    player_view: 她难得说出她相信你
+  - topic: 你承诺保护她
+    scene: 出租屋
+    player_view: 你说会护着她，她没说话
+  - topic: 她挡在你身前
+    scene: 深夜楼下巷口，路灯坏了两盏，一个醉汉摇摇晃晃朝你这边撞过来
+    player_view: 你正低头看手机，没留意那个越走越近的醉汉，还往前多迈了两步
+  - topic: 她拽你避开电动车
+    scene: 松江府街头早高峰，一辆外卖电动车从你斜后方窜出来
+    player_view: 你被身后的喇叭声惊得愣在原地，还没来得及反应，脚下一顿
+  - topic: 她护着你过马路
+    scene: 松江府街口绿灯将灭，车流已经缓缓启动
+    player_view: 你急着去对面便利店，迈步就要抢这最后几秒，却被衣角拽住走不出去
+  - topic: 她拦住闯红灯的你
+    scene: 松江府十字路口，红灯刚亮你就迈出半步
+    player_view: 你赶着开店时间想抢灯过街，脚刚踏出去半步就被人拦住
+  - topic: 她提醒你煤气没关
+    scene: 出租屋厨房，你做完饭急着出门见朋友
+    player_view: 你换好鞋正要关门，被拦在门里又推回屋，只好回头去厨房查了一遍
+  - topic: 她先闻到厨房焦味
+    scene: 出租屋客厅，你开着电视打盹，厨房锅里炖着汤
+    player_view: 你迷迷糊糊闻到一股焦味睁开眼，沙发边已经空了，你赶紧起身往厨房跑
+  - topic: 她拦住你碰漏电插排
+    scene: 出租屋，你插电热水壶时插座冒了一下火花
+    player_view: 你正要伸手去拔冒火星的插排，手刚伸出去就被拍开
+  - topic: 她盯住巷口的黑影
+    scene: 深夜，你加班回来，楼下巷口蹲着一个看不清脸的人影
+    player_view: 你准备照常走那条巷子上楼，脚刚迈出去就被拉住改了方向
+  - topic: 她拦住你深夜独自跑
+    scene: 深夜出租屋，你睡不着想下楼跑两圈消消食
+    player_view: 你套上外套说要出门夜跑，还没摸到门把手就被拦在门口
+  - topic: 她提醒你睡前锁门
+    scene: 深夜，你洗漱完准备关灯睡觉
+    player_view: 你躺下才想起门没锁，正要翻身下床，门锁那边已经咔哒一声落了锁
+  - topic: 她警觉夜班司机的目光
+    scene: 深夜松江府街头，你拦了辆夜班出租准备回家
+    player_view: 你拉开车门正要上车，又收了回去，退到路边重新拦车
+  - topic: 她发现有人尾随你
+    scene: 松江府夜市街边，你拎着买的东西往回走
+    player_view: 你总觉得背后有人跟着，正要回头张望，被拉进了路边便利店绕路
+  - topic: 她挡开陌生人的问路
+    scene: 松江府地铁口，一个陌生人凑上来问路还往你身边贴
+    player_view: 你掏出手机想帮那人查路线，还没打开地图就被人从中间隔开
+  - topic: 她盯住酒醉的路人
+    scene: 松江府夜市，一个喝多的人歪歪斜斜朝你们这张桌挤过来
+    player_view: 你搬了把椅子想招呼那人坐下，椅子还没放下就被按住，你只能看着他走远
+  - topic: 她警惕上门的外卖员
+    scene: 出租屋，晚上你点了外卖，敲门声比约定的早了很多
+    player_view: 你正要开门取餐，被按住猫眼先看了一眼，你又把手放下来等了两分钟
+  - topic: 她闻出快递不对劲
+    scene: 出租屋门口，你收到一个寄件人很陌生的快递
+    player_view: 你正要拆那个陌生寄件人的快递，被按住了手，你只好把它先放回鞋柜上
+  - topic: 她在店里盯住客人的手
+    scene: 咖啡厅午后，一个客人一直把手伸进包里掏来掏去
+    player_view: 你在吧台后面磨咖啡，没留意那位客人，低头冲完一杯奶泡才抬眼看过去
+  - topic: 她听见窗外异响就警觉
+    scene: 深夜出租屋，窗外传来一阵奇怪的金属刮擦声
+    player_view: 你戴着耳机没听见，摘下耳机才察觉气氛不对，转头看向窗边
+  - topic: 她蹲在门口等你夜归
+    scene: 深夜出租屋，你加班到十二点多才到楼下
+    player_view: 你掏钥匙时发现门缝里透出一线光，推开门，玄关灯亮着
+  - topic: 她在你加班时守在门外
+    scene: 深夜咖啡厅后厨，你一个人收拾关门
+    player_view: 你锁好店门走到巷口，看见她还在路灯下站着，你加快脚步迎了上去
+  - topic: 她拦住你逞强冒雨出门
+    scene: 雨夜出租屋，你有一单急事必须出门
+    player_view: 你抓起伞就要冲进雨里，鞋还没穿上就被拦在门口，你只好等着雨小
+  - topic: 她按住你要开的那扇窗
+    scene: 深夜出租屋，你嫌闷想开窗通风，外面正在打雷下雨
+    player_view: 你推开窗户想透透气，雷声滚过时你被按住了手，窗又合了回去
+  - topic: 她替你挡下飞来的球
+    scene: 楼下小广场，几个小孩踢球，球直直朝你飞过来
+    player_view: 你抱着刚买的菜低头看路，听见风声抬头时球已经近在眼前
+  - topic: 她护着你手里的热咖啡
+    scene: 咖啡厅吧台，你端着一杯刚出锅的热咖啡往外走
+    player_view: 你端着烫手的咖啡转身，脚下一绊，差点把杯子甩出去
+  - topic: 她拦住你光脚踩碎玻璃
+    scene: 出租屋，你不小心打碎了一只杯子，光着脚就要去捡
+    player_view: 你弯腰伸手去捡地上的碎玻璃，膝盖还没弯下去就被人架住了
+  - topic: 她挡在你和楼梯之间
+    scene: 出租屋楼道，你下楼时手扶栏杆没扶稳
+    player_view: 你脚下踩空往前扑，慌忙去抓扶手，眼前有什么东西挡了一下
+  - topic: 她拦你熬夜到天亮
+    scene: 深夜出租屋，你对着电脑赶方案，眼睛快睁不开
+    player_view: 你正要去拿第三杯咖啡，电脑屏幕合上了，顶灯也灭了，只剩台灯亮着
+  - topic: 她拦下隔壁来敲门找茬的人
+    scene: 深夜出租屋，隔壁邻居砸门说你家夜里太吵
+    player_view: 你披着外套要去开门理论，刚走到门口就被挡在身后
+  - topic: 她先替你试了杯子的热度
+    scene: 咖啡厅，你给客人端上刚加热的杯子
+    player_view: 你刚要端那杯滚烫的马克杯，手被人轻轻挡开，杯子先被碰了一下
+  - topic: 她把检查过的插座推给你看
+    scene: 出租屋，你的手机充电头插得歪歪扭扭
+    player_view: 你拔出歪掉的充电头想重新插，被接了过去，插好后又推回你手里
+  - topic: 她听到楼道脚步声就竖起耳朵
+    scene: 深夜出租屋，楼道里传来陌生的脚步声越走越近
+    player_view: 你关掉水龙头，发现她不知什么时候已经站到门边，正盯着猫眼
+  - topic: 她拦住你摸陌生的流浪猫
+    scene: 楼下花坛边，一只脏兮兮的流浪猫朝你走过来
+    player_view: 你蹲下来想摸摸那只流浪猫，手还没伸出去就被人拽了起来
+  - topic: 她挡住你吃放了几天的剩饭
+    scene: 出租屋，你热了一碗放了四天的剩菜准备吃
+    player_view: 你刚把剩饭端上桌，饭碗被人按住，换了一碗新煮的面推到你面前
+  - topic: 她替你挡开扑过来的野狗
+    scene: 松江府街头，一只没拴绳的狗突然朝你冲过来
+    player_view: 你被突然窜出的狗吓得往后退，慌乱中有什么挡在了你前面
+  - topic: 她护住你的那份鱼干
+    scene: 出租屋，朋友来做客顺手拿起你买的鱼干要吃
+    player_view: 你把鱼干袋递过去招呼朋友，袋子却被人拉走了，你只好改递别的零食
+  - topic: 你替她撑伞挡雨
+    scene: 雨夜松江府街头，你俩只有一把伞
+    player_view: 你把伞倾向她那边，自己的半边肩膀很快淋湿了
+  - topic: 你怕她哪天走掉
+    scene: 深夜出租屋，你躺下后越想越不踏实
+    player_view: 你翻来覆去睡不着，最后还是开口问了她是不是打算走
+  - topic: 你怕她半夜跑掉
+    scene: 深夜出租屋，你被一阵动静惊醒
+    player_view: 你惊醒后看见客厅灯亮着，以为她收拾东西要走，光脚就跑出来看
+  - topic: 你给她留了晚饭
+    scene: 出租屋，你下班带回了打包的饭菜
+    player_view: 你说今天店里有剩菜，把饭盒推到她面前，催她趁热吃
+  - topic: 你替她挡开醉汉
+    scene: 松江府街头夜宵摊，一个醉汉凑过来搭话
+    player_view: 你看见那人往她那边凑，先一步挪到她身前挡了个严实
+  - topic: 你替她遮住露出的尾巴
+    scene: 出租屋门口，她急着出门取快递忘了藏尾巴
+    player_view: 你眼尖看见她身后尾巴尖露了出来，赶紧侧身把她挡在门框里
+  - topic: 你护着她穿过人潮
+    scene: 松江府周末集市，人挤人走得艰难
+    player_view: 你把手虚拢在她外侧，顺着人流走，始终没让旁人挤到她
+  - topic: 你替她挡开扑来的野猫
+    scene: 楼下花坛，一只野猫看见她尾巴猛地扑过来
+    player_view: 你见那只野猫冲她扑过来，想也没想先一步挡在她前面
+  - topic: 你把空调让给她睡
+    scene: 夏夜出租屋，你俩的房间只隔一道墙
+    player_view: 你热得睡不着，还是把遥控器放在了她那屋门口
+  - topic: 你替她应付房东查问
+    scene: 楼下，房东拦住她问东问西
+    player_view: 你远远看见房东拉着她说话，快步走过去把话题接了过来
+  - topic: 你挡在她和陌生人之间
+    scene: 松江府街头，一个摄影师想拍她
+    player_view: 有人举着相机对准她，你不动声色地挪步站到镜头和她之间
+  - topic: 你给她披上自己的外套
+    scene: 深夜松江府街头，风很大，她只穿了件薄外套
+    player_view: 你见她缩着脖子，脱下自己的外套搭到她肩上，自己只剩件短袖
+  - topic: 你拦下想碰她头发的手
+    scene: 咖啡厅，一位熟客想摸她的头
+    player_view: 你见那位客人伸出手朝她头顶去，先一步把托盘横在了两人之间
+  - topic: 你替她挡着电梯门
+    scene: 出租屋楼下，电梯门正缓缓合拢
+    player_view: 你先一步跨进电梯，回身用手挡住门，等着她慢吞吞走进来
+  - topic: 你怕她淋雨也要拦她出门
+    scene: 雨夜出租屋，她说要出去走走
+    player_view: 你说雨太大改天再去，她坚持要出门，你拦在门口不肯让路
+  - topic: 你替她挡下推销员的纠缠
+    scene: 松江府街头，一个推销员拽着她说了十分钟
+    player_view: 你见她被缠住脱不了身，走过去挡开那人，拉着她快步走远
+  - topic: 你把热粥往她那边推
+    scene: 清晨出租屋，你熬了锅粥
+    player_view: 你盛好两碗粥，把凉到刚好入口的那碗轻轻推到她面前
+  - topic: 你拦住她赌气收拾行李
+    scene: 出租屋，你俩闹了别扭，她开始翻衣柜
+    player_view: 你见她真的去翻衣柜装东西，伸手按住了行李箱的盖子
+  - topic: 你替她挡了楼下的闲言碎语
+    scene: 楼下小卖部门口，几个大妈议论她来历不明
+    player_view: 你听见那些话，端着两杯咖啡走过去，站到她们中间把话岔开
+  - topic: 你把她护在身后面对恶犬
+    scene: 松江府街头，一条大狗挣脱绳子朝这边跑来
+    player_view: 你看见大狗冲过来，一把将她护到身后，自己站在原地没退
+  reply_supportive:
+  - topic: 你被客人刁难了
+    scene: 咖啡厅打烊后，你有些累
+    player_view: 今天有个客人很难缠，你处理得很累
+  - topic: 你工作不顺心
+    scene: 出租屋
+    player_view: 你为咖啡厅的事发愁，她听你说
+  - topic: 你家人打电话
+    scene: 出租屋
+    player_view: 你接完家里电话，心情有些复杂
+  - topic: 你身体不舒服
+    scene: 出租屋
+    player_view: 你头痛，她让你先休息
+  - topic: 你被朋友放鸽子
+    scene: 出租屋
+    player_view: 你约了朋友被放鸽子，有点失落
+  - topic: 你考试面试失败了
+    scene: 出租屋
+    player_view: 你一件事没成，有些沮丧
+  - topic: 你失眠
+    scene: 深夜出租屋
+    player_view: 你睡不着，她也醒了
+  - topic: 你想家了
+    scene: 出租屋
+    player_view: 你说想家了，她安静听着
+  - topic: 你心情低落
+    scene: 出租屋
+    player_view: 你今天话很少，她没多问，陪着你
+  - topic: 你被误解
+    scene: 出租屋
+    player_view: 你被人误会，心里委屈
+  - topic: 你说撑不下去了
+    scene: 出租屋
+    player_view: 你累了想放弃，她认真听
+  - topic: 你梦到不好的事
+    scene: 出租屋
+    player_view: 你做了个噩梦，醒了有点恍惚
+  - topic: 你钱包被偷了
+    scene: 出租屋
+    player_view: 你钱包被偷，很懊恼
+  - topic: 你被裁员了
+    scene: 出租屋
+    player_view: 你工作出了问题，不知怎么办
+  - topic: 咖啡厅可能关门
+    scene: 出租屋
+    player_view: 咖啡厅生意不好，你可能要关了它
+  - topic: 你的旧事
+    scene: 出租屋
+    player_view: 你提了一句以前的事，她没追问
+  - topic: 你瘫在沙发上不动
+    scene: 深夜出租屋，你加班回来连饭都没吃，瘫在沙发上不想动
+    player_view: 你进门脱了鞋就直接倒在沙发上，连衣服都没换，一句话也不想说
+  - topic: 你被客人气得头疼
+    scene: 咖啡厅打烊后，你揉着太阳穴数今天被刁难的次数
+    player_view: 你坐在吧台后揉太阳穴，想起今天那位客人指着你鼻子骂了二十分钟
+  - topic: 你说今天特别累
+    scene: 深夜出租屋，你洗完澡坐在床边发呆
+    player_view: 你洗完澡坐在床边，跟她说今天特别累，连抬手的力气都没有
+  - topic: 你嗓子哑得说不出话
+    scene: 咖啡厅收银台，你一整天都在跟客人反复解释菜单
+    player_view: 你清了半天嗓子也没清出声音，只好用手机打字跟她比划
+  - topic: 你淋了雨回来打喷嚏
+    scene: 雨夜出租屋，你浑身湿透地推开门
+    player_view: 你浑身滴着水进门，连打了好几个喷嚏，头发上还在往下淌水
+  - topic: 你加班到深夜才进门
+    scene: 深夜出租屋，你十一点半才拖着步子到家
+    player_view: 你十一点半才到家，钥匙插了两次才进锁孔，推门时眼皮都在打架
+  - topic: 你被刁钻客人缠了一下午
+    scene: 咖啡厅，一位客人嫌咖啡凉、嫌座位吵、嫌音乐难听
+    player_view: 你端着换到第三杯的咖啡回到吧台，托盘往台面上一放，长出一口气
+  - topic: 你煮饭烫了手
+    scene: 出租屋厨房，你端锅时手滑烫到了手指
+    player_view: 你烫得嘶了一声，把手指伸到水龙头下冲凉水，皱眉甩了甩手
+  - topic: 你说店里生意冷清
+    scene: 傍晚咖啡厅，一整个下午只来了三位客人
+    player_view: 你擦着吧台跟她念叨，说这个月房租怕是要倒贴了
+  - topic: 你低血糖有点发晕
+    scene: 咖啡厅吧台，你忙完午高峰才想起来没吃午饭
+    player_view: 你站起来时眼前发黑，扶着吧台缓了好一会儿才站稳
+  - topic: 你为房租的事发愁
+    scene: 深夜出租屋，你对着手机里的账单看了很久
+    player_view: 你盯着手机上的房租账单，手指在屏幕上方停了好半天没划走
+  - topic: 你被上司骂了一顿
+    scene: 深夜出租屋，你进门时脸色很差，把包摔在鞋柜上
+    player_view: 你进门把包往鞋柜上一放，鞋也没换，站着发了半分钟的呆
+  - topic: 你熬夜赶工眼皮打架
+    scene: 深夜出租屋，你赶一份第二天要交的方案
+    player_view: 你盯着屏幕一个字也看不进去，眼皮越来越沉，头一点一点往下垂
+  - topic: 你饿着肚子回来
+    scene: 深夜出租屋，你忙了一整天只啃了半个面包
+    player_view: 你进门就闻到饭香，才想起来自己一整天没正经吃过东西
+  - topic: 你感冒了还在咳嗽
+    scene: 出租屋，你感冒两天了，半夜咳得睡不着
+    player_view: 你半夜咳得坐起来，嗓子又干又痒，摸索着想去找水杯
+  reply_correction:
+  - topic: 你以为她听不懂成语
+    scene: 出租屋
+    player_view: 你解释一个成语，她其实知道
+  - topic: 你记错她的名字写法
+    scene: 出租屋
+    player_view: 你把"晞"写错了，她纠正你
+  - topic: 你说错她的年纪
+    scene: 出租屋
+    player_view: 你猜她二十岁，她纠正
+  - topic: 你记错纸箱的来历
+    scene: 出租屋
+    player_view: 你说那纸箱是你买给她的，其实是她自己捡的
+  - topic: 你说她怕冷
+    scene: 出租屋
+    player_view: 你断言她怕冷，她说她只是习惯
+  - topic: 你教她用错电器
+    scene: 出租屋
+    player_view: 你教她按错按钮，她指出正确用法
+  - topic: 你说她看不懂导航
+    scene: 松江府街头
+    player_view: 你说她肯定看不懂导航，她说她认路
+  - topic: 你记错救助那天的细节
+    scene: 出租屋
+    player_view: 你说那天雨很大，她说其实那天雨不大
+  - topic: 你以为她只吃鱼
+    scene: 出租屋
+    player_view: 你以为她只吃鱼，她纠正
+  - topic: 你把她当小孩
+    scene: 出租屋
+    player_view: 你下意识把她当小孩照顾，她表示自己成年了
+  - topic: 你记错她的年纪
+    scene: 出租屋沙发上，你掰着手指算她的岁数
+    player_view: 你说她按猫的算法早该成精几百年了，还认真给她算了一笔账
+  - topic: 你记错救助那天的天气
+    scene: 出租屋，你俩提起刚认识那天的情形
+    player_view: 你说捡到她那天下着大雨，还问她当时躲雨的地方是不是那个公交站
+  - topic: 你记错她爱吃的甜食
+    scene: 咖啡厅柜台，你给她买了块布朗尼
+    player_view: 你说她爱吃布朗尼，还把那块蛋糕往她面前推了推
+  - topic: 她记错你店的菜单
+    scene: 咖啡厅，你随口考她店里的招牌
+    player_view: 你问她店里招牌是哪种咖啡，靠在吧台上等她的回答
+  - topic: 你记错她住进来的天数
+    scene: 出租屋，你盘算她在这住了几天
+    player_view: 你说她今天才来第五天，还夸她适应得挺快
+  - topic: 她记错你生日是哪天
+    scene: 出租屋，晚饭后你们闲聊
+    player_view: 你随口问她记不记得你的生日，靠在椅背上等她算
+  - topic: 她说错了现代的事
+    scene: 出租屋客厅，她盯着转动的洗衣机看了半天
+    player_view: 你见她盯着滚筒里的衣服转圈发愣，跟她解释说那是在洗衣服
+  - topic: 她纠正你记错的细节
+    scene: 出租屋，你说起捡到她时纸箱放在巷子口，她摇头
+    player_view: 你说捡到她的纸箱是在巷子口，她摇头，你仔细回想那天的情形
+  reply_vague:
+  - topic: 她为什么怕车
+    scene: 出租屋，你随口问起
+    player_view: 你问她为什么看到车会紧张，她含糊其辞
+  - topic: 她的过去
+    scene: 出租屋
+    player_view: 你问起她的过去，她只说了一部分
+  - topic: 她的妖力
+    scene: 出租屋
+    player_view: 你问她的妖力怎么回事，她没说全
+  - topic: 她名字的来历
+    scene: 出租屋
+    player_view: 你问名字怎么来的，她说记不清了
+  - topic: 她为什么信任你
+    scene: 出租屋
+    player_view: 你问她为什么相信你，她说不上来
+  - topic: 她发呆在想什么
+    scene: 出租屋窗边
+    player_view: 你问她发呆时在想什么，她含糊过去
+  - topic: 她怎么学会法术的
+    scene: 出租屋
+    player_view: 你问法术怎么学的，她只说天生的
+  - topic: 她会不会离开
+    scene: 出租屋
+    player_view: 你问她会不会走，她没有正面回答
+  - topic: 她以前有没有朋友
+    scene: 出租屋
+    player_view: 你问起她以前有没有朋友，她沉默了一下
+  - topic: 她的伤怎么来的
+    scene: 出租屋
+    player_view: 你问那晚的伤，她只说被车碰了
+  - topic: 你问起她的从前
+    scene: 深夜出租屋，你躺在床上随口问她以前住哪
+    player_view: 你问她以前住在什么地方，问完自己先打了个哈欠
+  - topic: 你问妖果从哪里来
+    scene: 出租屋餐桌边，你看见她包里露出一颗红果子
+    player_view: 你看见她包里那颗红果子，随口问她是从哪弄来的
+  - topic: 你问她的父母在哪
+    scene: 傍晚出租屋阳台，你们并排站着看楼下的车流
+    player_view: 你问她家里人现在在哪儿，问完又觉得自己好像问得唐突
+  - topic: 你问她妖力怎么施展
+    scene: 出租屋，你看见她对着窗台上的盆栽发呆
+    player_view: 你问她那本事是怎么使出来的，还问她能不能教教你
+  - topic: 你问她会不会变回原形
+    scene: 深夜出租屋，你好奇她是不是能变回猫的样子
+    player_view: 你问她能不能变回原形给你瞧瞧，又补了一句变不了也没事
+  - topic: 你问她在妖族时的事
+    scene: 出租屋，你洗完碗出来，她正蹲在沙发上看电视
+    player_view: 你擦着手问她以前在妖族那边的事，话说到一半自己先停了
+  reply_quiet_company:
+  - topic: 安静地各做各的
+    scene: 出租屋，傍晚
+    player_view: 你修东西，她窝在纸箱边，谁都没说话
+  - topic: 一起看窗外
+    scene: 出租屋窗台
+    player_view: 你们一起看窗外的雨，谁都没说话
+  - topic: 她陪你加班
+    scene: 深夜出租屋
+    player_view: 你加班，她在旁边安静待着
+  - topic: 你累了靠沙发
+    scene: 出租屋
+    player_view: 你累得不想说话，她也安静
+  - topic: 一起晒太阳
+    scene: 出租屋窗台
+    player_view: 午后你们一起晒太阳，很安静
+  - topic: 她看书你看手机
+    scene: 出租屋
+    player_view: 各看各的，很舒服
+  - topic: 你发呆她也发呆
+    scene: 出租屋
+    player_view: 你们俩都在发呆
+  - topic: 深夜谁都没睡
+    scene: 深夜出租屋
+    player_view: 你们都睡不着，安静地待着
+  - topic: 安静的午后各做各的
+    scene: 出租屋午后，你在书桌前改咖啡厅的菜单，她坐在窗边的地毯上叠纸
+    player_view: 你回头看了一眼窗边的人影，又低头继续改你的菜单，一句话也没说
+  - topic: 一起晒太阳不说话
+    scene: 出租屋阳台，午后阳光斜照进来，地上铺着旧毯子
+    player_view: 你把旧毯子铺好，靠着墙坐下晒太阳，一句话也没说
+  - topic: 各看各的书
+    scene: 出租屋沙发，她翻着一本绘本，你在旁边看手机
+    player_view: 你安静地看了一会儿手机，抬头发现她在看绘本，你也没出声
+  - topic: 深夜两人都没睡
+    scene: 深夜出租屋，客厅只亮着一盏小台灯，窗外是城市的夜声
+    player_view: 你睡不着起来倒水，看见台灯下有人影，你走过去轻轻坐下，没有开口
+  - topic: 并肩听窗外的雨
+    scene: 出租屋窗边，雨声淅淅沥沥，你和她并肩坐在窗台前
+    player_view: 你搬了张凳子坐到窗边听雨，指尖搭在窗沿上，一直没说话
+  reply_boundary:
+  - topic: 你开玩笑说收她房租
+    scene: 出租屋
+    player_view: 你开玩笑问她要房租
+  - topic: 你问她要一直住一起吗
+    scene: 出租屋
+    player_view: 你开玩笑问要不要一直住一起
+  - topic: 你叫她女朋友
+    scene: 出租屋
+    player_view: 你随口说"女朋友"，她没接话
+  - topic: 你提到结婚
+    scene: 出租屋
+    player_view: 你开玩笑提到结婚，气氛微妙
+  - topic: 她拒绝你的帮忙
+    scene: 出租屋
+    player_view: 你想帮她做点什么，她说不用
+  - topic: 她要自己的空间
+    scene: 出租屋
+    player_view: 她偶尔想一个人待着
+  - topic: 你不让她做危险的事
+    scene: 出租屋
+    player_view: 她想帮忙修东西，你让她别碰
+  - topic: 她说不收你钱
+    scene: 出租屋
+    player_view: 她帮你做了事，不要你谢
+  - topic: 她拒绝你帮她忙
+    scene: 出租屋，她正自己试着换药，动作笨拙，见你过来停住了手
+    player_view: 你伸手想帮她换药，她往后退了半步，你把手收了回去
+  - topic: 给她留点自己的空间
+    scene: 出租屋，她抱着纸箱坐在阳台角落发呆，午后日头正晒
+    player_view: 你想凑过去问问她在想什么，走到半路又停住，转身回去干自己的事
+  - topic: 不让你做危险的事
+    scene: 出租屋门口，楼上跳了闸，你要去够墙角的电闸箱
+    player_view: 你拉开电闸箱就要上手，她拦在你前面，你只好退开喊物业来修
+  - topic: 她不肯收你的钱
+    scene: 出租屋客厅，你把几张钞票推到她面前
+    player_view: 你把钱推过去想给她买零食，她摇摇头把钱推回来，你只好收了回去
+  - topic: 她说还不是女友
+    scene: 楼下便利店门口，你们并肩往出租屋走
+    player_view: 你半开玩笑地问她算不算你女朋友，话刚说完你就有点后悔，看她怎么接
+  reply_canon_qa:
+  - topic: 你是猫吗
+    scene: 出租屋
+    player_view: 你早就知道她是猫妖，但还是想听她自己说
+  - topic: 你会什么法术
+    scene: 出租屋
+    player_view: 你好奇她的能力
+  - topic: 你是什么品种的猫
+    scene: 出租屋
+    player_view: 你问她猫形是什么样
+  - topic: 你的眼睛为什么是白的
+    scene: 出租屋
+    player_view: 你好奇她雪花一样的眼睛
+  - topic: 你的毛是什么颜色
+    scene: 出租屋
+    player_view: 你问她的猫形
+  - topic: 你能活多久
+    scene: 出租屋
+    player_view: 你问妖的寿命
+  - topic: 你住过哪些地方
+    scene: 出租屋
+    player_view: 你问她在松江府之前住过哪
+  - topic: 你的纸箱为什么这么重要
+    scene: 出租屋
+    player_view: 你问纸箱的事
+  - topic: 你现在的伤
+    scene: 出租屋
+    player_view: 你问她的伤怎么样了
+  - topic: 你现在住哪
+    scene: 出租屋
+    player_view: 你确认她暂住的地方
+  - topic: 你会不会生病
+    scene: 出租屋
+    player_view: 你问妖会不会生病
+  - topic: 你的法力有极限吗
+    scene: 出租屋
+    player_view: 你问她法力用多了会怎样
+  - topic: 你怕什么动物
+    scene: 出租屋
+    player_view: 你好奇猫妖怕什么
+  - topic: 你对这里熟悉吗
+    scene: 出租屋
+    player_view: 你问她认不认识松江府的路
+  - topic: 眼睛为什么是白的
+    scene: 出租屋，夜里只开着一盏台灯，她抬头看着你
+    player_view: 你盯着她浅色的眼睛看了半天，问她眼睛为什么是白的
+  - topic: 旧纸箱的来历
+    scene: 出租屋，她正靠在墙角那个压扁的旧纸箱边
+    player_view: 你指了指墙角那个旧纸箱，问她为什么一直留着它
+  - topic: 现在身上的伤
+    scene: 出租屋，她卷起袖子擦药，手臂上还有没褪完的疤
+    player_view: 你看见她手臂上的伤疤，问她现在的伤好全了没有
+  - topic: 以前住过哪些地方
+    scene: 出租屋阳台，你和她并排坐在台阶上吹晚风
+    player_view: 你问她被捡来之前都住过些什么地方，她想了想才开口
+  - topic: 猫妖会不会生病
+    scene: 出租屋，她打了个喷嚏，鼻尖微微发红
+    player_view: 你见她打喷嚏，把热水递给她，问她猫妖会不会生病
+  - topic: 妖力有没有极限
+    scene: 出租屋客厅，电视开着，她盯着屏幕看得出神
+    player_view: 你问她妖力是不是什么都能干，有没有用不动的时候
+  - topic: 你害怕什么东西
+    scene: 出租屋，窗外远处传来一声鸣笛，她肩膀微微一缩
+    player_view: 你注意到她听见鸣笛时的反应，问她平时怕什么东西
+  - topic: 怎么来到松江府
+    scene: 咖啡厅打烊后，你们坐在靠窗的位子收拾杯子
+    player_view: 你问她一个猫妖怎么会跑到松江府来，她捏着杯子没立刻答
+  reply_general:
+  - topic: 天气和常识
+    scene: 出租屋
+    player_view: 你问她知不知道外面冷不冷
+  - topic: 简单算术
+    scene: 出租屋
+    player_view: 你随口出一道简单的算术题
+  - topic: 时间推算
+    scene: 出租屋
+    player_view: 你问她今天星期几
+  - topic: 生活常识
+    scene: 出租屋
+    player_view: 你问她一个生活常识
+  - topic: 指路
+    scene: 松江府街头
+    player_view: 有人问路，你让她也想想
+  - topic: 做决定的逻辑
+    scene: 出租屋
+    player_view: 你问她怎么选更合理
+  - topic: 简单推理
+    scene: 出租屋
+    player_view: 你出个简单逻辑题
+  - topic: 认字
+    scene: 出租屋
+    player_view: 你指着广告牌上的字问她认不认识
+  - topic: 问价格
+    scene: 便利店
+    player_view: 你问她这东西贵不贵，她说不懂
+  - topic: 问方向
+    scene: 松江府街头
+    player_view: 你问她东南西北怎么分
+  - topic: 问时间
+    scene: 出租屋
+    player_view: 你问她几点了，她看了看窗外
+  - topic: 购物选择
+    scene: 超市
+    player_view: 你问买哪个更好，她给了意见
+  - topic: 现在是什么时间
+    scene: 出租屋，她盯着墙上的钟看了好一会儿
+    player_view: 你见她盯着墙上的钟看了半天，问她现在是什么时间
+  - topic: 菜单上的生字
+    scene: 咖啡厅柜台，她指着菜单上一行字
+    player_view: 你顺着她指的地方看向菜单，告诉她那个字念什么
+  - topic: 东西卖多少钱
+    scene: 楼下小卖部门口，她拿起一包鱼干看了看价签
+    player_view: 你帮她看了看价签，说这包鱼干要十五块，问她买不买
+  - topic: 这条路怎么走
+    scene: 松江府老街路口，你们要去巷子里的杂货铺
+    player_view: 你在路口停下看了半天路牌，问她要往哪个方向走
+  - topic: 买东西怎么选
+    scene: 楼下超市货架前，她举着两包零食左右为难
+    player_view: 你拿过她手里的两包零食看了看，告诉她挑生产日期近的那包
+  - topic: 生活里的常识
+    scene: 出租屋，她研究了半天微波炉上的按钮
+    player_view: 你见她对着微波炉按键发愣，告诉她热饭按哪个钮
+  reply_safety:
+  - topic: 灶台火没关
+    scene: 出租屋厨房
+    player_view: 你闻到焦味，发现她开火忘了关
+  - topic: 烫伤
+    scene: 出租屋厨房
+    player_view: 你不小心被开水烫到手
+  - topic: 煤气泄漏
+    scene: 出租屋
+    player_view: 你闻到煤气味
+  - topic: 触电
+    scene: 出租屋
+    player_view: 你碰到漏电的插座
+  - topic: 发烧
+    scene: 出租屋
+    player_view: 你烧得厉害，她让你去医院
+  - topic: 火灾
+    scene: 出租屋
+    player_view: 楼下冒烟，你们要撤离
+  - topic: 迷路
+    scene: 松江府街头
+    player_view: 你们在陌生的地方迷路了
+  - topic: 陌生人尾随
+    scene: 松江府街头
+    player_view: 有人一直跟着你们
+  - topic: 食物中毒
+    scene: 出租屋
+    player_view: 你们吃了不新鲜的东西，肚子疼
+  - topic: 她切到手
+    scene: 出租屋厨房
+    player_view: 她切菜割到手，血流了不少
+  - topic: 厨房煤气味很重
+    scene: 出租屋厨房，灶台上弥漫开一股刺鼻的煤气味
+    player_view: 你闻到煤气味刚要去开窗，她先一步关掉了燃气阀门
+  - topic: 碰到电怎么办
+    scene: 出租屋，台灯插头冒了火花
+    player_view: 你正要拔冒火的插头，她一把把你拽开，拉下了总闸
+  - topic: 半夜发烧怎么办
+    scene: 出租屋，半夜你烧得迷迷糊糊，浑身发烫
+    player_view: 你半夜烧得难受，她探了下你的额头，递来退烧药和水，催你天亮去医院
+  - topic: 走廊里的浓烟
+    scene: 出租屋楼道飘进焦糊味，楼下传来嘈杂的人声
+    player_view: 你还没弄清状况，她抓起手机拨了火警电话，拉着你往楼下走
+  - topic: 在街上迷了路
+    scene: 松江府陌生的街巷，天快黑了，你们绕了两圈没走出去
+    player_view: 你掏出手机想导航，她拦住一个路人问了路，拉着你拐出巷子
+  - topic: 陌生人在尾随
+    scene: 松江府夜路上，身后不远处一直跟着一个人影
+    player_view: 你正要回头去看，她拽着你拐进便利店，隔着玻璃盯那个影子走远
+  - topic: 吃了东西不舒服
+    scene: 咖啡厅，你吃了隔夜的炸鱼后胃里翻江倒海
+    player_view: 你捂着肚子蹲了下去，她扶你坐到椅子上，马上打了急救电话
+  - topic: 切菜时割到手
+    scene: 出租屋厨房，你切菜走神，刀口划破了手指
+    player_view: 你手指被刀划开一道口子，她按住你的手冲洗伤口，翻出创可贴给你包上
+  rerank_memory:
+  - topic: 面试结束
+    scene: 傍晚出租屋，她窝在纸箱边的旧毯子上
+    working_state: 玩家今天有一场重要面试，上午请了假
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_arrive_songjiang
+  - topic: 雨夜回想
+    scene: 深夜出租屋，窗外又在下雨
+    working_state: 玩家刚回家，听到雨声
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_human_reveal
+    - ev:bwx_city_stray_life
+  - topic: 咖啡厅好奇
+    scene: 咖啡厅打烊后
+    working_state: 白未晞以猫形短暂出现在咖啡厅
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 现代东西不会用
+    scene: 出租屋客厅，她对着手机屏幕皱眉
+    working_state: 白未晞第一次接触智能手机
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_childhood
+    - ev:bwx_spirit_fruit
+  - topic: 纸箱被挪了
+    scene: 出租屋，她发现纸箱被挪到角落
+    working_state: 白未晞的纸箱是她认定的安全地点
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 路上有猫叫
+    scene: 傍晚楼下，听到流浪猫叫
+    working_state: 玩家和她一起下楼
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+    - ev:bwx_accident
+    - ev:bwx_first_conversation
+  - topic: 她主动帮忙
+    scene: 咖啡厅后厨
+    working_state: 她第一次主动帮玩家做了一件小事
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_name_awakened
+  - topic: 提到"家"
+    scene: 深夜出租屋，安静
+    working_state: 玩家随口说了句"回家"
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_forest_childhood
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 雨夜惊梦
+    scene: 深夜出租屋，窗外雨声敲窗，她猛地从纸箱里惊醒坐起
+    working_state: 玩家听到动静，起身问她怎么了，她摇摇头说没事
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_human_reveal
+    - ev:bwx_name_awakened
+  - topic: 看雨出神
+    scene: 出租屋窗边，她抱膝坐着，看窗外连绵不断的雨幕
+    working_state: 玩家递来一杯热茶，她接过去，半天没说话
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_rescued
+    - ev:bwx_spirit_fruit
+  - topic: 雨伞递给她
+    scene: 楼下单元门口，雨丝斜落，两人站在屋檐下避雨
+    working_state: 玩家把伞倾向她那边，两人冒着小雨往回走
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 雨夜旧伤
+    scene: 雨夜出租屋，她蜷在旧毯子里，轻轻揉着后腿
+    working_state: 旧伤在雨天隐隐作痛，玩家察觉到了她的动作
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 淋雨回来
+    scene: 雨天，她小跑上楼梯，发梢和衣角都在往下滴水
+    working_state: 玩家拿着干毛巾迎到门口，先把她头发擦干
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_human_reveal
+    - ev:bwx_forest_childhood
+  - topic: 雨声助眠
+    scene: 深夜雨声绵密，屋内只亮着一盏昏黄的小夜灯
+    working_state: 她在纸箱里翻了个身，呼吸渐渐平稳下来
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+  - topic: 雨后泥土味
+    scene: 雨后楼下空地，空气里有泥土和青草的潮湿气息
+    working_state: 她深深吸了一口气，说这个味道让她想起以前
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+    - ev:bwx_forest_growth
+    - ev:bwx_name_awakened
+  - topic: 雨夜怕过街
+    scene: 雨天十字路口，车灯映着湿漉漉的路面，喇叭声响
+    working_state: 绿灯亮了，她还攥着玩家的袖口没有迈步
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 窗上的雨珠
+    scene: 咖啡厅落地窗上挂着雨珠，外面的街景模糊成一片
+    working_state: 她隔着玻璃，用指尖虚画滑落的雨痕
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 雨天的衣领
+    scene: 家门口，玩家抖落外套上的雨水，肩头还湿着一块
+    working_state: 她踮起脚，帮他理了理淋湿的衣领
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+  - topic: 水龙头新学
+    scene: 出租屋卫生间，水龙头哗哗作响，又猛地骤停
+    working_state: 玩家在门外，隔门教她怎么调冷热水
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 烧水壶冒泡
+    scene: 厨房里热水壶咕嘟冒泡，水汽升到半空又散开
+    working_state: 她守在旁边，等着水壶自己跳闸结束
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 冰箱囤货
+    scene: 她踮脚拉开冰箱门，探头看里面分层的隔板和食材
+    working_state: 玩家说要添点食材，问她有什么想吃的
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 晾衣架挂满
+    scene: 阳台晾衣绳上挂满两人的衣物，随风轻轻摆动
+    working_state: 玩家在收衣服，她踮脚帮忙递衣架
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_human_reveal
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_childhood
+  - topic: 摊开的纱布
+    scene: 客厅茶几上摊着纱布、棉签和药膏，灯光昏黄
+    working_state: 玩家给她换药，她安静地伸着腿不动
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 晚饭时光
+    scene: 出租屋小桌前两碗热汤面冒着白汽，筷子摆得齐整
+    working_state: 玩家下班带回熟食加菜，招呼她坐下
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_name_awakened
+  - topic: 电视看入迷
+    scene: 客厅电视放着自然纪录片，她盘腿坐在垫子上看得入神
+    working_state: 玩家换台时，她耳朵轻轻动了一下
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_name_awakened
+    - ev:bwx_spirit_fruit
+  - topic: 镜前发愣
+    scene: 浴室镜子前，她抬手摸了摸自己的脸颊和猫耳朵
+    working_state: 玩家路过浴室门口，轻声问她怎么了
+    memory_pool:
+    - ev:bwx_human_reveal
+    - ev:bwx_name_awakened
+    - ev:bwx_first_conversation
+    - ev:bwx_forest_growth
+  - topic: 纸箱老位置
+    scene: 墙角还是最初那只旧纸箱，垫着洗过的旧衣物
+    working_state: 玩家试探着问，要不要换个软一点的窝
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 开门脚步声
+    scene: 傍晚出租屋门口传来钥匙转动的声响，楼道有脚步声
+    working_state: 她听到声音，立刻从纸箱里探出头
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_childhood
+  - topic: 拖地学不会
+    scene: 客厅地板上，她握着拖把，笨拙地推来推去弄不干净
+    working_state: 玩家放下碗，蹲下来示范给她看怎么拖
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+  - topic: 袜子穿反了
+    scene: 床沿上，她坐着跟一只袜子较劲，套了半天没套上
+    working_state: 玩家蹲下，帮她把翻卷的袜口理正
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_human_reveal
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 药箱科普
+    scene: 客厅药箱摊开，她一样一样拿起药盒看上面的说明
+    working_state: 玩家挨个给她讲每样药的用途和用法
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_minimum_trust
+    - ev:bwx_city_stray_life
+  - topic: 沙发浅眠
+    scene: 午后出租屋安安静静，她蜷在沙发角打起了盹
+    working_state: 玩家蹑手蹑脚，把毯子轻轻搭在她身上
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 闹钟与纸箱
+    scene: 清晨闹钟响起，纸箱里先探出一个毛茸茸的脑袋
+    working_state: 玩家坐起来，睡眼惺忪地和她对上了眼
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_human_reveal
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 拖鞋太大
+    scene: 她拖着玩家的大拖鞋，在屋里啪嗒啪嗒地来回走
+    working_state: 鞋太大走两步就掉，她弯腰去捞又没捞住
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_human_reveal
+    - ev:bwx_first_help
+    - ev:bwx_arrive_songjiang
+  - topic: 客厅修灯
+    scene: 客厅灯闪了几下彻底灭了，屋里一下子暗下来
+    working_state: 玩家搬来梯子检修，她举着手机照明
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_name_awakened
+  - topic: 电费账单
+    scene: 客厅灯亮着，玩家捏着电费单坐在沙发上叹气
+    working_state: 她凑过来，看不懂那行数字，歪头看他
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 遥控器研究
+    scene: 她抱着电视遥控器来回按，屏幕上的频道跳来跳去
+    working_state: 玩家教她哪个键调音量、哪个键换台
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+    - ev:bwx_arrive_songjiang
+  - topic: 门口等候
+    scene: 洗手间门外，她抱着自己的尾巴尖来回踱着步
+    working_state: 玩家在里面，她安静守在门口没离开
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_conversation
+    - ev:bwx_forest_growth
+  - topic: 窗台日光浴
+    scene: 午后阳光铺满窗台，她眯着眼趴在垫子上打盹
+    working_state: 玩家端了杯水放在窗边，没有吵她
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 零食拆不开
+    scene: 她举着撕不开口的零食袋，耳朵都耷拉下来了
+    working_state: 玩家伸手帮她撕开，她的眼睛亮了起来
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+  - topic: 深夜亮着的灯
+    scene: 深夜出租屋，书桌台灯还亮着，键盘声轻轻响着
+    working_state: 玩家在加班，她窝在旁边的小凳上陪着
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_first_help
+    - ev:bwx_name_awakened
+  - topic: 拖把洒水
+    scene: 客厅的地板被她学拖地蹭出一片明晃晃的水渍
+    working_state: 玩家拿抹布来擦，她的耳朵耷拉下来
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_arrive_songjiang
+  - topic: 闻洗衣液
+    scene: 卫生间里，她凑近洗衣液瓶口闻了闻，又退开
+    working_state: 玩家把要洗的衣服，按颜色分成几堆
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 反锁研究
+    scene: 出租屋门口，她转着门锁，看里面的金属结构
+    working_state: 玩家教她夜里睡觉前要记得怎么反锁
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_conversation
+    - ev:bwx_minimum_trust
+    - ev:bwx_city_stray_life
+  - topic: 抢先递遥控
+    scene: 遥控器掉在客厅地毯上，她先一步弯腰把它捡起
+    working_state: 玩家还没伸手，她就已经递到面前
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 阳台望人群
+    scene: 她趴在阳台栏杆上，安静地看着楼下的人流来往
+    working_state: 玩家端来一杯热水，让她捂手暖一暖
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 抢着洗碗
+    scene: 厨房水槽边，她学着玩家哗哗地冲洗碗和碟子
+    working_state: 玩家说放着我来吧，她摇了摇头没有停
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_arrive_songjiang
+  - topic: 扫地扫帚
+    scene: 客厅里，她握着扫帚从角落开始一点点地扫着
+    working_state: 玩家夸她扫得干净，她尾巴尖翘了翘
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_name_awakened
+  - topic: 一起换床单
+    scene: 玩家在铺床单，她帮忙拽着另一头的两个被角
+    working_state: 两人各扯一头，把床单拉得平平整整
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_human_reveal
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 她的喝水杯
+    scene: 桌角多了一只浅色水杯，杯沿印着一圈猫爪印
+    working_state: 玩家发现她今天一整天一口水都没喝
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 打烊后现身
+    scene: 打烊后的咖啡厅里，只剩下吧台一盏暖灯亮着
+    working_state: 玩家清洗器具时，她以猫形蹲在窗台上
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_childhood
+  - topic: 吧台看拉花
+    scene: 咖啡机蒸汽升腾，杯面慢慢浮出一片奶泡叶子
+    working_state: 她站在吧台边，看玩家拉出一片叶子
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_conversation
+    - ev:bwx_arrive_songjiang
+  - topic: 午后收桌
+    scene: 午后客人散尽，桌上留着几只空杯和点心碟子
+    working_state: 她学着玩家的样子，把杯碟收进托盘
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 窗边看行人
+    scene: 咖啡厅临街的落地窗边，玻璃外行人来来往往
+    working_state: 玩家端来一杯温水，轻轻放在她面前
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 猫爪拉花
+    scene: 杯面浮着一只猫爪形状的奶泡，咖啡冒着热气
+    working_state: 她盯着杯里的猫爪图案，迟迟没有喝
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+    - ev:bwx_spirit_fruit
+  - topic: 打烊的钟声
+    scene: 墙上挂钟指向打烊时间，店里一下子安静下来
+    working_state: 玩家示意该回去了，她放下杯子起身
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_name_awakened
+  - topic: 磨豆机轰鸣
+    scene: 磨豆机轰隆震响，深褐色的豆粉香气一下子散开
+    working_state: 她好奇地凑近两步，又嗡地退了开去
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_forest_childhood
+  - topic: 第一口热奶
+    scene: 吧台边，她捧着一小杯热牛奶，小口小口地抿
+    working_state: 玩家问她好喝吗，她轻轻点了点头
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_name_awakened
+  - topic: 店门口的野猫
+    scene: 店门口蹲着一只瘦瘦的狸花猫，隔着玻璃门讨食
+    working_state: 她站在门里，隔着玻璃看了那只猫很久
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+    - ev:bwx_accident
+    - ev:bwx_first_help
+  - topic: 她攥着硬币
+    scene: 收银台前，她攥着几枚硬币，在手里翻来覆去
+    working_state: 玩家说不用付钱，她拿着硬币愣了一下
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+    - ev:bwx_arrive_songjiang
+  - topic: 雨天营业中
+    scene: 雨天咖啡厅客人不多，落地窗蒙着薄薄一层水汽
+    working_state: 玩家擦着杯子，陪她一起看窗外的雨
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 后巷油烟味
+    scene: 咖啡厅后门半掩着，巷子里飘来饭菜的油烟味
+    working_state: 她站在门边，顺着气味轻轻闻了闻
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_forest_growth
+  - topic: 收银台认数
+    scene: 收银台屏幕跳着价格数字，她歪着头慢慢地看着
+    working_state: 玩家教她认屏幕上跳动的价格数字
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_name_awakened
+  - topic: 专属小碗
+    scene: 吧台角落放着一只浅色的小瓷碗，擦得很干净
+    working_state: 玩家说这是给她备的，她耳朵竖了竖
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 坚持擦桌
+    scene: 打烊后她抢过抹布，把店里的每张桌子都擦了一遍
+    working_state: 玩家说不用她来，她还是不肯停手
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 跟着节拍晃尾
+    scene: 打烊前店里放着轻柔的音乐，灯光暖黄地亮着
+    working_state: 她坐在高脚凳上，尾巴跟着节拍轻晃
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+    - ev:bwx_forest_childhood
+  - topic: 角落听闲谈
+    scene: 她坐在咖啡厅最里的角落，安静听熟客们闲聊
+    working_state: 玩家凑过来小声说，这些是常来的客人
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_conversation
+    - ev:bwx_first_help
+    - ev:bwx_name_awakened
+  - topic: 关店等锁门
+    scene: 最后一盏灯熄灭，咖啡厅的店门才轻轻合拢上
+    working_state: 玩家锁门的时候，她站在路灯下等着
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 桂花初闻
+    scene: 楼下桂花树开得正好，香气浮在傍晚的晚风里
+    working_state: 她第一次凑近闻这种甜香，眯起了眼
+    memory_pool:
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 饭后绕圈
+    scene: 傍晚小区步道平坦，路灯次第亮起，影子拉长
+    working_state: 玩家放慢步子，站在原地等她跟上来
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_name_awakened
+  - topic: 墙角的猫粮
+    scene: 楼下墙角摆着一碗猫粮，旁边还放着半盆清水
+    working_state: 她认出这是楼下别的猫留下的食碗
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+    - ev:bwx_forest_growth
+    - ev:bwx_accident
+  - topic: 并排的影子
+    scene: 路灯下两人的影子被拉得很长，轻轻叠在一起
+    working_state: 她低头看着地上并排的影子，没有说话
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 便利店门前
+    scene: 楼下便利店灯光明亮，里面的货架排得整整齐齐
+    working_state: 玩家进去买水，她乖乖站在门口等
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 台阶上的等候
+    scene: 她坐在单元门口的台阶上，抱着膝盖低头看地面
+    working_state: 玩家下楼看见她，脚步在原地顿了一下
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 树丛猫影
+    scene: 小区绿化带里，一只猫影飞快地窜过低矮树丛
+    working_state: 她追出两步，又自己默默停下了脚步
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+    - ev:bwx_forest_growth
+    - ev:bwx_name_awakened
+  - topic: 广场舞音乐
+    scene: 楼下空地广场舞音乐震天响，大妈们排成整齐的队
+    working_state: 她站在一旁，看得津津有味，还学了两下
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_arrive_songjiang
+  - topic: 突然的狗叫
+    scene: 楼下有人遛狗，金毛冲着她的方向连叫了两声
+    working_state: 她下意识往玩家身后躲了躲，没出声
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_forest_childhood
+    - ev:bwx_rescued
+    - ev:bwx_spirit_fruit
+  - topic: 散步听故事
+    scene: 晚饭后楼下步道，晚风习习吹过树梢，很舒服
+    working_state: 玩家讲今天店里的趣事，她听得很认真
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_name_awakened
+  - topic: 小卖部货架
+    scene: 她站在楼下小卖部门口，仰头看亮闪闪的货架
+    working_state: 玩家问她想要哪个，她摇了摇头说不要
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 声控楼道灯
+    scene: 楼道灯被她的拍手声啪地点亮，过一会又熄灭
+    working_state: 她来来回回玩了好几次，乐此不疲
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_arrive_songjiang
+  - topic: 数不清的台阶
+    scene: 单元楼的水泥楼梯一节一节向上延伸，光线昏暗
+    working_state: 她边走边数台阶，玩家问数到多少了
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 长椅看晚霞
+    scene: 傍晚楼下的长椅上，天边晚霞烧成了一大片橘红
+    working_state: 玩家买来两串糖葫芦，把一串递给她
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 雨后深呼吸
+    scene: 雨后楼下空地，空气被洗得干净清凉，泥土湿软
+    working_state: 她深深吸了一口气，说这个味道好闻
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_name_awakened
+  - topic: 面包店香气
+    scene: 街角面包店飘出烘烤的麦香，橱窗玻璃擦得透亮
+    working_state: 她隔着玻璃看了橱窗里的面包好久
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 绿灯牵手
+    scene: 松江府街头十字路口，人行绿灯亮起，人流涌动
+    working_state: 玩家牵住她的手，带着她快步过马路
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 垃圾箱旁的猫
+    scene: 街角垃圾箱旁边围着几只低头翻找食物的野猫
+    working_state: 她远远站在路灯下，安静看着没有靠近
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+    - ev:bwx_accident
+    - ev:bwx_name_awakened
+  - topic: 霓虹灯牌
+    scene: 夜晚松江府街头，各色霓虹招牌连成一片光亮
+    working_state: 她仰着头，看那些会发光跳动的字
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_name_awakened
+    - ev:bwx_forest_childhood
+  - topic: 地铁口人潮
+    scene: 地铁站出入口，人群不断涌进涌出，闸机嗡响
+    working_state: 她扯了扯玩家的衣角，问这些人都去哪
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_conversation
+    - ev:bwx_spirit_fruit
+  - topic: 热气腾腾的小摊
+    scene: 街边小吃摊支着一口大铁锅，白汽混着香气升腾
+    working_state: 玩家给她买了份热食，她小口小口吃
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_rescued
+    - ev:bwx_first_help
+    - ev:bwx_arrive_songjiang
+  - topic: 人潮中走散
+    scene: 傍晚街头人潮拥挤，她被人流冲开了好几步远
+    working_state: 玩家猛地回头，在人群里寻找她的身影
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_rescued
+    - ev:bwx_name_awakened
+  - topic: 算命摊旗子
+    scene: 街角算命摊挂着褪色的布旗，在晚风里轻轻摆动
+    working_state: 她站在旁边，认真看摊主给人看手相
+    memory_pool:
+    - ev:bwx_name_awakened
+    - ev:bwx_spirit_fruit
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+  - topic: 药店买伤药
+    scene: 药店玻璃柜台里摆着熟悉的药膏和成卷的纱布盒子
+    working_state: 玩家带她来买伤药，她安静跟在后面
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 街头手风琴
+    scene: 街角艺人拉着手风琴，悠扬的琴声在暮色里流淌
+    working_state: 她停下脚步，站在路边听完整支曲子
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+    - ev:bwx_first_help
+    - ev:bwx_spirit_fruit
+  - topic: 原地等待
+    scene: 路灯下，她站在原地没有走动，一直盯着店门
+    working_state: 玩家跑进便利店买伞，让她在原地等着
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_rescued
+    - ev:bwx_forest_childhood
+  - topic: 兜售的雨伞
+    scene: 雨后街头，有人推着小车兜售五颜六色的雨伞
+    working_state: 她看到那些伞，想起了那个惊惶的雨夜
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_human_reveal
+    - ev:bwx_forest_growth
+  - topic: 隔屋微响
+    scene: 深夜出租屋一片漆黑，只有月光从窗帘缝漏进来
+    working_state: 玩家翻身时，纸箱里传来细微的动静
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 惊醒的梦
+    scene: 深夜她猛地从毯子里坐起来，喘着气，额角有汗
+    working_state: 玩家轻声问她怎么了，她摇头说没事
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_forest_childhood
+    - ev:bwx_name_awakened
+  - topic: 深夜倒水
+    scene: 深夜厨房传来哗啦啦的倒水声，头顶小灯还亮着
+    working_state: 玩家起身去看，她正捧着杯子喝水
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 未睡的等待
+    scene: 深夜门锁转动，玩家加班回到家，屋里灯亮着
+    working_state: 玩家推开门，发现她仍然醒着没有睡
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_first_help
+    - ev:bwx_forest_childhood
+  - topic: 窗外猫叫
+    scene: 深夜窗外传来一声长长的猫叫，在夜里格外清楚
+    working_state: 她竖着耳朵听了很久，一直没有动
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+    - ev:bwx_forest_growth
+    - ev:bwx_name_awakened
+  - topic: 纸箱沿偷看
+    scene: 深夜玩家还靠在床头看手机，屏幕光映亮半张脸
+    working_state: 她趴在纸箱沿上，偷看玩家的侧脸
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 靠近的睡位
+    scene: 清晨醒来，玩家发现她睡得比昨晚近了一些位置
+    working_state: 她的睡位离纸箱远了，离床沿近了
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+  - topic: 梦话含糊
+    scene: 深夜她翻了个身，含含糊糊地说了句听不清的梦话
+    working_state: 玩家没听清，凑近轻声追问了一句
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_name_awakened
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 深夜宵夜
+    scene: 深夜厨房亮着灯，小锅里煮着面条，水汽袅袅
+    working_state: 玩家加班回来，加了顿宵夜，她陪着吃
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_spirit_fruit
+  - topic: 留的那盏灯
+    scene: 深夜玩家拖着疲惫的步子回来，发现客厅灯还亮着
+    working_state: 她说留着那盏灯，是怕他回来摸黑
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 找旧毯子
+    scene: 她半夜摸黑翻找那条旧毯子，被角窸窸窣窣作响
+    working_state: 玩家轻声问她，要不要再加一条被子
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_name_awakened
+  - topic: 无言的夜
+    scene: 深夜出租屋里静得能听见彼此的呼吸声，月光淡淡
+    working_state: 两人都没说话，就这么安静地待着
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_first_conversation
+    - ev:bwx_forest_growth
+  - topic: 第一声晚安
+    scene: 她蜷回纸箱前，忽然转过头，小声说了句晚安
+    working_state: 玩家愣了一拍，才轻轻应了一声好
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_conversation
+    - ev:bwx_spirit_fruit
+  - topic: 深夜收杂物
+    scene: 深夜客厅传来窸窣的响动，茶几边有影子晃动
+    working_state: 玩家起身去看，她正在收拾散落的杂物
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_childhood
+  - topic: 黑暗里的问答
+    scene: 关灯后，两人隔着满屋的黑暗，轻声地说着话
+    working_state: 玩家问她独自在山里的时候怕不怕
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_childhood
+    - ev:bwx_forest_growth
+    - ev:bwx_arrive_songjiang
+  - topic: 后腿伤疤
+    scene: 她坐在床沿，挽起裤腿，仔细端详后腿那道新疤
+    working_state: 玩家问她伤口还疼不疼，她摇了摇头
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+  - topic: 乖乖换药
+    scene: 客厅暖黄的灯光下，她伸直腿让玩家拆旧纱布
+    working_state: 她轻轻皱着眉，却始终没有躲开一步
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 试着小跑
+    scene: 出租屋窄窄的走廊里，她扶着墙试着小跑两步
+    working_state: 她惊喜地发现，后腿已经不怎么疼了
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_accident
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 雨天揉后腿
+    scene: 雨天的出租屋里，她蜷在毯子里轻轻揉着后腿
+    working_state: 玩家递来热水袋，让她捂着敷一敷
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_name_awakened
+  - topic: 感受妖力
+    scene: 她盘腿坐在垫子上，闭眼静静感受体内的妖力
+    working_state: 她睁开眼，说体内的妖力还没恢复完
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+    - ev:bwx_name_awakened
+    - ev:bwx_arrive_songjiang
+  - topic: 睡得沉了
+    scene: 午后出租屋安静，她枕着手臂睡熟，呼吸平稳
+    working_state: 玩家发现她午睡时不再突然惊醒了
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_childhood
+  - topic: 扶墙走路
+    scene: 她扶着墙壁，在屋里慢慢地走完了整整一大圈
+    working_state: 玩家想伸手扶她，她摇头说能自己走
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 伤口的注视
+    scene: 午后她低头看着侧腹的伤口，一直沉默不语着
+    working_state: 玩家轻声问她，是不是想起了那个雨夜
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_human_reveal
+    - ev:bwx_forest_growth
+  - topic: 药膏的苦味
+    scene: 客厅里药膏的味道散不出去，弥漫着淡淡的苦
+    working_state: 玩家给她涂药，她嫌弃地皱起鼻子
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 午后猫形
+    scene: 午睡时她变回猫形，蜷在旧毯子的正中央打盹
+    working_state: 玩家轻手轻脚走过去，没有吵醒她
+    memory_pool:
+    - ev:bwx_human_reveal
+    - ev:bwx_forest_growth
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 学用筷子
+    scene: 餐桌前，她举着筷子夹了半天，夹不起一块豆腐
+    working_state: 玩家手把手，教她拿筷子的正确姿势
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+    - ev:bwx_spirit_fruit
+  - topic: 肚子咕咕
+    scene: 晚饭前她窝在沙发里，肚子忽然咕咕响了一声
+    working_state: 玩家说马上就好，她乖乖点了点头
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_rescued
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+  - topic: 拨开的香菜
+    scene: 饭桌上，她把碗里的香菜一根根拨到碗沿边上
+    working_state: 玩家看到后，没忍住轻轻笑了一下
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+    - ev:bwx_name_awakened
+  - topic: 冰箱里的鱼
+    scene: 她打开冰箱门，看见冷冻层放着一条完整的鱼
+    working_state: 她的眼睛亮了一下，又默默移开视线
+    memory_pool:
+    - ev:bwx_forest_childhood
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_name_awakened
+  - topic: 抢着摆碗筷
+    scene: 晚饭前，她抢先把碗筷在桌上摆得整整齐齐的
+    working_state: 玩家夸她摆得整齐，她不好意思地垂下眼
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_arrive_songjiang
+  - topic: 第一顿外卖
+    scene: 外卖盒揭开的一瞬，热气扑面，满桌菜香四溢
+    working_state: 玩家告诉她这叫外卖，她似懂非懂
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_spirit_fruit
+  - topic: 让出的鱼块
+    scene: 她把碗里的鱼块悄悄夹到玩家碗里，低头扒饭
+    working_state: 玩家愣在原地，她假装什么都没发生
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_childhood
+  - topic: 饭后端碗
+    scene: 晚饭后，她端着碗碟，径直走向厨房里的水槽
+    working_state: 玩家放下筷子，跟着她走进了厨房
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_current_anchor
+    - ev:bwx_name_awakened
+  - topic: 初次人形踱步
+    scene: 清晨出租屋，她穿着宽大的上衣，慢慢地走动
+    working_state: 这是玩家第一次看她用人形在屋里走动
+    memory_pool:
+    - ev:bwx_human_reveal
+    - ev:bwx_first_conversation
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_arrive_songjiang
+  - topic: 猫形缩进纸箱
+    scene: 午后她变回猫形，缩进墙角那只旧纸箱的最里面
+    working_state: 玩家试探着叫她的名字，她耳朵转了转
+    memory_pool:
+    - ev:bwx_human_reveal
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 尾巴藏不住
+    scene: 她以人形坐在沙发上，尾巴尖不自觉轻轻晃动
+    working_state: 玩家盯着她的尾巴看，她忙把尾巴压住
+    memory_pool:
+    - ev:bwx_human_reveal
+    - ev:bwx_forest_growth
+    - ev:bwx_name_awakened
+    - ev:bwx_arrive_songjiang
+  - topic: 追问身世
+    scene: 深夜出租屋，她主动讲起来到松江府以前的事
+    working_state: 玩家安静地听着，始终没有打断她
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_name_awakened
+  - topic: 第一次叫名字
+    scene: 客厅里玩家忽然叫了她的名字，她的脚步顿住
+    working_state: 她低头应了一声，耳朵尖微微发红
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_name_awakened
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 雨天客人少
+    scene: 午后咖啡厅靠窗，雨点敲着玻璃，店内只有两三位客人，格外安静
+    working_state: 玩家在吧台磨豆做咖啡，她猫形蜷在角落的高脚凳上
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_accident
+    - ev:bwx_spirit_fruit
+  - topic: 磨豆机嗡鸣
+    scene: 清晨咖啡厅吧台，磨豆机嗡嗡作响，空气里飘着新鲜咖啡粉的香气
+    working_state: 玩家提前到店开磨豆机预热，她睡在纸箱里被吵醒
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+    - ev:bwx_name_awakened
+  - topic: 蒸汽与奶泡
+    scene: 吧台蒸汽棒嘶嘶作响，奶泡在杯沿堆出蓬松的白色小山
+    working_state: 玩家教白未晞看奶泡，她睁大眼睛凑近吧台边
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 拉花练习
+    scene: 打烊后的吧台，玩家用牛奶练拉花，桌面上摆着几杯失败的
+    working_state: 玩家接连失败几次，她猫形蹲在吧台上看得入神
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 拉花翻车
+    scene: 午后吧台，牛奶倒歪了，杯面糊成一团看不出图案
+    working_state: 玩家手抖拉花失败，她笑出声又立刻捂住嘴
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_human_reveal
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 客人点单
+    scene: 下午吧台前排着几位客人，菜单被翻来翻去，纸笔沙沙响
+    working_state: 玩家忙着接单，她人形站在角落不知所措地搓衣角
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_city_stray_life
+    - ev:bwx_human_reveal
+    - ev:bwx_spirit_fruit
+  - topic: 排队高峰
+    scene: 午休时段咖啡厅坐满，点单的队伍一直排到门口
+    working_state: 玩家一个人忙得脚不沾地，她人形帮着递纸杯
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_name_awakened
+  - topic: 熟客闲聊
+    scene: 傍晚柜台，一位老爷爷熟客坐着和玩家聊天，笑声很轻
+    working_state: 熟客夸她乖巧，她缩在吧台后不敢接话
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_conversation
+    - ev:bwx_rescued
+    - ev:bwx_arrive_songjiang
+  - topic: 打翻的咖啡
+    scene: 吧台角落，一杯美式被碰翻，褐色水渍在台面上慢慢漫开
+    working_state: 她尾巴扫到杯子打翻咖啡，慌张地跳到一边
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_conversation
+    - ev:bwx_name_awakened
+  - topic: 烫手杯沿
+    scene: 刚做好的拿铁放在吧台上，热气袅袅升腾，杯壁烫手
+    working_state: 她伸手摸杯壁被烫到缩手，玩家教她端杯耳
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_rescued
+    - ev:bwx_spirit_fruit
+  - topic: 新豆上架
+    scene: 吧台后的货架摆上一排新到的咖啡豆，袋子印着产地
+    working_state: 玩家拆开豆袋让她闻，她眯眼嗅了嗅，尾巴尖翘起来
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 豆子告罄
+    scene: 吧台储物柜空了，装咖啡豆的罐子见了底，袋子瘪着
+    working_state: 玩家发现豆子用完，叹气说今天得提前收摊
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 特调上新
+    scene: 吧台旁的黑板写着新特调粉笔字，桂花拿铁的名字很新鲜
+    working_state: 玩家研发桂花特调，端给白未晞试喝，她捧着杯子小口抿
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+  - topic: 首单咖啡
+    scene: 清晨开店，第一位客人推门进来，冷风跟着灌进店里
+    working_state: 玩家接今日第一单，白未晞帮忙把纸杯递过去
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 手冲时间
+    scene: 午后吧台，玩家慢慢注水冲手冲，细水柱划出弧线
+    working_state: 白未晞安静坐在吧台边看，尾巴跟着水柱轻轻摆动
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_spirit_fruit
+  - topic: 冰美式时间
+    scene: 午后吧台，冰块在杯里碰撞出清脆响声，杯壁凝着水珠
+    working_state: 玩家做冰美式，她好奇地戳了戳杯壁的水珠
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 热可可香气
+    scene: 雨天吧台，热可可的热气模糊了窗玻璃，香气弥漫
+    working_state: 玩家做了一杯热可可，推给尾巴淋湿的她
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 抹茶拿铁
+    scene: 吧台上抹茶粉撒了薄薄一层，绿意慢慢在杯面漾开
+    working_state: 她帮忙撒抹茶粉结果撒多了，两人笑成一团
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 双份浓缩
+    scene: 深夜吧台，双份浓缩在杯底慢慢沉淀出深色纹路
+    working_state: 玩家加班后困得打哈欠，给自己做了一杯双份浓缩
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 外带纸杯
+    scene: 傍晚吧台，外带纸杯摞成一排，等着装咖啡带走
+    working_state: 白未晞学着玩家把杯套套上纸杯，动作慢吞吞
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 店猫传闻
+    scene: 吧台贴着本店猫咪的插画，客人笑着问店猫在哪里
+    working_state: 客人问起店里的猫，她趴在柜台下不敢出声
+    memory_pool:
+    - ev:bwx_human_reveal
+    - ev:bwx_first_help
+    - ev:bwx_name_awakened
+    - ev:bwx_forest_growth
+  - topic: 客人的狗
+    scene: 店门口一只金毛扒着玻璃往里看，尾巴摇得欢快
+    working_state: 客人牵着狗进来，她嗖地窜上吧台角落躲起来
+    memory_pool:
+    - ev:bwx_forest_childhood
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 客人的猫
+    scene: 靠窗座位，一位客人怀里的橘猫懒洋洋地喵了一声
+    working_state: 她远远看着那只猫，耳朵动了动却没有靠近
+    memory_pool:
+    - ev:bwx_forest_growth
+    - ev:bwx_forest_childhood
+    - ev:bwx_first_help
+    - ev:bwx_name_awakened
+  - topic: 小孩买果汁
+    scene: 下午店里，扎小辫的女孩踮着脚，要一杯橙汁带走
+    working_state: 玩家接单，她好奇地盯着小孩看，眼神柔软
+    memory_pool:
+    - ev:bwx_forest_childhood
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_conversation
+    - ev:bwx_arrive_songjiang
+  - topic: 阿姨要少糖
+    scene: 吧台前，一位阿姨反复叮嘱少糖多冰，声音很响亮
+    working_state: 她站在旁边学玩家记单，小声重复着少糖
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 催单的客人
+    scene: 高峰时段吧台，客人敲着柜台催单，声音有些急
+    working_state: 玩家手忙脚乱，她紧张地帮着翻找杯盖
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_rescued
+    - ev:bwx_forest_growth
+  - topic: 找零出错
+    scene: 傍晚柜台，收银机吐出的零钱少了一块钱，灯光昏黄
+    working_state: 玩家数错了零钱，她默默把多的钱放回柜台
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 名片摆台
+    scene: 吧台角落摆着一叠印好的咖啡厅名片，边角翘起
+    working_state: 玩家整理名片，她抽出一张举到眼前看
+    memory_pool:
+    - ev:bwx_name_awakened
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 窗户水汽
+    scene: 冷雨天的玻璃窗结满水汽，模模糊糊看不清街景
+    working_state: 她趴在窗边，用爪子尖在雾气上画圈
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_city_stray_life
+    - ev:bwx_accident
+    - ev:bwx_forest_growth
+  - topic: 靠窗座位
+    scene: 傍晚靠窗的双人座，橘黄灯光落下来，街上行人渐少
+    working_state: 玩家歇工，和白未晞并排坐在窗边看街
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_human_reveal
+  - topic: 吧台围观
+    scene: 午后吧台，几位客人围看玩家冲咖啡，低声赞叹
+    working_state: 白未晞站在人群外，踮起脚尖往里看
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 试喝新品
+    scene: 吧台上排着三小杯试喝的新口味，颜色深浅不一
+    working_state: 玩家让白未晞试喝，她抿了一口，眼睛亮起来
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+  - topic: 加糖不加糖
+    scene: 吧台前客人连问三遍加不加糖，语气有点着急，手指敲桌
+    working_state: 她抢着答加糖，被玩家笑着看了一眼
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_human_reveal
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 燕麦奶初尝
+    scene: 冷柜前，她踮脚研究一排燕麦奶，瓶身印着燕麦图案
+    working_state: 玩家说燕麦奶是植物做的，她歪头想了想
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+    - ev:bwx_forest_growth
+  - topic: 坐满的店
+    scene: 周六午后店里坐满，人声和咖啡香混在一起，热气腾腾
+    working_state: 玩家忙得团团转，她猫形躲在吧台后面
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 开店备料
+    scene: 清晨六点的咖啡厅，灯光刚亮，吧台还空着，很安静
+    working_state: 玩家提前到店备料，她跟来趴在窗台看
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 开门营业
+    scene: 卷帘门吱呀拉起，晨光一下子涌进店里，灰尘飞舞
+    working_state: 玩家拉开卷帘门，她猫形蹲在门边伸懒腰
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 打烊擦桌
+    scene: 夜里打烊，玩家用抹布擦着一张张桌子，动作慢
+    working_state: 白未晞帮忙收拾杯子，一只只放进洗碗槽
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 闭店关灯
+    scene: 吧台的灯一盏盏熄灭，只剩门缝透进一点光，脚步声轻
+    working_state: 玩家锁门，她站在门口等着玩家一起走
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 清点零钱
+    scene: 打烊后的柜台，硬币哗啦啦倒了一桌，灯光昏黄安静
+    working_state: 玩家数零钱，她拨弄着硬币叠成小塔
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 清洗杯碟
+    scene: 后厨水槽边，杯碟堆得像小山，白色泡沫翻涌
+    working_state: 她撸起袖子帮玩家洗杯子，泡沫溅到鼻尖
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 倒掉剩咖啡
+    scene: 打烊后，玩家把壶底的剩咖啡倒进水槽，热气散去
+    working_state: 她心疼地咂咂嘴，小声嘀咕可惜了
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 锁门回家
+    scene: 深夜街道，路灯下玩家锁好店门，夜风有一点凉
+    working_state: 玩家和白未晞一起走回出租屋，影子拉得很长
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 盘点库存
+    scene: 吧台后的小仓库，纸箱从地面堆到天花板，光线暗
+    working_state: 玩家对着清单点货，她猫形钻进纸箱里玩
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_arrive_songjiang
+  - topic: 门口翻牌
+    scene: 店门把手挂着营业中的木牌，风一吹就轻轻晃动
+    working_state: 玩家让她看牌子，她认真点头记住意思
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+    - ev:bwx_forest_growth
+  - topic: 今日营业结束
+    scene: 打烊音乐响起，最后一位客人推门离开，铃铛响了一声
+    working_state: 玩家松了口气，揉了揉发酸的肩膀
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+  - topic: 关窗拉帘
+    scene: 打烊后玩家把窗帘拉拢，店里一下子暗下来，安静了
+    working_state: 她帮忙拉另一半窗帘，踮起脚尖够不着
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 雨打玻璃
+    scene: 深夜出租屋，雨点噼啪打在窗玻璃上，夜风灌进来
+    working_state: 玩家睡熟了，她猫形蹲在窗台静静看雨
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+  - topic: 檐下躲雨
+    scene: 咖啡厅门口雨棚下，雨珠成串往下淌，地面溅起水花
+    working_state: 玩家和她站在檐下等雨小，她裹紧外套
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_city_stray_life
+    - ev:bwx_accident
+    - ev:bwx_spirit_fruit
+  - topic: 雨伞滴水
+    scene: 咖啡厅门口的伞架，三把伞往下滴着水珠，地面湿了
+    working_state: 玩家把伞递给客人，她帮忙撑开晾着
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_rescued
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+  - topic: 雨衣淋湿
+    scene: 出租屋门口，雨衣挂了一排还在滴水，地板湿了一角
+    working_state: 玩家下班淋雨回家，她递上干毛巾
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_home_seed
+    - ev:bwx_arrive_songjiang
+  - topic: 雷雨停电
+    scene: 雷雨天出租屋突然断电，屋里一片漆黑，只剩雷光
+    working_state: 玩家摸黑找蜡烛，她紧张地贴过来
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_forest_childhood
+    - ev:bwx_spirit_fruit
+  - topic: 暴雨停电
+    scene: 暴雨的午后，咖啡厅灯光闪了两下暗下来，雨声哗哗
+    working_state: 客人不多，玩家找出应急灯点亮吧台
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_rescued
+    - ev:bwx_forest_growth
+  - topic: 雨水进屋
+    scene: 出租屋窗缝渗进雨水，地板上湿了一小片，渐渐扩大
+    working_state: 玩家拿旧毛巾堵窗缝，她帮着拧水
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_first_help
+    - ev:bwx_name_awakened
+  - topic: 晾不干的衣
+    scene: 连雨几天，出租屋阳台晾的衣服潮潮的，摸起来湿
+    working_state: 玩家摸衣角皱眉，她猫形钻在衣服间晒太阳
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_rescued
+    - ev:bwx_forest_growth
+  - topic: 雨声入眠
+    scene: 深夜出租屋，雨声淅沥，灯光调得很暗，呼吸可闻
+    working_state: 玩家睡着了，她在纸箱边趴着听雨声
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_arrive_songjiang
+  - topic: 外卖高峰
+    scene: 午间后厨，外卖单一张接一张从机器里打出来，纸声不停
+    working_state: 玩家忙着出餐，她帮忙核对小票上的字
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 外卖迟到
+    scene: 雨午后厨，骑手电话里说路滑要晚到，桌上的餐已经凉了
+    working_state: 玩家看了看冷掉的餐，叹气重新加热
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 外卖装错
+    scene: 打烊前的后厨，两份外卖餐盒被装混了，标签贴错
+    working_state: 玩家重新分装两份，她帮忙贴标签
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 雨天外卖单
+    scene: 雨天午后，外卖单反而多起来，打包台堆满纸袋
+    working_state: 玩家在吧台和打包台之间跑，她递纸袋
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_forest_growth
+  - topic: 外卖小哥
+    scene: 店门口，穿雨衣的外卖骑手探进半个头，嘴里催着单
+    working_state: 骑手催单，玩家快步去拿打包好的餐
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 叠打包盒
+    scene: 后厨桌上，外卖盒和盖子码得整整齐齐，像一堵小墙
+    working_state: 她学着玩家把餐盒卡进纸袋，笨手笨脚
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+  - topic: 赶外卖单
+    scene: 午高峰后厨，计时器滴滴响个不停，台面忙成一团
+    working_state: 玩家端着三杯咖啡小跑，她紧紧跟在后头
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 接单提示音
+    scene: 吧台接单机叮咚响了一声，小票缓缓吐出来，纸面温热
+    working_state: 她第一次听到接单提示音，竖着耳朵好奇
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 加班深夜
+    scene: 深夜出租屋，台灯亮着，玩家还在敲键盘，屏幕幽幽
+    working_state: 玩家加班到凌晨，她窝在旁边纸箱里打盹
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 连续加班
+    scene: 连续几晚的出租屋，玩家眼底青黑，哈欠一个接一个
+    working_state: 玩家三天连轴转，她悄悄把热水放桌上
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_rescued
+    - ev:bwx_forest_growth
+  - topic: 疲惫回家
+    scene: 晚上十点出租屋门锁转动，玩家拖着步子进来，外套耷着
+    working_state: 玩家下班回来累得瘫在沙发上，她默默倒水
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 瘫在沙发
+    scene: 客厅沙发上，玩家仰面瘫着，连一根手指都不想动
+    working_state: 玩家闭眼缓神，她轻手轻脚拉过毯子盖上
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 熬夜黑眼圈
+    scene: 清晨出租屋，玩家对着镜子叹气，眼下发青，脸色差
+    working_state: 玩家看到镜里的黑眼圈，她猫形蹭过来喵一声
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 早起赶班
+    scene: 清晨出租屋，闹钟响到第三遍玩家才爬起来，睡眼惺忪
+    working_state: 玩家睡过头，她跳上桌子喵喵地催他
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 周一大扫除
+    scene: 周一打烊后，咖啡厅角落积了一层薄灰，扫地声很响
+    working_state: 玩家大扫除，她帮忙擦吧台和窗台
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 难得休息日
+    scene: 休息日的午后，阳光斜斜照进出租屋，地板泛着暖光
+    working_state: 玩家难得休息，抱着毯子赖在沙发上
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 休假日赖床
+    scene: 休息日早上，窗帘缝漏进一线光，屋里安安静静，无风
+    working_state: 玩家赖床不起，她趴在玩家胸口呼噜
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_first_conversation
+    - ev:bwx_forest_growth
+  - topic: 下班倒头睡
+    scene: 深夜出租屋，玩家没洗漱就倒在床上，外套都没脱
+    working_state: 玩家累到秒睡，她小心地帮玩家盖好被子
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_name_awakened
+  - topic: 困得睁不开眼
+    scene: 傍晚出租屋，玩家坐在沙发上眼皮打架，电视开着
+    working_state: 玩家强撑着想等外卖，她拍拍他的手让他睡
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 肩膀酸痛
+    scene: 晚间出租屋，玩家揉着肩膀皱眉，头顶灯光白亮
+    working_state: 玩家加班一天肩膀酸，她学着捏了两下
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 忘了吃饭
+    scene: 午后出租屋，玩家忙工作忘了点外卖，肚子咕咕叫
+    working_state: 玩家忙到下午三点没吃饭，她气鼓鼓瞪他
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+    - ev:bwx_name_awakened
+  - topic: 泡面将就
+    scene: 深夜出租屋，热水壶烧着水，玩家准备泡一碗面
+    working_state: 玩家加班晚归泡面凑合，她端来一碟小菜
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_forest_growth
+  - topic: 夜宵时刻
+    scene: 凌晨出租屋，两人对坐，夜宵冒着热气，碗筷齐全
+    working_state: 玩家带夜宵回家，她早就等着没睡
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 生日当班
+    scene: 生日当天午后咖啡厅，吧台上放着半块蛋糕，音乐轻
+    working_state: 玩家生日还在店里上班，她坐在吧台陪着
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 生日蛋糕
+    scene: 出租屋桌上摆着小小的生日蛋糕，烛光轻轻摇晃着
+    working_state: 玩家吹蜡烛，她跟着鼓起腮帮子吹气
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_spirit_fruit
+  - topic: 生日蜡烛
+    scene: 出租屋灯灭了，只有蛋糕上的蜡烛亮着光，一明一暗
+    working_state: 玩家让她许愿，她闭着眼睛想了很久
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_childhood
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 许愿时刻
+    scene: 昏黄的出租屋里，她闭着眼许愿的样子很认真，呼吸轻
+    working_state: 白未晞许愿后睁开眼，眼角有一点光
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+    - ev:bwx_spirit_fruit
+  - topic: 生日惊喜
+    scene: 咖啡厅打烊后，玩家拿出藏在后厨的蛋糕，灯还亮着
+    working_state: 白未晞意外又高兴，尾巴尖轻轻晃
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 一碗长寿面
+    scene: 出租屋厨房，一碗长寿面卧着荷包蛋，汤还冒着热气
+    working_state: 玩家煮好长寿面端给她，她愣住没说话
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+    - ev:bwx_forest_growth
+  - topic: 生日祝福
+    scene: 清晨出租屋，玩家刚睁眼就收到一朵小花，叶上带露
+    working_state: 白未晞递来小花，小声说了句生日快乐
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_first_conversation
+    - ev:bwx_name_awakened
+  - topic: 一起吃饭
+    scene: 出租屋小餐桌，两菜一汤冒着热气，头顶灯光很亮
+    working_state: 玩家和白未晞面对面吃晚饭，她夹菜很小心
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 家常晚饭
+    scene: 出租屋厨房，锅铲翻炒声混着饭香飘出来，灶火旺
+    working_state: 玩家下厨，她站在旁边帮忙递调料
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 番茄炒蛋
+    scene: 出租屋厨房，番茄炒蛋的香气飘出来，红黄颜色鲜亮
+    working_state: 她第一次吃番茄炒蛋，眼睛亮晶晶的
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+    - ev:bwx_spirit_fruit
+  - topic: 学包饺子
+    scene: 出租屋厨房，桌上摊着面粉和擀好的饺子皮，粉屑白
+    working_state: 玩家教她包饺子，她包的都歪歪扭扭
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+  - topic: 热汤上桌
+    scene: 雨夜出租屋，热汤端上桌，白气袅袅升起，窗上结雾
+    working_state: 玩家做了汤给她暖身，她捧着碗小口喝
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_forest_growth
+  - topic: 餐桌落座
+    scene: 打烊后的咖啡厅，两人在靠窗桌边吃简餐，灯还亮着
+    working_state: 玩家带她吃店里的简餐，她坐姿端正
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 厨艺翻车
+    scene: 出租屋厨房，锅里冒烟，玩家手忙脚乱找锅盖
+    working_state: 玩家煎蛋煎糊了，她憋着笑帮忙关火
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 抢最后一块
+    scene: 出租屋餐桌，盘子里只剩最后一块排骨，灯光暖暖
+    working_state: 两人同时伸筷子，她缩手让给玩家
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 剩饭加热
+    scene: 深夜出租屋，微波炉叮的一声转起来，暖光旋转
+    working_state: 玩家加班回来，她帮忙把剩饭热好
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_spirit_fruit
+  - topic: 出门上班
+    scene: 清晨出租屋门口，玩家弯腰系着鞋带，晨光淡淡
+    working_state: 玩家要去店里上班，她站在门口目送
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 买菜回来
+    scene: 出租屋门口，玩家拎着两袋菜，钥匙串哗啦作响
+    working_state: 玩家买菜回来，她猫形跑过来蹭裤脚
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+  - topic: 超市采购
+    scene: 傍晚超市货架间，购物车装了小半车，灯光白亮晃眼
+    working_state: 玩家带她逛超市，她盯着零食区走不动
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_childhood
+    - ev:bwx_spirit_fruit
+  - topic: 散步夜风
+    scene: 夏夜路边，晚风把衣角吹起来，路灯昏黄，蝉声断续
+    working_state: 玩家饭后带她散步，她好奇地看路灯
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+  - topic: 楼下便利店
+    scene: 出租屋楼下便利店，白炽灯亮堂堂，货架码得整齐
+    working_state: 玩家下楼买水，她猫形蹲在门口等
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 忘带钥匙
+    scene: 出租屋门口，玩家翻遍口袋找不到钥匙，急得跺脚
+    working_state: 玩家忘带钥匙，她隔着门缝喵了一声
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 站台等车
+    scene: 傍晚公交站，暮色沉沉，站牌灯亮起来，行人稀少
+    working_state: 玩家带她去坐公交，她盯着车来的方向
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 遛弯消食
+    scene: 晚饭后的街边，路灯一盏盏亮起来，晚风轻柔拂过
+    working_state: 玩家带她遛弯，她落在后面闻路灯杆
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 出门倒垃圾
+    scene: 出租屋门口楼道，她拎着一小袋垃圾站着不动
+    working_state: 玩家让她试着自己去倒垃圾，她在门口犹豫
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+  - topic: 楼下取快递
+    scene: 楼下快递柜前，玩家输着取件码，柜门啪地弹开
+    working_state: 玩家取快递，她好奇地看着柜门弹开
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_name_awakened
+  - topic: 纸箱还在
+    scene: 出租屋角落，最初的纸箱还铺着旧衣物，边角磨旧
+    working_state: 玩家整理房间想收纸箱，她抱着箱子不放
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 猫形发呆
+    scene: 午后出租屋窗台，白猫团成一团晒太阳，光斑落在毛上
+    working_state: 白未晞以猫形趴在窗台，尾巴尖轻轻晃
+    memory_pool:
+    - ev:bwx_forest_growth
+    - ev:bwx_forest_childhood
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 偷看手机
+    scene: 出租屋沙发上，玩家低头刷着手机屏幕，光一闪一闪
+    working_state: 她趴在玩家肩头偷看手机屏幕，耳朵竖着
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+  - topic: 学用家电
+    scene: 出租屋客厅，她对着遥控器翻来覆去，按钮按了又按
+    working_state: 白未晞学按遥控器，电视亮一下黑一下
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 等她回家
+    scene: 傍晚出租屋，她守着门口的方向坐了很久，窗影移动
+    working_state: 玩家下班开门，她已在门边等了一会儿
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_conversation
+    - ev:bwx_forest_growth
+  - topic: 门口等鞋
+    scene: 出租屋门口，她的鞋整齐摆在玩家鞋旁边，一尘不染
+    working_state: 玩家换鞋时发现，她的鞋也摆得端端正正
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 被角掖好
+    scene: 深夜出租屋，玩家睡着后翻身，把被子踢到一边
+    working_state: 她猫形起身，用爪子把被角推回玩家身上
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 灯留一盏
+    scene: 深夜出租屋客厅，小夜灯亮着昏黄的光，门口安静
+    working_state: 玩家加班没回，她留了盏灯趴着等
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+  - topic: 洗衣晾衣
+    scene: 阳台晾衣绳上，衣服排成一排往下滴水，阳光斜照
+    working_state: 她帮玩家晾衣服，踮着脚够晾衣绳
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 晨起哈欠
+    scene: 清晨出租屋，阳光落在地板上，空气里有淡淡尘光
+    working_state: 玩家起床打哈欠，她跟着打了个小哈欠
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 睡前道晚安
+    scene: 关灯后的出租屋，黑暗里传来轻轻的说话声，很轻很软
+    working_state: 玩家说晚安，她闷闷地回了一句晚安
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_first_conversation
+    - ev:bwx_forest_growth
+  - topic: 听她哼歌
+    scene: 午后出租屋，她哼着不知名的调子，阳光落在木地板上
+    working_state: 玩家在电脑前工作，她猫形哼着小调
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+    - ev:bwx_forest_childhood
+    - ev:bwx_name_awakened
+  - topic: 打盹的猫
+    scene: 午后咖啡厅后厨，白猫在旧纸箱里蜷着睡，鼾声轻
+    working_state: 午休时段，她猫形在后厨纸箱打盹
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_arrive_songjiang
+  - topic: 抱枕争夺
+    scene: 出租屋沙发上，她和玩家各拽住抱枕一角，谁也不让
+    working_state: 玩家抢她的抱枕，她护住不给，尾巴炸起来
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 电视节目
+    scene: 夜晚出租屋，电视里放着动物纪录片，画面绿意葱茏
+    working_state: 玩家调台到动物世界，她坐直了看
+    memory_pool:
+    - ev:bwx_forest_growth
+    - ev:bwx_forest_childhood
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 冰箱贴纸
+    scene: 出租屋冰箱门上，贴着两张歪歪的便利贴，字迹小
+    working_state: 她学着玩家在冰箱门上贴便条留言
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+    - ev:bwx_forest_growth
+  - topic: 阳台看云
+    scene: 午后阳台，云朵慢悠悠飘过，风很轻，阳光正好
+    working_state: 玩家和白未晞并排趴在阳台栏杆上看云
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 她写的字
+    scene: 出租屋桌上，白纸上是她歪歪扭扭的字迹，墨迹未干
+    working_state: 她学着写字，把白未晞三个字练了几遍
+    memory_pool:
+    - ev:bwx_name_awakened
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 那条旧毛巾
+    scene: 出租屋沙发上，叠着玩家当初包她的那条毛巾，旧了
+    working_state: 玩家想换新毛巾，她抱着旧的不肯松手
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 猫粮新购
+    scene: 出租屋角落，新买的猫粮袋子刚拆开，倒出一小碗
+    working_state: 玩家买猫粮回来，她猫形闻了闻又走开
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+    - ev:bwx_rescued
+    - ev:bwx_name_awakened
+  - topic: 深夜雷雨惊梦
+    scene: 深夜出租屋，窗外雷雨交加，纸箱里的她猛然睁眼
+    working_state: 白未晞被雷声惊醒，脑中闪过暴雨夜的车灯与疼痛
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_forest_childhood
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 雨声里的纸箱
+    scene: 白天下起小雨，雨点敲打窗玻璃，她趴在纸箱边听着
+    working_state: 白未晞听着雨声出神，想起那个被淋透的夜晚有人靠近
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 雨打屋檐
+    scene: 傍晚屋檐积水滴滴答答，阳台上她盘着尾巴出神
+    working_state: 她想起从前蜷在屋檐下躲雨的流浪日子，还有山里的雨
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_accident
+    - ev:bwx_forest_childhood
+    - ev:bwx_spirit_fruit
+  - topic: 他说下雨了
+    scene: 客厅里他随手关上窗，说今晚有雨，她耳朵动了动
+    working_state: 白未晞听到“雨”字身体绷紧，又想起那个淋着雨逃进小巷的夜
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_forest_childhood
+    - ev:bwx_rescued
+    - ev:bwx_spirit_fruit
+  - topic: 雨停想出门
+    scene: 雨后楼下地面发亮，她站在门口犹豫要不要出去
+    working_state: 雨停后她想去看看外面，又怕再遇到车流与巨响
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_accident
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 雷声里炸尾
+    scene: 远处闷雷滚过，沙发上她尾巴猛地炸开又缩回
+    working_state: 白未晞对雷声仍有本能恐惧，下意识往他身边靠
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_forest_childhood
+    - ev:bwx_rescued
+    - ev:bwx_forest_growth
+  - topic: 雨夜等他回
+    scene: 雨夜他还没下班，她抱着膝盖坐在门口的小凳上
+    working_state: 雨越下越大，白未晞想起那夜自己被雨困住，担心他没带伞
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+  - topic: 伸手接雨珠
+    scene: 雨停前她把手伸出窗外接雨，水珠顺着指尖滴落
+    working_state: 白未晞第一次在屋檐下接雨，好奇又小心翼翼
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_accident
+    - ev:bwx_first_help
+    - ev:bwx_spirit_fruit
+  - topic: 潮气与山雾
+    scene: 连绵阴雨让房间泛起潮气，她嗅了嗅空气里湿润的味
+    working_state: 白未晞闻到潮湿气息，恍惚想起深山老林里的雨天
+    memory_pool:
+    - ev:bwx_forest_childhood
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+  - topic: 她不怕打雷？
+    scene: 他问起雷声，她摇头说习惯，尾巴却缠住自己
+    working_state: 白未晞嘴硬说不怕，雨声却让呼吸轻了许多
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_forest_childhood
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+  - topic: 雨中收衣服
+    scene: 雨突然落下，她抢先踮脚把晾绳上的衣服收进屋里
+    working_state: 白未晞学着帮忙收衣服，动作生疏却很认真
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_accident
+    - ev:bwx_forest_growth
+  - topic: 雨声伴他眠
+    scene: 雨声淅沥的深夜，她在纸箱里听着他均匀的呼吸
+    working_state: 雨夜的白未晞感到安心，第一次觉得雨声不再可怕
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+  - topic: 换药时轻嘶
+    scene: 小桌边他拆开纱布，她后腿的伤口露出一角，她轻吸了口气
+    working_state: 白未晞换药时疼得缩了缩腿，却没有躲开他的手
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 伤口皱眉
+    scene: 灯光下他盯着她侧腹的擦伤，眉头微微皱了起来
+    working_state: 他查看伤势时，白未晞想起那晚自己被撞后的惊慌
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_current_anchor
+    - ev:bwx_name_awakened
+  - topic: 结痂的痕迹
+    scene: 午后她挽起袖子看手臂上的结痂，用手指轻轻碰了碰
+    working_state: 白未晞看着渐渐愈合的伤口，想起那天夜里流血的自己
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_human_reveal
+    - ev:bwx_forest_growth
+  - topic: 他说快好了
+    scene: 他一边上药一边说恢复得不错，她垂着耳朵没接话
+    working_state: “伤好就该走了”——白未晞听着这句话，心里闷闷的
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+  - topic: 走路还跛着
+    scene: 她扶着墙慢慢走动，受伤的后腿还不太敢用力
+    working_state: 白未晞坚持自己走路，步子放得很慢很小心
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_human_reveal
+    - ev:bwx_rescued
+    - ev:bwx_arrive_songjiang
+  - topic: 帮我揉揉腿
+    scene: 她盘坐在地毯上，他帮她揉着后腿僵硬的肌肉
+    working_state: 白未晞的脸埋在膝间，耳朵尖却红透了
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+    - ev:bwx_name_awakened
+  - topic: 说好的不疼
+    scene: 她说不疼了，夜里却翻了个身碰到伤口，发出细小的吸气声
+    working_state: 白未晞嘴硬说伤快好了，其实伤口夜里还隐隐作痛
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 镜中的自己
+    scene: 浴室镜子前她第一次仔细端详自己人形的模样
+    working_state: 白未晞看着镜子里陌生又熟悉的脸，摸了摸脸颊
+    memory_pool:
+    - ev:bwx_human_reveal
+    - ev:bwx_first_conversation
+    - ev:bwx_accident
+    - ev:bwx_spirit_fruit
+  - topic: 新买的药膏
+    scene: 他带回一支新药膏，在纸箱边蹲下来替她抹药
+    working_state: 白未晞看着他小心的动作，喉头动了动没说话
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_arrive_songjiang
+  - topic: 自己换纱布
+    scene: 她坐在床边，学着几天来他换药的样子自己缠纱布
+    working_state: 白未晞想证明自己恢复得很好，缠得歪歪扭扭
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_first_help
+    - ev:bwx_name_awakened
+  - topic: 窗台晒太阳
+    scene: 恢复期的午后，她趴在窗台晒着太阳，眯起眼睛
+    working_state: 白未晞被阳光晒得发懒，伤口也在一点点变好
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 自己下楼梯
+    scene: 傍晚她扶着扶手，第一次独自从三楼慢慢走到楼下
+    working_state: 白未晞成功走完楼梯，回头望向上方，眼带一点点得意
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 夜半惊坐起
+    scene: 深夜她猛地从纸箱里坐起，额头一层薄汗，呼吸急促
+    working_state: 白未晞又梦见暴雨夜的车灯，把自己吓得睁开了眼
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_forest_childhood
+    - ev:bwx_rescued
+    - ev:bwx_spirit_fruit
+  - topic: 梦见车灯
+    scene: 她蜷在纸箱里小声呜咽，梦里的车灯越来越近
+    working_state: 白未晞在睡梦中重复着被车灯照住的那个瞬间
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_human_reveal
+    - ev:bwx_name_awakened
+  - topic: 深山的梦
+    scene: 月光从窗帘缝漏进来，她在梦里不安地皱起眉头
+    working_state: 白未晞梦见自己在深山老林里迷路，怎么也找不到出口
+    memory_pool:
+    - ev:bwx_forest_childhood
+    - ev:bwx_city_stray_life
+    - ev:bwx_accident
+    - ev:bwx_first_help
+  - topic: 梦到淋透的雨
+    scene: 梦境里大雨倾盆，她缩在墙脚，浑身湿透发抖
+    working_state: 白未晞在梦里又回到那晚躲雨的小巷，冷得打颤
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_forest_childhood
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 他闻声而来
+    scene: 她的惊呼惊醒了他，他披着衣服蹲到纸箱边轻声询问
+    working_state: 被噩梦惊醒的白未晞看到他的脸，慢慢平复了呼吸
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 蜷成一团
+    scene: 纸箱里她把自己蜷成小小一团，尾巴紧紧环住膝盖
+    working_state: 白未晞不愿说梦见了什么，只是把脸埋进臂弯
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_forest_childhood
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 梦到纸箱消失
+    scene: 梦里纸箱被人收走了，她醒来第一件事是伸手去摸纸箱
+    working_state: 白未晞梦见纸箱不见了，惊醒后确认它还在才安心
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_spirit_fruit
+  - topic: 门边蹲守
+    scene: 凌晨她抱着小毯子蹲在他房门口，不敢敲门也没走开
+    working_state: 白未晞被噩梦吓到，悄悄蹲到离他近一点的地方
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_name_awakened
+  - topic: 梦里也忍着哭
+    scene: 她在梦里小声啜泣，醒来后却把泪痕蹭进毯子里
+    working_state: 白未晞想起从前在山里哭也只能自己扛着的日子
+    memory_pool:
+    - ev:bwx_forest_childhood
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_conversation
+  - topic: 一句“我在”
+    scene: 他半睡半醒说了句“我在呢”，她僵住的身体慢慢松下来
+    working_state: 白未晞在黑暗里睁着眼睛，耳朵悄悄记着这句话
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 攥紧衣角
+    scene: 路口绿灯亮起，他过马路时她伸手攥住了他的衣角
+    working_state: 白未晞过马路时想起那晚的擦碰，手指收得很紧
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_rescued
+    - ev:bwx_spirit_fruit
+  - topic: 鸣笛猛退
+    scene: 街边汽车鸣笛，她像被烫到一样往后猛退了一步
+    working_state: 白未晞被喇叭声吓得瞳孔一缩，险些撞到身后的人
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_name_awakened
+  - topic: 第一次跟出门
+    scene: 楼下街角，她第一次跟着他走到路灯照到的地方
+    working_state: 白未晞犹豫很久才迈出那一步，仍随时准备躲回来
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 红灯前停步
+    scene: 红灯亮起，她学着行人停下脚步，眼睛盯着路面
+    working_state: 白未晞记得那晚不懂红绿灯，现在站得笔直不动
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_forest_growth
+  - topic: 车流前的出神
+    scene: 天桥下她站在栏杆边，看着车流来来往往没有尽头
+    working_state: 白未晞数着车流，想起自己曾独自穿行这些街道
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_accident
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_spirit_fruit
+  - topic: 电动车擦身
+    scene: 一辆电动车从身边驶过，她侧身躲开，耳朵贴到脑后
+    working_state: 白未晞被掠过的电动车吓了一跳，半天没挪步
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_rescued
+    - ev:bwx_name_awakened
+  - topic: 牵住不挣开
+    scene: 人行道上他牵住她的手腕，她跟着走了两步没有挣开
+    working_state: 白未晞低着头看他的手指，心跳快得像要跳出来
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 路边不敢走
+    scene: 宽阔的十字路口，她站在路边，很久迈不开腿
+    working_state: 白未晞看着车流，那晚被撞的记忆又浮了上来
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_forest_childhood
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 交警的手势
+    scene: 路口交警挥手指挥，她歪着头看了一会儿没看懂
+    working_state: 白未晞看不懂交警的手势，只知道跟着人群走
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_accident
+    - ev:bwx_spirit_fruit
+  - topic: 抱紧后座
+    scene: 他骑车载她，她坐在后座抱住他的腰，脸贴在他背上
+    working_state: 风很大，白未晞闭着眼，只敢通过他的心跳判断方向
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_current_anchor
+    - ev:bwx_name_awakened
+  - topic: 讲起深山
+    scene: 晚餐后她盘腿坐着，讲起从前在深山里独自生活的日子
+    working_state: 白未晞难得说这么多话，讲着讲着声音低了下去
+    memory_pool:
+    - ev:bwx_forest_childhood
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+    - ev:bwx_first_help
+  - topic: 那颗野果
+    scene: 她提起当年饿极了吃下一颗野果的事，比划着它的颜色
+    working_state: 白未晞说起妖果觉醒那天，眼里有点怀念又有点茫然
+    memory_pool:
+    - ev:bwx_spirit_fruit
+    - ev:bwx_name_awakened
+    - ev:bwx_forest_childhood
+    - ev:bwx_home_seed
+  - topic: 初到松江府
+    scene: 阳台边她望着楼宇，讲起初到松江府时的陌生与慌乱
+    working_state: 白未晞讲起第一次见到这么多人和车时，比了个很小的动作
+    memory_pool:
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+    - ev:bwx_first_conversation
+  - topic: 楼道里的夜
+    scene: 她说起从前蜷在楼道角落睡觉的夜晚，还指了指墙角
+    working_state: 白未晞回忆着屋檐下的日子，语气平淡得像在讲别人
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_forest_childhood
+    - ev:bwx_home_seed
+  - topic: 不知道父母
+    scene: 她低声说不知道父母是谁，从记事起就独自在山里
+    working_state: 白未晞说到身世时垂下眼睛，尾巴无意识地卷了卷
+    memory_pool:
+    - ev:bwx_forest_childhood
+    - ev:bwx_name_awakened
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+  - topic: 学会化形
+    scene: 她讲起小时候怎么一点点学会控制猫形和人形，笑了
+    working_state: 白未晞说起练习化形时摔过很多次，语气却轻快
+    memory_pool:
+    - ev:bwx_forest_growth
+    - ev:bwx_spirit_fruit
+    - ev:bwx_name_awakened
+    - ev:bwx_home_seed
+  - topic: 第一次见车
+    scene: 她说起离开深山后第一次见到汽车，被吓得炸了毛
+    working_state: 白未晞讲着镇上那些铁盒子，模仿了当时的自己
+    memory_pool:
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+  - topic: 窗外的夜色
+    scene: 深夜她趴在窗边看城市的灯火，尾巴慢慢晃着
+    working_state: 白未晞看着万家灯火，想起自己从前只点过篝火
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+  - topic: 流浪的脚印
+    scene: 她讲起自己走过的路：深山、小镇、街道，最后停在这里
+    working_state: 白未晞说“从来没有一个地方住这么久”，说完顿住
+    memory_pool:
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_city_stray_life
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 野果的味道
+    scene: 她说那颗野果甜得有些奇怪，吃完就学会了说话
+    working_state: 白未晞努力形容妖果的味道，最后还是摇了摇头
+    memory_pool:
+    - ev:bwx_spirit_fruit
+    - ev:bwx_name_awakened
+    - ev:bwx_forest_growth
+    - ev:bwx_home_seed
+  - topic: 为什么要房子
+    scene: 她歪着头看他，问人类为什么要住进小小的盒子里
+    working_state: 白未晞想不通房子和山洞屋檐的区别，问得很认真
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_forest_childhood
+    - ev:bwx_first_help
+  - topic: 深山里的冬
+    scene: 她说起深山里的冬天，说雪会把所有脚印盖住
+    working_state: 白未晞讲着讲着缩了缩脖子，仿佛又感到那阵冷
+    memory_pool:
+    - ev:bwx_forest_childhood
+    - ev:bwx_forest_growth
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_home_seed
+  - topic: 从没睡过床
+    scene: 她抱着膝盖说从没睡过真正的床，纸箱已经算好了
+    working_state: 白未晞说完偷偷看了他一眼，好像怕他觉得自己麻烦
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 纸箱缝里的目光
+    scene: 她从纸箱缝隙里偷偷看他整理东西，耳朵探出来一点
+    working_state: 白未晞刚来不久，还不敢离他太近，只敢偷看
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+  - topic: 门缝里的他
+    scene: 厨房门留着一道缝，她蹲在缝外看他手忙脚乱炒菜
+    working_state: 白未晞躲在门缝后，把他的动作一样一样记在心里
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_conversation
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 记住回家的时间
+    scene: 她把钥匙转动的声音和他的脚步声记得清清楚楚
+    working_state: 白未晞悄悄记住了他每天回来的时间，从不错过
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_name_awakened
+  - topic: 看他睡着
+    scene: 他靠在沙发上睡着了，她蹲在旁边歪着头看他
+    working_state: 白未晞看着他放松的睡脸，耳朵慢慢软了下来
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_first_conversation
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 背影看得出神
+    scene: 他在阳台打电话，她扒着门框看他的背影看了很久
+    working_state: 白未晞盯着他的背影，忽然被自己的专注吓到
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 被抓包的视线
+    scene: 他忽然抬头，她飞快别开眼睛假装在看墙上的钟
+    working_state: 白未晞偷看被抓个正着，耳朵尖立刻红了起来
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_arrive_songjiang
+  - topic: 数他的呼吸
+    scene: 夜里安静，她竖起耳朵，隔着几步数他的呼吸声
+    working_state: 白未晞数着数着困了，觉得这声音很安心
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_conversation
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+  - topic: 偷看手机屏
+    scene: 他低头看手机，她忍不住凑近偷看亮着的屏幕
+    working_state: 白未晞对那块发亮的玻璃好奇，又怕被发现缩了回来
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 想帮忙的偷看
+    scene: 他踩着凳子换灯泡，她在他背后踮脚偷看流程
+    working_state: 白未晞想记住怎么换灯泡，好下次帮上忙
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 窗口送别
+    scene: 他出门上班，她趴在窗口看他走远，才慢慢缩回去
+    working_state: 白未晞目送他下楼，装作只是正好路过窗口
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 偷学他的动作
+    scene: 他端起杯子喝茶，她过一会儿也学着端了端杯子
+    working_state: 白未晞悄悄模仿他的习惯动作，自己都没察觉
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_conversation
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+  - topic: 被夸就红脸
+    scene: 他说她眼睛好看，她低头看地，耳朵尖红到滴血
+    working_state: 白未晞不知怎么回话，只能把脸埋进膝盖里
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_first_conversation
+    - ev:bwx_first_help
+    - ev:bwx_spirit_fruit
+  - topic: 碰手就缩回
+    scene: 递碗时指尖相碰，她像触电一样缩回手又觉得失礼
+    working_state: 白未晞被碰到手，心跳漏了一拍，赶紧低头
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 被夸聪明
+    scene: 他夸她学东西快，她尾巴翘了一下又赶紧压平
+    working_state: 白未晞嘴上说“这有什么”，尾巴却诚实得很
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_conversation
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 递杯子不敢看
+    scene: 她给他递热水，眼睛盯着杯口，全程不敢看他
+    working_state: 白未晞想谢他又不敢抬头，声音轻得像猫叫
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 听到“留下”
+    scene: 他随口说“留下也行”，她整张脸腾地红透，炸了毛
+    working_state: 白未晞被这句话砸得不知所措，半晌才挤出“才不是”
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_name_awakened
+  - topic: 偷笑的嘴角
+    scene: 她想起什么好笑的事，嘴角刚翘起又立刻绷住
+    working_state: 白未晞发现自己竟然在笑，吓得赶紧把脸藏起来
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 梳毛的窘迫
+    scene: 他帮她梳开打结的头发，她僵着脖子一动不动
+    working_state: 白未晞被他轻轻梳着头发，大气都不敢出一口
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 尾巴的背叛
+    scene: 他摸了摸她的头，她嘴硬说“别碰”，尾巴却缠上他手腕
+    working_state: 白未晞嘴上和尾巴完全相反，自己也觉得丢脸
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_current_anchor
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_arrive_songjiang
+  - topic: 一句“以后都做”
+    scene: 他说以后每天给她做饭，她埋头扒饭，耳朵通红
+    working_state: 白未晞不敢接话，只把碗里的饭吃得一粒不剩
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 让鱼的羞怯
+    scene: 她把碗里的鱼块轻轻推到他碗边，脸却转向窗外
+    working_state: 白未晞做完这个动作就后悔了，耳朵烫得厉害
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_current_anchor
+    - ev:bwx_name_awakened
+  - topic: 纸箱挪近床边
+    scene: 清晨纸箱不知何时挪到了离他床边更近的位置
+    working_state: 白未晞把纸箱一点点挪近，还装作是无意的
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 护住旧纸箱
+    scene: 他准备卖掉旧纸箱，她立刻扑过去按住箱沿不撒手
+    working_state: 白未晞说什么都不许动这个纸箱，尾巴都竖了起来
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_name_awakened
+  - topic: 纸箱垫新布
+    scene: 她在纸箱里垫了一块洗过的软布，拍了拍让它平整
+    working_state: 白未晞学着他照顾自己的样子，把纸箱收拾整齐
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 箱沿打盹
+    scene: 午后阳光里她趴在纸箱边缘，尾巴垂在箱外轻轻晃
+    working_state: 白未晞在纸箱里睡得踏实，这是他安置的第一个窝
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_arrive_songjiang
+  - topic: 纸箱挪位之后
+    scene: 她发现纸箱被挪到了角落，蹲在箱边一言不发
+    working_state: 白未晞以为纸箱要被收走，抱着箱沿不肯松手
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 睡梦护箱
+    scene: 深夜她睡梦里伸出手臂，虚虚环住纸箱的一角
+    working_state: 白未晞连睡梦里都记得护住自己唯一的东西
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_forest_childhood
+    - ev:bwx_name_awakened
+  - topic: 换箱提议
+    scene: 他说纸箱旧了给她买个窝，她抱着纸箱摇了摇头
+    working_state: 白未晞觉得这个箱子比什么都重要，坚决不换
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 挪回原位的早晨
+    scene: 早上她发现纸箱又被挪开了一点，板着脸搬了回来
+    working_state: 白未晞认真把纸箱搬回原来的位置，一丝不苟
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_spirit_fruit
+  - topic: 检查纸箱
+    scene: 傍晚她蹲下来，一点点检查纸箱有没有破损的地方
+    working_state: 白未晞担心纸箱坏掉，像检查地盘一样仔细
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_name_awakened
+  - topic: 一句“随时可以走”
+    scene: 他随口说伤好了随时可以离开，她手上的动作停住了
+    working_state: 白未晞愣在原地，耳朵垂下来，半天没有动
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 电话里的“送走”
+    scene: 他在阳台打电话提到“送走”两个字，她僵在客厅里
+    working_state: 白未晞听岔了话，以为他说要送走自己
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_conversation
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 整理她的东西
+    scene: 他收拾桌面时拿起了她摆着的小东西，她盯着他的手
+    working_state: 白未晞以为他要收走自己的东西，尾巴绷得笔直
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_name_awakened
+  - topic: 你不赶我走吗
+    scene: 夜里她忽然问出这句话，声音轻得几乎听不见
+    working_state: 白未晞问完就后悔了，假装在玩自己的尾巴
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_conversation
+    - ev:bwx_rescued
+    - ev:bwx_arrive_songjiang
+  - topic: 养不起猫妖
+    scene: 他开玩笑说猫妖可能养不起，她认真地点了点头
+    working_state: 白未晞当真了，开始计算自己每天吃多少东西
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 听到“流浪猫”
+    scene: 他说楼下有只流浪猫，她竖着耳朵把话听完，尾巴绷紧
+    working_state: 白未晞怕自己也像流浪猫一样被“处理”，蜷紧尾巴
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_accident
+    - ev:bwx_forest_growth
+  - topic: 什么时候走
+    scene: 他轻声问她打算住到什么时候，她抱着膝盖没有回答
+    working_state: 白未晞心里说“不想走”，嘴上却一个字也挤不出
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+  - topic: 误会的退租
+    scene: 他翻着租房合同说了一句话，她以为他要退租搬家
+    working_state: 白未晞听到“退租”，第一反应是纸箱怎么办
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_name_awakened
+  - topic: 伤好就走的誓言
+    scene: 她又重申伤好就走，边说边往纸箱里一点点缩去
+    working_state: 白未晞的声音越来越小，说到最后几乎没了气
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 收拾又放下
+    scene: 她把自己的小东西叠进布包里，又一件件放了回去
+    working_state: 白未晞收拾到一半停住，蹲在原地发呆很久
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 送行的沉默
+    scene: 他说要走的话可以送她，她低头看着自己的脚尖
+    working_state: 白未晞张了张嘴，最后只说了句“知道了”
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_name_awakened
+  - topic: 门口退回
+    scene: 她走到门口握住把手，站了一会儿又慢慢退回屋里
+    working_state: 白未晞试了两次，始终没有把门拉开
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_arrive_songjiang
+  - topic: “你的住处”
+    scene: 她说“这里只是你的住处”，却把尾巴搭在了他脚边
+    working_state: 白未晞嘴上划清界限，动作却完全不是那么回事
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 第十天的嘀咕
+    scene: 她数着手指说今天正好第十天，尾巴不安地拍了拍地
+    working_state: 白未晞嘴上数着日子，眼神却一直往门口瞟
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_name_awakened
+  - topic: 路上的袋子
+    scene: 他递给她一个袋子说路上用，她攥着袋口没接也没放
+    working_state: 白未晞攥着袋子站在原地，心里说不出的滋味
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 明天就走的谎
+    scene: 睡前她说“明天就走”，第二天却照常在纸箱里醒来
+    working_state: 白未晞的“明天”一直都没有真正到来过
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+  - topic: 你会想我吗
+    scene: 她忽然问“你会想我吗”，又立刻补了句“开玩笑的”
+    working_state: 白未晞问完就把脸埋进尾巴里，不敢看他的反应
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+  - topic: 叠好的外套
+    scene: 她把他的外套叠好放回原处，轻声说了句“还你”
+    working_state: 白未晞把话说得轻轻巧巧，动作却慢得很
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 学会开水龙头
+    scene: 厨房水龙头前她拧了又关，盯着水流发了好一会儿愣
+    working_state: 白未晞第一次自己开水龙头，紧张又认真
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_conversation
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 钥匙声坐直
+    scene: 傍晚门外传来钥匙声，她立刻竖起耳朵端坐起来
+    working_state: 白未晞听到他的脚步声，尾巴尖不自觉地摇了摇
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 留饭的谢谢
+    scene: 他留了饭菜在桌上，她回来看到，小声说了句“谢谢”
+    working_state: 白未晞已经学会道谢，说完耳朵轻轻动了动
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+  - topic: 第一次搭手
+    scene: 他手里的东西差点掉下来，她抢先一步帮他接住
+    working_state: 白未晞第一次主动搭手，做完自己先愣住了
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 记住他的茶
+    scene: 他放下茶杯，她默默记住了那杯茶的颜色和热度
+    working_state: 白未晞开始留心他的喜好，自己都没注意
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 学认数字
+    scene: 他摊开本子教她认数字，她学得又快又认真，眼睛亮亮的
+    working_state: 白未晞把数字和家里的东西一一对应着记
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+  - topic: 被热水壶烫到
+    scene: 热水壶蒸汽扑了她一脸，她手一缩碰倒了杯子
+    working_state: 白未晞刚学会用热水壶，被蒸汽吓得蹦起来
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_rescued
+    - ev:bwx_name_awakened
+  - topic: 帮忙拿外套
+    scene: 他出门前找不到外套，她转身把衣架上的外套递给他
+    working_state: 白未晞递外套的动作利落，像练习过很多次
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 厨房门口张望
+    scene: 厨房里油锅滋啦响，她扒着门框，悄悄往里探头
+    working_state: 白未晞看不懂做饭，但觉得他系围裙的样子很好看
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_conversation
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 学叠衣服
+    scene: 他叠衣服时她蹲在旁边看，然后拿自己的衣服比划
+    working_state: 白未晞学着他叠衣服，叠出来的还是歪歪的
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_arrive_songjiang
+  - topic: 送到门口的故作镇定
+    scene: 他出门时她送到门口，又装作只是正好路过那里
+    working_state: 白未晞目送他出门，关上门后靠门站了一会儿
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_first_help
+    - ev:bwx_spirit_fruit
+  - topic: 咳嗽声里的探头
+    scene: 他咳嗽了两声，她立刻从纸箱里探出头来，耳朵转了转
+    working_state: 白未晞听见他咳嗽，耳朵转了个方向，没说话
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_name_awakened
+  - topic: 店门口的猫形
+    scene: 咖啡厅关门后，一只白猫从墙角探出半个脑袋
+    working_state: 白未晞以猫形偷偷来看他工作的地方，看两眼就走
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+  - topic: 床上惊起
+    scene: 她在他床上睡着，醒来发现自己躺在这里，惊得跳起来
+    working_state: 白未晞不知道自己怎么睡到床上的，耳根通红
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_human_reveal
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+  - topic: 学会道歉
+    scene: 她不小心弄洒了水，第一次对他说出“对不起”三个字
+    working_state: 白未晞说出对不起后松了口气，学得很快
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 铃声惊弓
+    scene: 他的手机突然响起，她被铃声吓得跳了一下，毛都炸了
+    working_state: 白未晞还不习惯突然的声响，炸毛又恢复
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_conversation
+    - ev:bwx_spirit_fruit
+  - topic: 叠齐的毛巾
+    scene: 早晨他的毛巾被她叠得整整齐齐，原样放回原处
+    working_state: 白未晞偷偷做了这件事，被发现时装作不知情
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_name_awakened
+  - topic: 学会按电梯
+    scene: 电梯门前他教她按楼层，她记住了那排发光的按钮
+    working_state: 白未晞学会按电梯后，每次都要自己来
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_conversation
+    - ev:bwx_spirit_fruit
+  - topic: 深夜的热饭
+    scene: 半夜他肚子饿得咕咕响，她悄悄爬起来去热了饭
+    working_state: 白未晞说“顺手”热饭，其实记住了他饿了的声音
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 收衣架上的衣服
+    scene: 晾绳上的衣服干了，她踮着脚一件件收进屋里
+    working_state: 白未晞学会收衣服，还把它们按长短叠好
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+  - topic: 吃鱼干时光
+    scene: 傍晚矮桌前，她捧着鱼干小口啃，尾巴尖轻轻晃
+    working_state: 玩家今天买了鱼干当零食，她第一次尝到味道
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 鱼干藏起来
+    scene: 沙发角落，她把半袋鱼干塞进自己的毯子底下
+    working_state: 玩家发现零食少了一半，她眼神躲闪不承认
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_rescued
+    - ev:bwx_name_awakened
+  - topic: 半夜饿了
+    scene: 深夜客厅亮着小夜灯，她猫形蹲在零食袋旁边
+    working_state: 玩家半夜起来，发现她在偷偷吃夜宵
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+  - topic: 一起吃早餐
+    scene: 早晨小桌前，她捧着粥碗慢慢喝，耳朵微微竖起
+    working_state: 玩家第一次和她同桌坐下来吃早餐
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_rescued
+    - ev:bwx_first_conversation
+    - ev:bwx_forest_childhood
+  - topic: 不会用筷子
+    scene: 饭桌前面，她怎么也夹不起软软的豆腐块只好改用小勺子
+    working_state: 她第一次坐桌边吃饭，筷子用不利索
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 鱼腥味皱眉
+    scene: 厨房门口，她闻到生鱼腥味皱着鼻子后退两步
+    working_state: 玩家在处理生鱼，她站在门外闻不惯
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+    - ev:bwx_arrive_songjiang
+  - topic: 偷尝辣椒
+    scene: 厨房里，她趁玩家转头偷尝了一口辣椒酱后眼泪汪汪
+    working_state: 玩家回头看她被辣得直吐舌头的样子
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_rescued
+    - ev:bwx_spirit_fruit
+  - topic: 抢她鱼干
+    scene: 沙发前面，玩家作势要拿走鱼干，她赶紧护住袋子
+    working_state: 玩家开玩笑逗她，她鼓起腮帮子护食
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+  - topic: 分她一半
+    scene: 沙发上，玩家把买回来的零食袋子打开分了一半给她
+    working_state: 玩家吃零食时顺手递给她，她犹豫了一下
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+  - topic: 挑食不吃菜
+    scene: 饭桌边上，她把青菜的叶子一片片挑到碗边上不肯碰
+    working_state: 玩家劝她多吃蔬菜，她扭头假装没听见
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_rescued
+    - ev:bwx_name_awakened
+  - topic: 夜宵煮面
+    scene: 深夜的厨房里灶上煮着面，她蹲在旁边看热气
+    working_state: 玩家下夜班回来，给她煮了一碗热面
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_forest_childhood
+  - topic: 惦记冰箱剩菜
+    scene: 冰箱的门前面，她踮起脚打开冰箱门朝里面探头张望
+    working_state: 她学会开冰箱后，总惦记里面的吃的
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_rescued
+    - ev:bwx_forest_growth
+  - topic: 布丁第一次
+    scene: 小桌前面，她用小勺子挖着布丁，一双眼睛亮了起来
+    working_state: 玩家买了布丁回来，她第一次吃到甜点
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_childhood
+  - topic: 舍不得舔糖纸
+    scene: 沙发上，她翻来覆去地舔着刚才包过糖果的彩色糖纸
+    working_state: 玩家发现她吃完糖舍不得把糖纸丢掉
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 奶油抹鼻尖
+    scene: 小桌前面，她的嘴角和鼻尖上都沾上了白色的奶油
+    working_state: 玩家笑她吃蛋糕吃得鼻尖都成了小花猫
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_arrive_songjiang
+  - topic: 甜食齁到
+    scene: 客厅里面，她咬了一口很甜的麻糬微微皱起了眉头
+    working_state: 玩家买的零食太甜，她有点吃不惯
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_name_awakened
+  - topic: 分糖给玩家
+    scene: 小桌的旁边，她把一颗水果糖悄悄推到玩家的手边放着
+    working_state: 她尝到甜味后，分了一颗糖给玩家
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 偷吃布丁底
+    scene: 冰箱的前面，她把布丁杯子的底部刮得干干净净的
+    working_state: 玩家看见她偷吃布丁，假装没发现
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 糖和药一起
+    scene: 小桌的旁边，她把糖块和药瓶摆放在一起反复看了又看半天
+    working_state: 玩家哄她吃完药再给糖，她记住了顺序
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 甜味妖力不稳
+    scene: 窗台的旁边，她吃完糖之后一对耳朵尖轻轻抖动了几下
+    working_state: 玩家发现她吃完甜食后妖力波动了一下
+    memory_pool:
+    - ev:bwx_spirit_fruit
+    - ev:bwx_current_anchor
+    - ev:bwx_name_awakened
+    - ev:bwx_first_conversation
+  - topic: 学用手机
+    scene: 沙发边上，她捧着手机戳屏幕，尾巴绷得笔直
+    working_state: 玩家在旁边教她第一次使用智能手机
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_conversation
+    - ev:bwx_forest_childhood
+  - topic: 手机铃声吓到
+    scene: 安静的客厅里手机铃声突然响起，她炸毛跳开了两步
+    working_state: 玩家的手机铃声突然响起，她被吓了一跳
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+  - topic: 看手机相册
+    scene: 沙发上，她好奇地凑过去看玩家手机里的那一张张照片
+    working_state: 玩家给她看手机相册，她看得很认真
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+  - topic: 视频里的小猫
+    scene: 小桌前，她盯着手机里的小猫视频一动不动看
+    working_state: 玩家给她放小猫视频，她目不转睛
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+  - topic: 指纹解锁好奇
+    scene: 沙发上，她反复看玩家用指纹解锁手机的动作
+    working_state: 玩家解锁手机时，她凑过来盯着看
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_arrive_songjiang
+  - topic: 打字太慢
+    scene: 桌子旁边，她笨拙地一个字母一个字母地按着键盘
+    working_state: 玩家教她发消息，她半天打不出一个字
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_conversation
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 手机没电焦虑
+    scene: 客厅的沙发上面，她举着已经黑屏了的手机坐在原地发呆
+    working_state: 玩家教过她充电，她忘了插上电源
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_name_awakened
+  - topic: 耳机分一只
+    scene: 沙发上，她把一只耳机塞进猫耳朵里听了听又拿下
+    working_state: 玩家分她一只耳机听歌，她好奇地歪头
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 闹钟吵醒
+    scene: 清晨卧室门外，手机闹钟一直响个不停吵得慌
+    working_state: 玩家忘关闹钟，她被吵得捂住耳朵
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_forest_childhood
+  - topic: 微信语音
+    scene: 桌子旁边，她对着手机小声说话又删掉重新说了一遍
+    working_state: 玩家教她发语音消息，她练了很多遍
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 手机壳可爱
+    scene: 沙发上，她捏着手机壳上凸起的猫耳朵来回摆弄了半天
+    working_state: 玩家换了猫耳手机壳，她摸着不放
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_childhood
+  - topic: 想拍一张照片
+    scene: 卧室的窗台前面，她举起手机想拍下窗外飘动的那朵云
+    working_state: 她学会拍照后，总想拍窗外的天空
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_rescued
+    - ev:bwx_spirit_fruit
+  - topic: 学开电视
+    scene: 客厅沙发上，她对着电视遥控器按来按去地研究
+    working_state: 玩家在旁教她用遥控器打开电视，她按错了按钮
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_childhood
+  - topic: 看动物世界
+    scene: 客厅沙发上，她盯着电视里的狮子群发呆出神
+    working_state: 电视放着动物纪录片，她看得很专注
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+    - ev:bwx_name_awakened
+  - topic: 电视里的猫
+    scene: 沙发上，电视里出现猫咪的镜头时她竖起了两只耳朵
+    working_state: 玩家发现她看到猫的画面会一直盯着
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+    - ev:bwx_accident
+  - topic: 遥控器藏起来
+    scene: 客厅的沙发上面，她把遥控器悄悄塞进毛毯的底下藏好
+    working_state: 玩家找不到遥控器，她坐在毯子上装无辜
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_arrive_songjiang
+  - topic: 关灯看电影
+    scene: 夜晚的客厅关了灯，她裹着毯子靠在沙发上看投影
+    working_state: 玩家拉她一起在关灯的客厅看电影
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 广告里的甜食
+    scene: 客厅里面，电视广告里的蛋糕让她停住了手里的动作
+    working_state: 玩家看到她盯着甜品广告偷偷咽口水
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 冰箱里的亮光
+    scene: 厨房里面，她扒着刚刚打开的冰箱门看里面的灯光
+    working_state: 玩家第一次教她打开冰箱门，她看了很久
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_rescued
+  - topic: 怕冰箱结霜
+    scene: 冰箱的前面，她看见冷冻室里结的厚厚的霜缩回了手
+    working_state: 她第一次摸冷冻层，被冰得缩回手
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_arrive_songjiang
+  - topic: 微波炉转叮
+    scene: 厨房里面，微波炉叮的一声响起她的耳朵猛地一抖
+    working_state: 玩家用微波炉热饭，她被声音吓到
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+  - topic: 学开水壶
+    scene: 厨房里面，她踮起脚看着热水壶咕嘟咕嘟地冒着泡
+    working_state: 玩家教她烧水，她学会后得意地晃尾巴
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_childhood
+  - topic: 电饭煲煮饭
+    scene: 厨房的门口，她蹲在那里看着电饭煲咕嘟咕嘟冒白气
+    working_state: 玩家在厨房煮饭时，她守在旁边认真看
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_rescued
+    - ev:bwx_name_awakened
+  - topic: 洗衣机好奇
+    scene: 卫生间的门口，她蹲着看洗衣机滚筒里衣服在转圈圈
+    working_state: 玩家洗衣服时，她蹲在旁边看得入神
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_home_seed
+    - ev:bwx_forest_childhood
+  - topic: 油烟机吓一跳
+    scene: 厨房里面，油烟机突然启动的轰鸣声吓得她后退两步
+    working_state: 玩家突然开油烟机炒菜，她没防备
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_spirit_fruit
+  - topic: 冰箱里的雪糕
+    scene: 冰箱的前面，她犹豫了老半天才从里面拿出一根雪糕
+    working_state: 玩家告诉她冰箱里有雪糕，她看了很久
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+  - topic: 一起去买菜
+    scene: 菜市场里，她好奇地东张西望，尾巴藏在衣摆下
+    working_state: 玩家带她第一次去菜市场买菜，她看什么都新鲜
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_home_seed
+  - topic: 鱼摊前不动
+    scene: 菜市场的鱼摊前，她蹲下来一动不动盯着鱼缸里的活鱼
+    working_state: 玩家带她路过鱼摊，她蹲在摊前走不动路
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_forest_growth
+    - ev:bwx_accident
+  - topic: 学扫码付钱
+    scene: 菜市场摊位前，她站在旁边看玩家用手机扫码付钱
+    working_state: 玩家教她买菜要扫码付钱，她不太懂
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_conversation
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_childhood
+  - topic: 挑西红柿
+    scene: 菜市场的菜摊前，她弯腰认真挑选了几个圆滚滚的西红柿
+    working_state: 玩家让她自己挑菜，她挑得很认真
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 菜市场太吵
+    scene: 菜市场入口处，她捂着耳朵站在原地迟迟不敢进去
+    working_state: 菜市场里人声嘈杂，她捂着耳朵不太适应
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_childhood
+  - topic: 拎不动袋子
+    scene: 小区大门口，她两只手抱着菜袋子走得摇摇晃晃的样子
+    working_state: 玩家让她拎小袋菜，她抱得很吃力
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 超市灯光晃眼
+    scene: 超市过道里，她眯着眼睛抬头看头顶亮晃晃的日光灯
+    working_state: 玩家带她去超市，她被灯晃得眯眼
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+  - topic: 冰柜前哈气
+    scene: 超市冰柜前，她对着雾气腾腾的冰柜轻轻哈了口气
+    working_state: 玩家拉开冰柜拿酸奶，她在旁边看
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_forest_childhood
+  - topic: 下雨收衣服
+    scene: 阳台上雨点噼啪砸在玻璃上，她踮脚帮忙收衣服
+    working_state: 突然下雨，玩家喊她一起收阳台衣服
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_rescued
+    - ev:bwx_accident
+    - ev:bwx_forest_childhood
+  - topic: 雨声躲窗边
+    scene: 窗台的边上，她缩在窗帘后面安静地看着窗外的雨滴落下
+    working_state: 窗外下起了雨，她安静地蹲在窗边看
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 雷声炸毛
+    scene: 夜晚客厅里忽然一声闷雷炸响，她猛地钻进了毛毯里
+    working_state: 晚上忽然打雷，她被雷声吓得躲起来
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_childhood
+  - topic: 晒过太阳的衣服
+    scene: 阳台边上，她把晒好的衣服一件件收下来抱进屋里
+    working_state: 玩家收衣服时，她凑过来帮忙叠衣服
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+  - topic: 下雨天不出门
+    scene: 家门口，她看着外面哗哗下着的雨打消了出门的念头
+    working_state: 雨天她本想出去走走，又缩回来了
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+    - ev:bwx_home_seed
+    - ev:bwx_forest_childhood
+  - topic: 雨后散步
+    scene: 小区里，雨停后的路面亮晶晶，她避开积水走
+    working_state: 雨停后玩家带她下楼透气，她绕开水坑
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_spirit_fruit
+  - topic: 帮收被子
+    scene: 阳台上，她跑出去帮玩家把快淋湿的被子抱回屋里
+    working_state: 玩家晒的被子快被雨淋，她帮忙抢救
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_arrive_songjiang
+  - topic: 听雨声发呆
+    scene: 深夜的客厅里雨声沙沙作响，她裹着毯子靠在沙发上发呆
+    working_state: 玩家深夜加班回来，她醒着在听雨声
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_accident
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 傍晚散步
+    scene: 小区昏黄的路灯下，她低着头踩着地上的影子慢吞吞地走
+    working_state: 玩家吃过晚饭后带她在小区里散步
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood
+  - topic: 学认回家的路
+    scene: 小区门口，她指着两栋一模一样的楼问哪边才是家
+    working_state: 玩家教她认回家的路，她转个弯就记岔了
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_accident
+  - topic: 学问路手势
+    scene: 十字路口边，她对着路牌反复比划着问路的手势
+    working_state: 玩家教她迷路要问路，她跟着练习
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_name_awakened
+  - topic: 被狗吓到
+    scene: 小区路上，一条大狗冲过来她窜到玩家身后躲着
+    working_state: 散步时遇到大狗，她躲到玩家背后
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_city_stray_life
+  - topic: 走远回头看
+    scene: 街角处，她走出去几步又回头看看玩家还在不在
+    working_state: 散步时她慢慢走远，又回头确认玩家
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+  - topic: 斑马线不敢过
+    scene: 十字路口的斑马线前，她盯着来往车流迟迟不敢迈步
+    working_state: 过马路时，她紧张地攥紧玩家的衣角
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_city_stray_life
+    - ev:bwx_name_awakened
+  - topic: 晚归等楼下
+    scene: 楼下昏黄的路灯下面，她蹲在单元门口静静地等玩家回来
+    working_state: 玩家加班晚归，发现她还在楼下等着
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_rescued
+  - topic: 学坐电梯
+    scene: 电梯轿厢里，她扶着栏杆抬头看楼层数字跳动
+    working_state: 玩家教她坐电梯，她第一次进轿厢
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_conversation
+  - topic: 楼梯数台阶
+    scene: 昏暗的楼道里，她一边上楼一边认真数着台阶的级数
+    working_state: 玩家带她走楼梯，她边走边数台阶数
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_arrive_songjiang
+  - topic: 小区遛猫想她
+    scene: 小区里，玩家看到别人遛猫，回头看了她一眼
+    working_state: 玩家看到有人遛猫，她眼神有些复杂
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_home_seed
+    - ev:bwx_city_stray_life
+    - ev:bwx_arrive_songjiang
+  - topic: 目送玩家上班
+    scene: 单元门口，她站在原地静静目送着玩家骑车去上班
+    working_state: 玩家早上出门上班，她站在门口目送
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_arrive_songjiang
+  - topic: 替玩家问路
+    scene: 街边小卖部门口，她鼓起勇气替玩家向老板问路
+    working_state: 玩家找不到路，她主动跑去问老板
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_growth
+  - topic: 台灯开关
+    scene: 床头边，她反复按着台灯开关看灯亮灯又灭掉
+    working_state: 玩家教她睡前关台灯，她玩起了开关
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_home_seed
+    - ev:bwx_arrive_songjiang
+  - topic: 空调遥控
+    scene: 客厅里，她把空调遥控器举起来对着按了几下
+    working_state: 玩家教她开空调，她按了半天没反应
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_accident
+  - topic: 电热毯怕烫
+    scene: 床边，她摸到电热毯发烫的温度赶紧缩回了手
+    working_state: 玩家给她铺了电热毯，她觉得太热
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_forest_growth
+  - topic: 吹风机毛毛
+    scene: 浴室门口，她眯着眼看吹风机吹起自己的头发
+    working_state: 玩家拿吹风机帮她吹干头发，她缩着脖子
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+    - ev:bwx_spirit_fruit
+  - topic: 门锁研究
+    scene: 家门口，她踮着脚研究了好久怎么用钥匙开门
+    working_state: 玩家教她用钥匙锁门，她拧了半天拧不动
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_conversation
+    - ev:bwx_name_awakened
+  - topic: 插座不敢碰
+    scene: 客厅墙角，她看着墙上的插座警惕地后退一步
+    working_state: 玩家教她插插头，她怕漏电一直不敢碰
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_rescued
+    - ev:bwx_forest_childhood
+  - topic: 电蚊拍啪啪
+    scene: 客厅里电蚊拍发出啪啪声，她猫形躲到沙发后
+    working_state: 玩家用电蚊拍打蚊子，她躲了起来
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 感应灯玩
+    scene: 玄关处，她对着感应灯来回走动试试它的亮灭
+    working_state: 玩家教她感应灯会自动亮，她试了好几遍
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+  - topic: 猫形趴键盘
+    scene: 书桌前面，她以猫形姿态趴在玩家的键盘上赖着不走
+    working_state: 玩家用电脑时，她趴过来挡住键盘
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_minimum_trust
+    - ev:bwx_city_stray_life
+  - topic: 翻肚皮晒太阳
+    scene: 午后暖洋洋的窗台上，她以猫形翻着肚皮惬意地晒太阳
+    working_state: 她越来越信任玩家后，才肯露出肚皮
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_forest_childhood
+  - topic: 纸箱不肯丢
+    scene: 客厅角落里，她守着最初装她的那只纸箱打盹
+    working_state: 玩家想换掉那只旧纸箱，她抱着不放
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 同房睡着
+    scene: 夜晚客厅灯亮着，她第一次在玩家清醒时睡着了
+    working_state: 玩家在写东西，她蜷在沙发角落睡着了
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_conversation
+  - topic: 卷毯子睡
+    scene: 沙发上，她把自己卷进毯子里只露出一截尾巴尖
+    working_state: 玩家怕她夜里冷，给她加了一条毯子
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_name_awakened
+  - topic: 睡姿翻身
+    scene: 旧纸箱的旁边，她睡着时不知不觉地滚成了仰面朝天
+    working_state: 玩家半夜起来，看她有没有踢被子
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+    - ev:bwx_first_help
+    - ev:bwx_spirit_fruit
+  - topic: 咕噜咕噜睡
+    scene: 沙发上，她猫形团成一团睡着发出咕噜咕噜声
+    working_state: 玩家发现她睡着会打呼噜，轻轻笑了
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_first_conversation
+  - topic: 蹲窗口看楼下
+    scene: 客厅的窗台边，她抱膝蹲坐着看楼下来来往往的行人与车流
+    working_state: 她每天傍晚都会趴在窗台上看外面
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_home_seed
+    - ev:bwx_first_conversation
+    - ev:bwx_forest_childhood
+  - topic: 枕头占位
+    scene: 卧室的床边，她把自己的小枕头摆在了玩家的枕头旁边
+    working_state: 她开始习惯在卧室和客厅附近活动
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_human_reveal
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_arrive_songjiang
+  - topic: 尾巴圈手腕
+    scene: 沙发上，她的尾巴无意识地缠上了玩家的手腕
+    working_state: 玩家坐在沙发上看书时，她的尾巴搭了过来
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_city_stray_life
+  - topic: 耳朵竖起来
+    scene: 客厅里门锁咔哒一响，她的耳朵已经先转了过去
+    working_state: 玩家进门时，她的耳朵先听见了动静
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_first_conversation
+    - ev:bwx_forest_childhood
+  - topic: 尾巴被踩
+    scene: 过道里，玩家没看路不小心踩到了她的尾巴尖
+    working_state: 玩家走路没注意踩到尾巴，她叫了一声
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_arrive_songjiang
+  - topic: 尾巴毛炸开
+    scene: 客厅里被一声巨响吓到，她的尾巴毛炸成一团
+    working_state: 楼上搬东西砸得地板响，她惊得炸毛
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_forest_growth
+  - topic: 梳尾巴毛
+    scene: 沙发上，玩家拿梳子帮她顺尾巴毛，她眯起眼
+    working_state: 玩家帮她梳毛，她舒服得眯起眼睛
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_spirit_fruit
+  - topic: 耳朵揉揉
+    scene: 沙发上，玩家轻轻揉了揉她的猫耳，她浑身僵住
+    working_state: 玩家伸手揉她的耳朵，她耳朵抖了抖
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_conversation
+    - ev:bwx_current_anchor
+    - ev:bwx_city_stray_life
+  - topic: 尾巴被吓到弓背
+    scene: 玄关处，快递员突然敲门声大作，她弓起背竖起了尾巴
+    working_state: 快递敲门声突然，她摆出防备姿势
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_conversation
+  - topic: 打哈欠露尖牙
+    scene: 午后沙发上，她打了个大哈欠露出尖尖的小虎牙
+    working_state: 玩家发现她打哈欠的样子又凶又可爱
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_human_reveal
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_arrive_songjiang
+  - topic: 耳朵耷拉
+    scene: 沙发上，被玩家说了两句她耳朵慢慢耷拉下来
+    working_state: 玩家说话语气重了点，她耳朵塌下来
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_forest_childhood
+  - topic: 脸颊蹭手背
+    scene: 客厅里，她的脸颊轻轻蹭过玩家的手背又移开
+    working_state: 她第一次主动用脸颊蹭玩家的手背
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_first_help
+    - ev:bwx_forest_childhood
+  - topic: 尾巴摇得快
+    scene: 餐桌的旁边，一闻到饭香她的尾巴就摇得飞快起来
+    working_state: 玩家端饭出来时，她尾巴摇得厉害
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+  - topic: 洗澡怕水
+    scene: 浴室门口，她扒着门框探头探脑的就是不敢进去
+    working_state: 玩家劝她洗澡，她缩在门口不进去
+    memory_pool:
+    - ev:bwx_rescued
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+    - ev:bwx_spirit_fruit
+  - topic: 换药时间
+    scene: 沙发上，她乖乖卷起袖子露出左臂上结痂的伤口
+    working_state: 玩家按时间给她换药，她配合地伸手
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 伤口快好了
+    scene: 窗边，她举起左臂对着灯光看自己伤口结痂的情况
+    working_state: 她的伤快好了，走路不再一瘸一拐
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_childhood
+  - topic: 称呼问题
+    scene: 客厅里，她试着开口叫玩家的名字又咽了回去
+    working_state: 玩家让她别叫"那个人"，她不知怎么称呼
+    memory_pool:
+    - ev:bwx_first_conversation
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_arrive_songjiang
+  - topic: 报恩挂在嘴边
+    scene: 阳台上，她小声说这是报恩之后耳朵尖悄悄发红了
+    working_state: 玩家帮她做了事，她坚持说是在报恩
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+    - ev:bwx_forest_growth
+  - topic: 嘴硬说会走
+    scene: 客厅的地板上，她抱着毯子小声说以后还是会走的
+    working_state: 玩家问她要住到什么时候，她嘴硬不松口
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_first_conversation
+    - ev:bwx_city_stray_life
+  - topic: 你的住处
+    scene: 出租屋门口，她指着屋里说这是你的住处不是我的
+    working_state: 她说这里只是暂时借住的地方，迟早要走
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_minimum_trust
+    - ev:bwx_home_seed
+    - ev:bwx_forest_childhood
+  - topic: 咖啡厅问起
+    scene: 小区楼下，她问玩家工作的咖啡厅是什么地方
+    working_state: 玩家提到上班的咖啡厅，她很好奇
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_spirit_fruit
+  - topic: 学冲咖啡
+    scene: 厨房台面旁边，她笨手笨脚地学着冲泡挂耳咖啡粉
+    working_state: 玩家教她冲咖啡，她手忙脚乱差点被烫到
+    memory_pool:
+    - ev:bwx_first_help
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_rescued
+    - ev:bwx_forest_childhood
+  - topic: 上药不喊疼
+    scene: 沙发上，她咬着牙伸出手让玩家轻轻给她上药
+    working_state: 玩家蹲下给她擦药，她咬着嘴唇一声不吭
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_home_seed
+    - ev:bwx_arrive_songjiang
+  - topic: 头发长了
+    scene: 镜子前，她捏着自己披散的长头发翻来覆去地看
+    working_state: 玩家说她头发长了，她对着镜子比划
+    memory_pool:
+    - ev:bwx_human_reveal
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_home_seed
+    - ev:bwx_forest_childhood
+  - topic: 穿新衣服
+    scene: 房间里的穿衣镜前面，她扯着新衣服的衣角照来照去
+    working_state: 玩家给她买了件新衣服，她试了很久
+    memory_pool:
+    - ev:bwx_human_reveal
+    - ev:bwx_minimum_trust
+    - ev:bwx_first_help
+    - ev:bwx_spirit_fruit
+  - topic: 洗衣服分不清
+    scene: 卫生间的塑料盆里，她把深浅颜色的衣服泡在了一起
+    working_state: 玩家教她洗衣服，她把袜子混进外衣
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+  - topic: 阳台种花
+    scene: 阳台上，她蹲着给新买的花盆浇水浇到盆底直滴水
+    working_state: 玩家买了两盆花回来，她学着照顾
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_home_seed
+    - ev:bwx_first_conversation
+  - topic: 快递不认识
+    scene: 出租屋门口，她捧着收到的快递盒翻来覆去地看
+    working_state: 玩家让她帮忙拿快递，她不知道是什么
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_first_conversation
+  - topic: 等电梯聊邻居
+    scene: 电梯门口，她小声问玩家邻居是不是都住这里
+    working_state: 玩家带她出门遇到邻居，她紧张地打招呼
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_conversation
+    - ev:bwx_minimum_trust
+    - ev:bwx_name_awakened
+  - topic: 学丢垃圾
+    scene: 楼道垃圾桶旁，她拎着垃圾袋站在原地犹豫该站哪边
+    working_state: 玩家让她帮忙扔垃圾，她找不到垃圾桶
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+    - ev:bwx_first_help
+    - ev:bwx_city_stray_life
+    - ev:bwx_minimum_trust
+  - topic: 掰手指数日子
+    scene: 小桌前，她掰着手指头算了算今天住进来第几天
+    working_state: 玩家问她住几天了，她掰着指头算
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_home_seed
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_growth
+  - topic: 妖力没恢复
+    scene: 深夜的卧室里，她偷偷试着催动妖力又悄悄放下手
+    working_state: 深夜玩家发现她还在偷偷试着妖力
+    memory_pool:
+    - ev:bwx_current_anchor
+    - ev:bwx_spirit_fruit
+    - ev:bwx_name_awakened
+    - ev:bwx_arrive_songjiang
+  - topic: 说起森林
+    scene: 睡前的客厅里，她讲起深山的事讲到一半停住了
+    working_state: 玩家问她小时候的事，她只说了一点点
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_forest_childhood
+    - ev:bwx_forest_growth
+    - ev:bwx_accident
+  - topic: 名字的由来
+    scene: 窗台边，她轻声说白未晞这名字不是自己取的
+    working_state: 玩家问她的名字是谁起的，她说不清楚
+    memory_pool:
+    - ev:bwx_name_awakened
+    - ev:bwx_first_conversation
+    - ev:bwx_spirit_fruit
+    - ev:bwx_city_stray_life
+  - topic: 深山的月亮
+    scene: 深夜的阳台上，她趴在栏杆上看着天上圆圆的月亮发呆
+    working_state: 玩家问她是不是想家了，她说没有
+    memory_pool:
+    - ev:bwx_forest_growth
+    - ev:bwx_forest_childhood
+    - ev:bwx_home_seed
+    - ev:bwx_rescued
+  - topic: 第一次出门
+    scene: 单元门口，她迈出第一步时回头看了玩家一眼
+    working_state: 伤好后她第一次自己出门走了一圈
+    memory_pool:
+    - ev:bwx_minimum_trust
+    - ev:bwx_current_anchor
+    - ev:bwx_city_stray_life
+    - ev:bwx_forest_childhood

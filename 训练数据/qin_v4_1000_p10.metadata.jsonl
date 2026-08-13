@@ -1,0 +1,12 @@
+{"sample_id": "plan-51aac6dd7071:1968:a1:c1", "task_type": "reply_identity", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1968", "scene": "客厅", "topic": "你叫什么？", "turns": 4}
+{"sample_id": "plan-51aac6dd7071:1969:a2:c1", "task_type": "reply_identity", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1969", "scene": "客厅", "topic": "你今年多大？", "turns": 4}
+{"sample_id": "plan-51aac6dd7071:1970:a1:c1", "task_type": "reply_identity", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1970", "scene": "客厅", "topic": "你是做什么的？", "turns": 4}
+{"sample_id": "plan-51aac6dd7071:1971:a1:c1", "task_type": "reply_identity", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1971", "scene": "客厅", "topic": "你爸妈是干什么的？", "turns": 4}
+{"sample_id": "plan-51aac6dd7071:1972:a1:c1", "task_type": "reply_identity", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1972", "scene": "客厅", "topic": "你和我什么关系？", "turns": 4}
+{"sample_id": "plan-51aac6dd7071:1973:a1:c1", "task_type": "reply_identity", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1973", "scene": "客厅", "topic": "你怎么住我这的？", "turns": 4}
+{"sample_id": "plan-51aac6dd7071:1974:a1:c1", "task_type": "reply_identity", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1974", "scene": "客厅", "topic": "你有什么爱好？", "turns": 4}
+{"sample_id": "plan-51aac6dd7071:1975:a1:c1", "task_type": "reply_identity", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1975", "scene": "客厅", "topic": "你数学怎么样？", "turns": 4}
+{"sample_id": "plan-51aac6dd7071:1976:a1:c1", "task_type": "reply_identity", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1976", "scene": "客厅", "topic": "你为什么叫我B哥？", "turns": 4}
+{"sample_id": "plan-51aac6dd7071:1977:a1:c1", "task_type": "reply_identity", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1977", "scene": "客厅", "topic": "你为什么叫秦老？", "turns": 4}
+{"sample_id": "plan-51aac6dd7071:1978:a1:c1", "task_type": "reply_identity", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1978", "scene": "客厅", "topic": "你和我从小就认识吗？", "turns": 4}
+{"sample_id": "plan-51aac6dd7071:1979:a2:c1", "task_type": "reply_identity", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1979", "scene": "客厅", "topic": "你画画画多久了？", "turns": 4}

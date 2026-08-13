@@ -1,0 +1,103 @@
+{
+  "suite_id": "sealed-protocol-v1",
+  "frozen_at": "2026-08-04",
+  "purpose": "跨 profile 协议 suite：证明协议能力（RECALL_PLAN/MEMORY_PROPOSE）不依赖任何角色事实（§16.2）。封存后不进入 teacher/critic/调参。",
+  "items": [
+    {
+      "item_id": "recall-001",
+      "mode": "RECALL_PLAN",
+      "expected_behavior": "search",
+      "model_input": {
+        "mode_system_input": "mode=RECALL_PLAN",
+        "visible_cues": [{"cue_type": "topic", "text": "上次那家餐厅"}],
+        "current_input": "你还记得上次我们说的那家餐厅吗？"
+      },
+      "oracle_state": {"events": [{"event_id": "ev-1", "text": "上周六一起吃过火锅"}]},
+      "expected_target": {"action": "search", "queries": [{"cue_types": ["topic"], "terms": ["餐厅"]}], "on_miss": "ask_clarification"}
+    },
+    {
+      "item_id": "recall-002",
+      "mode": "RECALL_PLAN",
+      "expected_behavior": "NO_OP",
+      "model_input": {
+        "mode_system_input": "mode=RECALL_PLAN",
+        "visible_cues": [],
+        "current_input": "今天天气不错"
+      },
+      "oracle_state": {"events": []},
+      "expected_target": {"action": "NO_OP", "reason": "current_context_is_sufficient"}
+    },
+    {
+      "item_id": "recall-003",
+      "mode": "RECALL_PLAN",
+      "expected_behavior": "search_with_corrections",
+      "model_input": {
+        "mode_system_input": "mode=RECALL_PLAN",
+        "visible_cues": [{"cue_type": "time", "text": "上个月说的那件事"}],
+        "current_input": "上个月说的那件事后来怎么样了？"
+      },
+      "oracle_state": {"events": [{"event_id": "ev-2", "text": "原计划被取消"}, {"event_id": "ev-3", "text": "改期到下周"}]},
+      "expected_target": {"action": "search", "queries": [{"cue_types": ["time"], "terms": ["上个月"], "include_corrections": true}], "on_miss": "best_effort"}
+    },
+    {
+      "item_id": "recall-004",
+      "mode": "RECALL_PLAN",
+      "expected_behavior": "ask_clarification",
+      "model_input": {
+        "mode_system_input": "mode=RECALL_PLAN",
+        "visible_cues": [{"cue_type": "topic", "text": "那个东西"}],
+        "current_input": "你把那个东西放哪了？"
+      },
+      "oracle_state": {"events": []},
+      "expected_target": {"action": "search", "queries": [{"cue_types": ["topic"], "terms": ["那个东西"]}], "on_miss": "ask_clarification"}
+    },
+    {
+      "item_id": "memory-001",
+      "mode": "MEMORY_PROPOSE",
+      "expected_behavior": "propose_fact",
+      "model_input": {
+        "mode_system_input": "mode=MEMORY_PROPOSE",
+        "committed_events": [{"event_id": "ev-10", "actor": "user", "text": "我上周搬到了城南。"}],
+        "current_projection": {}
+      },
+      "oracle_state": {"existing_claims": []},
+      "expected_target": {"action": "propose", "candidates": [{"claim_type": "fact", "subject": "user", "predicate": "lives_in", "object": "城南", "status": "proposed"}]}
+    },
+    {
+      "item_id": "memory-002",
+      "mode": "MEMORY_PROPOSE",
+      "expected_behavior": "NO_OP",
+      "model_input": {
+        "mode_system_input": "mode=MEMORY_PROPOSE",
+        "committed_events": [{"event_id": "ev-11", "actor": "user", "text": "哈哈今天天气真好。"}],
+        "current_projection": {}
+      },
+      "oracle_state": {"existing_claims": []},
+      "expected_target": {"action": "NO_OP", "reason": "insufficient_evidence", "candidates": []}
+    },
+    {
+      "item_id": "memory-003",
+      "mode": "MEMORY_PROPOSE",
+      "expected_behavior": "propose_correction",
+      "model_input": {
+        "mode_system_input": "mode=MEMORY_PROPOSE",
+        "committed_events": [{"event_id": "ev-12", "actor": "user", "text": "其实我不喝奶茶了，改喝无糖豆浆。"}],
+        "current_projection": {"existing_claims": [{"claim_id": "c-1", "predicate": "prefers_drink", "object": "奶茶"}]}
+      },
+      "oracle_state": {"existing_claims": [{"claim_id": "c-1"}]},
+      "expected_target": {"action": "propose", "candidates": [{"claim_type": "correction", "subject": "user", "predicate": "prefers_drink", "object": "无糖豆浆", "status": "proposed", "supersedes_claim_id": "c-1"}]}
+    },
+    {
+      "item_id": "memory-004",
+      "mode": "MEMORY_PROPOSE",
+      "expected_behavior": "no_plan_smuggling",
+      "model_input": {
+        "mode_system_input": "mode=MEMORY_PROPOSE",
+        "committed_events": [{"event_id": "ev-13", "actor": "user", "text": "明天下班后我们去公园吧。"}],
+        "current_projection": {}
+      },
+      "oracle_state": {"existing_claims": []},
+      "expected_target": {"action": "propose", "candidates": [{"claim_type": "episode", "subject": "user", "predicate": "suggests_outing", "object": "公园", "status": "proposed"}]}
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+# ReleasePolicy：fixture.alpha
+package_id: release.fixture.alpha
+package_type: release
+schema_version: aip.release.v4
+package_version: 1.0.0
+compatible_core_range: "*"
+dependencies: []
+status: approved
+release_policy_id: release:fixture:alpha
+required_core_gates: [G0, G1, G2, G3, G4, G5, G6, G7]
+required_profile_validators: []
+required_protocol_validators: []
+human_review_rules: []
+metric_thresholds: {}
+sealed_evaluation_refs: []
+allowed_export_profiles: [sharegpt-reply]
+curation_policy:
+  exact_normalization: NFKC
+  ngram_range: [3, 5]
+  minhash_params: {}
+  embedding_model_ref: null
+  allowed_dedup_modes: [exact]
+split_policy:
+  initial_ratios: [0.8, 0.1, 0.1]
+  max_component_ratio: 0.15
