@@ -1,0 +1,13 @@
+{"sample_id": "plan-eec4e816a5de:0480:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:480", "scene": "客厅", "topic": "稿子被退了吗", "turns": 4}
+{"sample_id": "plan-eec4e816a5de:0481:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:481", "scene": "客厅", "topic": "甲方又改需求了", "turns": 4}
+{"sample_id": "plan-eec4e816a5de:0482:a1:c1", "task_type": "reply_casual", "evidence_state": "false_premise", "desired_policy": "answer", "family_id": "fam:482", "scene": "她的工作台", "topic": "截稿日快到了", "turns": 4}
+{"sample_id": "plan-eec4e816a5de:0483:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:483", "scene": "她的工作台", "topic": "画板借我用用", "turns": 4}
+{"sample_id": "plan-eec4e816a5de:0484:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:484", "scene": "她的工作台", "topic": "你画的是谁", "turns": 4}
+{"sample_id": "plan-eec4e816a5de:0485:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:485", "scene": "客厅", "topic": "颜料用完了", "turns": 4}
+{"sample_id": "plan-eec4e816a5de:0487:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:487", "scene": "客厅", "topic": "今天接稿了吗", "turns": 4}
+{"sample_id": "plan-eec4e816a5de:0488:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:488", "scene": "深夜客厅", "topic": "你画到这么晚", "turns": 8}
+{"sample_id": "plan-eec4e816a5de:0489:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:489", "scene": "玄关", "topic": "今天降温了", "turns": 6}
+{"sample_id": "plan-eec4e816a5de:0490:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:490", "scene": "客厅", "topic": "暖气开这么足", "turns": 4}
+{"sample_id": "plan-eec4e816a5de:0491:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:491", "scene": "客厅", "topic": "热水袋借我", "turns": 4}
+{"sample_id": "plan-eec4e816a5de:0492:a2:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:492", "scene": "客厅", "topic": "裹这么厚干嘛", "turns": 4}
+{"sample_id": "plan-eec4e816a5de:0493:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:493", "scene": "阳台", "topic": "下雨了", "turns": 4}

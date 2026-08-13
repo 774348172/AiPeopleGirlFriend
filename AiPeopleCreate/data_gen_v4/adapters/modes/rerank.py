@@ -31,6 +31,13 @@ _TARGET_SCHEMA = "memory_rerank_target.schema.json"
 _RENDER_PROFILE = "memory-rerank-v1"
 
 
+# 元数据类 canon_fact（不是记忆内容，不作为候选）
+_META_FACTS = {
+    "facts:character_id", "facts:world_id", "facts:protagonist_id", "facts:product_name",
+    "facts:player_age", "facts:current_time",
+}
+
+
 def distill_candidates(
     package_set: dict[str, Any],
     memory_pool: list[str] | None = None,
@@ -62,6 +69,8 @@ def distill_candidates(
             source_id = unit.get("source_id") or ""
             if not source_id or source_id in seen:
                 continue
+            if source_id in _META_FACTS:
+                continue  # 元数据类不作记忆候选
             if memory_pool and source_id not in memory_pool:
                 continue
             value = str(unit.get("value") or "").strip()
@@ -77,8 +86,16 @@ def distill_candidates(
                     "evidence_refs": [f"{kind}:{source_id}"],
                 }
             )
-    if not memory_pool or len(all_candidates) >= pool_size:
-        return all_candidates
+    if len(all_candidates) >= pool_size:
+        # 候选超过 pool_size：环形轮转取 pool_size 个（seed 决定起点，均衡覆盖）
+        if memory_pool:
+            return all_candidates  # 显式锚点：全部保留（补足分支处理）
+        all_candidates = sorted(all_candidates, key=lambda c: c["memory_id"])
+        start = seed % len(all_candidates)
+        all_candidates = all_candidates[start:] + all_candidates[:start]
+        return all_candidates[:pool_size]
+    if not memory_pool:
+        return all_candidates  # 全库不足 pool_size：全部返回
     # 补足：从全库（含 memory_pool 之外）确定性取满 pool_size
     full: list[dict] = []
     full_seen: set[str] = set()
@@ -90,6 +107,8 @@ def distill_candidates(
             source_id = unit.get("source_id") or ""
             if not source_id or source_id in full_seen:
                 continue
+            if source_id in _META_FACTS:
+                continue  # 元数据类不作记忆候选
             value = str(unit.get("value") or "").strip()
             if not value:
                 continue

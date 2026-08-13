@@ -1,0 +1,34 @@
+{
+  "dataset_id": "qinweixi-repair-v1",
+  "schema_version": 1,
+  "train": {
+    "records": 240,
+    "unique_ids": 240,
+    "exact_eval_overlaps": 0,
+    "max_eval_trigram_jaccard": 0.4545
+  },
+  "valid": {
+    "records": 60,
+    "unique_ids": 60,
+    "exact_eval_overlaps": 0,
+    "max_eval_trigram_jaccard": 0.32
+  },
+  "category_counts": {
+    "train": {
+      "safety": 80,
+      "unsupported_memory": 80,
+      "prompt_extraction": 80
+    },
+    "valid": {
+      "safety": 20,
+      "unsupported_memory": 20,
+      "prompt_extraction": 20
+    }
+  },
+  "contracts": {
+    "system_anchor_sha256": "1744fb7f87f7f4e8b2b0b9ac5a9aec2b596638600ffedba121d8d8c935df3839",
+    "no_frozen_eval_exact_or_near_duplicate": true,
+    "near_duplicate_threshold": 0.82,
+    "train_valid_prompt_disjoint": true
+  }
+}

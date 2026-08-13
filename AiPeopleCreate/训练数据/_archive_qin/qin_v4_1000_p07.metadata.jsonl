@@ -1,0 +1,7 @@
+{"sample_id": "plan-952d85d2a402:1500:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1500", "scene": "客厅", "topic": "她突然安静了", "turns": 4}
+{"sample_id": "plan-952d85d2a402:1501:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1501", "scene": "客厅", "topic": "朋友圈那个是谁", "turns": 4}
+{"sample_id": "plan-952d85d2a402:1502:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1502", "scene": "客厅", "topic": "同事约你吃饭", "turns": 6}
+{"sample_id": "plan-952d85d2a402:1503:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1503", "scene": "客厅", "topic": "你帮她说话", "turns": 4}
+{"sample_id": "plan-952d85d2a402:1504:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1504", "scene": "客厅", "topic": "我要是跟别人合租呢", "turns": 4}
+{"sample_id": "plan-952d85d2a402:1505:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1505", "scene": "客厅", "topic": "你怎么老看她", "turns": 4}
+{"sample_id": "plan-952d85d2a402:1506:a2:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1506", "scene": "客厅", "topic": "手好烫", "turns": 4}

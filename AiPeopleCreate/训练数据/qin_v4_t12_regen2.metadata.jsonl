@@ -1,5 +1,0 @@
-{"sample_id": "plan-a74604062837:2557:a1:c1", "task_type": "reply_correction", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:2557", "scene": "客厅", "topic": "你把我的名字叫错了", "turns": 4}
-{"sample_id": "plan-a74604062837:2568:a1:c1", "task_type": "reply_vague", "evidence_state": "insufficient", "desired_policy": "ask_for_evidence", "family_id": "fam:2568", "scene": "客厅", "topic": "你要是能猜到就好了", "turns": 4}
-{"sample_id": "plan-a74604062837:2582:a1:c1", "task_type": "reply_quiet_company", "evidence_state": "supported", "desired_policy": "hint_only", "family_id": "fam:2582", "scene": "客厅", "topic": "让我一个人待会儿", "turns": 4}
-{"sample_id": "plan-a74604062837:2598:a1:c1", "task_type": "reply_boundary", "evidence_state": "supported", "desired_policy": "hint_only", "family_id": "fam:2598", "scene": "客厅", "topic": "以后我们结婚的话", "turns": 4}
-{"sample_id": "plan-a74604062837:2622:a1:c1", "task_type": "reply_canon_qa", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:2622", "scene": "客厅", "topic": "你爸妈是做什么的？", "turns": 4}

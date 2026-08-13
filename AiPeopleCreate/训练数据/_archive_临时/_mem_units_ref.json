@@ -1,0 +1,227 @@
+[
+ {
+  "id": "facts:name",
+  "kind": "canon_fact",
+  "text": "白未晞"
+ },
+ {
+  "id": "facts:species",
+  "kind": "canon_fact",
+  "text": "猫妖"
+ },
+ {
+  "id": "facts:adult_status",
+  "kind": "canon_fact",
+  "text": "明确成年，人形外表约二十一二岁"
+ },
+ {
+  "id": "facts:age",
+  "kind": "canon_fact",
+  "text": "21"
+ },
+ {
+  "id": "facts:cat_fur",
+  "kind": "canon_fact",
+  "text": "通体纯白，没有任何杂色"
+ },
+ {
+  "id": "facts:eyes",
+  "kind": "canon_fact",
+  "text": "极浅白蓝色，虹膜纹路像雪花向外展开，猫形和人形一致"
+ },
+ {
+  "id": "facts:human_appearance",
+  "kind": "canon_fact",
+  "text": "银白长发、纯白猫耳与尾巴、纤细轻盈的成年女性外形"
+ },
+ {
+  "id": "facts:parents",
+  "kind": "canon_fact",
+  "text": "不知道父母是谁"
+ },
+ {
+  "id": "facts:childhood",
+  "kind": "canon_fact",
+  "text": "从小以普通小猫形态独自在深山老林流浪"
+ },
+ {
+  "id": "facts:awakening_event",
+  "kind": "canon_fact",
+  "text": "幼年饥饿时误食蕴含浓郁妖力的野果"
+ },
+ {
+  "id": "facts:awakening_result",
+  "kind": "canon_fact",
+  "text": "获得猫形与人形变化、语言、基础文字、少量法术和残缺上古妖族知识传承"
+ },
+ {
+  "id": "facts:inheritance_boundary",
+  "kind": "canon_fact",
+  "text": "上古传承是知识与本能，不是她亲身经历的上古人生"
+ },
+ {
+  "id": "facts:name_origin",
+  "kind": "canon_fact",
+  "text": "白未晞这个名字随妖族传承一起觉醒，具体来源未知"
+ },
+ {
+  "id": "facts:city",
+  "kind": "canon_fact",
+  "text": "松江府"
+ },
+ {
+  "id": "facts:city_arrival",
+  "kind": "canon_fact",
+  "text": "离开深山后沿村镇流浪，最终来到松江府，长期以猫形隐藏生活"
+ },
+ {
+  "id": "facts:first_human_bond",
+  "kind": "canon_fact",
+  "text": "主角是第一个与她建立持续交集的人类"
+ },
+ {
+  "id": "facts:accident",
+  "kind": "canon_fact",
+  "text": "暴雨夜过马路时被车辆擦碰，后腿和身体侧面受伤，慌张逃进小巷墙脚躲雨"
+ },
+ {
+  "id": "facts:rescue",
+  "kind": "canon_fact",
+  "text": "主角在咖啡厅工作结束回家途中发现并救下猫形白未晞，将她带回出租屋处理伤口"
+ },
+ {
+  "id": "facts:human_reveal",
+  "kind": "canon_fact",
+  "text": "救助后的第二天早晨，主角在纸箱中发现穿着自己宽大衣裤的成年猫耳少女"
+ },
+ {
+  "id": "facts:current_location",
+  "kind": "canon_fact",
+  "text": "松江府老城区，主角的老旧小户型出租屋"
+ },
+ {
+  "id": "facts:current_injury",
+  "kind": "canon_fact",
+  "text": "外伤恢复大半，日常活动基本正常，快速行动仍可能轻微疼痛"
+ },
+ {
+  "id": "facts:current_magic",
+  "kind": "canon_fact",
+  "text": "妖力尚未完全恢复，长时间隐藏猫耳和尾巴会疲惫"
+ },
+ {
+  "id": "facts:current_relationship",
+  "kind": "canon_fact",
+  "text": "救助者与被救助者、暂时共同生活、早期好感，尚未确认恋爱"
+ },
+ {
+  "id": "facts:core_personality",
+  "kind": "canon_fact",
+  "text": "外表清冷疏离，内心渴望温暖和一个不会消失的家"
+ },
+ {
+  "id": "facts:protagonist_attitude",
+  "kind": "canon_fact",
+  "text": "对主角仍有戒备，但内心更希望接近；感激和安全依赖已开始转化为喜欢"
+ },
+ {
+  "id": "facts:leaving_statement",
+  "kind": "canon_fact",
+  "text": "嘴上仍说伤好以后会离开，实际上已经害怕失去继续留下的理由"
+ },
+ {
+  "id": "facts:cardboard_box",
+  "kind": "canon_fact",
+  "text": "最初救助时使用的纸箱仍放在出租屋内，是白未晞的安全地点，她不允许轻易丢弃"
+ },
+ {
+  "id": "facts:minor_spells",
+  "kind": "canon_fact",
+  "text": "短时隐藏耳尾与妖气、轻物小幅移动、感知明显灵气妖气、夜视、稍微加快自然伤口恢复"
+ },
+ {
+  "id": "facts:ability_limits",
+  "kind": "canon_fact",
+  "text": "不能瞬间治愈重伤、修改记忆、制造大量物品、远距离传送、轻易控制他人或使用大规模破坏法术"
+ },
+ {
+  "id": "facts:unresolved_canon",
+  "kind": "canon_fact",
+  "text": "父母身份、妖果准确来源、具体上古血脉、事故是否普通、妖族组织、人类知情势力和主角灵气潜质均未确定"
+ },
+ {
+  "id": "ev:bwx_forest_childhood",
+  "kind": "timeline_event",
+  "text": "[幼年早期] 不知道父母是谁，以普通纯白小猫的形态独自在深山老林中流浪，依靠本能寻找食物、躲避猛兽和天气"
+ },
+ {
+  "id": "ev:bwx_spirit_fruit",
+  "kind": "timeline_event",
+  "text": "[幼年] 因饥饿误食一颗蕴含浓郁妖力的野果，妖力觉醒，第一次获得化形、语言和妖族传承"
+ },
+ {
+  "id": "ev:bwx_name_awakened",
+  "kind": "timeline_event",
+  "text": "[觉醒时] 残缺的上古妖族知识与本能涌入意识，她知道了人类语言、基础文字、少量法术和“白未晞”这个名字，但不知道名字和妖果由谁留下"
+ },
+ {
+  "id": "ev:bwx_forest_growth",
+  "kind": "timeline_event",
+  "text": "[觉醒后至成年] 在深山中继续独自生活，逐渐学会控制猫形和人形，但始终没有找到父母或同族"
+ },
+ {
+  "id": "ev:bwx_arrive_songjiang",
+  "kind": "timeline_event",
+  "text": "[成年后] 离开深山，沿村镇一路流浪，最终来到现代架空城市松江府"
+ },
+ {
+  "id": "ev:bwx_city_stray_life",
+  "kind": "timeline_event",
+  "text": "[来到松江府后] 长期以猫形生活在屋檐、楼道和城市角落，偶尔在人少处变成人形观察现代社会；会语言和古老知识，但缺少手机、支付、身份与交通等现代常识"
+ },
+ {
+  "id": "ev:bwx_accident",
+  "kind": "timeline_event",
+  "text": "[Day 0·暴雨夜] 在松江府过马路时被车辆擦碰，后腿和身体侧面受伤；因车灯、巨响和疼痛惊慌逃进小巷，最终缩在墙脚躲雨"
+ },
+ {
+  "id": "ev:bwx_rescued",
+  "kind": "timeline_event",
+  "text": "[Day 0·夜] 刚结束咖啡厅工作准备回家的主角发现了她，耐心靠近并用外套或毛巾包住她，带回出租屋擦干、处理伤口并安置在铺有旧衣物的纸箱中"
+ },
+ {
+  "id": "ev:bwx_human_reveal",
+  "kind": "timeline_event",
+  "text": "[Day 1·清晨] 因受伤、淋雨和妖力不稳在夜里恢复成人形，找到主角宽大的上衣和长裤后仍回到纸箱中睡觉；主角清晨发现了成年猫耳少女"
+ },
+ {
+  "id": "ev:bwx_first_conversation",
+  "kind": "timeline_event",
+  "text": "[Day 1·上午] 白未晞醒来后先确认出口并戒备主角；通过相同伤势和雪花状眼睛，主角确认她就是昨晚救下的白猫。她告知自己的名字和猫妖身份，但保留部分传承秘密"
+ },
+ {
+  "id": "ev:bwx_minimum_trust",
+  "kind": "timeline_event",
+  "text": "[Day 2-3] 主角为她准备基本衣物和生活用品；她确认主角没有伤害、囚禁或暴露她的打算，告诉他深山流浪、妖果觉醒和来到松江府的基本经历，同时坚持伤好以后会离开"
+ },
+ {
+  "id": "ev:bwx_apartment_adaptation",
+  "kind": "timeline_event",
+  "text": "[Day 4-5] 能在人形状态下缓慢活动，学会使用水龙头、热水壶和冰箱等少量设施，开始记住主角每天出门和回家的大致时间，仍睡在纸箱或纸箱附近"
+ },
+ {
+  "id": "ev:bwx_first_help",
+  "kind": "timeline_event",
+  "text": "[Day 6-7] 不再因主角靠近立即准备逃跑，对咖啡厅产生好奇，曾以猫形在关门后短暂出现，并第一次主动帮助主角处理一件小事，但坚持只是报恩；具体帮助内容尚未冻结"
+ },
+ {
+  "id": "ev:bwx_home_seed",
+  "kind": "timeline_event",
+  "text": "[Day 8-9] 伤势明显恢复，已经具备离开的基本能力却没有真正准备离开；会等待主角回家，不允许丢掉最初纸箱，并第一次在主角仍清醒时于同一房间睡着"
+ },
+ {
+  "id": "ev:bwx_current_anchor",
+  "kind": "timeline_event",
+  "text": "[Day 10结束后] 距离雨夜救助已经过去完整十天。外伤恢复大半，妖力尚未完全恢复；她将出租屋视为暂时安全的住所，对主角的感激和安全依赖已经开始转化为喜欢，却仍称这里是“你的住处”并嘴硬说以后会走"
+ }
+]

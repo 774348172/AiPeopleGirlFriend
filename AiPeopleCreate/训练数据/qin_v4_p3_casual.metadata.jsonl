@@ -1,6 +1,0 @@
-{"sample_id": "plan-8e5947e14566:0494:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:494", "scene": "阳台", "topic": "阳台好冷", "turns": 4}
-{"sample_id": "plan-8e5947e14566:0495:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:495", "scene": "客厅", "topic": "冬天来了", "turns": 4}
-{"sample_id": "plan-8e5947e14566:0496:a2:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:496", "scene": "客厅", "topic": "你手好冰", "turns": 6}
-{"sample_id": "plan-8e5947e14566:0497:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:497", "scene": "玄关", "topic": "羽绒服穿起来", "turns": 4}
-{"sample_id": "plan-8e5947e14566:0498:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:498", "scene": "阳台", "topic": "下雪了", "turns": 4}
-{"sample_id": "plan-8e5947e14566:0499:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:499", "scene": "走廊", "topic": "隔壁住的是谁", "turns": 4}
