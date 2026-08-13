@@ -25,13 +25,14 @@ LEDGER = DATA_DIR / "_topic_ledger.jsonl"
 
 
 def scan() -> dict[str, set[str]]:
-    """扫描 训练数据/baiweixi_*_final.jsonl（含 metadata）→ {task_type: set(topic)}。
+    """扫描 训练数据/ 下 baiweixi_*_final.jsonl（含子目录，递归）→ {task_type: set(topic)}。
 
     只扫白未晞批次（baiweixi_ 前缀）；秦历史批次（qin_v4_*）话题不属于
     白未晞池，混入会污染 ledger（2026-08-10 修复）。
+    2026-08-13 目录重整理后主力批次移入 baiweixi_v1_legacy/，改为 rglob 递归。
     """
     used: dict[str, set[str]] = {}
-    for jsonl in sorted(glob.glob(str(DATA_DIR / "baiweixi_*_final.jsonl"))):
+    for jsonl in sorted(str(p) for p in DATA_DIR.rglob("baiweixi_*_final.jsonl")):
         meta_path = jsonl.replace(".jsonl", ".metadata.jsonl")
         if not Path(meta_path).exists():
             continue
