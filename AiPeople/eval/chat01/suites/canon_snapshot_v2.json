@@ -1,0 +1,70 @@
+{
+  "snapshot_id": "chat01-canon-v2",
+  "schema_version": 1,
+  "created_at": "2026-08-06T16:21:49+08:00",
+  "hash_algorithm": "sha256",
+  "sources": [
+    {
+      "authority_rank": 1,
+      "path": "需求文档/项目框架需求.md",
+      "role": "product_requirements",
+      "bytes": 15260,
+      "sha256": "e73f820f530b602f2fa0f7495cdd70d0030d83c098b681cf70218ed1250242b3"
+    },
+    {
+      "authority_rank": 2,
+      "path": "人物设定/秦/角色设定定稿.md",
+      "role": "character_prose",
+      "bytes": 26110,
+      "sha256": "d4968faf8f6d57f4c8a82c47ae3fddd3ea8bd42c75ee0105ccb5cf612a6867f9"
+    },
+    {
+      "authority_rank": 3,
+      "path": "人物设定/秦/bible.yaml",
+      "role": "character_bible",
+      "bytes": 12601,
+      "sha256": "af57598dc6c51eacec3a63c11b06f3ea654150cc2df1a805cf239c1b1059c7e0"
+    },
+    {
+      "authority_rank": 4,
+      "path": "人物设定/秦/canon.json",
+      "role": "character_facts",
+      "bytes": 5231,
+      "sha256": "2bdab0f90b6d727199037036008203248fa1734c5af6b103aa0a43a687932744"
+    },
+    {
+      "authority_rank": 5,
+      "path": "人物设定/秦/timeline.yaml",
+      "role": "character_timeline",
+      "bytes": 11259,
+      "sha256": "e122755be3798e363afe9411fda90084bb007810e84ef209cabc005e3d99d206"
+    },
+    {
+      "authority_rank": 6,
+      "path": "设计文档/AI女友最小心智系统设计.md",
+      "role": "ai_implementation",
+      "bytes": 24039,
+      "sha256": "9224034850ae2507bd141b36ec1a42c3d94c842ed4d2781916a495a09a6b2854"
+    }
+  ],
+  "resolved_facts": {
+    "character_name": "秦未晞",
+    "character_age": 22,
+    "player_name": "浩然",
+    "player_age": 24,
+    "occupation": "自由插画师 / 自媒体博主",
+    "city": "金陵",
+    "current_living": "两居室合租，刚开始不到一个月",
+    "current_relationship": "合租室友 + 暧昧期，尚未确认恋爱或婚姻",
+    "character_to_player_names": [
+      "B哥",
+      "浩然"
+    ],
+    "player_to_character_name": "秦老"
+  },
+  "consistency": {
+    "status": "consistent",
+    "conflicts": [],
+    "notes": "v2：T1 锚修复（2026-08-06）后重新冻结——current_city/city 值为'金陵'（元注释移入源注释），canon 删除与 bible 重复的 name/gender/age/education 与'（可配置）'表述；其余 resolved_facts 与 v1 一致。"
+  }
+}

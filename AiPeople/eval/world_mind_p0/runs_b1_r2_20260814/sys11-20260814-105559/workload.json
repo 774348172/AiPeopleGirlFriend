@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "workload_id": "sys11-one-hour-real-model-v1",
+  "random_seed": 6112026,
+  "duration_seconds": 3600,
+  "turn_count": 60,
+  "turn_interval_seconds": 60,
+  "periodic_interval_seconds": 300,
+  "memory_propose_every_turns": 10,
+  "world_updates_per_turn": 2,
+  "reply_length_bands": ["short", "80_tokens", "160_tokens"],
+  "injections": {
+    "cancel_then_retry": 8,
+    "invalid_json_retry": 14,
+    "duplicate_replay": 18,
+    "request_conflict": 19,
+    "process_crash": 24,
+    "projection_rebuild": 42,
+    "second_heroine": 48
+  },
+  "model_scope": "engineering_protocol_and_stability_only",
+  "workload_sha256": "fac0c55ce2bc5d1c4a26a2880dddb96af2d1b6db16b511f6d55918e6ffc68f9a"
+}

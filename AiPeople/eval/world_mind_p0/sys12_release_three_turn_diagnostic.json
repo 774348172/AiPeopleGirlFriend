@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "workload_id": "sys12-release-three-turn-diagnostic",
+  "random_seed": 6112026,
+  "duration_seconds": 180,
+  "turn_count": 3,
+  "turn_interval_seconds": 60,
+  "periodic_interval_seconds": 300,
+  "memory_propose_every_turns": 10,
+  "world_updates_per_turn": 2,
+  "reply_length_bands": ["short", "80_tokens", "160_tokens"],
+  "injections": {
+    "cancel_then_retry": 99,
+    "invalid_json_retry": 99,
+    "duplicate_replay": 99,
+    "request_conflict": 99,
+    "process_crash": 99,
+    "projection_rebuild": 99,
+    "second_heroine": 99
+  },
+  "model_scope": "sys12_release_foreground_scheduling_diagnostic_only"
+}

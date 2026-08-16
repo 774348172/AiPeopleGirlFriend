@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-15T11:24:16.442650+08:00",
+  "model_sha256": "be1b6f203eee64e50e4bf3a026c9a8e8226b3eb63b81725153c615992290b575",
+  "runtime_compatibility": {
+    "chat_template": "chatml",
+    "stop_sequences": [
+      "<|im_end|>",
+      "<|im_start|>"
+    ],
+    "structured_output": "json_schema"
+  },
+  "results": {
+    "MIND_PATCH_V2": {
+      "passed": false,
+      "error_type": "LlamaCppProtocolError",
+      "error": "llama.cpp output reached the token limit",
+      "elapsed_ms": 5067.178
+    },
+    "B1": {
+      "passed": true,
+      "output": {
+        "c": []
+      },
+      "generated_tokens": 20,
+      "elapsed_ms": 1390.578
+    },
+    "R2": {
+      "passed": true,
+      "output": {
+        "m": []
+      },
+      "generated_tokens": 17,
+      "elapsed_ms": 1267.736
+    },
+    "GAME_REPLY": {
+      "passed": false,
+      "transport_passed": false,
+      "quality_passed": false,
+      "error_type": "_RecoverableServerError",
+      "error": "llama.cpp stream ended before DONE",
+      "elapsed_ms": 1252.535
+    }
+  }
+}

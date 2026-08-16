@@ -1,0 +1,13 @@
+{
+  "last_clock": "0001-10-11T18:05:59.969000",
+  "next_turn": 6,
+  "restart_count": 0,
+  "scheduler": {
+    "foreground_preemptions": 6,
+    "jobs_completed": 0,
+    "jobs_failed": 16,
+    "jobs_requeued": 3,
+    "jobs_started": 19,
+    "peak_pending_jobs": 5
+  }
+}

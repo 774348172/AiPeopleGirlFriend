@@ -1,0 +1,17 @@
+# LLaMA-Factory 导出配置 —— 合并 adapter 到基座权重（本机 8G 版）
+# 8G 显存放不下 bf16 基座（8GB），合并必须在 CPU 上跑（慢但稳，约 5-15 分钟）。
+# 合并产物是 bf16 完整模型（~8GB），供后续 GGUF 转换；本机对话验证不需要导出，
+# 直接用 scripts/chat_qinweixi.py（4bit + adapter）即可。
+#
+# 用法: llamafactory-cli export configs/qinweixi_4b_export.yaml
+
+### ----- model -----
+model_name_or_path: Qwen/Qwen3-4B
+adapter_name_or_path: outputs/qinweixi_4b   # 训练产出的 adapter 目录
+template: qwen3_nothink
+trust_remote_code: true
+
+### ----- export -----
+export_dir: outputs/qinweixi_4b_merged      # 合并后的完整模型目录（bf16，~8GB）
+export_size: 2                               # 分片大小 GB
+export_device: cpu                           # 8G 显存无法 GPU merge，用 CPU

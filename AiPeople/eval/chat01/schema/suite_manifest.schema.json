@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat01/suite-manifest-v1.json",
+  "title": "CHAT-01 suite manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "suite_id",
+    "schema_version",
+    "version",
+    "status",
+    "created_at",
+    "owner",
+    "purpose",
+    "schemas",
+    "canonical_sources",
+    "assets",
+    "rubrics",
+    "frozen_assets",
+    "leakage",
+    "freeze",
+    "training_exclusions"
+  ],
+  "properties": {
+    "suite_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+    "schema_version": {"const": 1},
+    "version": {"type": "string", "pattern": "^v[1-9][0-9]*$"},
+    "status": {"enum": ["draft", "frozen", "superseded"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "frozen_at": {"type": ["string", "null"], "format": "date-time"},
+    "owner": {"type": "string", "minLength": 1, "maxLength": 200},
+    "purpose": {"type": "string", "minLength": 1, "maxLength": 1000},
+    "schemas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case", "suite_manifest", "auto_result", "human_ballot", "canon_snapshot", "canon_drift", "blocker_rules", "semantic_review", "quality_rubric", "leakage_report"],
+      "properties": {
+        "case": {"$ref": "#/$defs/relativePath"},
+        "suite_manifest": {"$ref": "#/$defs/relativePath"},
+        "auto_result": {"$ref": "#/$defs/relativePath"},
+        "human_ballot": {"$ref": "#/$defs/relativePath"},
+        "canon_snapshot": {"$ref": "#/$defs/relativePath"},
+        "canon_drift": {"$ref": "#/$defs/relativePath"},
+        "blocker_rules": {"$ref": "#/$defs/relativePath"},
+        "semantic_review": {"$ref": "#/$defs/relativePath"},
+        "quality_rubric": {"$ref": "#/$defs/relativePath"},
+        "leakage_report": {"$ref": "#/$defs/relativePath"}
+      }
+    },
+    "canonical_sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/sourceAsset"}
+    },
+    "assets": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["split", "path", "minimum_cases", "minimum_counts", "sha256"],
+        "properties": {
+          "split": {"enum": ["dev", "frozen_single", "frozen_multiturn", "human_blind"]},
+          "path": {"$ref": "#/$defs/relativePath"},
+          "minimum_cases": {"type": "integer", "minimum": 1},
+          "minimum_counts": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["case_types", "categories", "scenario_families"],
+            "properties": {
+              "case_types": {"$ref": "#/$defs/countMap"},
+              "categories": {"$ref": "#/$defs/countMap"},
+              "scenario_families": {"$ref": "#/$defs/countMap"}
+            }
+          },
+          "sha256": {"$ref": "#/$defs/nullableSha256"}
+        }
+      }
+    },
+    "rubrics": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/relativePath"}
+    },
+    "frozen_assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/frozenAsset"}
+    },
+    "leakage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["report_path", "status", "report_sha256", "scan_contract"],
+      "properties": {
+        "report_path": {"$ref": "#/$defs/relativePath"},
+        "status": {"enum": ["pending", "passed", "blocked"]},
+        "report_sha256": {"$ref": "#/$defs/nullableSha256"},
+        "scan_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["training_patterns", "excluded_patterns", "near_duplicate_threshold", "near_duplicate_min_chars"],
+          "properties": {
+            "training_patterns": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/relativePath"}},
+            "excluded_patterns": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/relativePath"}},
+            "near_duplicate_threshold": {"type": "number", "minimum": 0.8, "maximum": 1},
+            "near_duplicate_min_chars": {"type": "integer", "minimum": 8}
+          }
+        }
+      }
+    },
+    "freeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["hash_algorithm", "manifest_hash_mode", "immutable", "manifest_sha256"],
+      "properties": {
+        "hash_algorithm": {"const": "sha256"},
+        "manifest_hash_mode": {"const": "canonical_json_with_null_self"},
+        "immutable": {"type": "boolean"},
+        "manifest_sha256": {"$ref": "#/$defs/nullableSha256"}
+      }
+    },
+    "training_exclusions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/relativePath"}
+    },
+    "notes": {"type": "string", "maxLength": 4000}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "frozen"}}, "required": ["status"]},
+      "then": {
+        "properties": {
+          "frozen_at": {"type": "string", "format": "date-time"},
+          "freeze": {
+            "properties": {
+              "immutable": {"const": true},
+              "manifest_sha256": {"$ref": "#/$defs/sha256"}
+            }
+          },
+          "leakage": {
+            "properties": {
+              "status": {"const": "passed"},
+              "report_sha256": {"$ref": "#/$defs/sha256"}
+            }
+          },
+          "frozen_assets": {
+            "items": {
+              "properties": {
+                "bytes": {"type": "integer", "minimum": 1},
+                "sha256": {"$ref": "#/$defs/sha256"}
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^(?![A-Za-z]:)(?!/)(?!\\\\)(?!.*\\\\).+$"
+    },
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "nullableSha256": {"anyOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+    "countMap": {
+      "type": "object",
+      "propertyNames": {"pattern": "^[a-z][a-z0-9_]{1,63}$"},
+      "additionalProperties": {"type": "integer", "minimum": 0}
+    },
+    "sourceAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "required", "bytes", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/relativePath"},
+        "required": {"type": "boolean"},
+        "bytes": {"type": ["integer", "null"], "minimum": 0},
+        "sha256": {"$ref": "#/$defs/nullableSha256"}
+      }
+    },
+    "frozenAsset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "role", "bytes", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/relativePath"},
+        "role": {"enum": ["schema", "suite", "rubric", "builder", "evaluator", "leakage_evidence"]},
+        "bytes": {"type": ["integer", "null"], "minimum": 0},
+        "sha256": {"$ref": "#/$defs/nullableSha256"}
+      }
+    }
+  }
+}

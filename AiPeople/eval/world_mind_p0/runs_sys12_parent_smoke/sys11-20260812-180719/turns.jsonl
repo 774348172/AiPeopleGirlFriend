@@ -1,0 +1,4 @@
+{"after_world_version": 2, "before_world_version": 1, "committed": true, "expected_snapshot_world_version": 1, "failure_code": null, "replayed": false, "request_id": "sys11-turn-00", "result_type": "Completed", "total_ms": 59690.07480000437, "turn": 0}
+{"cancelled": true, "committed": false, "turn": 1}
+{"after_world_version": 4, "before_world_version": 3, "committed": false, "expected_snapshot_world_version": 4, "failure_code": "model_or_runtime_error", "replayed": false, "request_id": "sys11-turn-01", "result_type": "Failed", "total_ms": null, "turn": 1}
+{"after_world_version": 4, "before_world_version": 3, "committed": false, "expected_snapshot_world_version": 4, "failure_code": "model_or_runtime_error", "replayed": false, "request_id": "sys11-turn-01", "result_type": "Failed", "retry": true, "total_ms": null, "turn": 1}

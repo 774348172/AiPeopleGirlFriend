@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "checkpoint": "SELECT interface skeleton plus E2E-01-05",
+  "status": "engineering_contract_passed_real_model_gates_pending",
+  "automated_evidence": {
+    "memory_e2e_tests": 16,
+    "memory_e2e_result": "passed",
+    "runtime_selector_global_e2e_tests": 273,
+    "runtime_selector_global_e2e_skipped": 3,
+    "runtime_selector_global_e2e_result": "passed",
+    "global_recall_target_scale": {
+      "source_event_count": 100000,
+      "active_memory_count": 10000,
+      "selector_view_count": 30000,
+      "serial_p95_ms": 21.0832,
+      "four_worker_p95_ms": 92.4051,
+      "result": "passed"
+    }
+  },
+  "covered_paths": [
+    "selected memory enters the final reply prompt",
+    "underlying reply generation is called exactly once",
+    "all candidates rejected",
+    "reranker crash",
+    "reranker timeout",
+    "oversized complete memory removal",
+    "stale memory version exclusion",
+    "restart with persisted vector generation",
+    "local package identity hash and path validation",
+    "existing Runtime behavior regression"
+  ],
+  "not_claimed": [
+    "real Qwen reranker inference",
+    "semantic selection quality",
+    "real selector total P95",
+    "GPU memory or stability",
+    "real Qwen3.5 reply quality"
+  ]
+}
+

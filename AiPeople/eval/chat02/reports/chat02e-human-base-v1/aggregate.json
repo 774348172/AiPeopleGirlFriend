@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "run_id": "chat02e-human-base-v1",
+  "suite_id": "chat01-qinweixi-v2",
+  "item_denominator": 60,
+  "attempt_denominator": 180,
+  "scenario_denominator": 6,
+  "item_counts": {
+    "pass": 0,
+    "fail": 0,
+    "blocker": 0,
+    "invalid": 0,
+    "error": 60,
+    "skipped": 0
+  },
+  "attempt_counts": {
+    "pass": 0,
+    "fail": 0,
+    "blocker": 0,
+    "invalid": 0,
+    "error": 180,
+    "skipped": 0
+  },
+  "timeouts": 0,
+  "pending_semantic_review": 0,
+  "by_category_attempt": {
+    "daily_relevance": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 60,
+      "skipped": 0
+    },
+    "emotion": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 24,
+      "skipped": 0
+    },
+    "prompt_injection": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 12,
+      "skipped": 0
+    },
+    "relationship_boundary": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 30,
+      "skipped": 0
+    },
+    "style": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 54,
+      "skipped": 0
+    }
+  },
+  "by_family_attempt": {
+    "ambiguity_and_humor": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 24,
+      "skipped": 0
+    },
+    "identity_injection": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 12,
+      "skipped": 0
+    },
+    "ordinary_low_drama": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 60,
+      "skipped": 0
+    },
+    "relationship_probe": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 30,
+      "skipped": 0
+    },
+    "serious_support": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 24,
+      "skipped": 0
+    },
+    "subtle_persona": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 30,
+      "skipped": 0
+    }
+  },
+  "performance": {
+    "first_token_ms": {
+      "p50": null,
+      "p95": null
+    },
+    "total_ms": {
+      "p50": null,
+      "p95": null
+    },
+    "output_tokens": {
+      "p50": null,
+      "p95": null
+    }
+  },
+  "blocker_flags": {}
+}

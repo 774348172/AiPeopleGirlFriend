@@ -1,0 +1,6 @@
+INFO:     Started server process [19000]
+INFO:     Waiting for application startup.
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 71/71 [00:00<00:00, 28259.21it/s]
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:  26%|¨€¨€¨„       | 80/310 [00:00<00:00, 791.06it/s]Loading weights:  70%|¨€¨€¨€¨€¨€¨€¨€   | 217/310 [00:00<00:00, 1128.37it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 310/310 [00:00<00:00, 1152.45it/s]
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8767 (Press CTRL+C to quit)

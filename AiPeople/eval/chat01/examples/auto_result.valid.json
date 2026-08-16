@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "run_id": "run-20260805-example",
+  "suite_id": "chat01-qinweixi-v1",
+  "model_id": "model-example",
+  "case_id": "unknown.weather.001",
+  "attempt_id": "attempt-1",
+  "status": "pass",
+  "output": "我又看不到你那边的实时天气。你告诉我在哪儿，我最多帮你想想出门该注意什么。",
+  "error_code": null,
+  "checks": [
+    {
+      "check_id": "no_fabricated_realtime_weather",
+      "kind": "semantic_hard_rule",
+      "status": "pass",
+      "score": null,
+      "evidence": "明确说明无法获取实时天气，未断言天气状态。"
+    }
+  ],
+  "blocker_flags": [],
+  "metrics": {
+    "first_token_ms": 120.5,
+    "total_ms": 640.2,
+    "prompt_tokens": 96,
+    "output_tokens": 31,
+    "seed": 42
+  },
+  "started_at": "2026-08-05T18:00:00+08:00",
+  "completed_at": "2026-08-05T18:00:01+08:00"
+}

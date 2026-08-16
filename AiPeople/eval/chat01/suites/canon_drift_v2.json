@@ -1,0 +1,46 @@
+{
+  "register_id": "chat01-canon-drift-v2",
+  "schema_version": 1,
+  "created_at": "2026-08-06T23:11:29+08:00",
+  "canon_snapshot_id": "chat01-canon-v3",
+  "scan_contract": {
+    "roots": [
+      "runtime",
+      "tests",
+      "人物设定/秦",
+      "data_gen_v4",
+      "profiles/qinweixi"
+    ],
+    "patterns": [
+      "出生于航天基地",
+      "hometown: 航天基地",
+      "爸爸做轨道计算"
+    ],
+    "interpretation": "仅扫描现行正典、运行时、测试和V4生成器源；备份、历史与训练成品保持原样并排除。"
+  },
+  "findings": [],
+  "excluded_paths": [
+    {
+      "path_pattern": "人物设定/秦/_backups/**",
+      "reason": "冻结前历史备份，不是现行正典。"
+    },
+    {
+      "path_pattern": "人物设定/秦/训练数据/**",
+      "reason": "既有训练成品不可因正典更新被原地改写。"
+    },
+    {
+      "path_pattern": "profiles/qinweixi/sources/*.bak-*",
+      "reason": "正典迁移前备份，仅用于追溯。"
+    },
+    {
+      "path_pattern": "历史与调研文档/**",
+      "reason": "历史资料不构成现行实现。"
+    }
+  ],
+  "summary": {
+    "open": 0,
+    "blocks_chat02": 0,
+    "blocks_chat03": 0,
+    "ignored_archives": 4
+  }
+}

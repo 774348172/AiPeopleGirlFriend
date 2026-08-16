@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "scope": "sys12_release_resilience",
+  "generated_at": "2026-08-14T12:25:08.529718+08:00",
+  "asset_sha256": "751a803a053b133e8fe10f25470b57dbec54049faefdfc5bd8fcbe07ec3dd805",
+  "priority": {
+    "background_cancelled": true,
+    "background_requeued_completed": true,
+    "foreground_ms": 306.30009999731556,
+    "foreground_output": "前台已响应。",
+    "gate_metrics": {
+      "foreground_preemptions": 1,
+      "tasks_started": 3,
+      "tasks_completed": 2,
+      "tasks_cancelled": 1,
+      "peak_waiters": 1
+    }
+  },
+  "recovery": {
+    "passed": true,
+    "old_pid": 11872,
+    "new_pid": 5844,
+    "recovery_ms": 3283.4247999999207,
+    "before_output": "恢复前。",
+    "after_output": "恢复后。"
+  },
+  "lifecycle": {
+    "passed": true,
+    "cycles": [
+      {
+        "cycle": 0,
+        "startup_ms": 4961.683000001358,
+        "output": "周期0"
+      },
+      {
+        "cycle": 1,
+        "startup_ms": 4956.787399998575,
+        "output": "周期1"
+      },
+      {
+        "cycle": 2,
+        "startup_ms": 5167.6480999958585,
+        "output": "周期2"
+      }
+    ]
+  },
+  "decision": {
+    "foreground_priority_passed": true,
+    "crash_recovery_passed": true,
+    "repeatable_lifecycle_passed": true,
+    "passed": true
+  }
+}

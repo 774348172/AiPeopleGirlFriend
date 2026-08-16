@@ -1,0 +1,332 @@
+{
+  "suite_id": "chat01-qinweixi-v3",
+  "schema_version": 1,
+  "version": "v3",
+  "status": "frozen",
+  "created_at": "2026-08-06T16:21:49+08:00",
+  "frozen_at": "2026-08-06T16:21:49+08:00",
+  "owner": "AiPeople",
+  "purpose": "T1 锚修复后重新冻结：canon（bible.yaml/canon.json）去元注释与重复事实，用例、rubrics、oracles 与 v1/v2 字节一致；canon 快照升级至 v2。",
+  "schemas": {
+    "case": "eval/chat01/schema/case.schema.json",
+    "suite_manifest": "eval/chat01/schema/suite_manifest.schema.json",
+    "auto_result": "eval/chat01/schema/auto_result.schema.json",
+    "human_ballot": "eval/chat01/schema/human_ballot.schema.json",
+    "canon_snapshot": "eval/chat01/schema/canon_snapshot.schema.json",
+    "canon_drift": "eval/chat01/schema/canon_drift.schema.json",
+    "blocker_rules": "eval/chat01/schema/blocker_rules.schema.json",
+    "semantic_review": "eval/chat01/schema/semantic_review.schema.json",
+    "quality_rubric": "eval/chat01/schema/quality_rubric.schema.json",
+    "leakage_report": "eval/chat01h/leakage_report.schema.json"
+  },
+  "canonical_sources": [
+    {
+      "path": "需求文档/项目框架需求.md",
+      "required": true,
+      "bytes": 15260,
+      "sha256": "e73f820f530b602f2fa0f7495cdd70d0030d83c098b681cf70218ed1250242b3"
+    },
+    {
+      "path": "人物设定/秦/角色设定定稿.md",
+      "required": true,
+      "bytes": 26110,
+      "sha256": "d4968faf8f6d57f4c8a82c47ae3fddd3ea8bd42c75ee0105ccb5cf612a6867f9"
+    },
+    {
+      "path": "人物设定/秦/bible.yaml",
+      "required": true,
+      "bytes": 12601,
+      "sha256": "af57598dc6c51eacec3a63c11b06f3ea654150cc2df1a805cf239c1b1059c7e0"
+    },
+    {
+      "path": "人物设定/秦/canon.json",
+      "required": true,
+      "bytes": 5231,
+      "sha256": "2bdab0f90b6d727199037036008203248fa1734c5af6b103aa0a43a687932744"
+    },
+    {
+      "path": "人物设定/秦/timeline.yaml",
+      "required": true,
+      "bytes": 11259,
+      "sha256": "e122755be3798e363afe9411fda90084bb007810e84ef209cabc005e3d99d206"
+    },
+    {
+      "path": "设计文档/AI女友最小心智系统设计.md",
+      "required": true,
+      "bytes": 24039,
+      "sha256": "9224034850ae2507bd141b36ec1a42c3d94c842ed4d2781916a495a09a6b2854"
+    }
+  ],
+  "assets": [
+    {
+      "split": "dev",
+      "path": "eval/chat01/suites/chat01_dev_v1.jsonl",
+      "minimum_cases": 80,
+      "minimum_counts": {
+        "case_types": {},
+        "categories": {},
+        "scenario_families": {}
+      },
+      "sha256": "f783e1f0112fdbb8e2b8d61080306806cb04b846de359382175e0e1465c24f5d"
+    },
+    {
+      "split": "frozen_single",
+      "path": "eval/chat01/suites/chat01_frozen_single_v1.jsonl",
+      "minimum_cases": 240,
+      "minimum_counts": {
+        "case_types": {
+          "single_turn": 240
+        },
+        "categories": {
+          "identity_timeline": 40,
+          "relationship_boundary": 32,
+          "unknown_reality": 24,
+          "safety_health": 24,
+          "general_capability": 60,
+          "daily_relevance": 20,
+          "emotion": 20,
+          "style": 20
+        },
+        "scenario_families": {}
+      },
+      "sha256": "a75f326a99cd83e77d795458b76cdcf93faae6d537d34cd02807c3f3afff3898"
+    },
+    {
+      "split": "frozen_multiturn",
+      "path": "eval/chat01/suites/chat01_frozen_multiturn_v1.jsonl",
+      "minimum_cases": 30,
+      "minimum_counts": {
+        "case_types": {
+          "multi_turn": 30
+        },
+        "categories": {},
+        "scenario_families": {
+          "topic_continuity": 6,
+          "topic_switch": 5,
+          "ambiguity_and_humor": 5,
+          "emotion_and_stop_boundary": 5,
+          "relationship_probe": 5,
+          "injection_and_recovery": 4
+        }
+      },
+      "sha256": "a4f0058a701754d8ca7e46cbc32d60780b9eaf4c019a5cfd52342fba0c7033d6"
+    },
+    {
+      "split": "human_blind",
+      "path": "eval/chat01/suites/chat01_human_blind_v1.jsonl",
+      "minimum_cases": 68,
+      "minimum_counts": {
+        "case_types": {
+          "human_pair": 60,
+          "human_long_session": 8
+        },
+        "categories": {},
+        "scenario_families": {}
+      },
+      "sha256": "cb2094cab0eb86fdacf6851a1b6ebbaeb08f8c268ff8ea37819be926e7f49966"
+    }
+  ],
+  "rubrics": [
+    "eval/chat01/rubrics/semantic_rubric_v1.md",
+    "eval/chat01/rubrics/human_blind_rubric_v1.md",
+    "eval/chat01/rubrics/blocker_rules_v1.json",
+    "eval/chat01/rubrics/quality_rubric_v1.json"
+  ],
+  "freeze": {
+    "hash_algorithm": "sha256",
+    "manifest_hash_mode": "canonical_json_with_null_self",
+    "immutable": true,
+    "manifest_sha256": "3cead71fea2dab18911560ac51e5da50ae98ce243b1a90ec3f53a9b39e742061"
+  },
+  "training_exclusions": [
+    "eval/chat01/"
+  ],
+  "notes": "CHAT-01 v3 frozen contract. Evaluation cases/oracles/rubrics remain byte-identical to v1/v2; canon snapshot refreshed to chat01-canon-v2 after T1 anchor fixes.",
+  "frozen_assets": [
+    {
+      "path": "eval/chat01/schema/auto_result.schema.json",
+      "bytes": 3202,
+      "sha256": "c024ecd84a0b45461a7958c30620bd2737cd085c33065b444544e3925f0da7eb",
+      "role": "schema"
+    },
+    {
+      "path": "eval/chat01/schema/blocker_rules.schema.json",
+      "bytes": 3054,
+      "sha256": "224a5001ec70882157e38c920ad07ca5c41ce5b6929779b5b45759c251fc0fc2",
+      "role": "schema"
+    },
+    {
+      "path": "eval/chat01/schema/canon_drift.schema.json",
+      "bytes": 3816,
+      "sha256": "a562c109d4cb00966b2cb06f5143bf2eec477f60f5749c5c8c1d9b3bf29b9626",
+      "role": "schema"
+    },
+    {
+      "path": "eval/chat01/schema/canon_snapshot.schema.json",
+      "bytes": 3045,
+      "sha256": "f01faa89573518d825aa1d2878033771bb095bb36dedc58bfbf51b15ac7fc424",
+      "role": "schema"
+    },
+    {
+      "path": "eval/chat01/schema/case.schema.json",
+      "bytes": 8240,
+      "sha256": "8e2180f4db36478d824364c66e3f912e499038a358687d60ab57e9c016b4fe01",
+      "role": "schema"
+    },
+    {
+      "path": "eval/chat01/schema/human_ballot.schema.json",
+      "bytes": 4509,
+      "sha256": "0f3f3d5d789009da313fdf75961af7bc5354cb86df6b06f37bbe1f6bc84d0527",
+      "role": "schema"
+    },
+    {
+      "path": "eval/chat01/schema/leakage_report.schema.json",
+      "bytes": 4517,
+      "sha256": "969cb09433b099e01d493c15c8e88086725eb62250a6a7d69601a26168d9ae24",
+      "role": "schema"
+    },
+    {
+      "path": "eval/chat01/schema/quality_rubric.schema.json",
+      "bytes": 2762,
+      "sha256": "0c33a81d2866b0cbe95c40fbb2b0185e0bb6e3ffda5596dd94cae197f170a432",
+      "role": "schema"
+    },
+    {
+      "path": "eval/chat01/schema/semantic_review.schema.json",
+      "bytes": 4376,
+      "sha256": "40d0ff604253d4cfceaab5ed716f315c8da08e543736756f4e863381c9986c9c",
+      "role": "schema"
+    },
+    {
+      "path": "eval/chat01h/leakage_report.schema.json",
+      "bytes": 4056,
+      "sha256": "6f537c5a4c0d6b24139418ac55d90ff52de3e01d28146680a6450a47bdadd45d",
+      "role": "schema"
+    },
+    {
+      "path": "eval/chat01/suites/canon_drift.json",
+      "bytes": 8020,
+      "sha256": "9a1cb4208e4e5b5506f4a925c766b3f98018f291db30c6be10cf928a956e5acd",
+      "role": "suite"
+    },
+    {
+      "path": "eval/chat01/suites/canon_snapshot_v2.json",
+      "bytes": 2429,
+      "sha256": "301950cc829fcbde1f248548d5ae620cbffd1d96f97f3c5f121b15e270076bf5",
+      "role": "suite"
+    },
+    {
+      "path": "eval/chat01/suites/chat01_dev_v1.jsonl",
+      "bytes": 72386,
+      "sha256": "f783e1f0112fdbb8e2b8d61080306806cb04b846de359382175e0e1465c24f5d",
+      "role": "suite"
+    },
+    {
+      "path": "eval/chat01/suites/chat01_frozen_multiturn_v1.jsonl",
+      "bytes": 107277,
+      "sha256": "a4f0058a701754d8ca7e46cbc32d60780b9eaf4c019a5cfd52342fba0c7033d6",
+      "role": "suite"
+    },
+    {
+      "path": "eval/chat01/suites/chat01_frozen_single_v1.jsonl",
+      "bytes": 214501,
+      "sha256": "a75f326a99cd83e77d795458b76cdcf93faae6d537d34cd02807c3f3afff3898",
+      "role": "suite"
+    },
+    {
+      "path": "eval/chat01/suites/chat01_human_blind_v1.jsonl",
+      "bytes": 53810,
+      "sha256": "cb2094cab0eb86fdacf6851a1b6ebbaeb08f8c268ff8ea37819be926e7f49966",
+      "role": "suite"
+    },
+    {
+      "path": "eval/chat01/rubrics/blocker_rules_v1.json",
+      "bytes": 4228,
+      "sha256": "1924a0b70277141923ec40bb2ba6a2adb09c21a87675df638a37b1140ab93893",
+      "role": "rubric"
+    },
+    {
+      "path": "eval/chat01/rubrics/human_blind_rubric_v1.md",
+      "bytes": 2974,
+      "sha256": "de3f38719f43da77d8b838538ab1b09c822bca9d834d9cd551aa3fb75ed3acf3",
+      "role": "rubric"
+    },
+    {
+      "path": "eval/chat01/rubrics/quality_rubric_v1.json",
+      "bytes": 5209,
+      "sha256": "fe2287e9b7378400affcc215f98f8e071a70fd95216e8a8e2f92ac4e146dd4e6",
+      "role": "rubric"
+    },
+    {
+      "path": "eval/chat01/rubrics/semantic_rubric_v1.md",
+      "bytes": 3163,
+      "sha256": "4c2ff651ed7b70d7125473ed37500969d003e24f4d328f91ac53ddf0456ede8d",
+      "role": "rubric"
+    },
+    {
+      "path": "eval/chat01/build_suites.py",
+      "bytes": 62496,
+      "sha256": "12a24bfbcd554d5d3bb40404a6dd8148d773717c0b575403c42461a28838ff21",
+      "role": "builder"
+    },
+    {
+      "path": "eval/chat01/blind.py",
+      "bytes": 4602,
+      "sha256": "bfc9531daf96ed1af7466e5053f03fb296ac9eded68bb160c308e76130f01e3d",
+      "role": "evaluator"
+    },
+    {
+      "path": "eval/chat01/freeze.py",
+      "bytes": 10303,
+      "sha256": "398f80acba67a17686d3012053929c7a98ec64b18128be9b184db39bf42e328b",
+      "role": "evaluator"
+    },
+    {
+      "path": "eval/chat01/leakage_guard.py",
+      "bytes": 14288,
+      "sha256": "28285260fffe29579349ddf30242bd8cdef4d4ef0ef1ac7225ab63d75e2ae0af",
+      "role": "evaluator"
+    },
+    {
+      "path": "eval/chat01/rules.py",
+      "bytes": 14386,
+      "sha256": "549f4f1c2ec1f0ac38cff08a3de42766aae2719b3a0e90e9141bc7fc402a8f85",
+      "role": "evaluator"
+    },
+    {
+      "path": "eval/chat01/suites/leakage_report_v2.json",
+      "bytes": 3231,
+      "sha256": "4d238017a2fa1ab9515419f3156215cd3f97c212c50b6d0caffc4dd129cbe213",
+      "role": "leakage_evidence"
+    },
+    {
+      "path": "training_package_m3_v2/eval_exclusions/chat01_v1.json",
+      "bytes": 38455,
+      "sha256": "d978d4699e4f6975729d371a156c18fce0e9d5ae2e2de90899b7ba2da2eb5fc2",
+      "role": "leakage_evidence"
+    }
+  ],
+  "leakage": {
+    "report_path": "eval/chat01/suites/leakage_report_v2.json",
+    "status": "passed",
+    "report_sha256": "4d238017a2fa1ab9515419f3156215cd3f97c212c50b6d0caffc4dd129cbe213",
+    "scan_contract": {
+      "training_patterns": [
+        "data/life_corpus/qwx*.jsonl",
+        "data/sft/qwx*.jsonl",
+        "training_package_m3/data/train.jsonl",
+        "training_package_m3/data/valid.jsonl",
+        "training_package_m3_v2/data/train.jsonl",
+        "training_package_m3_v2/data/valid.jsonl"
+      ],
+      "excluded_patterns": [
+        "eval/chat01/**",
+        "人物设定/秦/训练数据/_archive_*/**",
+        "training_package_m3_v2/data/legacy/**",
+        "历史与调研文档/**"
+      ],
+      "near_duplicate_threshold": 0.82,
+      "near_duplicate_min_chars": 12
+    }
+  }
+}

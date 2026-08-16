@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat02f/model-manifest-v1.json",
+  "title": "CHAT-02F provisional model manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["model_id", "schema_version", "created_at", "role", "status", "asset", "identity", "source", "adaptation", "export_provenance", "runtime_contract", "comparability", "excluded_inputs", "notes"],
+  "properties": {
+    "model_id": {"const": "qinweixi-v2500-final-q4_k_m"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "role": {"const": "trained"},
+    "status": {"const": "provenance_limited"},
+    "asset": {"$ref": "#/$defs/artifact"},
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gguf_version", "general_name", "architecture", "parameter_class", "quantization", "gguf_file_type", "tensor_count", "native_context_length", "eos_token_id", "chat_template_bytes", "chat_template_sha256"],
+      "properties": {
+        "gguf_version": {"const": 3},
+        "general_name": {"type": "string", "minLength": 1, "maxLength": 500},
+        "architecture": {"const": "qwen3"},
+        "parameter_class": {"const": "4B"},
+        "quantization": {"const": "Q4_K_M"},
+        "gguf_file_type": {"const": 15},
+        "tensor_count": {"type": "integer", "minimum": 1},
+        "native_context_length": {"type": "integer", "minimum": 4096},
+        "eos_token_id": {"type": "integer", "minimum": 0},
+        "chat_template_bytes": {"type": "integer", "minimum": 1},
+        "chat_template_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "local_source_revision", "training_source_revision", "revision_note"],
+      "properties": {
+        "repository": {"const": "Qwen/Qwen3-4B"},
+        "local_source_revision": {"anyOf": [{"$ref": "#/$defs/revision"}, {"type": "null"}]},
+        "training_source_revision": {"anyOf": [{"$ref": "#/$defs/revision"}, {"type": "null"}]},
+        "revision_note": {"type": "string", "minLength": 1, "maxLength": 2000}
+      }
+    },
+    "adaptation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "adapter_checkpoint", "merge_method", "evidence", "note"],
+      "properties": {
+        "kind": {"const": "lora"},
+        "adapter_checkpoint": {"type": "null"},
+        "merge_method": {"type": "null"},
+        "evidence": {"type": "array", "maxItems": 0},
+        "note": {"type": "string", "minLength": 1, "maxLength": 2000}
+      }
+    },
+    "export_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["converter", "converter_module", "gguf_python_version", "quantizer", "note"],
+      "properties": {
+        "converter": {"type": "null"},
+        "converter_module": {"type": "null"},
+        "gguf_python_version": {"type": "null"},
+        "quantizer": {"type": "null"},
+        "note": {"type": "string", "minLength": 1, "maxLength": 3000}
+      }
+    },
+    "runtime_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chat_template", "thinking", "context_size", "stop_contract", "execution_profile_id"],
+      "properties": {
+        "chat_template": {"const": "embedded_qwen3"},
+        "thinking": {"const": false},
+        "context_size": {"const": 4096},
+        "stop_contract": {"const": "embedded_eos_151645_no_explicit_stop"},
+        "execution_profile_id": {"const": "chat02f-shared-llamacpp-b10256-v1"}
+      }
+    },
+    "comparability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "compared_to", "controlled_traits", "limitations"],
+      "properties": {
+        "status": {"const": "comparable_with_limitations"},
+        "compared_to": {"const": "qwen3-4b-base-q4_k_m"},
+        "controlled_traits": {"type": "array", "minItems": 5, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 200}},
+        "limitations": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 1000}}
+      }
+    },
+    "excluded_inputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact", "reason"],
+        "properties": {
+          "artifact": {"$ref": "#/$defs/artifact"},
+          "reason": {"type": "string", "minLength": 1, "maxLength": 1000}
+        }
+      }
+    },
+    "notes": {"type": "string", "minLength": 1, "maxLength": 4000}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "revision": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "absolutePath": {"type": "string", "minLength": 3, "maxLength": 1000, "pattern": "^[A-Za-z]:\\\\"},
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/absolutePath"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

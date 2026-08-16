@@ -1,0 +1,22 @@
+[
+  {
+    "case_id": "ledger-event-missing",
+    "mutation": "drop_first_event",
+    "expected_code": "memory_materialize_event_missing"
+  },
+  {
+    "case_id": "ledger-snapshot-drift",
+    "mutation": "change_last_event_text",
+    "expected_code": "memory_materialize_event_mismatch"
+  },
+  {
+    "case_id": "ambiguous-quote-offset",
+    "mutation": "repeat_quote_without_hint",
+    "expected_code": "memory_materialize_quote_ambiguous"
+  },
+  {
+    "case_id": "wrong-supporting-actor",
+    "mutation": "player_fact_from_character_only",
+    "expected_code": "memory_materialize_representation_invalid"
+  }
+]

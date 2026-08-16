@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "profile_id": "real-select-e2e-acceptance-v1",
+  "status": "infrastructure_frozen_real_assets_and_product_dataset_pending",
+  "target_hardware": {
+    "primary": "NVIDIA GeForce RTX 3070 8GB",
+    "secondary": "NVIDIA GeForce RTX 3060 8GB"
+  },
+  "offline": true,
+  "pre_registered_quality_gates": {
+    "global_recall_at_32_min": 0.98,
+    "natural_recall_accuracy_min": 0.90,
+    "no_memory_false_activation_rate_max": 0.05,
+    "hard_negative_rejection_rate_min": 0.90,
+    "selected_memory_precision_min": 0.90,
+    "paired_bootstrap_95ci_lower_bound_min_exclusive": 0.0
+  },
+  "engineering_smoke_dataset": {
+    "dataset_id": "recall04-semantic-cases-v2-engineering",
+    "case_count": 8,
+    "global_pool_memory_count": 40,
+    "product_quality_claim_allowed": false
+  },
+  "product_dataset_requirements": {
+    "minimum_case_count": 200,
+    "minimum_global_pool_memory_count": 10000,
+    "required_splits": ["validation", "test_frozen", "long_memory_e2e"],
+    "test_frozen_may_tune_threshold": false
+  },
+  "performance_gates": {
+    "selector_total_p95_ms_max_exclusive": 300,
+    "reply_first_token_p95_ms_max_exclusive": 2000,
+    "combined_gpu_peak_mib_max_exclusive": 5120,
+    "continuous_run_minutes_min": 60,
+    "continuous_gpu_growth_allowed": false
+  },
+  "measurement_contract": {
+    "resident": true,
+    "warmed": true,
+    "network_access": "forbidden",
+    "changing_inputs": true,
+    "latency_percentiles": [50, 95],
+    "stages": [
+      "query_embedding_ms",
+      "global_scan_ms",
+      "top32_hydration_ms",
+      "reranker_queue_ms",
+      "reranker_inference_ms",
+      "validation_and_pack_ms",
+      "selector_total_ms",
+      "reply_first_token_ms"
+    ]
+  }
+}

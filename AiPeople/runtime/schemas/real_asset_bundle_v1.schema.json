@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schemas/real_asset_bundle_v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "network_access", "bge_package", "reranker_package", "reply_package", "llama_runtime_manifest", "expected_artifact_sha256"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "network_access": {"const": "forbidden"},
+    "bge_package": {"type": "string", "minLength": 3},
+    "reranker_package": {"type": "string", "minLength": 3},
+    "reply_package": {"type": "string", "minLength": 3},
+    "llama_runtime_manifest": {"type": "string", "minLength": 3},
+    "expected_artifact_sha256": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bge", "reranker", "reply"],
+      "properties": {
+        "bge": {"$ref": "#/$defs/sha256"},
+        "reranker": {"$ref": "#/$defs/sha256"},
+        "reply": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}

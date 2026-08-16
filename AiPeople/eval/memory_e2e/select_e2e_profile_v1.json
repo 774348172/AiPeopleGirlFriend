@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "checkpoint_range": [
+    "SELECT-01",
+    "SELECT-04",
+    "SELECT-05",
+    "E2E-01",
+    "E2E-02",
+    "E2E-03",
+    "E2E-04",
+    "E2E-05"
+  ],
+  "reranker": {
+    "formal_model_id": "Qwen/Qwen3-Reranker-0.6B",
+    "input": "GlobalRecallTop32 structured query and candidate metadata",
+    "maximum_pair_tokens": 128,
+    "output": "exactly one yes/no activation probability per candidate memory_id",
+    "activation_threshold": "fixed_by_delivered_package_validation",
+    "all_reject": true,
+    "natural_language_output": false,
+    "timeout_ms": 250,
+    "invalid_output": "fail_closed_to_zero_long_term_memories"
+  },
+  "selected_memory_frame": {
+    "schema_version": "selected-memory-frame-v1",
+    "token_limit": 256,
+    "entry_order": "reranker_score_desc_then_memory_id",
+    "overflow": "drop_complete_lowest_ranked_entries",
+    "allows_empty": true,
+    "traceability": ["memory_id", "memory_version", "evidence_event_id"],
+    "prompt_excludes": ["coarse_score", "reranker_score", "selector_reason"]
+  },
+  "online_flow": [
+    "build_and_encode_SelectorQuery_once",
+    "scan_all_active_generation_views",
+    "aggregate_unique_GlobalRecallTop32",
+    "rerank_once_or_fail_closed",
+    "reload_current_selected_memories_and_validate_status_version_revision",
+    "fit_SelectedMemoryFrame_with_reply_tokenizer",
+    "call_underlying_REPLY_once"
+  ],
+  "failure_policy": {
+    "projection_unavailable": "empty_frame",
+    "reranker_timeout_or_crash": "empty_frame",
+    "invalid_ids_scores_identity_or_threshold": "empty_frame",
+    "selected_memory_stale": "exclude_without_unscored_replacement",
+    "reply_failure": "preserve_committed_user_event"
+  },
+  "implementation_boundary": {
+    "integration": "MemoryAwareReplyModel composition around the existing RelationshipRuntime reply model",
+    "upstream_frozen_files_rewritten": false,
+    "fake_reranker": "protocol-only deterministic test double with caller-supplied scores",
+    "keyword_routing": false,
+    "second_reply_generation": false
+  },
+  "external_gates": [
+    "delivered Qwen3-Reranker-0.6B package verification",
+    "BF16 FP16 8bit 4bit comparison",
+    "real natural recall and no-memory rejection quality",
+    "selector_total_ms P95 below 300ms",
+    "combined GPU peak below 5120 MiB",
+    "one-hour stability",
+    "real-model CHAT-01 regression"
+  ],
+  "next_checkpoint": "SELF-01 only after real SELECT and E2E gates pass"
+}
+

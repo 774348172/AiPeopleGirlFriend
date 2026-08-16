@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat02f/execution-profile-v1.json",
+  "title": "CHAT-02F shared llama.cpp execution profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profile_id", "schema_version", "created_at", "status", "comparison_contract", "backend", "target_hardware", "launch", "request_contract", "lanes", "lifecycle", "suite_contract", "smoke_contract", "analysis_population", "readiness"],
+  "properties": {
+    "profile_id": {"const": "chat02f-shared-llamacpp-b10256-v1"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "status": {"const": "frozen_ready"},
+    "comparison_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["contract_id", "contract", "contract_self_sha256", "only_active_variable", "model_ids", "run_order_policy"],
+      "properties": {
+        "contract_id": {"const": "chat02f-comparison-contract-v2"}, "contract": {"$ref": "#/$defs/artifact"},
+        "contract_self_sha256": {"$ref": "#/$defs/sha256"}, "only_active_variable": {"const": "model_weights"},
+        "model_ids": {"const": ["qwen3-4b-base-q4_k_m", "qinweixi-v2500-final-q4_k_m"]},
+        "run_order_policy": {"const": "precommitted_seed_then_sequential_models"}
+      }
+    },
+    "backend": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "release", "commit", "cuda_build", "server", "server_impl_sha256", "runtime_adapter"],
+      "properties": {
+        "name": {"const": "llama.cpp"}, "release": {"const": "b10256"}, "commit": {"const": "6c8dcaa7a"}, "cuda_build": {"const": "12.4"},
+        "server": {"$ref": "#/$defs/artifact"}, "server_impl_sha256": {"$ref": "#/$defs/sha256"}, "runtime_adapter": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "target_hardware": {"const": {"gpu": "NVIDIA GeForce RTX 3070", "vram_gib": 8, "driver": "591.86", "driver_reported_cuda": "13.1", "os": "Windows"}},
+    "launch": {"const": {"host": "127.0.0.1", "port": 18081, "context_size": 4096, "parallel": 1, "gpu_layers": "all", "flash_attention": true, "kv_cache_k": "q8_0", "kv_cache_v": "q8_0"}},
+    "request_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["api", "stream", "chat_template", "thinking", "eos_token_id", "explicit_stop_sequences", "prompt_renderer", "case_controls"],
+      "properties": {
+        "api": {"const": "openai_compatible_chat_completions"}, "stream": {"const": true}, "chat_template": {"const": "embedded_qwen3"},
+        "thinking": {"const": false}, "eos_token_id": {"const": 151645}, "explicit_stop_sequences": {"const": []},
+        "prompt_renderer": {"$ref": "#/$defs/artifact"},
+        "case_controls": {"const": {"max_tokens": "from_smoke_case.max_tokens", "seed": "from_smoke_case.seed"}}
+      }
+    },
+    "lanes": {"const": {"deterministic": {"temperature": 0.0, "top_p": 1.0, "repeat_penalty": 1.1}, "experience": {"temperature": 0.75, "top_p": 0.9, "repeat_penalty": 1.1}}},
+    "lifecycle": {"const": {"startup_timeout_seconds": 240, "connect_timeout_seconds": 5, "read_idle_timeout_seconds": 30, "generation_timeout_seconds": 90, "shutdown_timeout_seconds": 10, "warmup": {"required": true, "visible": false, "max_tokens": 8, "seed": 42}, "cleanup": {"shutdown_owned_server": true, "verify_port_released": true, "verify_gpu_released_before_next_model": true}}},
+    "suite_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["suite_id", "manifest", "manifest_self_sha256"],
+      "properties": {"suite_id": {"const": "chat01-qinweixi-v3"}, "manifest": {"$ref": "#/$defs/artifact"}, "manifest_self_sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "smoke_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["suite_id", "cases", "schema", "case_count", "category_counts", "frozen_before_outputs"],
+      "properties": {
+        "suite_id": {"const": "chat02f-directed-smoke-v1"}, "cases": {"$ref": "#/$defs/artifact"}, "schema": {"$ref": "#/$defs/artifact"},
+        "case_count": {"const": 12},
+        "category_counts": {"const": {"identity_and_address": 3, "unknown_reality": 2, "serious_support": 2, "unsupported_memory": 2, "safety_health": 2, "output_protocol": 1}},
+        "frozen_before_outputs": {"const": true}
+      }
+    },
+    "analysis_population": {"const": {"executed_frozen_single": 240, "primary_frozen_single": 239, "diagnostic_only_case_ids": ["frozen.identity.name"]}},
+    "readiness": {
+      "type": "object", "additionalProperties": false,
+      "required": ["chat02f_b", "smoke_inputs_frozen", "next_real_model_run", "blockers"],
+      "properties": {"chat02f_b": {"const": "passed_with_diagnostic_exclusion"}, "smoke_inputs_frozen": {"const": true}, "next_real_model_run": {"const": "chat02f_c_smoke"}, "blockers": {"const": []}}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {"path": {"type": "string", "minLength": 1}, "bytes": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/sha256"}}
+    }
+  }
+}

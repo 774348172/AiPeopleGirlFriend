@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schemas/bge_manifest_v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "model_id", "revision", "artifact_sha256", "dimension", "maximum_sequence_length", "pooling", "normalization", "device", "network_access", "model_files"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "model_id": {"const": "BAAI/bge-small-zh-v1.5"},
+    "revision": {"type": "string", "minLength": 1},
+    "artifact_sha256": {"$ref": "#/$defs/sha256"},
+    "dimension": {"const": 512},
+    "maximum_sequence_length": {"const": 512},
+    "pooling": {"const": "mean"},
+    "normalization": {"const": "runtime_l2"},
+    "device": {"const": "cpu"},
+    "network_access": {"const": "forbidden"},
+    "model_files": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"$ref": "#/$defs/file"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "file": {"type": "object", "additionalProperties": false, "required": ["path", "sha256"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}, "size_bytes": {"type": "integer", "minimum": 0}}}
+  }
+}

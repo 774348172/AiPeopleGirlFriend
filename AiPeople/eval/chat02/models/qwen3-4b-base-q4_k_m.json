@@ -1,0 +1,40 @@
+{
+  "model_id": "qwen3-4b-base-q4_k_m",
+  "schema_version": 1,
+  "created_at": "2026-08-05T22:56:00+08:00",
+  "role": "base",
+  "status": "verified",
+  "asset": {
+    "path": "F:\\AiPeople\\local_runtime\\models\\qwen3-4b-base-1cfa9a720891\\qwen3-4b-base-q4_k_m.gguf",
+    "bytes": 2497280448,
+    "sha256": "d4314a6f3767e86d10f2177f7cfc46db77f94a38c8b0979dc76bdb1a920e9e9f"
+  },
+  "identity": {
+    "architecture": "qwen3", "parameter_class": "4B", "quantization": "Q4_K_M", "gguf_file_type": 15, "tensor_count": 398,
+    "native_context_length": 40960, "eos_token_id": 151645, "chat_template_bytes": 4168,
+    "chat_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8"
+  },
+  "source": {
+    "repository": "Qwen/Qwen3-4B",
+    "local_source_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+    "training_source_revision": null,
+    "revision_note": "The complete local Hugging Face snapshot and refs/main prove this Windows conversion source revision. The separate MLX training machine did not record its exact revision, so equivalence to the trained model's source revision is not claimed."
+  },
+  "adaptation": {"kind": "none", "adapter_checkpoint": null, "merge_method": null, "evidence": [], "note": "Unmodified upstream base weights from the recorded local snapshot."},
+  "export_provenance": {
+    "converter": {"path": "F:\\AiPeople\\local_runtime\\llama.cpp\\recovered-b10256-root\\llama.cpp-b10256\\convert_hf_to_gguf.py", "bytes": 12798, "sha256": "e38975e1c68d98ac1664dfd530616eb35c72294382a4dd873d4746b23f27779f"},
+    "converter_module": {"path": "F:\\AiPeople\\local_runtime\\llama.cpp\\recovered-b10256-root\\llama.cpp-b10256\\conversion\\qwen.py", "bytes": 29207, "sha256": "97fc83f49995eef49b1f83639cecf555953a04d9bba9cbdd5fe42df0d2d857a4"},
+    "gguf_python_version": "0.19.0",
+    "quantizer": {"path": "F:\\AiPeople\\local_runtime\\llama.cpp\\b10256-cuda-12.4\\llama-quantize.exe", "bytes": 9216, "sha256": "9159ca2a753b54490b894777f09f5966cc36d9d77ba6a02c2e4b6aff39ef021d", "release": "b10256"},
+    "note": "Converted locally to F16 with the recovered official b10256 converter, then quantized by b10256 to Q4_K_M. The qwen module omits only unsupported optional DFlash/DSpark registrations because published gguf 0.19.0 lacks MODEL_ARCH.DFLASH; the standard Qwen3 tensor mapping is unchanged and the adapted module hash is frozen here."
+  },
+  "runtime_contract": {"chat_template": "embedded_qwen3", "thinking": false, "context_size": 4096, "stop_contract": "embedded_eos_151645_no_explicit_stop", "execution_profile_id": "chat02-shared-llamacpp-b10256-v1"},
+  "runtime_manifest_reference": null,
+  "comparability": {
+    "status": "comparable_with_limitations", "compared_to": "qinweixi-current-q4_k_m",
+    "controlled_traits": ["qwen3 architecture", "4B parameter class", "Q4_K_M quantization", "398 tensor layout", "embedded chat template hash", "native context length", "llama.cpp execution profile"],
+    "limitations": ["The exact upstream revision used on the MLX training machine is unknown; only the repository name and intended pipeline are evidenced."]
+  },
+  "excluded_inputs": [],
+  "notes": "CHAT-02B comparable base asset. No model download was required because the complete source snapshot was already in the local Hugging Face cache."
+}

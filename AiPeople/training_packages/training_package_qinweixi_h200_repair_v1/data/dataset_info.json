@@ -1,0 +1,12 @@
+{
+  "qin_v5_train": {
+    "file_name": "qin_v5_train.jsonl",
+    "format": "sharegpt",
+    "columns": {"messages": "conversations"}
+  },
+  "qin_v5_valid": {
+    "file_name": "qin_v5_valid.jsonl",
+    "format": "sharegpt",
+    "columns": {"messages": "conversations"}
+  }
+}

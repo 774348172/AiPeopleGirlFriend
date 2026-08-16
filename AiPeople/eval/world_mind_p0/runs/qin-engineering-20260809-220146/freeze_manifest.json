@@ -1,0 +1,259 @@
+{
+  "character_package": {
+    "character_id": "baiweixi",
+    "files": [
+      {
+        "path": "README.md",
+        "sha256": "6c72c3b9b6685f543b2896c6b0ea9778d7726bb2b7e8797878a03873987b340f",
+        "size_bytes": 2387
+      },
+      {
+        "path": "bible.yaml",
+        "sha256": "178f5b080c86340a1ee0cf229b8ecf3d2409f7c7e1a36fe8900f0c1256bf0ae9",
+        "size_bytes": 9105
+      },
+      {
+        "path": "canon.json",
+        "sha256": "ff68b32c7bb66afe1de5ecfb0a379064f6a71198146ebd311e260fe972f09162",
+        "size_bytes": 7722
+      },
+      {
+        "path": "package.json",
+        "sha256": "eb946021d5043b321a5f0accae824741f73f7b3f2dbc7c328d75fa4809f1a206",
+        "size_bytes": 436
+      },
+      {
+        "path": "timeline.yaml",
+        "sha256": "551b8d6a2276deb842e7468535ad7bfd734ae3ff5fbf816c03a4b0b27bf83fd0",
+        "size_bytes": 6452
+      },
+      {
+        "path": "角色设定定稿.md",
+        "sha256": "77b97e5261d3f8b08c1cb16682857e2d8e0f7fb2f711179ba79495ae10aa9fc3",
+        "size_bytes": 12685
+      }
+    ]
+  },
+  "database_migrations": [
+    {
+      "path": "008_world_mind_v6_foundation.sql",
+      "sha256": "711bce2027f50c6ecb98a92df312d53cfee6ffd8451cc425f9e41d9113bf8f1b",
+      "size_bytes": 5060
+    },
+    {
+      "path": "009_heroine_memory_v2.sql",
+      "sha256": "3ec16b0f6b1fe0b1f2b6dc547b5f1410659e1f3463850d1d875e002e7525900d",
+      "size_bytes": 4512
+    },
+    {
+      "path": "010_world_mind_model_decisions.sql",
+      "sha256": "6c506dc46a0a38f4046cb3ece8906bb87ae2a7abeccb428afa06ae25bc74e509",
+      "size_bytes": 882
+    },
+    {
+      "path": "011_world_mind_reconciliation.sql",
+      "sha256": "c43b6a75c05dad2d72bf23d98481599e97a6d792eda2f62913573d20274afa1b",
+      "size_bytes": 2598
+    },
+    {
+      "path": "012_world_mind_projection_rebuild.sql",
+      "sha256": "4865fd37733b8116ca47354e78c5d709ea6aa9ca6775e031de46d59c0e64e127",
+      "size_bytes": 2895
+    }
+  ],
+  "manifest_sha256": "9717085769e433f8a914583bcb51bf0143034c107d3538b2a58e0ab121f32efd",
+  "mode_profiles": {
+    "FIVE_MINUTE_WORLD_MIND_RECONCILE": {
+      "max_tokens": 800,
+      "repeat_penalty": 1.05,
+      "retries": 1,
+      "temperature": 0.2,
+      "timeout_seconds": 60.0,
+      "top_p": 0.85
+    },
+    "GAME_REPLY": {
+      "max_tokens": 600,
+      "repeat_penalty": 1.1,
+      "retries": 1,
+      "temperature": 0.75,
+      "timeout_seconds": 90.0,
+      "top_p": 0.9
+    },
+    "POST_REPLY_WORLD_MIND_RECONCILE": {
+      "max_tokens": 650,
+      "repeat_penalty": 1.05,
+      "retries": 1,
+      "temperature": 0.2,
+      "timeout_seconds": 50.0,
+      "top_p": 0.85
+    },
+    "TURN_MIND_ADVANCE": {
+      "max_tokens": 900,
+      "repeat_penalty": 1.05,
+      "retries": 1,
+      "temperature": 0.2,
+      "timeout_seconds": 60.0,
+      "top_p": 0.85
+    },
+    "WORLD_CONTINUITY_REVIEW": {
+      "max_tokens": 650,
+      "repeat_penalty": 1.05,
+      "retries": 1,
+      "temperature": 0.1,
+      "timeout_seconds": 45.0,
+      "top_p": 0.8
+    }
+  },
+  "mode_prompts": {
+    "FIVE_MINUTE_WORLD_MIND_RECONCILE": {
+      "length": 546,
+      "sha256": "bb64179dca0e5fd218d1ba157f52b6a32501126576463fb02ee88dbba44b4df3"
+    },
+    "GAME_REPLY": {
+      "length": 210,
+      "sha256": "19ad35fbc095fcb84caaedbb8d11cffceee2264e14dc78f016dece5582032d96"
+    },
+    "POST_REPLY_WORLD_MIND_RECONCILE": {
+      "length": 529,
+      "sha256": "7ffbfe2a3d5f99badaa9391f5c769c99c8ef60285bd84c9e26700190186a3fa9"
+    },
+    "TURN_MIND_ADVANCE": {
+      "length": 330,
+      "sha256": "795bfa9c624226ea901634cb622ba154747a186690e7d06840297f3763dcc31e"
+    },
+    "WORLD_CONTINUITY_REVIEW": {
+      "length": 330,
+      "sha256": "9fdf9227bf170e618945bbd4b7716b651c15313c909ef0f78967e62534611740"
+    }
+  },
+  "mode_schemas": {
+    "FIVE_MINUTE_WORLD_MIND_RECONCILE": {
+      "path": "five_minute_world_mind_reconcile_v1.schema.json",
+      "sha256": "a4d9605492790a3d505b6fa63dc6498baf3eaa784382ff2467a603a83894de17",
+      "size_bytes": 2943
+    },
+    "GAME_REPLY": {
+      "path": "game_reply_v1.schema.json",
+      "sha256": "cd1e037dc13832a58ef484b259d4ffb6e9abd3cb268eb8f011f5e806cc6b1d67",
+      "size_bytes": 970
+    },
+    "POST_REPLY_WORLD_MIND_RECONCILE": {
+      "path": "post_reply_world_mind_reconcile_v1.schema.json",
+      "sha256": "4a25b8e38e05f6019e56fc4d9831ea5b5989002e4c87761529e5fb50c67e1c42",
+      "size_bytes": 2942
+    },
+    "TURN_MIND_ADVANCE": {
+      "path": "turn_mind_advance_v1.schema.json",
+      "sha256": "757500e9cd932cf3300cd24f06448804093e2de4cd994a872aa3f76f8557ab7d",
+      "size_bytes": 3162
+    },
+    "WORLD_CONTINUITY_REVIEW": {
+      "path": "world_continuity_review_v1.schema.json",
+      "sha256": "ecf5ae8ecb7fe2096a9fab025ccc46d9e9f74650aaa81000dddff209658af17b",
+      "size_bytes": 837
+    }
+  },
+  "not_final_p0": true,
+  "probe_model": {
+    "artifact_sha256": "433f4f1cee5763af6007ae0ca882d45212ed5efcd0b196f3255af18d42e6c440",
+    "context_size": 8192,
+    "ollama_name": "qinweixi-qwen35",
+    "source_gguf": "F:\\AiPeople\\训练结果\\qinweixi-qwen35-windows-ollama\\qinweixi-qwen35-q4_k_m.gguf",
+    "stream_response": true,
+    "weights_character": "qinweixi_legacy"
+  },
+  "runtime_schemas": [
+    {
+      "path": "bge_manifest_v1.schema.json",
+      "sha256": "8c1ae90a93d32c741dee9c37b0a0fbf5a7dfb44d4f237a373abc94581413fc73",
+      "size_bytes": 1210
+    },
+    {
+      "path": "character_package_manifest_v1.schema.json",
+      "sha256": "0a819a2efd317f255094b78134ce7f6567d9224045245afdb8e41b04cc00ba70",
+      "size_bytes": 1438
+    },
+    {
+      "path": "five_minute_world_mind_reconcile_v1.schema.json",
+      "sha256": "a4d9605492790a3d505b6fa63dc6498baf3eaa784382ff2467a603a83894de17",
+      "size_bytes": 2943
+    },
+    {
+      "path": "game_reply_v1.schema.json",
+      "sha256": "cd1e037dc13832a58ef484b259d4ffb6e9abd3cb268eb8f011f5e806cc6b1d67",
+      "size_bytes": 970
+    },
+    {
+      "path": "memory_proposal_draft_v1.schema.json",
+      "sha256": "92561ba2300836d77eeb96392d2750df7ab17d35f1681a7ae530b5edb6f3cc53",
+      "size_bytes": 6633
+    },
+    {
+      "path": "memory_propose_request_v1.schema.json",
+      "sha256": "7181edc7af0d321e4a9d03e530899d60aeda719993251742acbf64d0b16a415a",
+      "size_bytes": 5118
+    },
+    {
+      "path": "memory_propose_result_v1.schema.json",
+      "sha256": "ab6ae71f86c75f65287f4435b30f1ee55cedf867cedff8c67c98b03fc604787d",
+      "size_bytes": 7420
+    },
+    {
+      "path": "memory_representation_v1.schema.json",
+      "sha256": "b5eb0a711b82de0fe4bb9be3d8639707640185c4ab4b7013fb96083c37cf5a26",
+      "size_bytes": 7786
+    },
+    {
+      "path": "memory_representation_v2.schema.json",
+      "sha256": "a609192cf1aedc56525ce658fe538355ab38c549ac8cd11d4b63fc08e0bd31a0",
+      "size_bytes": 2155
+    },
+    {
+      "path": "post_reply_world_mind_reconcile_v1.schema.json",
+      "sha256": "4a25b8e38e05f6019e56fc4d9831ea5b5989002e4c87761529e5fb50c67e1c42",
+      "size_bytes": 2942
+    },
+    {
+      "path": "real_asset_bundle_v1.schema.json",
+      "sha256": "ade9885373411cabe71eeb54ae647bcce942c30cf7d277f7812a803d7a5fb991",
+      "size_bytes": 1080
+    },
+    {
+      "path": "reply_manifest_v1.schema.json",
+      "sha256": "8cf490924a9c0c3e4b32ff0e3d4fa0871a584f96aeff77e26f0f5e2e0c544350",
+      "size_bytes": 1458
+    },
+    {
+      "path": "reply_manifest_v2.schema.json",
+      "sha256": "2d960045901dddf87f244ac350581bb6273d0d019bccff74669bf6d2d01630a0",
+      "size_bytes": 1897
+    },
+    {
+      "path": "reranker_manifest_v1.schema.json",
+      "sha256": "87a1fe8730c9da5cfa166a8ba4bdaf53589f8269f027a52f0a1b0d30f0633e59",
+      "size_bytes": 1326
+    },
+    {
+      "path": "save_identity_v1.schema.json",
+      "sha256": "c65431ac16fc8ebd4c80b04ca9fa9c9d360f6288e76ce6aed24b728064e37eab",
+      "size_bytes": 997
+    },
+    {
+      "path": "turn_mind_advance_v1.schema.json",
+      "sha256": "757500e9cd932cf3300cd24f06448804093e2de4cd994a872aa3f76f8557ab7d",
+      "size_bytes": 3162
+    },
+    {
+      "path": "wmr08_engineering_report_v1.schema.json",
+      "sha256": "ddf62906428bdda3992c1671d5795a8f2dd2bf3e870a6d91091dc13bea745a8d",
+      "size_bytes": 1758
+    },
+    {
+      "path": "world_continuity_review_v1.schema.json",
+      "sha256": "ecf5ae8ecb7fe2096a9fab025ccc46d9e9f74650aaa81000dddff209658af17b",
+      "size_bytes": 837
+    }
+  ],
+  "schema_version": 1,
+  "scope": "wmr08_engineering_prefreeze"
+}

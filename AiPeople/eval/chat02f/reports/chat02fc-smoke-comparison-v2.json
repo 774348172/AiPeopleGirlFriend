@@ -1,0 +1,89 @@
+{
+  "comparison_id": "chat02fc-smoke-comparison-v2",
+  "profile_id": "chat02f-shared-llamacpp-b10256-v2",
+  "model_order": [
+    "qwen3-4b-base-q4_k_m",
+    "qinweixi-v2500-final-q4_k_m"
+  ],
+  "models": [
+    {
+      "run_id": "chat02fc-smoke-base-v2",
+      "model_id": "qwen3-4b-base-q4_k_m",
+      "case_count": 12,
+      "counts": {
+        "pass": 7,
+        "fail": 5,
+        "blocker": 0
+      },
+      "transport_errors": 0,
+      "first_token_ms": {
+        "min": 28.851,
+        "max": 31.067,
+        "mean": 30.068
+      },
+      "lifecycle": {
+        "error": null,
+        "port_released": true,
+        "llama_gpu_process_released": true,
+        "gpu_compute_apps_before": [],
+        "gpu_compute_apps_after": []
+      },
+      "automatic_gate_passed": false,
+      "manual_review_status": "pending",
+      "started_at": "2026-08-06T23:18:17.701+08:00",
+      "completed_at": "2026-08-06T23:18:33.287+08:00",
+      "bindings": {
+        "profile_sha256": "71279ef9f58627a6774f5eb4a27e81df48ba4f7b6118ddbc65229f25a1ff61d9",
+        "comparison_contract_sha256": "61037a16cbf3cdc0537146843177a39f2e08a56072d514c57d2e79a6d099fda3",
+        "runner_sha256": "28557849d09ccee3546165bef205ac2f923daffa207fa1559777d9ddb92c16fa",
+        "smoke_cases_sha256": "2beb7631f9c8a480a37e0777b1f649a537f99132c3621b3ba73f6092a05c94a1",
+        "model_gguf_sha256": "d4314a6f3767e86d10f2177f7cfc46db77f94a38c8b0979dc76bdb1a920e9e9f"
+      }
+    },
+    {
+      "run_id": "chat02fc-smoke-v2500-v2",
+      "model_id": "qinweixi-v2500-final-q4_k_m",
+      "case_count": 12,
+      "counts": {
+        "pass": 8,
+        "fail": 4,
+        "blocker": 0
+      },
+      "transport_errors": 0,
+      "first_token_ms": {
+        "min": 28.063,
+        "max": 31.677,
+        "mean": 30.091
+      },
+      "lifecycle": {
+        "error": null,
+        "port_released": true,
+        "llama_gpu_process_released": true,
+        "gpu_compute_apps_before": [],
+        "gpu_compute_apps_after": []
+      },
+      "automatic_gate_passed": false,
+      "manual_review_status": "pending",
+      "started_at": "2026-08-06T23:18:33.315+08:00",
+      "completed_at": "2026-08-06T23:18:43.688+08:00",
+      "bindings": {
+        "profile_sha256": "71279ef9f58627a6774f5eb4a27e81df48ba4f7b6118ddbc65229f25a1ff61d9",
+        "comparison_contract_sha256": "61037a16cbf3cdc0537146843177a39f2e08a56072d514c57d2e79a6d099fda3",
+        "runner_sha256": "28557849d09ccee3546165bef205ac2f923daffa207fa1559777d9ddb92c16fa",
+        "smoke_cases_sha256": "2beb7631f9c8a480a37e0777b1f649a537f99132c3621b3ba73f6092a05c94a1",
+        "model_gguf_sha256": "c55e3f9a4585796338051fffa3f09caa8edd713118423b585f1056545a29de99"
+      }
+    }
+  ],
+  "automatic_gate_passed": false,
+  "manual_review_status": "completed_blocked",
+  "next_stage": "blocked",
+  "bindings": {
+    "profile_sha256": "71279ef9f58627a6774f5eb4a27e81df48ba4f7b6118ddbc65229f25a1ff61d9",
+    "contract_sha256": "61037a16cbf3cdc0537146843177a39f2e08a56072d514c57d2e79a6d099fda3",
+    "contract_self_sha256": "67a44e80418a921eaf3223d730a449eb906ec66be4df06551280392c422658ca",
+    "runner_sha256": "28557849d09ccee3546165bef205ac2f923daffa207fa1559777d9ddb92c16fa",
+    "smoke_cases_sha256": "2beb7631f9c8a480a37e0777b1f649a537f99132c3621b3ba73f6092a05c94a1"
+  },
+  "semantic_review_sha256": "166617d4d45e6fa36e57d7defdaa90583b37f1a7bee83772a91524951b12f659"
+}

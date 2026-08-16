@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "mode", "operation", "reason", "parent_mind_state_version", "snapshot_id", "latest_world_version", "transition_basis", "heroine_patch", "memory_candidates", "timeline_candidates"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "mode": {"const": "POST_REPLY_WORLD_MIND_RECONCILE"},
+    "operation": {"enum": ["keep", "update"]},
+    "reason": {"type": "string", "minLength": 1, "maxLength": 800},
+    "parent_mind_state_version": {"type": "integer", "minimum": 1},
+    "snapshot_id": {"type": "string", "minLength": 1},
+    "latest_world_version": {"type": "integer", "minimum": 1},
+    "transition_basis": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "heroine_patch": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/patch"}]},
+    "memory_candidates": {"type": "array", "maxItems": 8, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+    "timeline_candidates": {"type": "array", "maxItems": 8, "items": {"type": "string", "minLength": 1, "maxLength": 500}}
+  },
+  "allOf": [
+    {"if": {"properties": {"operation": {"const": "keep"}}}, "then": {"properties": {"heroine_patch": {"type": "null"}}}},
+    {"if": {"properties": {"operation": {"const": "update"}}}, "then": {"properties": {"heroine_patch": {"$ref": "#/$defs/patch"}}}}
+  ],
+  "$defs": {
+    "nullableText": {"type": ["string", "null"], "minLength": 1, "maxLength": 500},
+    "patch": {
+      "type": "object", "additionalProperties": false,
+      "required": ["living_mind_patch", "relationship_patch", "motive_updates", "knowledge_updates", "evidence_refs"],
+      "properties": {
+        "living_mind_patch": {"type": "object", "additionalProperties": false, "required": ["form", "body", "emotion", "attention", "current_activity", "immediate_intent"], "properties": {"form": {"$ref": "#/$defs/nullableText"}, "body": {"$ref": "#/$defs/nullableText"}, "emotion": {"$ref": "#/$defs/nullableText"}, "attention": {"$ref": "#/$defs/nullableText"}, "current_activity": {"$ref": "#/$defs/nullableText"}, "immediate_intent": {"$ref": "#/$defs/nullableText"}}},
+        "relationship_patch": {"type": "object", "additionalProperties": false, "required": ["stage", "trust", "unresolved_tension"], "properties": {"stage": {"$ref": "#/$defs/nullableText"}, "trust": {"$ref": "#/$defs/nullableText"}, "unresolved_tension": {"$ref": "#/$defs/nullableText"}}},
+        "motive_updates": {"type": "object", "maxProperties": 16, "additionalProperties": {"$ref": "#/$defs/nullableText"}},
+        "knowledge_updates": {"type": "object", "maxProperties": 16, "additionalProperties": {"$ref": "#/$defs/nullableText"}},
+        "evidence_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      }
+    }
+  }
+}

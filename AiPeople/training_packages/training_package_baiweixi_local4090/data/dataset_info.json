@@ -1,0 +1,17 @@
+{
+  "_comment": "LLaMA-Factory 数据集注册。sharegpt 格式：conversations=[{from,value}]，from=human/gpt/system。",
+  "baiweixi_ready": {
+    "file_name": "baiweixi_ready.jsonl",
+    "columns": {
+      "messages": "conversations"
+    },
+    "formatting": "sharegpt"
+  },
+  "baiweixi_small": {
+    "file_name": "baiweixi_small.jsonl",
+    "columns": {
+      "messages": "conversations"
+    },
+    "formatting": "sharegpt"
+  }
+}

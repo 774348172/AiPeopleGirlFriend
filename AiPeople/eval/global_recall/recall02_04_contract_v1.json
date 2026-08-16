@@ -1,0 +1,102 @@
+{
+  "contract_id": "recall02-04-global-exact-top32-v1",
+  "freeze": {
+    "hash_algorithm": "sha256",
+    "immutable": true,
+    "manifest_hash_mode": "canonical_json_with_null_self",
+    "manifest_sha256": "5ae9869cb2eb29a8ac7e2ddf0fe8ac93ea82fb6d29acc6d83dae601d59152c13"
+  },
+  "frozen_assets": [
+    {
+      "bytes": 8568,
+      "path": "eval/global_recall/benchmark.py",
+      "sha256": "d804eac5a2aad42925154943314908a4c27b297daa44fd3c8f869268cd958608"
+    },
+    {
+      "bytes": 3928,
+      "path": "eval/global_recall/evaluate.py",
+      "sha256": "344eb33f4055bd214eb433bc98905b16a77ff01713b948f2094d2a38984fca71"
+    },
+    {
+      "bytes": 7541,
+      "path": "eval/global_recall/freeze.py",
+      "sha256": "8852cf15a12462823bf27775f12de0cd17d16cf548ad9752b024502df0dff9f5"
+    },
+    {
+      "bytes": 2505,
+      "path": "eval/global_recall/recall02_04_profile_v1.json",
+      "sha256": "9c6779b07f1502ce546f7bda366f4a2cdfa769476795eccd832915727212538c"
+    },
+    {
+      "bytes": 1431,
+      "path": "eval/global_recall/recall04_engineering_benchmark_v1.json",
+      "sha256": "2956757c58983083aa50a1b6b3bcec37162bc9fed213424b3d6fcda130b359fb"
+    },
+    {
+      "bytes": 7859,
+      "path": "eval/global_recall/recall04_semantic_cases_v1.json",
+      "sha256": "54c1bd7c301f4a106351b2a4cba3a800af8146340614ca0d57f7be56c2390744"
+    },
+    {
+      "bytes": 927,
+      "path": "eval/global_recall/recall04_semantic_status_v1.json",
+      "sha256": "6de9db0a7b4f0d0638e893f50538485a5b1197835feaabe7e621863d70922b50"
+    },
+    {
+      "bytes": 2076,
+      "path": "eval/selector_query/recall01_contract_v1.json",
+      "sha256": "2cd63e7071b55b6470fc4a7b290d7eec3e2452716ed5d2153294a7a7d65074d1"
+    },
+    {
+      "bytes": 684,
+      "path": "pyproject.toml",
+      "sha256": "ffdc28a76e30886341a799708fcebfb38ffef5c72922ab07da2434365ab0f2f6"
+    },
+    {
+      "bytes": 11274,
+      "path": "runtime/_global_recall.py",
+      "sha256": "4612d9812e321ab96c95ff49e73e374a1ad79cde09091fb4591f22afc02a70ca"
+    },
+    {
+      "bytes": 6317,
+      "path": "runtime/_recall_candidates.py",
+      "sha256": "1abe3fda812ac37a878e222347536f0c9020ca9da9549de790903320b535dd5f"
+    },
+    {
+      "bytes": 4950,
+      "path": "设计文档/AI设计/当前权威设计/RECALL-02-04_全局精确扫描Top32与长库验收施工文档.md",
+      "sha256": "58781069cfd734aba83e35c9866cf5802ebcb9e2bd50e4710ada2b3bd5a3aedb"
+    },
+    {
+      "bytes": 16997,
+      "path": "设计文档/AI设计/当前权威设计/RelationshipRuntime_全局记忆选择器训练与模型决策方案_V2.md",
+      "sha256": "1d484d5af75f3da448728f99a4c4f1478d8ee99535f7e3ca351db59b5679cf3e"
+    }
+  ],
+  "frozen_at": "2026-08-08T02:00:55Z",
+  "schema_version": 1,
+  "scope": {
+    "excludes": [
+      "ANN",
+      "reranker inference",
+      "final memory selection",
+      "model download or training"
+    ],
+    "includes": "global exact float32 scan, memory_id max-view aggregation, stable Top32, current metadata loading, stale guards, 100k-event engineering benchmark and frozen semantic evaluator",
+    "next_checkpoint": "SELECT-01",
+    "passed": [
+      "RECALL-02 exact full-pool scan",
+      "RECALL-03 unique stable Top32 candidate contract",
+      "RECALL-04 target-scale exact scan engineering P95"
+    ],
+    "pending_external_assets": [
+      "real local BGE global_recall_at_32",
+      "full selector_total_ms with Qwen reranker"
+    ]
+  },
+  "status": "frozen_with_external_semantic_gate_pending",
+  "upstream": {
+    "contract_id": "recall01-selector-query-representation-v1",
+    "manifest": "eval/selector_query/recall01_contract_v1.json"
+  }
+}

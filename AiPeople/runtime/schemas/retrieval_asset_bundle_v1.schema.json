@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schemas/retrieval_asset_bundle_v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "network_access_at_runtime", "download_endpoint", "bge", "reranker"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "network_access_at_runtime": {"const": "forbidden"},
+    "download_endpoint": {"type": "string", "minLength": 1},
+    "bge": {"$ref": "#/$defs/component"},
+    "reranker": {"$ref": "#/$defs/component"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "revision": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "revision", "artifact_sha256", "size_bytes"],
+      "properties": {
+        "path": {"type": "string", "minLength": 3},
+        "revision": {"$ref": "#/$defs/revision"},
+        "artifact_sha256": {"$ref": "#/$defs/sha256"},
+        "size_bytes": {"type": "integer", "minimum": 1}
+      }
+    }
+  }
+}

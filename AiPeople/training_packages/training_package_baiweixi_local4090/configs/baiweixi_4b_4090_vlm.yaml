@@ -1,0 +1,46 @@
+# LLaMA-Factory 训练配置 —— 白未晞人格（RTX 4090 24GB，Qwen3.5 VLM 版）
+# 与 baiweixi_4b_4090.yaml 唯一区别：基座换 Qwen3.5-4B（VLM 多模态）。
+# 纯文字聊天不需要多模态时用 Qwen3-4B 版（快 ~2x）；未来要做看图对话再切本配置。
+# 数据/方法/输出与 4090 版一致。
+
+### ----- model -----
+model_name_or_path: Qwen/Qwen3.5-4B  # VLM 多模态（视觉塔自动冻结）
+trust_remote_code: true
+adapter_name_or_path:
+
+### ----- method -----
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 16
+lora_alpha: 32
+lora_dropout: 0.05
+
+### ----- dataset -----
+dataset: baiweixi_ready
+template: qwen3_5_nothink                    # Qwen3.5 关闭思考模板
+cutoff_len: 2048
+dataset_dir: data
+overwrite_cache: true
+preprocessing_num_workers: 1
+
+### ----- output -----
+output_dir: outputs/baiweixi_4b_vlm
+logging_steps: 20
+save_steps: 100
+save_total_limit: 2
+plot_loss: true
+overwrite_output_dir: true
+
+### ----- train -----
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 4
+learning_rate: 1.0e-4
+num_train_epochs: 1.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+weight_decay: 0.01
+bf16: true
+gradient_checkpointing: false
+optim: adamw_torch

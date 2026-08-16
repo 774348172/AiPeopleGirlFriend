@@ -1,0 +1,18 @@
+identity:
+  character_id: synthetic_second_heroine
+  role: heroine
+
+initial_runtime:
+  character_id: synthetic_second_heroine
+  living_mind:
+    form: 人形
+    body: 身体状态稳定
+    emotion: 平静但保持距离
+    attention: 当前场景和男主角
+    current_activity: 安静站在一旁
+    immediate_intent: 先观察再回应
+  relationship:
+    protagonist_id: protagonist
+    stage: 初次建立联系
+    trust: 谨慎
+    unresolved_tension: 尚未确认是否可以信任男主角

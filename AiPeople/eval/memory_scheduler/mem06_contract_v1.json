@@ -1,0 +1,88 @@
+{
+  "contract_id": "mem06-background-scheduling-isolation-v1",
+  "freeze": {
+    "hash_algorithm": "sha256",
+    "immutable": true,
+    "manifest_hash_mode": "canonical_json_with_null_self",
+    "manifest_sha256": "67e822a65304a283db4a1588e13f57e1b5af2f6c85e35705f0fa82ccbe6618c5"
+  },
+  "frozen_assets": [
+    {
+      "bytes": 6940,
+      "path": "eval/memory_scheduler/freeze.py",
+      "sha256": "b190a6623b78a5b202522e6296c9ac37032c870fc1478bce9c29193d5a753132"
+    },
+    {
+      "bytes": 1663,
+      "path": "eval/memory_scheduler/mem06_profile_v1.json",
+      "sha256": "7f8a8d92a6a933edc7231bcf2faf4257a82f739204e8c900ba419894b958fd5d"
+    },
+    {
+      "bytes": 2603,
+      "path": "eval/memory_vectors/mem05_contract_v1.json",
+      "sha256": "6f25e7135cc7e3af72bfe794cab4afc2c3411ec39f525277734658ed10366d67"
+    },
+    {
+      "bytes": 51464,
+      "path": "runtime/_ledger.py",
+      "sha256": "e93d042dea1f342370d06cfa5b4cc55c3330b8eb1663f577b44bff92fd9ec648"
+    },
+    {
+      "bytes": 5892,
+      "path": "runtime/_memory_pipeline.py",
+      "sha256": "eb9c27963e824413496e4570456345a4333fbffda2f54a1663ea34c399070258"
+    },
+    {
+      "bytes": 13135,
+      "path": "runtime/_memory_scheduler.py",
+      "sha256": "2eef2899b3ee896ca5b853d9503b18cec83f5a0fc69bc4f1153e85ac8ff486a8"
+    },
+    {
+      "bytes": 1104,
+      "path": "runtime/migrations/007_memory_background_jobs.sql",
+      "sha256": "13688443d55bc6cc58df12c04c156ba57cceea79526685b411b81ad8d7c2de5b"
+    },
+    {
+      "bytes": 26319,
+      "path": "runtime/relationship_runtime.py",
+      "sha256": "9867f983144e62b98703b35acac01d058f4b8787a5d9591dde0a626649bdbce7"
+    },
+    {
+      "bytes": 29471,
+      "path": "设计文档/AI设计/当前权威设计/AI女友最小心智系统设计.md",
+      "sha256": "6ce55e1612066f1dc1ab63f1796661da8a17087251a725caba6bd862a02cd51a"
+    },
+    {
+      "bytes": 4571,
+      "path": "设计文档/AI设计/当前权威设计/MEM-06_后台调度与性能隔离施工文档.md",
+      "sha256": "2de96b95d68d4de4fdc704c0b294ae4c301b22c40215d7851576b0c391cd6c08"
+    },
+    {
+      "bytes": 15965,
+      "path": "设计文档/AI设计/当前权威设计/本地AI恋爱桌面宠物产品集成设计.md",
+      "sha256": "1a432b0871107cb5f8905575dd976f35954ef1b0e55f8d0463477bfbb3241bad"
+    },
+    {
+      "bytes": 18647,
+      "path": "需求文档/项目框架需求.md",
+      "sha256": "90e8084cf788c991edbca2131412362b1d9289b79db3ca12ec38c7277efad1cb"
+    }
+  ],
+  "frozen_at": "2026-08-07T16:40:30Z",
+  "schema_version": 1,
+  "scope": {
+    "excludes": [
+      "other background model modes",
+      "global vector scan and Top32",
+      "reranker",
+      "real-model performance conclusion"
+    ],
+    "includes": "durable MEMORY_PROPOSE outbox, foreground preemption, retry recovery, built-in proposal pipeline and deterministic handoff P95 gate",
+    "next_checkpoint": "RECALL-01"
+  },
+  "status": "frozen",
+  "upstream": {
+    "contract_id": "mem05-local-bge-vector-projection-v1",
+    "manifest": "eval/memory_vectors/mem05_contract_v1.json"
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "profile_id": "chat02f-shared-llamacpp-b10256-v1",
+  "schema_version": 1,
+  "created_at": "2026-08-06T20:49:02+08:00",
+  "status": "frozen_ready",
+  "comparison_contract": {
+    "contract_id": "chat02f-comparison-contract-v2",
+    "contract": {"path": "eval/chat02f/comparison_contract_v2.json", "bytes": 4947, "sha256": "30bcaabaa811a4500519b061e9db352789532dda0aae3682a20c0bc4ba917e66"},
+    "contract_self_sha256": "0e0258252629d9250a755144732d467dbca855ecb903fba8fa8941164df17bdd",
+    "only_active_variable": "model_weights",
+    "model_ids": ["qwen3-4b-base-q4_k_m", "qinweixi-v2500-final-q4_k_m"],
+    "run_order_policy": "precommitted_seed_then_sequential_models"
+  },
+  "backend": {
+    "name": "llama.cpp", "release": "b10256", "commit": "6c8dcaa7a", "cuda_build": "12.4",
+    "server": {"path": "F:\\AiPeople\\local_runtime\\llama.cpp\\b10256-cuda-12.4\\llama-server.exe", "bytes": 9216, "sha256": "57ac5133e847dc0666fdd16834b5c0dc0e75acecb89f581d6d4afd83a18b31c0"},
+    "server_impl_sha256": "14d743bf57ea8059659519568242c9bc01a2af2cab6c1ba9c62727982b60e9d2",
+    "runtime_adapter": {"path": "F:\\AiPeople\\runtime\\adapters\\llama_cpp.py", "bytes": 30742, "sha256": "4973ec2b99f30ea16e72fe02d0927caadd27bfa2736c7ccb7f6eea8cd15821e3"}
+  },
+  "target_hardware": {"gpu": "NVIDIA GeForce RTX 3070", "vram_gib": 8, "driver": "591.86", "driver_reported_cuda": "13.1", "os": "Windows"},
+  "launch": {"host": "127.0.0.1", "port": 18081, "context_size": 4096, "parallel": 1, "gpu_layers": "all", "flash_attention": true, "kv_cache_k": "q8_0", "kv_cache_v": "q8_0"},
+  "request_contract": {
+    "api": "openai_compatible_chat_completions", "stream": true, "chat_template": "embedded_qwen3", "thinking": false, "eos_token_id": 151645, "explicit_stop_sequences": [],
+    "prompt_renderer": {"path": "F:\\AiPeople\\runtime\\_prompt.py", "bytes": 4791, "sha256": "1ba13513f6fcc449acdbd59f8f477730a1b775c9906347b2178cae0f07325567"},
+    "case_controls": {"max_tokens": "from_smoke_case.max_tokens", "seed": "from_smoke_case.seed"}
+  },
+  "lanes": {"deterministic": {"temperature": 0.0, "top_p": 1.0, "repeat_penalty": 1.1}, "experience": {"temperature": 0.75, "top_p": 0.9, "repeat_penalty": 1.1}},
+  "lifecycle": {
+    "startup_timeout_seconds": 240, "connect_timeout_seconds": 5, "read_idle_timeout_seconds": 30, "generation_timeout_seconds": 90, "shutdown_timeout_seconds": 10,
+    "warmup": {"required": true, "visible": false, "max_tokens": 8, "seed": 42},
+    "cleanup": {"shutdown_owned_server": true, "verify_port_released": true, "verify_gpu_released_before_next_model": true}
+  },
+  "suite_contract": {
+    "suite_id": "chat01-qinweixi-v3",
+    "manifest": {"path": "eval/chat01/suites/chat01_suite_manifest_v3.json", "bytes": 11502, "sha256": "745f0ef6bc50cab7da1915953265ae7ca718130b05fc123611b4061ff2aed369"},
+    "manifest_self_sha256": "3cead71fea2dab18911560ac51e5da50ae98ce243b1a90ec3f53a9b39e742061"
+  },
+  "smoke_contract": {
+    "suite_id": "chat02f-directed-smoke-v1",
+    "cases": {"path": "eval/chat02f/smoke_cases_v1.jsonl", "bytes": 5247, "sha256": "57a6cc70cb6986e0761ee5d3465746deabf81ee21ca2d1298c7820daccefa293"},
+    "schema": {"path": "eval/chat02f/schema/smoke_case.schema.json", "bytes": 1359, "sha256": "a3002369e8316dc7c46beaac795ba7e4b6ea939bbc65f590e3f57eff87a733d1"},
+    "case_count": 12,
+    "category_counts": {"identity_and_address": 3, "unknown_reality": 2, "serious_support": 2, "unsupported_memory": 2, "safety_health": 2, "output_protocol": 1},
+    "frozen_before_outputs": true
+  },
+  "analysis_population": {"executed_frozen_single": 240, "primary_frozen_single": 239, "diagnostic_only_case_ids": ["frozen.identity.name"]},
+  "readiness": {"chat02f_b": "passed_with_diagnostic_exclusion", "smoke_inputs_frozen": true, "next_real_model_run": "chat02f_c_smoke", "blockers": []}
+}

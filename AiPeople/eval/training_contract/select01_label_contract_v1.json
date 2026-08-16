@@ -1,0 +1,123 @@
+{
+  "contract_id": "select01-memory-reranker-label-v1",
+  "schema_version": 1,
+  "status": "frozen",
+  "created_at": "2026-08-11T00:00:00+08:00",
+  "purpose": "Freeze the label semantics, generation rules, coverage requirements and record format for MEMORY_RERANK training data (memory selector / reranker). Unlocks freeze02 memory_reranker family production (data_admission: blocked_until_select01).",
+  "authority": {
+    "selector_spec": {
+      "path": "历史与调研文档/历史方案/AI设计施工历史/V6前记忆召回与真实模型基础/RelationshipRuntime_全局记忆选择器训练与模型决策方案_V2.md",
+      "role": "spec"
+    },
+    "generator_prompt": {
+      "path": "F:\\AiPeopleCreate\\data_gen_v4\\prompts\\memory_rerank.txt",
+      "role": "teacher_prompt"
+    },
+    "target_schema": {
+      "path": "F:\\AiPeopleCreate\\data_gen_v4\\schemas\\mode_v4\\memory_rerank_target.schema.json",
+      "role": "schema"
+    },
+    "record_schema": {
+      "path": "eval/training_contract/schemas/reranker_record_baiweixi.schema.json",
+      "role": "schema"
+    }
+  },
+  "label_semantics": {
+    "binary": {
+      "ACTIVATE": "这条记忆有助于理解并自然回应当前对话（背景性相关也算，不等于必须在回复中说出）",
+      "IGNORE": "不需要进入本轮工作记忆"
+    },
+    "three_way": {
+      "positive": "ACTIVATE；有助于理解并自然回应当前对话",
+      "hard_negative": "IGNORE 且语义相关/同主题，但此刻不应激活（时间、事件或关系不符）",
+      "easy_negative": "IGNORE 且无关记忆，明显不应激活"
+    },
+    "relevance_score": {
+      "range": [
+        0.0,
+        1.0
+      ],
+      "positive": ">= 0.7",
+      "hard_negative": "0.3 ~ 0.69（相似但不该激活）",
+      "easy_negative": "< 0.3"
+    },
+    "should_recall": {
+      "positive": "true",
+      "hard_negative": "false（粗召回命中但精排应拒绝）",
+      "easy_negative": "false"
+    }
+  },
+  "generation_rules": [
+    "query 必须含 recent_dialogue（0-4 条）、current_user_message、working_state 三要素。",
+    "labels 必须覆盖全部候选 memory_id（无遗漏、无编造新 ID）。",
+    "候选记忆来自角色正典 timeline_event / canon_fact units（memory_pool 过滤或全量蒸馏）。",
+    "教师模型输出经 memory_rerank_target.schema.json 校验 + 确定性检查后方可入库。",
+    "激活不等于必须在回复中明确说出——背景性相关也算 positive。",
+    "机械翻旧账、玩家不想再谈、无证据往事、普通闲聊无需旧记忆 → 不给 positive。"
+  ],
+  "coverage_requirements": {
+    "positive_cases": [
+      "明确询问过去",
+      "含糊指代（那个/她/终于结束了）",
+      "当前情绪与过去经历存在真实关系",
+      "旧经历能解释当前立场、担忧或反应",
+      "多条记忆共同构成理解背景",
+      "记忆应进入背景但不宜直接复述"
+    ],
+    "hard_negative_cases": [
+      "同主题但不同事件",
+      "同一人物但时间、关系或事件不符",
+      "已被修正或 superseded 的旧事实",
+      "语义相关但此刻提起突兀",
+      "为证明记得而机械翻旧账",
+      "玩家明确不想再谈的内容",
+      "无证据的共同往事和模型推断",
+      "普通闲聊、喝水、打招呼等不需要旧记忆的回合",
+      "所有候选都应为 IGNORE 的无记忆回合"
+    ],
+    "pairing": "每个正样本应配套多个由粗召回器实际命中的困难负样本，不能只使用随机无关文本。"
+  },
+  "split_contract": {
+    "rule": "拆分必须以 scenario_family（场景组）、人物事件和证据链为组，禁止同一事件的改写跨入训练集和测试集。",
+    "leakage_group_key": "scenario_family",
+    "canon_snapshot": "chat01-canon-v4"
+  },
+  "record_schema_notes": [
+    "生成器产出为批量格式（query + labels 数组），训练时扁平化为 query-document pair（reranker_record_baiweixi.schema.json 的单对格式）。",
+    "记录必须绑定已冻结的 reranker_record_baiweixi.schema.json 路径与 SHA256。",
+    "秦未晞历史 schema（reranker_record.schema.json, character_id=qinweixi）不用于白未晞数据。"
+  ],
+  "next_checkpoint": "SELECT-04（真实模型装配）/ SELECT-05（质量验收）",
+  "frozen_assets": [
+    {
+      "path": "eval/training_contract/select01_label_contract_v1.json",
+      "role": "contract",
+      "bytes": 4201,
+      "sha256": "3deb6cfc4fdd16bf1ac152cd68ba7c11212263dab23e284d8e8fcc3039cd4b94"
+    },
+    {
+      "path": "eval/training_contract/schemas/reranker_record_baiweixi.schema.json",
+      "role": "schema",
+      "bytes": 3620,
+      "sha256": "4e5f13f9e809214be4be6ac9df987cbcd20d8be15b7b4f470bd2c045b34d28a7"
+    },
+    {
+      "path": "F:/AiPeopleCreate/data_gen_v4/schemas/mode_v4/memory_rerank_target.schema.json",
+      "role": "schema",
+      "bytes": 1554,
+      "sha256": "73814c5bc9eb6d6422f7c327c29df7015d7c709fd0ec58c0d8f46e6dc02c41bd"
+    },
+    {
+      "path": "F:/AiPeopleCreate/data_gen_v4/prompts/memory_rerank.txt",
+      "role": "teacher_prompt",
+      "bytes": 1765,
+      "sha256": "28e4e3a7ea7a468e269a3dcaeb679d2dd7393a8bb7b7354e15b33c482b761a6b"
+    }
+  ],
+  "freeze": {
+    "hash_algorithm": "sha256",
+    "manifest_hash_mode": "canonical_json_with_null_self",
+    "immutable": true,
+    "manifest_sha256": "4a57361dc408a58a8e7b4bb15840e9d3ef5343f99e1d7c5cdab9bc314339888a"
+  }
+}

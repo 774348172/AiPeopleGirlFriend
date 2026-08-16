@@ -1,0 +1,159 @@
+{
+  "test_only": true,
+  "acceptance_scope": "V6 engineering compatibility only",
+  "not_accepted_as": [
+    "白未晞角色语义验收",
+    "白未晞正式模型验收",
+    "正式存档结果"
+  ],
+  "model": {
+    "ollama_name": "qinweixi-qwen35",
+    "weights_character": "qinweixi_legacy",
+    "artifact_sha256": "433f4f1cee5763af6007ae0ca882d45212ed5efcd0b196f3255af18d42e6c440",
+    "base_url": "http://127.0.0.1:11434",
+    "context_size": 8192
+  },
+  "runtime_binding": {
+    "prompt_character_id": "baiweixi",
+    "world_id": "songjiangfu",
+    "protagonist_id": "protagonist",
+    "save_id": "qin_probe_20260809_201629",
+    "database_path": "F:\\AiPeople\\eval\\world_mind_real_smoke\\qinweixi-qwen35-20260809-201629\\world_mind.sqlite3"
+  },
+  "started_at": "2026-08-09T20:16:29.379474+08:00",
+  "turn": {
+    "result_type": "Completed",
+    "text": "我低下头，看着你碗里的面，又看了看窗外淅沥的雨。过了好一会儿，才轻轻叹口气，声音很轻。",
+    "failure_code": null,
+    "metrics": {
+      "model_total_ms": 22332.87109999219,
+      "total_ms": 22349.799200019334,
+      "output_chars": 43
+    }
+  },
+  "database": {
+    "model_decisions": 1,
+    "reconcile_jobs_total": 2,
+    "reconcile_jobs_completed": 2,
+    "reconcile_jobs_failed": 0,
+    "reconcile_decisions": 2,
+    "heroine_mind_version": 4
+  },
+  "calls": [
+    {
+      "request_id": "qin-probe-turn-20260809-201629:TURN_MIND_ADVANCE:0",
+      "mode": "TURN_MIND_ADVANCE",
+      "started_at": "2026-08-09T20:16:29.491895+08:00",
+      "options": {
+        "max_tokens": 900,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_diegetic_actions\": [\n    {\n      \"description\": \"我放下筷子，看着你碗里的面，又看了看窗外淅沥的雨。\",\n      \"evidence_refs\": [\n        \"45bfa746-9725-4f59-bfcf-98895d29523f\"\n      ]\n    },\n    {\n      \"description\": \"我轻轻叹了口气，声音很轻，像是怕惊扰了什么。\",\n      \"evidence_refs\": [\n        \"45bfa746-9725-4f59-bfcf-98895d29523f\"\n      ]\n    },\n    {\n      \"description\": \"我抬起头，目光落在你身上，没有躲闪。\",\n      \"evidence_refs\": [\n        \"45bfa746-9725-4f59-bfcf-98895d29523f\"\n      ]\n    },\n    {\n      \"description\": \"我伸出手，指尖无意识地摩挲着衣角，似乎在犹豫要不要说些什么。\",\n      \"evidence_refs\": [\n        \"45bfa746-9725-4f59-bfcf-98895d29523f\"\n      ]\n    }\n  ],\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"45bfa746-9725-4f59-bfcf-98895d29523f\"\n    ],\n    \"knowledge_updates\": {},\n    \"living_mind_patch\": {\n      \"attention\": \"你碗里的面和窗外的雨\",\n      \"body\": \"外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\",\n      \"current_activity\": \"坐在你旁边，看着你吃面\",\n      \"emotion\": \"心里有些酸楚，但更多的是安心\",\n      \"form\": \"人形，猫耳和尾巴未隐藏\",\n      \"immediate_intent\": \"等你吃完，想和你一起坐一会儿\"\n    },\n    \"motive_updates\": {},\n    \"relationship_patch\": {\n      \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\",\n      \"trust\": \"已能在你清醒时于同一房间睡着，但仍保留重要秘密和弱点\",\n      \"unresolved_tension\": \"害怕伤好后失去继续留下的理由\"\n    }\n  },\n  \"mode\": \"TURN_MIND_ADVANCE\",\"parent_mind_state_version\":1,\"reply_intent\":\"等待你吃完面，然后自然地开口说话。\",\"reply_state_assertions\":{\n    \"captured_game_time\":\"0001-10-11T18:00:00.000000\",\"live_world_version\":1,\"protagonist_activity\":\"吃面\",\"protagonist_location_id\":\"apartment_table\"},\"schema_version\":1,\"snapshot_id\":\"45bfa746-9725-4f59-bfcf-98895d29523f\",\"transition_basis\":[\n    \"45bfa746-9725-4f59-bfcf-98895d29523f\"\n  ]}",
+      "elapsed_seconds": 15.763
+    },
+    {
+      "request_id": "qin-probe-turn-20260809-201629:WORLD_CONTINUITY_REVIEW:0",
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "started_at": "2026-08-09T20:16:45.255743+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.1,
+        "top_p": 0.8,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"decision\": \"approve\",\n  \"mode\": \"WORLD_CONTINUITY_REVIEW\",\n  \"reason\": \"候选状态与上一轮快照及证据合同均无冲突。女主从‘观察’自然过渡到‘陪伴’，情绪变化符合角色设定（酸楚与安心并存），没有越权获知新信息或改变已发生的剧情。\",\"revision_patch\": null,\"schema_version\": 1,\"snapshot_id\":\"45bfa746-9725-4f59-bfcf-98895d29523f\"}",
+      "elapsed_seconds": 2.93
+    },
+    {
+      "request_id": "qin-probe-turn-20260809-201629:GAME_REPLY:0",
+      "mode": "GAME_REPLY",
+      "started_at": "2026-08-09T20:16:48.186380+08:00",
+      "options": {
+        "max_tokens": 600,
+        "temperature": 0.75,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"approved_mind_state_version\": 2,\n  \"mode\": \"GAME_REPLY\",\n  \"reply_state_assertions\": {\n    \"captured_game_time\": \"0001-10-11T18:00:00.000000\",\n    \"live_world_version\": 1,\n    \"protagonist_activity\": \"吃面\",\n    \"protagonist_location_id\": \"apartment_table\"\n  },\n  \"schema_version\": 1,\n  \"snapshot_id\": \"45bfa746-9725-4f59-bfcf-98895d29523f\",\n  \"text\": \"我低下头，看着你碗里的面，又看了看窗外淅沥的雨。过了好一会儿，才轻轻叹口气，声音很轻。\"\n}",
+      "elapsed_seconds": 3.639
+    },
+    {
+      "request_id": "24edd136-864f-410b-a595-d9e9190302c7:POST_REPLY_WORLD_MIND_RECONCILE:0",
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:16:51.841701+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"45bfa746-9725-4f59-bfcf-98895d29523f\"\n    ],\n    \"knowledge_updates\": {},\n    \"living_mind_patch\": {\n      \"attention\": \"你碗里的面和窗外的雨\",\n      \"body\": \"外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\",\n      \"current_activity\": \"坐在你旁边，看着你吃面\",\n      \"emotion\": \"心里有些酸楚，但更多的是安心\",\n      \"form\": \"人形，猫耳和尾巴未隐藏\",\n      \"immediate_intent\": \"等你吃完，想和你一起坐一会儿\"\n    },\n    \"motive_updates\": {},\n    \"relationship_patch\": {\n      \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\",\n      \"trust\": \"已能在你清醒时于同一房间睡着，但仍保留重要秘密和弱点\",\n      \"unresolved_tension\": \"害怕伤好后失去继续留下的理由\"\n    }\n  },\n  \"latest_world_version\": 1,\n  \"memory_candidates\": [],\"mode\":\"POST_REPLY_WORLD_MIND_RECONCILE\",\"operation\":\"update\",\"parent_mind_state_version\":2,\"reason\":\"根据上一回合已确认的快照和女主回复，心智与关系状态稳定，无需修改。\",\"schema_version\":1,\"snapshot_id\":\"befad231-c521-4281-82e6-b0c866a40126\",\"timeline_candidates\":[],\"transition_basis\":[\"45bfa746-9725-4f59-bfcf-98895d29523f\"]}",
+      "elapsed_seconds": 6.448
+    },
+    {
+      "request_id": "24edd136-864f-410b-a595-d9e9190302c7:WORLD_CONTINUITY_REVIEW:0",
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "started_at": "2026-08-09T20:16:58.290887+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.1,
+        "top_p": 0.8,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"decision\": \"approve\",\n  \"mode\": \"WORLD_CONTINUITY_REVIEW\",\n  \"reason\": \"候选状态与上一回合确认的快照及女主已建立的心智模型完全一致，没有证据支持需要修改。\",\"revision_patch\": null,\"schema_version\": 1,\"snapshot_id\": \"befad231-c521-4281-82e6-b0c866a40126\"}",
+      "elapsed_seconds": 2.506
+    },
+    {
+      "request_id": "28e313a6-516f-475b-9027-007dc2fa8424:FIVE_MINUTE_WORLD_MIND_RECONCILE:0",
+      "mode": "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:17:00.798056+08:00",
+      "options": {
+        "max_tokens": 800,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"f23831be-3029-4e04-8295-98f113fb1b8c\",\n      \"character_package_initial_runtime\",\n      \"45bfa746-9725-4f59-bfcf-98895d29523f\"\n    ],\n    \"knowledge_updates\": {\n      \"noodle_bowl\": \"你碗里还剩半碗面，热气腾腾的\",\n      \"rain_window\": \"雨声没停，敲在玻璃上沙沙响\",\n      \"your_mood\": \"你吃得很快，似乎不想让我打扰\"\n    },\n    \"living_mind_patch\": {\n      \"attention\": \"你吃面的样子和窗外灰蒙蒙的天\",\n      \"body\": \"外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\",\n      \"current_activity\": \"坐在你旁边，看着你吃面\",\n      \"emotion\": \"心里有些酸楚，但更多的是安心\",\n      \"form\": \"人形，猫耳和尾巴未隐藏\",\n      \"immediate_intent\": \"等你吃完，想和你一起坐一会儿\"\n    },\n    \"motive_updates\": {\n      \"primary_motive\": \"不想让你觉得我烦\",\n      \"secondary_motive\": \"想就这样多待一会儿\"\n    },\n    \"relationship_patch\": {\n      \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\",\n      \"trust\": \"已能在你清醒时于同一房间睡着，但仍保留重要秘密和弱点\",\n      \"unresolved_tension\": \"害怕伤好后失去继续留下的理由\"\n    }\n  },\n  \"latest_world_version\": 1,\n  \"memory_candidates\": [],\"mode\":\"FIVE_MINUTE_WORLD_MIND_RECONCILE\",\"operation\":\"update\",\"parent_mind_state_version\":3,\"reason\":\"你吃面的样子和窗外的雨，让我不由得想多待一会儿。\",\"schema_version\":1,\"snapshot_id\":\"f23831be-3029-4e04-8295-98f113fb1b8c\",\"timeline_candidates\":[],\"transition_basis\": [\"f23831be-3029-4e04-8295-98f113fb1b8c\"]}",
+      "elapsed_seconds": 8.137
+    },
+    {
+      "request_id": "28e313a6-516f-475b-9027-007dc2fa8424:WORLD_CONTINUITY_REVIEW:0",
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "started_at": "2026-08-09T20:17:08.935452+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.1,
+        "top_p": 0.8,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"decision\": \"approve\",\n  \"mode\": \"WORLD_CONTINUITY_REVIEW\",\"reason\":\"候选状态与上一轮快照及证据合同完全兼容。新增加的'你吃面的样子和窗外的雨'作为注意力焦点，符合白未晞'坐在你旁边'的当前活动；'心里有些酸楚，但更多的是安心'的情绪变化，是安全环境下的自然反应，没有证据支持其越权获知或记忆篡改。所有更新均源自已提供的证据ID。\",\"revision_patch\":null,\"schema_version\":1,\"snapshot_id\":\"f23831be-3029-4e04-8295-98f113fb1b8c\"}",
+      "elapsed_seconds": 3.149
+    }
+  ],
+  "mode_counts": {
+    "FIVE_MINUTE_WORLD_MIND_RECONCILE": 1,
+    "GAME_REPLY": 1,
+    "POST_REPLY_WORLD_MIND_RECONCILE": 1,
+    "TURN_MIND_ADVANCE": 1,
+    "WORLD_CONTINUITY_REVIEW": 3
+  },
+  "missing_modes": [],
+  "passed": true,
+  "finished_at": "2026-08-09T20:17:12.086265+08:00"
+}

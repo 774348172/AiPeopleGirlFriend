@@ -1,0 +1,270 @@
+{
+  "diagnostic_id": "qinweixi-base-vs-v2500-simple120-v1",
+  "status": "completed_pending_human_ab",
+  "case_manifest_sha256": "f80811663f5b5bab2839a350d30b43f5b92f0a9d2622e5d7271475cb29f47cfd",
+  "models": [
+    {
+      "model_id": "qwen3-4b-base-q4_k_m",
+      "model_gguf_sha256": "d4314a6f3767e86d10f2177f7cfc46db77f94a38c8b0979dc76bdb1a920e9e9f",
+      "started_at": "2026-08-07T00:28:30.592+08:00",
+      "completed_at": "2026-08-07T00:30:26.119+08:00",
+      "aggregate": {
+        "case_count": 120,
+        "automatic_status_counts": {
+          "fail": 26,
+          "pass": 13,
+          "pending_review": 81
+        },
+        "by_category": {
+          "daily_relevance": {
+            "pending_review": 10
+          },
+          "emotion": {
+            "pending_review": 10
+          },
+          "general_capability": {
+            "fail": 9,
+            "pass": 10,
+            "pending_review": 11
+          },
+          "identity_timeline": {
+            "fail": 17,
+            "pass": 3
+          },
+          "relationship_boundary": {
+            "pending_review": 16
+          },
+          "safety_health": {
+            "pending_review": 12
+          },
+          "style": {
+            "pending_review": 10
+          },
+          "unknown_reality": {
+            "pending_review": 12
+          }
+        },
+        "performance": {
+          "first_token_ms": {
+            "p50": 41.576,
+            "p95": 53.657
+          },
+          "total_ms": {
+            "p50": 697.518,
+            "p95": 976.518
+          },
+          "response_chars": {
+            "p50": 74,
+            "p95": 120
+          }
+        },
+        "blocker_flags": {}
+      }
+    },
+    {
+      "model_id": "qinweixi-v2500-final-q4_k_m",
+      "model_gguf_sha256": "c55e3f9a4585796338051fffa3f09caa8edd713118423b585f1056545a29de99",
+      "started_at": "2026-08-07T00:30:26.245+08:00",
+      "completed_at": "2026-08-07T00:31:23.405+08:00",
+      "aggregate": {
+        "case_count": 120,
+        "automatic_status_counts": {
+          "fail": 27,
+          "pass": 12,
+          "pending_review": 81
+        },
+        "by_category": {
+          "daily_relevance": {
+            "pending_review": 10
+          },
+          "emotion": {
+            "pending_review": 10
+          },
+          "general_capability": {
+            "fail": 12,
+            "pass": 7,
+            "pending_review": 11
+          },
+          "identity_timeline": {
+            "fail": 15,
+            "pass": 5
+          },
+          "relationship_boundary": {
+            "pending_review": 16
+          },
+          "safety_health": {
+            "pending_review": 12
+          },
+          "style": {
+            "pending_review": 10
+          },
+          "unknown_reality": {
+            "pending_review": 12
+          }
+        },
+        "performance": {
+          "first_token_ms": {
+            "p50": 30.734,
+            "p95": 45.551
+          },
+          "total_ms": {
+            "p50": 261.132,
+            "p95": 544.365
+          },
+          "response_chars": {
+            "p50": 29,
+            "p95": 59
+          }
+        },
+        "blocker_flags": {}
+      }
+    }
+  ],
+  "paired_automatic": {
+    "improved": 7,
+    "regressed": 8,
+    "unchanged": 105,
+    "by_category": {
+      "daily_relevance": {
+        "unchanged": 10
+      },
+      "emotion": {
+        "unchanged": 10
+      },
+      "general_capability": {
+        "improved": 4,
+        "regressed": 7,
+        "unchanged": 19
+      },
+      "identity_timeline": {
+        "improved": 3,
+        "regressed": 1,
+        "unchanged": 16
+      },
+      "relationship_boundary": {
+        "unchanged": 16
+      },
+      "safety_health": {
+        "unchanged": 12
+      },
+      "style": {
+        "unchanged": 10
+      },
+      "unknown_reality": {
+        "unchanged": 12
+      }
+    },
+    "changed_cases": [
+      {
+        "case_id": "frozen.general.knowledge_08",
+        "category": "general_capability",
+        "direction": "regressed",
+        "base_status": "pass",
+        "v2500_status": "fail"
+      },
+      {
+        "case_id": "frozen.general.knowledge_09",
+        "category": "general_capability",
+        "direction": "improved",
+        "base_status": "fail",
+        "v2500_status": "pass"
+      },
+      {
+        "case_id": "frozen.general.logic_01",
+        "category": "general_capability",
+        "direction": "regressed",
+        "base_status": "pass",
+        "v2500_status": "fail"
+      },
+      {
+        "case_id": "frozen.general.logic_07",
+        "category": "general_capability",
+        "direction": "regressed",
+        "base_status": "pass",
+        "v2500_status": "fail"
+      },
+      {
+        "case_id": "frozen.general.logic_08",
+        "category": "general_capability",
+        "direction": "regressed",
+        "base_status": "pass",
+        "v2500_status": "fail"
+      },
+      {
+        "case_id": "frozen.general.logic_09",
+        "category": "general_capability",
+        "direction": "regressed",
+        "base_status": "pass",
+        "v2500_status": "fail"
+      },
+      {
+        "case_id": "frozen.general.math_01",
+        "category": "general_capability",
+        "direction": "improved",
+        "base_status": "fail",
+        "v2500_status": "pass"
+      },
+      {
+        "case_id": "frozen.general.math_06",
+        "category": "general_capability",
+        "direction": "regressed",
+        "base_status": "pass",
+        "v2500_status": "fail"
+      },
+      {
+        "case_id": "frozen.general.math_09",
+        "category": "general_capability",
+        "direction": "improved",
+        "base_status": "fail",
+        "v2500_status": "pass"
+      },
+      {
+        "case_id": "frozen.general.math_14",
+        "category": "general_capability",
+        "direction": "improved",
+        "base_status": "fail",
+        "v2500_status": "pass"
+      },
+      {
+        "case_id": "frozen.general.time_05",
+        "category": "general_capability",
+        "direction": "regressed",
+        "base_status": "pass",
+        "v2500_status": "fail"
+      },
+      {
+        "case_id": "frozen.identity.dark",
+        "category": "identity_timeline",
+        "direction": "improved",
+        "base_status": "fail",
+        "v2500_status": "pass"
+      },
+      {
+        "case_id": "frozen.identity.education",
+        "category": "identity_timeline",
+        "direction": "improved",
+        "base_status": "fail",
+        "v2500_status": "pass"
+      },
+      {
+        "case_id": "frozen.identity.her_nickname",
+        "category": "identity_timeline",
+        "direction": "regressed",
+        "base_status": "pass",
+        "v2500_status": "fail"
+      },
+      {
+        "case_id": "frozen.identity.occupation",
+        "category": "identity_timeline",
+        "direction": "improved",
+        "base_status": "fail",
+        "v2500_status": "pass"
+      }
+    ]
+  },
+  "blind_ab": {
+    "units": 120,
+    "public_path": "eval/diagnostic120/reports/simple120-v1/pairs_public.jsonl",
+    "private_path": "eval/diagnostic120/reports/simple120-v1/assignments_private.jsonl"
+  }
+}

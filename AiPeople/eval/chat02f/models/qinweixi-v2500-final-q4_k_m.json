@@ -1,0 +1,80 @@
+{
+  "model_id": "qinweixi-v2500-final-q4_k_m",
+  "schema_version": 1,
+  "created_at": "2026-08-06T20:07:40+08:00",
+  "role": "trained",
+  "status": "provenance_limited",
+  "asset": {
+    "path": "F:\\AiPeople\\训练结果\\qinweixi-v2500-final-windows-ollama\\windows_ollama_v2500_final_package\\qinweixi-v2500-final-q4_k_m.gguf",
+    "bytes": 2497280800,
+    "sha256": "c55e3f9a4585796338051fffa3f09caa8edd713118423b585f1056545a29de99"
+  },
+  "identity": {
+    "gguf_version": 3,
+    "general_name": "Fused_Qinweixi_V2500_Final",
+    "architecture": "qwen3",
+    "parameter_class": "4B",
+    "quantization": "Q4_K_M",
+    "gguf_file_type": 15,
+    "tensor_count": 398,
+    "native_context_length": 40960,
+    "eos_token_id": 151645,
+    "chat_template_bytes": 4168,
+    "chat_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8"
+  },
+  "source": {
+    "repository": "Qwen/Qwen3-4B",
+    "local_source_revision": null,
+    "training_source_revision": null,
+    "revision_note": "The package name and GGUF metadata identify a Qwen3-4B-derived v2500 deployment asset, but the package does not contain the exact local or training-machine base revision."
+  },
+  "adaptation": {
+    "kind": "lora",
+    "adapter_checkpoint": null,
+    "merge_method": null,
+    "evidence": [],
+    "note": "The deployment package describes a fused trained model, but it does not include the adapter checkpoint, adapter hash, selected checkpoint evidence, merge command, or merged-weight hash."
+  },
+  "export_provenance": {
+    "converter": null,
+    "converter_module": null,
+    "gguf_python_version": null,
+    "quantizer": null,
+    "note": "The package does not identify or hash the converter, converter module, GGUF Python package, or quantizer used to produce this file."
+  },
+  "runtime_contract": {
+    "chat_template": "embedded_qwen3",
+    "thinking": false,
+    "context_size": 4096,
+    "stop_contract": "embedded_eos_151645_no_explicit_stop",
+    "execution_profile_id": "chat02f-shared-llamacpp-b10256-v1"
+  },
+  "comparability": {
+    "status": "comparable_with_limitations",
+    "compared_to": "qwen3-4b-base-q4_k_m",
+    "controlled_traits": [
+      "qwen3 architecture",
+      "4B parameter class",
+      "Q4_K_M quantization",
+      "398 tensor layout",
+      "embedded chat template hash",
+      "native context length",
+      "llama.cpp execution profile"
+    ],
+    "limitations": [
+      "The actual training input and train/validation split hashes are absent, so the filename's 2500-sample claim is not independently proven.",
+      "The training-machine base revision, adapter checkpoint, merge chain, converter, and quantizer are absent, so results cannot yet be strictly attributed or reproduced."
+    ]
+  },
+  "excluded_inputs": [
+    {
+      "artifact": {
+        "path": "F:\\AiPeople\\训练结果\\qinweixi-v2500-final-windows-ollama\\windows_ollama_v2500_final_package\\Modelfile",
+        "bytes": 1127,
+        "sha256": "b66c1b5ccd232f7001b46d5b846c48ae61ab84d37470fe7ccf6b9e888e7ec407"
+      },
+      "reason": "Excluded from the primary comparison because it changes the system prompt, sampling temperature, stop sequences, template, and Ollama service layer; both models must use the same RelationshipRuntime prompt and llama.cpp profile."
+    }
+  ],
+  "notes": "Provisional CHAT-02F exploration asset. Live GGUF identity and bytes are verified, but training and export provenance remain incomplete; this manifest does not designate a reproducible release candidate."
+}

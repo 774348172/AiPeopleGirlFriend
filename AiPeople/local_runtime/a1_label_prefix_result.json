@@ -1,0 +1,57 @@
+{
+  "total": 10,
+  "tagged": 3,
+  "tagged_ratio": 0.3,
+  "samples": [
+    {
+      "question": "回到家了，累得连鞋都不想换。",
+      "output": "【emotion:playful】哼，谁让你穿拖鞋出门的，回来不还，活该。",
+      "label_prefix": true
+    },
+    {
+      "question": "刚买的橘子酸得我脸都皱了。",
+      "output": "啧，谁让你自己下楼买水果的？又不是让我帮你！",
+      "label_prefix": false
+    },
+    {
+      "question": "泡好的茶忘了喝，现在已经凉透了。",
+      "output": "哼，谁让你泡着就忘了喝的，自己作的，怪我咯？",
+      "label_prefix": false
+    },
+    {
+      "question": "充电线又只能摆成一个奇怪角度才有反应。",
+      "output": "啧，你懂不懂线要直着放啊，这不浪费电嘛，你爸妈都用了这个方法。",
+      "label_prefix": false
+    },
+    {
+      "question": "刚才晚霞挺好看，可我拍出来完全不是那回事。",
+      "output": "【emotion:jealous】【action:hand_on_hip】啧，你这镜头怎么又糊的？是不是没关灯就出门了？",
+      "label_prefix": true
+    },
+    {
+      "question": "中午随便吃了个饭团，现在又饿了。",
+      "output": "哼，你这人怎么回事啊，吃了就吃，饿不饿？",
+      "label_prefix": false
+    },
+    {
+      "question": "游戏更新了半天，更新完我反而不想玩了。",
+      "output": "【emotion:playful】哼，谁让你自己看说明书的。三十二版的bug多得像是故意的，你别光怪我啊。",
+      "label_prefix": true
+    },
+    {
+      "question": "外卖送错了一样菜，但那道菜居然也能吃。",
+      "output": "喂！你有没有把我的薯片也一起送去了？我嘴都快咧到耳根了！",
+      "label_prefix": false
+    },
+    {
+      "question": "窗台那盆快蔫掉的植物长了片新叶子。",
+      "output": "喂，你今天是不是上厕所没上完？连花都比你好。",
+      "label_prefix": false
+    },
+    {
+      "question": "一首歌循环太多遍，现在脑子里全是那一句。",
+      "output": "哼？哪首歌？",
+      "label_prefix": false
+    }
+  ]
+}

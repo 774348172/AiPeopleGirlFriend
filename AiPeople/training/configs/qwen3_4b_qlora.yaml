@@ -1,0 +1,47 @@
+# LLaMA-Factory QLoRA 训练配置 —— AiPeople 人格 SFT（D 轮）
+# 模型: Qwen3-4B（8GB 70% 显存限制下可跑）
+
+### ----- model -----
+model_name_or_path: Qwen/Qwen3-4B
+trust_remote_code: true
+adapter_name_or_path:
+quantization_bit: 4
+quantization_method: bitsandbytes
+
+### ----- method -----
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 8
+lora_alpha: 16
+lora_dropout: 0.05
+
+### ----- dataset -----
+dataset: aipeople_persona
+template: qwen3_nothink                         # 关闭 reasoning 思考
+cutoff_len: 512                              # 8GB 上 4B 需缩短上下文省显存
+dataset_dir: F:\ai-girlfriend\AiPeople\data\external\lf_data
+overwrite_cache: true
+preprocessing_num_workers: 1
+
+### ----- output -----
+output_dir: training/outputs/qwen3_4b_persona
+logging_steps: 5
+save_steps: 50
+save_total_limit: 2
+plot_loss: false
+overwrite_output_dir: true
+disable_tqdm: true
+report_to: none
+
+### ----- train -----
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 4
+learning_rate: 5.0e-5
+num_train_epochs: 3.0                            # 从5降到3，防过拟合
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+weight_decay: 0.01
+fp16: true
+optim: paged_adamw_8bit

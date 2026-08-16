@@ -1,0 +1,59 @@
+{
+  "checkpoint": "RECALL-04",
+  "concurrent_ms": {
+    "max": 99.3934,
+    "mean": 53.280755,
+    "min": 19.808,
+    "p50": 51.61765,
+    "p95": 92.4051,
+    "samples": 20,
+    "wall_ms": 386.0374,
+    "workers": 4
+  },
+  "config": {
+    "active_memory_count": 10000,
+    "concurrent_samples_per_worker": 5,
+    "concurrent_scan_top32_p95_ms_max": 150.0,
+    "concurrent_workers": 4,
+    "measured_samples": 30,
+    "scan_top32_p95_ms_max": 100.0,
+    "source_event_count": 100000,
+    "views_per_memory": 3,
+    "warmup_samples": 3
+  },
+  "measured_at": "2026-08-08T02:00:31Z",
+  "platform": {
+    "machine": "AMD64",
+    "numpy": "2.4.4",
+    "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+    "python": "3.11.15",
+    "release": "10",
+    "system": "Windows"
+  },
+  "pool": {
+    "active_memory_count": 10000,
+    "dimension": 512,
+    "matrix_bytes": 61440000,
+    "selector_view_count": 30000,
+    "source_event_count": 100000
+  },
+  "schema_version": 1,
+  "scope": {
+    "excludes": [
+      "BGE query encoding",
+      "SQLite projection rebuild",
+      "Qwen reranker",
+      "semantic recall quality"
+    ],
+    "includes": "hot exact matrix dot-product, memory_id aggregation, stable Top32 and concurrent read-only scans"
+  },
+  "serial_ms": {
+    "max": 21.5,
+    "mean": 14.410866666666667,
+    "min": 10.6506,
+    "p50": 11.65615,
+    "p95": 21.0832,
+    "samples": 30
+  },
+  "status": "passed"
+}

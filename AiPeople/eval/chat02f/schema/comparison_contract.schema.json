@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat02f/comparison-contract-v1.json",
+  "title": "CHAT-02F comparison contract v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_id", "schema_version", "created_at", "status", "only_active_variable", "models", "suite", "prompt_renderer", "case_inventory", "run_order", "leakage_evidence", "excluded_prior_human_assets", "gates", "freeze"],
+  "properties": {
+    "contract_id": {"const": "chat02f-comparison-contract-v1"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["frozen_ready", "frozen_blocked"]},
+    "only_active_variable": {"const": "model_weights"},
+    "models": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "prefixItems": [
+        {"$ref": "#/$defs/modelBinding"},
+        {"$ref": "#/$defs/modelBinding"}
+      ],
+      "items": false
+    },
+    "suite": {
+      "type": "object", "additionalProperties": false,
+      "required": ["suite_id", "manifest", "manifest_self_sha256", "verify_command"],
+      "properties": {
+        "suite_id": {"const": "chat01-qinweixi-v3"}, "manifest": {"$ref": "#/$defs/artifact"},
+        "manifest_self_sha256": {"$ref": "#/$defs/sha256"}, "verify_command": {"const": "python -m eval.chat01.freeze --verify"}
+      }
+    },
+    "prompt_renderer": {"$ref": "#/$defs/artifact"},
+    "case_inventory": {
+      "type": "object", "additionalProperties": false,
+      "required": ["frozen_single", "frozen_multiturn", "human_pair", "human_long_session"],
+      "properties": {
+        "frozen_single": {"const": 240}, "frozen_multiturn": {"const": 30}, "human_pair": {"const": 60}, "human_long_session": {"const": 8}
+      }
+    },
+    "run_order": {
+      "type": "object", "additionalProperties": false,
+      "required": ["policy", "sequence", "between_models"],
+      "properties": {
+        "policy": {"const": "precommitted_seed_then_sequential_models"},
+        "sequence": {"const": ["qwen3-4b-base-q4_k_m", "qinweixi-v2500-final-q4_k_m"]},
+        "between_models": {"const": ["shutdown_owned_server", "verify_port_released", "verify_gpu_released"]}
+      }
+    },
+    "leakage_evidence": {"$ref": "#/$defs/artifact"},
+    "excluded_prior_human_assets": {
+      "type": "object", "additionalProperties": false,
+      "required": ["policy", "roots"],
+      "properties": {
+        "policy": {"const": "excluded_from_chat02f_denominators_and_assignments"},
+        "roots": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "#/$defs/treeCommitment"}}
+      }
+    },
+    "gates": {
+      "type": "object", "additionalProperties": false,
+      "required": ["suite_verified", "model_assets_verified", "prompt_frozen", "leakage_status", "can_start_chat02f_c", "blockers"],
+      "properties": {
+        "suite_verified": {"const": true}, "model_assets_verified": {"const": true}, "prompt_frozen": {"const": true},
+        "leakage_status": {"enum": ["passed", "blocked"]}, "can_start_chat02f_c": {"type": "boolean"},
+        "blockers": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 1000}}
+      }
+    },
+    "freeze": {
+      "type": "object", "additionalProperties": false,
+      "required": ["immutable", "hash_algorithm", "hash_mode", "contract_sha256"],
+      "properties": {
+        "immutable": {"const": true}, "hash_algorithm": {"const": "sha256"},
+        "hash_mode": {"const": "canonical_json_with_null_contract_sha256"}, "contract_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {"path": {"type": "string", "minLength": 1}, "bytes": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "modelBinding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["model_id", "role", "manifest", "gguf"],
+      "properties": {
+        "model_id": {"type": "string", "minLength": 3}, "role": {"enum": ["base", "candidate"]},
+        "manifest": {"$ref": "#/$defs/artifact"}, "gguf": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "treeCommitment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "files", "sha256_mode", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1}, "files": {"type": "integer", "minimum": 0},
+        "sha256_mode": {"const": "sorted_relative_path_nul_file_digest"}, "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

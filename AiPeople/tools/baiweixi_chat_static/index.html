@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>白未晞 · 对话测试</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="identity">
+        <div class="avatar" aria-hidden="true">未晞</div>
+        <div>
+          <h1>白未晞</h1>
+          <p><span class="status-dot"></span><span id="modelStatus">正在连接模型</span></p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="game-time" id="gameTime">第11日 18:00:00</span>
+        <button class="icon-button" id="newSave" type="button" title="新建测试存档" aria-label="新建测试存档">＋</button>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="conversation" aria-label="对话">
+        <div class="messages" id="messages" aria-live="polite">
+          <div class="empty-state" id="emptyState">
+            <strong>雨夜后的第十天</strong>
+            <span>白未晞正和你生活在松江府的出租屋里。</span>
+          </div>
+        </div>
+        <form class="composer" id="composer">
+          <textarea id="messageInput" rows="1" maxlength="1000" placeholder="和白未晞说句话" required></textarea>
+          <button class="send-button" id="sendButton" type="submit" title="发送" aria-label="发送">
+            <span aria-hidden="true">↑</span>
+          </button>
+        </form>
+        <div class="latency-strip">
+          <span>玩家可见耗时</span>
+          <strong id="lastLatency">--</strong>
+          <span id="latencyDetail"></span>
+        </div>
+      </section>
+
+      <aside class="inspector">
+        <section class="panel">
+          <div class="panel-heading">
+            <h2>男主当前状态</h2>
+            <span id="worldVersion">v--</span>
+          </div>
+          <label>位置
+            <select id="locationPreset">
+              <option value="apartment_table|出租屋餐桌旁">出租屋餐桌旁</option>
+              <option value="apartment_kitchen|出租屋厨房">出租屋厨房</option>
+              <option value="apartment_door|出租屋门口">出租屋门口</option>
+              <option value="lane_corner|巷口">巷口</option>
+              <option value="coffee_shop|咖啡厅">咖啡厅</option>
+            </select>
+          </label>
+          <label>正在做什么<input id="activity" value="坐着休息" maxlength="100"></label>
+          <label>身体状态<input id="body" value="有些疲惫，没有受伤" maxlength="120"></label>
+          <label>手持物品<input id="heldItem" placeholder="例如：雨伞" maxlength="64"></label>
+          <label>场景状态<textarea id="scene" rows="2" maxlength="160">窗外下着雨，屋里亮着暖灯</textarea></label>
+        </section>
+
+        <section class="panel mind-panel">
+          <div class="panel-heading"><h2>白未晞当前心智</h2><span id="mindVersion">v--</span></div>
+          <dl id="mindState">
+            <div><dt>情感</dt><dd>等待首轮对话</dd></div>
+            <div><dt>注意</dt><dd>等待首轮对话</dd></div>
+            <div><dt>活动</dt><dd>等待首轮对话</dd></div>
+            <div><dt>意图</dt><dd>等待首轮对话</dd></div>
+            <div><dt>关系</dt><dd>等待首轮对话</dd></div>
+          </dl>
+        </section>
+
+        <section class="panel queue-panel">
+          <div class="panel-heading"><h2>后台链路</h2><span>不阻塞回复</span></div>
+          <div class="queue-row"><span>心智整理</span><strong id="reconcileQueue">0</strong></div>
+          <div class="queue-row"><span>长期记忆</span><strong id="memoryQueue">0</strong></div>
+          <p class="save-id">存档 <code id="saveId"></code></p>
+        </section>
+      </aside>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "checkpoint": "MEM-03",
+  "batch_semantics": "all_or_nothing",
+  "empty_result_reads_ledger": false,
+  "initial_status": "proposed",
+  "memory_version": 1,
+  "idempotency_key": "{proposal_run_id}:{proposal_ordinal}",
+  "quote_resolution": {
+    "start_hint": "exact_offset",
+    "without_start_hint": "unique_contiguous_match",
+    "repeated_without_start_hint": "reject"
+  },
+  "temporal_normalization": "RFC3339_UTC_Z",
+  "failure_codes": [
+    "memory_materialize_contract_invalid",
+    "memory_materialize_event_mismatch",
+    "memory_materialize_event_missing",
+    "memory_materialize_quote_ambiguous",
+    "memory_materialize_quote_missing",
+    "memory_materialize_representation_invalid",
+    "memory_materialize_temporal_invalid"
+  ],
+  "excludes": [
+    "memory commit",
+    "accept or reject transitions",
+    "retry persistence",
+    "vector generation",
+    "background scheduling"
+  ]
+}

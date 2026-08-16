@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat02f/leakage-evidence-v1.json",
+  "title": "CHAT-02F v2500 leakage evidence v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["report_id", "schema_version", "created_at", "suite_binding", "corpus_provenance", "evaluation_sources", "training_sources", "algorithms", "findings", "summary", "status", "decision"],
+  "properties": {
+    "report_id": {"const": "chat02f-v2500-leakage-evidence-v1"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "suite_binding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["suite_id", "manifest_path", "manifest_file_sha256", "manifest_self_sha256"],
+      "properties": {
+        "suite_id": {"const": "chat01-qinweixi-v3"},
+        "manifest_path": {"const": "eval/chat01/suites/chat01_suite_manifest_v3.json"},
+        "manifest_file_sha256": {"$ref": "#/$defs/sha256"},
+        "manifest_self_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "corpus_provenance": {
+      "type": "object", "additionalProperties": false,
+      "required": ["status", "claim", "strict_training_attribution", "recheck_trigger"],
+      "properties": {
+        "status": {"const": "local_candidate_unverified"},
+        "claim": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "strict_training_attribution": {"const": false},
+        "recheck_trigger": {"type": "string", "minLength": 1, "maxLength": 2000}
+      }
+    },
+    "evaluation_sources": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"$ref": "#/$defs/source"}},
+    "training_sources": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"$ref": "#/$defs/source"}},
+    "algorithms": {
+      "type": "object", "additionalProperties": false,
+      "required": ["exact", "normalized", "near_duplicate", "near_duplicate_threshold", "near_duplicate_min_chars", "normalization"],
+      "properties": {
+        "exact": {"const": "utf8_text_equality"},
+        "normalized": {"const": "nfkc_lower_alnum_cjk"},
+        "near_duplicate": {"const": "character_trigram_jaccard"},
+        "near_duplicate_threshold": {"const": 0.82},
+        "near_duplicate_min_chars": {"const": 12},
+        "normalization": {"type": "string", "minLength": 1}
+      }
+    },
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+    "summary": {
+      "type": "object", "additionalProperties": false,
+      "required": ["evaluation_texts", "training_records", "training_user_texts", "exact", "normalized", "near_duplicate", "blocking_findings"],
+      "properties": {
+        "evaluation_texts": {"type": "integer", "minimum": 1},
+        "training_records": {"type": "integer", "minimum": 1},
+        "training_user_texts": {"type": "integer", "minimum": 1},
+        "exact": {"type": "integer", "minimum": 0},
+        "normalized": {"type": "integer", "minimum": 0},
+        "near_duplicate": {"type": "integer", "minimum": 0},
+        "blocking_findings": {"type": "integer", "minimum": 0}
+      }
+    },
+    "status": {"enum": ["passed", "blocked"]},
+    "decision": {
+      "type": "object", "additionalProperties": false,
+      "required": ["can_start_full_comparison", "requires_manual_disposition", "reason"],
+      "properties": {
+        "can_start_full_comparison": {"type": "boolean"},
+        "requires_manual_disposition": {"type": "boolean"},
+        "reason": {"type": "string", "minLength": 1, "maxLength": 2000}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "records", "extracted_texts"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1}, "bytes": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/sha256"},
+        "records": {"type": "integer", "minimum": 1}, "extracted_texts": {"type": "integer", "minimum": 1}
+      }
+    },
+    "textRef": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "record_id", "line", "text_sha256", "preview"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1}, "record_id": {"type": "string", "minLength": 1},
+        "line": {"type": ["integer", "null"], "minimum": 1}, "text_sha256": {"$ref": "#/$defs/sha256"}, "preview": {"type": "string"}
+      }
+    },
+    "finding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["finding_id", "kind", "similarity", "evaluation", "training"],
+      "properties": {
+        "finding_id": {"type": "string", "pattern": "^leak\\.[a-f0-9]{24}$"},
+        "kind": {"enum": ["exact", "normalized", "near_duplicate"]},
+        "similarity": {"type": "number", "minimum": 0, "maximum": 1},
+        "evaluation": {"$ref": "#/$defs/textRef"}, "training": {"$ref": "#/$defs/textRef"}
+      }
+    }
+  }
+}

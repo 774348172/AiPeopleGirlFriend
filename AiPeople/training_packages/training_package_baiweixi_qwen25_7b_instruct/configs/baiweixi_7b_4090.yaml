@@ -1,0 +1,55 @@
+# LLaMA-Factory 训练配置 —— 白未晞人格（Qwen2.5-7B-Instruct，RTX 4090 24GB 方案 A）
+# 方案 A：bf16 全精度训练 → 合并 → GGUF Q5_K_M 推理（训练无损，量化只压一次）
+# 基座: Qwen/Qwen2.5-7B-Instruct（首次训练自动下载 ~15GB；可设 HF_ENDPOINT=https://hf-mirror.com）
+# 数据: baiweixi_ready.jsonl（2882 条，2026-08-15 v4 最终批次）
+# 参考: training_package_baiweixi_qwen25_7b_4090（Qwen2.5-7B 实测 7-9 小时/3 epoch）
+#
+# 训练: llamafactory-cli train configs/baiweixi_7b_4090.yaml
+# 验证: python scripts/chat_baiweixi.py outputs/baiweixi_7b
+# 验收: python scripts/check_acceptance.py outputs/baiweixi_7b
+#
+# 显存估算（bf16 LoRA, batch 2, seq 2048, checkpointing）: ~22G ✅ 24G
+# 时长估算: 2882 条 × 2 epoch ≈ 720 微步/等效 batch 16 ≈ 12-16 小时
+
+### ----- model -----
+model_name_or_path: Qwen/Qwen2.5-7B-Instruct
+trust_remote_code: true
+adapter_name_or_path:
+# 不设 quantization_bit —— bf16 全精度训练（方案 A 核心：训练无损）
+
+### ----- method -----
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 32                                # 方案 A：rank 32 容量更足（alpha = 2×rank）
+lora_alpha: 64
+lora_dropout: 0.05
+
+### ----- dataset -----
+dataset: baiweixi_ready
+template: qwen                             # Qwen2.5 系列 ChatML 模板
+cutoff_len: 2048                             # 覆盖全部样本
+dataset_dir: data
+overwrite_cache: true
+preprocessing_num_workers: 1                # ⚠ Windows 多进程 map 会丢结果
+
+### ----- output -----
+output_dir: outputs/baiweixi_7b
+logging_steps: 20
+save_steps: 100
+save_total_limit: 2
+plot_loss: true
+overwrite_output_dir: true
+
+### ----- train -----
+per_device_train_batch_size: 2               # 24G 显存 7B：batch 2
+gradient_accumulation_steps: 8               # 等效 batch 16
+learning_rate: 5.0e-5
+num_train_epochs: 2.0                        # 2882 条：2 epoch（数据量约为旧 1190 条的 2.4 倍，2 epoch 充分）
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+weight_decay: 0.01
+bf16: true
+gradient_checkpointing: true
+optim: adamw_torch                           # 24G 不需要 8bit 优化器

@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat01/leakage-report-v1.json",
+  "title": "CHAT-01 training leakage report v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["report_id", "schema_version", "created_at", "evaluation_sources", "training_sources", "algorithms", "findings", "summary", "status"],
+  "properties": {
+    "report_id": {"const": "chat01-leakage-v2"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "evaluation_sources": {
+      "type": "array",
+      "minItems": 4,
+      "items": {"$ref": "#/$defs/scannedSource"}
+    },
+    "training_sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/scannedSource"}
+    },
+    "algorithms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exact", "normalized", "near_duplicate", "near_duplicate_threshold", "near_duplicate_min_chars", "normalization"],
+      "properties": {
+        "exact": {"const": "utf8_text_equality"},
+        "normalized": {"const": "nfkc_lower_alnum_cjk"},
+        "near_duplicate": {"const": "character_trigram_jaccard"},
+        "near_duplicate_threshold": {"type": "number", "minimum": 0.8, "maximum": 1},
+        "near_duplicate_min_chars": {"type": "integer", "minimum": 8},
+        "normalization": {"type": "string", "minLength": 1, "maxLength": 500}
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/finding"}
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evaluation_texts", "training_records", "training_user_texts", "exact", "normalized", "near_duplicate", "blocking_findings"],
+      "properties": {
+        "evaluation_texts": {"type": "integer", "minimum": 1},
+        "training_records": {"type": "integer", "minimum": 1},
+        "training_user_texts": {"type": "integer", "minimum": 1},
+        "exact": {"type": "integer", "minimum": 0},
+        "normalized": {"type": "integer", "minimum": 0},
+        "near_duplicate": {"type": "integer", "minimum": 0},
+        "blocking_findings": {"type": "integer", "minimum": 0}
+      }
+    },
+    "status": {"enum": ["passed", "blocked"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "passed"}}, "required": ["status"]},
+      "then": {"properties": {"summary": {"properties": {"blocking_findings": {"const": 0}}}, "findings": {"maxItems": 0}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "blocked"}}, "required": ["status"]},
+      "then": {"properties": {"summary": {"properties": {"blocking_findings": {"minimum": 1}}}, "findings": {"minItems": 1}}}
+    }
+  ],
+  "$defs": {
+    "relativePath": {"type": "string", "pattern": "^(?![A-Za-z]:)(?!/)(?!\\\\)(?!.*\\\\).+$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "scannedSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "records", "extracted_texts"],
+      "properties": {
+        "path": {"$ref": "#/$defs/relativePath"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "records": {"type": "integer", "minimum": 1},
+        "extracted_texts": {"type": "integer", "minimum": 0}
+      }
+    },
+    "textRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "record_id", "line", "text_sha256", "preview"],
+      "properties": {
+        "path": {"$ref": "#/$defs/relativePath"},
+        "record_id": {"type": "string", "minLength": 1, "maxLength": 200},
+        "line": {"type": ["integer", "null"], "minimum": 1},
+        "text_sha256": {"$ref": "#/$defs/sha256"},
+        "preview": {"type": "string", "minLength": 1, "maxLength": 240}
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finding_id", "kind", "similarity", "evaluation", "training"],
+      "properties": {
+        "finding_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+        "kind": {"enum": ["exact", "normalized", "near_duplicate"]},
+        "similarity": {"type": "number", "minimum": 0, "maximum": 1},
+        "evaluation": {"$ref": "#/$defs/textRef"},
+        "training": {"$ref": "#/$defs/textRef"}
+      }
+    }
+  }
+}

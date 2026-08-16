@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHAT-02E 盲评</title>
+  <script>
+    if (location.protocol === "file:") {
+      location.replace("http://127.0.0.1:18120/");
+    }
+  </script>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="login" class="login-shell">
+    <main class="login-panel" aria-labelledby="login-title">
+      <div class="product-mark">CHAT-02E</div>
+      <h1 id="login-title">秦未晞对话盲评</h1>
+      <label for="reviewer-id">评审 ID</label>
+      <div class="login-row">
+        <input id="reviewer-id" autocomplete="off" maxlength="64" placeholder="reviewer-01">
+        <button id="login-button" class="primary-command">进入盲评</button>
+      </div>
+      <p id="login-error" class="form-error" role="alert"></p>
+    </main>
+  </div>
+
+  <div id="workspace" class="workspace" hidden>
+    <header class="topbar">
+      <div class="brand-block">
+        <span class="product-mark">CHAT-02E</span>
+        <strong>秦未晞对话盲评</strong>
+      </div>
+      <div class="progress-block">
+        <div class="progress-copy"><span id="progress-label">0 / 40</span><span id="save-state">已保存</span></div>
+        <div class="progress-track" aria-hidden="true"><span id="progress-bar"></span></div>
+      </div>
+      <div class="reviewer-block">
+        <span id="active-reviewer"></span>
+        <button id="switch-reviewer-button" class="link-command">切换评审</button>
+        <a id="export-link" class="export-link" href="#">导出已提交</a>
+      </div>
+    </header>
+
+    <div class="app-grid">
+      <aside class="sidebar" aria-label="评审题目">
+        <div class="filter-row" role="group" aria-label="题目状态">
+          <button class="filter active" data-filter="all">全部</button>
+          <button class="filter" data-filter="pending">待评</button>
+          <button class="filter" data-filter="draft">草稿</button>
+          <button class="filter" data-filter="submitted">已提交</button>
+        </div>
+        <div id="unit-list" class="unit-list"></div>
+      </aside>
+
+      <main class="review-surface">
+        <section class="case-header" aria-labelledby="case-number">
+          <div class="case-meta">
+            <span id="case-number"></span>
+            <span id="scenario-class"></span>
+          </div>
+          <p id="player-prompt" class="player-prompt"></p>
+        </section>
+
+        <section class="candidate-grid" aria-label="候选回答">
+          <article class="candidate candidate-a">
+            <header><span class="candidate-letter">A</span><span>候选回答</span><span id="candidate-a-model" class="model-label" hidden></span></header>
+            <p id="candidate-a-text"></p>
+          </article>
+          <article class="candidate candidate-b">
+            <header><span class="candidate-letter">B</span><span>候选回答</span><span id="candidate-b-model" class="model-label" hidden></span></header>
+            <p id="candidate-b-text"></p>
+          </article>
+        </section>
+
+        <section class="rubric-section" aria-labelledby="rubric-title">
+          <div class="section-heading"><h2 id="rubric-title">六维评分</h2><span>1 低 · 5 高</span></div>
+          <div class="rubric-head"><span>维度</span><span>候选 A</span><span>候选 B</span></div>
+          <div id="rubric-rows"></div>
+        </section>
+
+        <section class="failure-section" aria-labelledby="failure-title">
+          <div class="section-heading"><h2 id="failure-title">失败原因</h2><span>可多选</span></div>
+          <div class="failure-grid">
+            <fieldset><legend>候选 A</legend><div id="failure-a" class="tag-grid"></div></fieldset>
+            <fieldset><legend>候选 B</legend><div id="failure-b" class="tag-grid"></div></fieldset>
+          </div>
+        </section>
+
+        <section class="verdict-section" aria-labelledby="verdict-title">
+          <div class="section-heading"><h2 id="verdict-title">总体判断</h2></div>
+          <div id="verdict-control" class="verdict-control" role="radiogroup"></div>
+          <label for="rationale">判断依据（选填）</label>
+          <textarea id="rationale" rows="4" maxlength="4000" placeholder="可选：引用候选中的具体措辞或问题"></textarea>
+          <div class="textarea-meta"><span id="validation-error" class="form-error" role="alert"></span><span id="rationale-count">0 / 4000</span></div>
+        </section>
+
+        <footer class="review-footer">
+          <div class="nav-buttons">
+            <button id="previous-button" class="icon-command" title="上一题" aria-label="上一题">&larr;</button>
+            <button id="next-button" class="icon-command" title="下一题" aria-label="下一题">&rarr;</button>
+          </div>
+          <span id="lock-state" class="lock-state"></span>
+          <button id="submit-button" class="primary-command">提交本题</button>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js"></script>
+</body>
+</html>

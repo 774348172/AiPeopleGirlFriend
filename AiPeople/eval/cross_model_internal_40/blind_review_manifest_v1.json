@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "page_id": "e836a4eb652c3a9f72869ae2dc8e2f0ad79458cbe935970eab8e7b712d2668ea",
+  "status": "ready",
+  "review_type": "double_blind_pairwise",
+  "case_count": 40,
+  "question_order": "sha256-ranked with frozen blind salt",
+  "candidate_side_assignment": "independent sha256 parity per case",
+  "identities_hidden_until_reveal": true,
+  "storage": "browser localStorage scoped by page_id",
+  "output_path": "eval/cross_model_internal_40/blind_review.html",
+  "output_sha256": "f4c11a8c59369de7268046fe36869cb8b65be6b11fc1abc3c7d54fb1e9699163",
+  "source_hashes": {
+    "candidate_inputs": "d3668f499ee1e5e7b1729303d15c05ec5b9ab5c8507ac415c8dec489bc7d2de1",
+    "local_responses": "7a7fd8c3f01347648d4add63b190769c21437b0005559a0a107776d69362cd16",
+    "gpt_responses": "6821f8b267a106829411c45922c11f0bc209b7de25c493e3b396f295d7e1d31d"
+  }
+}

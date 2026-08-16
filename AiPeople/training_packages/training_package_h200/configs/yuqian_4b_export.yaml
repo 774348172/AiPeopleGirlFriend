@@ -1,0 +1,16 @@
+# LLaMA-Factory 导出配置 —— 合并 adapter 到基座权重
+# 训练完后跑这个，生成完整模型，再转 GGUF
+#
+# 用法: llamafactory-cli export configs/yuqian_4b_export.yaml
+
+### ----- model -----
+model_name_or_path: Qwen/Qwen3-4B
+adapter_name_or_path: outputs/yuqian_4b      # 训练产出的 adapter 目录
+template: qwen3_nothink
+trust_remote_code: true
+
+### ----- export -----
+export_dir: outputs/yuqian_4b_merged         # 合并后的完整模型目录
+export_size: 2                                # 分片大小 GB
+export_device: cuda
+export_quantize_bit: 4                        # 直接导出 4-bit（可选，也可后面用 llama.cpp 转）

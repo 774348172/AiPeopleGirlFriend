@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat01/canon-snapshot-v1.json",
+  "title": "CHAT-01 canon snapshot v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "snapshot_id",
+    "schema_version",
+    "created_at",
+    "hash_algorithm",
+    "sources",
+    "resolved_facts",
+    "consistency"
+  ],
+  "properties": {
+    "snapshot_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "hash_algorithm": {"const": "sha256"},
+    "sources": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["authority_rank", "path", "role", "bytes", "sha256"],
+        "properties": {
+          "authority_rank": {"type": "integer", "minimum": 1, "maximum": 6},
+          "path": {"$ref": "#/$defs/relativePath"},
+          "role": {
+            "enum": [
+              "product_requirements",
+              "character_prose",
+              "character_bible",
+              "character_facts",
+              "character_timeline",
+              "ai_implementation"
+            ]
+          },
+          "bytes": {"type": "integer", "minimum": 1},
+          "sha256": {"$ref": "#/$defs/sha256"}
+        }
+      }
+    },
+    "resolved_facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "character_name",
+        "character_age",
+        "player_name",
+        "player_age",
+        "occupation",
+        "city",
+        "current_living",
+        "current_relationship",
+        "character_to_player_names",
+        "player_to_character_name"
+      ],
+      "properties": {
+        "character_name": {"const": "秦未晞"},
+        "character_age": {"const": 22},
+        "player_name": {"const": "浩然"},
+        "player_age": {"const": 24},
+        "occupation": {"type": "string", "minLength": 1},
+        "city": {"type": "string", "minLength": 1},
+        "current_living": {"type": "string", "minLength": 1},
+        "current_relationship": {"type": "string", "minLength": 1},
+        "character_to_player_names": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {"enum": ["B哥", "浩然"]}
+        },
+        "player_to_character_name": {"const": "秦老"}
+      }
+    },
+    "consistency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "conflicts", "notes"],
+      "properties": {
+        "status": {"enum": ["consistent", "conflict"]},
+        "conflicts": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "notes": {"type": "string", "minLength": 1, "maxLength": 2000}
+      }
+    }
+  },
+  "$defs": {
+    "relativePath": {"type": "string", "pattern": "^(?![A-Za-z]:)(?!/)(?!\\\\)(?!.*\\\\).+$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

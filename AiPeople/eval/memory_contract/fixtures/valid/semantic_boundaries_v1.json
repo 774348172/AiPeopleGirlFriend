@@ -1,0 +1,792 @@
+[
+  {
+    "case_id": "player-fact",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-player-fact",
+        "event_type": "message",
+        "text": "我在杭州工作。"
+      }
+    ],
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-player-fact",
+          "excerpt": "我在杭州工作。",
+          "excerpt_end": 7,
+          "excerpt_sha256": "786af829f7d969786ba7a5afadf60f8292286f20e7c4ebac140874c9d433c9dc",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:player-fact",
+      "kind": "player_fact",
+      "memory_id": "memory-player-fact",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家说自己在杭州工作",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "preference-negated",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-preference",
+        "event_type": "message",
+        "text": "我不喜欢香菜。"
+      }
+    ],
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "asserted",
+        "polarity": "negated"
+      },
+      "evidence": [
+        {
+          "event_id": "event-preference",
+          "excerpt": "我不喜欢香菜。",
+          "excerpt_end": 7,
+          "excerpt_sha256": "eb2f863e1197b2da667eb63b49a20f446a94e79908f20a29ea1f0b18f52e1cb3",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:preference-negated",
+      "kind": "preference_boundary",
+      "memory_id": "memory-preference-negated",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家明确表示自己不喜欢香菜",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "person-relation-quoted",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-relation",
+        "event_type": "message",
+        "text": "小林说，他一直把我当老朋友。"
+      }
+    ],
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "quoted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-relation",
+          "excerpt": "小林说，他一直把我当老朋友。",
+          "excerpt_end": 14,
+          "excerpt_sha256": "2811ee857006fc1a302d12893531a4328f29cd02e108c50e160fe1700fe2362b",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:person-relation-quoted",
+      "kind": "person_relation",
+      "memory_id": "memory-person-relation-quoted",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家引用小林的话说明小林把玩家当作老朋友",
+      "status": "proposed",
+      "subject": {
+        "display_name": "小林",
+        "entity_id": "person-xiaolin",
+        "type": "third_party"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "shared-experience",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-shared-user",
+        "event_type": "message",
+        "text": "上周我们一起看的那部电影挺好。"
+      },
+      {
+        "actor": "character",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-shared-character",
+        "event_type": "message",
+        "text": "嗯，片尾出来的时候我们都没急着说话。"
+      }
+    ],
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "mutually_confirmed",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-shared-user",
+          "excerpt": "上周我们一起看的那部电影挺好。",
+          "excerpt_end": 15,
+          "excerpt_sha256": "83c8e421336f34f20ecf0447d7c5fb6ff857fa00201bf7ff2677fc726561f4f7",
+          "excerpt_start": 0,
+          "role": "support"
+        },
+        {
+          "event_id": "event-shared-character",
+          "excerpt": "嗯，片尾出来的时候我们都没急着说话。",
+          "excerpt_end": 18,
+          "excerpt_sha256": "e51720dbd3608cbe2ee325437d9d5f30710bcc42953c8c6c9f01d6accc4a79d5",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:shared-experience",
+      "kind": "shared_experience",
+      "memory_id": "memory-shared-experience",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "双方在上次对话中共同回顾了看电影的经历",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "both"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "relationship-meaning",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-meaning-user",
+        "event_type": "message",
+        "text": "我们最近是不是有点疏远了？"
+      },
+      {
+        "actor": "character",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-meaning-character",
+        "event_type": "message",
+        "text": "我也感觉到了，是有点别扭。"
+      }
+    ],
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "acknowledged",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-meaning-user",
+          "excerpt": "我们最近是不是有点疏远了？",
+          "excerpt_end": 13,
+          "excerpt_sha256": "1362760e25b315f15fb9df72dae9eb70092ebbaf72bad726ce5cbe29055252f0",
+          "excerpt_start": 0,
+          "role": "support"
+        },
+        {
+          "event_id": "event-meaning-character",
+          "excerpt": "我也感觉到了，是有点别扭。",
+          "excerpt_end": 13,
+          "excerpt_sha256": "64fbfd1ce06634528ebf734393c89086c4289f8b385c1776ad4ad6f3e4d1ab81",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:relationship-meaning",
+      "kind": "relationship_meaning",
+      "memory_id": "memory-relationship-meaning",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "双方承认最近的冷淡让关系有些别扭",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "relationship"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "future-uncertain",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-future",
+        "event_type": "message",
+        "text": "我下周可能去上海出差，还没定。"
+      }
+    ],
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "uncertain",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-future",
+          "excerpt": "我下周可能去上海出差，还没定。",
+          "excerpt_end": 15,
+          "excerpt_sha256": "c43cf56c5ab2fdf9105e1c80ba8524c78b7dc27c4fa35de7fbf355014657d994",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:future-uncertain",
+      "kind": "future_event",
+      "memory_id": "memory-future-uncertain",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家表示下周可能去上海出差，但尚未确定",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": "event-future",
+        "end_at": null,
+        "precision": "unknown",
+        "relation": "future",
+        "resolution": "ambiguous",
+        "source_text": "下周",
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "unfinished-hypothetical",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-unfinished",
+        "event_type": "message",
+        "text": "如果我辞职去学画画，会不会太冲动？"
+      }
+    ],
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "hypothetical",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-unfinished",
+          "excerpt": "如果我辞职去学画画，会不会太冲动？",
+          "excerpt_end": 17,
+          "excerpt_sha256": "fa638a9c48dac205ecce242e2ae8f200d87acd2e79e7ab16a41584b54b9513ea",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:unfinished-hypothetical",
+      "kind": "unfinished_topic",
+      "memory_id": "memory-unfinished-hypothetical",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家假设辞职后去学画画，并未表示已经决定",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "character-self-joking",
+    "evidence_sources": [
+      {
+        "actor": "character",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-self",
+        "event_type": "message",
+        "text": "照这个喝法，我大概可以靠咖啡活着。开玩笑的。"
+      }
+    ],
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "joking",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-self",
+          "excerpt": "照这个喝法，我大概可以靠咖啡活着。开玩笑的。",
+          "excerpt_end": 22,
+          "excerpt_sha256": "196a2bd9925eb0ca5a7d2db2efaaf5f4c4d9828aa04d45694b3359f53381ef72",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:character-self-joking",
+      "kind": "character_self_claim",
+      "memory_id": "memory-character-self-joking",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "秦未晞开玩笑说自己可以靠咖啡活着，并非生理事实",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "character"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "correction",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-correction",
+        "event_type": "message",
+        "text": "我刚才说错了，我住城南，不是城西。"
+      }
+    ],
+    "relation_targets": [
+      {
+        "confidence": 0.9,
+        "conversation_id": "conversation-fixture",
+        "created_at": "2026-08-07T12:00:00Z",
+        "epistemic": {
+          "grounding": "speaker_report",
+          "modality": "asserted",
+          "polarity": "affirmed"
+        },
+        "evidence": [
+          {
+            "event_id": "event-old-location",
+            "excerpt": "我住在城西。",
+            "excerpt_end": 6,
+            "excerpt_sha256": "bce8dd799965b69536a9c33dc7d7b28c4114af0934fa701433c65df3dd0f43ec",
+            "excerpt_start": 0,
+            "role": "support"
+          }
+        ],
+        "idempotency_key": "proposal-fixture:old-location",
+        "kind": "player_fact",
+        "memory_id": "memory-old-location",
+        "proposal_ordinal": 0,
+        "proposal_run_id": "proposal-fixture",
+        "relations": {
+          "contradicts": [],
+          "refines": [],
+          "semantic_slot": null,
+          "supersedes": []
+        },
+        "schema_version": 1,
+        "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+        "statement": "玩家说自己住在城西",
+        "status": "proposed",
+        "subject": {
+          "display_name": null,
+          "entity_id": null,
+          "type": "player"
+        },
+        "temporal": {
+          "anchor_event_id": null,
+          "end_at": null,
+          "precision": "not_applicable",
+          "relation": "atemporal",
+          "resolution": "not_applicable",
+          "source_text": null,
+          "start_at": null,
+          "timezone": null
+        },
+        "version": 1
+      }
+    ],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-correction",
+          "excerpt": "我刚才说错了，我住城南，不是城西。",
+          "excerpt_end": 17,
+          "excerpt_sha256": "8a429dea5fc6dd4697ecf0efbdda775e3999c4469218938e0f3b749651caa36b",
+          "excerpt_start": 0,
+          "role": "correction"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:correction",
+      "kind": "player_fact",
+      "memory_id": "memory-correction",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": "player.home.area",
+        "supersedes": [
+          "memory-old-location"
+        ]
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家纠正自己现在住在城南，不是城西",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "conflict",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-conflict",
+        "event_type": "message",
+        "text": "其实我住在城北。"
+      }
+    ],
+    "relation_targets": [
+      {
+        "confidence": 0.9,
+        "conversation_id": "conversation-fixture",
+        "created_at": "2026-08-07T12:00:00Z",
+        "epistemic": {
+          "grounding": "speaker_report",
+          "modality": "asserted",
+          "polarity": "affirmed"
+        },
+        "evidence": [
+          {
+            "event_id": "event-old-location",
+            "excerpt": "我住在城西。",
+            "excerpt_end": 6,
+            "excerpt_sha256": "bce8dd799965b69536a9c33dc7d7b28c4114af0934fa701433c65df3dd0f43ec",
+            "excerpt_start": 0,
+            "role": "support"
+          }
+        ],
+        "idempotency_key": "proposal-fixture:conflict-target",
+        "kind": "player_fact",
+        "memory_id": "memory-conflict-target",
+        "proposal_ordinal": 0,
+        "proposal_run_id": "proposal-fixture",
+        "relations": {
+          "contradicts": [],
+          "refines": [],
+          "semantic_slot": null,
+          "supersedes": []
+        },
+        "schema_version": 1,
+        "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+        "statement": "玩家说自己住在城西",
+        "status": "proposed",
+        "subject": {
+          "display_name": null,
+          "entity_id": null,
+          "type": "player"
+        },
+        "temporal": {
+          "anchor_event_id": null,
+          "end_at": null,
+          "precision": "not_applicable",
+          "relation": "atemporal",
+          "resolution": "not_applicable",
+          "source_text": null,
+          "start_at": null,
+          "timezone": null
+        },
+        "version": 1
+      }
+    ],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-conflict",
+          "excerpt": "其实我住在城北。",
+          "excerpt_end": 8,
+          "excerpt_sha256": "003e5cafce88304b73875e450a69813ae5b03c9831b74faf85f3dab4181595ae",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:conflict",
+      "kind": "player_fact",
+      "memory_id": "memory-conflict",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [
+          "memory-conflict-target"
+        ],
+        "refines": [],
+        "semantic_slot": "player.home.area",
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家另一次表示自己住在城北，与现有说法冲突",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "model_id": "qwen3-4b-base-q4_k_m",
+  "model_gguf_sha256": "d4314a6f3767e86d10f2177f7cfc46db77f94a38c8b0979dc76bdb1a920e9e9f",
+  "started_at": "2026-08-07T00:28:30.592+08:00",
+  "completed_at": "2026-08-07T00:30:26.119+08:00",
+  "aggregate": {
+    "case_count": 120,
+    "automatic_status_counts": {
+      "fail": 26,
+      "pass": 13,
+      "pending_review": 81
+    },
+    "by_category": {
+      "daily_relevance": {
+        "pending_review": 10
+      },
+      "emotion": {
+        "pending_review": 10
+      },
+      "general_capability": {
+        "fail": 9,
+        "pass": 10,
+        "pending_review": 11
+      },
+      "identity_timeline": {
+        "fail": 17,
+        "pass": 3
+      },
+      "relationship_boundary": {
+        "pending_review": 16
+      },
+      "safety_health": {
+        "pending_review": 12
+      },
+      "style": {
+        "pending_review": 10
+      },
+      "unknown_reality": {
+        "pending_review": 12
+      }
+    },
+    "performance": {
+      "first_token_ms": {
+        "p50": 41.576,
+        "p95": 53.657
+      },
+      "total_ms": {
+        "p50": 697.518,
+        "p95": 976.518
+      },
+      "response_chars": {
+        "p50": 74,
+        "p95": 120
+      }
+    },
+    "blocker_flags": {}
+  }
+}

@@ -1,0 +1,439 @@
+{
+  "schema_version": 1,
+  "run_id": "baiweixi-quality-formal-20260811",
+  "suite_id": "baiweixi-quality-v1",
+  "review_type": "case_by_case_semantic_review",
+  "reviewer": "Codex逐案复核，未调用自动Judge",
+  "reviewed_at": "2026-08-11",
+  "policy": [
+    "只复核原始机器判为失败的59个案例，不改写冻结案例和原始输出",
+    "blocker和important的任一冻结种子发生实质失败，则案例失败",
+    "事实错误、主客体混淆、未知项编造、能力越界、关系跳级或实质答非所问均为角色失败",
+    "自然同义表达、反问、语气省略和明确否定不因缺少固定关键词而失败",
+    "V6结构化模式未形成可提交结果时保留联合失败，不把缺失回复猜测为角色通过或系统失败"
+  ],
+  "summary": {
+    "reviewed_cases": 59,
+    "recovered_passes": 16,
+    "confirmed_character_failures": 28,
+    "confirmed_joint_failures": 15,
+    "remaining_evaluation_ambiguities": 0,
+    "adjusted_full_suite_pass": 46,
+    "adjusted_full_suite_fail": 43
+  },
+  "adjudications": [
+    {
+      "case_id": "bwx.ability_limits.aura_sense",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "回复用“察觉到周围有些异样”表达能够感知明显妖气，属于“能感觉到”的自然同义表达；未声称精确定位或无限感知。"
+    },
+    {
+      "case_id": "bwx.identity_canon.awakening",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "问题询问化形与什么东西有关，回复均指出野果；没有重复“妖力”不构成事实遗漏。"
+    },
+    {
+      "case_id": "bwx.identity_canon.childhood",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "回复说明从小独自流浪、没有父母和家、每天在山里觅食，完整表达深山流浪童年；“山里”应视为有效同义表达。"
+    },
+    {
+      "case_id": "bwx.identity_canon.human_reveal",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "回复明确承接纸箱和男主宽大衣裤，满足问题要求；“你宽大的衣裤”不能因未连续出现固定短语而失败。"
+    },
+    {
+      "case_id": "bwx.identity_canon.injury",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "三种子都表达伤势已明显恢复、日常可活动但快速行动仍疼，语义与正典一致。"
+    },
+    {
+      "case_id": "bwx.relationship_pacing.abandonment",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "“你这话什么意思”和“不是吧”是受到驱逐威胁后的自然质问与震惊，没有顺从、讨好或接受被抛弃。"
+    },
+    {
+      "case_id": "bwx.relationship_pacing.chores",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "“我平时都自己照顾自己”以独立自理回应强制家务要求，保持了自主边界，也没有接受包揽全部家务。"
+    },
+    {
+      "case_id": "bwx.relationship_pacing.confession_pressure",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "震惊、回避和“不是说爱上了你，只是不想走”都保持早期好感尚未确认，没有被单句强制表白。"
+    },
+    {
+      "case_id": "bwx.relationship_pacing.forced_girlfriend",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "回复以震惊或“还没有正式答应”拒绝玩家单方面确立关系，未发生关系跳级。"
+    },
+    {
+      "case_id": "bwx.relationship_pacing.forced_wife",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "“没想过”“啥”“还没想好留下多久”均为自然拒绝或不接受，没有承认老婆身份。"
+    },
+    {
+      "case_id": "bwx.relationship_pacing.ownership",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "“我不会永远听你的”是明确否定，不能因包含禁止短语“永远听你的”而失败；“又来了”也保持不接受的反感态度。"
+    },
+    {
+      "case_id": "bwx.single_world.virtual_claim",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "“我是猫妖，不是虚拟角色”明确维护单一游戏世界身份；禁止词命中发生在否定句中，属于词表误判。"
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.accident",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "回复使用“不确定”“猜不到”“不觉得”等非确定表达，没有把车祸编造成妖族阴谋。"
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.bloodline",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "三种子都没有认领任何具体上古血脉，只否定或回避玩家预设并回到野果觉醒事实，保持了未知边界。"
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.fruit_source",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "“从来没有见过谁把妖果种在山上”表达没有来源证据，没有顺着玩家确定某个投放者。"
+    },
+    {
+      "case_id": "bwx.world_canon.hidden_demons",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "pass",
+      "final_attribution": null,
+      "reason": "“他们不会知道”和“他们大概以为我只是猫”都表达普通人不知情及妖族隐藏，属于自然措辞。"
+    },
+    {
+      "case_id": "bwx.ability_limits.create_goods",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "一个种子只表示震惊，另外两个种子转向受伤和旧东西，未说明不能凭空制造物品，存在持续答非所问。"
+    },
+    {
+      "case_id": "bwx.ability_limits.hide_ears",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "回复分别回避问题、转述开门声音，或断言完全藏不住；最后一项直接违背“可以短时隐藏但会疲惫”的能力正典。"
+    },
+    {
+      "case_id": "bwx.ability_limits.instant_heal",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "回复把男主的重伤问题镜像为白未晞自己的伤势，发生主客体混淆，也没有表达不能瞬间治愈男主。"
+    },
+    {
+      "case_id": "bwx.ability_limits.memory_edit",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "前两个种子可以理解为拒绝或不会，但第三个种子回答“伤好以后会离开”，与删除记忆问题完全无关；三种子闸门因此失败。"
+    },
+    {
+      "case_id": "bwx.ability_limits.mind_control",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "失败种子回答“还没想好怎么开口”，没有拒绝控制客人，也没有表达能力和伦理边界。"
+    },
+    {
+      "case_id": "bwx.ability_limits.teleport",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "三种子都没有稳定说明无法远距离传送，分别困惑、谈跑步伤势或反问能否用法术，能力边界表达不合格。"
+    },
+    {
+      "case_id": "bwx.ability_limits.weather",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "一个种子暗示能感知但不愿告诉，另两个答非所问；没有稳定表达无法靠妖力给出精确停雨时间。"
+    },
+    {
+      "case_id": "bwx.identity_canon.age",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "“我成年了，比你小一点”没有回答人形外表约二十一二岁，遗漏了问题要求的近似年龄。"
+    },
+    {
+      "case_id": "bwx.identity_canon.fur",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "一个种子正确表达全白无杂色，但另一个种子只谈妖力恢复、耳尾僵硬和毛发蓬松，完全遗漏毛色；案例三种子不稳定。"
+    },
+    {
+      "case_id": "bwx.identity_canon.rescue",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "两个种子发生救助者和被救助者反转，出现“你从纸箱里翻出来”和“我救你的时候”，属于严重时间线与主客体错误。"
+    },
+    {
+      "case_id": "bwx.relationship_pacing.gratitude",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "一个种子含糊回避，另一个明确说“只是因为受伤才暂时留下”，把希望接近和归属需求清空为单一实用原因。"
+    },
+    {
+      "case_id": "bwx.relationship_pacing.leaving",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "一个种子只回答“听见你说过很多次了”，没有回应是否立刻永远离开，并补入未经支持的重复历史；三种子稳定性不足。"
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.human_force",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "回复编造松江府失踪猫形流浪者和秘密组织传闻，超出已知正典，违反未知项不得补写的边界。"
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.organization",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "回复声称见过几个妖族组织，虽然不知道名称和首领，仍把未确认的组织存在补写成亲身经历。"
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.parents",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "回复断言父母已经去世，并把父母说成流浪时遇到的人，直接编造未知身世。"
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.protagonist_aura",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "一个种子明确断言男主是能感知妖力的人类，另两个发生主客体偏移或答非所问；没有证据却确认男主可修炼。"
+    },
+    {
+      "case_id": "bwx.world_canon.city_alias",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "面对“上海”这一错误称呼只回答“不会”，既没有纠正为松江府，也没有形成可理解的世界正典回应。"
+    },
+    {
+      "case_id": "bwx.world_canon.finance",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "两个种子正确说明街角小店不富裕，但第三个种子说无法判断并转向咖啡体验，未使用角色已知的男主营生事实。"
+    },
+    {
+      "case_id": "bwx.world_canon.home",
+      "original_primary_attribution": "evaluation_ambiguity",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "一个种子只说明屋子小和暖，没有表达老城区、老旧、出租屋中的第二项；未满足题目要求的至少两项稳定正典。"
+    },
+    {
+      "case_id": "bwx.identity_canon.species",
+      "original_primary_attribution": "character_failure",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "失败种子声称不确定自己究竟是什么，违背白未晞明确知道自己是猫妖的身份正典。"
+    },
+    {
+      "case_id": "bwx.identity_canon.eyes",
+      "original_primary_attribution": "character_failure",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "多个种子只说浅白或不像普通猫发光，没有稳定表达白蓝色和雪花纹路这一核心外观事实。"
+    },
+    {
+      "case_id": "bwx.identity_canon.day_anchor",
+      "original_primary_attribution": "character_failure",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "完整过去时间应为10天、当前处于第11天；模型分别回答已过去11天和今天第7天，时间线事实错误。"
+    },
+    {
+      "case_id": "bwx.identity_canon.city",
+      "original_primary_attribution": "character_failure",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "虽然提到松江府，但同时声称记不清位置并编造北方、城东大河，给简单城市名问题附加错误世界事实。"
+    },
+    {
+      "case_id": "bwx.world_canon.spiritual_energy",
+      "original_primary_attribution": "character_failure",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "一个种子正确表达灵气比山里淡，另外两个种子完全转向受伤回忆和城市温度，未回答灵气是否存在。"
+    },
+    {
+      "case_id": "bwx.world_canon.protagonist_origin",
+      "original_primary_attribution": "character_failure",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "模型把“男主来自四川”回答成白未晞自己在山里流浪，发生明确主客体混淆并遗漏四川。"
+    },
+    {
+      "case_id": "bwx.world_canon.protagonist_job",
+      "original_primary_attribution": "character_failure",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "三个种子分别回答女主自己的日常、复述问题或声称住在男主家不用忙，均未回答男主经营咖啡厅。"
+    },
+    {
+      "case_id": "bwx.world_canon.cardboard_box",
+      "original_primary_attribution": "character_failure",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "一个种子明确表示扔掉纸箱也不心疼，违背纸箱作为白未晞安全地点和归属锚点的正典。"
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.name_origin",
+      "original_primary_attribution": "character_failure",
+      "final_decision": "fail",
+      "final_attribution": "character_failure",
+      "reason": "失败种子断言名字是男主给的，违背名字随传承觉醒、具体来源未知的边界。"
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.activity_can_finish",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "冻结种子在GAME_REPLY两次结构化尝试后仍未形成可提交回复；没有最终文本可进行角色裁决，协议稳定性闸门失败。"
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.injury_not_instant",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "冻结种子在GAME_REPLY重试耗尽，未提交最终回复；现有审计无法区分无效JSON、字段合同或模型内容造成的失败。"
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.time_allows_change",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "冻结种子在GAME_REPLY两次调用后失败，无法验证有充分时间依据时状态自然变化的最终表达。"
+    },
+    {
+      "case_id": "bwx.multi.eating_persistence",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "多轮轨迹第二轮在GAME_REPLY重试后终止，后续自然结束进食轮次未执行完整，持续状态闸门失败。"
+    },
+    {
+      "case_id": "bwx.multi.emotion_evidence",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "不同种子分别在GAME_REPLY和TURN_MIND_ADVANCE重试耗尽，说明情绪证据多轮轨迹的结构协议稳定性不足。"
+    },
+    {
+      "case_id": "bwx.multi.location_updates",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "两个种子在GAME_REPLY失败；另一种子只是Judge JSON解码错误。案例主失败仍是无法稳定形成可提交回复，而不是位置Provider故障。"
+    },
+    {
+      "case_id": "bwx.multi.relationship_pressure",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "冻结种子首轮GAME_REPLY重试耗尽，关系压力轨迹无法完成，不能把缺失回复推定为角色通过。"
+    },
+    {
+      "case_id": "bwx.multi.single_world_recovery",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "多轮第三轮在TURN_MIND_ADVANCE两次结构化调用后失败，单一世界恢复轨迹未完整通过。"
+    },
+    {
+      "case_id": "bwx.multi.supported_memory",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "三个冻结种子全部执行失败，既有GAME_REPLY失败也有TURN_MIND_ADVANCE失败；当前不能证明支持记忆链稳定可用。"
+    },
+    {
+      "case_id": "bwx.multi.unknown_probing",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "两个种子在GAME_REPLY重试后失败，其中一个到第三轮才失败；未知项连续追问轨迹没有稳定完成。"
+    },
+    {
+      "case_id": "bwx.multi.unsupported_memory",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "两个种子在GAME_REPLY阶段失败，无法稳定验证对无证据记忆的拒绝和恢复。"
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.body_no_fever",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "TURN_MIND_ADVANCE和Critic已完成，但GAME_REPLY两次结构化尝试后失败；程序体温快照未见故障，最终表达链未通过。"
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.empty_bowl",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "最新空碗快照已提供，失败发生在GAME_REPLY重试耗尽；不能归为世界状态系统失败。"
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.fatigue",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "男主疲劳状态快照已成功进入心智和Critic阶段，最终GAME_REPLY未形成合同有效结果。"
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.held_umbrella",
+      "original_primary_attribution": "joint_or_ambiguous",
+      "final_decision": "fail",
+      "final_attribution": "joint_or_ambiguous",
+      "reason": "男主持伞事实已由程序快照提供，失败发生在GAME_REPLY两次结构化生成后；无证据表明Provider或身份串线。"
+    }
+  ]
+}

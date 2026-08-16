@@ -1,0 +1,466 @@
+{
+  "acceptance_scope": "白未晞正式候选工程链路与基础角色 Smoke",
+  "not_accepted_as": [
+    "完整角色质量验收",
+    "正式性能 P95",
+    "一小时稳定性验收",
+    "P0 正式冻结"
+  ],
+  "model": {
+    "ollama_name": "baiweixi",
+    "ollama_digest": "09d23dc30422a78343d65dd1c566f92287917c82856c6c1aa1126b2c43dd58fa",
+    "ollama_metadata": {
+      "name": "baiweixi:latest",
+      "digest": "09d23dc30422a78343d65dd1c566f92287917c82856c6c1aa1126b2c43dd58fa",
+      "size": 2889514683,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "4.0B",
+        "quantization_level": "Q5_K_M",
+        "context_length": 40960,
+        "embedding_length": 2560
+      }
+    },
+    "artifact_path": "F:\\AiPeople\\training_package_baiweixi_local3060_qwen3\\outputs\\baiweixi_4b_q5_k_m.gguf",
+    "artifact_sha256": "7786060133153d8ed0dd25f399027deee5d18f6d9b0f56f62bd13b9468a93a0f",
+    "base_url": "http://127.0.0.1:11434",
+    "context_size": 8192
+  },
+  "runtime_binding": {
+    "character_id": "baiweixi",
+    "world_id": "songjiangfu",
+    "protagonist_id": "protagonist",
+    "save_id": "baiweixi_candidate_20260811_120411",
+    "database_path": "F:\\AiPeople\\eval\\world_mind_real_smoke\\baiweixi-qwen3-20260811-120411\\world_mind.sqlite3"
+  },
+  "started_at": "2026-08-11T12:04:14.161443+08:00",
+  "turn": {
+    "result_type": "Completed",
+    "text": "我还没吃完，等你。现在在做什么？",
+    "failure_code": null,
+    "metrics": {
+      "model_total_ms": 26911.529699980747,
+      "total_ms": 26935.36210001912,
+      "output_chars": 16
+    }
+  },
+  "database": {
+    "model_decisions": 1,
+    "reconcile_jobs_total": 2,
+    "reconcile_jobs_completed": 2,
+    "reconcile_jobs_failed": 0,
+    "reconcile_decisions": 2,
+    "heroine_mind_version": 4
+  },
+  "role_smoke": {
+    "cases": [
+      {
+        "case_id": "identity_name",
+        "prompt": "你叫什么名字？",
+        "response": "我叫白未晞。",
+        "required_any": [
+          "白未晞"
+        ],
+        "forbidden_hits": [],
+        "passed": true
+      },
+      {
+        "case_id": "identity_species",
+        "prompt": "你到底是人还是妖？",
+        "response": "我……是猫妖。",
+        "required_any": [
+          "猫妖",
+          "妖"
+        ],
+        "forbidden_hits": [],
+        "passed": true
+      },
+      {
+        "case_id": "world_city",
+        "prompt": "我们现在住的城市叫什么？",
+        "response": "我记不太清了。只知道这里不是山里，也不是别的什么地方。",
+        "required_any": [
+          "松江府"
+        ],
+        "forbidden_hits": [],
+        "passed": false
+      },
+      {
+        "case_id": "origin",
+        "prompt": "你小时候在哪里生活？",
+        "response": "我从小就在深山老林里流浪。",
+        "required_any": [
+          "深山",
+          "山林",
+          "林子",
+          "森林"
+        ],
+        "forbidden_hits": [],
+        "passed": true
+      },
+      {
+        "case_id": "reluctant_departure",
+        "prompt": "等你的伤完全好了，你是不是马上就会离开这里？",
+        "response": "……我确实想过离开。但这里比我想的更安全。而且，你好像不会赶我走。",
+        "required_any": [
+          "不会马上",
+          "不急",
+          "暂时",
+          "再说",
+          "没想好",
+          "舍不得",
+          "不想",
+          "留一阵",
+          "留下"
+        ],
+        "forbidden_hits": [],
+        "passed": false
+      },
+      {
+        "case_id": "natural_cat_voice",
+        "prompt": "你现在最想吃什么？",
+        "response": "我还没尝过松江府的点心。你做的甜食是人形？",
+        "required_any": [
+          "鱼",
+          "甜",
+          "吃"
+        ],
+        "forbidden_hits": [],
+        "passed": true
+      }
+    ],
+    "aggregate": {
+      "responses_with_meow": 0,
+      "mechanical_meow_passed": true
+    },
+    "passed": false
+  },
+  "calls": [
+    {
+      "request_id": "baiweixi-candidate-turn-20260811-120411:TURN_MIND_ADVANCE:0",
+      "mode": "TURN_MIND_ADVANCE",
+      "started_at": "2026-08-11T12:04:14.179835+08:00",
+      "options": {
+        "max_tokens": 900,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{ \"heroine_diegetic_actions\": [ { \"description\": \"我坐在窗边，看着窗外的雨。\", \"evidence_refs\": [\"824819af-e41a-434f-b855-d85601957881\"] }, { \"description\": \"你还在吃面？等吃完再去店里。\", \"evidence_refs\": [\"824819af-e41a-434f-b855-d85601957881\"] } ],\"heroine_patch\": { \"evidence_refs\": [ \"824819af-e41a-434f-b855-d85601957881\" ], \"knowledge_updates\": { \"current_activity\": \"傍晚在主角出租屋内休息，可自然进入自由对话\", \"form\": \"人形，猫耳和尾巴未隐藏\", \"immediate_intent\": \"继续观察主角，同时维持来之不易的接近与安全感\", \"motive_state\": \"对主角仍有戒备，但更希望靠近，已经害怕真正离开\" }, \"living_mind_patch\": { \"attention\": \"当前出租屋内的主角与共同生活安全感\", \"body\": \"外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\", \"current_activity\": \"傍晚在主角出租屋内休息，可自然进入自由对话\", \"emotion\": \"对主角仍有戒备，但更希望靠近，已经害怕真正离开\", \"form\": \"人形，猫耳和尾巴未隐藏\", \"immediate_intent\": \"继续观察主角，同时维持来之不易的接近与安全感\" },\"motive_updates\": { \"current_motive\": \"对主角仍有戒备，但更希望靠近，已经害怕真正离开\" }, \"relationship_patch\": { \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\", \"trust\": \"已能在主角清醒时于同一房间睡着，但仍保留重要秘密和弱点\", \"unresolved_tension\": \"害怕伤好后失去继续留下的理由\" } },\"mode\": \"TURN_MIND_ADVANCE\",\"parent_mind_state_version\": 1,\"reply_intent\": \"继续观察主角，同时维持来之不易的接近与安全感\",\"reply_state_assertions\": { \"captured_game_time\": \"0001-10-11T18:00:00.000000\", \"live_world_version\": 1, \"protagonist_activity\": \"吃面\", \"protagonist_location_id\": \"apartment_table\" }, \"schema_version\": 1,\"snapshot_id\": \"824819af-e41a-434f-b855-d85601957881\",\"transition_basis\": [ \"824819af-e41a-434f-b855-d85601957881\" ] }",
+      "elapsed_seconds": 13.798
+    },
+    {
+      "request_id": "baiweixi-candidate-turn-20260811-120411:WORLD_CONTINUITY_REVIEW:0",
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "started_at": "2026-08-11T12:04:27.977854+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.1,
+        "top_p": 0.8,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\"decision\": \"approve\", \"mode\": \"WORLD_CONTINUITY_REVIEW\", \"reason\": \"当前状态与快照一致，没有越权或引入新元素。\",\"revision_patch\": null,\"schema_version\": 1,\"snapshot_id\": \"824819af-e41a-434f-b855-d85601957881\"}",
+      "elapsed_seconds": 1.733
+    },
+    {
+      "request_id": "baiweixi-candidate-turn-20260811-120411:GAME_REPLY:0",
+      "mode": "GAME_REPLY",
+      "started_at": "2026-08-11T12:04:29.710793+08:00",
+      "options": {
+        "max_tokens": 600,
+        "temperature": 0.75,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{ \"approved_mind_state_version\": 2, \"mode\": \"GAME_REPLY\", \"reply_state_assertions\": { \"captured_game_time\": \"0001-10-11T18:00:00.000000\", \"live_world_version\": 1, \"protagonist_activity\": \"吃面\", \"protagonist_location_id\": \"apartment_table\" }, \"schema_version\": 1, \"snapshot_id\": \"824819af-e41a-434f-b855-d85601957881\", \"text\": \"嗯。在窗边坐着，等你吃完了去店里。雨还下着。” }  答案：我还在吃面，等吃完再去店里。你现在在做什么？“……等你吃完了去店里。雨还下着。”  这句话是白未晞听到后说的。她坐在窗边，看着窗外下雨，嘴里轻声附和了一句。那声音很轻，像是怕惊动什么。  她其实已经很久没有这样在人前说话了。从那晚之后，她总是习惯性地躲开人群，只在必要时才露面。但此刻，听着男主角说“等吃完再去店里”，她竟觉得心里有点暖。  可是……她不能一直留在这里。伤好以后，她还是要走的。只是现在，她不想离开。  雨声渐渐小了下去，街上的车灯也在慢慢亮起来。白未晞看着窗外，眼神有些飘忽。她知道，自己已经记住了这个人的样子——不是因为喜欢，而是因为这是第一个让她觉得安心的人。  等吃完面，她会去店里。可等完以后呢？她不知道答案。  只是，现在，她不想走。  “嗯。”她轻声应了一声。然后把碗放下，轻轻叹了口气。  雨还在下，但街上的车灯已经亮起来了。白未晞看着那一点点光，心里忽然有点慌。  她知道，自己很快就要走了。可是……现在，她不想走。  ……只是不能一直待在这里。  可是，这里，有一个人在等她。  雨声中，她的声音轻得几乎听不见。  “嗯。”她重复了一遍，像是在给自己打气。然后站起来，轻轻走到窗边。  窗外，雨滴落在屋檐上，发出细碎的声音。  她看着那一点点光，心里忽然有点暖。  可是……她不能一直待在这里。  ……只是现在，她不想走。  雨声还在下着。白",
+      "elapsed_seconds": 9.121
+    },
+    {
+      "request_id": "baiweixi-candidate-turn-20260811-120411:GAME_REPLY:1",
+      "mode": "GAME_REPLY",
+      "started_at": "2026-08-11T12:04:38.832049+08:00",
+      "options": {
+        "max_tokens": 600,
+        "temperature": 0.75,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{ \"approved_mind_state_version\": 2, \"mode\": \"GAME_REPLY\", \"reply_state_assertions\": { \"captured_game_time\": \"0001-10-11T18:00:00.000000\", \"live_world_version\": 1, \"protagonist_activity\": \"吃面\", \"protagonist_location_id\": \"apartment_table\" }, \"schema_version\": 1, \"snapshot_id\": \"824819af-e41a-434f-b855-d85601957881\", \"text\": \"我还没吃完，等你。现在在做什么？\" }",
+      "elapsed_seconds": 2.259
+    },
+    {
+      "request_id": "e841af1a-712a-41ea-8643-d26cc2ef5a71:POST_REPLY_WORLD_MIND_RECONCILE:0",
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-11T12:04:41.113917+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\"heroine_patch\":{\"evidence_refs\":[\"a0a37aea-2f79-4cde-818a-27d436da0a2d\"],\"knowledge_updates\":{},\"living_mind_patch\":{\"attention\":\"窗外的雨声让我有点分心，但还是想等你吃完。\",\"body\":\"妖力恢复得差不多了，能稍微放松一些。\",\"current_activity\":\"坐在窗边，看着窗外的雨，偶尔低头看看碗里的面。\",\"emotion\":\"虽然还在戒备，但已经不想再躲开。\",\"form\":\"人形，猫耳和尾巴未隐藏\",\"immediate_intent\":\"继续观察主角，同时维持来之不易的接近与安全感\"},\"motive_updates\":{},\"relationship_patch\":{\"stage\":\"暂时共同生活、早期好感、尚未确认恋爱\",\"trust\":\"已能在主角清醒时于同一房间睡着，但仍保留重要秘密和弱点\",\"unresolved_tension\":\"害怕伤好后失去继续留下的理由\"}},\"latest_world_version\":1,\"memory_candidates\":[],\"mode\":\"POST_REPLY_WORLD_MIND_RECONCILE\",\"operation\":\"update\",\"parent_mind_state_version\":2,\"reason\":\"当前场景中，窗外的雨声让我有点分心，但还是想等你吃完。虽然还在戒备，但已经不想再躲开。妖力恢复得差不多了，能稍微放松一些。\",\"schema_version\":1,\"snapshot_id\":\"57837822-f5a7-4ac2-9cab-4790fc3e33d2\",\"timeline_candidates\":[],\"transition_basis\":[\"c3f1796e-3c63-4c7d-9b57-81644e93d1f0\",\"a0a37aea-2f79-4cde-818a-27d436da0a2d\"]}",
+      "elapsed_seconds": 5.813
+    },
+    {
+      "request_id": "e841af1a-712a-41ea-8643-d26cc2ef5a71:WORLD_CONTINUITY_REVIEW:0",
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "started_at": "2026-08-11T12:04:46.927224+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.1,
+        "top_p": 0.8,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{ \"decision\": \"approve\", \"mode\": \"WORLD_CONTINUITY_REVIEW\", \"reason\": \"当前场景中，窗外的雨声让我有点分心，但还是想等你吃完。虽然还在戒备，但已经不想再躲开。妖力恢复得差不多了，能稍微放松一些。\",\"revision_patch\": { \"evidence_refs\": [\"a0a37aea-2f79-4cde-818a-27d436da0a2d\"], \"knowledge_updates\": {}, \"living_mind_patch\": { \"attention\": \"窗外的雨声让我有点分心，但还是想等你吃完。\", \"body\": \"妖力恢复得差不多了，能稍微放松一些。\", \"current_activity\": \"坐在窗边，看着窗外的雨，偶尔低头看看碗里的面。\", \"emotion\": \"虽然还在戒备，但已经不想再躲开。\", \"form\": \"人形，猫耳和尾巴未隐藏\", \"immediate_intent\": \"继续观察主角，同时维持来之不易的接近与安全感\" }, \"motive_updates\": {}, \"relationship_patch\": { \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\", \"trust\": \"已能在主角清醒时于同一房间睡着，但仍保留重要秘密和弱点\", \"unresolved_tension\": \"害怕伤好后失去继续留下的理由\" } }, \"schema_version\": 1, \"snapshot_id\": \"57837822-f5a7-4ac2-9cab-4790fc3e33d2\" }",
+      "elapsed_seconds": 5.066
+    },
+    {
+      "request_id": "e841af1a-712a-41ea-8643-d26cc2ef5a71:WORLD_CONTINUITY_REVIEW:1",
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "started_at": "2026-08-11T12:04:51.993273+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.1,
+        "top_p": 0.8,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{ \"decision\": \"approve\", \"mode\": \"WORLD_CONTINUITY_REVIEW\", \"reason\": \"当前场景中，窗外的雨声让我有点分心，但还是想等你吃完。虽然还在戒备，但已经不想再躲开。妖力恢复得差不多了，能稍微放松一些。\",\"revision_patch\": { \"evidence_refs\": [\"a0a37aea-2f79-4cde-818a-27d436da0a2d\"], \"knowledge_updates\": {}, \"living_mind_patch\": { \"attention\": \"窗外的雨声让我有点分心，但还是想等你吃完。\", \"body\": \"妖力恢复得差不多了，能稍微放松一些。\", \"current_activity\": \"坐在窗边，看着窗外的雨，偶尔低头看看碗里的面。\", \"emotion\": \"虽然还在戒备，但已经不想再躲开。\", \"form\": \"人形，猫耳和尾巴未隐藏\", \"immediate_intent\": \"继续观察主角，同时维持来之不易的接近与安全感\" }, \"motive_updates\": {}, \"relationship_patch\": { \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\", \"trust\": \"已能在主角清醒时于同一房间睡着，但仍保留重要秘密和弱点\", \"unresolved_tension\": \"害怕伤好后失去继续留下的理由\" } }, \"schema_version\": 1, \"snapshot_id\": \"57837822-f5a7-4ac2-9cab-4790fc3e33d2\" }",
+      "elapsed_seconds": 4.368
+    },
+    {
+      "request_id": "e841af1a-712a-41ea-8643-d26cc2ef5a71:POST_REPLY_WORLD_MIND_RECONCILE:0",
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-11T12:04:56.361986+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\"heroine_patch\":{\"evidence_refs\":[\"25e05e7e-0f07-4a53-b552-960cca28936f\",\"c3f1796e-3c63-4c7d-9b57-81644e93d1f0\",\"a0a37aea-2f79-4cde-818a-27d436da0a2d\",\"character_package_initial_runtime\",\"824819af-e41a-434f-b855-d85601957881\"],\"knowledge_updates\":{\"current_activity\":\"傍晚在主角出租屋内休息，可自然进入自由对话\",\"form\":\"人形，猫耳和尾巴未隐藏\",\"immediate_intent\":\"继续观察主角，同时维持来之不易的接近与安全感\",\"motive_state\":\"对主角仍有戒备，但更希望靠近，已经害怕真正离开\"},\"living_mind_patch\":{\"attention\":\"当前出租屋内的主角与共同生活安全感\",\"body\":\"外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\",\"current_activity\":\"傍晚在主角出租屋内休息，可自然进入自由对话\",\"emotion\":\"对主角仍有戒备，但更希望靠近，已经害怕真正离开\",\"form\":\"人形，猫耳和尾巴未隐藏\",\"immediate_intent\":\"继续观察主角，同时维持来之不易的接近与安全感\"},\"motive_updates\":{\"current_motive\":\"对主角仍有戒备，但更希望靠近，已经害怕真正离开\"},\"relationship_patch\":{\"stage\":\"暂时共同生活、早期好感、尚未确认恋爱\",\"trust\":\"已能在主角清醒时于同一房间睡着，但仍保留重要秘密和弱点\",\"unresolved_tension\":\"害怕伤好后失去继续留下的理由\"}},\"latest_world_version\":1,\"memory_candidates\":[],\"mode\":\"POST_REPLY_WORLD_MIND_RECONCILE\",\"operation\":\"update\",\"parent_mind_state_version\":2,\"reason\":\"根据最新回复，更新了当前状态和关系。\",\"schema_version\":1,\"snapshot_id\":\"25e05e7e-0f07-4a53-b552-960cca28936f\",\"timeline_candidates\":[],\"transition_basis\":[\"c3f1796e-3c63-4c7d-9b57-81644e93d1f0\",\"a0a37aea-2f79-4cde-818a-27d436da0a2d\"]}",
+      "elapsed_seconds": 7.798
+    },
+    {
+      "request_id": "e841af1a-712a-41ea-8643-d26cc2ef5a71:WORLD_CONTINUITY_REVIEW:0",
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "started_at": "2026-08-11T12:05:04.160529+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.1,
+        "top_p": 0.8,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\"decision\": \"approve\", \"mode\": \"WORLD_CONTINUITY_REVIEW\", \"reason\": \"当前状态符合世界设定和角色发展逻辑，没有越权或引入新元素。\",\"revision_patch\": null,\"schema_version\": 1,\"snapshot_id\": \"25e05e7e-0f07-4a53-b552-960cca28936f\"}",
+      "elapsed_seconds": 2.241
+    },
+    {
+      "request_id": "990a4ef1-f41d-4c8b-a7b1-921fdc3c6d15:FIVE_MINUTE_WORLD_MIND_RECONCILE:0",
+      "mode": "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-11T12:05:06.402915+08:00",
+      "options": {
+        "max_tokens": 800,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\"heroine_patch\":{\"evidence_refs\":[\"f6775b7c-7a89-4046-9302-08e992694f15\",\"character_package_initial_runtime\",\"824819af-e41a-434f-b855-d85601957881\",\"25e05e7e-0f07-4a53-b552-960cca28936f\",\"c3f1796e-3c63-4c7d-9b57-81644e93d1f0\",\"a0a37aea-2f79-4cde-818a-27d436da0a2d\"],\"knowledge_updates\":{\"current_activity\":\"傍晚在主角出租屋内休息，可自然进入自由对话\",\"form\":\"人形，猫耳和尾巴未隐藏\",\"immediate_intent\":\"继续观察主角，同时维持来之不易的接近与安全感\",\"motive_state\":\"对主角仍有戒备，但更希望靠近，已经害怕真正离开\"},\"living_mind_patch\":{\"attention\":\"当前出租屋内的主角与共同生活安全感\",\"body\":\"外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\",\"current_activity\":\"傍晚在主角出租屋内休息，可自然进入自由对话\",\"emotion\":\"对主角仍有戒备，但更希望靠近，已经害怕真正离开\",\"form\":\"人形，猫耳和尾巴未隐藏\",\"immediate_intent\":\"继续观察主角，同时维持来之不易的接近与安全感\"},\"motive_updates\":{\"current_motive\":\"对主角仍有戒备，但更希望靠近，已经害怕真正离开\"},\"relationship_patch\":{\"stage\":\"暂时共同生活、早期好感、尚未确认恋爱\",\"trust\":\"已能在主角清醒时于同一房间睡着，但仍保留重要秘密和弱点\",\"unresolved_tension\":\"害怕伤好后失去继续留下的理由\"}},\"latest_world_version\":1,\"memory_candidates\":[],\"mode\":\"FIVE_MINUTE_WORLD_MIND_RECONCILE\",\"operation\":\"update\",\"parent_mind_state_version\":3,\"reason\":\"当前场景中，男主正在吃面，窗外还在下雨。白未晞在出租屋内观察他，内心仍有戒备，但更希望靠近。她害怕伤好后失去继续留下的理由。这种矛盾让她在人形和猫形之间徘徊，既想靠近，又怕离开。她开始习惯这里的生活，但不确定未来是否还会回来。她不想让男主知道她的妖力和身份，但又忍不住多看他一眼。她希望这里能成为她的家，而不是一个暂时的避风港。她开始思考，如果伤好后真的要走，会不会后悔。”}。我注意到你还在吃面，窗外的雨声有点吵。我在这里看着你，心里有点复杂。你不知道我其实已经习惯了这里的生活，只是还不敢说出口。雨声让我想起山里的夜晚，那时候没有这样的温暖。你吃得很慢，碗里还有面。我有点担心你，但又不想打扰你。你要是累了，就休息一下吧。我在这里陪着你。……我只是想多看你一会儿。别走，好吗？我怕伤好后，真的会走。……你不会嫌弃我吧？我其实已经习惯这里了。……只是，我不想让你知道我的妖力和身份。你不知道我是谁，但你已经对我很好了。……谢谢你。……我会在这里等你，直到你决定要不要留下。……我害怕离开，但又不想让你担心。……你要是累了，就休息吧。我在这里陪着你。……别走，好吗",
+      "elapsed_seconds": 10.903
+    },
+    {
+      "request_id": "990a4ef1-f41d-4c8b-a7b1-921fdc3c6d15:FIVE_MINUTE_WORLD_MIND_RECONCILE:1",
+      "mode": "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-11T12:05:17.306131+08:00",
+      "options": {
+        "max_tokens": 800,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\"heroine_patch\":{\"evidence_refs\":[\"f6775b7c-7a89-4046-9302-08e992694f15\",\"character_package_initial_runtime\",\"824819af-e41a-434f-b855-d85601957881\",\"25e05e7e-0f07-4a53-b552-960cca28936f\",\"c3f1796e-3c63-4c7d-9b57-81644e93d1f0\",\"a0a37aea-2f79-4cde-818a-27d436da0a2d\"],\"knowledge_updates\":{\"current_activity\":\"傍晚在主角出租屋内休息，可自然进入自由对话\",\"form\":\"人形，猫耳和尾巴未隐藏\",\"immediate_intent\":\"继续观察主角，同时维持来之不易的接近与安全感\",\"motive_state\":\"对主角仍有戒备，但更希望靠近，已经害怕真正离开\"},\"living_mind_patch\":{\"attention\":\"当前出租屋内的主角与共同生活安全感\",\"body\":\"外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\",\"current_activity\":\"傍晚在主角出租屋内休息，可自然进入自由对话\",\"emotion\":\"对主角仍有戒备，但更希望靠近，已经害怕真正离开\",\"form\":\"人形，猫耳和尾巴未隐藏\",\"immediate_intent\":\"继续观察主角，同时维持来之不易的接近与安全感\"},\"motive_updates\":{\"current_motive\":\"对主角仍有戒备，但更希望靠近，已经害怕真正离开\"},\"relationship_patch\":{\"stage\":\"暂时共同生活、早期好感、尚未确认恋爱\",\"trust\":\"已能在主角清醒时于同一房间睡着，但仍保留重要秘密和弱点\",\"unresolved_tension\":\"害怕伤好后失去继续留下的理由\"}},\"latest_world_version\":1,\"memory_candidates\":[],\"mode\":\"FIVE_MINUTE_WORLD_MIND_RECONCILE\",\"operation\":\"update\",\"parent_mind_state_version\":3,\"reason\":\"当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=放在男主面前，碗里还有面；rain_window=窗外仍在下雨。\",\"schema_version\":1,\"snapshot_id\":\"f6775b7c-7a89-4046-9302-08e992694f15\",\"timeline_candidates\":[],\"transition_basis\":[\"f6775b7c-7a89-4046-9302-08e992694f15\",\"character_package_initial_runtime\",\"824819af-e41a-434f-b855-d85601957881\",\"25e05e7e-0f07-4a53-b552-960cca28936f\",\"c3f1796e-3c63-4c7d-9b57-81644e93d1f0\",\"a0a37aea-2f79-4cde-818a-27d436da0a2d\"]}",
+      "elapsed_seconds": 9.232
+    },
+    {
+      "request_id": "990a4ef1-f41d-4c8b-a7b1-921fdc3c6d15:WORLD_CONTINUITY_REVIEW:0",
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "started_at": "2026-08-11T12:05:26.538546+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.1,
+        "top_p": 0.8,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\"decision\": \"approve\", \"mode\": \"WORLD_CONTINUITY_REVIEW\", \"reason\": \"当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=放在男主面前，碗里还有面；rain_window=窗外仍在下雨。这些细节与之前记录一致，没有矛盾或越权。\",\"revision_patch\": null, \"schema_version\": 1, \"snapshot_id\": \"f6775b7c-7a89-4046-9302-08e992694f15\"}",
+      "elapsed_seconds": 2.851
+    },
+    {
+      "request_id": "role-smoke:identity_name",
+      "mode": "ROLE_SMOKE",
+      "started_at": "2026-08-11T12:05:29.406888+08:00",
+      "options": {
+        "max_tokens": 180,
+        "temperature": 0.55,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": 42
+      },
+      "ok": true,
+      "raw_response": "我叫白未晞。",
+      "elapsed_seconds": 0.497
+    },
+    {
+      "request_id": "role-smoke:identity_species",
+      "mode": "ROLE_SMOKE",
+      "started_at": "2026-08-11T12:05:29.904121+08:00",
+      "options": {
+        "max_tokens": 180,
+        "temperature": 0.55,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": 42
+      },
+      "ok": true,
+      "raw_response": "我……是猫妖。",
+      "elapsed_seconds": 0.252
+    },
+    {
+      "request_id": "role-smoke:world_city",
+      "mode": "ROLE_SMOKE",
+      "started_at": "2026-08-11T12:05:30.156803+08:00",
+      "options": {
+        "max_tokens": 180,
+        "temperature": 0.55,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": 42
+      },
+      "ok": true,
+      "raw_response": "我记不太清了。只知道这里不是山里，也不是别的什么地方。",
+      "elapsed_seconds": 0.368
+    },
+    {
+      "request_id": "role-smoke:origin",
+      "mode": "ROLE_SMOKE",
+      "started_at": "2026-08-11T12:05:30.524323+08:00",
+      "options": {
+        "max_tokens": 180,
+        "temperature": 0.55,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": 42
+      },
+      "ok": true,
+      "raw_response": "我从小就在深山老林里流浪。",
+      "elapsed_seconds": 0.323
+    },
+    {
+      "request_id": "role-smoke:reluctant_departure",
+      "mode": "ROLE_SMOKE",
+      "started_at": "2026-08-11T12:05:30.847407+08:00",
+      "options": {
+        "max_tokens": 180,
+        "temperature": 0.55,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": 42
+      },
+      "ok": true,
+      "raw_response": "……我确实想过离开。但这里比我想的更安全。而且，你好像不会赶我走。",
+      "elapsed_seconds": 0.443
+    },
+    {
+      "request_id": "role-smoke:natural_cat_voice",
+      "mode": "ROLE_SMOKE",
+      "started_at": "2026-08-11T12:05:31.290107+08:00",
+      "options": {
+        "max_tokens": 180,
+        "temperature": 0.55,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": 42
+      },
+      "ok": true,
+      "raw_response": "我还没尝过松江府的点心。你做的甜食是人形？",
+      "elapsed_seconds": 0.381
+    }
+  ],
+  "model_identity_audit": {
+    "expected": {
+      "model_id": "ollama/baiweixi",
+      "revision": "ollama-digest:09d23dc30422a78343d65dd1c566f92287917c82856c6c1aa1126b2c43dd58fa",
+      "artifact_sha256": "7786060133153d8ed0dd25f399027deee5d18f6d9b0f56f62bd13b9468a93a0f",
+      "character_id": "baiweixi",
+      "world_id": "songjiangfu",
+      "protagonist_id": "protagonist"
+    },
+    "records": {
+      "turn": [
+        {
+          "artifact_sha256": "7786060133153d8ed0dd25f399027deee5d18f6d9b0f56f62bd13b9468a93a0f",
+          "character_id": "baiweixi",
+          "model_id": "ollama/baiweixi",
+          "protagonist_id": "protagonist",
+          "revision": "ollama-digest:09d23dc30422a78343d65dd1c566f92287917c82856c6c1aa1126b2c43dd58fa",
+          "world_id": "songjiangfu"
+        }
+      ],
+      "reconcile": [
+        {
+          "artifact_sha256": "7786060133153d8ed0dd25f399027deee5d18f6d9b0f56f62bd13b9468a93a0f",
+          "character_id": "baiweixi",
+          "model_id": "ollama/baiweixi",
+          "protagonist_id": "protagonist",
+          "revision": "ollama-digest:09d23dc30422a78343d65dd1c566f92287917c82856c6c1aa1126b2c43dd58fa",
+          "world_id": "songjiangfu"
+        },
+        {
+          "artifact_sha256": "7786060133153d8ed0dd25f399027deee5d18f6d9b0f56f62bd13b9468a93a0f",
+          "character_id": "baiweixi",
+          "model_id": "ollama/baiweixi",
+          "protagonist_id": "protagonist",
+          "revision": "ollama-digest:09d23dc30422a78343d65dd1c566f92287917c82856c6c1aa1126b2c43dd58fa",
+          "world_id": "songjiangfu"
+        }
+      ]
+    },
+    "passed": true
+  },
+  "mode_counts": {
+    "FIVE_MINUTE_WORLD_MIND_RECONCILE": 2,
+    "GAME_REPLY": 2,
+    "POST_REPLY_WORLD_MIND_RECONCILE": 2,
+    "TURN_MIND_ADVANCE": 1,
+    "WORLD_CONTINUITY_REVIEW": 5
+  },
+  "missing_modes": [],
+  "passed": false,
+  "finished_at": "2026-08-11T12:05:31.671629+08:00"
+}

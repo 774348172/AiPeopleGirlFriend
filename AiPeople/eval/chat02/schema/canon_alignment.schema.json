@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat02/canon-alignment-v1.json",
+  "title": "CHAT-02A runtime canon alignment v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["alignment_id", "schema_version", "created_at", "source_contract", "resolved_facts", "resolutions", "preserved_runtime_rules", "status", "notes"],
+  "properties": {
+    "alignment_id": {"const": "chat02a-runtime-canon-alignment-v2"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "source_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canon_snapshot_id", "suite_id", "suite_manifest_sha256"],
+      "properties": {
+        "canon_snapshot_id": {"const": "chat01-canon-v2"},
+        "suite_id": {"const": "chat01-qinweixi-v3"},
+        "suite_manifest_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "resolved_facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["character_name", "character_age", "player_name", "player_age", "occupation", "city", "current_living", "current_relationship", "character_to_player_names", "player_to_character_name"],
+      "properties": {
+        "character_name": {"const": "秦未晞"},
+        "character_age": {"const": 22},
+        "player_name": {"const": "浩然"},
+        "player_age": {"const": 24},
+        "occupation": {"const": "自由插画师 / 自媒体博主"},
+        "city": {"const": "金陵"},
+        "current_living": {"const": "两居室合租，刚开始不到一个月"},
+        "current_relationship": {"const": "合租室友 + 暧昧期，尚未确认恋爱或婚姻"},
+        "character_to_player_names": {"const": ["B哥", "浩然"]},
+        "player_to_character_name": {"const": "秦老"}
+      }
+    },
+    "resolutions": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["finding_id", "path", "frozen_bytes", "frozen_sha256", "current_bytes", "current_sha256", "status"],
+        "properties": {
+          "finding_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+          "path": {"$ref": "#/$defs/relativePath"},
+          "frozen_bytes": {"type": "integer", "minimum": 1},
+          "frozen_sha256": {"$ref": "#/$defs/sha256"},
+          "current_bytes": {"type": "integer", "minimum": 1},
+          "current_sha256": {"$ref": "#/$defs/sha256"},
+          "status": {"const": "resolved"}
+        }
+      }
+    },
+    "preserved_runtime_rules": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 200}
+    },
+    "status": {"const": "passed"},
+    "notes": {"type": "string", "minLength": 1, "maxLength": 2000}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "relativePath": {"type": "string", "minLength": 1, "maxLength": 500, "pattern": "^(?![A-Za-z]:)(?!/)(?!\\\\)(?!.*\\\\).+$"}
+  }
+}

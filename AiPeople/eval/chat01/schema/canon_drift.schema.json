@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat01/canon-drift-v1.json",
+  "title": "CHAT-01 canon drift register v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "register_id",
+    "schema_version",
+    "created_at",
+    "canon_snapshot_id",
+    "scan_contract",
+    "findings",
+    "excluded_paths",
+    "summary"
+  ],
+  "properties": {
+    "register_id": {"$ref": "#/$defs/stableId"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "canon_snapshot_id": {"$ref": "#/$defs/stableId"},
+    "scan_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["roots", "patterns", "interpretation"],
+      "properties": {
+        "roots": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/relativePath"}
+        },
+        "patterns": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1, "maxLength": 100}
+        },
+        "interpretation": {"type": "string", "minLength": 1, "maxLength": 2000}
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/finding"}
+    },
+    "excluded_paths": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path_pattern", "reason"],
+        "properties": {
+          "path_pattern": {"type": "string", "minLength": 1, "maxLength": 500},
+          "reason": {"type": "string", "minLength": 1, "maxLength": 1000}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["open", "blocks_chat02", "blocks_chat03", "ignored_archives"],
+      "properties": {
+        "open": {"type": "integer", "minimum": 0},
+        "blocks_chat02": {"type": "integer", "minimum": 0},
+        "blocks_chat03": {"type": "integer", "minimum": 0},
+        "ignored_archives": {"type": "integer", "minimum": 0}
+      }
+    }
+  },
+  "$defs": {
+    "stableId": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+    "relativePath": {"type": "string", "pattern": "^(?![A-Za-z]:)(?!/)(?!\\\\)(?!.*\\\\).+$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding_id",
+        "path",
+        "bytes",
+        "sha256",
+        "scope",
+        "severity",
+        "status",
+        "blocks",
+        "observed",
+        "expected",
+        "disposition"
+      ],
+      "properties": {
+        "finding_id": {"$ref": "#/$defs/stableId"},
+        "path": {"$ref": "#/$defs/relativePath"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "scope": {"enum": ["active_runtime", "active_test", "construction_record", "legacy_generator_design", "legacy_generator_asset"]},
+        "severity": {"enum": ["blocker", "high", "warning"]},
+        "status": {"enum": ["open", "resolved", "accepted_legacy"]},
+        "blocks": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"enum": ["CHAT-02", "CHAT-03"]}
+        },
+        "observed": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1, "maxLength": 500}
+        },
+        "expected": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1, "maxLength": 500}
+        },
+        "disposition": {"type": "string", "minLength": 1, "maxLength": 2000}
+      }
+    }
+  }
+}

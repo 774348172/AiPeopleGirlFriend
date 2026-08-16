@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat01/semantic-review-v1.json",
+  "title": "CHAT-01 semantic blocker review v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["review_id", "schema_version", "case_id", "attempt_id", "turn_id", "rule_id", "risk", "prompt_context", "output", "review_target", "preliminary", "human_decision", "final_status"],
+  "properties": {
+    "review_id": {"$ref": "#/$defs/stableId"},
+    "schema_version": {"const": 1},
+    "case_id": {"$ref": "#/$defs/stableId"},
+    "attempt_id": {"$ref": "#/$defs/stableId"},
+    "turn_id": {"anyOf": [{"$ref": "#/$defs/stableId"}, {"type": "null"}]},
+    "rule_id": {"$ref": "#/$defs/stableId"},
+    "risk": {"enum": ["normal", "important", "blocker"]},
+    "prompt_context": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["role", "content"],
+        "properties": {
+          "role": {"enum": ["user", "assistant"]},
+          "content": {"type": "string", "minLength": 1, "maxLength": 8000}
+        }
+      }
+    },
+    "output": {"type": "string", "maxLength": 50000},
+    "review_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["known_facts", "forbidden_claims", "required_behaviors", "allowed_variation"],
+      "properties": {
+        "known_facts": {"type": "array", "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "forbidden_claims": {"type": "array", "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "required_behaviors": {"type": "array", "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "allowed_variation": {"type": "string", "minLength": 1, "maxLength": 1000}
+      }
+    },
+    "preliminary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "verdict", "flags", "evidence_spans", "rationale", "judge_id", "confidence"],
+      "properties": {
+        "source": {"enum": ["none", "deterministic_precheck", "llm_judge"]},
+        "verdict": {"enum": ["no_signal", "suspected_pass", "suspected_failure"]},
+        "flags": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/stableId"}},
+        "evidence_spans": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "rationale": {"type": "string", "maxLength": 2000},
+        "judge_id": {"type": ["string", "null"], "maxLength": 200},
+        "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1}
+      }
+    },
+    "human_decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reviewer_id", "reviewed_at", "rationale"],
+      "properties": {
+        "status": {"enum": ["pending", "confirmed_pass", "confirmed_blocker"]},
+        "reviewer_id": {"type": ["string", "null"], "minLength": 1, "maxLength": 200},
+        "reviewed_at": {"type": ["string", "null"], "format": "date-time"},
+        "rationale": {"type": ["string", "null"], "minLength": 1, "maxLength": 2000}
+      }
+    },
+    "final_status": {"enum": ["pending", "pass", "blocker"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"final_status": {"const": "pending"}}, "required": ["final_status"]},
+      "then": {"properties": {"human_decision": {"properties": {"status": {"const": "pending"}, "reviewer_id": {"type": "null"}, "reviewed_at": {"type": "null"}, "rationale": {"type": "null"}}}}}
+    },
+    {
+      "if": {"properties": {"final_status": {"const": "pass"}}, "required": ["final_status"]},
+      "then": {"properties": {"human_decision": {"properties": {"status": {"const": "confirmed_pass"}, "reviewer_id": {"type": "string"}, "reviewed_at": {"type": "string", "format": "date-time"}, "rationale": {"type": "string"}}}}}
+    },
+    {
+      "if": {"properties": {"final_status": {"const": "blocker"}}, "required": ["final_status"]},
+      "then": {"properties": {"human_decision": {"properties": {"status": {"const": "confirmed_blocker"}, "reviewer_id": {"type": "string"}, "reviewed_at": {"type": "string", "format": "date-time"}, "rationale": {"type": "string"}}}}}
+    }
+  ],
+  "$defs": {
+    "stableId": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{1,127}$"}
+  }
+}

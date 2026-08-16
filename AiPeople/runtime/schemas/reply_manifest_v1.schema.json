@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schemas/reply_manifest_v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "model_id", "revision", "base_revision", "role", "deployment_profile", "artifact_sha256", "network_access", "thinking", "gguf", "chat_template"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "model_id": {"const": "Qwen/Qwen3.5-4B"},
+    "revision": {"type": "string", "minLength": 1},
+    "base_revision": {"type": "string", "minLength": 1},
+    "role": {"enum": ["untrained_base", "qinweixi_candidate"]},
+    "deployment_profile": {"type": "string", "minLength": 1},
+    "artifact_sha256": {"$ref": "#/$defs/sha256"},
+    "network_access": {"const": "forbidden"},
+    "thinking": {"const": false},
+    "gguf": {"$ref": "#/$defs/gguf"},
+    "chat_template": {"$ref": "#/$defs/file"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "file": {"type": "object", "additionalProperties": false, "required": ["path", "sha256"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}}},
+    "gguf": {"type": "object", "additionalProperties": false, "required": ["path", "sha256", "quantization"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}, "quantization": {"type": "string", "minLength": 1}}}
+  }
+}

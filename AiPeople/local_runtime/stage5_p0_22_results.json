@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-05",
+  "checkpoint": "P0-22",
+  "engineering_status": "passed",
+  "product_model_quality_status": "failed",
+  "deterministic_end_to_end": {
+    "twenty_turn_ordering": true,
+    "restart_then_continue": true,
+    "current_user_not_duplicated": true,
+    "cancelled_partial_excluded": true,
+    "server_recovered_without_duplicate_user": true,
+    "log_privacy": true
+  },
+  "scale": {
+    "event_count": 100000,
+    "database_bytes": 72716288,
+    "samples": 50,
+    "phrase_query_p95_ms": 0.703,
+    "time_query_p95_ms": 4.878,
+    "normal_context_p95_ms": 0.148,
+    "recall_context_p95_ms": 1.003,
+    "fts_virtual_index": true,
+    "conversation_time_index": true,
+    "full_events_table_scan": false,
+    "build_ms": null,
+    "source": "local_runtime/stage5_p0_22_scale_results.json"
+  },
+  "real_model": {
+    "manifest": "local_runtime/model_runtime_manifest.json",
+    "llama_cpp_build": "b10256",
+    "model": "Qinweixi Q4_K_M",
+    "gpu": "NVIDIA GeForce RTX 3070 8GB",
+    "context_size": 4096,
+    "test_maximum_prompt_tokens": 696,
+    "context_delivery_passed": true,
+    "prompt_overflow_count": 0,
+    "max_prompt_tokens": 569,
+    "generation_usage_matches_runtime": true,
+    "prompt_measure_p95_ms": 64.582,
+    "context_processing_p95_ms": 0.07,
+    "model_context_use": {
+      "passed": 1,
+      "total": 3,
+      "immediate_followup": false,
+      "restart_followup": true,
+      "rollover_recall": false
+    }
+  },
+  "regression": {
+    "compileall": "passed",
+    "pytest_passed": 393,
+    "pytest_skipped": 3,
+    "warnings": 5,
+    "warning_scope": "unmodified data_gen_v4 schema validator deprecations"
+  },
+  "stage4_baseline": {
+    "source": "local_runtime/stage4_p0_16_results.json",
+    "one_hour_completed": true,
+    "first_delta_p95_under_2s": true,
+    "no_sustained_resource_growth": true,
+    "peak_gpu_delta_under_3_5gib": true
+  },
+  "scope_guards": {
+    "semantic_recall_added": false,
+    "embeddings_added": false,
+    "extra_generation_calls_added": false
+  }
+}

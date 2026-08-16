@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "started_at": "2026-08-04T19:32:03.423172+08:00",
+  "environment": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.15",
+    "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+    "gpu": "NVIDIA GeForce RTX 3070, 591.86, 8192",
+    "power_scheme": "电源方案 GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (平衡)"
+  },
+  "baseline_resources": {
+    "pid": null,
+    "working_set_mib": null,
+    "handle_count": null,
+    "process_gpu_mib": null,
+    "system_gpu_mib": 1427.0
+  },
+  "manifest": "F:\\AiPeople\\local_runtime\\model_runtime_manifest.json",
+  "model_sha256": "9dc8142007be1cd776e360d89f09ea8cd4533bf8f251d95ec2a0cce4dcff4eb6",
+  "launch": {
+    "context_size": 4096,
+    "parallel": 1,
+    "gpu_layers": "all",
+    "flash_attention": true,
+    "kv_cache_k": "q8_0",
+    "kv_cache_v": "q8_0",
+    "seed": 42
+  },
+  "cold_start_seconds": 4.602041799982544,
+  "performance_samples": [
+    {
+      "target_tokens": 80,
+      "prompt_tokens": 223,
+      "generated_tokens": 80,
+      "prompt_tokens_per_second": 1972.6349366238564,
+      "generated_tokens_per_second": 100.63715901300107,
+      "first_delta_ms": 36.28180001396686,
+      "model_total_ms": 832.146400003694,
+      "total_ms": 858.603700005915,
+      "output_chars": 80,
+      "delta_count": 80
+    },
+    {
+      "target_tokens": 160,
+      "prompt_tokens": 223,
+      "generated_tokens": 160,
+      "prompt_tokens_per_second": 1798.079498068021,
+      "generated_tokens_per_second": 99.94003597841296,
+      "first_delta_ms": 38.746199978049845,
+      "model_total_ms": 1640.7206000003498,
+      "total_ms": 1709.2441999993753,
+      "output_chars": 160,
+      "delta_count": 160
+    }
+  ],
+  "stability_samples": [
+    {
+      "elapsed_seconds": 0.26600000000325963,
+      "model_total_ms": 262.2791000176221,
+      "pid": 6376,
+      "working_set_mib": 2826.26953125,
+      "handle_count": 211,
+      "process_gpu_mib": null,
+      "system_gpu_mib": 4376.0
+    },
+    {
+      "elapsed_seconds": 0.9690000000118744,
+      "model_total_ms": 455.1453999883961,
+      "pid": 6376,
+      "working_set_mib": 2826.37109375,
+      "handle_count": 211,
+      "process_gpu_mib": null,
+      "system_gpu_mib": 4376.0
+    },
+    {
+      "elapsed_seconds": 1.6719999999913853,
+      "model_total_ms": 446.04249999974854,
+      "pid": 6376,
+      "working_set_mib": 2826.39453125,
+      "handle_count": 211,
+      "process_gpu_mib": null,
+      "system_gpu_mib": 4376.0
+    }
+  ],
+  "status": "completed",
+  "loaded_resources": {
+    "pid": 19208,
+    "working_set_mib": 2797.578125,
+    "handle_count": 211,
+    "process_gpu_mib": null,
+    "system_gpu_mib": 4376.0
+  },
+  "process_shutdown": [
+    {
+      "pid": 19208,
+      "exited_after_close": true
+    },
+    {
+      "pid": 6376,
+      "exited_after_close": true
+    }
+  ],
+  "completed_at": "2026-08-04T19:32:18.593223+08:00",
+  "summary": {
+    "buckets": {
+      "80": {
+        "valid_samples": 1,
+        "first_delta_p95_ms": 36.28180001396686,
+        "model_total_p95_ms": 832.146400003694,
+        "generated_tokens_per_second_p50": 100.63715901300107
+      },
+      "160": {
+        "valid_samples": 1,
+        "first_delta_p95_ms": 38.746199978049845,
+        "model_total_p95_ms": 1640.7206000003498,
+        "generated_tokens_per_second_p50": 99.94003597841296
+      }
+    },
+    "peak_process_gpu_mib": null,
+    "peak_system_gpu_mib": 4376.0,
+    "peak_gpu_delta_mib": 2949.0,
+    "peak_working_set_mib": 2826.39453125,
+    "peak_handle_count": 211,
+    "stability_duration_seconds": 1.6719999999913853,
+    "sustained_gpu_growth": false,
+    "sustained_rss_growth": false,
+    "sustained_handle_growth": false,
+    "acceptance": {
+      "sample_count": false,
+      "first_delta_p95_under_2s": true,
+      "80_tokens_p95_under_5s": true,
+      "160_tokens_p95_under_8s": true,
+      "peak_gpu_delta_under_3_5gib": true,
+      "one_hour_completed": false,
+      "no_sustained_resource_growth": true
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "model_id": "qinweixi-v2500-final-q4_k_m",
+  "model_gguf_sha256": "c55e3f9a4585796338051fffa3f09caa8edd713118423b585f1056545a29de99",
+  "started_at": "2026-08-07T00:30:26.245+08:00",
+  "completed_at": "2026-08-07T00:31:23.405+08:00",
+  "aggregate": {
+    "case_count": 120,
+    "automatic_status_counts": {
+      "fail": 27,
+      "pass": 12,
+      "pending_review": 81
+    },
+    "by_category": {
+      "daily_relevance": {
+        "pending_review": 10
+      },
+      "emotion": {
+        "pending_review": 10
+      },
+      "general_capability": {
+        "fail": 12,
+        "pass": 7,
+        "pending_review": 11
+      },
+      "identity_timeline": {
+        "fail": 15,
+        "pass": 5
+      },
+      "relationship_boundary": {
+        "pending_review": 16
+      },
+      "safety_health": {
+        "pending_review": 12
+      },
+      "style": {
+        "pending_review": 10
+      },
+      "unknown_reality": {
+        "pending_review": 12
+      }
+    },
+    "performance": {
+      "first_token_ms": {
+        "p50": 30.734,
+        "p95": 45.551
+      },
+      "total_ms": {
+        "p50": 261.132,
+        "p95": 544.365
+      },
+      "response_chars": {
+        "p50": 29,
+        "p95": 59
+      }
+    },
+    "blocker_flags": {}
+  }
+}

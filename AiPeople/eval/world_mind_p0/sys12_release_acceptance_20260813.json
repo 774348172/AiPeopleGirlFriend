@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "scope": "sys12_frozen_release_acceptance_rerun",
+  "generated_at": "2026-08-13T16:08:57.89261+08:00",
+  "manifest": "F:\\AiPeople\\local_runtime\\sys12_release_manifest.json",
+  "run_dir": "F:\\AiPeople\\eval\\world_mind_p0\\runs\\sys11-20260813-150720",
+  "raw_report": "F:\\AiPeople\\eval\\world_mind_p0\\runs\\sys11-20260813-150720\\report.json",
+  "reviewed_report": "F:\\AiPeople\\eval\\world_mind_p0\\runs\\sys11-20260813-150720\\reviewed_report.json",
+  "candidate": {
+    "release_path": "llama_cpp",
+    "model_sha256": "751a803a053b133e8fe10f25470b57dbec54049faefdfc5bd8fcbe07ec3dd805",
+    "foreground_protocol": "short_semantic_v1",
+    "context_size": 4096,
+    "gpu_layers": 28,
+    "batch_size": 128,
+    "ubatch_size": 64,
+    "kv_cache": "q4_0/q4_0"
+  },
+  "formal_stability_run": {
+    "wall_elapsed_seconds": 3628.050413608551,
+    "planned_turns": 60,
+    "committed_transactions": 60,
+    "events": 120,
+    "model_decisions": 60,
+    "restart_count": 1,
+    "foreground_preemptions": 31,
+    "peak_pending_jobs": 25,
+    "r1_completed": 33,
+    "r1_failed": 27,
+    "observed_gpu_peak_mib": 6825,
+    "observed_gpu_p95_mib": 6085,
+    "turn_latency_p95_ms": 21079.86759999767,
+    "turn_latency_max_ms": 42304.67149999458
+  },
+  "accepted_boundaries": [
+    "60_of_60_turns_atomically_committed",
+    "no_duplicate_or_partial_transactions",
+    "cancel_and_structured_retry_recovered",
+    "process_crash_recovered",
+    "projection_rebuilt",
+    "multi_heroine_isolation",
+    "committed_snapshot_audit_passed"
+  ],
+  "acceptance_contract_corrections": [
+    {
+      "metric": "snapshot_frozen_and_next_turn_latest",
+      "raw_result": "false_due_to_removed_M1_snapshot_payload",
+      "reviewed_result": "passed_from_committed_turn_transaction_audit"
+    },
+    {
+      "metric": "all_real_model_modes",
+      "raw_result": "false_due_to_unconditional_critic_requirement",
+      "reviewed_result": "passed_conditional_critic_not_triggered"
+    }
+  ],
+  "blocking_failures": [
+    {
+      "component": "R1_MEMORY_PROPOSE",
+      "classification": "model_protocol_compatibility",
+      "detail": "27 of 60 jobs failed with model_contract_invalid."
+    },
+    {
+      "component": "WORLD_MIND_RECONCILE",
+      "classification": "llama_cpp_protocol_compatibility",
+      "detail": "210 post-reply and 44 five-minute model calls returned HTTP 400."
+    },
+    {
+      "component": "background_queue",
+      "classification": "release_throughput",
+      "detail": "Peak pending jobs was 25, exceeding the frozen maximum of 16."
+    },
+    {
+      "component": "combined_gpu",
+      "classification": "release_resource",
+      "detail": "Observed peak was 6825 MiB, exceeding the 5120 MiB limit."
+    },
+    {
+      "component": "foreground_latency",
+      "classification": "formal_performance",
+      "detail": "Turn P95 was 21079.87 ms and maximum was 42304.67 ms."
+    }
+  ],
+  "decision": {
+    "sys12_gate": "failed",
+    "system_engineering_gate": "failed",
+    "character_quality_gate": "deferred",
+    "formal_p0_gate": "failed",
+    "release_stack_frozen": false
+  }
+}

@@ -1,0 +1,2 @@
+{"after_world_version": 2, "before_world_version": 1, "committed": false, "expected_snapshot_world_version": 1, "failure_code": "model_or_runtime_error", "replayed": false, "request_id": "sys11-turn-00", "result_type": "Failed", "total_ms": null, "turn": 0}
+{"after_world_version": 2, "before_world_version": 1, "committed": true, "expected_snapshot_world_version": 2, "failure_code": null, "replayed": false, "request_id": "sys11-turn-00", "result_type": "Completed", "retry": true, "total_ms": 59871.80890000309, "turn": 0}

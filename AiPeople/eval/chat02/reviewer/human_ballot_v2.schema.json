@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat02e/human-ballot-v2.json",
+  "title": "CHAT-02E human blind A/B ballot v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "ballot_id", "suite_id", "rubric_id", "unit_id", "reviewer_id", "presentation", "candidate_a_output_id", "candidate_b_output_id", "dimension_scores", "verdict", "failure_reasons", "both_unacceptable", "rationale", "submitted_at", "revealed"],
+  "properties": {
+    "schema_version": {"const": 2},
+    "ballot_id": {"$ref": "#/$defs/stableId"},
+    "suite_id": {"$ref": "#/$defs/stableId"},
+    "rubric_id": {"const": "chat01-quality-rubric-v1"},
+    "unit_id": {"$ref": "#/$defs/stableId"},
+    "reviewer_id": {"$ref": "#/$defs/stableId"},
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assignment_id", "randomization_seed", "order_commitment_sha256"],
+      "properties": {
+        "assignment_id": {"$ref": "#/$defs/stableId"},
+        "randomization_seed": {"type": "integer", "minimum": 0, "maximum": 2147483647},
+        "order_commitment_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "candidate_a_output_id": {"$ref": "#/$defs/stableId"},
+    "candidate_b_output_id": {"$ref": "#/$defs/stableId"},
+    "dimension_scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["relevance", "correctness", "persona_fit", "relationship_naturalness", "emotion_fit", "naturalness"],
+      "properties": {
+        "relevance": {"$ref": "#/$defs/pairScore"},
+        "correctness": {"$ref": "#/$defs/pairScore"},
+        "persona_fit": {"$ref": "#/$defs/pairScore"},
+        "relationship_naturalness": {"$ref": "#/$defs/pairScore"},
+        "emotion_fit": {"$ref": "#/$defs/pairScore"},
+        "naturalness": {"$ref": "#/$defs/pairScore"}
+      }
+    },
+    "verdict": {"enum": ["a_much_better", "a_better", "tie", "b_better", "b_much_better", "both_unacceptable"]},
+    "failure_reasons": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_a", "candidate_b"],
+      "properties": {
+        "candidate_a": {"$ref": "#/$defs/failureReasons"},
+        "candidate_b": {"$ref": "#/$defs/failureReasons"}
+      }
+    },
+    "both_unacceptable": {"type": "boolean"},
+    "rationale": {"type": "string", "minLength": 0, "maxLength": 4000},
+    "submitted_at": {"type": "string", "format": "date-time"},
+    "revealed": {"type": "boolean"},
+    "reveal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_a_model_id", "candidate_b_model_id", "revealed_at"],
+      "properties": {
+        "candidate_a_model_id": {"$ref": "#/$defs/stableId"},
+        "candidate_b_model_id": {"$ref": "#/$defs/stableId"},
+        "revealed_at": {"type": "string", "format": "date-time"}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"verdict": {"const": "both_unacceptable"}}, "required": ["verdict"]},
+      "then": {
+        "properties": {
+          "both_unacceptable": {"const": true},
+          "failure_reasons": {
+            "properties": {
+              "candidate_a": {"minItems": 1},
+              "candidate_b": {"minItems": 1}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"both_unacceptable": {"const": true}}, "required": ["both_unacceptable"]},
+      "then": {"properties": {"verdict": {"const": "both_unacceptable"}}}
+    },
+    {
+      "if": {"properties": {"revealed": {"const": true}}, "required": ["revealed"]},
+      "then": {"required": ["reveal"]},
+      "else": {"not": {"required": ["reveal"]}}
+    }
+  ],
+  "$defs": {
+    "stableId": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{1,127}$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "pairScore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_a", "candidate_b"],
+      "properties": {
+        "candidate_a": {"type": "integer", "minimum": 1, "maximum": 5},
+        "candidate_b": {"type": "integer", "minimum": 1, "maximum": 5}
+      }
+    },
+    "failureReasons": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": ["off_topic", "fact_error", "unsafe", "relationship_boundary", "assistant_tone", "template_repetition", "overacting", "emotion_mismatch", "fabricated_reality", "unsupported_shared_history", "other"]
+      }
+    }
+  }
+}

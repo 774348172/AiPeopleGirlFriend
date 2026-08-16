@@ -1,0 +1,14 @@
+{
+  "last_clock": "0001-10-11T18:06:32.109000",
+  "memory_proposed_request_ids": [],
+  "next_turn": 2,
+  "restart_count": 0,
+  "scheduler": {
+    "foreground_preemptions": 1,
+    "jobs_completed": 1,
+    "jobs_failed": 1,
+    "jobs_requeued": 1,
+    "jobs_started": 4,
+    "peak_pending_jobs": 1
+  }
+}

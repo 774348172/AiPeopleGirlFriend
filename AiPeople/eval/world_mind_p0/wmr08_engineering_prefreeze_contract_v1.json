@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "contract_id": "wmr08-engineering-prefreeze-v1",
+  "status": "frozen_before_probe",
+  "scope": "使用秦未晞历史模型验证 V6 工程链路，不验收白未晞角色质量和正式性能",
+  "required_modes": [
+    "TURN_MIND_ADVANCE",
+    "WORLD_CONTINUITY_REVIEW",
+    "GAME_REPLY",
+    "POST_REPLY_WORLD_MIND_RECONCILE",
+    "FIVE_MINUTE_WORLD_MIND_RECONCILE"
+  ],
+  "engineering_gate": {
+    "all_modes_successful": true,
+    "completed_turn_required": true,
+    "post_reply_reconcile_required": true,
+    "five_minute_reconcile_required": true,
+    "zero_failed_reconcile_jobs": true,
+    "freeze_manifest_required": true
+  },
+  "target_hardware": {
+    "os": "Windows 10/11",
+    "system_memory_gib_min": 16,
+    "gpu_class": "RTX 3060/3070 8GB"
+  },
+  "formal_thresholds_not_enforced_by_qin_probe": {
+    "combined_gpu_peak_mib_max": 5120,
+    "warm_first_visible_token_p95_ms_max": 2000,
+    "reply_80_tokens_p95_ms_max": 5000,
+    "reply_160_tokens_p95_ms_max": 8000,
+    "memory_selection_incremental_p95_ms_max": 300,
+    "real_model_stability_minutes": 60
+  },
+  "measure_without_formal_threshold": [
+    "latest_snapshot_average_and_p95",
+    "turn_mind_advance_latency",
+    "critic_latency_and_trigger_rate",
+    "game_reply_first_content_and_total_latency",
+    "heroine_repository_recall_average_and_p95",
+    "five_minute_reconcile_latency",
+    "gpu_peak_and_ollama_residency"
+  ],
+  "formal_p0_deferred_until_baiweixi": [
+    "character_quality",
+    "official_reply_artifact",
+    "official_embedding_and_reranker_artifacts",
+    "published_stack_latency_thresholds",
+    "combined_vram_threshold",
+    "model_switching_and_kv_cache_breakdown",
+    "one_hour_real_model_stability",
+    "human_approval"
+  ]
+}

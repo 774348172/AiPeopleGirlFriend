@@ -1,0 +1,53 @@
+# LLaMA-Factory 训练配置 —— 秦未晞人格（本机 8G 显存 QLoRA 版）
+# 硬件: RTX 3070 8G / 3060 8G（Ampere，sm_86，支持 bf16 + bitsandbytes 4bit）
+# 数据: qin_v4_ready.jsonl（矩阵 119 全通过 + 41 称呼纠错 - 防泄漏 2 = 158 条）
+#
+# 训练: llamafactory-cli train configs/qinweixi_4b_8g.yaml
+# 验证: python scripts/chat_qinweixi.py outputs/qinweixi_4b
+#
+# 显存估算（4bit QLoRA, batch 1, seq 2048）: base 4bit ~2.4G + 激活 ~2G + LoRA/优化器 ~0.5G ≈ 5-6G ✅ 8G 可跑
+# 时长估算: 158 条 × 3 epoch ≈ 60 步，3070 约 5-8 分钟
+
+### ----- model -----
+model_name_or_path: Qwen/Qwen3.5-4B  # 2026-08-07 基座升级 VLM
+trust_remote_code: true
+adapter_name_or_path:
+quantization_bit: 4                          # QLoRA：8G 显存必须 4bit 量化（bf16 权重 8GB 放不下）
+quantization_method: bitsandbytes
+
+### ----- method -----
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 16                                # 与 M3/H200 包一致
+lora_alpha: 32
+lora_dropout: 0.05
+
+### ----- dataset -----
+dataset: qin_v4_small   # 试训小批量 50 条（正式切换回 qin_v4_ready）
+template: qwen3_5_nothink                    # Qwen3.5 关闭思考模板（LLaMA-Factory 内置）
+cutoff_len: 1280                             # 样本实际 ~700 token，1280 足够；省激活显存加速
+dataset_dir: data
+overwrite_cache: true
+preprocessing_num_workers: 1                # ⚠ Windows 上 datasets 多进程 map 会丢结果（实测 158→0）；158 条数据单进程即可
+
+### ----- output -----
+output_dir: outputs/qinweixi_4b
+logging_steps: 10
+save_steps: 10
+save_total_limit: 2
+plot_loss: true
+overwrite_output_dir: true
+
+### ----- train -----
+per_device_train_batch_size: 1               # 8G 显存：batch 1
+gradient_accumulation_steps: 4               # 等效 batch 4（显存贴边时更快）
+learning_rate: 1.0e-4                        # QLoRA 常用 2e-4；人格微调 5e-5~1e-4 更稳，过拟合时调低
+num_train_epochs: 2.0                        # 验证流程 1 epoch（158 微步 ≈ 20 optimizer 步）
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+weight_decay: 0.01
+bf16: true                                   # 3070/3060 均为 Ampere，支持 bf16
+gradient_checkpointing: true                 # 显存 96% 贴边是慢的主因：省显存后 allocator 压力大减
+optim: adamw_bnb_8bit                        # 8bit 优化器（paged 版在 Windows 上慢到 ~46s/微步）

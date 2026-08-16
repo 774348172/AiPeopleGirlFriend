@@ -1,0 +1,15 @@
+{
+  "package_id": "chat02e-human-v1",
+  "suite_id": "chat01-qinweixi-v2",
+  "status": "awaiting_human_review",
+  "ab_units": 60,
+  "long_sessions": 8,
+  "seed_balance": {
+    "11": 20,
+    "29": 20,
+    "47": 20
+  },
+  "ballots_submitted": 0,
+  "assignments_revealed": false,
+  "policy": "Private assignments must not be opened before the corresponding ballot is submitted."
+}

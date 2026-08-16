@@ -1,0 +1,123 @@
+{
+  "contract_id": "real01-03-acceptance-infrastructure-v1",
+  "freeze": {
+    "hash_algorithm": "sha256",
+    "immutable": true,
+    "manifest_hash_mode": "canonical_json_with_null_self",
+    "manifest_sha256": "04afd2016e69aef1c73e8e8c57cda4602e3359a584d22b9227d50cbf45c066fc"
+  },
+  "frozen_assets": [
+    {
+      "bytes": 4344,
+      "path": "eval/memory_e2e/select_e2e_contract_v1.json",
+      "sha256": "e4981081517888144bb15a0c3f9a5cc4110a5ef37fb623d423003e8021ea62b8"
+    },
+    {
+      "bytes": 57,
+      "path": "eval/real_select_e2e/__init__.py",
+      "sha256": "d4583bf1b26659800813df35be6d82e0563dadb853baf44484ba36986990f67d"
+    },
+    {
+      "bytes": 4632,
+      "path": "eval/real_select_e2e/acceptance.py",
+      "sha256": "e632b6518a08cc27520da3484def03a5b30f67e59edbe55a2be9e9f69a2cde3d"
+    },
+    {
+      "bytes": 7901,
+      "path": "eval/real_select_e2e/freeze.py",
+      "sha256": "d2a260a4e1d6137f17304878797f77947753407712fe7f28ad73e0893fd4cdbc"
+    },
+    {
+      "bytes": 1726,
+      "path": "eval/real_select_e2e/real_acceptance_profile_v1.json",
+      "sha256": "d70dd97bf163503446bcebe2f9583ecbe7963cb9408eced70ee23c95b539afb4"
+    },
+    {
+      "bytes": 1022,
+      "path": "eval/real_select_e2e/real_asset_inventory_v1.json",
+      "sha256": "cb62f45e8b97df73da763ad76115b06f44033a6364e658ba3bb0d0481205725d"
+    },
+    {
+      "bytes": 9367,
+      "path": "eval/real_select_e2e/recall04_semantic_cases_v2.json",
+      "sha256": "fc2b885fa4c1f82b302176830c5300f0b818f38dca5cbfa16c8a62fb145f289c"
+    },
+    {
+      "bytes": 9147,
+      "path": "eval/real_select_e2e/recall_v2.py",
+      "sha256": "e8bf455d740330395bc4298b7ed64dcf89e029aa663fbc3bf1194aca74adab8c"
+    },
+    {
+      "bytes": 13243,
+      "path": "runtime/_real_assets.py",
+      "sha256": "a81fa7384d3472f87697609a63135adbd6458e7b14e04a66e1c7f62ce712a9a9"
+    },
+    {
+      "bytes": 2698,
+      "path": "runtime/_real_stack.py",
+      "sha256": "9a8d9f1f40a7bf4c69ed10bfcc9d315d0a5031573e25f039550617fa456c4de5"
+    },
+    {
+      "bytes": 3743,
+      "path": "runtime/adapters/local_bge.py",
+      "sha256": "026c6b78cb515d842f1da1890cba6961a347a7eb9044da1b27732e5a9594c7dd"
+    },
+    {
+      "bytes": 6019,
+      "path": "runtime/adapters/qwen3_reranker.py",
+      "sha256": "2d5ddd64c30d499de95764e55ef1bd65b489b02c37bcd0b4c1b4bc905f76efb0"
+    },
+    {
+      "bytes": 1210,
+      "path": "runtime/schemas/bge_manifest_v1.schema.json",
+      "sha256": "8c1ae90a93d32c741dee9c37b0a0fbf5a7dfb44d4f237a373abc94581413fc73"
+    },
+    {
+      "bytes": 1080,
+      "path": "runtime/schemas/real_asset_bundle_v1.schema.json",
+      "sha256": "ade9885373411cabe71eeb54ae647bcce942c30cf7d277f7812a803d7a5fb991"
+    },
+    {
+      "bytes": 1458,
+      "path": "runtime/schemas/reply_manifest_v1.schema.json",
+      "sha256": "8cf490924a9c0c3e4b32ff0e3d4fa0871a584f96aeff77e26f0f5e2e0c544350"
+    },
+    {
+      "bytes": 1326,
+      "path": "runtime/schemas/reranker_manifest_v1.schema.json",
+      "sha256": "87a1fe8730c9da5cfa166a8ba4bdaf53589f8269f027a52f0a1b0d30f0633e59"
+    },
+    {
+      "bytes": 4991,
+      "path": "设计文档/AI设计/当前权威设计/REAL-01-03_真实模型验收基础设施施工文档.md",
+      "sha256": "5275c18e0e6241cc49b480994bc150f5dbc7976996b57062b8a0f0ef8902cfc7"
+    }
+  ],
+  "frozen_at": "2026-08-08T04:08:51Z",
+  "schema_version": 1,
+  "scope": {
+    "next_checkpoint": "REAL-04 through REAL-07 after asset delivery",
+    "not_claimed": [
+      "real semantic quality",
+      "real latency or GPU memory",
+      "one-hour stability",
+      "product acceptance"
+    ],
+    "passed": [
+      "REAL-01 shared global pool RECALL-04 v2 evaluator and preregistered gates",
+      "REAL-02 BGE reranker Qwen3.5 and bundle manifest verification",
+      "REAL-03 offline BGE and reranker adapters plus bound real stack factory"
+    ],
+    "pending_external_assets": [
+      "delivered local BGE package",
+      "reranker baseline candidate and quantized packages",
+      "selector validation test_frozen and long_memory_e2e splits",
+      "Qwen3.5 untrained-base and Qin Weixi candidate GGUF packages"
+    ]
+  },
+  "status": "frozen_with_real_assets_and_product_dataset_pending",
+  "upstream": {
+    "contract_id": "select-e2e-long-term-memory-online-v1",
+    "manifest": "eval/memory_e2e/select_e2e_contract_v1.json"
+  }
+}

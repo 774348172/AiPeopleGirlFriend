@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "mode", "snapshot_id", "decision", "reason", "revision_patch"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "mode": {"const": "WORLD_CONTINUITY_REVIEW"},
+    "snapshot_id": {"type": "string", "minLength": 1},
+    "decision": {"enum": ["approve", "revise", "reject"]},
+    "reason": {"type": "string", "minLength": 1, "maxLength": 500},
+    "revision_patch": {"type": ["object", "null"]}
+  },
+  "allOf": [
+    {"if": {"properties": {"decision": {"const": "revise"}}}, "then": {"properties": {"revision_patch": {"type": "object"}}}},
+    {"if": {"properties": {"decision": {"enum": ["approve", "reject"]}}}, "then": {"properties": {"revision_patch": {"type": "null"}}}}
+  ]
+}

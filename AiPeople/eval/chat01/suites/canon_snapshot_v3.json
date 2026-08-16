@@ -1,0 +1,70 @@
+{
+  "snapshot_id": "chat01-canon-v3",
+  "schema_version": 1,
+  "created_at": "2026-08-06T23:11:29+08:00",
+  "hash_algorithm": "sha256",
+  "sources": [
+    {
+      "authority_rank": 1,
+      "path": "需求文档/项目框架需求.md",
+      "bytes": 15260,
+      "sha256": "e73f820f530b602f2fa0f7495cdd70d0030d83c098b681cf70218ed1250242b3",
+      "role": "product_requirements"
+    },
+    {
+      "authority_rank": 2,
+      "path": "人物设定/秦/角色设定定稿.md",
+      "bytes": 26406,
+      "sha256": "2a2107ffb1c5e37fcc80e591704a7de43d21f13030a86b18135c454e7a5ba3f5",
+      "role": "character_prose"
+    },
+    {
+      "authority_rank": 3,
+      "path": "人物设定/秦/bible.yaml",
+      "bytes": 12689,
+      "sha256": "e07f7226aa6ad9b122bd6f7e8d0cbca79aef91d2b4956863a4c4510a968b8b3b",
+      "role": "character_bible"
+    },
+    {
+      "authority_rank": 4,
+      "path": "人物设定/秦/canon.json",
+      "bytes": 5573,
+      "sha256": "01ecb0fe7cd4065fe4f90585a71d2ebfe6c948f572463d55b71f97912e09f1fe",
+      "role": "character_facts"
+    },
+    {
+      "authority_rank": 5,
+      "path": "人物设定/秦/timeline.yaml",
+      "bytes": 11283,
+      "sha256": "c9de786b19de5bf08e9a9aca153a2db30394e5b2e66d79ca0cbf556a819bf2b5",
+      "role": "character_timeline"
+    },
+    {
+      "authority_rank": 6,
+      "path": "设计文档/AI女友最小心智系统设计.md",
+      "bytes": 24039,
+      "sha256": "9224034850ae2507bd141b36ec1a42c3d94c842ed4d2781916a495a09a6b2854",
+      "role": "ai_implementation"
+    }
+  ],
+  "resolved_facts": {
+    "character_name": "秦未晞",
+    "character_age": 22,
+    "player_name": "浩然",
+    "player_age": 24,
+    "occupation": "自由插画师 / 自媒体博主",
+    "city": "金陵",
+    "current_living": "两居室合租，刚开始不到一个月",
+    "current_relationship": "合租室友 + 暧昧期，尚未确认恋爱或婚姻",
+    "character_to_player_names": [
+      "B哥",
+      "浩然"
+    ],
+    "player_to_character_name": "秦老"
+  },
+  "consistency": {
+    "status": "consistent",
+    "conflicts": [],
+    "notes": "v3接受并统一成长地与父母分工：出生于金陵；0-5岁、15-18岁在金陵；5-15岁随父母项目调动但从未在航天基地生活；母亲做轨道计算，父亲为非轨道计算方向的航天科研人员。评测题、rubric和oracle字节不变。"
+  }
+}

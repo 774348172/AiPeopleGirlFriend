@@ -1,0 +1,28 @@
+world_id: songjiangfu
+world_name: 松江府
+current_anchor: 第一年·秋季·第11日·傍晚
+
+events:
+  - date: 长期背景
+    summary: 人类与妖族长期共同生活，但妖族隐藏在普通社会之后，绝大多数人类不知道灵气与妖族存在
+    importance: 10
+    tags: [人妖共存, 隐藏社会, 灵气]
+    id: world:coexistence
+    visibility: world_secret
+    disclosure_policy: hint_only
+
+  - date: 现代时期
+    summary: 松江府形成新旧城区并存的现代都市，普通科技与商业社会仍是生活主流，城市灵气相对稀薄
+    importance: 8
+    tags: [现代都市, 科技, 老城区, 灵气稀薄]
+    id: world:modern_songjiang
+    visibility: world_public
+    disclosure_policy: direct_allowed
+
+  - date: 当前首发存档
+    summary: 游戏时间位于第一年秋季第十一日傍晚，首版活动范围集中在主角出租屋、街角咖啡厅及附近街道
+    importance: 10
+    tags: [当前锚点, GameClock, 出租屋, 咖啡厅]
+    id: world:current_anchor
+    visibility: system_only
+    disclosure_policy: withhold

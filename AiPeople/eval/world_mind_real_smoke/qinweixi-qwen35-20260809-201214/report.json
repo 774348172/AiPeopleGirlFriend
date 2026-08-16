@@ -1,0 +1,279 @@
+{
+  "test_only": true,
+  "acceptance_scope": "V6 engineering compatibility only",
+  "not_accepted_as": [
+    "白未晞角色语义验收",
+    "白未晞正式模型验收",
+    "正式存档结果"
+  ],
+  "model": {
+    "ollama_name": "qinweixi-qwen35",
+    "weights_character": "qinweixi_legacy",
+    "artifact_sha256": "433f4f1cee5763af6007ae0ca882d45212ed5efcd0b196f3255af18d42e6c440",
+    "base_url": "http://127.0.0.1:11434",
+    "context_size": 8192
+  },
+  "runtime_binding": {
+    "prompt_character_id": "baiweixi",
+    "world_id": "songjiangfu",
+    "protagonist_id": "protagonist",
+    "save_id": "qin_probe_20260809_201214",
+    "database_path": "F:\\AiPeople\\eval\\world_mind_real_smoke\\qinweixi-qwen35-20260809-201214\\world_mind.sqlite3"
+  },
+  "started_at": "2026-08-09T20:12:14.430106+08:00",
+  "turn": {
+    "result_type": "Completed",
+    "text": "我放下杯子，看着你吃面。尾巴在身后轻轻晃了晃，没有藏起来。你说等我吃完再去店里……那我就在这儿陪你坐会儿，就一会儿。",
+    "failure_code": null,
+    "metrics": {
+      "model_total_ms": 15280.479099979857,
+      "total_ms": 15282.62340000947,
+      "output_chars": 58
+    }
+  },
+  "database": {
+    "model_decisions": 1,
+    "reconcile_jobs_total": 2,
+    "reconcile_jobs_completed": 0,
+    "reconcile_jobs_failed": 2,
+    "reconcile_decisions": 0,
+    "heroine_mind_version": 2
+  },
+  "calls": [
+    {
+      "request_id": "qin-probe-turn-20260809-201214:TURN_MIND_ADVANCE:0",
+      "mode": "TURN_MIND_ADVANCE",
+      "started_at": "2026-08-09T20:12:14.541020+08:00",
+      "options": {
+        "max_tokens": 900,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_diegetic_actions\": [\n    {\n      \"description\": \"我坐在你旁边的椅子上，手里端着一杯温热的牛奶，目光落在窗外的雨幕上。\",\n      \"evidence_refs\": [\n        \"931c9019-8168-4e91-b4f6-c3badc728bab\"\n      ]\n    }\n  ],\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"931c9019-8168-4e91-b4f6-c3badc728bab\"\n    ],\n    \"knowledge_updates\": {},\n    \"living_mind_patch\": {\n      \"attention\": \"你正在专心吃面，我有些担心你等太久会饿着。\",\n      \"body\": \"我坐得离你近一些，尾巴在身后轻轻晃动，想让你知道我就在这儿。\",\n      \"current_activity\": \"坐在你身边，看着你吃面，心情平静下来。\",\n      \"emotion\": \"心里的戒备淡了一些，觉得这样待着很安心。\",\"form\": \"人形，猫耳和尾巴自然露出。\",\n      \"immediate_intent\": \"等你吃完，想陪你一起坐会儿。\"\n    },\n    \"motive_updates\": {},\n    \"relationship_patch\": {\n      \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\",\n      \"trust\": \"你愿意让我待在你身边，这本身就是一种信任。\",\n      \"unresolved_tension\": \"还是有点怕你哪天突然不要我了，但此刻不想说破。\"\n    }\n  },\n  \"mode\": \"TURN_MIND_ADVANCE\",\"parent_mind_state_version\":1,\"reply_intent\":\"等待主角吃完面，自然地表达陪伴的意愿。\",\"reply_state_assertions\": {\n    \"captured_game_time\": \"0001-10-11T18:00:00.000000\",\n    \"live_world_version\": 1,\n    \"protagonist_activity\": \"吃面\",\n    \"protagonist_location_id\": \"apartment_table\"\n  },\"schema_version\":1,\"snapshot_id\":\"931c9019-8168-4e91-b4f6-c3badc728bab\",\"transition_basis\": [\n    \"931c9019-8168-4e91-b4f6-c3badc728bab\"\n  ]}",
+      "elapsed_seconds": 8.881
+    },
+    {
+      "request_id": "qin-probe-turn-20260809-201214:WORLD_CONTINUITY_REVIEW:0",
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "started_at": "2026-08-09T20:12:23.422412+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.1,
+        "top_p": 0.8,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"decision\": \"approve\",\n  \"mode\": \"WORLD_CONTINUITY_REVIEW\",\"reason\":\"候选女主状态与上一轮快照及证据合同均无冲突。她坐在男主身边、尾巴自然露出、心情因陪伴而平静，这些变化都在'暂时共同生活、早期好感'的关系阶段和'害怕失去继续留下的理由'的未解张力下合理发生，没有越权或无依据的跳跃。\",\"revision_patch\":null,\"schema_version\":1,\"snapshot_id\":\"931c9019-8168-4e91-b4f6-c3badc728bab\"}",
+      "elapsed_seconds": 2.744
+    },
+    {
+      "request_id": "qin-probe-turn-20260809-201214:GAME_REPLY:0",
+      "mode": "GAME_REPLY",
+      "started_at": "2026-08-09T20:12:26.167908+08:00",
+      "options": {
+        "max_tokens": 600,
+        "temperature": 0.75,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"approved_mind_state_version\": 2,\n  \"mode\": \"GAME_REPLY\",\n  \"reply_state_assertions\": {\n    \"captured_game_time\": \"0001-10-11T18:00:00.000000\",\n    \"live_world_version\": 1,\n    \"protagonist_activity\": \"吃面\",\n    \"protagonist_location_id\": \"apartment_table\"\n  },\n  \"schema_version\": 1,\n  \"snapshot_id\": \"931c9019-8168-4e91-b4f6-c3badc728bab\",\n  \"text\": \"我放下杯子，看着你吃面。尾巴在身后轻轻晃了晃，没有藏起来。你说等我吃完再去店里……那我就在这儿陪你坐会儿，就一会儿。\"\n}",
+      "elapsed_seconds": 3.653
+    },
+    {
+      "request_id": "66de9a07-81ff-420d-b658-4ffa7742d4d3:POST_REPLY_WORLD_MIND_RECONCILE:0",
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:12:29.823344+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"07d03812-112d-4621-9747-5599d392f64e\",\n      \"89524c10-dc93-4550-b2c7-6f51310084d1\"\n    ],\n    \"mind_state\": {\n      \"attention\": \"你吃面吃得很快，我其实有点想帮你把碗里的面都吃完，但怕你嫌我烦。\",\n      \"body\": \"我坐在你旁边，尾巴还缠着你的椅子腿，没敢松开。\",\n      \"current_activity\": \"看着你吃面，心里想着等你吃完就带你去个暖和的地方。\",\n      \"emotion\": \"还是有点怕你突然不要我了，但看你吃得香，我就想多待会儿。\",\n      \"form\": \"人形，猫耳和尾巴都露在外面。\",\n      \"immediate_intent\": \"等你吃完，想牵着你手去阳台吹吹风。\"\n    },\n    \"motive_state\": {\n      \"primary_motive\": \"不想让你一个人待着，想和你多待一会儿。\",\n      \"secondary_motive\": \"怕你吃完就走了，到时候我都不知道该去哪。\"\n    },\n    \"relationship\": {\n      \"protagonist_id\": \"protagonist\",\n      \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\",\n      \"trust\": \"你让我坐在你身边，我就敢把尾巴露出来，这算是一种信任吧。\",\n      \"unresolved_tension\": \"还是有点怕你哪天突然不要我了，但此刻不想说破。\"\n    }\n  },\"latest_world_version\":1,\"memory_candidates\":[],\"mode\":\"POST_REPLY_WORLD_MIND_RECONCILE\",\"operation\":\"update\",\"parent_mind_state_version\":2,\"reason\":\"你问我现在在做什么，我就实话告诉你——我就在这儿陪你坐会儿。尾巴还缠着你的椅子腿呢，没敢松开。\",\"schema_version\":1,\"snapshot_id\":\"05c11ba6-aaef-47b7-b98a-b855596655ab\",\"timeline_candidates\":[],\"transition_basis\":[\"07d03812-112d-4621-9747-5599d392f64e\",\"89524c10-dc93-4550-b2c7-6f51310084d1\"]}",
+      "elapsed_seconds": 8.455
+    },
+    {
+      "request_id": "66de9a07-81ff-420d-b658-4ffa7742d4d3:POST_REPLY_WORLD_MIND_RECONCILE:1",
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:12:38.278401+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"931c9019-8168-4e91-b4f6-c3badc728bab\",\n      \"89524c10-dc93-4550-b2c7-6f51310084d1\"\n    ],\n    \"mind_state\": {\n      \"attention\": \"你吃面吃得认真，我其实有点想帮你把碗里的面都吃完，但怕你嫌我烦，就乖乖坐这儿等你。\",\n      \"body\": \"人形，猫耳和尾巴自然露出，尾巴尖偶尔会轻轻勾一下你的衣角。\",\n      \"current_activity\": \"坐在你身边，看着你吃面，心情平静下来。\",\n      \"emotion\": \"心里的戒备淡了一些，觉得这样待着很安心。\",\n      \"form\": \"人形，猫耳和尾巴自然露出。\",\n      \"immediate_intent\": \"等你吃完，想陪你一起坐会儿。\"\n    },\n    \"motive_state\": {},\n    \"relationship\": {\n      \"protagonist_id\": \"protagonist\",\n      \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\",\n      \"trust\": \"你愿意让我待在你身边，这本身就是一种信任。\",\n      \"unresolved_tension\": \"还是有点怕你哪天突然不要我了，但此刻不想说破。\"\n    },\n    \"save_id\": \"qin_probe_20260809_201214\",\n    \"version\": 2,\n    \"world_id\": \"songjiangfu\"\n  },\"latest_world_version\":1,\"memory_candidates\":[],\"mode\":\"POST_REPLY_WORLD_MIND_RECONCILE\",\"operation\":\"update\",\"parent_mind_state_version\":2,\"reason\":\"根据刚发生的回合内容更新女主心智状态。\",\"schema_version\":1,\"snapshot_id\":\"05c11ba6-aaef-47b7-b98a-b855596655ab\",\"timeline_candidates\":[],\"transition_basis\":[\"931c9019-8168-4e91-b4f6-c3badc728bab\",\"89524c10-dc93-4550-b2c7-6f51310084d1\"]}",
+      "elapsed_seconds": 7.389
+    },
+    {
+      "request_id": "66de9a07-81ff-420d-b658-4ffa7742d4d3:POST_REPLY_WORLD_MIND_RECONCILE:0",
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:12:45.667735+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"mind_state\": {\n      \"attention\": \"你吃面吃得认真，我其实有点想帮你把碗里的汤喝掉，但怕你嫌吵，就只是静静看着。\",\n      \"body\": \"我坐得离你更近了些，尾巴尖偶尔扫过你的裤脚，想让你知道我不走。\",\n      \"current_activity\": \"坐在你旁边，看着你吃面，心情平静下来。\",\n      \"emotion\": \"心里的戒备淡了一些，觉得这样待着很安心。\",\n      \"form\": \"人形，猫耳和尾巴自然露出。\",\n      \"immediate_intent\": \"等你吃完，想陪你一起坐会儿。\"\n    },\n    \"relationship\": {\n      \"trust\": \"你愿意让我待在你身边，这本身就是一种信任。\",\n      \"unresolved_tension\": \"还是有点怕你哪天突然不要我了，但此刻不想说破。\"\n    }\n  },\n  \"latest_world_version\": 1,\n  \"memory_candidates\": [],\n  \"mode\": \"POST_REPLY_WORLD_MIND_RECONCILE\",\n  \"operation\": \"update\",\"parent_mind_state_version\":2,\"reason\":\"你吃面时没抬头，我有点想说话，但怕打扰你，就只是看着你。\",\"schema_version\":1,\"snapshot_id\":\"20f4ea83-c0ae-4c56-b272-65f1e9c61369\",\"timeline_candidates\":[],\"transition_basis\":[\"931c9019-8168-4e91-b4f6-c3badc728bab\"]}",
+      "elapsed_seconds": 6.164
+    },
+    {
+      "request_id": "66de9a07-81ff-420d-b658-4ffa7742d4d3:POST_REPLY_WORLD_MIND_RECONCILE:1",
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:12:51.832367+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"931c9019-8168-4e91-b4f6-c3badc728bab\",\n      \"89524c10-dc93-4550-b2c7-6f51310084d1\"\n    ],\n    \"mind_updates\": {\n      \"attention\": \"你正在专心吃面，我有些担心你等太久会饿着。\",\n      \"body\": \"我坐得离你近一些，尾巴在身后轻轻晃动，想让你知道我就在这儿。\",\n      \"current_activity\": \"坐在你身边，看着你吃面，心情平静下来。\",\n      \"emotion\": \"心里的戒备淡了一些，觉得这样待着很安心。\",\n      \"form\": \"人形，猫耳和尾巴自然露出。\",\n      \"immediate_intent\": \"等你吃完，想陪你一起坐会儿。\"\n    },\n    \"relationship_updates\": {\n      \"trust\": \"你愿意让我待在你身边，这本身就是一种信任。\",\n      \"unresolved_tension\": \"还是有点怕你哪天突然不要我了，但此刻不想说破。\"\n    }\n  },\"latest_world_version\":1,\"memory_candidates\":[],\"mode\":\"POST_REPLY_WORLD_MIND_RECONCILE\",\"operation\":\"update\",\"parent_mind_state_version\":2,\"reason\":\"根据上一回合回复和当前快照，确认女主心境已趋于平静，维持现有状态即可。\",\"schema_version\":1,\"snapshot_id\":\"20f4ea83-c0ae-4c56-b272-65f1e9c61369\",\"timeline_candidates\":[],\"transition_basis\":[\"931c9019-8168-4e91-b4f6-c3badc728bab\",\"89524c10-dc93-4550-b2c7-6f51310084d1\"]}",
+      "elapsed_seconds": 6.607
+    },
+    {
+      "request_id": "66de9a07-81ff-420d-b658-4ffa7742d4d3:POST_REPLY_WORLD_MIND_RECONCILE:0",
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:12:58.440690+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"attention\": \"你坐在旁边，我盯着你吃面，尾巴还晃着。\",\n    \"body\": \"我坐得离你近一些，尾巴在身后轻轻晃动，想让你知道我就在这儿。\",\n    \"current_activity\": \"看着你吃面，心情平静下来。\",\n    \"emotion\": \"心里的戒备淡了一些，觉得这样待着很安心。\",\n    \"form\": \"人形，猫耳和尾巴自然露出。\",\n    \"immediate_intent\": \"等你吃完，想陪你一起坐会儿。\"\n  },\n  \"latest_world_version\": 1,\n  \"memory_candidates\": [\n    \"你坐在旁边，我盯着你吃面，尾巴还晃着。\",\n    \"我坐得离你近一些，尾巴在身后轻轻晃动，想让你知道我就在这儿。\",\n    \"看着你吃面，心情平静下来。\",\n    \"心里的戒备淡了一些，觉得这样待着很安心。\",\n    \"人形，猫耳和尾巴自然露出。\",\n    \"等你吃完，想陪你一起坐会儿。\"\n  ],\n  \"mode\": \"POST_REPLY_WORLD_MIND_RECONCILE\",\n  \"operation\": \"update\",\"parent_mind_state_version\":2,\"reason\":\"根据上一回合回复和当前快照，更新女主注意力、身体、活动、情绪、形态和即时意图。\",\"schema_version\":1,\"snapshot_id\":\"350fe8c9-27d4-4381-aa12-0ccc2711773e\",\"timeline_candidates\":[\"你坐在旁边，我盯着你吃面，尾巴还晃着。\",\"我坐得离你近一些，尾巴在身后轻轻晃动，想让你知道我就在这儿。\",\"看着你吃面，心情平静下来。\",\"心里的戒备淡了一些，觉得这样待着很安心。\",\"人形，猫耳和尾巴自然露出。\",\"等你吃完，想陪你一起坐会儿。\"],\"transition_basis\":[\"931c9019-8168-4e91-b4f6-c3badc728bab\",\"89524c10-dc93-4550-b2c7-6f51310084d1\"]}",
+      "elapsed_seconds": 7.62
+    },
+    {
+      "request_id": "66de9a07-81ff-420d-b658-4ffa7742d4d3:POST_REPLY_WORLD_MIND_RECONCILE:1",
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:13:06.060874+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"931c9019-8168-4e91-b4f6-c3badc728bab\",\n      \"89524c10-dc93-4550-b2c7-6f51310084d1\"\n    ],\n    \"mind_state\": {\n      \"attention\": \"你吃面时有些发呆，我其实没在等你，就是怕你一个人待着。\",\n      \"body\": \"我坐得离你更近了些，尾巴尖儿轻轻勾了勾你的衣角，没敢碰你。\",\n      \"current_activity\": \"看着你吃面，心里踏实多了，就想着这样陪你一会儿。\",\n      \"emotion\": \"心里的戒备又淡了一些，觉得这样待着很安心。\",\n      \"form\": \"人形，猫耳和尾巴自然露出。\",\n      \"immediate_intent\": \"等你吃完，想就这样坐会儿，不说话也行。\"\n    },\n    \"motive_state\": {\n      \"primary_motive\": \"怕你突然不要我了，所以想多待一会儿。\",\n      \"secondary_motive\": \"就是觉得这样坐着，挺舒服的。\"\n    },\n    \"relationship\": {\n      \"protagonist_id\": \"protagonist\",\n      \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\",\n      \"trust\": \"你愿意让我待在你身边，这本身就是一种信任。\",\n      \"unresolved_tension\": \"还是有点怕你哪天突然不要我了，但此刻不想说破。\"\n    }\n  },\n  \"latest_world_version\": 1,\n  \"memory_candidates\": [],\n  \"mode\": \"POST_REPLY_WORLD_MIND_RECONCILE\",\"operation\":\"update\",\"parent_mind_state_version\":2,\"reason\":\"根据上一回合回复和当前快照，更新女主心智状态以反映她放下戒备后的安心感。\",\"schema_version\":1,\"snapshot_id\":\"350fe8c9-27d4-4381-aa12-0ccc2711773e\",\"timeline_candidates\":[],\"transition_basis\":[\"931c9019-8168-4e91-b4f6-c3badc728bab\",\"89524c10-dc93-4550-b2c7-6f51310084d1\"]}",
+      "elapsed_seconds": 7.702
+    },
+    {
+      "request_id": "398ba85c-f749-4444-b7fc-2f9dfc9b6184:FIVE_MINUTE_WORLD_MIND_RECONCILE:0",
+      "mode": "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:13:13.763859+08:00",
+      "options": {
+        "max_tokens": 800,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"373c923a-2b8b-4559-9aba-5925ae384c20\"\n    ],\n    \"mind_changes\": [\n      \"你看着男主角吃面，心里那股不安劲儿慢慢散了。\",\n      \"尾巴尖儿轻轻勾了勾，像是想蹭蹭你的腿，又缩了回去。\"\n    ]\n  },\n  \"latest_world_version\": 1,\n  \"memory_candidates\": [],\"mode\":\"FIVE_MINUTE_WORLD_MIND_RECONCILE\",\"operation\":\"keep\",\"parent_mind_state_version\":2,\"reason\":\"无新事件发生，仅根据上一轮快照和当前时间差进行自然心智延续。\",\"schema_version\":1,\"snapshot_id\":\"373c923a-2b8b-4559-9aba-5925ae384c20\",\"timeline_candidates\":[],\"transition_basis\": [\n    \"373c923a-2b8b-4559-9aba-5925ae384c20\"\n  ]}",
+      "elapsed_seconds": 5.158
+    },
+    {
+      "request_id": "398ba85c-f749-4444-b7fc-2f9dfc9b6184:FIVE_MINUTE_WORLD_MIND_RECONCILE:1",
+      "mode": "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:13:18.922539+08:00",
+      "options": {
+        "max_tokens": 800,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"373c923a-2b8b-4559-9aba-5925ae384c20\"\n    ],\n    \"changes\": {\n      \"attention\": \"你吃面吃得很快，我其实有点怕你饿着。\",\n      \"body\": \"我坐得离你近一些，尾巴在身后轻轻晃动，想让你知道我就在这儿。\",\n      \"current_activity\": \"坐在你身边，看着你吃面，心情平静下来。\",\n      \"emotion\": \"心里的戒备淡了一些，觉得这样待着很安心。\",\n      \"form\": \"人形，猫耳和尾巴自然露出。\",\n      \"immediate_intent\": \"等你吃完，想陪你一起坐会儿。\"\n    }\n  },\n  \"latest_world_version\": 1,\n  \"memory_candidates\": [],\n  \"mode\": \"FIVE_MINUTE_WORLD_MIND_RECONCILE\",\n  \"operation\": \"keep\",\"parent_mind_state_version\": 2,\"reason\": \"当前证据合约中未提供新的事件或状态变更，仅要求理解过去五分钟内的自然影响。根据快照，女主正在享受与男主共处的宁静时刻，没有发生需要修正或记录的重大变化，因此维持现有心智状态。\",\"schema_version\": 1,\"snapshot_id\": \"373c923a-2b8b-4559-9aba-5925ae384c20\",\"timeline_candidates\": [],\"transition_basis\": [\"373c923a-2b8b-4559-9aba-5925ae384c20\"]}",
+      "elapsed_seconds": 5.944
+    },
+    {
+      "request_id": "398ba85c-f749-4444-b7fc-2f9dfc9b6184:FIVE_MINUTE_WORLD_MIND_RECONCILE:0",
+      "mode": "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:13:24.867046+08:00",
+      "options": {
+        "max_tokens": 800,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"353eab96-a127-4f46-9360-e051a9358eab\",\n      \"character_package_initial_runtime\"\n    ],\n    \"living_mind\": {\n      \"attention\": \"你吃得很香，我其实有点想帮你把碗里的面都吃完，但怕你不想让我碰。\",\n      \"body\": \"我坐得离你更近了些，尾巴尖儿轻轻勾住你的衣角，想告诉你我就在这儿。\",\n      \"current_activity\": \"看着你吃面，心里踏实多了，就待着不动。\",\n      \"emotion\": \"心里的戒备又淡了一些，觉得这样待着很安心，好像以前那些害怕的事都离我远去了。\",\n      \"form\": \"人形，猫耳和尾巴自然露出。\",\n      \"immediate_intent\": \"等你吃完，想陪你一起坐会儿，不说话也行。\"\n    },\n    \"motive_state\": {\n      \"primary_motive\": \"想让你知道，我其实没那么怕你，就只是想这样待着。\",\n      \"secondary_motive\": \"怕你突然不要我了，所以想多留一会儿。\"\n    },\n    \"relationship\": {\n      \"protagonist_id\": \"protagonist\",\n      \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\",\n      \"trust\": \"你愿意让我待在你身边，这本身就是一种信任。\",\n      \"unresolved_tension\": \"还是有点怕你哪天突然不要我了，但此刻不想说破。\"\n    }\n  },\n  \"latest_world_version\": 1,\n  \"memory_candidates\": [],\n  \"mode\": \"FIVE_MINUTE_WORLD_MIND_RECONCILE\",\n  \"operation\": \"keep\",\n  \"parent_mind_state_version\": 2,\n  \"reason\": \"当前快照与上一轮推理状态一致，无新事件或时间流逝带来的心智变化，维持现有安宁状态。\",\"schema_version\":1,\"snapshot_id\":\"353eab96-a127-4f46-9360-e051a9358eab\",\"timeline_candidates\":[],\"transition_basis\":[\"353eab96-a127-4f46-9360-e051a9358eab\",\"character_package_initial_runtime\"]}",
+      "elapsed_seconds": 8.105
+    },
+    {
+      "request_id": "398ba85c-f749-4444-b7fc-2f9dfc9b6184:FIVE_MINUTE_WORLD_MIND_RECONCILE:1",
+      "mode": "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:13:32.972798+08:00",
+      "options": {
+        "max_tokens": 800,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"353eab96-a127-4f46-9360-e051a9358eab\",\n      \"character_package_initial_runtime\"\n    ],\n    \"mind_changes\": {\n      \"attention\": \"你专注吃面的样子让我心里踏实些了，不再胡思乱想。\",\n      \"body\": \"我坐得离你近一点，尾巴在身后轻轻晃动，想让你知道我就在这儿。\",\n      \"current_activity\": \"坐在你身边，看着你吃面，心情平静下来。\",\n      \"emotion\": \"心里的戒备淡了一些，觉得这样待着很安心。\",\n      \"form\": \"人形，猫耳和尾巴自然露出。\",\n      \"immediate_intent\": \"等你吃完，想陪你一起坐会儿。\"\n    },\n    \"motive_changes\": {\n      \"primary_motive\": \"想让你知道我不走，就这样待着就好。\",\n      \"secondary_motive\": \"你吃面的样子很普通，让我觉得日子也普通了。\"\n    }\n  },\n  \"latest_world_version\": 1,\n  \"memory_candidates\": [],\"mode\":\"FIVE_MINUTE_WORLD_MIND_RECONCILE\",\"operation\":\"update\",\"parent_mind_state_version\":2,\"reason\":\"你吃面的样子让我心里踏实些了，不再胡思乱想。\",\"schema_version\":1,\"snapshot_id\":\"353eab96-a127-4f46-9360-e051a9358eab\",\"timeline_candidates\":[],\"transition_basis\":[\n    \"353eab96-a127-4f46-9360-e051a9358eab\"\n  ]}",
+      "elapsed_seconds": 6.133
+    },
+    {
+      "request_id": "398ba85c-f749-4444-b7fc-2f9dfc9b6184:FIVE_MINUTE_WORLD_MIND_RECONCILE:0",
+      "mode": "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:13:39.107270+08:00",
+      "options": {
+        "max_tokens": 800,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"ec97c705-5119-41a1-83d6-64d20240c590\",\n      \"character_package_initial_runtime\"\n    ],\n    \"changes\": {\n      \"attention\": \"你吃面时有些发呆，我其实想问你话，但怕打扰你。\",\n      \"body\": \"我坐得离你更近了些，尾巴尖儿轻轻碰了碰你的椅腿。\",\n      \"current_activity\": \"静静地看着你吃面，心里想着这样待着真好。\",\n      \"emotion\": \"心里的戒备又淡了一些，觉得这样待着很安心。\",\n      \"form\": \"人形，猫耳和尾巴自然露出。\",\n      \"immediate_intent\": \"等你吃完，想陪你一起坐会儿。\"\n    }\n  },\n  \"latest_world_version\": 1,\n  \"memory_candidates\": [],\n  \"mode\": \"FIVE_MINUTE_WORLD_MIND_RECONCILE\",\"operation\":\"keep\",\"parent_mind_state_version\":2,\"reason\":\"无新事件发生，仅维持当前心境与场景的连续性。\",\"schema_version\":1,\"snapshot_id\":\"ec97c705-5119-41a1-83d6-64d20240c590\",\"timeline_candidates\":[],\"transition_basis\":[\"ec97c705-5119-41a1-83d6-64d20240c590\",\"character_package_initial_runtime\"]}",
+      "elapsed_seconds": 6.029
+    },
+    {
+      "request_id": "398ba85c-f749-4444-b7fc-2f9dfc9b6184:FIVE_MINUTE_WORLD_MIND_RECONCILE:1",
+      "mode": "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+      "started_at": "2026-08-09T20:13:45.135705+08:00",
+      "options": {
+        "max_tokens": 800,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"ec97c705-5119-41a1-83d6-64d20240c590\",\n      \"character_package_initial_runtime\"\n    ],\n    \"changes\": {\n      \"attention\": \"你吃面时有些发呆，我其实没在听你说话，只是看着你。\",\n      \"body\": \"我坐得离你更近了些，尾巴尖儿轻轻碰了碰你的胳膊，想让你知道我没走。\",\n      \"current_activity\": \"就坐在你旁边，看你吃面，心里踏实多了。\",\n      \"emotion\": \"刚才那会儿有点慌，现在觉得这样待着挺好的。\",\n      \"form\": \"人形，猫耳和尾巴都露在外面。\",\n      \"immediate_intent\": \"等你吃完，想就这样坐一会儿。\"\n    }\n  },\n  \"latest_world_version\": 1,\n  \"memory_candidates\": [],\n  \"mode\": \"FIVE_MINUTE_WORLD_MIND_RECONCILE\",\"operation\": \"keep\",\n  \"parent_mind_state_version\": 2,\n  \"reason\": \"当前证据与上一轮快照一致，无新事件或状态变化支持修改，维持原有心智状态。\",\"schema_version\":1,\"snapshot_id\":\"ec97c705-5119-41a1-83d6-64d20240c590\",\"timeline_candidates\":[],\"transition_basis\": [\"ec97c705-5119-41a1-83d6-64d20240c590\"]}",
+      "elapsed_seconds": 5.854
+    }
+  ],
+  "mode_counts": {
+    "FIVE_MINUTE_WORLD_MIND_RECONCILE": 6,
+    "GAME_REPLY": 1,
+    "POST_REPLY_WORLD_MIND_RECONCILE": 6,
+    "TURN_MIND_ADVANCE": 1,
+    "WORLD_CONTINUITY_REVIEW": 1
+  },
+  "missing_modes": [],
+  "passed": false,
+  "finished_at": "2026-08-09T20:13:50.990374+08:00"
+}

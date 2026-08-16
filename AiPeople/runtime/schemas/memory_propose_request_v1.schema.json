@@ -1,0 +1,217 @@
+{
+  "$id": "https://aipeople.local/schemas/memory_propose_request_v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "conversation_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "events": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "actor": {
+            "enum": [
+              "user",
+              "character",
+              "system"
+            ]
+          },
+          "commit_state": {
+            "const": "committed"
+          },
+          "conversation_id": {
+            "maxLength": 256,
+            "minLength": 1,
+            "pattern": "^\\S+$",
+            "type": "string"
+          },
+          "event_id": {
+            "maxLength": 256,
+            "minLength": 1,
+            "pattern": "^\\S+$",
+            "type": "string"
+          },
+          "event_type": {
+            "enum": [
+              "message",
+              "app_event",
+              "offscreen_event"
+            ]
+          },
+          "occurred_at": {
+            "format": "date-time",
+            "pattern": "Z$",
+            "type": "string"
+          },
+          "sequence_no": {
+            "minimum": 0,
+            "type": "integer"
+          },
+          "text": {
+            "maxLength": 4000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "timezone": {
+            "maxLength": 128,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "event_id",
+          "conversation_id",
+          "sequence_no",
+          "actor",
+          "event_type",
+          "occurred_at",
+          "timezone",
+          "text",
+          "commit_state"
+        ],
+        "type": "object"
+      },
+      "maxItems": 32,
+      "minItems": 1,
+      "type": "array"
+    },
+    "existing_memories": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "conversation_id": {
+            "maxLength": 256,
+            "minLength": 1,
+            "pattern": "^\\S+$",
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "player_fact",
+              "preference_boundary",
+              "person_relation",
+              "shared_experience",
+              "relationship_meaning",
+              "future_event",
+              "unfinished_topic",
+              "character_self_claim"
+            ]
+          },
+          "memory_id": {
+            "maxLength": 256,
+            "minLength": 1,
+            "pattern": "^\\S+$",
+            "type": "string"
+          },
+          "statement": {
+            "maxLength": 500,
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "active",
+              "disputed"
+            ]
+          },
+          "subject": {
+            "additionalProperties": false,
+            "properties": {
+              "display_name": {
+                "anyOf": [
+                  {
+                    "maxLength": 100,
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "entity_id": {
+                "anyOf": [
+                  {
+                    "maxLength": 256,
+                    "minLength": 1,
+                    "pattern": "^\\S+$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "type": {
+                "enum": [
+                  "player",
+                  "character",
+                  "both",
+                  "relationship",
+                  "third_party"
+                ]
+              }
+            },
+            "required": [
+              "type",
+              "entity_id",
+              "display_name"
+            ],
+            "type": "object"
+          }
+        },
+        "required": [
+          "memory_id",
+          "conversation_id",
+          "kind",
+          "statement",
+          "subject",
+          "status"
+        ],
+        "type": "object"
+      },
+      "maxItems": 32,
+      "type": "array"
+    },
+    "from_sequence_no": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "max_proposals": {
+      "const": 8
+    },
+    "mode": {
+      "const": "MEMORY_PROPOSE"
+    },
+    "proposal_run_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": 1
+    },
+    "through_sequence_no": {
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema_version",
+    "mode",
+    "proposal_run_id",
+    "conversation_id",
+    "from_sequence_no",
+    "through_sequence_no",
+    "events",
+    "existing_memories",
+    "max_proposals"
+  ],
+  "title": "MEMORY_PROPOSE request v1",
+  "type": "object"
+}

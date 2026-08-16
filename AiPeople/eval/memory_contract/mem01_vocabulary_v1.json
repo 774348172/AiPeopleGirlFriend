@@ -1,0 +1,242 @@
+{
+  "contract_id": "mem01-memory-vocabulary-v1",
+  "schema_version": 1,
+  "status": "checkpoint_frozen",
+  "scope": "MEM-01A",
+  "terms": {
+    "event_ledger": "The append-only source of committed evidence and the sole historical truth source.",
+    "memory_proposal_draft": "AI-proposed semantics that have no authority to activate or persist themselves.",
+    "memory_representation": "A runtime-materialized, evidence-linked and rebuildable semantic interpretation.",
+    "semantic_projection": "Derived current understanding that can be discarded and rebuilt from the event ledger.",
+    "future_event": "A cross-turn meaningful future matter without reminder, due-time or notification semantics."
+  },
+  "enums": {
+    "memory_kinds": [
+      "player_fact",
+      "preference_boundary",
+      "person_relation",
+      "shared_experience",
+      "relationship_meaning",
+      "future_event",
+      "unfinished_topic",
+      "character_self_claim"
+    ],
+    "subject_types": [
+      "player",
+      "character",
+      "both",
+      "relationship",
+      "third_party"
+    ],
+    "epistemic_polarities": [
+      "affirmed",
+      "negated"
+    ],
+    "epistemic_modalities": [
+      "asserted",
+      "uncertain",
+      "hypothetical",
+      "joking",
+      "quoted"
+    ],
+    "epistemic_groundings": [
+      "speaker_report",
+      "acknowledged",
+      "mutually_confirmed",
+      "runtime_observed"
+    ],
+    "temporal_relations": [
+      "past",
+      "present",
+      "future",
+      "atemporal",
+      "unknown"
+    ],
+    "temporal_resolutions": [
+      "resolved",
+      "relative",
+      "ambiguous",
+      "not_applicable"
+    ],
+    "temporal_precisions": [
+      "instant",
+      "minute",
+      "hour",
+      "part_of_day",
+      "day",
+      "range",
+      "unknown",
+      "not_applicable"
+    ],
+    "evidence_roles": [
+      "support",
+      "contradict",
+      "correction",
+      "context"
+    ],
+    "memory_relation_types": [
+      "supersedes",
+      "contradicts",
+      "refines"
+    ],
+    "memory_statuses": [
+      "proposed",
+      "active",
+      "disputed",
+      "superseded",
+      "rejected"
+    ],
+    "memory_indexable_statuses": [
+      "active",
+      "disputed"
+    ],
+    "memory_terminal_statuses": [
+      "superseded",
+      "rejected"
+    ]
+  },
+  "fields": {
+    "draft": [
+      "kind",
+      "statement",
+      "subject",
+      "epistemic",
+      "temporal",
+      "evidence_quotes",
+      "semantic_reason",
+      "confidence",
+      "relation_suggestions"
+    ],
+    "representation": [
+      "schema_version",
+      "memory_id",
+      "version",
+      "conversation_id",
+      "proposal_run_id",
+      "proposal_ordinal",
+      "kind",
+      "statement",
+      "subject",
+      "epistemic",
+      "temporal",
+      "evidence",
+      "semantic_reason",
+      "confidence",
+      "relations",
+      "status",
+      "created_at",
+      "idempotency_key"
+    ],
+    "subject": [
+      "type",
+      "entity_id",
+      "display_name"
+    ],
+    "epistemic": [
+      "polarity",
+      "modality",
+      "grounding"
+    ],
+    "temporal": [
+      "relation",
+      "resolution",
+      "source_text",
+      "anchor_event_id",
+      "start_at",
+      "end_at",
+      "timezone",
+      "precision"
+    ],
+    "evidence_quote": [
+      "event_id",
+      "role",
+      "quote",
+      "start_hint"
+    ],
+    "evidence": [
+      "event_id",
+      "role",
+      "excerpt_start",
+      "excerpt_end",
+      "excerpt",
+      "excerpt_sha256"
+    ],
+    "relations": [
+      "semantic_slot",
+      "supersedes",
+      "contradicts",
+      "refines"
+    ]
+  },
+  "field_owners": {
+    "schema_version": "runtime",
+    "memory_id": "runtime",
+    "version": "runtime",
+    "conversation_id": "runtime",
+    "proposal_run_id": "runtime",
+    "proposal_ordinal": "runtime",
+    "kind": "ai",
+    "statement": "ai",
+    "subject": "ai",
+    "epistemic": "ai",
+    "temporal": "ai_runtime",
+    "evidence": "runtime",
+    "semantic_reason": "ai",
+    "confidence": "ai",
+    "relations": "ai_runtime",
+    "status": "runtime",
+    "created_at": "runtime",
+    "idempotency_key": "runtime"
+  },
+  "limits": {
+    "identifier_chars_max": 256,
+    "statement_chars_min": 1,
+    "statement_chars_max": 500,
+    "semantic_reason_chars_min": 1,
+    "semantic_reason_chars_max": 300,
+    "evidence_count_min": 1,
+    "evidence_count_max": 8,
+    "evidence_quote_chars_min": 1,
+    "evidence_quote_chars_max": 500,
+    "display_name_chars_max": 100,
+    "source_text_chars_max": 200,
+    "semantic_slot_chars_max": 200,
+    "timezone_chars_max": 128,
+    "relation_targets_per_type_max": 16,
+    "confidence_min": 0.0,
+    "confidence_max": 1.0,
+    "version_min": 1,
+    "proposal_ordinal_min": 0
+  },
+  "lifecycle": {
+    "initial_status": "proposed",
+    "transitions": {
+      "proposed": [
+        "active",
+        "disputed",
+        "rejected"
+      ],
+      "active": [
+        "disputed",
+        "superseded"
+      ],
+      "disputed": [
+        "active",
+        "rejected",
+        "superseded"
+      ],
+      "superseded": [],
+      "rejected": []
+    }
+  },
+  "trust_boundaries": {
+    "model_may_activate_memory": false,
+    "model_may_assign_memory_id": false,
+    "model_may_assign_created_at": false,
+    "model_may_assign_evidence_offsets": false,
+    "model_may_assign_evidence_hash": false,
+    "future_event_is_reminder": false,
+    "original_events_remain_truth_source": true,
+    "empty_proposal_batch_is_valid": true
+  }
+}

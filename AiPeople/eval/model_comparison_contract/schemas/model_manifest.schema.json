@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/comparison/qwen35-model-manifest-v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "model_id", "schema_version", "role", "status", "created_at", "upstream", "tokenizer",
+    "chat_template", "gguf", "backend", "lineage", "freeze"
+  ],
+  "properties": {
+    "model_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+    "schema_version": {"const": 1},
+    "role": {"enum": ["untrained_base", "qinweixi_lora_merged"]},
+    "status": {"const": "verified"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "upstream": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository", "revision", "architecture", "model_family", "parameter_class", "config_sha256"],
+      "properties": {
+        "repository": {"type": "string", "minLength": 1}, "revision": {"type": "string", "minLength": 7},
+        "architecture": {"type": "string", "minLength": 1}, "model_family": {"const": "Qwen3.5"},
+        "parameter_class": {"const": "4B"}, "config_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "tokenizer": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sha256", "eos_token_id"],
+      "properties": {"sha256": {"$ref": "#/$defs/sha256"}, "eos_token_id": {"type": "integer", "minimum": 0}}
+    },
+    "chat_template": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sha256", "source", "thinking_disabled_verified"],
+      "properties": {
+        "sha256": {"$ref": "#/$defs/sha256"}, "source": {"const": "verified_model_native_template"},
+        "thinking_disabled_verified": {"const": true}
+      }
+    },
+    "gguf": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "quantization", "conversion_tool_sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1}, "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}, "quantization": {"const": "Q4_K_M"},
+        "conversion_tool_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "backend": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "build_sha256", "protocol_smoke_passed"],
+      "properties": {"name": {"const": "llama.cpp"}, "build_sha256": {"$ref": "#/$defs/sha256"}, "protocol_smoke_passed": {"const": true}}
+    },
+    "lineage": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["base_model_id", "base_gguf_sha256", "dataset_manifest_sha256", "adapter_sha256", "merged_weight_sha256"],
+          "properties": {
+            "base_model_id": {"type": "string", "minLength": 1}, "base_gguf_sha256": {"$ref": "#/$defs/sha256"},
+            "dataset_manifest_sha256": {"$ref": "#/$defs/sha256"}, "adapter_sha256": {"$ref": "#/$defs/sha256"},
+            "merged_weight_sha256": {"$ref": "#/$defs/sha256"}
+          }
+        }
+      ]
+    },
+    "freeze": {
+      "type": "object", "additionalProperties": false,
+      "required": ["hash_algorithm", "manifest_hash_mode", "immutable", "manifest_sha256"],
+      "properties": {
+        "hash_algorithm": {"const": "sha256"}, "manifest_hash_mode": {"const": "canonical_json_with_null_self"},
+        "immutable": {"const": true}, "manifest_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+}
+

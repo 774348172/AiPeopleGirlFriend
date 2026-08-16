@@ -1,0 +1,225 @@
+{
+  "contract_id": "freeze02-training-boundary-v1",
+  "schema_version": 1,
+  "status": "frozen",
+  "created_at": "2026-08-07T17:44:42+08:00",
+  "purpose": "Freeze the physical and semantic boundary between visible replies, background structured modes, and memory reranker data. No training corpus is approved by this contract alone; every produced dataset requires its own immutable manifest and passing leakage report.",
+  "authority": {
+    "chat01_suite": {
+      "path": "eval/chat01/suites/chat01_suite_manifest_v6.json",
+      "bytes": 12380,
+      "sha256": "cf7637b1afab80312b85dc0c59962fa640594cf08af6d7d8445bf66e496d047b"
+    },
+    "canon_snapshot": {
+      "path": "eval/chat01/suites/canon_snapshot_v5.json",
+      "bytes": 2332,
+      "sha256": "c627b3ae49b8139cd7a39183122f7bc4cee2bc594fd566053653d92ca6b24ede"
+    }
+  },
+  "dataset_families": [
+    {
+      "family": "visible_reply",
+      "physical_root": "data/training/qinweixi/visible_reply/{dataset_version}",
+      "allowed_modes": [
+        "REPLY",
+        "PROACTIVE_REPLY"
+      ],
+      "first_candidate_modes": [
+        "REPLY"
+      ],
+      "data_admission": "allowed_after_dataset_freeze",
+      "separation_rules": [
+        "只包含玩家可见的角色自然语言正文。",
+        "禁止 MEMORY_PROPOSE、自我时间线、欲望 JSON、reranker 标签和动作标签。",
+        "首个约 1000 条工程候选只允许 REPLY，不允许 PROACTIVE_REPLY。"
+      ],
+      "record_schema": {
+        "path": "eval/training_contract/schemas/reply_record.schema.json",
+        "bytes": 2785,
+        "sha256": "f183460d14bc1aa98de3e76514391dc381146f8afdae3171c64a41244d3e98df"
+      }
+    },
+    {
+      "family": "background_structured",
+      "physical_root": "data/training/qinweixi/background_structured/{dataset_version}",
+      "allowed_modes": [
+        "MEMORY_PROPOSE",
+        "SELF_TIMELINE_PROPOSE",
+        "OFFSCREEN_UPDATE",
+        "MOTIVE_EVALUATE"
+      ],
+      "first_candidate_modes": [],
+      "data_admission": "blocked_until_mode_schemas_frozen",
+      "separation_rules": [
+        "只包含 grammar 约束的结构化输入与 JSON 目标，不包含可见角色回复。",
+        "每条记录必须绑定已冻结的 mode payload schema 路径与 SHA256。",
+        "MEM-01、SELF-01、OFFSCREEN-01、MOTIVE-01 完成前禁止生产或混训对应数据。"
+      ],
+      "record_schema": {
+        "path": "eval/training_contract/schemas/background_record.schema.json",
+        "bytes": 2555,
+        "sha256": "2d515845d1e3852d145ac809f85c5dbd74e26a0861eac03b0e6bab47abd60f4b"
+      }
+    },
+    {
+      "family": "memory_reranker",
+      "physical_root": "data/training/qinweixi/memory_reranker/{dataset_version}",
+      "allowed_modes": [
+        "MEMORY_RERANK"
+      ],
+      "first_candidate_modes": [],
+      "data_admission": "blocked_until_select01",
+      "separation_rules": [
+        "只包含 query、候选记忆、相关性分数、困难负样本和全拒绝标签。",
+        "不得使用普通玩家回复 SFT 直接充当 reranker 数据。",
+        "SELECT-01 冻结重排标签合同前禁止生产或训练。"
+      ],
+      "record_schema": {
+        "path": "eval/training_contract/schemas/reranker_record.schema.json",
+        "bytes": 2599,
+        "sha256": "00bb1948007842fb850b0b1f904b264c818871b66ed8eac79b10bd8636da2d2b"
+      }
+    }
+  ],
+  "split_contract": {
+    "ratios": {
+      "train": 0.8,
+      "dev": 0.1,
+      "test": 0.1
+    },
+    "max_ratio_deviation": 0.02,
+    "isolation_keys": [
+      "conversation_group_id",
+      "leakage_group_id",
+      "source_record_ids"
+    ],
+    "cross_split_near_duplicate": {
+      "algorithm": "character_trigram_jaccard",
+      "threshold": 0.9,
+      "minimum_normalized_characters": 12,
+      "blocking": true
+    }
+  },
+  "leakage_contract": {
+    "evaluation_sources": [
+      {
+        "path": "eval/chat01/suites/chat01_dev_v1.jsonl",
+        "bytes": 72386,
+        "sha256": "f783e1f0112fdbb8e2b8d61080306806cb04b846de359382175e0e1465c24f5d"
+      },
+      {
+        "path": "eval/chat01/suites/chat01_frozen_single_v1.jsonl",
+        "bytes": 214501,
+        "sha256": "a75f326a99cd83e77d795458b76cdcf93faae6d537d34cd02807c3f3afff3898"
+      },
+      {
+        "path": "eval/chat01/suites/chat01_frozen_multiturn_v1.jsonl",
+        "bytes": 107277,
+        "sha256": "a4f0058a701754d8ca7e46cbc32d60780b9eaf4c019a5cfd52342fba0c7033d6"
+      },
+      {
+        "path": "eval/chat01/suites/chat01_human_blind_v1.jsonl",
+        "bytes": 53810,
+        "sha256": "cb2094cab0eb86fdacf6851a1b6ebbaeb08f8c268ff8ea37819be926e7f49966"
+      }
+    ],
+    "blocklist": {
+      "path": "eval/training_contract/eval_blocklist_v1.json",
+      "bytes": 39637,
+      "sha256": "b198184e7a3a00ebe771ae2eb9e8aecfa3f51a9de691af15583848e774b053ad"
+    },
+    "exact": {
+      "algorithm": "utf8_text_equality",
+      "blocking": true
+    },
+    "normalized": {
+      "algorithm": "nfkc_lower_alnum_cjk",
+      "blocking": true
+    },
+    "near_duplicate": {
+      "algorithm": "character_trigram_jaccard",
+      "threshold": 0.82,
+      "minimum_normalized_characters": 12,
+      "minimum_length_ratio": 0.7,
+      "blocking": true
+    },
+    "failure_policy": "reject_whole_sample_and_fail_dataset_freeze"
+  },
+  "evaluation_contamination": {
+    "diagnostic_only_case_ids": [
+      "frozen.identity.name"
+    ],
+    "execution": "execute_with_full_suite",
+    "primary_statistics": "exclude_from_weighted_gain_denominator",
+    "training_use": "always_forbidden"
+  },
+  "frozen_assets": [
+    {
+      "path": "eval/training_contract/schemas/reply_record.schema.json",
+      "bytes": 2785,
+      "sha256": "f183460d14bc1aa98de3e76514391dc381146f8afdae3171c64a41244d3e98df",
+      "role": "schema"
+    },
+    {
+      "path": "eval/training_contract/schemas/background_record.schema.json",
+      "bytes": 2555,
+      "sha256": "2d515845d1e3852d145ac809f85c5dbd74e26a0861eac03b0e6bab47abd60f4b",
+      "role": "schema"
+    },
+    {
+      "path": "eval/training_contract/schemas/reranker_record.schema.json",
+      "bytes": 2599,
+      "sha256": "00bb1948007842fb850b0b1f904b264c818871b66ed8eac79b10bd8636da2d2b",
+      "role": "schema"
+    },
+    {
+      "path": "eval/training_contract/schemas/dataset_manifest.schema.json",
+      "bytes": 3475,
+      "sha256": "ae30f38035abbe69248e5f926534bb923604b94caf41c44406e0070838e5a739",
+      "role": "schema"
+    },
+    {
+      "path": "eval/training_contract/schemas/freeze_contract.schema.json",
+      "bytes": 5413,
+      "sha256": "a46b15608854300bf631cd3ef31252129f79bdfc86dc65df8a35e30dd0173f99",
+      "role": "schema"
+    },
+    {
+      "path": "eval/training_contract/schemas/eval_blocklist.schema.json",
+      "bytes": 1820,
+      "sha256": "1731e5651882fb550499ea58485fd1ba9f29d70ef4dcf224b85d291f5f61efb5",
+      "role": "schema"
+    },
+    {
+      "path": "eval/training_contract/freeze.py",
+      "bytes": 23611,
+      "sha256": "6d202a32e9d831ebb5d163014c828d1bc230d3f1cb0e5ef16ce20f3f60ec1c3b",
+      "role": "verifier"
+    },
+    {
+      "path": "eval/chat01/suites/chat01_suite_manifest_v6.json",
+      "bytes": 12380,
+      "sha256": "cf7637b1afab80312b85dc0c59962fa640594cf08af6d7d8445bf66e496d047b",
+      "role": "evaluation_contract"
+    },
+    {
+      "path": "eval/chat01/suites/canon_snapshot_v5.json",
+      "bytes": 2332,
+      "sha256": "c627b3ae49b8139cd7a39183122f7bc4cee2bc594fd566053653d92ca6b24ede",
+      "role": "evaluation_contract"
+    },
+    {
+      "path": "eval/training_contract/eval_blocklist_v1.json",
+      "bytes": 39637,
+      "sha256": "b198184e7a3a00ebe771ae2eb9e8aecfa3f51a9de691af15583848e774b053ad",
+      "role": "blocklist"
+    }
+  ],
+  "freeze": {
+    "hash_algorithm": "sha256",
+    "manifest_hash_mode": "canonical_json_with_null_self",
+    "immutable": true,
+    "manifest_sha256": "43bd08e652b5528252c9cff3da1d1e19f59e5cdd2b3ba5dd69cb872b3d864a0e"
+  },
+  "next_checkpoint": "FREEZE-03"
+}

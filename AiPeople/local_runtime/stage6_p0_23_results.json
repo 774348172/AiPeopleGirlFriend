@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-05",
+  "checkpoint": "P0-23",
+  "status": "passed",
+  "migration": 4,
+  "plan_kinds": ["promise", "reminder", "shared_plan"],
+  "plan_states": [
+    "proposed",
+    "confirmed",
+    "due",
+    "completed",
+    "cancelled",
+    "missed"
+  ],
+  "acceptance": {
+    "append_only_transition_journal": true,
+    "same_conversation_evidence": true,
+    "atomic_transition_and_projection": true,
+    "idempotent_command_replay": true,
+    "idempotency_conflict_rejected": true,
+    "iana_timezone_validation": true,
+    "confirmed_reminder_requires_due_at": true,
+    "projection_rebuild_byte_stable": true,
+    "terminal_states_cannot_reopen": true,
+    "external_runtime_interface_unchanged": true
+  },
+  "regression": {
+    "compileall": "passed",
+    "pytest_passed": 425,
+    "pytest_skipped": 3,
+    "warnings": 5,
+    "warning_scope": "unmodified data_gen_v4 schema validator deprecations"
+  },
+  "not_implemented_yet": [
+    "natural_language_plan_parser",
+    "automatic_turn_integration",
+    "working_activation_plan_injection",
+    "due_and_missed_clock_sweep",
+    "proactive_messages",
+    "extra_model_calls"
+  ]
+}

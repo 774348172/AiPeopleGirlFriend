@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "checkpoint": "MEM-06",
+  "outbox": {
+    "enqueue_boundary": "same_transaction_as_committed_character_message",
+    "mode": "MEMORY_PROPOSE",
+    "ordering": "monotonic_queue_ordinal_fifo",
+    "states": [
+      "pending",
+      "running",
+      "failed_retryable",
+      "failed_terminal",
+      "completed"
+    ],
+    "restart_recovery": "running_to_pending",
+    "idempotency": "job_id_and_proposal_run_id_derived_from_assistant_event_id"
+  },
+  "priority_gate": {
+    "foreground_policy": "REPLY_calls_may_share",
+    "background_policy": "single_exclusive_worker",
+    "preemption": "new_foreground_cancels_running_background_and_waits_for_cleanup",
+    "cancelled_job": "return_to_pending",
+    "shutdown": "cancel_running_and_preserve_pending"
+  },
+  "pipeline": {
+    "steps": [
+      "build_committed_event_window",
+      "begin_idempotent_memory_run",
+      "generate_MEMORY_PROPOSE_JSON",
+      "parse_and_validate",
+      "deterministic_materialization",
+      "atomic_memory_commit"
+    ],
+    "visible_output": false,
+    "retryable_failures": "retry_on_restart_or_next_committed_reply",
+    "terminal_failures": "remain_explicit_until_external_correction"
+  },
+  "performance_gate": {
+    "deterministic_preemption_samples": 20,
+    "fake_worker_first_delta_handoff_p95_ms_max": 100,
+    "production_hot_first_token_p95_ms_max": 2000,
+    "production_status": "requires_delivered_Qwen3.5_asset"
+  },
+  "excluded": [
+    "SELF_TIMELINE_PROPOSE",
+    "OFFSCREEN_UPDATE",
+    "MOTIVE_EVALUATE",
+    "global_vector_scan",
+    "Top32",
+    "reranker",
+    "model_download_or_training"
+  ],
+  "next_checkpoint": "RECALL-01"
+}

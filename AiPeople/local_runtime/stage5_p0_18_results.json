@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "checkpoint": "P0-18",
+  "executed_at": "2026-08-04T22:44:00+08:00",
+  "implementation": {
+    "migration": "002_epoch_projection.sql",
+    "conversation_guard": true,
+    "lazy_legacy_projection": true,
+    "projection_rebuildable_from_events": true,
+    "current_epoch_verbatim_history": true,
+    "rollover_enabled": false
+  },
+  "real_model_smoke": {
+    "llama_cpp_release": "b10256",
+    "model_alias": "qinweixi",
+    "first_prompt_tokens": 198,
+    "second_prompt_tokens": 220,
+    "history_increased_prompt": true,
+    "expected_recalled_text": "蓝钟",
+    "model_used_context": true
+  },
+  "test_results": {
+    "runtime_passed": 119,
+    "runtime_skipped": 1,
+    "full_repository_passed": 353,
+    "full_repository_skipped": 1,
+    "unrelated_deprecation_warnings": 5,
+    "crash_recovery_repeat_runs": 5,
+    "compileall": "passed",
+    "diff_check": "passed"
+  },
+  "decision": {
+    "p0_18": "passed",
+    "next_checkpoint": "P0-19"
+  }
+}

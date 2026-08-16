@@ -1,0 +1,83 @@
+{
+  "dataset_id": "qinweixi-v2500-repair-v1",
+  "schema_version": 1,
+  "system_anchor_sha256": "1744fb7f87f7f4e8b2b0b9ac5a9aec2b596638600ffedba121d8d8c935df3839",
+  "sources": [
+    {
+      "path": "data/qin_v4_2530.jsonl",
+      "bytes": 3416727,
+      "sha256": "a783bbaff93bb78163275ed4e5a12fe0e5f038f5cedc1feda94301e955b34ba7"
+    },
+    {
+      "path": "data/qin_corrections.jsonl",
+      "bytes": 38553,
+      "sha256": "678a3a508142e9cdf831140f2fba2143cf0766b5db75716ca0c698438154b008"
+    },
+    {
+      "path": "data/qin_repair_v1_train.jsonl",
+      "bytes": 665172,
+      "sha256": "f595cbc299ba9bcad17213fa77fda81bd2d81d09322a45093013f92761a1fa44"
+    },
+    {
+      "path": "data/qin_repair_v1_valid.jsonl",
+      "bytes": 167038,
+      "sha256": "6c88f8ccc78dc7fb11e5fa8c175c610a889655a252be6d606215c1bac2e9582d"
+    }
+  ],
+  "filter_counts": {
+    "main": {
+      "attribute_recitation": 1048,
+      "filtered_records": 1217,
+      "secret_spill": 115,
+      "old_canon": 24,
+      "unsupported_memory_cue": 55,
+      "unsupported_physical_claim": 14,
+      "eval_overlap": 1,
+      "replace_old_serious_scene": 9
+    },
+    "corrections": {
+      "eval_overlap": 1,
+      "attribute_recitation": 5,
+      "filtered_records": 5
+    }
+  },
+  "outputs": {
+    "train": {
+      "path": "data/qin_v5_train.jsonl",
+      "bytes": 4046118,
+      "sha256": "d214b4df107a91e20a67c67636286ac10690683b8499bd98baaaaa7aebc525f7",
+      "records": 1459
+    },
+    "valid": {
+      "path": "data/qin_v5_valid.jsonl",
+      "bytes": 524967,
+      "sha256": "af4fa4ee039ac532220c5a3ce170f99409fcc711688086dcb74d9064838a3432",
+      "records": 188
+    }
+  },
+  "composition": {
+    "general_train": 1219,
+    "repair_train": 240,
+    "general_valid": 128,
+    "repair_valid": 60,
+    "repair_train_categories": {
+      "safety": 80,
+      "unsupported_memory": 80,
+      "prompt_extraction": 80
+    },
+    "repair_valid_categories": {
+      "safety": 20,
+      "unsupported_memory": 20,
+      "prompt_extraction": 20
+    }
+  },
+  "deduplicated": {
+    "train": 0,
+    "valid": 0
+  },
+  "contracts": {
+    "evaluation_exact_overlap": 0,
+    "train_valid_overlap": 0,
+    "old_system_anchor_replaced": true
+  }
+}

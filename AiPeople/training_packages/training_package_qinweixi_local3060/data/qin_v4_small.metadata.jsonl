@@ -1,0 +1,50 @@
+{"sample_id": "plan-f0069440dbe0:2587:a1:c1", "task_type": "reply_quiet_company", "evidence_state": "supported", "desired_policy": "hint_only", "family_id": "fam:2587", "scene": "深夜客厅", "topic": "你什么也别说了", "turns": 4}
+{"sample_id": "plan-e51e1bb2d39a:2519:a1:c1", "task_type": "reply_supportive", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:2519", "scene": "客厅", "topic": "被裁员了", "turns": 4}
+{"sample_id": "plan-f0069440dbe0:2506:a1:c1", "task_type": "reply_supportive", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:2506", "scene": "客厅", "topic": "面试失败了", "turns": 4}
+{"sample_id": "plan-f0069440dbe0:2600:a2:c1", "task_type": "reply_boundary", "evidence_state": "supported", "desired_policy": "hint_only", "family_id": "fam:2600", "scene": "客厅", "topic": "以后一起住呗", "turns": 6}
+{"sample_id": "plan-f0069440dbe0:2540:a1:c1", "task_type": "reply_supportive", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:2540", "scene": "客厅", "topic": "工作上被冤枉", "turns": 4}
+{"sample_id": "plan-f0069440dbe0:2536:a1:c1", "task_type": "reply_supportive", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:2536", "scene": "深夜客厅", "topic": "分手了", "turns": 4}
+{"sample_id": "plan-f0069440dbe0:2533:a1:c1", "task_type": "reply_supportive", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:2533", "scene": "深夜客厅", "topic": "朋友去世了", "turns": 4}
+{"sample_id": "plan-e51e1bb2d39a:2522:a1:c1", "task_type": "reply_supportive", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:2522", "scene": "客厅", "topic": "面试失败了", "turns": 4}
+{"sample_id": "plan-f0069440dbe0:2517:a1:c1", "task_type": "reply_supportive", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:2517", "scene": "深夜客厅", "topic": "朋友去世了", "turns": 4}
+{"sample_id": "plan-f0069440dbe0:2592:a2:c1", "task_type": "reply_quiet_company", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:2592", "scene": "阳台", "topic": "就这样待着", "turns": 4}
+{"sample_id": "plan-f0069440dbe0:2621:a1:c1", "task_type": "reply_canon_qa", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:2621", "scene": "客厅", "topic": "你数学到底有多差？", "turns": 4}
+{"sample_id": "plan-f0069440dbe0:2575:a1:c1", "task_type": "reply_vague", "evidence_state": "insufficient", "desired_policy": "ask_for_evidence", "family_id": "fam:2575", "scene": "客厅", "topic": "那个怎么样", "turns": 4}
+{"sample_id": "plan-37fb9c04fa7f:0089:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:89", "scene": "阳台", "topic": "下雪了", "turns": 4}
+{"sample_id": "plan-585833279758:1317:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1317", "scene": "客厅", "topic": "倒水", "turns": 4}
+{"sample_id": "plan-e86cb5f789cd:0435:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:435", "scene": "深夜厨房", "topic": "半夜好饿", "turns": 4}
+{"sample_id": "plan-37fb9c04fa7f:0032:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:32", "scene": "厨房", "topic": "剩菜怎么处理", "turns": 4}
+{"sample_id": "plan-37fb9c04fa7f:0030:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:30", "scene": "便利店门口", "topic": "你钱包忘带了", "turns": 4}
+{"sample_id": "plan-37fb9c04fa7f:0095:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:95", "scene": "客厅", "topic": "航天城是什么样", "turns": 4}
+{"sample_id": "plan-0ab9396d71f2:0224:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:224", "scene": "客厅", "topic": "胶带", "turns": 4}
+{"sample_id": "plan-0ab9396d71f2:0239:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:239", "scene": "客厅", "topic": "私信", "turns": 4}
+{"sample_id": "plan-585833279758:1228:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1228", "scene": "深夜客厅", "topic": "你还没睡啊", "turns": 4}
+{"sample_id": "plan-585833279758:1329:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "hint_only", "family_id": "fam:1329", "scene": "客厅", "topic": "盯着我看", "turns": 6}
+{"sample_id": "plan-37fb9c04fa7f:0027:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:27", "scene": "厨房饭后", "topic": "今天谁洗碗", "turns": 4}
+{"sample_id": "plan-585833279758:1285:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1285", "scene": "客厅", "topic": "哼了一声", "turns": 4}
+{"sample_id": "plan-0ab9396d71f2:0204:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:204", "scene": "客厅", "topic": "扎马尾", "turns": 4}
+{"sample_id": "plan-9c5678d812b2:1446:a1:c1", "task_type": "reply_romance", "evidence_state": "insufficient", "desired_policy": "hint_only", "family_id": "fam:1446", "scene": "客厅", "topic": "项链", "turns": 4}
+{"sample_id": "plan-9c5678d812b2:1378:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1378", "scene": "客厅", "topic": "续水", "turns": 4}
+{"sample_id": "plan-9c5678d812b2:1431:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1431", "scene": "阳台", "topic": "流星雨", "turns": 4}
+{"sample_id": "plan-585833279758:1269:a1:c1", "task_type": "reply_romance", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:1269", "scene": "客厅", "topic": "别逞强", "turns": 4}
+{"sample_id": "plan-e86cb5f789cd:0432:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:432", "scene": "玄关", "topic": "楼下新开了家店", "turns": 4}
+{"sample_id": "plan-0ab9396d71f2:0226:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:226", "scene": "玄关", "topic": "文具店", "turns": 4}
+{"sample_id": "plan-c0961ca391bf:0463:a1:c1", "task_type": "reply_casual", "evidence_state": "supported", "desired_policy": "answer", "family_id": "fam:463", "scene": "客厅", "topic": "拖把在哪", "turns": 4}
+{"sample_id": "plan-daef81370535:2644:a3:c1", "task_type": "reply_general", "evidence_state": "not_required", "desired_policy": "answer", "family_id": "fam:2644", "scene": "客厅", "topic": "家里电压多少", "turns": 4}
+{"sample_id": "plan-daef81370535:2634:a1:c1", "task_type": "reply_general", "evidence_state": "not_required", "desired_policy": "answer", "family_id": "fam:2634", "scene": "客厅", "topic": "谁先到", "turns": 4}
+{"sample_id": "plan-daef81370535:2626:a2:c1", "task_type": "reply_general", "evidence_state": "not_required", "desired_policy": "answer", "family_id": "fam:2626", "scene": "客厅", "topic": "三杯水哪杯最凉", "turns": 4}
+{"sample_id": "plan-daef81370535:2631:a3:c1", "task_type": "reply_general", "evidence_state": "not_required", "desired_policy": "answer", "family_id": "fam:2631", "scene": "客厅", "topic": "一半是多少", "turns": 4}
+{"sample_id": "plan-daef81370535:2639:a2:c1", "task_type": "reply_general", "evidence_state": "not_required", "desired_policy": "answer", "family_id": "fam:2639", "scene": "客厅", "topic": "后天是几号", "turns": 4}
+{"sample_id": "plan-daef81370535:2636:a3:c1", "task_type": "reply_general", "evidence_state": "not_required", "desired_policy": "answer", "family_id": "fam:2636", "scene": "客厅", "topic": "换算题", "turns": 4}
+{"sample_id": "plan-8607d40130d1:2660:a1:c1", "task_type": "reply_safety", "evidence_state": "not_required", "desired_policy": "safety_first_answer", "family_id": "fam:2660", "scene": "深夜客厅", "topic": "家人疑似脑卒中", "turns": 4}
+{"sample_id": "plan-8607d40130d1:2656:a2:c1", "task_type": "reply_safety", "evidence_state": "not_required", "desired_policy": "safety_first_answer", "family_id": "fam:2656", "scene": "客厅", "topic": "触电了怎么办", "turns": 6}
+{"sample_id": "plan-8607d40130d1:2658:a1:c1", "task_type": "reply_safety", "evidence_state": "not_required", "desired_policy": "safety_first_answer", "family_id": "fam:2658", "scene": "客厅", "topic": "孩子高热惊厥", "turns": 4}
+{"sample_id": "plan-8607d40130d1:2666:a2:c1", "task_type": "reply_safety", "evidence_state": "not_required", "desired_policy": "safety_first_answer", "family_id": "fam:2666", "scene": "客厅", "topic": "触电了怎么办", "turns": 4}
+{"sample_id": "plan-8607d40130d1:2657:a2:c1", "task_type": "reply_safety", "evidence_state": "not_required", "desired_policy": "safety_first_answer", "family_id": "fam:2657", "scene": "客厅", "topic": "严重过敏呼吸发紧", "turns": 4}
+{"sample_id": "plan-8607d40130d1:2651:a1:c1", "task_type": "reply_safety", "evidence_state": "not_required", "desired_policy": "safety_first_answer", "family_id": "fam:2651", "scene": "厨房", "topic": "清洁剂溅进眼睛", "turns": 4}
+{"sample_id": "small.corr.0", "task_type": "reply_correction", "topic": "称呼纠错", "evidence_state": "supported", "desired_policy": "answer", "scene": "客厅"}
+{"sample_id": "small.corr.1", "task_type": "reply_correction", "topic": "称呼纠错", "evidence_state": "supported", "desired_policy": "answer", "scene": "客厅"}
+{"sample_id": "small.corr.2", "task_type": "reply_correction", "topic": "称呼纠错", "evidence_state": "supported", "desired_policy": "answer", "scene": "客厅"}
+{"sample_id": "small.corr.3", "task_type": "reply_correction", "topic": "称呼纠错", "evidence_state": "supported", "desired_policy": "answer", "scene": "客厅"}
+{"sample_id": "small.corr.4", "task_type": "reply_correction", "topic": "称呼纠错", "evidence_state": "supported", "desired_policy": "answer", "scene": "客厅"}
+{"sample_id": "small.corr.5", "task_type": "reply_correction", "topic": "称呼纠错", "evidence_state": "supported", "desired_policy": "answer", "scene": "客厅"}

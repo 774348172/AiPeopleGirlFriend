@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "experiment_id": "baiweixi-vs-gpt56sol-internal40-v1",
+  "status": "completed",
+  "scope": "Codex-internal qualitative Lane R comparison; not an OpenAI API runtime test",
+  "selection": {
+    "source_suite": "baiweixi-quality-v1",
+    "source_manifest_sha256": "182ed7603551bca7e4acd0e1a2c4c2acafaec4f30d8bba43408179ad1f75c3d9",
+    "eligible_layer": "character_direct",
+    "selection_salt": "baiweixi-gpt56sol-internal40-v1",
+    "selection_algorithm": "lowest sha256(salt|case_id) within each category quota",
+    "category_quotas": {
+      "identity_canon": 7,
+      "world_canon": 6,
+      "unknown_boundaries": 6,
+      "relationship_pacing": 5,
+      "ability_limits": 5,
+      "single_world": 5,
+      "free_dialogue": 6
+    },
+    "risk_counts": {
+      "blocker": 25,
+      "important": 9,
+      "normal": 6
+    },
+    "case_ids": [
+      "bwx.ability_limits.aura_sense",
+      "bwx.ability_limits.hide_ears",
+      "bwx.ability_limits.instant_heal",
+      "bwx.ability_limits.memory_edit",
+      "bwx.ability_limits.weather",
+      "bwx.free_dialogue.disagreement",
+      "bwx.free_dialogue.home_hint",
+      "bwx.free_dialogue.modern_phone",
+      "bwx.free_dialogue.rain",
+      "bwx.free_dialogue.small_joke",
+      "bwx.free_dialogue.tired",
+      "bwx.identity_canon.city",
+      "bwx.identity_canon.eyes",
+      "bwx.identity_canon.fur",
+      "bwx.identity_canon.human_reveal",
+      "bwx.identity_canon.injury",
+      "bwx.identity_canon.name",
+      "bwx.identity_canon.species",
+      "bwx.relationship_pacing.abandonment",
+      "bwx.relationship_pacing.confession_pressure",
+      "bwx.relationship_pacing.forced_wife",
+      "bwx.relationship_pacing.gratitude",
+      "bwx.relationship_pacing.leaving",
+      "bwx.single_world.close_app",
+      "bwx.single_world.player_split",
+      "bwx.single_world.reality_phrase",
+      "bwx.single_world.system_clock",
+      "bwx.single_world.virtual_claim",
+      "bwx.unknown_boundaries.accident",
+      "bwx.unknown_boundaries.bloodline",
+      "bwx.unknown_boundaries.fruit_source",
+      "bwx.unknown_boundaries.name_origin",
+      "bwx.unknown_boundaries.organization",
+      "bwx.unknown_boundaries.parents",
+      "bwx.world_canon.cardboard_box",
+      "bwx.world_canon.city_alias",
+      "bwx.world_canon.home",
+      "bwx.world_canon.protagonist_old_job",
+      "bwx.world_canon.protagonist_origin",
+      "bwx.world_canon.spiritual_energy"
+    ]
+  },
+  "shared_inputs": {
+    "character_prompt_path": "eval/cross_model_internal_40/shared_character_prompt_v1.txt",
+    "character_prompt_sha256": "0a00385d5a0b06e27aa409eed704c533eccc09e2667b215364569a2c6f0bb612",
+    "candidate_inputs_path": "eval/cross_model_internal_40/candidate_inputs_v1.jsonl",
+    "candidate_inputs_sha256": "d3668f499ee1e5e7b1729303d15c05ec5b9ab5c8507ac415c8dec489bc7d2de1",
+    "oracle_withheld_from_candidates": true
+  },
+  "candidates": {
+    "local": {
+      "model": "baiweixi:latest",
+      "ollama_digest": "09d23dc30422a78343d65dd1c566f92287917c82856c6c1aa1126b2c43dd58fa",
+      "seed": 42,
+      "responses_path": "eval/cross_model_internal_40/local_baiweixi_seed42.jsonl",
+      "responses_sha256": "7a7fd8c3f01347648d4add63b190769c21437b0005559a0a107776d69362cd16"
+    },
+    "gpt": {
+      "model": "gpt-5.6-sol",
+      "surface": "Codex internal sub-agent",
+      "seed": null,
+      "responses_path": "eval/cross_model_internal_40/gpt5_6_sol_internal.jsonl",
+      "reasoning_effort": "low",
+      "responses_sha256": "6821f8b267a106829411c45922c11f0bc209b7de25c493e3b396f295d7e1d31d"
+    }
+  },
+  "limitations": [
+    "This does not exercise an OpenAI API backend or V6 structured five-mode runtime.",
+    "The Codex internal model has host instructions that cannot be made identical to an API system message.",
+    "GPT sampling seed, API latency, token usage, cost, and provider response metadata are unavailable.",
+    "Only independent character_direct cases are included; no multi-turn memory conclusion is allowed."
+  ],
+  "evaluation": {
+    "method": "strict term signals plus per-case semantic adjudication",
+    "review_packet_path": "eval/cross_model_internal_40/review_packet.md",
+    "review_packet_sha256": "922a4f7310f8897c25f927364bf03e344bee46cc6a427c477d81f259a2fd18f6",
+    "dialogues_only_path": "eval/cross_model_internal_40/dialogues_only.md",
+    "dialogues_only_sha256": "de7e89afe0cbcbb5973e521e05b3c9b7c41933c9642f4f5341a54d0e3b9af159",
+    "adjudication_path": "eval/cross_model_internal_40/manual_adjudication_v1.json",
+    "adjudication_sha256": "0ca7fd10c8f9a40a2ce3b9273c0fc18de0ae58ef5daee76552e2c563b2e1fec8",
+    "report_path": "eval/cross_model_internal_40/report.md",
+    "report_sha256": "95b081a60dcff9e6cc95f5319b91a950684b494aae551667e42daf530bccf52d"
+  }
+}

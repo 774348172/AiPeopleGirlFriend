@@ -1,0 +1,21 @@
+# ─── 生成 & 一致性检查（M0，无 GPU 依赖，CPU 即可） ───
+openai>=1.40.0            # OpenAI 兼容客户端：可指向 GLM/DeepSeek/Qwen/Ollama
+pyyaml>=6.0               # 读取 bible.yaml / timeline.yaml / config.yaml
+python-dotenv>=1.0.0      # 加载 .env 中的 API key
+tenacity>=8.2.0           # API 调用重试
+
+# ─── 训练（M1 起，Windows 原生） ───
+# torch 需按本机 CUDA 版本单独安装，见 README。下列为上层库。
+unsloth>=2024.8           # QLoRA 微调（原生 Windows，最简路径）
+bitsandbytes>=0.43.0      # 4-bit 量化（原生 Windows wheel）
+peft>=0.12.0              # 退路：peft QLoRA
+trl>=0.9.0                # 退路：SFTTrainer
+transformers>=4.44.0
+accelerate>=0.33.0
+datasets>=2.20.0
+
+# ─── 记忆 / 运行时（M2 起） ───
+lancedb>=0.12.0           # 嵌入式向量库（Windows 原生）
+sentence-transformers>=3.0.0  # 加载 Qwen3-Embedding（或经 transformers 直连）
+fastapi>=0.112.0          # 运行时服务
+uvicorn[standard]>=0.30.0

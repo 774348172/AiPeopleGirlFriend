@@ -1,0 +1,53 @@
+{
+  "test_only": true,
+  "acceptance_scope": "V6 engineering compatibility only",
+  "not_accepted_as": [
+    "白未晞角色语义验收",
+    "白未晞正式模型验收",
+    "正式存档结果"
+  ],
+  "model": {
+    "ollama_name": "qinweixi-qwen35",
+    "weights_character": "qinweixi_legacy",
+    "artifact_sha256": "433f4f1cee5763af6007ae0ca882d45212ed5efcd0b196f3255af18d42e6c440",
+    "base_url": "http://127.0.0.1:11434",
+    "context_size": 8192
+  },
+  "runtime_binding": {
+    "prompt_character_id": "baiweixi",
+    "world_id": "songjiangfu",
+    "protagonist_id": "protagonist",
+    "save_id": "qin_probe_20260809_200735",
+    "database_path": "F:\\AiPeople\\eval\\world_mind_real_smoke\\qinweixi-qwen35-20260809-200735\\world_mind.sqlite3"
+  },
+  "started_at": "2026-08-09T20:07:35.750036+08:00",
+  "turn": {
+    "result_type": "Failed",
+    "text": null,
+    "failure_code": "hard_invariant_rejected",
+    "metrics": null
+  },
+  "database": {},
+  "calls": [
+    {
+      "request_id": "qin-probe-turn-20260809-200735:TURN_MIND_ADVANCE:0",
+      "mode": "TURN_MIND_ADVANCE",
+      "started_at": "2026-08-09T20:07:37.752258+08:00",
+      "options": {
+        "max_tokens": 900,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_diegetic_actions\": [\n    {\n      \"description\": \"我放下筷子，看着你碗里的面，又看了看窗外淅沥的雨。\",\n      \"evidence_refs\": [\n        \"c81408f6-c913-4844-8105-41f7b05382c4\"\n      ]\n    },\n    {\n      \"description\": \"我轻轻叹了口气，声音很轻，像是怕惊扰了什么。\",\n      \"evidence_refs\": [\n        \"character_package_initial_runtime\"\n      ]\n    }\n  ],\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"c81408f6-c913-4844-8105-41f7b05382c4\",\n      \"character_package_initial_runtime\"\n    ],\n    \"knowledge_updates\": {},\n    \"living_mind_patch\": {\n      \"attention\": \"你碗里的面和窗外的雨\",\n      \"body\": \"外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\",\n      \"current_activity\": \"坐在餐桌旁看你吃饭，没有说话\",\n      \"emotion\": \"看着你吃东西的样子，心里有些发软，但没敢表现出来\",\n      \"form\": \"人形，猫耳和尾巴未隐藏\",\n      \"immediate_intent\": \"等你吃完面，再找理由和你说话\"\n    },\n    \"motive_updates\": {},\n    \"relationship_patch\": {\n      \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\",\n      \"trust\": \"已能在你清醒时于同一房间睡着，但仍保留重要秘密和弱点\",\n      \"unresolved_tension\": \"害怕伤好后失去继续留下的理由\"\n    }\n  },\n  \"mode\": \"TURN_MIND_ADVANCE\",\"parent_mind_state_version\":1,\"reply_intent\":\"等待你吃完面再开口\",\"reply_state_assertions\":{\n    \"captured_game_time\":\"0001-10-11T18:00:00.000000\",\n    \"live_world_version\":1,\n    \"protagonist_activity\":\"吃面\",\n    \"protagonist_location_id\":\"apartment_table\"\n  },\"schema_version\":1,\"snapshot_id\":\"c81408f6-c913-4844-8105-41f7b05382c4\",\"transition_basis\":[\n    \"你问我现在在做什么\",\n    \"你正在吃面\"\n  ]}",
+      "elapsed_seconds": 9.283
+    }
+  ],
+  "passed": false,
+  "error_type": "RuntimeError",
+  "error": "turn failed: hard_invariant_rejected",
+  "traceback": "Traceback (most recent call last):\n  File \"F:\\AiPeople\\tools\\run_qinweixi_ollama_world_mind_smoke.py\", line 268, in _run\n    raise RuntimeError(f\"turn failed: {result.code}\")\nRuntimeError: turn failed: hard_invariant_rejected\n",
+  "finished_at": "2026-08-09T20:07:47.036749+08:00"
+}

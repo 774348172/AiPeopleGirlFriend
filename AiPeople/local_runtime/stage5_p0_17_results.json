@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "checkpoint": "P0-17",
+  "executed_at": "2026-08-04T21:14:33+08:00",
+  "llama_cpp_release": "b10256",
+  "model_alias": "qinweixi",
+  "context_size": 4096,
+  "template_probe": {
+    "apply_template_status": 200,
+    "late_system_after_assistant": true,
+    "current_user_after_late_system": true,
+    "generation_prompt_included": true,
+    "thinking_disabled": true
+  },
+  "exactness_probe": {
+    "measured_prompt_tokens": 189,
+    "generation_usage_prompt_tokens": 189,
+    "matched": true
+  },
+  "eight_thousand_character_probe": {
+    "input_characters": 8000,
+    "measured_prompt_tokens": 8185,
+    "warmup_samples": 3,
+    "measured_samples": 30,
+    "p50_ms": 16.296,
+    "p95_ms": 20.037,
+    "max_ms": 28.012,
+    "target_p95_ms": 100,
+    "passed": true
+  },
+  "test_results": {
+    "runtime_passed": 104,
+    "runtime_skipped": 1,
+    "compileall": "passed",
+    "diff_check": "passed"
+  },
+  "decision": {
+    "measurement_path": "/apply-template then /tokenize",
+    "utf8_upper_bound_fallback_enabled": false,
+    "p0_17": "passed"
+  }
+}

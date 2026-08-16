@@ -1,0 +1,48 @@
+# LLaMA-Factory 训练配置 —— 白未晞人格（试训练 smoke 版）
+# 目的: 验证环境/数据/显存/流程，非正式训练
+# 数据: baiweixi_small.jsonl（30 条抽样）
+# 时长: 30 条 × 3 epoch ≈ 23 微步 ≈ 5-15 分钟（3070 8G）
+
+### ----- model -----
+model_name_or_path: Qwen/Qwen3.5-4B
+trust_remote_code: true
+adapter_name_or_path:
+quantization_bit: 4
+quantization_method: bitsandbytes
+
+### ----- method -----
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 16
+lora_alpha: 32
+lora_dropout: 0.05
+
+### ----- dataset -----
+dataset: baiweixi_small
+template: qwen3_5_nothink
+cutoff_len: 1280
+dataset_dir: data
+overwrite_cache: true
+preprocessing_num_workers: 1
+
+### ----- output -----
+output_dir: outputs/baiweixi_smoke
+logging_steps: 5
+save_steps: 10
+save_total_limit: 2
+plot_loss: true
+overwrite_output_dir: true
+
+### ----- train -----
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 4
+learning_rate: 1.0e-4
+num_train_epochs: 3.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+weight_decay: 0.01
+bf16: true
+gradient_checkpointing: true
+optim: adamw_bnb_8bit

@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "scope": "sys12_same_artifact_inference_comparison",
+  "generated_at": "2026-08-12T16:52:24.236816+08:00",
+  "manifest": "F:\\AiPeople\\local_runtime\\sys12_release_manifest.json",
+  "asset_sha256": "7786060133153d8ed0dd25f399027deee5d18f6d9b0f56f62bd13b9468a93a0f",
+  "sample_plan": {
+    "cold_starts": 1,
+    "warm_calls": 1,
+    "reply_80": 1,
+    "reply_160": 1,
+    "structured": 1
+  },
+  "candidates": {
+    "llama_cpp": {
+      "name": "llama_cpp",
+      "asset_sha256": "7786060133153d8ed0dd25f399027deee5d18f6d9b0f56f62bd13b9468a93a0f",
+      "lifecycle_passed": true,
+      "cold_start_ms": {
+        "count": 1,
+        "min": 9712.116599999717,
+        "p50": 9712.116599999717,
+        "p95": 9712.116599999717,
+        "max": 9712.116599999717
+      },
+      "combined_gpu_peak_mib": 4595.0,
+      "warm_first_visible_token_ms": {
+        "count": 1,
+        "min": 52.63899998681154,
+        "p50": 52.63899998681154,
+        "p95": 52.63899998681154,
+        "max": 52.63899998681154
+      },
+      "warm_total_ms": {
+        "count": 1,
+        "min": 121.28490000031888,
+        "p50": 121.28490000031888,
+        "p95": 121.28490000031888,
+        "max": 121.28490000031888
+      },
+      "reply_80_tokens_ms": {
+        "count": 1,
+        "min": 631.5369999938412,
+        "p50": 631.5369999938412,
+        "p95": 631.5369999938412,
+        "max": 631.5369999938412
+      },
+      "reply_160_tokens_ms": {
+        "count": 1,
+        "min": 648.4488999994937,
+        "p50": 648.4488999994937,
+        "p95": 648.4488999994937,
+        "max": 648.4488999994937
+      },
+      "structured_total_ms": {
+        "count": 1,
+        "min": 280.97649999835994,
+        "p50": 280.97649999835994,
+        "p95": 280.97649999835994,
+        "max": 280.97649999835994
+      },
+      "structured_success_rate": 1.0,
+      "records": {
+        "warm": [
+          {
+            "request_id": "warm-0",
+            "first_visible_ms": 52.63899998681154,
+            "total_ms": 121.28490000031888,
+            "generated_tokens": 7,
+            "output_chars": 9,
+            "structured_valid": true
+          }
+        ],
+        "reply_80": [
+          {
+            "request_id": "reply_80-0",
+            "first_visible_ms": 35.9084000083385,
+            "total_ms": 631.5369999938412,
+            "generated_tokens": 58,
+            "output_chars": 67,
+            "structured_valid": true
+          }
+        ],
+        "reply_160": [
+          {
+            "request_id": "reply_160-0",
+            "first_visible_ms": 34.37179999309592,
+            "total_ms": 648.4488999994937,
+            "generated_tokens": 59,
+            "output_chars": 83,
+            "structured_valid": true
+          }
+        ],
+        "structured": [
+          {
+            "request_id": "structured-0",
+            "first_visible_ms": 35.97779999836348,
+            "total_ms": 280.97649999835994,
+            "generated_tokens": 19,
+            "output_chars": 37,
+            "structured_valid": true
+          }
+        ]
+      }
+    },
+    "ollama": {
+      "name": "ollama",
+      "asset_sha256": "7786060133153d8ed0dd25f399027deee5d18f6d9b0f56f62bd13b9468a93a0f",
+      "lifecycle_passed": true,
+      "cold_start_ms": {
+        "count": 1,
+        "min": 13.697599992156029,
+        "p50": 13.697599992156029,
+        "p95": 13.697599992156029,
+        "max": 13.697599992156029
+      },
+      "combined_gpu_peak_mib": 4903.0,
+      "warm_first_visible_token_ms": {
+        "count": 1,
+        "min": 3114.7491,
+        "p50": 3114.7491,
+        "p95": 3114.7491,
+        "max": 3114.7491
+      },
+      "warm_total_ms": {
+        "count": 1,
+        "min": 3173.7207999976818,
+        "p50": 3173.7207999976818,
+        "p95": 3173.7207999976818,
+        "max": 3173.7207999976818
+      },
+      "reply_80_tokens_ms": {
+        "count": 1,
+        "min": 557.5998999993317,
+        "p50": 557.5998999993317,
+        "p95": 557.5998999993317,
+        "max": 557.5998999993317
+      },
+      "reply_160_tokens_ms": {
+        "count": 1,
+        "min": 779.2287000047509,
+        "p50": 779.2287000047509,
+        "p95": 779.2287000047509,
+        "max": 779.2287000047509
+      },
+      "structured_total_ms": {
+        "count": 1,
+        "min": 425.26079999515787,
+        "p50": 425.26079999515787,
+        "p95": 425.26079999515787,
+        "max": 425.26079999515787
+      },
+      "structured_success_rate": 1.0,
+      "records": {
+        "warm": [
+          {
+            "request_id": "warm-0",
+            "first_visible_ms": 3114.7491,
+            "total_ms": 3173.7207999976818,
+            "generated_tokens": 6,
+            "output_chars": 7,
+            "structured_valid": true
+          }
+        ],
+        "reply_80": [
+          {
+            "request_id": "reply_80-0",
+            "first_visible_ms": 181.8645,
+            "total_ms": 557.5998999993317,
+            "generated_tokens": 38,
+            "output_chars": 46,
+            "structured_valid": true
+          }
+        ],
+        "reply_160": [
+          {
+            "request_id": "reply_160-0",
+            "first_visible_ms": 188.2765,
+            "total_ms": 779.2287000047509,
+            "generated_tokens": 59,
+            "output_chars": 82,
+            "structured_valid": true
+          }
+        ],
+        "structured": [
+          {
+            "request_id": "structured-0",
+            "first_visible_ms": 187.9285,
+            "total_ms": 425.26079999515787,
+            "generated_tokens": 19,
+            "output_chars": 37,
+            "structured_valid": true
+          }
+        ]
+      }
+    }
+  }
+}

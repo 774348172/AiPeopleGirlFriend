@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/training/eval-blocklist-v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_id", "schema_version", "created_at", "source_suite", "evaluation_sources",
+    "normalization", "hash_algorithm", "diagnostic_only_case_ids", "normalized_text_sha256"
+  ],
+  "properties": {
+    "contract_id": {"const": "freeze02-eval-exclusions-v1"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "source_suite": {
+      "type": "object", "additionalProperties": false,
+      "required": ["suite_id", "manifest_sha256"],
+      "properties": {
+        "suite_id": {"const": "chat01-qinweixi-v6"},
+        "manifest_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "evaluation_sources": {
+      "type": "array", "minItems": 4, "maxItems": 4,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["path", "bytes", "sha256", "records", "extracted_texts"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "bytes": {"type": "integer", "minimum": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "records": {"type": "integer", "minimum": 1},
+          "extracted_texts": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "normalization": {"const": "nfkc_lower_alnum_cjk"},
+    "hash_algorithm": {"const": "sha256"},
+    "diagnostic_only_case_ids": {"const": ["frozen.identity.name"]},
+    "normalized_text_sha256": {
+      "type": "array", "minItems": 1, "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+    }
+  }
+}
+

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "mode", "snapshot_id", "approved_mind_state_version", "text", "reply_state_assertions"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "mode": {"const": "GAME_REPLY"},
+    "snapshot_id": {"type": "string", "minLength": 1},
+    "approved_mind_state_version": {"type": "integer", "minimum": 1},
+    "text": {"type": "string", "minLength": 1},
+    "reply_state_assertions": {"type": "object", "additionalProperties": false, "required": ["protagonist_location_id", "protagonist_activity", "live_world_version", "captured_game_time"], "properties": {"protagonist_location_id": {"type": "string", "minLength": 1}, "protagonist_activity": {"type": "string", "minLength": 1}, "live_world_version": {"type": "integer", "minimum": 1}, "captured_game_time": {"type": "string", "minLength": 1}}}
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schemas/character_package_manifest_v1.schema.json",
+  "title": "CharacterPackageManifest V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "character_id",
+    "display_name",
+    "role",
+    "package_version",
+    "world_id",
+    "protagonist_id",
+    "canon_files",
+    "initial_runtime_pointer"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "character_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{0,63}$"},
+    "display_name": {"type": "string", "minLength": 1},
+    "role": {"const": "heroine"},
+    "package_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"},
+    "world_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{0,63}$"},
+    "protagonist_id": {"type": "string", "pattern": "^[a-z][a-z0-9_]{0,63}$"},
+    "canon_files": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["readme", "prose", "bible", "canon", "timeline"],
+      "properties": {
+        "readme": {"type": "string", "minLength": 1},
+        "prose": {"type": "string", "minLength": 1},
+        "bible": {"type": "string", "minLength": 1},
+        "canon": {"type": "string", "minLength": 1},
+        "timeline": {"type": "string", "minLength": 1}
+      }
+    },
+    "initial_runtime_pointer": {"const": "bible.yaml#initial_runtime"}
+  }
+}

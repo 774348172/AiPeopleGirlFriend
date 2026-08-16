@@ -1,0 +1,36 @@
+# AiPeople 全局配置。环境变量优先级高于此处静态值。
+
+model:
+  # OpenAI 兼容端点。空字符串表示改用 OPENAI_BASE_URL 环境变量。
+  base_url: ""
+  api_key_env: "OPENAI_API_KEY"
+  # 生成人生语料 + 一致性 LLM 裁判用的强模型。可被 STRONG_MODEL 覆盖。
+  model: "gpt-4o-mini"
+  temperature: 0.8        # 略高保证多样性，但口吻一致性靠 prompt 强约束
+  max_tokens: 2048        # reasoning 模型需给思考+正文都留够
+  request_timeout: 120
+
+paths:
+  persona_dir: "人物设定/秦"
+  bible: "人物设定/秦/bible.yaml"
+  timeline: "人物设定/秦/timeline.yaml"
+  canon: "人物设定/秦/canon.json"
+  life_corpus_dir: "data/life_corpus"
+  sft_dir: "data/sft"
+  consolidated_dir: "data/consolidated"
+
+generation:
+  # 每个 timeline 节点产出：1 篇日记 + 至多 max_chats_per_node 段对话
+  max_chats_per_node: 2
+  chat_turns_min: 4
+  chat_turns_max: 8
+  seed: 42
+
+consistency:
+  # 规则检查阈值（DoD：助手腔/结构/emoji <5%，canon 矛盾 <5%）
+  assistant_sake_max_ratio: 0.05
+  structure_leak_max_ratio: 0.05
+  emoji_max_ratio: 0.05
+  # 是否启用 LLM 裁判做事实/口吻一致性（需配置模型）
+  use_llm_judge: true
+  llm_judge_sample_size: 20   # 每次最多送多少条给 LLM 裁判（省 token）

@@ -1,0 +1,49 @@
+# LLaMA-Factory 训练配置 —— 于谦人格（M3 Max 全精度）
+# M3 Max: 36-64GB 统一内存, MPS, 无 CUDA
+# 注意: bitsandbytes 不支持 MPS，不能用 4-bit QLoRA，用全精度 LoRA
+#
+# 用法: llamafactory-cli train configs/yuqian_4b_m3max.yaml
+#
+# 如果 LLaMA-Factory 不支持 MPS，改用 mlx-lm（见 README 备选方案）
+
+### ----- model -----
+model_name_or_path: Qwen/Qwen3-4B
+trust_remote_code: true
+adapter_name_or_path:
+# 不设 quantization_bit —— MPS 不支持 bitsandbytes 量化
+
+### ----- method -----
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 8
+lora_alpha: 16
+lora_dropout: 0.05
+
+### ----- dataset -----
+dataset: aipeople_persona
+template: qwen3_nothink
+cutoff_len: 1024
+dataset_dir: data
+overwrite_cache: true
+preprocessing_num_workers: 4
+
+### ----- output -----
+output_dir: outputs/yuqian_4b
+logging_steps: 20
+save_steps: 200
+save_total_limit: 2
+plot_loss: true
+overwrite_output_dir: true
+
+### ----- train -----
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 4
+learning_rate: 5.0e-5
+num_train_epochs: 3.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+weight_decay: 0.01
+fp16: true                                 # M3 Max 支持 fp16 (MPS)
+optim: adamw_torch

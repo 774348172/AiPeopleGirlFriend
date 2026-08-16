@@ -1,0 +1,9 @@
+model_name_or_path: Qwen/Qwen3-4B
+adapter_name_or_path: outputs/qinweixi_4b_repair_v1
+template: qwen3_nothink
+trust_remote_code: true
+
+export_dir: outputs/qinweixi_4b_repair_v1_merged
+export_size: 2
+export_device: cuda
+export_legacy_format: false

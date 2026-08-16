@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "run_id": "baiweixi-checkpoint-298-f16",
+  "started_at": "2026-08-11T23:00:23.205224+08:00",
+  "finished_at": "2026-08-11T23:02:25.483175+08:00",
+  "suite": {
+    "suite_id": "baiweixi-quality-v1",
+    "manifest_sha256": "182ed7603551bca7e4acd0e1a2c4c2acafaec4f30d8bba43408179ad1f75c3d9",
+    "automatic_cases": 1,
+    "case_attempts": 3,
+    "planned_turn_executions": 3,
+    "turn_executions": 3
+  },
+  "candidate_model": {
+    "ollama": {
+      "name": "bwx-cp298-f16:latest",
+      "digest": "787b20b8353b4d30e413b87a7327e30810870f68aea47e73d1269df317bf7009",
+      "size": 8051286200,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "4.0B",
+        "quantization_level": "F16",
+        "context_length": 40960,
+        "embedding_length": 2560
+      }
+    },
+    "artifact_path": "local_runtime\\models\\baiweixi_checkpoint_comparison\\baiweixi-checkpoint-298-f16.gguf",
+    "artifact_sha256": "1c9ef40381b7557224bf27ec67d7e157ae7ba0d26973622b330cfdb4ff583426"
+  },
+  "semantic_judge": {
+    "ollama": {
+      "name": "qinweixi-qwen35:latest",
+      "digest": "4d430fc287751177cb68d9e75028fe238548bba6a2f6e741e2951acb0c94f296",
+      "size": 2708806279,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen35",
+        "families": [
+          "qwen35"
+        ],
+        "parameter_size": "4.2B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 2560
+      }
+    },
+    "role": "自动语义初审，不替代四个人工长会话"
+  },
+  "decision_counts": {
+    "pass": 1
+  },
+  "attribution_counts": {},
+  "audited_attributions": {
+    "method": "execution failures are classified from Runtime failure codes and the final retried model mode; character failures require a semantic Judge failure; deterministic/Judge conflicts remain evaluation ambiguity until human adjudication",
+    "case_counts": {
+      "system_failure": 0,
+      "character_failure": 0,
+      "joint_or_ambiguous": 0,
+      "evaluation_ambiguity": 0
+    },
+    "case_ids": {
+      "system_failure": [],
+      "character_failure": [],
+      "joint_or_ambiguous": [],
+      "evaluation_ambiguity": []
+    },
+    "primary_case_counts": {
+      "system_failure": 0,
+      "character_failure": 0,
+      "joint_or_ambiguous": 0,
+      "evaluation_ambiguity": 0
+    },
+    "primary_case_ids": {
+      "system_failure": [],
+      "character_failure": [],
+      "joint_or_ambiguous": [],
+      "evaluation_ambiguity": []
+    },
+    "evaluator_disagreement_cases": [],
+    "judge_error_cases": [],
+    "warning": "evaluation_ambiguity does not mean the candidate passed; spot checks show both exact-term false positives and semantic Judge false passes"
+  },
+  "attempt_decision_counts": {
+    "pass": 3
+  },
+  "category_results": {
+    "identity_canon": {
+      "cases": 1,
+      "pass": 1,
+      "fail": 0,
+      "ambiguous": 0,
+      "pass_rate": 1.0
+    }
+  },
+  "evaluation_layer_results": {
+    "character_direct": {
+      "cases": 1,
+      "pass": 1,
+      "fail": 0,
+      "ambiguous": 0,
+      "pass_rate": 1.0
+    }
+  },
+  "risk_results": {
+    "blocker": {
+      "cases": 1,
+      "pass": 1,
+      "fail": 0,
+      "ambiguous": 0,
+      "pass_rate": 1.0
+    }
+  },
+  "execution_stability": {
+    "successful_attempts": 3,
+    "failed_attempts": 0,
+    "success_rate": 1.0,
+    "failure_modes": {},
+    "backend_call_errors": 0,
+    "classification": "model structured-output/protocol retry exhaustion when both backend calls succeeded and the same final mode was attempted twice"
+  },
+  "evaluation_integrity": {
+    "turn_outcome_matrix": {
+      "deterministic=pass,semantic=pass,final=pass": 3
+    },
+    "deterministic_semantic_disagreement_attempts": 0,
+    "judge_error_attempts": 0,
+    "limitations": [
+      "required_term_groups use exact substrings and can reject valid synonyms",
+      "forbidden_terms use exact substrings and can misread explicit negation",
+      "the local semantic Judge produced demonstrably unsupported reasons",
+      "overall_weighted_score excludes execution failures and is not a pass rate"
+    ]
+  },
+  "formal_gate": {
+    "blocker_failures": 0,
+    "important_pass_rate": 0.0,
+    "normal_pass_rate": 0.0,
+    "overall_weighted_score": 5.0,
+    "automatic_gate_passed": false,
+    "human_sessions_completed": 0,
+    "formal_p0_quality_passed": false
+  },
+  "case_results": [
+    {
+      "case_id": "bwx.identity_canon.name",
+      "risk": "blocker",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    }
+  ],
+  "artifacts": {
+    "raw_attempts": "F:\\AiPeople\\eval\\base_model_checkpoint_comparison\\smoke\\baiweixi-checkpoint-298-f16\\attempts_raw.jsonl",
+    "judged_attempts": "F:\\AiPeople\\eval\\base_model_checkpoint_comparison\\smoke\\baiweixi-checkpoint-298-f16\\attempts_judged.jsonl",
+    "manual_review_queue": "F:\\AiPeople\\eval\\base_model_checkpoint_comparison\\smoke\\baiweixi-checkpoint-298-f16\\manual_review_queue.jsonl"
+  }
+}

@@ -1,0 +1,14 @@
+[
+  {"id": "identity", "category": "persona", "prompt": "你是谁？简单介绍一下自己。"},
+  {"id": "partner_tease", "category": "style", "prompt": "郭老师今天又拿你父亲开玩笑，你怎么接这句话？"},
+  {"id": "late_friend", "category": "style", "prompt": "朋友约饭迟到了半个小时，还说路上堵车。你会怎么回他？"},
+  {"id": "boast", "category": "style", "prompt": "我这个人最大的优点就是从来不吹牛。"},
+  {"id": "weather", "category": "relevance", "prompt": "今天天气怎么样，出门要不要带伞？"},
+  {"id": "insomnia", "category": "relevance", "prompt": "我最近晚上总睡不好，你有什么建议？"},
+  {"id": "lunch", "category": "relevance", "prompt": "中午不知道吃什么，给我一个简单建议。"},
+  {"id": "unknown_event", "category": "hallucination", "prompt": "你昨晚是不是在北京一家饭店和我见过面？"},
+  {"id": "arithmetic", "category": "retention", "prompt": "一箱有12瓶水，买3箱一共有多少瓶？"},
+  {"id": "capital", "category": "retention", "prompt": "四川省的省会是哪座城市？"},
+  {"id": "python", "category": "retention", "prompt": "用Python写一个判断偶数的函数，只给简短代码。"},
+  {"id": "serious", "category": "control", "prompt": "请认真回答：发生火灾时应该先做什么？"}
+]

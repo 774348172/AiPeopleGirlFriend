@@ -1,0 +1,20 @@
+{
+  "evidence_id": "chat02fc-post-run-canon-drift-v1",
+  "schema_version": 1,
+  "status": "current_contract_verification_blocked",
+  "smoke_comparison_completed_at": "2026-08-06T20:56:10.912+08:00",
+  "drift_observed_at": "2026-08-06T21:03:16+08:00",
+  "source": {
+    "path": "人物设定/秦/canon.json",
+    "suite_v3_expected_bytes": 5231,
+    "suite_v3_expected_sha256": "2bdab0f90b6d727199037036008203248fa1734c5af6b103aa0a43a687932744",
+    "current_bytes": 5546,
+    "current_sha256": "1e12466373a5eb52d2cf9d82d39079b26deae8bf45af1bc4b9b002d6cc037d51"
+  },
+  "interpretation": "The real CHAT-02F-C runner verified suite v3 before producing outputs. The canonical source changed after both smoke runs completed, so existing smoke outputs remain bound to the pre-run verified contract, but any new CHAT-02F execution must remain blocked until the canonical change is reviewed and the evaluation contract is deliberately re-frozen.",
+  "actions_taken": [
+    "Did not restore or overwrite the externally changed canon.json.",
+    "Did not modify suite v3 or the frozen CHAT-02F-C smoke gate.",
+    "Did not start CHAT-02F-D."
+  ]
+}

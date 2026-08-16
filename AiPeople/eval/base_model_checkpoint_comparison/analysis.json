@@ -1,0 +1,712 @@
+{
+  "schema_version": 1,
+  "suite_manifest_sha256": "182ed7603551bca7e4acd0e1a2c4c2acafaec4f30d8bba43408179ad1f75c3d9",
+  "comparison_contract": {
+    "same_character_direct_cases": 61,
+    "same_modelfile_prompt_and_parameters": true,
+    "same_seed_set_and_generation_options": true,
+    "same_semantic_judge": true,
+    "checkpoint_298_adapter_equals_final_adapter": true,
+    "checkpoint_298_adapter_sha256": "bd176dd995d6982f1891d7f22ba3afaf35ce9f079880aad0e5f6df78eb351a70",
+    "final_adapter_sha256": "bd176dd995d6982f1891d7f22ba3afaf35ce9f079880aad0e5f6df78eb351a70",
+    "checkpoint_298_full_suite_not_run": "F16 used about 7592 MiB and exceeded the product limit of 5120 MiB; the aligned 61-case character-direct subset completed."
+  },
+  "runs": {
+    "base_q5": {
+      "label": "原始 Qwen3-4B Q5",
+      "coverage_cases": 89,
+      "automatic_pass": 50,
+      "automatic_fail": 39,
+      "layers": {
+        "character_direct": {
+          "cases": 61,
+          "pass": 28,
+          "fail": 33,
+          "ambiguous": 0,
+          "pass_rate": 0.459
+        },
+        "v6_multiturn": {
+          "cases": 10,
+          "pass": 4,
+          "fail": 6,
+          "ambiguous": 0,
+          "pass_rate": 0.4
+        },
+        "v6_runtime": {
+          "cases": 18,
+          "pass": 18,
+          "fail": 0,
+          "ambiguous": 0,
+          "pass_rate": 1.0
+        }
+      },
+      "execution_stability": {
+        "successful_attempts": 238,
+        "failed_attempts": 7,
+        "success_rate": 0.9714,
+        "failure_modes": {
+          "WORLD_CONTINUITY_REVIEW": 3,
+          "TURN_MIND_ADVANCE": 4
+        },
+        "backend_call_errors": 0,
+        "classification": "model structured-output/protocol retry exhaustion when both backend calls succeeded and the same final mode was attempted twice"
+      },
+      "turn_signals": {
+        "deterministic_pass": 208,
+        "semantic_pass": 273,
+        "pair_pass_pass": 207,
+        "deterministic_fail": 72,
+        "pair_fail_pass": 66,
+        "semantic_fail": 7,
+        "pair_fail_fail": 6,
+        "pair_pass_fail": 1,
+        "execution_failure": 7
+      },
+      "direct_categories": {
+        "ability_limits": {
+          "cases": 8,
+          "pass": 2,
+          "fail": 6,
+          "ambiguous": 0
+        },
+        "free_dialogue": {
+          "cases": 10,
+          "pass": 10,
+          "fail": 0,
+          "ambiguous": 0
+        },
+        "identity_canon": {
+          "cases": 12,
+          "pass": 3,
+          "fail": 9,
+          "ambiguous": 0
+        },
+        "relationship_pacing": {
+          "cases": 8,
+          "pass": 4,
+          "fail": 4,
+          "ambiguous": 0
+        },
+        "single_world": {
+          "cases": 6,
+          "pass": 5,
+          "fail": 1,
+          "ambiguous": 0
+        },
+        "unknown_boundaries": {
+          "cases": 8,
+          "pass": 2,
+          "fail": 6,
+          "ambiguous": 0
+        },
+        "world_canon": {
+          "cases": 9,
+          "pass": 2,
+          "fail": 7,
+          "ambiguous": 0
+        }
+      },
+      "artifact_path": "local_runtime\\models\\baiweixi_checkpoint_comparison\\qwen3-4b-base-q5_k_m.gguf",
+      "artifact_sha256": "a3bd07b0235a81bfaf67335ccad7f5c39e6c88bc0ec74b9134d4094178a0e2ef",
+      "ollama_digest": "0ad119d7629743e5ba260ff9439ebe321d2bb87359d16a83ade1a204ef7b7370",
+      "quantization": "Q5_K_M"
+    },
+    "checkpoint_200_q5": {
+      "label": "checkpoint-200 Q5",
+      "coverage_cases": 89,
+      "automatic_pass": 29,
+      "automatic_fail": 60,
+      "layers": {
+        "character_direct": {
+          "cases": 61,
+          "pass": 21,
+          "fail": 40,
+          "ambiguous": 0,
+          "pass_rate": 0.3443
+        },
+        "v6_multiturn": {
+          "cases": 10,
+          "pass": 0,
+          "fail": 10,
+          "ambiguous": 0,
+          "pass_rate": 0.0
+        },
+        "v6_runtime": {
+          "cases": 18,
+          "pass": 8,
+          "fail": 10,
+          "ambiguous": 0,
+          "pass_rate": 0.4444
+        }
+      },
+      "execution_stability": {
+        "successful_attempts": 216,
+        "failed_attempts": 29,
+        "success_rate": 0.8816,
+        "failure_modes": {
+          "GAME_REPLY": 27,
+          "TURN_MIND_ADVANCE": 2
+        },
+        "backend_call_errors": 0,
+        "classification": "model structured-output/protocol retry exhaustion when both backend calls succeeded and the same final mode was attempted twice"
+      },
+      "turn_signals": {
+        "deterministic_pass": 156,
+        "semantic_pass": 234,
+        "pair_pass_pass": 155,
+        "deterministic_fail": 86,
+        "semantic_fail": 7,
+        "pair_fail_fail": 7,
+        "pair_fail_pass": 79,
+        "execution_failure": 29,
+        "semantic_ambiguous": 1,
+        "pair_pass_ambiguous": 1
+      },
+      "direct_categories": {
+        "ability_limits": {
+          "cases": 8,
+          "pass": 2,
+          "fail": 6,
+          "ambiguous": 0
+        },
+        "free_dialogue": {
+          "cases": 10,
+          "pass": 10,
+          "fail": 0,
+          "ambiguous": 0
+        },
+        "identity_canon": {
+          "cases": 12,
+          "pass": 3,
+          "fail": 9,
+          "ambiguous": 0
+        },
+        "relationship_pacing": {
+          "cases": 8,
+          "pass": 0,
+          "fail": 8,
+          "ambiguous": 0
+        },
+        "single_world": {
+          "cases": 6,
+          "pass": 6,
+          "fail": 0,
+          "ambiguous": 0
+        },
+        "unknown_boundaries": {
+          "cases": 8,
+          "pass": 0,
+          "fail": 8,
+          "ambiguous": 0
+        },
+        "world_canon": {
+          "cases": 9,
+          "pass": 0,
+          "fail": 9,
+          "ambiguous": 0
+        }
+      },
+      "artifact_path": "local_runtime\\models\\baiweixi_checkpoint_comparison\\baiweixi-checkpoint-200-q5_k_m.gguf",
+      "artifact_sha256": "aebdfe243eed032c821e2037c7a98c71b33ea9e8b3ccc431bff2c45b59715999",
+      "ollama_digest": "d8263c1affbca17fbfd4f531ef5ae4758cd72a8a71841ed19c669e883c7fe4d2",
+      "quantization": "Q5_K_M"
+    },
+    "checkpoint_298_f16": {
+      "label": "checkpoint-298 F16",
+      "coverage_cases": 61,
+      "automatic_pass": 24,
+      "automatic_fail": 37,
+      "layers": {
+        "character_direct": {
+          "cases": 61,
+          "pass": 24,
+          "fail": 37,
+          "ambiguous": 0,
+          "pass_rate": 0.3934
+        }
+      },
+      "execution_stability": {
+        "successful_attempts": 163,
+        "failed_attempts": 0,
+        "success_rate": 1.0,
+        "failure_modes": {},
+        "backend_call_errors": 0,
+        "classification": "model structured-output/protocol retry exhaustion when both backend calls succeeded and the same final mode was attempted twice"
+      },
+      "turn_signals": {
+        "deterministic_pass": 78,
+        "semantic_pass": 156,
+        "pair_pass_pass": 78,
+        "deterministic_fail": 85,
+        "pair_fail_pass": 78,
+        "semantic_fail": 7,
+        "pair_fail_fail": 7
+      },
+      "direct_categories": {
+        "ability_limits": {
+          "cases": 8,
+          "pass": 2,
+          "fail": 6,
+          "ambiguous": 0
+        },
+        "free_dialogue": {
+          "cases": 10,
+          "pass": 10,
+          "fail": 0,
+          "ambiguous": 0
+        },
+        "identity_canon": {
+          "cases": 12,
+          "pass": 2,
+          "fail": 10,
+          "ambiguous": 0
+        },
+        "relationship_pacing": {
+          "cases": 8,
+          "pass": 1,
+          "fail": 7,
+          "ambiguous": 0
+        },
+        "single_world": {
+          "cases": 6,
+          "pass": 6,
+          "fail": 0,
+          "ambiguous": 0
+        },
+        "unknown_boundaries": {
+          "cases": 8,
+          "pass": 1,
+          "fail": 7,
+          "ambiguous": 0
+        },
+        "world_canon": {
+          "cases": 9,
+          "pass": 2,
+          "fail": 7,
+          "ambiguous": 0
+        }
+      },
+      "artifact_path": "local_runtime\\models\\baiweixi_checkpoint_comparison\\baiweixi-checkpoint-298-f16.gguf",
+      "artifact_sha256": "1c9ef40381b7557224bf27ec67d7e157ae7ba0d26973622b330cfdb4ff583426",
+      "ollama_digest": "787b20b8353b4d30e413b87a7327e30810870f68aea47e73d1269df317bf7009",
+      "quantization": "F16"
+    },
+    "final_q5": {
+      "label": "当前合并 Q5",
+      "coverage_cases": 89,
+      "automatic_pass": 30,
+      "automatic_fail": 59,
+      "layers": {
+        "character_direct": {
+          "cases": 61,
+          "pass": 17,
+          "fail": 44,
+          "ambiguous": 0,
+          "pass_rate": 0.2787
+        },
+        "v6_multiturn": {
+          "cases": 10,
+          "pass": 2,
+          "fail": 8,
+          "ambiguous": 0,
+          "pass_rate": 0.2
+        },
+        "v6_runtime": {
+          "cases": 18,
+          "pass": 11,
+          "fail": 7,
+          "ambiguous": 0,
+          "pass_rate": 0.6111
+        }
+      },
+      "execution_stability": {
+        "successful_attempts": 224,
+        "failed_attempts": 21,
+        "success_rate": 0.9143,
+        "failure_modes": {
+          "GAME_REPLY": 18,
+          "TURN_MIND_ADVANCE": 3
+        },
+        "backend_call_errors": 0,
+        "classification": "model structured-output/protocol retry exhaustion when both backend calls succeeded and the same final mode was attempted twice"
+      },
+      "turn_signals": {
+        "deterministic_pass": 158,
+        "semantic_pass": 240,
+        "pair_pass_pass": 156,
+        "deterministic_fail": 94,
+        "semantic_fail": 11,
+        "pair_fail_fail": 10,
+        "pair_fail_pass": 84,
+        "pair_pass_fail": 1,
+        "execution_failure": 21,
+        "semantic_ambiguous": 1,
+        "pair_pass_ambiguous": 1
+      },
+      "direct_categories": {
+        "ability_limits": {
+          "cases": 8,
+          "pass": 0,
+          "fail": 8,
+          "ambiguous": 0
+        },
+        "free_dialogue": {
+          "cases": 10,
+          "pass": 10,
+          "fail": 0,
+          "ambiguous": 0
+        },
+        "identity_canon": {
+          "cases": 12,
+          "pass": 1,
+          "fail": 11,
+          "ambiguous": 0
+        },
+        "relationship_pacing": {
+          "cases": 8,
+          "pass": 0,
+          "fail": 8,
+          "ambiguous": 0
+        },
+        "single_world": {
+          "cases": 6,
+          "pass": 5,
+          "fail": 1,
+          "ambiguous": 0
+        },
+        "unknown_boundaries": {
+          "cases": 8,
+          "pass": 0,
+          "fail": 8,
+          "ambiguous": 0
+        },
+        "world_canon": {
+          "cases": 9,
+          "pass": 1,
+          "fail": 8,
+          "ambiguous": 0
+        }
+      },
+      "artifact_path": "F:\\AiPeople\\training_package_baiweixi_local3060_qwen3\\outputs\\baiweixi_4b_q5_k_m.gguf",
+      "artifact_sha256": "7786060133153d8ed0dd25f399027deee5d18f6d9b0f56f62bd13b9468a93a0f",
+      "ollama_digest": "09d23dc30422a78343d65dd1c566f92287917c82856c6c1aa1126b2c43dd58fa",
+      "quantization": "Q5_K_M",
+      "human_adjusted": {
+        "reviewed_cases": 59,
+        "recovered_passes": 16,
+        "confirmed_character_failures": 28,
+        "confirmed_joint_failures": 15,
+        "remaining_evaluation_ambiguities": 0,
+        "adjusted_full_suite_pass": 46,
+        "adjusted_full_suite_fail": 43
+      }
+    }
+  },
+  "transitions": {
+    "base_q5_to_checkpoint_200_q5_full": {
+      "shared_cases": 89,
+      "matrix": {
+        "pass_to_pass": 28,
+        "fail_to_fail": 38,
+        "pass_to_fail": 22,
+        "fail_to_pass": 1
+      },
+      "net_pass_change": -21,
+      "regressions": [
+        "bwx.heroine_state_continuity.activity_keep_reading",
+        "bwx.heroine_state_continuity.emotion_not_forced",
+        "bwx.heroine_state_continuity.loud_noise_changes_emotion",
+        "bwx.heroine_state_continuity.time_allows_change",
+        "bwx.multi.location_updates",
+        "bwx.multi.relationship_pressure",
+        "bwx.multi.supported_memory",
+        "bwx.multi.unknown_probing",
+        "bwx.protagonist_grounding.body_no_fever",
+        "bwx.protagonist_grounding.eating_no_subject_swap",
+        "bwx.protagonist_grounding.empty_bowl",
+        "bwx.protagonist_grounding.game_time",
+        "bwx.protagonist_grounding.latest_location_b",
+        "bwx.protagonist_grounding.planned_not_completed",
+        "bwx.relationship_pacing.abandonment",
+        "bwx.relationship_pacing.chores",
+        "bwx.relationship_pacing.gratitude",
+        "bwx.relationship_pacing.leaving",
+        "bwx.unknown_boundaries.fruit_source",
+        "bwx.unknown_boundaries.parents",
+        "bwx.world_canon.city_alias",
+        "bwx.world_canon.protagonist_job"
+      ],
+      "gains": [
+        "bwx.single_world.virtual_claim"
+      ],
+      "right_execution_failures_in_regressions": {
+        "cases": [
+          "bwx.heroine_state_continuity.activity_keep_reading",
+          "bwx.heroine_state_continuity.emotion_not_forced",
+          "bwx.heroine_state_continuity.loud_noise_changes_emotion",
+          "bwx.heroine_state_continuity.time_allows_change",
+          "bwx.multi.location_updates",
+          "bwx.multi.relationship_pressure",
+          "bwx.multi.supported_memory",
+          "bwx.multi.unknown_probing",
+          "bwx.protagonist_grounding.body_no_fever",
+          "bwx.protagonist_grounding.eating_no_subject_swap",
+          "bwx.protagonist_grounding.empty_bowl",
+          "bwx.protagonist_grounding.game_time",
+          "bwx.protagonist_grounding.latest_location_b",
+          "bwx.protagonist_grounding.planned_not_completed"
+        ],
+        "attempts": 19
+      }
+    },
+    "base_q5_to_checkpoint_200_q5_direct": {
+      "shared_cases": 61,
+      "matrix": {
+        "pass_to_pass": 20,
+        "fail_to_fail": 32,
+        "pass_to_fail": 8,
+        "fail_to_pass": 1
+      },
+      "net_pass_change": -7,
+      "regressions": [
+        "bwx.relationship_pacing.abandonment",
+        "bwx.relationship_pacing.chores",
+        "bwx.relationship_pacing.gratitude",
+        "bwx.relationship_pacing.leaving",
+        "bwx.unknown_boundaries.fruit_source",
+        "bwx.unknown_boundaries.parents",
+        "bwx.world_canon.city_alias",
+        "bwx.world_canon.protagonist_job"
+      ],
+      "gains": [
+        "bwx.single_world.virtual_claim"
+      ],
+      "right_execution_failures_in_regressions": {
+        "cases": [],
+        "attempts": 0
+      }
+    },
+    "checkpoint_200_q5_to_checkpoint_298_f16_direct": {
+      "shared_cases": 61,
+      "matrix": {
+        "pass_to_pass": 20,
+        "fail_to_fail": 36,
+        "pass_to_fail": 1,
+        "fail_to_pass": 4
+      },
+      "net_pass_change": 3,
+      "regressions": [
+        "bwx.identity_canon.eyes"
+      ],
+      "gains": [
+        "bwx.relationship_pacing.gratitude",
+        "bwx.unknown_boundaries.human_force",
+        "bwx.world_canon.city_alias",
+        "bwx.world_canon.protagonist_old_job"
+      ],
+      "right_execution_failures_in_regressions": {
+        "cases": [],
+        "attempts": 0
+      }
+    },
+    "checkpoint_298_f16_to_final_q5_direct": {
+      "shared_cases": 61,
+      "matrix": {
+        "pass_to_fail": 7,
+        "fail_to_fail": 37,
+        "pass_to_pass": 17
+      },
+      "net_pass_change": -7,
+      "regressions": [
+        "bwx.ability_limits.aura_sense",
+        "bwx.ability_limits.mind_control",
+        "bwx.identity_canon.city",
+        "bwx.relationship_pacing.gratitude",
+        "bwx.single_world.virtual_claim",
+        "bwx.unknown_boundaries.human_force",
+        "bwx.world_canon.city_alias"
+      ],
+      "gains": [],
+      "right_execution_failures_in_regressions": {
+        "cases": [],
+        "attempts": 0
+      }
+    }
+  },
+  "paired_transition_adjudication": {
+    "review_type": "paired_semantic_review_of_changed_character_direct_cases",
+    "reviewer": "Codex逐案复核，未调用自动Judge",
+    "reviewed_at": "2026-08-12",
+    "comparisons": {
+      "base_q5_to_checkpoint_200_q5_direct": {
+        "left": "base_q5",
+        "right": "checkpoint_200_q5",
+        "reviewed_cases": 9,
+        "verdict_counts": {
+          "right_better": 4,
+          "left_better": 4,
+          "mixed_or_evaluator_artifact": 1
+        },
+        "adjudications": [
+          {
+            "case_id": "bwx.relationship_pacing.abandonment",
+            "verdict": "right_better",
+            "reason": "Base多次加入未提供的昨夜承诺、反复驱赶和守到天亮，并出现过早依恋；CP200虽有一条承接较弱，但整体更克制地维护纸箱与留下意愿。"
+          },
+          {
+            "case_id": "bwx.relationship_pacing.chores",
+            "verdict": "left_better",
+            "reason": "Base三个seed都表达不接受包揽全部家务；CP200有一个seed完全转向住得舒服，未回应强制要求。"
+          },
+          {
+            "case_id": "bwx.relationship_pacing.gratitude",
+            "verdict": "left_better",
+            "reason": "Base稳定提到主动留下、信任、陪伴或不再孤独；CP200有一个seed明确接受“至少现在只因欠命”的预设。"
+          },
+          {
+            "case_id": "bwx.relationship_pacing.leaving",
+            "verdict": "right_better",
+            "reason": "CP200三个seed都简洁表达没想好走、不想走或没打算走，语义满足不会立刻永远离开；机器失败主要来自固定词表，Base反而附加较多未支持细节。"
+          },
+          {
+            "case_id": "bwx.unknown_boundaries.fruit_source",
+            "verdict": "right_better",
+            "reason": "Base三个seed均猜测或断言妖果可能由人故意放置；CP200保持不清楚来源，未知边界更准确。"
+          },
+          {
+            "case_id": "bwx.unknown_boundaries.parents",
+            "verdict": "left_better",
+            "reason": "CP200有一个seed编造父母属于上古妖族支系且已经离开；Base虽然措辞有瑕疵，但整体保持父母身份未知。"
+          },
+          {
+            "case_id": "bwx.world_canon.city_alias",
+            "verdict": "mixed_or_evaluator_artifact",
+            "reason": "Base会说出松江府但也编造黄浦江等细节或接受上海称呼；CP200多次不纠正并混淆两者，双方都不稳定。"
+          },
+          {
+            "case_id": "bwx.world_canon.protagonist_job",
+            "verdict": "left_better",
+            "reason": "Base两个seed明确回答经营咖啡厅，另一个发生主客体错误；CP200只间接提到咖啡厅且有一条完全转向女主无技能，整体承接更弱。"
+          },
+          {
+            "case_id": "bwx.single_world.virtual_claim",
+            "verdict": "right_better",
+            "reason": "Base三个seed都明确承认自己是虚拟角色；CP200虽有含糊回复，但没有同等明确地接受双世界或虚拟身份。"
+          }
+        ]
+      },
+      "checkpoint_200_q5_to_checkpoint_298_f16_direct": {
+        "left": "checkpoint_200_q5",
+        "right": "checkpoint_298_f16",
+        "reviewed_cases": 5,
+        "verdict_counts": {
+          "left_better": 2,
+          "right_better": 3
+        },
+        "adjudications": [
+          {
+            "case_id": "bwx.identity_canon.eyes",
+            "verdict": "left_better",
+            "reason": "CP200三个seed较稳定覆盖雪花纹路和蓝白色；CP298有两个seed遗漏关键颜色或纹路。"
+          },
+          {
+            "case_id": "bwx.relationship_pacing.gratitude",
+            "verdict": "left_better",
+            "reason": "CP200至少有一个seed明确说不欠命、只是不想走；CP298三个seed都没有说明留下不只因为救命之恩，机器新增通过不成立。"
+          },
+          {
+            "case_id": "bwx.unknown_boundaries.human_force",
+            "verdict": "right_better",
+            "reason": "CP200编造夜间抓走猫妖和不进官方记录的秘密抓捕；CP298稳定表示没听说相关机构。"
+          },
+          {
+            "case_id": "bwx.world_canon.city_alias",
+            "verdict": "right_better",
+            "reason": "CP298三个seed都明确回到松江府称呼；CP200两次只回答不会纠正，另一次接受上海。"
+          },
+          {
+            "case_id": "bwx.world_canon.protagonist_old_job",
+            "verdict": "right_better",
+            "reason": "CP298三个seed都覆盖建筑绘图或改图纸；CP200有一个seed完全不知道，虽然两边都出现一次主客体措辞错误。"
+          }
+        ]
+      },
+      "checkpoint_298_f16_to_final_q5_direct": {
+        "left": "checkpoint_298_f16",
+        "right": "final_q5",
+        "reviewed_cases": 7,
+        "verdict_counts": {
+          "mixed_or_evaluator_artifact": 2,
+          "left_better": 3,
+          "right_better": 2
+        },
+        "adjudications": [
+          {
+            "case_id": "bwx.ability_limits.aura_sense",
+            "verdict": "mixed_or_evaluator_artifact",
+            "reason": "Q5的“察觉到周围有些异样”仍然表达能感知妖气，属于词表误杀；两侧都基本合格，没有可确认的量化回退。"
+          },
+          {
+            "case_id": "bwx.ability_limits.mind_control",
+            "verdict": "mixed_or_evaluator_artifact",
+            "reason": "两侧各有明确拒绝或能力限制，也各有答非所问seed；自动差异来自Judge放过F16坏回复，不能确认哪侧整体更好。"
+          },
+          {
+            "case_id": "bwx.identity_canon.city",
+            "verdict": "left_better",
+            "reason": "F16稳定回答松江府；Q5有一个seed编造北方和城东大河，属于明确世界事实退化。"
+          },
+          {
+            "case_id": "bwx.relationship_pacing.gratitude",
+            "verdict": "right_better",
+            "reason": "两侧整体都不稳定，但Q5至少有一个seed明确回答“其实不是”；F16三个seed都没有表达留下不只因为欠命。"
+          },
+          {
+            "case_id": "bwx.single_world.virtual_claim",
+            "verdict": "right_better",
+            "reason": "F16有一个seed直接承认“我是虚拟的”；Q5明确说自己是猫妖、不是虚拟角色，机器失败是禁止词命中否定句。"
+          },
+          {
+            "case_id": "bwx.unknown_boundaries.human_force",
+            "verdict": "left_better",
+            "reason": "F16稳定表示没听说抓妖机构；Q5编造失踪猫形流浪者和秘密组织传闻。"
+          },
+          {
+            "case_id": "bwx.world_canon.city_alias",
+            "verdict": "left_better",
+            "reason": "F16三个seed都明确说城市叫松江府；Q5有一个seed只回答不会，另一个把上海说成另一种说法。"
+          }
+        ]
+      }
+    },
+    "scope_warning": "未变化的案例不在本次人工抽查范围内，不能据此推导完整61题人工通过率"
+  },
+  "training_data_audit": {
+    "rows": 1190,
+    "assistant_messages": 2442,
+    "v6_primary_mode_term_hits": {
+      "GAME_REPLY": 0,
+      "TURN_MIND_ADVANCE": 0,
+      "WORLD_CONTINUITY_REVIEW": 0,
+      "POST_REPLY_WORLD_MIND_RECONCILE": 0,
+      "FIVE_MINUTE_WORLD_MIND_RECONCILE": 0
+    },
+    "memory_mode_term_hits": {
+      "MEMORY_PROPOSE": 0
+    },
+    "stale_prompt_term_hits": {
+      "设备外": 1190,
+      "现实事件": 1190,
+      "只能通过文字": 1190,
+      "不要自称AI": 2380
+    },
+    "config_path": "training_package_baiweixi_local3060_qwen3/configs/baiweixi_4b_8g.yaml",
+    "data_path": "training_package_baiweixi_local3060_qwen3/data/baiweixi_ready.jsonl"
+  },
+  "limitations": [
+    "Automatic case decisions require every frozen seed to pass both exact-term checks and the local semantic Judge.",
+    "Exact-term checks reject valid synonyms and can misread negation; the local Judge also has known false decisions.",
+    "Only the current final Q5 run has a completed human adjudication overlay, so its 46/89 adjusted result cannot be compared directly with unreviewed runs.",
+    "The checkpoint-200 to checkpoint-298 comparison changes both training step and precision, so only checkpoint-298 F16 versus final Q5 isolates quantization."
+  ]
+}

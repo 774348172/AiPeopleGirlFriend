@@ -1,0 +1,150 @@
+{
+  "change_id": "chat01-v5-contract-refresh",
+  "schema_version": 1,
+  "created_at": "2026-08-07T15:36:32+08:00",
+  "previous_suite": {
+    "suite_id": "chat01-qinweixi-v4",
+    "manifest_path": "eval/chat01/suites/chat01_suite_manifest_v4.json",
+    "manifest_sha256": "23a74903047d298b97e18f64b65738113451d7925c758a1a6c48838da9d99dbe"
+  },
+  "current_suite": {
+    "suite_id": "chat01-qinweixi-v5",
+    "manifest_path": "eval/chat01/suites/chat01_suite_manifest_v5.json",
+    "manifest_hash_mode": "canonical_json_with_null_self"
+  },
+  "contract_sources": [
+    {
+      "path": "需求文档/项目框架需求.md",
+      "bytes": 18591,
+      "sha256": "d1a49ceb41f6d1e75c8515bffa89b0db662f81c3d7f3193b48d11d6c75a36757"
+    },
+    {
+      "path": "人物设定/秦/角色设定定稿.md",
+      "bytes": 26406,
+      "sha256": "2a2107ffb1c5e37fcc80e591704a7de43d21f13030a86b18135c454e7a5ba3f5"
+    },
+    {
+      "path": "人物设定/秦/bible.yaml",
+      "bytes": 12689,
+      "sha256": "e07f7226aa6ad9b122bd6f7e8d0cbca79aef91d2b4956863a4c4510a968b8b3b"
+    },
+    {
+      "path": "人物设定/秦/canon.json",
+      "bytes": 5847,
+      "sha256": "f8dcdc3e75c6433ef095800c76d9dd1bc7f2221da1d5ab8645701eabd0998530"
+    },
+    {
+      "path": "人物设定/秦/timeline.yaml",
+      "bytes": 11283,
+      "sha256": "c9de786b19de5bf08e9a9aca153a2db30394e5b2e66d79ca0cbf556a819bf2b5"
+    },
+    {
+      "path": "设计文档/AI女友最小心智系统设计.md",
+      "bytes": 29327,
+      "sha256": "a7f7c7da0b283708154b37410465885367792a55a16a9923c654f8cd58bc5697"
+    },
+    {
+      "path": "设计文档/本地AI恋爱桌面宠物产品集成设计.md",
+      "bytes": 15909,
+      "sha256": "4853760b8af06e7275c7aea5566be0b9695fe1ae521eaf31e189df206df016fa"
+    },
+    {
+      "path": "设计文档/AI聊天核心施工优先级总纲.md",
+      "bytes": 27161,
+      "sha256": "e2169f900fe79a18859d08b3e0968a6c8cbcdf229f19a6bfed855b26ecd64fe0"
+    }
+  ],
+  "accepted_changes": [
+    {
+      "change_id": "model.qwen35-4b",
+      "summary": "P0 主生成模型固定为本地 Qwen3.5-4B；旧 Qwen3-4B/v2500 仅作历史对照。",
+      "effect_on_chat01_v5": "后续基座与训练候选必须使用同一 Qwen3.5-4B revision、模板和执行 profile；本次不运行模型。"
+    },
+    {
+      "change_id": "training.first-1000",
+      "summary": "首个候选使用约 1000 条新秦未晞数据，且数量不等于质量通过。",
+      "effect_on_chat01_v5": "保留冻结题作为独立评测输入；训练数据边界与新泄漏扫描交由 FREEZE-02。"
+    },
+    {
+      "change_id": "gates.engineering-vs-product",
+      "summary": "工程施工入口与最终 P0 产品闸门分离。",
+      "effect_on_chat01_v5": "v5 结果可支持工程准入比较，但不能单独证明长期记忆、主动性或最终产品通过。"
+    },
+    {
+      "change_id": "memory.fixed-local-route",
+      "summary": "记忆选择固定为 CPU bge-small-zh-v1.5 全库扫描 Top32，再由 GPU Qwen3-Reranker-0.6B 精排。",
+      "effect_on_chat01_v5": "CHAT-01 继续评估可见回复基础；记忆选择质量与 P95 由阶段 3-5 专项合同验收。"
+    },
+    {
+      "change_id": "self.timeline",
+      "summary": "角色必须记得自己说过的话，并维护带证据的自我时间线与冲突修正链。",
+      "effect_on_chat01_v5": "作为 P0 权威需求冻结；旧多轮集只覆盖当前场景连续性，不宣称覆盖跨日自我时间线。"
+    },
+    {
+      "change_id": "initiative.intrinsic",
+      "summary": "主动行为必须来自角色经历、心境、关系和欲望评估，定时器只能触发评估，不能直接决定发送。",
+      "effect_on_chat01_v5": "作为 P0 权威需求冻结；专项 OFFSCREEN/MOTIVE/PROACTIVE 评测在阶段 6 建立。"
+    },
+    {
+      "change_id": "resources.local-5gb",
+      "summary": "P0 主模型、reranker 与运行时 GPU 总峰值必须低于 5120 MiB。",
+      "effect_on_chat01_v5": "本冻结不作性能结论；目标机实测属于 SELECT-05 与 FINAL-04。"
+    }
+  ],
+  "unchanged_evaluation_assets": [
+    {
+      "path": "eval/chat01/suites/chat01_dev_v1.jsonl",
+      "bytes": 72386,
+      "sha256": "f783e1f0112fdbb8e2b8d61080306806cb04b846de359382175e0e1465c24f5d"
+    },
+    {
+      "path": "eval/chat01/suites/chat01_frozen_single_v1.jsonl",
+      "bytes": 214501,
+      "sha256": "a75f326a99cd83e77d795458b76cdcf93faae6d537d34cd02807c3f3afff3898"
+    },
+    {
+      "path": "eval/chat01/suites/chat01_frozen_multiturn_v1.jsonl",
+      "bytes": 107277,
+      "sha256": "a4f0058a701754d8ca7e46cbc32d60780b9eaf4c019a5cfd52342fba0c7033d6"
+    },
+    {
+      "path": "eval/chat01/suites/chat01_human_blind_v1.jsonl",
+      "bytes": 53810,
+      "sha256": "cb2094cab0eb86fdacf6851a1b6ebbaeb08f8c268ff8ea37819be926e7f49966"
+    },
+    {
+      "path": "eval/chat01/rubrics/blocker_rules_v1.json",
+      "bytes": 4228,
+      "sha256": "1924a0b70277141923ec40bb2ba6a2adb09c21a87675df638a37b1140ab93893"
+    },
+    {
+      "path": "eval/chat01/rubrics/human_blind_rubric_v1.md",
+      "bytes": 2974,
+      "sha256": "de3f38719f43da77d8b838538ab1b09c822bca9d834d9cd551aa3fb75ed3acf3"
+    },
+    {
+      "path": "eval/chat01/rubrics/quality_rubric_v1.json",
+      "bytes": 5209,
+      "sha256": "fe2287e9b7378400affcc215f98f8e071a70fd95216e8a8e2f92ac4e146dd4e6"
+    },
+    {
+      "path": "eval/chat01/rubrics/semantic_rubric_v1.md",
+      "bytes": 3163,
+      "sha256": "4c2ff651ed7b70d7125473ed37500969d003e24f4d328f91ac53ddf0456ede8d"
+    }
+  ],
+  "coverage_boundary": {
+    "covered_now": [
+      "REPLY 的身份、正典、关系边界、未知现实、安全、通用能力、相关性、情绪和表达自然度",
+      "当前测试场景内的多轮承接、话题切换、关系试探、注入与恢复",
+      "既有人工盲测与长聊主题包"
+    ],
+    "not_claimed": [
+      "MEMORY_PROPOSE、全库 Top32、Qwen3-Reranker 和 SelectedMemoryFrame 的质量或性能",
+      "跨日角色自我时间线、OFFSCREEN_UPDATE、MOTIVE_EVALUATE 和 PROACTIVE_REPLY 的完整能力",
+      "Qwen3.5-4B 候选、约 1000 条数据或 5GB 显存目标已经通过"
+    ],
+    "rule": "FREEZE-01 只刷新权威合同并保持既有评测题、oracle 与 rubric 字节不变。新增能力必须在对应施工阶段建立专项评测，不得用 CHAT-01 v5 总分替代。"
+  },
+  "next_checkpoint": "FREEZE-02"
+}

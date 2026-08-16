@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/comparison/qwen35-execution-profile-v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_id", "schema_version", "status", "created_at", "comparison", "model_slots",
+    "backend", "target_host", "launch", "request", "lanes", "run_order", "lifecycle",
+    "suite", "training_contract", "readiness"
+  ],
+  "properties": {
+    "profile_id": {"const": "qwen35-4b-shared-comparison-v1"},
+    "schema_version": {"const": 1},
+    "status": {"const": "contract_frozen_assets_pending"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "comparison": {
+      "const": {
+        "model_family": "Qwen3.5",
+        "parameter_class": "4B",
+        "only_active_variable": "training_weight_delta",
+        "base_role": "untrained_base",
+        "candidate_role": "qinweixi_lora_merged",
+        "required_equal_fields": [
+          "upstream_repository", "upstream_revision", "architecture", "parameter_class",
+          "tokenizer_sha256", "chat_template_sha256", "gguf_conversion_tool_sha256",
+          "gguf_quantization", "backend_build_sha256", "prompt_renderer_sha256",
+          "context_size", "sampling_lane", "seed", "max_tokens", "stop_contract"
+        ]
+      }
+    },
+    "model_slots": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["role", "manifest_path", "status", "resolution_checkpoint"],
+        "properties": {
+          "role": {"enum": ["untrained_base", "qinweixi_lora_merged"]},
+          "manifest_path": {"type": "string", "minLength": 1},
+          "status": {"const": "pending"},
+          "resolution_checkpoint": {"enum": ["MODEL-01", "MODEL-04"]}
+        }
+      }
+    },
+    "backend": {
+      "const": {
+        "name": "llama.cpp",
+        "api": "openai_compatible_chat_completions",
+        "stream": true,
+        "build_resolution": "MODEL-01 compatibility smoke",
+        "build_status": "pending",
+        "same_build_required": true
+      }
+    },
+    "target_host": {
+      "const": {
+        "os": "Windows",
+        "minimum_gpu_class": "NVIDIA RTX 3060 8GB",
+        "same_physical_host_required": true,
+        "exact_gpu_driver_cuda_recorded_per_run": true,
+        "network_mode": "offline_localhost_only"
+      }
+    },
+    "launch": {
+      "const": {
+        "host": "127.0.0.1", "port_policy": "runner_allocated_free_local_port",
+        "context_size": 4096, "parallel": 1, "gpu_layers": "all", "flash_attention": true,
+        "kv_cache_k": "q8_0", "kv_cache_v": "q8_0"
+      }
+    },
+    "request": {
+      "type": "object", "additionalProperties": false,
+      "required": ["prompt_renderer", "chat_template", "thinking", "stop_contract", "case_controls"],
+      "properties": {
+        "prompt_renderer": {"$ref": "#/$defs/artifact"},
+        "chat_template": {
+          "const": {
+            "source": "verified_model_native_template", "exact_hash_status": "pending_MODEL-01",
+            "same_hash_required": true, "forbid_qwen3_template_assumption": true
+          }
+        },
+        "thinking": {
+          "const": {
+            "visible": false, "control_method_status": "pending_MODEL-01",
+            "reasoning_content_must_not_enter_visible_output": true
+          }
+        },
+        "stop_contract": {
+          "const": {
+            "eos_from_verified_tokenizer": true, "explicit_stop_sequences": [],
+            "same_eos_and_stops_required": true
+          }
+        },
+        "case_controls": {
+          "const": {
+            "max_tokens": "from_chat01_case_generation.max_new_tokens",
+            "seed": "from_chat01_case_generation.seed_set",
+            "messages": "same_rendered_messages_bytes_for_both_models"
+          }
+        }
+      }
+    },
+    "lanes": {
+      "const": {
+        "deterministic": {"temperature": 0.0, "top_p": 1.0, "repeat_penalty": 1.1},
+        "experience": {"temperature": 0.75, "top_p": 0.9, "repeat_penalty": 1.1}
+      }
+    },
+    "run_order": {
+      "const": {
+        "quality": "precommitted_case_order_then_full_base_and_candidate_passes",
+        "quality_model_order": "base_then_candidate",
+        "performance_repetitions": 2,
+        "performance_model_orders": ["base_then_candidate", "candidate_then_base"],
+        "no_parallel_model_residency": true
+      }
+    },
+    "lifecycle": {
+      "const": {
+        "startup_timeout_seconds": 240, "connect_timeout_seconds": 5,
+        "read_idle_timeout_seconds": 30, "generation_timeout_seconds": 90,
+        "shutdown_timeout_seconds": 10,
+        "warmup": {"required": true, "visible": false, "max_tokens": 8, "seed": 42},
+        "cleanup": {"shutdown_owned_server": true, "verify_port_released": true, "verify_gpu_released_before_next_model": true}
+      }
+    },
+    "suite": {"$ref": "#/$defs/artifactWithSelfHash"},
+    "training_contract": {"$ref": "#/$defs/artifactWithSelfHash"},
+    "readiness": {
+      "const": {
+        "real_run_allowed": false,
+        "blocking_checkpoints": ["MODEL-01", "MODEL-02", "MODEL-03", "MODEL-04"],
+        "unlock_rule": "both model manifests and one immutable execution instance must verify"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {"path": {"type": "string", "minLength": 1}, "bytes": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "artifactWithSelfHash": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "bytes", "sha256", "self_sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1}, "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}, "self_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}
+

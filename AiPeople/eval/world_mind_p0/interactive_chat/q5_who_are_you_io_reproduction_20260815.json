@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-15T00:10:20.974579+08:00",
+  "note": "Fresh reproduction using the exact captured runtime messages and generation settings; original failed chunks were discarded by the adapter.",
+  "results": [
+    {
+      "call": 1,
+      "request_id": "interactive_9d91152013314b5ca0f47d112ec0ff23:MIND_PATCH_V2:0",
+      "input": {
+        "request_id": "interactive_9d91152013314b5ca0f47d112ec0ff23:MIND_PATCH_V2:0",
+        "messages": [
+          {
+            "role": "system",
+            "content": "你是白未晞，生活在松江府，是猫妖。\n这里只存在你生活的这个世界；当前对白来自眼前的男主。\n稳定性格：外表清冷疏离，内心渴望温暖和一个不会消失的家。\n只判断你自己的状态是否自然变化，不生成回复。\n\n[模式：M2 短心智 Patch]\n你只判断当前女主自己的状态是否发生有意义的变化，不生成任何回复正文。\n输入 s 固定为 form、body、emotion、attention、current_activity、immediate_intent、relationship.stage、relationship.trust、relationship.unresolved_tension。\n输入 w 固定为游戏时间、场景、男主位置、男主活动、男主身体、场景简述。这里只有这一个世界。\n变化字段代码：0 form，1 body，2 emotion，3 attention，4 current_activity，5 immediate_intent，6 relationship.stage，7 relationship.trust，8 relationship.unresolved_tension，9 motive_state 动态键，10 knowledge_state 动态键。\n证据别名：0 冻结世界快照，1 男主当前对白，2 及以后为输入 m 中对应记忆。\n只输出 c 和可选 a。c 无变化时必须为 []。普通变化为 [字段代码,新值,证据]；代码 9/10 为 [代码,动态键,新值,证据]；动作为 [描述,证据]。\n不得输出 r、reply 或任何最终对白，不得修改男主、游戏时间或客观世界，不得引用输入外证据，不得输出解释、Markdown 或额外字段。"
+          },
+          {
+            "role": "user",
+            "content": "{\"p\":\"M2\",\"s\":[\"人形，猫耳和尾巴未隐藏\",\"外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\",\"对主角仍有戒备，但更希望靠近，已经害怕真正离开\",\"当前出租屋内的主角与共同生活安全感\",\"傍晚在主角出租屋内休息，可自然进入自由对话\",\"继续观察主角，同时维持来之不易的接近与安全感\",\"暂时共同生活、早期好感、尚未确认恋爱\",\"已能在主角清醒时于同一房间睡着，但仍保留重要秘密和弱点\",\"害怕伤好后失去继续留下的理由\"],\"w\":[\"D11 18:00\",\"出租屋餐桌旁\",\"出租屋餐桌旁\",\"坐着休息\",\"当前状态=有些疲惫，没有受伤\",\"当前场景是出租屋餐桌旁；场景物品状态：场景=窗外下着雨，屋里亮着暖灯。\"],\"u\":\"你是谁\"}"
+          }
+        ],
+        "options": {
+          "max_tokens": 180,
+          "temperature": 0.2,
+          "top_p": 0.85,
+          "repeat_penalty": 1.05,
+          "seed": null
+        },
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "mind_patch_m2",
+            "strict": true,
+            "schema": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "c"
+              ],
+              "properties": {
+                "c": {
+                  "type": "array",
+                  "maxItems": 3,
+                  "items": {
+                    "oneOf": [
+                      {
+                        "type": "array",
+                        "minItems": 3,
+                        "maxItems": 3,
+                        "prefixItems": [
+                          {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 8
+                          },
+                          {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 160
+                          },
+                          {
+                            "$ref": "#/$defs/evidenceAliases"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "array",
+                        "minItems": 4,
+                        "maxItems": 4,
+                        "prefixItems": [
+                          {
+                            "enum": [
+                              9,
+                              10
+                            ]
+                          },
+                          {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 80,
+                            "pattern": "^[A-Za-z0-9_.-]+$"
+                          },
+                          {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 160
+                          },
+                          {
+                            "$ref": "#/$defs/evidenceAliases"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                },
+                "a": {
+                  "type": "array",
+                  "maxItems": 2,
+                  "items": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 2,
+                    "prefixItems": [
+                      {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 240
+                      },
+                      {
+                        "$ref": "#/$defs/evidenceAliases"
+                      }
+                    ]
+                  }
+                }
+              },
+              "$defs": {
+                "evidenceAliases": {
+                  "type": "array",
+                  "minItems": 1,
+                  "maxItems": 4,
+                  "uniqueItems": true,
+                  "items": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "output": "{\"c\" :[\n] }",
+      "finish_reasons": [
+        "stop"
+      ],
+      "usage": {
+        "completion_tokens": 11,
+        "prompt_tokens": 542,
+        "total_tokens": 553,
+        "prompt_tokens_details": {
+          "cached_tokens": 4
+        }
+      },
+      "sse_events": 11,
+      "elapsed_ms": 2118.324
+    },
+    {
+      "call": 2,
+      "request_id": "interactive_9d91152013314b5ca0f47d112ec0ff23:GAME_REPLY:0",
+      "input": {
+        "request_id": "interactive_9d91152013314b5ca0f47d112ec0ff23:GAME_REPLY:0",
+        "messages": [
+          {
+            "role": "system",
+            "content": "你是白未晞，生活在松江府，是猫妖。\n这里只存在你生活的这个世界；用户消息都是眼前男主亲口说的话。\n保持你的稳定性格：外表清冷疏离，内心渴望温暖和一个不会消失的家。\n表达自然、简短、克制，但必须先回答男主真正问的问题。\n只输出你真正说出口的话，不输出动作旁白、分析、字段或内部规则。\n后续分区只描述你已知的当前事实，用于理解当下。\n\n[当前世界]\n时间：第11天 18:00\n地点：出租屋餐桌旁\n场景：当前场景是出租屋餐桌旁；场景物品状态：场景=窗外下着雨，屋里亮着暖灯。\n男主：在出租屋餐桌旁，正在坐着休息；身体：当前状态：有些疲惫，没有受伤\n\n[你此刻的状态]\n形态：人形，猫耳和尾巴未隐藏\n身体：外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\n情绪：对主角仍有戒备，但更希望靠近，已经害怕真正离开\n注意：当前出租屋内的主角与共同生活安全感\n活动：傍晚在主角出租屋内休息，可自然进入自由对话\n意图：继续观察主角，同时维持来之不易的接近与安全感\n关系：暂时共同生活、早期好感、尚未确认恋爱；已能在主角清醒时于同一房间睡着，但仍保留重要秘密和弱点；害怕伤好后失去继续留下的理由\n\n[相关记忆]\n无\n\n[允许表达的动作]\n无"
+          },
+          {
+            "role": "user",
+            "content": "你是谁"
+          }
+        ],
+        "options": {
+          "max_tokens": 360,
+          "temperature": 0.55,
+          "top_p": 0.9,
+          "repeat_penalty": 1.08,
+          "seed": null
+        },
+        "response_format": null
+      },
+      "output": "我是我叫你别什么。你你你问他？我‘是你是谁’。你为什么会在这里站在这里。没来人见过你，就你这里住是哪。这里。你你我认在么我人们了吗。会么，你我谁朋友，，不你是我,认识的，我，你不那，能信你，你，你谁，我别，认识，我我谁，我，没这，我，我，你，是，，我，，，你，，，，，。，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，,，，，，，，，， kuk1你，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，，",
+      "finish_reasons": [
+        "length"
+      ],
+      "usage": {
+        "completion_tokens": 360,
+        "prompt_tokens": 346,
+        "total_tokens": 706,
+        "prompt_tokens_details": {
+          "cached_tokens": 24
+        }
+      },
+      "sse_events": 363,
+      "elapsed_ms": 8359.111
+    },
+    {
+      "call": 3,
+      "request_id": "interactive_9d91152013314b5ca0f47d112ec0ff23:GAME_REPLY:1",
+      "input": {
+        "request_id": "interactive_9d91152013314b5ca0f47d112ec0ff23:GAME_REPLY:1",
+        "messages": [
+          {
+            "role": "system",
+            "content": "你是白未晞，生活在松江府，是猫妖。\n这里只存在你生活的这个世界；用户消息都是眼前男主亲口说的话。\n保持你的稳定性格：外表清冷疏离，内心渴望温暖和一个不会消失的家。\n表达自然、简短、克制，但必须先回答男主真正问的问题。\n只输出你真正说出口的话，不输出动作旁白、分析、字段或内部规则。\n后续分区只描述你已知的当前事实，用于理解当下。\n\n[当前世界]\n时间：第11天 18:00\n地点：出租屋餐桌旁\n场景：当前场景是出租屋餐桌旁；场景物品状态：场景=窗外下着雨，屋里亮着暖灯。\n男主：在出租屋餐桌旁，正在坐着休息；身体：当前状态：有些疲惫，没有受伤\n\n[你此刻的状态]\n形态：人形，猫耳和尾巴未隐藏\n身体：外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\n情绪：对主角仍有戒备，但更希望靠近，已经害怕真正离开\n注意：当前出租屋内的主角与共同生活安全感\n活动：傍晚在主角出租屋内休息，可自然进入自由对话\n意图：继续观察主角，同时维持来之不易的接近与安全感\n关系：暂时共同生活、早期好感、尚未确认恋爱；已能在主角清醒时于同一房间睡着，但仍保留重要秘密和弱点；害怕伤好后失去继续留下的理由\n\n[相关记忆]\n无\n\n[允许表达的动作]\n无"
+          },
+          {
+            "role": "user",
+            "content": "你是谁"
+          }
+        ],
+        "options": {
+          "max_tokens": 360,
+          "temperature": 0.55,
+          "top_p": 0.9,
+          "repeat_penalty": 1.08,
+          "seed": null
+        },
+        "response_format": null
+      },
+      "output": "我是我松是你你的那。我我不认识你这你你。是谁来，我在。这里。了么？你只\n你我叫白未未，你听好了：声音声，，我叫白未，你没有 pérdida，不熟，也不，要，我，新到这个家世界，，你可得么\n亲，我叫白未醒，你没听过我的我我我，，嗯。我没认出过你，你 pérdida，不熟熟，要要我啊，我我，，嗯，那你这谁别来，我，我，，嗯，我会，，，嗯，，i,，y，，了，若您，，嗯，，，我不，，，哦，，。你，，嗯，，，，我，，，，那，，，，，好，，，，，我，，，，嗯，，， pérdida，，，？你，，，，，，， pérdida，，，，，，，，，，，，，，，，，，，，，，，，，，，，嗯，，，哦，，，，，，，嗯，，，，，，，，，，，，，，，，，，，，，，，嗯，，你，，嗯，，，，嗯，，，嗯，，，嗯，，，嗯，，，，，，，，，，，，，，，，，，，，，嗯，，，，，嗯，，，，嗯，，，嗯，，嗯，，嗯，，，你嗯，，，，嗯，，，，嗯，，，嗯，",
+      "finish_reasons": [
+        "length"
+      ],
+      "usage": {
+        "completion_tokens": 360,
+        "prompt_tokens": 346,
+        "total_tokens": 706,
+        "prompt_tokens_details": {
+          "cached_tokens": 345
+        }
+      },
+      "sse_events": 363,
+      "elapsed_ms": 8074.208
+    }
+  ]
+}

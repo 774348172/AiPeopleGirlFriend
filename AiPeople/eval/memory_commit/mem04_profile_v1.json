@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "checkpoint": "MEM-04",
+  "run_states": [
+    "committed",
+    "failed_retryable",
+    "failed_terminal",
+    "pending"
+  ],
+  "run_transitions": {
+    "initial": ["pending"],
+    "pending": ["committed", "failed_retryable", "failed_terminal"],
+    "failed_retryable": ["pending"],
+    "failed_terminal": [],
+    "committed": []
+  },
+  "decision_reason_codes": [
+    "conflict_detected",
+    "evidence_rejected",
+    "evidence_validated",
+    "needs_confirmation",
+    "player_confirmed",
+    "player_corrected",
+    "superseded_by_correction"
+  ],
+  "append_only_tables": [
+    "memory_run_transitions",
+    "memory_transitions"
+  ],
+  "rebuildable_projection_tables": [
+    "memory_proposal_runs",
+    "memories"
+  ],
+  "batch_semantics": "all_or_nothing",
+  "retry_fingerprint_excludes": [
+    "created_at",
+    "memory_id"
+  ],
+  "raw_model_output_persisted": false,
+  "next_checkpoint": "MEM-05"
+}

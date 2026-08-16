@@ -1,0 +1,91 @@
+{
+  "contract_id": "freeze03-qwen35-comparison-v1",
+  "schema_version": 1,
+  "status": "frozen",
+  "created_at": "2026-08-07T16:44:12+08:00",
+  "purpose": "Freeze the Qwen3.5-4B base-versus-Qin-Weixi comparison controls and measurement definitions before model identity or candidate outputs are available. Unknown model-specific facts remain blocking manifest slots and cannot be guessed from Qwen3.",
+  "execution_profile": {
+    "path": "eval/model_comparison_contract/shared_execution_profile_v1.json",
+    "bytes": 4703,
+    "sha256": "8fa896b15eb97ad80686cecec741bc8174e1f0d40bca429a0b606a5bb8400cde"
+  },
+  "metrics_contract": {
+    "path": "eval/model_comparison_contract/metrics_contract_v1.json",
+    "bytes": 3788,
+    "sha256": "7deb1c510ab97777f0cc3af53c5f367e46780dcbf9947da7ec53b1067226871c"
+  },
+  "model_manifest_schema": {
+    "path": "eval/model_comparison_contract/schemas/model_manifest.schema.json",
+    "bytes": 3569,
+    "sha256": "9b19158384723e59b48d68030eebd56b677b5013e4872e04c24335cd44ceecfe"
+  },
+  "frozen_assets": [
+    {
+      "path": "eval/model_comparison_contract/schemas/execution_profile.schema.json",
+      "bytes": 6015,
+      "sha256": "9845f332d797cedbbe339103eee4e708010ba0296d16d8cd57f28406128281bd",
+      "role": "schema"
+    },
+    {
+      "path": "eval/model_comparison_contract/schemas/metrics_contract.schema.json",
+      "bytes": 4435,
+      "sha256": "b7c88d065112cd5deb574014f5f896dfc220ac3b200c7136b86667bb55f80511",
+      "role": "schema"
+    },
+    {
+      "path": "eval/model_comparison_contract/schemas/model_manifest.schema.json",
+      "bytes": 3569,
+      "sha256": "9b19158384723e59b48d68030eebd56b677b5013e4872e04c24335cd44ceecfe",
+      "role": "schema"
+    },
+    {
+      "path": "eval/model_comparison_contract/schemas/freeze_contract.schema.json",
+      "bytes": 2163,
+      "sha256": "48eb8a176fc95418be8e9e1cf6e6368b6e0f5cd81bcea80714ef9506487544d3",
+      "role": "schema"
+    },
+    {
+      "path": "eval/model_comparison_contract/freeze.py",
+      "bytes": 20200,
+      "sha256": "acb8d33892a2f0a485573387a854e2f7e6ae6896ed2cb1ac65905b1940f2b1b8",
+      "role": "verifier"
+    },
+    {
+      "path": "eval/model_comparison_contract/shared_execution_profile_v1.json",
+      "bytes": 4703,
+      "sha256": "8fa896b15eb97ad80686cecec741bc8174e1f0d40bca429a0b606a5bb8400cde",
+      "role": "profile"
+    },
+    {
+      "path": "eval/model_comparison_contract/metrics_contract_v1.json",
+      "bytes": 3788,
+      "sha256": "7deb1c510ab97777f0cc3af53c5f367e46780dcbf9947da7ec53b1067226871c",
+      "role": "metrics"
+    },
+    {
+      "path": "eval/chat01/suites/chat01_suite_manifest_v5.json",
+      "bytes": 12411,
+      "sha256": "26fcce0c99ece7b9ef30f25c21e79b8ab17f0ad722c364471cac713a463aa202",
+      "role": "upstream_contract"
+    },
+    {
+      "path": "eval/training_contract/freeze02_contract_v1.json",
+      "bytes": 7989,
+      "sha256": "5663c26837f27401eeead8221820cca95f1c534c0f26e235742b163bede365da",
+      "role": "upstream_contract"
+    },
+    {
+      "path": "runtime/_prompt.py",
+      "bytes": 5671,
+      "sha256": "657720a661f1912223a294fd87298eb0627f799ec10cd728e725d52309679a8e",
+      "role": "prompt_renderer"
+    }
+  ],
+  "freeze": {
+    "hash_algorithm": "sha256",
+    "manifest_hash_mode": "canonical_json_with_null_self",
+    "immutable": true,
+    "manifest_sha256": "339992af4cc35a441b8de8bb12b94f3146ac7a361840a8ba798e16297e5fd8f8"
+  },
+  "next_checkpoint": "MODEL-01"
+}

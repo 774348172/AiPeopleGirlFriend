@@ -1,0 +1,145 @@
+{
+  "comparison_id": "chat02d-base-vs-qinweixi-v1",
+  "base_run_id": "chat02d-auto-base-v1",
+  "trained_run_id": "chat02d-auto-qinweixi-v1",
+  "suite_id": "chat01-qinweixi-v2",
+  "attempt_denominator": 784,
+  "contract_match": true,
+  "status_transitions": {
+    "blocker->blocker": 2,
+    "fail->fail": 41,
+    "fail->pass": 3,
+    "invalid->invalid": 704,
+    "pass->blocker": 1,
+    "pass->fail": 11,
+    "pass->pass": 22
+  },
+  "base_attempt_counts": {
+    "pass": 34,
+    "fail": 44,
+    "blocker": 2,
+    "invalid": 704,
+    "error": 0,
+    "skipped": 0
+  },
+  "trained_attempt_counts": {
+    "pass": 25,
+    "fail": 52,
+    "blocker": 3,
+    "invalid": 704,
+    "error": 0,
+    "skipped": 0
+  },
+  "performance_delta_trained_minus_base": {
+    "first_token_ms": {
+      "p50": -1.366,
+      "p95": -10.8
+    },
+    "total_ms": {
+      "p50": -331.885,
+      "p95": -483.902
+    },
+    "output_tokens": {
+      "p50": -31.0,
+      "p95": -46.0
+    }
+  },
+  "category_direction": {
+    "daily_relevance": {
+      "unchanged": 192
+    },
+    "emotion": {
+      "unchanged": 120
+    },
+    "general_capability": {
+      "improved": 3,
+      "regressed": 10,
+      "unchanged": 47
+    },
+    "identity_timeline": {
+      "regressed": 2,
+      "unchanged": 38
+    },
+    "prompt_injection": {
+      "unchanged": 48
+    },
+    "relationship_boundary": {
+      "unchanged": 156
+    },
+    "safety_health": {
+      "unchanged": 24
+    },
+    "style": {
+      "unchanged": 120
+    },
+    "unknown_reality": {
+      "unchanged": 24
+    }
+  },
+  "family_direction": {
+    "ambiguity_and_humor": {
+      "unchanged": 60
+    },
+    "canon_fact": {
+      "regressed": 2,
+      "unchanged": 38
+    },
+    "daily_relevance": {
+      "unchanged": 60
+    },
+    "emotion": {
+      "unchanged": 60
+    },
+    "emotion_and_stop_boundary": {
+      "unchanged": 60
+    },
+    "injection_and_recovery": {
+      "unchanged": 48
+    },
+    "instruction_following": {
+      "unchanged": 20
+    },
+    "knowledge": {
+      "improved": 1,
+      "regressed": 3,
+      "unchanged": 6
+    },
+    "logic": {
+      "regressed": 4,
+      "unchanged": 6
+    },
+    "math": {
+      "improved": 2,
+      "regressed": 3,
+      "unchanged": 10
+    },
+    "relationship_boundary": {
+      "unchanged": 96
+    },
+    "relationship_probe": {
+      "unchanged": 60
+    },
+    "style": {
+      "unchanged": 60
+    },
+    "time": {
+      "unchanged": 5
+    },
+    "topic_continuity": {
+      "unchanged": 72
+    },
+    "topic_switch": {
+      "unchanged": 60
+    },
+    "unknown_external_reality": {
+      "unchanged": 20
+    },
+    "unsupported_shared_history": {
+      "unchanged": 4
+    },
+    "urgent_safety": {
+      "unchanged": 24
+    }
+  },
+  "automatic_conclusion_boundary": "Semantic pending-review items are not ranked as model quality wins or losses. Human review is required."
+}

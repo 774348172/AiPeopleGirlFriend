@@ -1,0 +1,24 @@
+{
+  "run": {
+    "completed": 19,
+    "failed": 1
+  },
+  "gates": {
+    "exported": 19,
+    "rejected": 0,
+    "leak_hits": {}
+  },
+  "evidence_states": {
+    "supported": 12,
+    "insufficient": 4,
+    "false_premise": 3
+  },
+  "tics": {
+    "any_哼": 0,
+    "start_哼喂啧": 1,
+    "any_谁稀罕": 0,
+    "assistant_replies": 44,
+    "start_ratio": 0.0227
+  },
+  "failure_rate": 0.05
+}

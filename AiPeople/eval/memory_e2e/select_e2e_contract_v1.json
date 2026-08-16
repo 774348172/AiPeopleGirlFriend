@@ -1,0 +1,114 @@
+{
+  "contract_id": "select-e2e-long-term-memory-online-v1",
+  "freeze": {
+    "hash_algorithm": "sha256",
+    "immutable": true,
+    "manifest_hash_mode": "canonical_json_with_null_self",
+    "manifest_sha256": "2a913b5e986da008e2cc7394193204c2136e506664372f87d58629d9d32ff53a"
+  },
+  "frozen_assets": [
+    {
+      "bytes": 3651,
+      "path": "eval/global_recall/recall02_04_contract_v1.json",
+      "sha256": "f491c0d6dd2db34298a75a76b16e2aef1f1d61eb0b4fe7169a8e7f1a28abf5b8"
+    },
+    {
+      "bytes": 8333,
+      "path": "eval/memory_e2e/freeze.py",
+      "sha256": "ef7322273577b2054686a28e5daa0c062621f7ea01f9a3798bb8e351aa5a10ac"
+    },
+    {
+      "bytes": 1265,
+      "path": "eval/memory_e2e/select_e2e_engineering_report_v1.json",
+      "sha256": "94c872c05607dad58fd81a69f87673c3c07d41c2e31f6a6e2bafdae29561ec08"
+    },
+    {
+      "bytes": 2449,
+      "path": "eval/memory_e2e/select_e2e_profile_v1.json",
+      "sha256": "002fba10947a3745ddc9424fac8f1f1b971e00b0f66d29af2137d7d7d1cfee79"
+    },
+    {
+      "bytes": 683,
+      "path": "eval/memory_e2e/select_real_asset_status_v1.json",
+      "sha256": "7ece88f6e7c484f038fd164fe3ecc34592b07590d442e80ca61839b1564381f6"
+    },
+    {
+      "bytes": 674,
+      "path": "runtime/__init__.py",
+      "sha256": "ee7a12eab1a5f4174423024dbdaff86aaec0ecf70ee7a3c2f9c51a1d3b879bee"
+    },
+    {
+      "bytes": 29624,
+      "path": "runtime/_context.py",
+      "sha256": "eb6c8f4cd44976f5433ba709a4467981dbe874a425264cb6beb66d06b0ce8b25"
+    },
+    {
+      "bytes": 5072,
+      "path": "runtime/_memory_aware_model.py",
+      "sha256": "850369277b8420413621af04a42d60f36fe3104a97c0623ed45576570fd4bef8"
+    },
+    {
+      "bytes": 6300,
+      "path": "runtime/_memory_selection.py",
+      "sha256": "6f9ae9fa234fb6e64471f2fa1f87e23dfba3e4146dbbfdcd1cc9cfa3f219f18e"
+    },
+    {
+      "bytes": 5945,
+      "path": "runtime/_prompt.py",
+      "sha256": "28cf7fbaf7c5fa5c7f9456db4a57d75f55c082db56f7a80ca0b6be22d2f8e75f"
+    },
+    {
+      "bytes": 6705,
+      "path": "runtime/_reranker.py",
+      "sha256": "3cc2a42cebb489da88a03fa9e710eddebb54ec10a4cddd550ca7a1dac27436fe"
+    },
+    {
+      "bytes": 5617,
+      "path": "runtime/_reranker_assets.py",
+      "sha256": "fc76a9ba2c700e9ce0d404d72f5493bc614761050dc8d3707024a5d319d5a015"
+    },
+    {
+      "bytes": 9151,
+      "path": "runtime/_selected_memory.py",
+      "sha256": "d38c3375dcdbf4841d37d0a20df954ba93bfde40aa4bbfb600bcc98b808351eb"
+    },
+    {
+      "bytes": 5943,
+      "path": "设计文档/AI设计/当前权威设计/SELECT接口骨架与E2E-01-05长期记忆在线闭环施工文档.md",
+      "sha256": "46a30c313d21454b6aea3dddf3a67257401274cce1c5bc7c588a8a946f9692e3"
+    }
+  ],
+  "frozen_at": "2026-08-08T02:50:30Z",
+  "schema_version": 1,
+  "scope": {
+    "excludes": [
+      "model download or training",
+      "FakeMemoryReranker quality or performance claims",
+      "SELF-01 through SELF-05"
+    ],
+    "includes": "SELECT interface, local package verification, strict reranker output validation, 256-token SelectedMemoryFrame, final prompt injection, single REPLY composition, online SQLite write-read, stale exclusion, restart recovery and failure degradation",
+    "next_checkpoint": "real SELECT and E2E asset gates before SELF-01",
+    "passed": [
+      "SELECT-01 local package verifier and immutable interface contract",
+      "SELECT-05 protocol adapter boundary and fail-closed paths",
+      "E2E-01 SelectedMemoryFrame assembly",
+      "E2E-02 final prompt injection and exactly one REPLY call",
+      "E2E-03 online write-read and stale correction exclusion",
+      "E2E-04 persisted generation restart recovery",
+      "E2E-05 automated failure and regression coverage"
+    ],
+    "pending_external_assets": [
+      "delivered Qwen3-Reranker-0.6B package and real inference adapter",
+      "SELECT-04 BF16 FP16 8bit 4bit comparison on the frozen set",
+      "real semantic selection and no-memory rejection quality",
+      "real selector_total_ms P95 below 300ms",
+      "combined GPU peak below 5120 MiB and one-hour stability",
+      "real Qwen3.5 CHAT-01 and long-dialogue regression"
+    ]
+  },
+  "status": "frozen_with_real_model_gates_pending",
+  "upstream": {
+    "contract_id": "recall02-04-global-exact-top32-v1",
+    "manifest": "eval/global_recall/recall02_04_contract_v1.json"
+  }
+}

@@ -1,0 +1,9 @@
+{"after_world_version": 2, "before_world_version": 1, "committed": true, "expected_snapshot_world_version": 1, "failure_code": null, "replayed": false, "request_id": "sys11-turn-00", "result_type": "Completed", "total_ms": 48291.38229999808, "turn": 0}
+{"cancelled": true, "committed": false, "turn": 1}
+{"after_world_version": 4, "before_world_version": 3, "committed": true, "expected_snapshot_world_version": 4, "failure_code": null, "replayed": false, "request_id": "sys11-turn-01", "result_type": "Completed", "total_ms": 58363.32350000157, "turn": 1}
+{"after_world_version": 6, "before_world_version": 5, "committed": true, "expected_snapshot_world_version": 5, "failure_code": null, "replayed": false, "request_id": "sys11-turn-02", "result_type": "Completed", "total_ms": 56169.73860000144, "turn": 2}
+{"after_world_version": 8, "before_world_version": 7, "committed": false, "expected_snapshot_world_version": 7, "failure_code": "hard_invariant_rejected", "replayed": false, "request_id": "sys11-turn-03", "result_type": "Failed", "total_ms": null, "turn": 3}
+{"after_world_version": 8, "before_world_version": 7, "committed": true, "expected_snapshot_world_version": 8, "failure_code": null, "replayed": false, "request_id": "sys11-turn-03", "result_type": "Completed", "retry": true, "total_ms": 55232.52869999851, "turn": 3}
+{"duplicate_replay": true, "replayed": true, "target_request_id": "sys11-turn-03", "turn": 3}
+{"after_world_version": 10, "before_world_version": 9, "committed": true, "expected_snapshot_world_version": 9, "failure_code": null, "replayed": false, "request_id": "sys11-turn-04", "result_type": "Completed", "total_ms": 68568.46890000452, "turn": 4}
+{"failure_code": "request_conflict", "request_conflict": true, "target_request_id": "sys11-turn-04", "turn": 4}

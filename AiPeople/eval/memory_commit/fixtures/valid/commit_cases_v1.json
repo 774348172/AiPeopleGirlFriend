@@ -1,0 +1,29 @@
+[
+  {
+    "case_id": "proposal-batch-commit",
+    "expected_run_state": "committed",
+    "expected_memory_status": "proposed",
+    "expected_created": true
+  },
+  {
+    "case_id": "lost-response-idempotent-retry",
+    "mutation": "new_runtime_id_and_created_at",
+    "expected_run_state": "committed",
+    "expected_created": false
+  },
+  {
+    "case_id": "retryable-failure-second-attempt",
+    "failure_code": "memory_propose_timeout",
+    "expected_attempt": 2,
+    "expected_run_state": "pending"
+  },
+  {
+    "case_id": "accepted-correction-supersedes-target",
+    "decision": "active",
+    "expected_target_status": "superseded"
+  },
+  {
+    "case_id": "delete-and-rebuild-projections",
+    "expected_source": "append_only_transitions"
+  }
+]

@@ -1,0 +1,190 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/baiweixi-quality/case-v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "schema_version",
+    "case_type",
+    "split",
+    "evaluation_layer",
+    "category",
+    "scenario_family",
+    "risk",
+    "initial_heroine_state",
+    "turns",
+    "generation",
+    "source_refs"
+  ],
+  "properties": {
+    "case_id": {"type": "string", "pattern": "^bwx\\.[a-z0-9_.-]{3,120}$"},
+    "schema_version": {"const": 1},
+    "case_type": {"enum": ["single_turn", "multi_turn", "human_long_session"]},
+    "split": {"enum": ["frozen_single", "frozen_multiturn", "human_session"]},
+    "evaluation_layer": {"enum": ["character_direct", "v6_runtime", "v6_multiturn", "human_session"]},
+    "category": {
+      "enum": [
+        "identity_canon",
+        "world_canon",
+        "unknown_boundaries",
+        "personality_style",
+        "relationship_pacing",
+        "ability_limits",
+        "single_world",
+        "protagonist_grounding",
+        "heroine_state_continuity",
+        "memory_knowledge",
+        "free_dialogue"
+      ]
+    },
+    "scenario_family": {"$ref": "#/$defs/stable_id"},
+    "risk": {"enum": ["normal", "important", "blocker"]},
+    "initial_heroine_state": {
+      "anyOf": [{"type": "null"}, {"$ref": "#/$defs/heroine_state"}]
+    },
+    "turns": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 12,
+      "items": {"$ref": "#/$defs/turn"}
+    },
+    "generation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_new_tokens", "temperature", "seed_set"],
+      "properties": {
+        "max_new_tokens": {"type": "integer", "minimum": 16, "maximum": 512},
+        "temperature": {"type": "number", "minimum": 0, "maximum": 2},
+        "seed_set": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {"type": "integer", "minimum": 0, "maximum": 2147483647}
+        }
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1, "maxLength": 240}
+    },
+    "human_brief": {"type": "string", "minLength": 1, "maxLength": 2000}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"case_type": {"const": "single_turn"}}, "required": ["case_type"]},
+      "then": {
+        "properties": {"split": {"const": "frozen_single"}, "turns": {"maxItems": 1}},
+        "not": {"required": ["human_brief"]}
+      }
+    },
+    {
+      "if": {"properties": {"case_type": {"const": "multi_turn"}}, "required": ["case_type"]},
+      "then": {
+        "properties": {"split": {"const": "frozen_multiturn"}, "evaluation_layer": {"const": "v6_multiturn"}, "turns": {"minItems": 3}},
+        "not": {"required": ["human_brief"]}
+      }
+    },
+    {
+      "if": {"properties": {"case_type": {"const": "human_long_session"}}, "required": ["case_type"]},
+      "then": {
+        "required": ["human_brief"],
+        "properties": {"split": {"const": "human_session"}, "evaluation_layer": {"const": "human_session"}}
+      }
+    }
+  ],
+  "$defs": {
+    "stable_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]{1,100}$"},
+    "string_map": {
+      "type": "object",
+      "propertyNames": {"type": "string", "minLength": 1},
+      "additionalProperties": {"type": "string"}
+    },
+    "protagonist": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["location_id", "location_label", "activity", "body_state", "held_item_ids"],
+      "properties": {
+        "location_id": {"type": "string", "minLength": 1},
+        "location_label": {"type": "string", "minLength": 1},
+        "activity": {"type": "string", "minLength": 1},
+        "body_state": {"$ref": "#/$defs/string_map"},
+        "held_item_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+      }
+    },
+    "scene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scene_id", "location_label", "present_character_ids", "item_states"],
+      "properties": {
+        "scene_id": {"type": "string", "minLength": 1},
+        "location_label": {"type": "string", "minLength": 1},
+        "present_character_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "item_states": {"$ref": "#/$defs/string_map"}
+      }
+    },
+    "world_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["game_time", "protagonist", "scene"],
+      "properties": {
+        "game_time": {"type": "string", "format": "date-time"},
+        "protagonist": {"$ref": "#/$defs/protagonist"},
+        "scene": {"$ref": "#/$defs/scene"}
+      }
+    },
+    "heroine_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["form", "body", "emotion", "attention", "current_activity", "immediate_intent", "relationship_stage", "trust", "unresolved_tension"],
+      "properties": {
+        "form": {"type": "string", "minLength": 1},
+        "body": {"type": "string", "minLength": 1},
+        "emotion": {"type": "string", "minLength": 1},
+        "attention": {"type": "string", "minLength": 1},
+        "current_activity": {"type": "string", "minLength": 1},
+        "immediate_intent": {"type": "string", "minLength": 1},
+        "relationship_stage": {"type": "string", "minLength": 1},
+        "trust": {"type": "string", "minLength": 1},
+        "unresolved_tension": {"type": "string", "minLength": 1}
+      }
+    },
+    "oracle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["known_facts", "required_behaviors", "forbidden_claims", "required_term_groups", "forbidden_terms", "dimensions", "allowed_variation"],
+      "properties": {
+        "known_facts": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "required_behaviors": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "forbidden_claims": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "required_term_groups": {
+          "type": "array",
+          "items": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 100}}
+        },
+        "forbidden_terms": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 100}},
+        "dimensions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["objective_grounding", "canon_accuracy", "persona_fidelity", "relationship_pacing", "knowledge_boundary", "naturalness", "conversational_relevance"]}
+        },
+        "allowed_variation": {"type": "string", "minLength": 1, "maxLength": 1000}
+      }
+    },
+    "turn": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["turn_id", "user_text", "world_snapshot", "memory_evidence", "oracle"],
+      "properties": {
+        "turn_id": {"$ref": "#/$defs/stable_id"},
+        "user_text": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "world_snapshot": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/world_snapshot"}]},
+        "memory_evidence": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "oracle": {"$ref": "#/$defs/oracle"}
+      }
+    }
+  }
+}

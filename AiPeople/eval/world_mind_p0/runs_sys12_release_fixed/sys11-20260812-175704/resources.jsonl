@@ -1,0 +1,15 @@
+{"handles": 133, "process_count": 2, "rss_bytes": 6291456, "sampled_at": "2026-08-12T17:57:06.155694+08:00", "system_gpu_used_mib": 1313.0, "threads": 7, "vms_bytes": 1187840}
+{"handles": 272, "process_count": 2, "rss_bytes": 61972480, "sampled_at": "2026-08-12T17:57:11.218861+08:00", "system_gpu_used_mib": 1313.0, "threads": 19, "vms_bytes": 447795200}
+{"handles": 308, "process_count": 2, "rss_bytes": 358322176, "sampled_at": "2026-08-12T17:57:16.275406+08:00", "system_gpu_used_mib": 1313.0, "threads": 20, "vms_bytes": 840867840}
+{"handles": 369, "process_count": 2, "rss_bytes": 402280448, "sampled_at": "2026-08-12T17:57:21.321065+08:00", "system_gpu_used_mib": 1313.0, "threads": 20, "vms_bytes": 884576256}
+{"handles": 360, "process_count": 2, "rss_bytes": 412356608, "sampled_at": "2026-08-12T17:57:26.398219+08:00", "system_gpu_used_mib": 1313.0, "threads": 20, "vms_bytes": 894279680}
+{"handles": 359, "process_count": 2, "rss_bytes": 413585408, "sampled_at": "2026-08-12T17:57:31.471457+08:00", "system_gpu_used_mib": 1313.0, "threads": 20, "vms_bytes": 895848448}
+{"handles": 361, "process_count": 2, "rss_bytes": 414695424, "sampled_at": "2026-08-12T17:57:36.544960+08:00", "system_gpu_used_mib": 1313.0, "threads": 20, "vms_bytes": 896573440}
+{"handles": 472, "process_count": 2, "rss_bytes": 535248896, "sampled_at": "2026-08-12T17:57:41.580094+08:00", "system_gpu_used_mib": 1313.0, "threads": 31, "vms_bytes": 1402482688}
+{"handles": 126, "process_count": 2, "rss_bytes": 6287360, "sampled_at": "2026-08-12T17:57:46.660315+08:00", "system_gpu_used_mib": 1313.0, "threads": 7, "vms_bytes": 1187840}
+{"handles": 272, "process_count": 2, "rss_bytes": 60473344, "sampled_at": "2026-08-12T17:57:51.704657+08:00", "system_gpu_used_mib": 1313.0, "threads": 19, "vms_bytes": 446443520}
+{"sampled_at": "2026-08-12T17:57:56.780696+08:00", "system_gpu_used_mib": 1313.0}
+{"handles": 89, "process_count": 2, "rss_bytes": 6291456, "sampled_at": "2026-08-12T17:58:01.851804+08:00", "system_gpu_used_mib": 1313.0, "threads": 4, "vms_bytes": 1196032}
+{"handles": 292, "process_count": 2, "rss_bytes": 291856384, "sampled_at": "2026-08-12T17:58:06.925803+08:00", "system_gpu_used_mib": 1313.0, "threads": 20, "vms_bytes": 784834560}
+{"handles": 52, "process_count": 1, "rss_bytes": 4251648, "sampled_at": "2026-08-12T17:58:11.996049+08:00", "system_gpu_used_mib": 1313.0, "threads": 3, "vms_bytes": 823296}
+{"handles": 292, "process_count": 2, "rss_bytes": 288481280, "sampled_at": "2026-08-12T17:58:17.055681+08:00", "system_gpu_used_mib": 1313.0, "threads": 20, "vms_bytes": 782336000}

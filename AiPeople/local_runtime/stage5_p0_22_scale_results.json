@@ -1,0 +1,39 @@
+{
+  "event_count": 100000,
+  "samples": 50,
+  "database_bytes": 72716288,
+  "phrase_query": {
+    "p50_ms": 0.627,
+    "p95_ms": 0.703,
+    "max_ms": 0.722
+  },
+  "time_query": {
+    "p50_ms": 4.173,
+    "p95_ms": 4.878,
+    "max_ms": 5.731
+  },
+  "normal_context": {
+    "p50_ms": 0.032,
+    "p95_ms": 0.148,
+    "max_ms": 0.208
+  },
+  "recall_context": {
+    "p50_ms": 0.729,
+    "p95_ms": 1.003,
+    "max_ms": 1.327
+  },
+  "phrase_query_plan": [
+    "SCAN event_fts VIRTUAL TABLE INDEX 0:M2",
+    "SEARCH e USING INDEX sqlite_autoindex_events_1 (event_id=?)",
+    "SEARCH ee USING INDEX sqlite_autoindex_event_epochs_1 (event_id=?)",
+    "USE TEMP B-TREE FOR ORDER BY"
+  ],
+  "time_query_plan": [
+    "SEARCH e USING INDEX ix_events_conversation_time (conversation_id=? AND occurred_at>? AND occurred_at<?)",
+    "SEARCH ee USING INDEX sqlite_autoindex_event_epochs_1 (event_id=?)",
+    "USE TEMP B-TREE FOR ORDER BY"
+  ],
+  "fts_virtual_index": true,
+  "conversation_time_index": true,
+  "build_ms": null
+}

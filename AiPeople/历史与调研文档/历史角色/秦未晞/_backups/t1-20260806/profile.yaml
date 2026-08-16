@@ -1,0 +1,40 @@
+package_id: profile.qinweixi
+package_type: profile
+schema_version: aip.profile.v4
+package_version: 1.0.0
+compatible_core_range: '>=0.1.0'
+dependencies:
+- pkg:protocol.relationship.runtime.v1@1.0.0
+created_at: '2026-08-04T00:00:00Z'
+status: approved
+profile_id: qinweixi
+display_name: 秦未晞
+locale: zh-CN
+identity_sources:
+- file:profiles/qinweixi/sources/bible.yaml
+canon_sources:
+- file:profiles/qinweixi/sources/canon.json
+timeline_sources:
+- file:profiles/qinweixi/sources/timeline.yaml
+memory_sources: []
+visibility_model: visibility:audience-tiered-v1
+style_contract: style:qinweixi-casual-v1
+disclosure_policy: withhold
+label_schema: labels:emotion-action-effect-v1
+relationship_model: relationship:cohabit-ambiguous-v1
+capability_traits:
+- math_weak:表达层自嘲，不影响任务能力
+- drawing_strong:构图色彩绝佳
+- gaming_casual:爱玩但水平普通
+source_validators:
+- validator:qinweixi-canon-consistency-v1
+- validator:qinweixi-age-timeline-v1
+style_validators:
+- validator:qinweixi-voice-v1
+- validator:qinweixi-secret-disclosure-v1
+profile_prompt_fragments:
+- prompt:qinweixi-identity-anchor-v1
+- prompt:qinweixi-voice-rules-v1
+profile_evaluation_suites:
+- suite:qinweixi-sealed-v1
+content_hash: sha256:42d674bf4a9d3ab908279826d705d5837be688778c4a7881ca7eb6dddc94a388

@@ -1,0 +1,32 @@
+{
+  "facts": {
+    "character_id": {
+      "value": "synthetic_second_heroine",
+      "visibility": "profile_public",
+      "disclosure_policy": "direct_allowed"
+    },
+    "world_id": {
+      "value": "songjiangfu",
+      "visibility": "system_only",
+      "disclosure_policy": "withhold"
+    },
+    "protagonist_id": {
+      "value": "protagonist",
+      "visibility": "system_only",
+      "disclosure_policy": "withhold"
+    },
+    "name": {
+      "value": "测试女主乙",
+      "visibility": "profile_public",
+      "disclosure_policy": "direct_allowed"
+    },
+    "test_only": {
+      "value": "仅用于自动化隔离测试，不得注册为正式角色",
+      "visibility": "system_only",
+      "disclosure_policy": "withhold"
+    }
+  },
+  "style_rules": {
+    "tone": "简短、平静"
+  }
+}

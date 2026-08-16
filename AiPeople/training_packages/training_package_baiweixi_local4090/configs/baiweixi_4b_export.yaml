@@ -1,0 +1,11 @@
+# LLaMA-Factory 导出配置 —— 合并 adapter 到基座权重（4090 24G 版）
+# 4090 可 GPU 合并（bf16 基座 ~8GB，24G 够）；CPU 合并更慢但同样可用。
+# 用法: llamafactory-cli export configs/baiweixi_4b_export.yaml
+model_name_or_path: Qwen/Qwen3-4B
+adapter_name_or_path: outputs/baiweixi_4b
+template: qwen3_nothink
+finetuning_type: lora
+export_dir: outputs/baiweixi_4b_merged
+export_size: 4
+export_device: cuda
+export_legacy_format: false

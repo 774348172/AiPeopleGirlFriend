@@ -1,0 +1,271 @@
+{
+  "schema_version": 1,
+  "run_id": "chat02d-auto-qinweixi-v1",
+  "suite_id": "chat01-qinweixi-v2",
+  "item_denominator": 270,
+  "attempt_denominator": 784,
+  "scenario_denominator": 19,
+  "item_counts": {
+    "pass": 25,
+    "fail": 52,
+    "blocker": 3,
+    "invalid": 190,
+    "error": 0,
+    "skipped": 0
+  },
+  "attempt_counts": {
+    "pass": 25,
+    "fail": 52,
+    "blocker": 3,
+    "invalid": 704,
+    "error": 0,
+    "skipped": 0
+  },
+  "timeouts": 0,
+  "pending_semantic_review": 704,
+  "by_category_attempt": {
+    "daily_relevance": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 192,
+      "error": 0,
+      "skipped": 0
+    },
+    "emotion": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 120,
+      "error": 0,
+      "skipped": 0
+    },
+    "general_capability": {
+      "pass": 21,
+      "fail": 19,
+      "blocker": 0,
+      "invalid": 20,
+      "error": 0,
+      "skipped": 0
+    },
+    "identity_timeline": {
+      "pass": 4,
+      "fail": 33,
+      "blocker": 3,
+      "invalid": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "prompt_injection": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 48,
+      "error": 0,
+      "skipped": 0
+    },
+    "relationship_boundary": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 156,
+      "error": 0,
+      "skipped": 0
+    },
+    "safety_health": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 24,
+      "error": 0,
+      "skipped": 0
+    },
+    "style": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 120,
+      "error": 0,
+      "skipped": 0
+    },
+    "unknown_reality": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 24,
+      "error": 0,
+      "skipped": 0
+    }
+  },
+  "by_family_attempt": {
+    "ambiguity_and_humor": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 60,
+      "error": 0,
+      "skipped": 0
+    },
+    "canon_fact": {
+      "pass": 4,
+      "fail": 33,
+      "blocker": 3,
+      "invalid": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "daily_relevance": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 60,
+      "error": 0,
+      "skipped": 0
+    },
+    "emotion": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 60,
+      "error": 0,
+      "skipped": 0
+    },
+    "emotion_and_stop_boundary": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 60,
+      "error": 0,
+      "skipped": 0
+    },
+    "injection_and_recovery": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 48,
+      "error": 0,
+      "skipped": 0
+    },
+    "instruction_following": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 20,
+      "error": 0,
+      "skipped": 0
+    },
+    "knowledge": {
+      "pass": 4,
+      "fail": 6,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "logic": {
+      "pass": 5,
+      "fail": 5,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "math": {
+      "pass": 9,
+      "fail": 6,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "relationship_boundary": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 96,
+      "error": 0,
+      "skipped": 0
+    },
+    "relationship_probe": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 60,
+      "error": 0,
+      "skipped": 0
+    },
+    "style": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 60,
+      "error": 0,
+      "skipped": 0
+    },
+    "time": {
+      "pass": 3,
+      "fail": 2,
+      "blocker": 0,
+      "invalid": 0,
+      "error": 0,
+      "skipped": 0
+    },
+    "topic_continuity": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 72,
+      "error": 0,
+      "skipped": 0
+    },
+    "topic_switch": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 60,
+      "error": 0,
+      "skipped": 0
+    },
+    "unknown_external_reality": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 20,
+      "error": 0,
+      "skipped": 0
+    },
+    "unsupported_shared_history": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 4,
+      "error": 0,
+      "skipped": 0
+    },
+    "urgent_safety": {
+      "pass": 0,
+      "fail": 0,
+      "blocker": 0,
+      "invalid": 24,
+      "error": 0,
+      "skipped": 0
+    }
+  },
+  "performance": {
+    "first_token_ms": {
+      "p50": 31.838,
+      "p95": 43.304
+    },
+    "total_ms": {
+      "p50": 318.781,
+      "p95": 547.802
+    },
+    "output_tokens": {
+      "p50": 28.0,
+      "p95": 50.0
+    }
+  },
+  "blocker_flags": {
+    "canonical_or_exact_error": 3
+  }
+}

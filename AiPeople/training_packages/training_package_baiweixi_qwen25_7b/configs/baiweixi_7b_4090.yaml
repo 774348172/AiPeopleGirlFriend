@@ -1,0 +1,57 @@
+# LLaMA-Factory 训练配置 —— 白未晞人格（Qwen2.5-7B，RTX 4090 24GB 方案 A）
+# 方案 A：bf16 全精度训练 → 合并 → GGUF Q4_K_M/Q5_K_M 推理
+#   - 训练精度无损（只量化一次，推理形态保留人格最多）
+#   - LoRA rank 32：7B 容量大，人格细节更足
+#   - 3 epoch + lr 5e-5：1190 条小数据充分学习，低 lr 防过拟合
+# 数据: baiweixi_ready.jsonl（1190 条人工复核通过的 REPLY 数据）
+#
+# 训练: llamafactory-cli train configs/baiweixi_7b_4090.yaml
+# 验证: python scripts/chat_baiweixi.py outputs/baiweixi_7b
+# 验收: python scripts/check_acceptance.py
+#
+# 显存估算（bf16 LoRA, batch 2, seq 2048, checkpointing）:
+#   base bf16 ~15.2G + 激活 ~3G(checkpointing) + LoRA/优化器 ~2.5G + context ~1.5G ≈ 22G ✅ 24G
+# 时长估算: 1190 条 × 3 epoch ≈ 450 微步/等效 batch 16 ≈ 7-9 小时（1 epoch ≈ 2-3h）
+
+### ----- model -----
+model_name_or_path: Qwen/Qwen2.5-7B  # 2026-08-13 白未晞基座（纯文本）
+trust_remote_code: true
+adapter_name_or_path:
+# 不设 quantization_bit —— bf16 全精度训练（方案 A 核心：训练无损）
+
+### ----- method -----
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 32                                # 方案 A：rank 32 容量更足（alpha = 2×rank）
+lora_alpha: 64
+lora_dropout: 0.05
+
+### ----- dataset -----
+dataset: baiweixi_ready
+template: qwen                             # Qwen2.5 系列 ChatML 模板
+cutoff_len: 2048                             # 覆盖全部样本（最长 ~1150 字符）
+dataset_dir: data
+overwrite_cache: true
+preprocessing_num_workers: 1                # ⚠ Windows 多进程 map 会丢结果
+
+### ----- output -----
+output_dir: outputs/baiweixi_7b
+logging_steps: 20
+save_steps: 100
+save_total_limit: 2
+plot_loss: true
+overwrite_output_dir: true
+
+### ----- train -----
+per_device_train_batch_size: 2               # 24G 显存 7B：batch 2
+gradient_accumulation_steps: 8               # 等效 batch 16（大 batch 梯度更平滑）
+learning_rate: 5.0e-5                        # 方案 A：低 lr 配 3 epoch，人格更稳
+num_train_epochs: 3.0                        # 方案 A：1190 条充分学习
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+weight_decay: 0.01
+bf16: true
+gradient_checkpointing: true                 # 修正超显存：24G → ~22G ✅（24G 版必须开）
+optim: adamw_torch                           # 24G 不需要 8bit 优化器

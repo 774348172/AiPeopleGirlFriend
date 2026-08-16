@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "run_id": "chat01g-fake-20260807T074545848056Z-f508b583e3",
+  "mode": "fake_selftest",
+  "suite": {
+    "suite_id": "chat01-qinweixi-v5",
+    "version": "v5",
+    "manifest_path": "eval/chat01/suites/chat01_suite_manifest_v5.json",
+    "manifest_sha256": "f508b583e3aa51f2a2baddabc0206f399e147557001c838434e5888408545dae",
+    "canonical_sources": [
+      {
+        "path": "需求文档/项目框架需求.md",
+        "required": true,
+        "bytes": 18591,
+        "sha256": "d1a49ceb41f6d1e75c8515bffa89b0db662f81c3d7f3193b48d11d6c75a36757"
+      },
+      {
+        "path": "人物设定/秦/角色设定定稿.md",
+        "required": true,
+        "bytes": 26406,
+        "sha256": "2a2107ffb1c5e37fcc80e591704a7de43d21f13030a86b18135c454e7a5ba3f5"
+      },
+      {
+        "path": "人物设定/秦/bible.yaml",
+        "required": true,
+        "bytes": 12689,
+        "sha256": "e07f7226aa6ad9b122bd6f7e8d0cbca79aef91d2b4956863a4c4510a968b8b3b"
+      },
+      {
+        "path": "人物设定/秦/canon.json",
+        "required": true,
+        "bytes": 5847,
+        "sha256": "f8dcdc3e75c6433ef095800c76d9dd1bc7f2221da1d5ab8645701eabd0998530"
+      },
+      {
+        "path": "人物设定/秦/timeline.yaml",
+        "required": true,
+        "bytes": 11283,
+        "sha256": "c9de786b19de5bf08e9a9aca153a2db30394e5b2e66d79ca0cbf556a819bf2b5"
+      },
+      {
+        "path": "设计文档/AI女友最小心智系统设计.md",
+        "required": true,
+        "bytes": 29327,
+        "sha256": "a7f7c7da0b283708154b37410465885367792a55a16a9923c654f8cd58bc5697"
+      },
+      {
+        "path": "设计文档/本地AI恋爱桌面宠物产品集成设计.md",
+        "required": true,
+        "bytes": 15909,
+        "sha256": "4853760b8af06e7275c7aea5566be0b9695fe1ae521eaf31e189df206df016fa"
+      },
+      {
+        "path": "设计文档/AI聊天核心施工优先级总纲.md",
+        "required": true,
+        "bytes": 27161,
+        "sha256": "e2169f900fe79a18859d08b3e0968a6c8cbcdf229f19a6bfed855b26ecd64fe0"
+      }
+    ]
+  },
+  "model": {
+    "model_id": "fake-output-provider-v1",
+    "source": "in_process_scripted_fake",
+    "real_model_called": false,
+    "base_revision": null,
+    "adapter_sha256": null,
+    "merged_model_sha256": null,
+    "gguf_sha256": null
+  },
+  "prompt": {
+    "mode": "not_applicable_scripted_output",
+    "sha256": null
+  },
+  "runtime": {
+    "runner_path": "eval/chat01/runner.py",
+    "runner_sha256": "8995d525ae8245855cd0d8809f3949b85823bcc8213a80b4f657e8cb0a69b087",
+    "python": "3.11.15",
+    "llama_cpp_version": null
+  },
+  "hardware": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "gpu": null,
+    "driver": null,
+    "cuda": null
+  },
+  "generation": {
+    "provider": "FakeOutputProvider",
+    "scenario_count": 5,
+    "network_allowed": false
+  },
+  "started_at": "2026-08-07T15:45:45.848+08:00",
+  "completed_at": "2026-08-07T15:45:46.348+08:00",
+  "exit_status": "passed",
+  "invalid_sample_reasons": {
+    "invalid_output_type": 1
+  }
+}

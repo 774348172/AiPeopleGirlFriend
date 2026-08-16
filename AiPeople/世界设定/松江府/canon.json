@@ -1,0 +1,18 @@
+{
+  "_comment": "《猫咪女友》共享世界事实正典。具体角色事实不得写入这里。",
+  "facts": {
+    "world_id": {"value": "songjiangfu", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "world_name": {"value": "松江府", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "city_type": {"value": "现代架空大城市，新旧城区并存，沿江潮湿且阴雨较多", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "not_real_shanghai": {"value": "松江府不是现实上海，角色正文不得默认引用现实上海地标、行政区和实时事件", "visibility": "system_only", "disclosure_policy": "withhold"},
+    "human_demon_coexistence": {"value": "人类与妖族共同存在，但绝大多数普通人不知道妖族存在", "visibility": "world_secret", "disclosure_policy": "hint_only"},
+    "demon_hiding": {"value": "妖族通常隐藏身份并避免在人群中公开使用妖力", "visibility": "world_secret", "disclosure_policy": "hint_only"},
+    "spiritual_energy": {"value": "世界存在灵气，现代城市中相对稀薄", "visibility": "world_secret", "disclosure_policy": "hint_only"},
+    "human_spiritual_users": {"value": "只有少部分人类能够感知或使用灵气", "visibility": "world_secret", "disclosure_policy": "hint_only"},
+    "technology_mainstream": {"value": "普通科技、商业和社会秩序仍是现代生活主流", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "shared_save": {"value": "唯一主角与所有女主角共享同一个松江府世界和存档", "visibility": "system_only", "disclosure_policy": "withhold"},
+    "game_clock": {"value": "游戏世界使用独立GameClock，首版关闭应用时默认暂停", "visibility": "system_only", "disclosure_policy": "withhold"},
+    "p0_scope": {"value": "出租屋、街角咖啡厅、连接街道和少量剧情场景组成的最小可持续世界", "visibility": "system_only", "disclosure_policy": "withhold"},
+    "unresolved": {"value": "妖族组织、知情人类势力、具体行政区、城市级冲突和主角灵气潜质均未确定", "visibility": "system_only", "disclosure_policy": "withhold"}
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schemas/reranker_manifest_v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "model_id", "revision", "artifact_sha256", "deployment_profile", "activation_threshold", "relative_top_floor", "relative_top_margin", "maximum_pair_tokens", "output_contract", "weights", "tokenizer_files"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "model_id": {"const": "Qwen/Qwen3-Reranker-0.6B"},
+    "revision": {"type": "string", "minLength": 1},
+    "artifact_sha256": {"$ref": "#/$defs/sha256"},
+    "deployment_profile": {"enum": ["cuda-bf16", "cuda-fp16", "cuda-int8", "cuda-nf4"]},
+    "activation_threshold": {"type": "number", "minimum": 0, "maximum": 1},
+    "relative_top_floor": {"type": "number", "minimum": 0, "maximum": 1},
+    "relative_top_margin": {"type": "number", "minimum": 0, "maximum": 1},
+    "maximum_pair_tokens": {"const": 128},
+    "output_contract": {"const": "yes_no_logits_per_memory_id"},
+    "weights": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/file"}},
+    "tokenizer_files": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/file"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "file": {"type": "object", "additionalProperties": false, "required": ["path", "sha256"], "properties": {"path": {"type": "string", "minLength": 1}, "sha256": {"$ref": "#/$defs/sha256"}, "size_bytes": {"type": "integer", "minimum": 0}}}
+  }
+}

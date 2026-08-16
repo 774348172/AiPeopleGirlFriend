@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schemas/wmr08_engineering_report_v1.schema.json",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "schema_version",
+    "scope",
+    "test_only",
+    "model",
+    "freeze_manifest",
+    "turns",
+    "successful_modes",
+    "database",
+    "performance",
+    "decision"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "scope": {"const": "wmr08_engineering_prefreeze"},
+    "test_only": {"const": true},
+    "model": {
+      "type": "object",
+      "required": ["ollama_name", "weights_character", "artifact_sha256"],
+      "properties": {
+        "ollama_name": {"type": "string", "minLength": 1},
+        "weights_character": {"const": "qinweixi_legacy"},
+        "artifact_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "freeze_manifest": {
+      "type": "object",
+      "required": ["manifest_sha256", "mode_prompts", "mode_schemas", "database_migrations"],
+      "properties": {
+        "manifest_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "turns": {"type": "array", "minItems": 1},
+    "successful_modes": {"type": "array", "minItems": 5, "uniqueItems": true},
+    "database": {"type": "object"},
+    "performance": {"type": "object"},
+    "decision": {
+      "type": "object",
+      "required": ["engineering_chain_passed", "engineering_gate", "formal_p0_gate", "formal_p0_blockers"],
+      "properties": {
+        "engineering_chain_passed": {"type": "boolean"},
+        "engineering_gate": {"enum": ["passed", "failed"]},
+        "formal_p0_gate": {"const": "deferred"},
+        "formal_p0_blockers": {"type": "array", "minItems": 1}
+      }
+    }
+  }
+}

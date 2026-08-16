@@ -1,0 +1,23 @@
+[
+  {
+    "case_id": "same-run-different-semantic-content",
+    "expected_error": "MemoryIdempotencyConflictError"
+  },
+  {
+    "case_id": "terminal-run-retry",
+    "expected_error": "MemoryRunConflictError"
+  },
+  {
+    "case_id": "half-written-projection",
+    "fault": "projection_write_failure",
+    "expected_result": "transaction_rollback"
+  },
+  {
+    "case_id": "activate-unresolved-contradiction",
+    "expected_error": "MemoryDecisionError"
+  },
+  {
+    "case_id": "relation-target-not-indexable",
+    "expected_error": "MemoryStoreError"
+  }
+]

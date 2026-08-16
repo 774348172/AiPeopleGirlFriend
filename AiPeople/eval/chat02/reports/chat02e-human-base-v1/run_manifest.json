@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "run_id": "chat02e-human-base-v1",
+  "mode": "human-pair",
+  "suite": {
+    "suite_id": "chat01-qinweixi-v2",
+    "manifest_path": "F:\\AiPeople\\eval\\chat01\\suites\\chat01_suite_manifest_v2.json",
+    "manifest_file_sha256": "da94fdf12f57c8ae7667ffbfe4d59a9086e94c7094e895b2b3f1fa6ee4f652ee",
+    "manifest_self_sha256": "c79196b26d74302cf165bcb0bb153c1c746e35924dc30e63948989a633af4e43"
+  },
+  "model": {
+    "model_id": "qwen3-4b-base-q4_k_m",
+    "manifest_path": "F:\\AiPeople\\eval\\chat02\\models\\qwen3-4b-base-q4_k_m.json",
+    "manifest_sha256": "3b6fa1cce9ef0c5d07b385f73fc738e975fa15b29ef4b77a02f9d9839d3bb50e",
+    "gguf_sha256": "d4314a6f3767e86d10f2177f7cfc46db77f94a38c8b0979dc76bdb1a920e9e9f"
+  },
+  "runtime": {
+    "profile_path": "F:\\AiPeople\\eval\\chat02\\execution_profile_v1.json",
+    "profile_sha256": "a86fe4c5f886b12b813fb7de003987a223f4b700669383f8cb362ddcc9c3689f",
+    "runner_path": "F:\\AiPeople\\eval\\chat02\\runner.py",
+    "runner_sha256": "b8b1973df3bdf8546a6f69c0908d23c84579eff67a2459c8ec9a90a484615395",
+    "prompt_sha256": "400f573a8a3785ccf268fafe6a1be340cadd5c5fd053cbc0d0ef1dd8140af154",
+    "adapter_sha256": "4973ec2b99f30ea16e72fe02d0927caadd27bfa2736c7ccb7f6eea8cd15821e3",
+    "server_sha256": "57ac5133e847dc0666fdd16834b5c0dc0e75acecb89f581d6d4afd83a18b31c0",
+    "python": "3.11.15"
+  },
+  "generation": {
+    "case_count": 60,
+    "network_allowed": false,
+    "localhost_only": true,
+    "lanes": {
+      "deterministic": {
+        "temperature": 0.0,
+        "top_p": 1.0,
+        "repeat_penalty": 1.1
+      },
+      "experience": {
+        "temperature": 0.75,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1
+      }
+    }
+  },
+  "started_at": "2026-08-06T00:10:35.206+08:00",
+  "completed_at": "2026-08-06T00:12:30.991+08:00",
+  "exit_status": "failed",
+  "lifecycle_error": null
+}

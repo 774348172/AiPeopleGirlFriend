@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "checkpoint": "P0-21",
+  "executed_at": "2026-08-05T00:00:19+08:00",
+  "implementation": {
+    "precommit_candidate_snapshot": true,
+    "atomic_epoch_rollover_and_user_mapping": true,
+    "exact_final_prompt_measurement": true,
+    "whole_evidence_trimming": true,
+    "context_budget_exceeded_without_generation": true,
+    "replay_skips_measurement_and_rollover": true,
+    "retry_reuses_rollover_epoch": true,
+    "additional_reply_generations": 0,
+    "semantic_or_vector_recall": false
+  },
+  "real_model_smoke": {
+    "llama_cpp_release": "b10256",
+    "model_alias": "qinweixi",
+    "context_size": 4096,
+    "maximum_prompt_tokens": 3584,
+    "runtime_prompt_tokens": 270,
+    "generation_usage_prompt_tokens": 270,
+    "measurement_matches_usage": true,
+    "generated_tokens": 10,
+    "prompt_measure_ms": 57.635,
+    "context_overflow": false,
+    "wall_seconds": 26.545
+  },
+  "test_results": {
+    "runtime_passed": 156,
+    "runtime_skipped": 1,
+    "full_repository_passed": 390,
+    "full_repository_skipped": 1,
+    "unrelated_deprecation_warnings": 5,
+    "compileall": "passed"
+  },
+  "decision": {
+    "p0_21": "passed",
+    "next_checkpoint": "P0-22"
+  }
+}

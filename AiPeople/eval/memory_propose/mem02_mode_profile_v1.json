@@ -1,0 +1,39 @@
+{
+  "failure_policy": {
+    "commit_on_failure": false,
+    "keyword_fallback": false,
+    "partial_acceptance": false,
+    "raw_output_in_error": false,
+    "retryable": [
+      "memory_propose_timeout",
+      "memory_propose_model_unavailable"
+    ]
+  },
+  "mode": "MEMORY_PROPOSE",
+  "model": {
+    "family": "Qwen3.5-4B",
+    "role": "shared_main_model",
+    "stream": false,
+    "thinking": false
+  },
+  "profile_id": "memory-propose-mode-v1",
+  "sampling": {
+    "max_output_tokens": 2048,
+    "temperature": 0.1,
+    "top_p": 0.8
+  },
+  "scheduling": {
+    "blocks_reply": false,
+    "path": "background_after_committed_reply",
+    "preemptible_by_player_turn": true,
+    "shares_main_model_slot": true
+  },
+  "schema_version": 1,
+  "structured_output": {
+    "allow_empty_proposals": true,
+    "allow_partial_result": false,
+    "allow_visible_text": false,
+    "mechanism": "json_schema_grammar",
+    "schema": "runtime/schemas/memory_propose_result_v1.schema.json"
+  }
+}

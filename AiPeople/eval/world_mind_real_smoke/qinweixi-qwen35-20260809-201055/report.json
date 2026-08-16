@@ -1,0 +1,83 @@
+{
+  "test_only": true,
+  "acceptance_scope": "V6 engineering compatibility only",
+  "not_accepted_as": [
+    "白未晞角色语义验收",
+    "白未晞正式模型验收",
+    "正式存档结果"
+  ],
+  "model": {
+    "ollama_name": "qinweixi-qwen35",
+    "weights_character": "qinweixi_legacy",
+    "artifact_sha256": "433f4f1cee5763af6007ae0ca882d45212ed5efcd0b196f3255af18d42e6c440",
+    "base_url": "http://127.0.0.1:11434",
+    "context_size": 8192
+  },
+  "runtime_binding": {
+    "prompt_character_id": "baiweixi",
+    "world_id": "songjiangfu",
+    "protagonist_id": "protagonist",
+    "save_id": "qin_probe_20260809_201055",
+    "database_path": "F:\\AiPeople\\eval\\world_mind_real_smoke\\qinweixi-qwen35-20260809-201055\\world_mind.sqlite3"
+  },
+  "started_at": "2026-08-09T20:10:55.202294+08:00",
+  "turn": {
+    "result_type": "Failed",
+    "text": null,
+    "failure_code": "hard_invariant_rejected",
+    "metrics": null
+  },
+  "database": {},
+  "calls": [
+    {
+      "request_id": "qin-probe-turn-20260809-201055:TURN_MIND_ADVANCE:0",
+      "mode": "TURN_MIND_ADVANCE",
+      "started_at": "2026-08-09T20:10:55.316682+08:00",
+      "options": {
+        "max_tokens": 900,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_diegetic_actions\": [\n    {\n      \"description\": \"我坐在你旁边的旧藤椅上，膝盖上盖着那件你宽大的毛衣。窗外雨声淅沥，我盯着你碗里的面条发呆，手指无意识地摩挲着衣角。\",\n      \"evidence_refs\": [\n        \"bdea976b-f838-4c67-aeb5-05079476453a\"\n      ]\n    }\n  ],\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"bdea976b-f838-4c67-aeb5-05079476453a\"\n    ],\n    \"knowledge_updates\": {},\n    \"living_mind_patch\": {\n      \"attention\": \"你碗里的面条和你吃面的动作\",\n      \"body\": \"外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\",\n      \"current_activity\": \"坐在你旁边发呆，等待你吃完\",\n      \"emotion\": \"心里涌起一股暖流，但面上还是没说话。你问我做什么，其实我也不知道。\",\n      \"form\": \"人形，猫耳和尾巴自然垂在身后\",\n      \"immediate_intent\": \"等你吃完面，再和你说话。不想让你觉得我烦。\"\n    },\n    \"motive_updates\": {},\n    \"relationship_patch\": {\n      \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\",\n      \"trust\": \"已能在你清醒时于同一房间睡着，但仍保留重要秘密和弱点\",\n      \"unresolved_tension\": \"害怕伤好后失去继续留下的理由\"\n    }\n  },\n  \"mode\": \"TURN_MIND_ADVANCE\",\"parent_mind_state_version\":1,\"reply_intent\":\"等待主角吃完面，再开口说话。\",\"reply_state_assertions\":{\n    \"captured_game_time\":\"0001-10-11T18:00:00.000000\",\"live_world_version\":1,\"protagonist_activity\":\"吃面\",\"protagonist_location_id\":\"apartment_table\"},\"schema_version\":1,\"snapshot_id\":\"bdea976b-f838-4c67-aeb5-05079476453a\",\"transition_basis\":[\n    \"bdea976b-f838-4c67-aeb5-05079476453a\"\n  ]}",
+      "elapsed_seconds": 13.138
+    },
+    {
+      "request_id": "qin-probe-turn-20260809-201055:WORLD_CONTINUITY_REVIEW:0",
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "started_at": "2026-08-09T20:11:08.455111+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.1,
+        "top_p": 0.8,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"decision\": \"approve\",\n  \"mode\": \"WORLD_CONTINUITY_REVIEW\",\n  \"reason\": \"候选女主状态与上一轮快照及证据合同完全一致。活动、身体、情绪和关系均未发生无依据的跳变或越权修改。'坐在你旁边发呆'是'继续观察主角'的自然延续，'心里涌起暖流'符合'渴望温暖'和'害怕失去'的内心逻辑，没有否认或改变已确立的事实。\",\"revision_patch\": null,\n  \"schema_version\": 1,\n  \"snapshot_id\": \"bdea976b-f838-4c67-aeb5-05079476453a\"\n}",
+      "elapsed_seconds": 3.012
+    },
+    {
+      "request_id": "qin-probe-turn-20260809-201055:GAME_REPLY:0",
+      "mode": "GAME_REPLY",
+      "started_at": "2026-08-09T20:11:11.466191+08:00",
+      "options": {
+        "max_tokens": 600,
+        "temperature": 0.75,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"approved_mind_state_version\": 2,\n  \"mode\": \"GAME_REPLY\",\n  \"reply_state_assertions\": {\n    \"captured_game_time\": \"0001-10-11T18:01:30.000000\",\n    \"live_world_version\": 2,\n    \"protagonist_activity\": \"吃面\",\n    \"protagonist_location_id\": \"apartment_table\"\n  },\n  \"schema_version\": 1,\n  \"snapshot_id\": \"bdea976b-f838-4c67-aeb5-05079476453a\",\n  \"text\": \"我低下头，盯着碗里的面条看了一会儿。你问我在做什么……其实也没什么特别的。\"\n}",
+      "elapsed_seconds": 3.382
+    }
+  ],
+  "passed": false,
+  "error_type": "RuntimeError",
+  "error": "turn failed: hard_invariant_rejected",
+  "traceback": "Traceback (most recent call last):\n  File \"F:\\AiPeople\\tools\\run_qinweixi_ollama_world_mind_smoke.py\", line 268, in _run\n    raise RuntimeError(f\"turn failed: {result.code}\")\nRuntimeError: turn failed: hard_invariant_rejected\n",
+  "finished_at": "2026-08-09T20:11:14.849303+08:00"
+}

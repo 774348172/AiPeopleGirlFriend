@@ -1,0 +1,84 @@
+{
+  "contract_id": "mem01-memory-representation-v1",
+  "freeze": {
+    "hash_algorithm": "sha256",
+    "immutable": true,
+    "manifest_hash_mode": "canonical_json_with_null_self",
+    "manifest_sha256": "1ee5fffb8b1771d90eacb2f491590e93df95033e95c3b56857eea0c17383caae"
+  },
+  "frozen_assets": [
+    {
+      "bytes": 12133,
+      "path": "eval/memory_contract/build_fixtures.py",
+      "sha256": "9276fa4a7c5e5e09f5be5865a632d5b07fd4db20d1f84ac10f864186c2f53494"
+    },
+    {
+      "bytes": 17269,
+      "path": "eval/memory_contract/fixtures/invalid/evidence_boundaries_v1.json",
+      "sha256": "ccb047ae96a997d69cd7acfdc85a2d37fc3949f6983b1006d09c9450a696cd1e"
+    },
+    {
+      "bytes": 24106,
+      "path": "eval/memory_contract/fixtures/valid/semantic_boundaries_v1.json",
+      "sha256": "995d537fe32caec6a6b6a9c33e79faf86db0471f4601b1297f5c39cbb2e02605"
+    },
+    {
+      "bytes": 22,
+      "path": "eval/memory_contract/fixtures/valid/zero_proposals_v1.json",
+      "sha256": "ff2b2560cc1c733d67e8ea9681f16d298f5e9e329e90ee2d4ca89da95f74d2b0"
+    },
+    {
+      "bytes": 7176,
+      "path": "eval/memory_contract/freeze.py",
+      "sha256": "86a4ef388ff3165cd28a339b0d262282938e140b52f6d93121fae88d01eaa091"
+    },
+    {
+      "bytes": 5472,
+      "path": "eval/memory_contract/mem01_vocabulary_v1.json",
+      "sha256": "da4c17d66589721d1290b3e3f0990ca359cf1f7aa8e3df03b2383b7a05f25462"
+    },
+    {
+      "bytes": 44643,
+      "path": "runtime/_memory_contracts.py",
+      "sha256": "720a6301842d3b0ab06c9ef0e65b11a1cb5123a130be1dfcc1d10ca27d697c3b"
+    },
+    {
+      "bytes": 6633,
+      "path": "runtime/schemas/memory_proposal_draft_v1.schema.json",
+      "sha256": "92561ba2300836d77eeb96392d2750df7ab17d35f1681a7ae530b5edb6f3cc53"
+    },
+    {
+      "bytes": 7786,
+      "path": "runtime/schemas/memory_representation_v1.schema.json",
+      "sha256": "b5eb0a711b82de0fe4bb9be3d8639707640185c4ab4b7013fb96083c37cf5a26"
+    },
+    {
+      "bytes": 29471,
+      "path": "设计文档/AI设计/当前权威设计/AI女友最小心智系统设计.md",
+      "sha256": "6ce55e1612066f1dc1ab63f1796661da8a17087251a725caba6bd862a02cd51a"
+    },
+    {
+      "bytes": 24366,
+      "path": "设计文档/AI设计/当前权威设计/MEM-01_MemoryRepresentation_schema与证据边界施工文档.md",
+      "sha256": "14a24be56b2d7721c5e418c5935f8f41e0e2d8cb60b9ae2c5fe62e58e4f0b75d"
+    },
+    {
+      "bytes": 18647,
+      "path": "需求文档/项目框架需求.md",
+      "sha256": "90e8084cf788c991edbca2131412362b1d9289b79db3ca12ec38c7277efad1cb"
+    }
+  ],
+  "frozen_at": "2026-08-07T11:28:32Z",
+  "schema_version": 1,
+  "scope": {
+    "excludes": [
+      "model inference",
+      "database access or migration",
+      "embedding or vector projection",
+      "training assets"
+    ],
+    "includes": "MemoryRepresentation schema, pure validation and evidence-boundary fixtures",
+    "next_checkpoint": "MEM-02"
+  },
+  "status": "frozen"
+}

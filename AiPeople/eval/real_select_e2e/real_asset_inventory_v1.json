@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-08-08T00:00:00+08:00",
+  "status": "required_product_assets_incomplete",
+  "target_machine": {"gpu": "NVIDIA GeForce RTX 3070", "gpu_memory_mib": 8192, "llama_cpp_runtime_present": true},
+  "discovered_assets": {
+    "qwen35_hf_base": {
+      "present": true,
+      "model_id": "Qwen/Qwen3.5-4B",
+      "revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+      "form": "HF safetensors base cache",
+      "qualifies_as_product_reply_asset": false,
+      "reason": "not a delivered GGUF pair and not a Qin Weixi candidate"
+    },
+    "bge_small_zh_v15": {"present": false},
+    "qwen3_reranker_06b": {"present": false},
+    "qwen35_untrained_base_gguf": {"present": false},
+    "qwen35_qinweixi_candidate_gguf": {"present": false},
+    "selector_validation_test_splits": {"present": false}
+  },
+  "not_claimed": ["real BGE semantic recall", "real Qwen reranker quality", "real selector latency", "combined GPU memory", "one-hour stability", "real Qwen3.5 reply quality"]
+}

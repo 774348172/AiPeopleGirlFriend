@@ -1,0 +1,94 @@
+{
+  "model_id": "qinweixi-current-q4_k_m",
+  "schema_version": 1,
+  "created_at": "2026-08-05T22:56:00+08:00",
+  "role": "trained",
+  "status": "verified",
+  "asset": {
+    "path": "F:\\AiPeople\\训练结果\\qinweixi_windows_deploy\\qinweixi_windows_deploy\\qinweixi-q4_k_m.gguf",
+    "bytes": 2497280416,
+    "sha256": "9dc8142007be1cd776e360d89f09ea8cd4533bf8f251d95ec2a0cce4dcff4eb6"
+  },
+  "identity": {
+    "architecture": "qwen3",
+    "parameter_class": "4B",
+    "quantization": "Q4_K_M",
+    "gguf_file_type": 15,
+    "tensor_count": 398,
+    "native_context_length": 40960,
+    "eos_token_id": 151645,
+    "chat_template_bytes": 4168,
+    "chat_template_sha256": "a55ee1b1660128b7098723e0abcd92caa0788061051c62d51cbe87d9cf1974d8"
+  },
+  "source": {
+    "repository": "Qwen/Qwen3-4B",
+    "local_source_revision": null,
+    "training_source_revision": null,
+    "revision_note": "Training and export scripts name Qwen/Qwen3-4B, but the MLX training machine did not preserve an exact base revision. The Windows cache revision must not be retroactively assigned to this artifact."
+  },
+  "adaptation": {
+    "kind": "lora",
+    "adapter_checkpoint": null,
+    "merge_method": "mlx_lm.fuse",
+    "evidence": [
+      {
+        "path": "F:\\AiPeople\\training_package_m3_v2\\02_train.sh",
+        "bytes": 1476,
+        "sha256": "3db30fcd54e2d6d52cf7c14e94830add06c54750b8a04835983dad3485b51be5"
+      },
+      {
+        "path": "F:\\AiPeople\\training_package_m3_v2\\03_fuse_gguf.sh",
+        "bytes": 1178,
+        "sha256": "8fadbae2de87b9ce5095913b44792751823d28b9edc3b1274422baa4717164dd"
+      }
+    ],
+    "note": "The intended MLX LoRA then mlx_lm.fuse pipeline is evidenced. The exact adapter checkpoint identity and executed command record are missing and remain release blockers."
+  },
+  "export_provenance": {
+    "converter": null,
+    "converter_module": null,
+    "gguf_python_version": null,
+    "quantizer": null,
+    "note": "The training package specifies F16 GGUF conversion followed by Q4_K_M quantization, and the artifact metadata verifies Q4_K_M. Exact training-machine llama.cpp revision, converter hash, quantizer hash, and command log were not preserved."
+  },
+  "runtime_contract": {
+    "chat_template": "embedded_qwen3",
+    "thinking": false,
+    "context_size": 4096,
+    "stop_contract": "embedded_eos_151645_no_explicit_stop",
+    "execution_profile_id": "chat02-shared-llamacpp-b10256-v1"
+  },
+  "runtime_manifest_reference": {
+    "path": "F:\\AiPeople\\local_runtime\\model_runtime_manifest.json",
+    "bytes": 2255,
+    "sha256": "dcb3d5d8879df5eac7d3aaa61b25dcb5ebbd5713c2b6ef50c028b76349790d7e"
+  },
+  "comparability": {
+    "status": "comparable_with_limitations",
+    "compared_to": "qwen3-4b-base-q4_k_m",
+    "controlled_traits": [
+      "qwen3 architecture",
+      "4B parameter class",
+      "Q4_K_M quantization",
+      "398 tensor layout",
+      "embedded chat template hash",
+      "native context length",
+      "llama.cpp execution profile"
+    ],
+    "limitations": [
+      "Exact upstream training revision is unknown.",
+      "Exact adapter checkpoint and training-machine GGUF tool hashes are unknown; these remain release provenance blockers."
+    ]
+  },
+  "excluded_inputs": [
+    {
+      "artifact": {
+        "path": "F:\\AiPeople\\训练结果\\qinweixi_windows_deploy\\qinweixi_windows_deploy\\Modelfile",
+        "bytes": 742,
+        "sha256": "91c760ec391e95d3264a74d6895b6b6f5e476413296bc957a62488e69b5996d2"
+      },
+      "reason": "Stale deployment prompt contains the retired player address 大叔. RelationshipRuntime does not consume this file, and CHAT-02 must use runtime/_prompt.py from the shared execution profile instead."
+    }
+  ],
+  "notes": "Current trained Qin Weixi GGUF is valid for CHAT-02 comparison but not a release candidate; known weather and safety content failures remain unresolved."
+}

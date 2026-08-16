@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "checkpoint_range": ["RECALL-02", "RECALL-03", "RECALL-04"],
+  "exact_scan": {
+    "matrix": "MEM-05 active generation contiguous float32 row-major snapshot",
+    "operation": "numpy float32 matrix_vector_dot_product",
+    "coverage": "every selector view in the active snapshot",
+    "semantic_prefilter": false,
+    "score_adjustment_rules": false,
+    "generation_guard": "query identity match plus active generation post-scan check",
+    "empty_generation": "explicit empty result"
+  },
+  "aggregation": {
+    "unit": "memory_id",
+    "score": "maximum selector view dot-product",
+    "equal_view_score": "lowest view_ordinal",
+    "equal_memory_score": "memory_id ascending"
+  },
+  "top32": {
+    "candidate_limit": 32,
+    "underfilled_pool": "return all unique memories",
+    "meaning": "reranker candidates, never final selected memories",
+    "downstream_may_reject_all": true,
+    "candidate_metadata": [
+      "memory_id",
+      "memory_version",
+      "coarse_score",
+      "memory_kind",
+      "statement",
+      "subject",
+      "temporal",
+      "epistemic",
+      "winning_selector_view",
+      "source_revision"
+    ],
+    "post_scan_stale_guard": "current status, version and canonical source revision"
+  },
+  "audit": {
+    "required_counts": [
+      "pool_memory_count",
+      "pool_view_count",
+      "scanned_view_count",
+      "aggregated_memory_count",
+      "returned_candidate_count"
+    ],
+    "required_identity": [
+      "profile_id",
+      "query_sha256",
+      "query_vector_sha256",
+      "generation_id"
+    ],
+    "required_timings": [
+      "dot_product_ms",
+      "aggregate_and_topk_ms",
+      "total_ms"
+    ]
+  },
+  "engineering_performance": {
+    "source_event_count": 100000,
+    "active_memory_count": 10000,
+    "views_per_memory": 3,
+    "dimension": 512,
+    "serial_scan_top32_p95_ms_max": 100.0,
+    "four_worker_scan_top32_p95_ms_max": 150.0,
+    "selector_total_p95_ms_max": 300.0,
+    "selector_total_status": "pending_real_BGE_and_Qwen_reranker"
+  },
+  "semantic_quality": {
+    "metric": "global_recall_at_32",
+    "cases": "eval/global_recall/recall04_semantic_cases_v1.json",
+    "status": "pending_real_local_BGE_asset",
+    "synthetic_or_keyword_score_accepted": false
+  },
+  "excluded": [
+    "ANN",
+    "FAISS",
+    "HNSW",
+    "Qdrant",
+    "keyword_routing",
+    "time_window_prefilter",
+    "reranker_inference",
+    "final_memory_selection",
+    "model_download_or_training"
+  ],
+  "next_checkpoint": "SELECT-01"
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "status": "sys12_7b_instruct_candidate_pending_validation",
+  "release_path": "llama_cpp",
+  "diagnostic_path": "ollama",
+  "network_access_at_runtime": "forbidden",
+  "cloud_fallback": "forbidden",
+  "model_fallback": "forbidden",
+  "foreground_protocol": "mind_patch_v2",
+  "model": {
+    "name": "baiweixi-7b-instruct-q5-k-m",
+    "path": "F:\\AiPeople\\local_runtime\\models\\baiweixi_release_7b_instruct_q5_k_m.gguf",
+    "sha256": "be1b6f203eee64e50e4bf3a026c9a8e8226b3eb63b81725153c615992290b575",
+    "bytes": 5444831136,
+    "quantization": "Q5_K_M",
+    "character_id": "baiweixi",
+    "world_id": "songjiangfu",
+    "protagonist_id": "protagonist",
+    "runtime_compatibility": {
+      "chat_template": "chatml",
+      "stop_sequences": [
+        "<|im_end|>",
+        "<|im_start|>"
+      ],
+      "structured_output": "json_schema"
+    }
+  },
+  "runtime": {
+    "context_size": 4096,
+    "parallel": 1,
+    "gpu_layers": 28,
+    "flash_attention": true,
+    "kv_cache_k": "q4_0",
+    "kv_cache_v": "q4_0",
+    "batch_size": 128,
+    "ubatch_size": 64,
+    "critic_second_model_resident": false,
+    "bge_device": "cpu",
+    "reranker_device": "cuda_fp16_on_demand"
+  },
+  "world_mind_mode_timeouts_seconds": {
+    "MIND_PATCH_V2": 30,
+    "GAME_REPLY": 90,
+    "WORLD_CONTINUITY_REVIEW": 60,
+    "POST_REPLY_WORLD_MIND_RECONCILE": 75,
+    "FIVE_MINUTE_WORLD_MIND_RECONCILE": 90
+  },
+  "llama_cpp": {
+    "server_path": "F:\\ai-girlfriend\\AiPeople\\local_runtime\\llama.cpp\\b10256-cuda-12.4\\llama-server.exe",
+    "server_sha256": "57ac5133e847dc0666fdd16834b5c0dc0e75acecb89f581d6d4afd83a18b31c0",
+    "host": "127.0.0.1",
+    "port": 18082,
+    "model_alias": "baiweixi"
+  },
+  "ollama": {
+    "model_name": "baiweixi-7b-instruct-q5-k-m:latest",
+    "base_url": "http://127.0.0.1:11434",
+    "keep_alive": "10m"
+  },
+  "thresholds": {
+    "combined_gpu_peak_mib_max": 5120,
+    "warm_first_visible_token_p95_ms_max": 2000,
+    "reply_80_tokens_p95_ms_max": 5000,
+    "reply_160_tokens_p95_ms_max": 8000,
+    "memory_selection_incremental_p95_ms_max": 300,
+    "stability_minutes": 60
+  }
+}

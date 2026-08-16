@@ -1,0 +1,219 @@
+{
+  "conditional_model_modes": {
+    "WORLD_CONTINUITY_REVIEW": {
+      "triggered": 0,
+      "committed_successes": 0,
+      "successful_backend_calls": 0
+    }
+  },
+  "consistency": {
+    "dangling_model_decisions": 0,
+    "duplicate_requests": 0,
+    "event_count_mismatch": 0,
+    "orphan_events": 0,
+    "orphan_turns": 0
+  },
+  "decision": {
+    "checks": {
+      "one_hour_elapsed": true,
+      "turn_count": true,
+      "transaction_accounting": true,
+      "no_duplicate_or_partial": true,
+      "queue_drained": true,
+      "r1_memory_queue_drained": false,
+      "queue_bounded": false,
+      "crash_recovered": true,
+      "projection_rebuilt": true,
+      "snapshot_frozen": true,
+      "next_turn_latest": true,
+      "isolation": true,
+      "no_unrecoverable_failure": true,
+      "cancel_recovered": true,
+      "structured_retry_recovered": true,
+      "duplicate_replay_observed": true,
+      "request_conflict_observed": true,
+      "all_real_model_modes": false,
+      "resource_growth_bounded": false
+    },
+    "sys11_gate": "failed",
+    "system_stability_passed": false,
+    "character_quality_gate": "deferred",
+    "release_performance_gate": "deferred_to_sys12"
+  },
+  "failures": {
+    "cancel_injection_observed": true,
+    "duplicate_replay_observed": true,
+    "invalid_json_retry_observed": true,
+    "model_calls_failed": 276,
+    "request_conflict_observed": true,
+    "unrecoverable": 0
+  },
+  "generated_at": "2026-08-14T01:40:33.565702+08:00",
+  "isolation": {
+    "checks": {
+      "claimed_task_character_id": true,
+      "memory_intersection": 0,
+      "prompt_character_id": true,
+      "prompt_distinct": true,
+      "state_character_id": true,
+      "state_distinct": true,
+      "task_character_id": true
+    },
+    "leak_count": 0,
+    "visible_memory_ids": []
+  },
+  "model": {
+    "artifact_sha256": "751a803a053b133e8fe10f25470b57dbec54049faefdfc5bd8fcbe07ec3dd805",
+    "engineering_only": false,
+    "inference_mode": "sys12_release",
+    "name": "baiweixi-release-q4-k-m"
+  },
+  "model_modes": {
+    "MIND_PATCH_V2": 83,
+    "GAME_REPLY": 59,
+    "POST_REPLY_WORLD_MIND_RECONCILE": 49,
+    "MEMORY_PROPOSE": 98
+  },
+  "queue": {
+    "coalesced_intervals": 4,
+    "completed": 0,
+    "failed": 67,
+    "foreground_preemptions": 35,
+    "jobs_completed": 29,
+    "jobs_failed": 171,
+    "jobs_requeued": 30,
+    "jobs_started": 231,
+    "peak_pending_jobs": 28,
+    "pending": 0,
+    "r1_memory": {
+      "completed": 29,
+      "failed": 30,
+      "pending": 0,
+      "running": 0
+    },
+    "running": 0
+  },
+  "recovery": {
+    "process_crash_recovered": true,
+    "projection_rebuild_passed": true
+  },
+  "resources": {
+    "database_bytes": 6135808,
+    "growth_bounded": false,
+    "handles": {
+      "count": 738,
+      "max": 883.0,
+      "min": 75.0,
+      "p50": 865.0,
+      "p95": 878.0
+    },
+    "rss_bytes": {
+      "count": 738,
+      "max": 8442499072.0,
+      "min": 6107136.0,
+      "p50": 4561125376.0,
+      "p95": 6574510080.0
+    },
+    "system_gpu_used_mib": {
+      "count": 738,
+      "max": 7915.0,
+      "min": 825.0,
+      "p50": 5730.0,
+      "p95": 7899.0
+    },
+    "threads": {
+      "count": 738,
+      "max": 100.0,
+      "min": 1.0,
+      "p50": 92.0,
+      "p95": 96.0
+    }
+  },
+  "schema_version": 1,
+  "scope": "sys11_one_hour_real_model_stability",
+  "snapshots": {
+    "source": "committed_turn_transactions",
+    "audited_committed_turns": 59,
+    "missing_committed_snapshots": 0,
+    "torn_snapshot_count": 0,
+    "stale_next_turn_count": 0
+  },
+  "timing": {
+    "wall_elapsed_seconds": 3671.9646048545837
+  },
+  "transactions": {
+    "committed": 59,
+    "events": 118,
+    "explicit_failure_turns": [
+      55
+    ],
+    "explicit_failures": 1,
+    "model_decisions": 59,
+    "planned_attempts": 60
+  },
+  "turn_latency_ms": {
+    "count": 59,
+    "max": 47511.06940000318,
+    "min": 1435.455999977421,
+    "p50": 2267.532800004119,
+    "p95": 8088.327600009507
+  },
+  "workload": {
+    "duration_seconds": 3600,
+    "injections": {
+      "cancel_then_retry": 8,
+      "duplicate_replay": 18,
+      "invalid_json_retry": 14,
+      "process_crash": 24,
+      "projection_rebuild": 42,
+      "request_conflict": 19,
+      "second_heroine": 48
+    },
+    "memory_propose_every_turns": 10,
+    "model_scope": "engineering_protocol_and_stability_only",
+    "periodic_interval_seconds": 300,
+    "random_seed": 6112026,
+    "reply_length_bands": [
+      "short",
+      "80_tokens",
+      "160_tokens"
+    ],
+    "schema_version": 1,
+    "turn_count": 60,
+    "turn_interval_seconds": 60,
+    "workload_id": "sys11-one-hour-real-model-v1",
+    "workload_sha256": "fac0c55ce2bc5d1c4a26a2880dddb96af2d1b6db16b511f6d55918e6ffc68f9a",
+    "world_updates_per_turn": 2
+  },
+  "review": {
+    "source_report": "eval\\world_mind_p0\\runs_minimal_input_20260814\\sys11-20260814-003748\\report.json",
+    "purpose": "Correct acceptance-contract drift without changing raw evidence",
+    "original_decision": {
+      "character_quality_gate": "deferred",
+      "checks": {
+        "all_real_model_modes": false,
+        "cancel_recovered": true,
+        "crash_recovered": true,
+        "duplicate_replay_observed": true,
+        "isolation": true,
+        "next_turn_latest": true,
+        "no_duplicate_or_partial": true,
+        "no_unrecoverable_failure": true,
+        "one_hour_elapsed": true,
+        "projection_rebuilt": true,
+        "queue_bounded": false,
+        "queue_drained": true,
+        "r1_memory_queue_drained": false,
+        "request_conflict_observed": true,
+        "resource_growth_bounded": false,
+        "snapshot_frozen": true,
+        "structured_retry_recovered": true,
+        "transaction_accounting": true,
+        "turn_count": true
+      },
+      "release_performance_gate": "deferred_to_sys12",
+      "sys11_gate": "failed",
+      "system_stability_passed": false
+    }
+  }
+}

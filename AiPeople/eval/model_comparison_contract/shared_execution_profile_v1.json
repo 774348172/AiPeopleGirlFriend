@@ -1,0 +1,159 @@
+{
+  "profile_id": "qwen35-4b-shared-comparison-v1",
+  "schema_version": 1,
+  "status": "contract_frozen_assets_pending",
+  "created_at": "2026-08-07T16:44:12+08:00",
+  "comparison": {
+    "model_family": "Qwen3.5",
+    "parameter_class": "4B",
+    "only_active_variable": "training_weight_delta",
+    "base_role": "untrained_base",
+    "candidate_role": "qinweixi_lora_merged",
+    "required_equal_fields": [
+      "upstream_repository",
+      "upstream_revision",
+      "architecture",
+      "parameter_class",
+      "tokenizer_sha256",
+      "chat_template_sha256",
+      "gguf_conversion_tool_sha256",
+      "gguf_quantization",
+      "backend_build_sha256",
+      "prompt_renderer_sha256",
+      "context_size",
+      "sampling_lane",
+      "seed",
+      "max_tokens",
+      "stop_contract"
+    ]
+  },
+  "model_slots": [
+    {
+      "role": "untrained_base",
+      "manifest_path": "eval/model_comparison_contract/models/qwen35_4b_base_v1.json",
+      "status": "pending",
+      "resolution_checkpoint": "MODEL-01"
+    },
+    {
+      "role": "qinweixi_lora_merged",
+      "manifest_path": "eval/model_comparison_contract/models/qinweixi_qwen35_4b_candidate_v1.json",
+      "status": "pending",
+      "resolution_checkpoint": "MODEL-04"
+    }
+  ],
+  "backend": {
+    "name": "llama.cpp",
+    "api": "openai_compatible_chat_completions",
+    "stream": true,
+    "build_resolution": "MODEL-01 compatibility smoke",
+    "build_status": "pending",
+    "same_build_required": true
+  },
+  "target_host": {
+    "os": "Windows",
+    "minimum_gpu_class": "NVIDIA RTX 3060 8GB",
+    "same_physical_host_required": true,
+    "exact_gpu_driver_cuda_recorded_per_run": true,
+    "network_mode": "offline_localhost_only"
+  },
+  "launch": {
+    "host": "127.0.0.1",
+    "port_policy": "runner_allocated_free_local_port",
+    "context_size": 4096,
+    "parallel": 1,
+    "gpu_layers": "all",
+    "flash_attention": true,
+    "kv_cache_k": "q8_0",
+    "kv_cache_v": "q8_0"
+  },
+  "request": {
+    "prompt_renderer": {
+      "path": "runtime/_prompt.py",
+      "bytes": 5671,
+      "sha256": "657720a661f1912223a294fd87298eb0627f799ec10cd728e725d52309679a8e"
+    },
+    "chat_template": {
+      "source": "verified_model_native_template",
+      "exact_hash_status": "pending_MODEL-01",
+      "same_hash_required": true,
+      "forbid_qwen3_template_assumption": true
+    },
+    "thinking": {
+      "visible": false,
+      "control_method_status": "pending_MODEL-01",
+      "reasoning_content_must_not_enter_visible_output": true
+    },
+    "stop_contract": {
+      "eos_from_verified_tokenizer": true,
+      "explicit_stop_sequences": [],
+      "same_eos_and_stops_required": true
+    },
+    "case_controls": {
+      "max_tokens": "from_chat01_case_generation.max_new_tokens",
+      "seed": "from_chat01_case_generation.seed_set",
+      "messages": "same_rendered_messages_bytes_for_both_models"
+    }
+  },
+  "lanes": {
+    "deterministic": {
+      "temperature": 0.0,
+      "top_p": 1.0,
+      "repeat_penalty": 1.1
+    },
+    "experience": {
+      "temperature": 0.75,
+      "top_p": 0.9,
+      "repeat_penalty": 1.1
+    }
+  },
+  "run_order": {
+    "quality": "precommitted_case_order_then_full_base_and_candidate_passes",
+    "quality_model_order": "base_then_candidate",
+    "performance_repetitions": 2,
+    "performance_model_orders": [
+      "base_then_candidate",
+      "candidate_then_base"
+    ],
+    "no_parallel_model_residency": true
+  },
+  "lifecycle": {
+    "startup_timeout_seconds": 240,
+    "connect_timeout_seconds": 5,
+    "read_idle_timeout_seconds": 30,
+    "generation_timeout_seconds": 90,
+    "shutdown_timeout_seconds": 10,
+    "warmup": {
+      "required": true,
+      "visible": false,
+      "max_tokens": 8,
+      "seed": 42
+    },
+    "cleanup": {
+      "shutdown_owned_server": true,
+      "verify_port_released": true,
+      "verify_gpu_released_before_next_model": true
+    }
+  },
+  "suite": {
+    "path": "eval/chat01/suites/chat01_suite_manifest_v5.json",
+    "bytes": 12411,
+    "sha256": "26fcce0c99ece7b9ef30f25c21e79b8ab17f0ad722c364471cac713a463aa202",
+    "self_sha256": "f508b583e3aa51f2a2baddabc0206f399e147557001c838434e5888408545dae"
+  },
+  "training_contract": {
+    "path": "eval/training_contract/freeze02_contract_v1.json",
+    "bytes": 7989,
+    "sha256": "5663c26837f27401eeead8221820cca95f1c534c0f26e235742b163bede365da",
+    "self_sha256": "16f7e6f12d90e3789f286aca09c252673e4f7bb3b418e8d1ef56db936c13b2e1"
+  },
+  "readiness": {
+    "real_run_allowed": false,
+    "blocking_checkpoints": [
+      "MODEL-01",
+      "MODEL-02",
+      "MODEL-03",
+      "MODEL-04"
+    ],
+    "unlock_rule": "both model manifests and one immutable execution instance must verify"
+  }
+}

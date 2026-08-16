@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat02f/leakage-disposition-v1.json",
+  "title": "CHAT-02F leakage disposition v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["disposition_id", "schema_version", "created_at", "authority", "decision_timing", "leakage_evidence", "finding", "policy", "denominators", "scope", "rationale", "freeze"],
+  "properties": {
+    "disposition_id": {"const": "chat02f-leakage-disposition-v1"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "authority": {"const": "explicit_user_decision"},
+    "decision_timing": {"const": "before_chat02f_candidate_outputs"},
+    "leakage_evidence": {"$ref": "#/$defs/artifact"},
+    "finding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["finding_id", "kind", "case_id", "evaluation_text_sha256", "training_path", "training_line"],
+      "properties": {
+        "finding_id": {"const": "leak.46a6d068aa20be544a0e27b2"},
+        "kind": {"const": "exact"},
+        "case_id": {"const": "frozen.identity.name"},
+        "evaluation_text_sha256": {"$ref": "#/$defs/sha256"},
+        "training_path": {"const": "training_package_m3_v2/data/qin_v4_2500.jsonl"},
+        "training_line": {"const": 237}
+      }
+    },
+    "policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["suite_action", "execution_action", "reporting_action", "primary_weight_denominator_action", "replacement_action"],
+      "properties": {
+        "suite_action": {"const": "retain_suite_v3_unchanged"},
+        "execution_action": {"const": "execute_with_all_240_frozen_single_cases"},
+        "reporting_action": {"const": "report_case_as_contaminated_diagnostic_only"},
+        "primary_weight_denominator_action": {"const": "exclude_case_from_primary_aggregate_and_model_delta"},
+        "replacement_action": {"const": "none"}
+      }
+    },
+    "denominators": {
+      "type": "object", "additionalProperties": false,
+      "required": ["executed_frozen_single", "primary_frozen_single", "diagnostic_only_frozen_single"],
+      "properties": {
+        "executed_frozen_single": {"const": 240},
+        "primary_frozen_single": {"const": 239},
+        "diagnostic_only_frozen_single": {"const": 1}
+      }
+    },
+    "scope": {"const": "chat02f_v2500_vs_base_weight_comparison_only"},
+    "rationale": {"type": "string", "minLength": 1, "maxLength": 3000},
+    "freeze": {"$ref": "#/$defs/freeze"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {"path": {"type": "string", "minLength": 1}, "bytes": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "freeze": {
+      "type": "object", "additionalProperties": false,
+      "required": ["immutable", "hash_algorithm", "hash_mode", "document_sha256"],
+      "properties": {
+        "immutable": {"const": true}, "hash_algorithm": {"const": "sha256"},
+        "hash_mode": {"const": "canonical_json_with_null_document_sha256"}, "document_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

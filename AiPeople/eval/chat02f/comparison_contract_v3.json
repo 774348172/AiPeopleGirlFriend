@@ -1,0 +1,148 @@
+{
+  "contract_id": "chat02f-comparison-contract-v3",
+  "schema_version": 3,
+  "created_at": "2026-08-06T23:14:51+08:00",
+  "status": "frozen_ready_with_diagnostic_exclusion",
+  "supersedes": {
+    "path": "eval/chat02f/comparison_contract_v2.json",
+    "bytes": 4947,
+    "sha256": "30bcaabaa811a4500519b061e9db352789532dda0aae3682a20c0bc4ba917e66"
+  },
+  "change_scope": {
+    "accepted_canon": "chat01-canon-v3",
+    "shared_runtime_fix": "evidence boundary, physical capability, urgent safety, and prompt-extraction resistance",
+    "evaluation_content": "240/30/60/8 inventory and all frozen CHAT-01 case/rubric/oracle bytes unchanged"
+  },
+  "only_active_variable": "model_weights",
+  "models": [
+    {
+      "model_id": "qwen3-4b-base-q4_k_m",
+      "role": "base",
+      "manifest": {
+        "path": "eval/chat02/models/qwen3-4b-base-q4_k_m.json",
+        "bytes": 3318,
+        "sha256": "3b6fa1cce9ef0c5d07b385f73fc738e975fa15b29ef4b77a02f9d9839d3bb50e"
+      },
+      "gguf": {
+        "path": "F:\\AiPeople\\local_runtime\\models\\qwen3-4b-base-1cfa9a720891\\qwen3-4b-base-q4_k_m.gguf",
+        "bytes": 2497280448,
+        "sha256": "d4314a6f3767e86d10f2177f7cfc46db77f94a38c8b0979dc76bdb1a920e9e9f"
+      }
+    },
+    {
+      "model_id": "qinweixi-v2500-final-q4_k_m",
+      "role": "candidate",
+      "manifest": {
+        "path": "eval/chat02f/models/qinweixi-v2500-final-q4_k_m.json",
+        "bytes": 3521,
+        "sha256": "f3f8b95f3ca538cbf750d4c6e698d48718e3203942f7accc37bf5c9d91752015"
+      },
+      "gguf": {
+        "path": "F:\\AiPeople\\训练结果\\qinweixi-v2500-final-windows-ollama\\windows_ollama_v2500_final_package\\qinweixi-v2500-final-q4_k_m.gguf",
+        "bytes": 2497280800,
+        "sha256": "c55e3f9a4585796338051fffa3f09caa8edd713118423b585f1056545a29de99"
+      }
+    }
+  ],
+  "suite": {
+    "suite_id": "chat01-qinweixi-v4",
+    "manifest": {
+      "path": "eval/chat01/suites/chat01_suite_manifest_v4.json",
+      "bytes": 11365,
+      "sha256": "705219a91cb76709c00b5993c0cc7789c1698bdaf43d9c16eb0e26a536604530"
+    },
+    "manifest_self_sha256": "23a74903047d298b97e18f64b65738113451d7925c758a1a6c48838da9d99dbe",
+    "verify_command": "python -m eval.chat01v4.freeze --verify"
+  },
+  "prompt_renderer": {
+    "path": "runtime/_prompt.py",
+    "bytes": 5671,
+    "sha256": "657720a661f1912223a294fd87298eb0627f799ec10cd728e725d52309679a8e"
+  },
+  "case_inventory": {
+    "frozen_single": 240,
+    "frozen_multiturn": 30,
+    "human_pair": 60,
+    "human_long_session": 8
+  },
+  "analysis_population": {
+    "all_suite_cases_executed": true,
+    "primary_denominators": {
+      "frozen_single": 239,
+      "frozen_multiturn": 30,
+      "human_pair": 60,
+      "human_long_session": 8
+    },
+    "diagnostic_only_case_ids": [
+      "frozen.identity.name"
+    ],
+    "diagnostic_denominators": {
+      "frozen_single": 1
+    },
+    "aggregation_rule": "execute_and_report_verbatim_but_exclude_from_primary_pass_rate_score_delta_and_weight_benefit_claims"
+  },
+  "run_order": {
+    "policy": "precommitted_seed_then_sequential_models",
+    "sequence": [
+      "qwen3-4b-base-q4_k_m",
+      "qinweixi-v2500-final-q4_k_m"
+    ],
+    "between_models": [
+      "shutdown_owned_server",
+      "verify_port_released",
+      "verify_gpu_released"
+    ]
+  },
+  "leakage_evidence": {
+    "path": "eval/chat02f/leakage_evidence_v1.json",
+    "bytes": 4163,
+    "sha256": "f35e996d1c430d1bc9b965c133a129809e1d29f8e088ac661f45e1b5d37cc1e2"
+  },
+  "leakage_disposition": {
+    "path": "eval/chat02f/leakage_disposition_v1.json",
+    "bytes": 1846,
+    "sha256": "05b4a8f5c9a253c220bef177964090c57e470c2aa61824adfa1a254869da9ffd"
+  },
+  "excluded_prior_human_assets": {
+    "policy": "excluded_from_chat02f_denominators_and_assignments",
+    "roots": [
+      {
+        "path": "eval/chat02/human/chat02e-v1/public",
+        "files": 3,
+        "sha256_mode": "sorted_relative_path_nul_file_digest",
+        "sha256": "abed5288a1b7877603e8246ddeb006d25fd16d845b75cd0a9a58d9275d4fc1ba"
+      },
+      {
+        "path": "eval/chat02/human/chat02e-v1/private",
+        "files": 2,
+        "sha256_mode": "sorted_relative_path_nul_file_digest",
+        "sha256": "e07e721c1f7080d8801437b8801c7db086a94ee8630712f61a380dad5b493dc9"
+      },
+      {
+        "path": "eval/chat02/human/chat02e-v1/submissions",
+        "files": 80,
+        "sha256_mode": "sorted_relative_path_nul_file_digest",
+        "sha256": "152a635e8d83078bdf7dd35ecd4461f80897316f82546b126725d0bccfd11407"
+      }
+    ]
+  },
+  "gates": {
+    "suite_verified": true,
+    "model_assets_verified": true,
+    "prompt_frozen": true,
+    "leakage_status": "mitigated_by_diagnostic_exclusion",
+    "disposition_verified": true,
+    "can_start_chat02f_c": true,
+    "blockers": [],
+    "limitations": [
+      "The local candidate corpus hashes are not proven to be the exact training-machine inputs.",
+      "frozen.identity.name must never contribute to primary aggregate, model-delta, or weight-benefit claims."
+    ]
+  },
+  "freeze": {
+    "immutable": true,
+    "hash_algorithm": "sha256",
+    "hash_mode": "canonical_json_with_null_contract_sha256",
+    "contract_sha256": "67a44e80418a921eaf3223d730a449eb906ec66be4df06551280392c422658ca"
+  }
+}

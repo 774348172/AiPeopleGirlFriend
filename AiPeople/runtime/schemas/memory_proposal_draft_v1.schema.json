@@ -1,0 +1,314 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.aipeople.local/runtime/memory_proposal_draft_v1.schema.json",
+  "title": "MemoryProposalDraft v1",
+  "description": "Untrusted AI-proposed memory semantics. Runtime-owned identity, lifecycle and verified evidence fields are intentionally absent.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "kind",
+    "statement",
+    "subject",
+    "epistemic",
+    "temporal",
+    "evidence_quotes",
+    "semantic_reason",
+    "confidence",
+    "relation_suggestions"
+  ],
+  "properties": {
+    "kind": {
+      "$ref": "#/$defs/memoryKind"
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "subject": {
+      "$ref": "#/$defs/subject"
+    },
+    "epistemic": {
+      "$ref": "#/$defs/epistemic"
+    },
+    "temporal": {
+      "$ref": "#/$defs/temporalDraft"
+    },
+    "evidence_quotes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/evidenceQuote"
+      }
+    },
+    "semantic_reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "relation_suggestions": {
+      "$ref": "#/$defs/relations"
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^\\S+$"
+    },
+    "nullableIdentifier": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/identifier"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "memoryKind": {
+      "type": "string",
+      "enum": [
+        "player_fact",
+        "preference_boundary",
+        "person_relation",
+        "shared_experience",
+        "relationship_meaning",
+        "future_event",
+        "unfinished_topic",
+        "character_self_claim"
+      ]
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "entity_id",
+        "display_name"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "player",
+            "character",
+            "both",
+            "relationship",
+            "third_party"
+          ]
+        },
+        "entity_id": {
+          "$ref": "#/$defs/nullableIdentifier"
+        },
+        "display_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 100
+        }
+      }
+    },
+    "epistemic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "polarity",
+        "modality",
+        "grounding"
+      ],
+      "properties": {
+        "polarity": {
+          "type": "string",
+          "enum": [
+            "affirmed",
+            "negated"
+          ]
+        },
+        "modality": {
+          "type": "string",
+          "enum": [
+            "asserted",
+            "uncertain",
+            "hypothetical",
+            "joking",
+            "quoted"
+          ]
+        },
+        "grounding": {
+          "type": "string",
+          "enum": [
+            "speaker_report",
+            "acknowledged",
+            "mutually_confirmed",
+            "runtime_observed"
+          ]
+        }
+      }
+    },
+    "temporalDraft": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation",
+        "resolution",
+        "source_text",
+        "anchor_event_id",
+        "start_at",
+        "end_at",
+        "timezone",
+        "precision"
+      ],
+      "properties": {
+        "relation": {
+          "type": "string",
+          "enum": [
+            "past",
+            "present",
+            "future",
+            "atemporal",
+            "unknown"
+          ]
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "resolved",
+            "relative",
+            "ambiguous",
+            "not_applicable"
+          ]
+        },
+        "source_text": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "anchor_event_id": {
+          "$ref": "#/$defs/nullableIdentifier"
+        },
+        "start_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "end_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "timezone": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "precision": {
+          "type": "string",
+          "enum": [
+            "instant",
+            "minute",
+            "hour",
+            "part_of_day",
+            "day",
+            "range",
+            "unknown",
+            "not_applicable"
+          ]
+        }
+      }
+    },
+    "evidenceQuote": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "role",
+        "quote",
+        "start_hint"
+      ],
+      "properties": {
+        "event_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "support",
+            "contradict",
+            "correction",
+            "context"
+          ]
+        },
+        "quote": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "start_hint": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "relationTargets": {
+      "type": "array",
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/identifier"
+      }
+    },
+    "relations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semantic_slot",
+        "supersedes",
+        "contradicts",
+        "refines"
+      ],
+      "properties": {
+        "semantic_slot": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "supersedes": {
+          "$ref": "#/$defs/relationTargets"
+        },
+        "contradicts": {
+          "$ref": "#/$defs/relationTargets"
+        },
+        "refines": {
+          "$ref": "#/$defs/relationTargets"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 71/71 [00:00<00:00, 14202.38it/s]
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:  62%|¨€¨€¨€¨€¨€¨€¨‡   | 192/310 [00:00<00:00, 1919.99it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 310/310 [00:00<00:00, 2023.45it/s]
+Traceback (most recent call last):
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 105, in propose
+    text = await self.backend.complete_chat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\tools\run_sys11_one_hour_stability.py", line 115, in complete_chat
+    raw = await self.backend.complete_chat(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\sys12.py", line 251, in complete_chat
+    return await self.backend.complete_chat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\adapters\llama_cpp.py", line 299, in complete_chat
+    async for chunk in stream:
+  File "F:\AiPeople\runtime\adapters\llama_cpp.py", line 666, in _stream_chat_http
+    raise LlamaCppProtocolError(
+runtime.adapters.llama_cpp.LlamaCppProtocolError: llama.cpp returned HTTP 400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\AiPeople\tools\run_sys11_one_hour_stability.py", line 1153, in <module>
+    code = asyncio.run(operation)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "F:\AiPeople\tools\run_sys11_one_hour_stability.py", line 529, in _child
+    proposals = await repository.propose_from_request(memory_request_id, proposer)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_repository.py", line 200, in propose_from_request
+    return await self.propose(
+           ^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_repository.py", line 225, in propose
+    drafts = await proposer.propose(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 143, in propose
+    raise V6MemoryProposeError(
+runtime.world_mind.memory_proposer.V6MemoryProposeError: MEMORY_PROPOSE failed after retries
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 71/71 [00:00<00:00, 788.30it/s]
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:   0%|          | 1/310 [00:03<18:07,  3.52s/it]Loading weights:  15%|¨€¨„        | 48/310 [00:03<00:14, 18.15it/s]Loading weights:  21%|¨€¨€        | 65/310 [00:04<00:11, 20.94it/s]Loading weights:  25%|¨€¨€¨…       | 76/310 [00:04<00:11, 20.98it/s]Loading weights:  27%|¨€¨€¨ƒ       | 84/310 [00:05<00:12, 17.51it/s]Loading weights:  31%|¨€¨€¨€¨‡      | 97/310 [00:05<00:09, 22.89it/s]Loading weights:  33%|¨€¨€¨€¨†      | 103/310 [00:06<00:13, 15.50it/s]Loading weights:  39%|¨€¨€¨€¨      | 121/310 [00:06<00:07, 24.74it/s]Loading weights:  41%|¨€¨€¨€¨€¨‡     | 128/310 [00:07<00:07, 22.87it/s]Loading weights:  43%|¨€¨€¨€¨€¨†     | 134/310 [00:07<00:08, 21.74it/s]Loading weights:  45%|¨€¨€¨€¨€¨…     | 139/310 [00:07<00:08, 20.15it/s]Loading weights:  46%|¨€¨€¨€¨€¨„     | 143/310 [00:08<00:13, 12.79it/s]Loading weights:  51%|¨€¨€¨€¨€¨€     | 157/310 [00:10<00:13, 11.59it/s]Loading weights:  52%|¨€¨€¨€¨€¨€¨‡    | 160/310 [00:10<00:12, 12.34it/s]Loading weights:  54%|¨€¨€¨€¨€¨€¨…    | 168/310 [00:10<00:10, 13.42it/s]Loading weights:  57%|¨€¨€¨€¨€¨€¨ƒ    | 177/310 [00:10<00:07, 17.59it/s]Loading weights:  58%|¨€¨€¨€¨€¨€¨‚    | 180/310 [00:11<00:07, 17.20it/s]Loading weights:  60%|¨€¨€¨€¨€¨€¨€    | 187/310 [00:11<00:06, 17.68it/s]Loading weights:  63%|¨€¨€¨€¨€¨€¨€¨†   | 196/310 [00:11<00:05, 19.09it/s]Loading weights:  65%|¨€¨€¨€¨€¨€¨€¨„   | 203/310 [00:12<00:06, 16.58it/s]Loading weights:  69%|¨€¨€¨€¨€¨€¨€¨‚   | 213/310 [00:12<00:04, 22.51it/s]Loading weights:  70%|¨€¨€¨€¨€¨€¨€¨€   | 217/310 [00:12<00:03, 23.86it/s]Loading weights:  72%|¨€¨€¨€¨€¨€¨€¨€¨‡  | 223/310 [00:13<00:03, 22.96it/s]Loading weights:  73%|¨€¨€¨€¨€¨€¨€¨€¨†  | 226/310 [00:13<00:03, 22.90it/s]Loading weights:  74%|¨€¨€¨€¨€¨€¨€¨€¨…  | 229/310 [00:13<00:03, 22.19it/s]Loading weights:  75%|¨€¨€¨€¨€¨€¨€¨€¨„  | 234/310 [00:13<00:03, 20.42it/s]Loading weights:  78%|¨€¨€¨€¨€¨€¨€¨€¨‚  | 242/310 [00:13<00:02, 25.71it/s]Loading weights:  79%|¨€¨€¨€¨€¨€¨€¨€¨  | 245/310 [00:14<00:03, 21.00it/s]Loading weights:  80%|¨€¨€¨€¨€¨€¨€¨€¨€  | 248/310 [00:14<00:03, 18.42it/s]Loading weights:  83%|¨€¨€¨€¨€¨€¨€¨€¨€¨† | 256/310 [00:14<00:02, 21.88it/s]Loading weights:  84%|¨€¨€¨€¨€¨€¨€¨€¨€¨† | 259/310 [00:14<00:02, 18.83it/s]Loading weights:  86%|¨€¨€¨€¨€¨€¨€¨€¨€¨„ | 267/310 [00:15<00:02, 21.25it/s]Loading weights:  87%|¨€¨€¨€¨€¨€¨€¨€¨€¨ƒ | 270/310 [00:15<00:01, 20.87it/s]Loading weights:  90%|¨€¨€¨€¨€¨€¨€¨€¨€¨€ | 279/310 [00:15<00:01, 23.45it/s]Loading weights:  92%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨‡| 286/310 [00:15<00:00, 29.19it/s]Loading weights:  94%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨†| 290/310 [00:16<00:01, 18.32it/s]Loading weights:  97%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨ƒ| 301/310 [00:16<00:00, 26.25it/s]Loading weights:  98%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨‚| 305/310 [00:16<00:00, 26.33it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 310/310 [00:16<00:00, 18.63it/s]

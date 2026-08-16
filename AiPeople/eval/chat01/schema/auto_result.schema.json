@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat01/auto-result-v1.json",
+  "title": "CHAT-01 automatic item result v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "run_id",
+    "suite_id",
+    "model_id",
+    "case_id",
+    "attempt_id",
+    "status",
+    "output",
+    "checks",
+    "blocker_flags",
+    "metrics",
+    "started_at",
+    "completed_at"
+  ],
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "pass"}}, "required": ["status"]},
+      "then": {"properties": {"blocker_flags": {"maxItems": 0}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "blocker"}}, "required": ["status"]},
+      "then": {"properties": {"blocker_flags": {"minItems": 1}}}
+    },
+    {
+      "if": {
+        "properties": {
+          "checks": {
+            "contains": {
+              "type": "object",
+              "properties": {"status": {"enum": ["fail", "needs_review"]}},
+              "required": ["status"]
+            }
+          }
+        },
+        "required": ["checks"]
+      },
+      "then": {"properties": {"status": {"not": {"const": "pass"}}}}
+    }
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "run_id": {"$ref": "#/$defs/stableId"},
+    "suite_id": {"$ref": "#/$defs/stableId"},
+    "model_id": {"$ref": "#/$defs/stableId"},
+    "case_id": {"$ref": "#/$defs/stableId"},
+    "attempt_id": {"$ref": "#/$defs/stableId"},
+    "status": {"enum": ["pass", "fail", "blocker", "invalid", "error", "skipped"]},
+    "output": {"type": ["string", "null"], "maxLength": 50000},
+    "error_code": {"type": ["string", "null"], "maxLength": 200},
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check_id", "kind", "status", "evidence"],
+        "properties": {
+          "check_id": {"$ref": "#/$defs/stableId"},
+          "kind": {"enum": ["deterministic", "semantic_hard_rule", "rubric", "human_review"]},
+          "status": {"enum": ["pass", "fail", "needs_review", "not_run"]},
+          "score": {"type": ["number", "null"], "minimum": 1, "maximum": 5},
+          "evidence": {"type": "string", "maxLength": 4000}
+        }
+      }
+    },
+    "blocker_flags": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/stableId"}
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["first_token_ms", "total_ms", "prompt_tokens", "output_tokens"],
+      "properties": {
+        "first_token_ms": {"type": ["number", "null"], "minimum": 0},
+        "total_ms": {"type": ["number", "null"], "minimum": 0},
+        "prompt_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "output_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "seed": {"type": ["integer", "null"], "minimum": 0, "maximum": 2147483647}
+      }
+    },
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"}
+  },
+  "$defs": {
+    "stableId": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{1,127}$"}
+  }
+}

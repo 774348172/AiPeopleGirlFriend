@@ -1,0 +1,221 @@
+{
+  "assets": {
+    "bge": {
+      "artifact_sha256": "318eca6bb1bc25f52ec4d1fb4d48dc5790b7d97d61e453748516741f51559a4e",
+      "revision": "7999e1d3359715c523056ef9478215996d62a620"
+    },
+    "reranker": {
+      "artifact_sha256": "085d1a04cbf12216702dd023a33fd99e071e32445de1f4f762ce1f18f86eeb69",
+      "deployment_profile": "cuda-nf4",
+      "revision": "e61197ed45024b0ed8a2d74b80b4d909f1255473"
+    }
+  },
+  "cases": [
+    {
+      "expected_statement": "男主喜欢雨夜",
+      "latency_ms": 97.98819999559782,
+      "passed": true,
+      "query": "下雨的时候你记得我是什么感受吗？",
+      "selected_statements": [
+        "男主喜欢雨夜"
+      ]
+    },
+    {
+      "expected_statement": "男主不喜欢香菜",
+      "latency_ms": 70.96000001183711,
+      "passed": false,
+      "query": "我的饮食忌口是什么？",
+      "selected_statements": []
+    },
+    {
+      "expected_statement": "男主小时候住在四川",
+      "latency_ms": 77.06009999674279,
+      "passed": true,
+      "query": "我小时候住在哪里？",
+      "selected_statements": [
+        "男主小时候住在四川"
+      ]
+    },
+    {
+      "expected_statement": "男主想周末修咖啡机",
+      "latency_ms": 75.47310000518337,
+      "passed": true,
+      "query": "周末我准备处理什么东西？",
+      "selected_statements": [
+        "男主想周末修咖啡机"
+      ]
+    },
+    {
+      "expected_statement": "男主喜欢雨夜",
+      "latency_ms": 74.09599999664351,
+      "passed": true,
+      "query": "下雨的时候你记得我是什么感受吗？",
+      "selected_statements": [
+        "男主喜欢雨夜"
+      ]
+    },
+    {
+      "expected_statement": "男主不喜欢香菜",
+      "latency_ms": 74.86519998928998,
+      "passed": false,
+      "query": "我的饮食忌口是什么？",
+      "selected_statements": []
+    },
+    {
+      "expected_statement": "男主小时候住在四川",
+      "latency_ms": 82.80410000588745,
+      "passed": true,
+      "query": "我小时候住在哪里？",
+      "selected_statements": [
+        "男主小时候住在四川"
+      ]
+    },
+    {
+      "expected_statement": "男主想周末修咖啡机",
+      "latency_ms": 76.54520000505727,
+      "passed": true,
+      "query": "周末我准备处理什么东西？",
+      "selected_statements": [
+        "男主想周末修咖啡机"
+      ]
+    },
+    {
+      "expected_statement": "男主喜欢雨夜",
+      "latency_ms": 83.85320000525098,
+      "passed": true,
+      "query": "下雨的时候你记得我是什么感受吗？",
+      "selected_statements": [
+        "男主喜欢雨夜"
+      ]
+    },
+    {
+      "expected_statement": "男主不喜欢香菜",
+      "latency_ms": 78.44440000189934,
+      "passed": false,
+      "query": "我的饮食忌口是什么？",
+      "selected_statements": []
+    },
+    {
+      "expected_statement": "男主小时候住在四川",
+      "latency_ms": 77.4126000032993,
+      "passed": true,
+      "query": "我小时候住在哪里？",
+      "selected_statements": [
+        "男主小时候住在四川"
+      ]
+    },
+    {
+      "expected_statement": "男主想周末修咖啡机",
+      "latency_ms": 79.05460000620224,
+      "passed": true,
+      "query": "周末我准备处理什么东西？",
+      "selected_statements": [
+        "男主想周末修咖啡机"
+      ]
+    },
+    {
+      "expected_statement": "男主喜欢雨夜",
+      "latency_ms": 83.79089999652933,
+      "passed": true,
+      "query": "下雨的时候你记得我是什么感受吗？",
+      "selected_statements": [
+        "男主喜欢雨夜"
+      ]
+    },
+    {
+      "expected_statement": "男主不喜欢香菜",
+      "latency_ms": 70.34760000533424,
+      "passed": false,
+      "query": "我的饮食忌口是什么？",
+      "selected_statements": []
+    },
+    {
+      "expected_statement": "男主小时候住在四川",
+      "latency_ms": 72.0902000030037,
+      "passed": true,
+      "query": "我小时候住在哪里？",
+      "selected_statements": [
+        "男主小时候住在四川"
+      ]
+    },
+    {
+      "expected_statement": "男主想周末修咖啡机",
+      "latency_ms": 72.24189999396913,
+      "passed": true,
+      "query": "周末我准备处理什么东西？",
+      "selected_statements": [
+        "男主想周末修咖啡机"
+      ]
+    },
+    {
+      "expected_statement": "男主喜欢雨夜",
+      "latency_ms": 74.85299999825656,
+      "passed": true,
+      "query": "下雨的时候你记得我是什么感受吗？",
+      "selected_statements": [
+        "男主喜欢雨夜"
+      ]
+    },
+    {
+      "expected_statement": "男主不喜欢香菜",
+      "latency_ms": 74.5432000112487,
+      "passed": false,
+      "query": "我的饮食忌口是什么？",
+      "selected_statements": []
+    },
+    {
+      "expected_statement": "男主小时候住在四川",
+      "latency_ms": 75.08550000784453,
+      "passed": true,
+      "query": "我小时候住在哪里？",
+      "selected_statements": [
+        "男主小时候住在四川"
+      ]
+    },
+    {
+      "expected_statement": "男主想周末修咖啡机",
+      "latency_ms": 75.84620000852738,
+      "passed": true,
+      "query": "周末我准备处理什么东西？",
+      "selected_statements": [
+        "男主想周末修咖啡机"
+      ]
+    }
+  ],
+  "decision": {
+    "correctness_passed": false,
+    "isolation_passed": true,
+    "p95_under_300ms": true,
+    "sys09_gate": "failed"
+  },
+  "generated_at": "2026-08-12T17:00:46.173553+08:00",
+  "index": {
+    "generation_id": "9311111c-ca3e-4b07-8210-6976b40cdbe0",
+    "memory_count": 4,
+    "rebuild_ms": 17.00939999136608,
+    "view_count": 8
+  },
+  "isolation": {
+    "cross_character_direct_read_hits": [],
+    "cross_character_visible_memory_ids": [],
+    "cross_save_direct_read_hits": [],
+    "cross_save_visible_memory_ids": [],
+    "passed": true
+  },
+  "memory_ids": [
+    "d3fe3a08-9e37-4849-96ac-075e80f54f4e",
+    "010fd96d-ee4a-4cce-821e-c55deb65929d",
+    "19b4ef8a-e14d-4149-b6de-99a22d4d0e53",
+    "dea194d6-5f7f-402a-a293-3680025d7938"
+  ],
+  "recall_ms": {
+    "count": 20,
+    "max": 97.98819999559782,
+    "min": 70.34760000533424,
+    "p50": 75.47310000518337,
+    "p95": 83.85320000525098
+  },
+  "schema_version": 1,
+  "scope": "sys09_formal_retrieval_acceptance",
+  "startup_ms": 6301.500300003681
+}

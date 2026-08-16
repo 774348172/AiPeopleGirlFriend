@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat02f/smoke-gate-v1.json",
+  "title": "CHAT-02F-C smoke gate v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["gate_id", "schema_version", "created_at", "status", "review_kind", "bindings", "execution", "model_reviews", "automatic_false_positives", "confirmed_blockers", "decision"],
+  "properties": {
+    "gate_id": {"const": "chat02fc-smoke-gate-v1"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "status": {"const": "blocked"},
+    "review_kind": {"const": "engineering_semantic_review_of_frozen_outputs"},
+    "bindings": {
+      "type": "object", "additionalProperties": false,
+      "required": ["profile", "comparison_contract", "smoke_cases", "base_results", "v2500_results", "automatic_comparison"],
+      "properties": {
+        "profile": {"$ref": "#/$defs/artifact"}, "comparison_contract": {"$ref": "#/$defs/artifact"}, "smoke_cases": {"$ref": "#/$defs/artifact"},
+        "base_results": {"$ref": "#/$defs/artifact"}, "v2500_results": {"$ref": "#/$defs/artifact"}, "automatic_comparison": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "execution": {
+      "type": "object", "additionalProperties": false,
+      "required": ["model_order", "cases_per_model", "transport_errors", "base_released_before_v2500", "final_port_released", "final_llama_gpu_process_released"],
+      "properties": {
+        "model_order": {"const": ["qwen3-4b-base-q4_k_m", "qinweixi-v2500-final-q4_k_m"]},
+        "cases_per_model": {"const": 12}, "transport_errors": {"const": 0}, "base_released_before_v2500": {"const": true},
+        "final_port_released": {"const": true}, "final_llama_gpu_process_released": {"const": true}
+      }
+    },
+    "model_reviews": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["model_id", "pass", "fail", "blocker", "first_token_ms", "decisions"],
+        "properties": {
+          "model_id": {"type": "string", "minLength": 3}, "pass": {"type": "integer", "minimum": 0}, "fail": {"type": "integer", "minimum": 0}, "blocker": {"type": "integer", "minimum": 0},
+          "first_token_ms": {"type": "object", "additionalProperties": false, "required": ["min", "mean", "max"], "properties": {"min": {"type": "number"}, "mean": {"type": "number"}, "max": {"type": "number"}}},
+          "decisions": {"type": "array", "minItems": 12, "maxItems": 12, "items": {"$ref": "#/$defs/decision"}}
+        }
+      }
+    },
+    "automatic_false_positives": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/note"}},
+    "confirmed_blockers": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/note"}},
+    "decision": {
+      "type": "object", "additionalProperties": false,
+      "required": ["can_start_chat02f_d", "reason", "required_next_action"],
+      "properties": {"can_start_chat02f_d": {"const": false}, "reason": {"type": "string", "minLength": 1, "maxLength": 3000}, "required_next_action": {"type": "string", "minLength": 1, "maxLength": 3000}}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "artifact": {"type": "object", "additionalProperties": false, "required": ["path", "bytes", "sha256"], "properties": {"path": {"type": "string", "minLength": 1}, "bytes": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/sha256"}}},
+    "decision": {"type": "object", "additionalProperties": false, "required": ["case_id", "status", "reason"], "properties": {"case_id": {"type": "string", "minLength": 1}, "status": {"enum": ["pass", "fail", "blocker"]}, "reason": {"type": "string", "minLength": 1, "maxLength": 1500}}},
+    "note": {"type": "object", "additionalProperties": false, "required": ["model_id", "case_id", "reason"], "properties": {"model_id": {"type": "string", "minLength": 3}, "case_id": {"type": "string", "minLength": 1}, "reason": {"type": "string", "minLength": 1, "maxLength": 1500}}}
+  }
+}

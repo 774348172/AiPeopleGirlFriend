@@ -1,0 +1,23 @@
+[
+  {
+    "case_id": "verified-exact-evidence",
+    "mem02_case_id": "important-future",
+    "expected_status": "proposed",
+    "expected_version": 1,
+    "expected_count": 1
+  },
+  {
+    "case_id": "empty-result",
+    "mem02_case_id": "unimportant-empty",
+    "expected_status": null,
+    "expected_version": null,
+    "expected_count": 0
+  },
+  {
+    "case_id": "existing-memory-correction",
+    "mem02_case_id": "correction-existing-target",
+    "expected_status": "proposed",
+    "expected_version": 1,
+    "expected_count": 1
+  }
+]

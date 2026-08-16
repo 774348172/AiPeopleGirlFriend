@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/training/background-structured-record-v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sample_id", "schema_version", "dataset_family", "character_id", "mode", "split",
+    "conversation_group_id", "leakage_group_id", "scenario_family", "source_record_ids",
+    "canon_snapshot", "generation", "content_kind", "payload_schema", "input", "target"
+  ],
+  "properties": {
+    "sample_id": {"$ref": "#/$defs/stableId"},
+    "schema_version": {"const": 1},
+    "dataset_family": {"const": "background_structured"},
+    "character_id": {"const": "qinweixi"},
+    "mode": {"enum": ["MEMORY_PROPOSE", "SELF_TIMELINE_PROPOSE", "OFFSCREEN_UPDATE", "MOTIVE_EVALUATE"]},
+    "split": {"enum": ["train", "dev", "test"]},
+    "conversation_group_id": {"$ref": "#/$defs/stableId"},
+    "leakage_group_id": {"$ref": "#/$defs/stableId"},
+    "scenario_family": {"$ref": "#/$defs/stableId"},
+    "source_record_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/stableId"}},
+    "canon_snapshot": {"$ref": "#/$defs/canonRef"},
+    "generation": {"$ref": "#/$defs/generation"},
+    "content_kind": {"const": "structured_json"},
+    "payload_schema": {
+      "type": "object", "additionalProperties": false,
+      "required": ["schema_id", "path", "sha256"],
+      "properties": {
+        "schema_id": {"$ref": "#/$defs/stableId"},
+        "path": {"$ref": "#/$defs/relativePath"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "input": {"type": "object"},
+    "target": {"type": "object"}
+  },
+  "$defs": {
+    "stableId": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,191}$"},
+    "relativePath": {"type": "string", "pattern": "^(?![A-Za-z]:)(?!/)(?!\\\\)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "canonRef": {
+      "type": "object", "additionalProperties": false,
+      "required": ["snapshot_id", "sha256"],
+      "properties": {"snapshot_id": {"const": "chat01-canon-v4"}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "generation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["run_id", "generator_version", "created_at"],
+      "properties": {
+        "run_id": {"$ref": "#/$defs/stableId"},
+        "generator_version": {"type": "string", "minLength": 1, "maxLength": 200},
+        "created_at": {"type": "string", "format": "date-time"}
+      }
+    }
+  }
+}

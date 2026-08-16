@@ -1,0 +1,100 @@
+{
+  "test_only": true,
+  "acceptance_scope": "V6 engineering compatibility only",
+  "not_accepted_as": [
+    "白未晞角色语义验收",
+    "白未晞正式模型验收",
+    "正式存档结果"
+  ],
+  "model": {
+    "ollama_name": "qinweixi-qwen35",
+    "weights_character": "qinweixi_legacy",
+    "artifact_sha256": "433f4f1cee5763af6007ae0ca882d45212ed5efcd0b196f3255af18d42e6c440",
+    "base_url": "http://127.0.0.1:11434",
+    "context_size": 8192
+  },
+  "runtime_binding": {
+    "prompt_character_id": "baiweixi",
+    "world_id": "songjiangfu",
+    "protagonist_id": "protagonist",
+    "save_id": "qin_probe_20260809_200824",
+    "database_path": "F:\\AiPeople\\eval\\world_mind_real_smoke\\qinweixi-qwen35-20260809-200824\\world_mind.sqlite3"
+  },
+  "started_at": "2026-08-09T20:08:24.643383+08:00",
+  "turn": {
+    "result_type": "Failed",
+    "text": null,
+    "failure_code": "model_or_runtime_error",
+    "metrics": null
+  },
+  "database": {},
+  "calls": [
+    {
+      "request_id": "qin-probe-turn-20260809-200824:TURN_MIND_ADVANCE:0",
+      "mode": "TURN_MIND_ADVANCE",
+      "started_at": "2026-08-09T20:08:24.753169+08:00",
+      "options": {
+        "max_tokens": 900,
+        "temperature": 0.2,
+        "top_p": 0.85,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"heroine_diegetic_actions\": [\n    {\n      \"description\": \"我放下筷子，看着你碗里的面。窗外的雨声还在，但屋里很安静。\",\n      \"evidence_refs\": [\n        \"44e2f349-d18f-4ac6-be9d-142a79e7cd2c\"\n      ]\n    },\n    {\n      \"description\": \"我轻轻叹了口气，声音不大。\",\n      \"evidence_refs\": [\n        \"character_package_initial_runtime\"\n      ]\n    }\n  ],\n  \"heroine_patch\": {\n    \"evidence_refs\": [\n      \"44e2f349-d18f-4ac6-be9d-142a79e7cd2c\",\n      \"character_package_initial_runtime\"\n    ],\n    \"knowledge_updates\": {},\n    \"living_mind_patch\": {\n      \"attention\": \"你碗里的面和你平静的样子\",\n      \"body\": \"外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\",\n      \"current_activity\": \"坐在你旁边，看着你吃面\",\n      \"emotion\": \"心里涌起一股暖流，但嘴上还是没敢说什么。\",\n      \"form\": \"人形，猫耳和尾巴未隐藏\",\n      \"immediate_intent\": \"想问你以后会不会一直住在这里\"\n    },\n    \"motive_updates\": {},\n    \"relationship_patch\": {\n      \"stage\": \"暂时共同生活、早期好感、尚未确认恋爱\",\n      \"trust\": \"已能在你清醒时于同一房间睡着，但仍保留重要秘密和弱点\",\n      \"unresolved_tension\": \"害怕伤好后失去继续留下的理由\"\n    }\n  },\n  \"mode\": \"TURN_MIND_ADVANCE\",\"parent_mind_state_version\":1,\"reply_intent\":\"等待你吃完面，再开口问你\",\"reply_state_assertions\":{\n    \"captured_game_time\":\"0001-10-11T18:00:00.000000\",\n    \"live_world_version\":1,\n    \"protagonist_activity\":\"吃面\",\n    \"protagonist_location_id\":\"apartment_table\"\n  },\"schema_version\":1,\"snapshot_id\":\"44e2f349-d18f-4ac6-be9d-142a79e7cd2c\",\"transition_basis\":[\n    \"44e2f349-d18f-4ac6-be9d-142a79e7cd2c\",\n    \"character_package_initial_runtime\"\n  ]}",
+      "elapsed_seconds": 9.249
+    },
+    {
+      "request_id": "qin-probe-turn-20260809-200824:WORLD_CONTINUITY_REVIEW:0",
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "started_at": "2026-08-09T20:08:34.002862+08:00",
+      "options": {
+        "max_tokens": 650,
+        "temperature": 0.1,
+        "top_p": 0.8,
+        "repeat_penalty": 1.05,
+        "seed": null
+      },
+      "ok": true,
+      "raw_response": "{\n  \"decision\": \"approve\",\n  \"mode\": \"WORLD_CONTINUITY_REVIEW\",\n  \"reason\": \"候选状态与上一轮快照及初始契约完全吻合。女主从‘观察’自然过渡到‘陪伴’，情绪变化符合‘心中涌起暖流但嘴上谨慎’的设定，没有引入新证据或改变身体机能。\",\"revision_patch\": null,\"schema_version\":1,\"snapshot_id\":\"44e2f349-d18f-4ac6-be9d-142a79e7cd2c\"}",
+      "elapsed_seconds": 2.631
+    },
+    {
+      "request_id": "qin-probe-turn-20260809-200824:GAME_REPLY:0",
+      "mode": "GAME_REPLY",
+      "started_at": "2026-08-09T20:08:36.633466+08:00",
+      "options": {
+        "max_tokens": 600,
+        "temperature": 0.75,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": null
+      },
+      "ok": false,
+      "error_type": "OllamaError",
+      "error": "Ollama chat request failed",
+      "elapsed_seconds": 0.358
+    },
+    {
+      "request_id": "qin-probe-turn-20260809-200824:GAME_REPLY:1",
+      "mode": "GAME_REPLY",
+      "started_at": "2026-08-09T20:08:36.991399+08:00",
+      "options": {
+        "max_tokens": 600,
+        "temperature": 0.75,
+        "top_p": 0.9,
+        "repeat_penalty": 1.1,
+        "seed": null
+      },
+      "ok": false,
+      "error_type": "OllamaError",
+      "error": "Ollama chat request failed",
+      "elapsed_seconds": 0.247
+    }
+  ],
+  "passed": false,
+  "error_type": "RuntimeError",
+  "error": "turn failed: model_or_runtime_error",
+  "traceback": "Traceback (most recent call last):\n  File \"F:\\AiPeople\\tools\\run_qinweixi_ollama_world_mind_smoke.py\", line 268, in _run\n    raise RuntimeError(f\"turn failed: {result.code}\")\nRuntimeError: turn failed: model_or_runtime_error\n",
+  "finished_at": "2026-08-09T20:08:37.239045+08:00"
+}

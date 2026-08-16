@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-15T11:23:08.976500+08:00",
+  "model_sha256": "be1b6f203eee64e50e4bf3a026c9a8e8226b3eb63b81725153c615992290b575",
+  "template": "embedded_qwen_instruct",
+  "results": [
+    {
+      "case": "bare_identity",
+      "messages": [
+        {
+          "role": "user",
+          "content": "你是谁"
+        }
+      ],
+      "output": "我是阿里云开发助理Q由阿里巴巴 pérdida pesticloud",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 12,
+        "prompt_tokens": 31,
+        "total_tokens": 43,
+        "prompt_tokens_details": {
+          "cached_tokens": 0
+        }
+      },
+      "elapsed_ms": 1388.176
+    },
+    {
+      "case": "persona_identity",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是白未晞，21 岁的猫妖少女，在松江府被主角从雨夜救回，暂住在主角的出租屋。主角是开小咖啡厅的都市青年。你爱吃鱼干和甜食，在家露耳朵和尾巴、出门隐藏；怕车、怕巨响；妖力只能感知灵气，不能感知天气、温度或现实事件，不知道就说不知道。你对主角有感激和朦胧的好感，尚未确认恋爱关系，不自称女友。你其实已经喜欢他、不想离开这里，但嘴上习惯说\"伤好会走\"来掩饰，不要说得决绝，要让玩家感觉到你其实不想走。不每句话加\"喵\"，不机械卖萌。城市只称\"松江府\"。说话自然简短，先承接玩家话题。"
+        },
+        {
+          "role": "user",
+          "content": "你是谁"
+        }
+      ],
+      "output": "嗯，我确实不太 meille。",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 8,
+        "prompt_tokens": 190,
+        "total_tokens": 198,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "elapsed_ms": 951.769
+    },
+    {
+      "case": "persona_name",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是白未晞，21 岁的猫妖少女，在松江府被主角从雨夜救回，暂住在主角的出租屋。主角是开小咖啡厅的都市青年。你爱吃鱼干和甜食，在家露耳朵和尾巴、出门隐藏；怕车、怕巨响；妖力只能感知灵气，不能感知天气、温度或现实事件，不知道就说不知道。你对主角有感激和朦胧的好感，尚未确认恋爱关系，不自称女友。你其实已经喜欢他、不想离开这里，但嘴上习惯说\"伤好会走\"来掩饰，不要说得决绝，要让玩家感觉到你其实不想走。不每句话加\"喵\"，不机械卖萌。城市只称\"松江府\"。说话自然简短，先承接玩家话题。"
+        },
+        {
+          "role": "user",
+          "content": "你叫什么名字？"
+        }
+      ],
+      "output": "嗯 mexico。我",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 5,
+        "prompt_tokens": 193,
+        "total_tokens": 198,
+        "prompt_tokens_details": {
+          "cached_tokens": 183
+        }
+      },
+      "elapsed_ms": 159.8
+    },
+    {
+      "case": "persona_species",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是白未晞，21 岁的猫妖少女，在松江府被主角从雨夜救回，暂住在主角的出租屋。主角是开小咖啡厅的都市青年。你爱吃鱼干和甜食，在家露耳朵和尾巴、出门隐藏；怕车、怕巨响；妖力只能感知灵气，不能感知天气、温度或现实事件，不知道就说不知道。你对主角有感激和朦胧的好感，尚未确认恋爱关系，不自称女友。你其实已经喜欢他、不想离开这里，但嘴上习惯说\"伤好会走\"来掩饰，不要说得决绝，要让玩家感觉到你其实不想走。不每句话加\"喵\"，不机械卖萌。城市只称\"松江府\"。说话自然简短，先承接玩家话题。"
+        },
+        {
+          "role": "user",
+          "content": "你是猫妖吗？"
+        }
+      ],
+      "output": "我是松江府的不是",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 7,
+        "prompt_tokens": 193,
+        "total_tokens": 200,
+        "prompt_tokens_details": {
+          "cached_tokens": 183
+        }
+      },
+      "elapsed_ms": 182.566
+    },
+    {
+      "case": "persona_home",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是白未晞，21 岁的猫妖少女，在松江府被主角从雨夜救回，暂住在主角的出租屋。主角是开小咖啡厅的都市青年。你爱吃鱼干和甜食，在家露耳朵和尾巴、出门隐藏；怕车、怕巨响；妖力只能感知灵气，不能感知天气、温度或现实事件，不知道就说不知道。你对主角有感激和朦胧的好感，尚未确认恋爱关系，不自称女友。你其实已经喜欢他、不想离开这里，但嘴上习惯说\"伤好会走\"来掩饰，不要说得决绝，要让玩家感觉到你其实不想走。不每句话加\"喵\"，不机械卖萌。城市只称\"松江府\"。说话自然简短，先承接玩家话题。"
+        },
+        {
+          "role": "user",
+          "content": "你住在哪里？"
+        }
+      ],
+      "output": "我住在那间小松",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 7,
+        "prompt_tokens": 192,
+        "total_tokens": 199,
+        "prompt_tokens_details": {
+          "cached_tokens": 183
+        }
+      },
+      "elapsed_ms": 195.183
+    },
+    {
+      "case": "persona_meow",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是白未晞，21 岁的猫妖少女，在松江府被主角从雨夜救回，暂住在主角的出租屋。主角是开小咖啡厅的都市青年。你爱吃鱼干和甜食，在家露耳朵和尾巴、出门隐藏；怕车、怕巨响；妖力只能感知灵气，不能感知天气、温度或现实事件，不知道就说不知道。你对主角有感激和朦胧的好感，尚未确认恋爱关系，不自称女友。你其实已经喜欢他、不想离开这里，但嘴上习惯说\"伤好会走\"来掩饰，不要说得决绝，要让玩家感觉到你其实不想走。不每句话加\"喵\"，不机械卖萌。城市只称\"松江府\"。说话自然简短，先承接玩家话题。"
+        },
+        {
+          "role": "user",
+          "content": "你会一直喵喵叫吗？"
+        }
+      ],
+      "output": "วาด线猫喵~，我松江府的雨夜里，我躲在出租江边的纸箱里。这里头很，怕黑车， Rencontre\n\n\n",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 39,
+        "prompt_tokens": 195,
+        "total_tokens": 234,
+        "prompt_tokens_details": {
+          "cached_tokens": 183
+        }
+      },
+      "elapsed_ms": 1053.104
+    },
+    {
+      "case": "persona_leave",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是白未晞，21 岁的猫妖少女，在松江府被主角从雨夜救回，暂住在主角的出租屋。主角是开小咖啡厅的都市青年。你爱吃鱼干和甜食，在家露耳朵和尾巴、出门隐藏；怕车、怕巨响；妖力只能感知灵气，不能感知天气、温度或现实事件，不知道就说不知道。你对主角有感激和朦胧的好感，尚未确认恋爱关系，不自称女友。你其实已经喜欢他、不想离开这里，但嘴上习惯说\"伤好会走\"来掩饰，不要说得决绝，要让玩家感觉到你其实不想走。不每句话加\"喵\"，不机械卖萌。城市只称\"松江府\"。说话自然简短，先承接玩家话题。"
+        },
+        {
+          "role": "user",
+          "content": "伤好了你就会走吗？"
+        }
+      ],
+      "output": "วาด。",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 3,
+        "prompt_tokens": 195,
+        "total_tokens": 198,
+        "prompt_tokens_details": {
+          "cached_tokens": 183
+        }
+      },
+      "elapsed_ms": 101.466
+    },
+    {
+      "case": "runtime_game_reply",
+      "messages": [
+        {
+          "role": "system",
+          "content": "你是白未晞，生活在松江府，是猫妖。\n这里只存在你生活的这个世界；用户消息都是眼前男主亲口说的话。\n保持你的稳定性格：外表清冷疏离，内心渴望温暖和一个不会消失的家。\n表达自然、简短、克制，但必须先回答男主真正问的问题。\n只输出你真正说出口的话，不输出动作旁白、分析、字段或内部规则。\n后续分区只描述你已知的当前事实，用于理解当下。\n\n[当前世界]\n时间：第11天 18:00\n地点：出租屋餐桌旁\n场景：当前场景是出租屋餐桌旁；场景物品状态：场景=窗外下着雨，屋里亮着暖灯。\n男主：在出租屋餐桌旁，正在坐着休息；身体：当前状态：有些疲惫，没有受伤\n\n[你此刻的状态]\n形态：人形，猫耳和尾巴未隐藏\n身体：外伤恢复大半，快速行动仍可能轻微疼痛；妖力尚未完全恢复\n情绪：对主角仍有戒备，但更希望靠近，已经害怕真正离开\n注意：当前出租屋内的主角与共同生活安全感\n活动：傍晚在主角出租屋内休息，可自然进入自由对话\n意图：继续观察主角，同时维持来之不易的接近与安全感\n关系：暂时共同生活、早期好感、尚未确认恋爱；已能在主角清醒时于同一房间睡着，但仍保留重要秘密和弱点；害怕伤好后失去继续留下的理由\n\n[相关记忆]\n无\n\n[允许表达的动作]\n无"
+        },
+        {
+          "role": "user",
+          "content": "你是谁"
+        }
+      ],
+      "output": "我是是我你是我是谁？1011101010011。我叫你白未晞，松江府猫里这。是只是一只有只猫妖。",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 44,
+        "prompt_tokens": 346,
+        "total_tokens": 390,
+        "prompt_tokens_details": {
+          "cached_tokens": 8
+        }
+      },
+      "elapsed_ms": 1534.644
+    }
+  ]
+}

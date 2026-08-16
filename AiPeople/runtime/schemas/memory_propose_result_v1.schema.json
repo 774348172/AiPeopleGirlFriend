@@ -1,0 +1,346 @@
+{
+  "$defs": {
+    "epistemic": {
+      "additionalProperties": false,
+      "properties": {
+        "grounding": {
+          "enum": [
+            "speaker_report",
+            "acknowledged",
+            "mutually_confirmed",
+            "runtime_observed"
+          ],
+          "type": "string"
+        },
+        "modality": {
+          "enum": [
+            "asserted",
+            "uncertain",
+            "hypothetical",
+            "joking",
+            "quoted"
+          ],
+          "type": "string"
+        },
+        "polarity": {
+          "enum": [
+            "affirmed",
+            "negated"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "polarity",
+        "modality",
+        "grounding"
+      ],
+      "type": "object"
+    },
+    "evidenceQuote": {
+      "additionalProperties": false,
+      "properties": {
+        "event_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "quote": {
+          "maxLength": 500,
+          "minLength": 1,
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "support",
+            "contradict",
+            "correction",
+            "context"
+          ],
+          "type": "string"
+        },
+        "start_hint": {
+          "minimum": 0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "event_id",
+        "role",
+        "quote",
+        "start_hint"
+      ],
+      "type": "object"
+    },
+    "identifier": {
+      "maxLength": 256,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "memoryKind": {
+      "enum": [
+        "player_fact",
+        "preference_boundary",
+        "person_relation",
+        "shared_experience",
+        "relationship_meaning",
+        "future_event",
+        "unfinished_topic",
+        "character_self_claim"
+      ],
+      "type": "string"
+    },
+    "nullableIdentifier": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/identifier"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "proposal": {
+      "additionalProperties": false,
+      "description": "Untrusted AI-proposed memory semantics. Runtime-owned identity, lifecycle and verified evidence fields are intentionally absent.",
+      "properties": {
+        "confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "type": "number"
+        },
+        "epistemic": {
+          "$ref": "#/$defs/epistemic"
+        },
+        "evidence_quotes": {
+          "items": {
+            "$ref": "#/$defs/evidenceQuote"
+          },
+          "maxItems": 8,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "kind": {
+          "$ref": "#/$defs/memoryKind"
+        },
+        "relation_suggestions": {
+          "$ref": "#/$defs/relations"
+        },
+        "semantic_reason": {
+          "maxLength": 300,
+          "minLength": 1,
+          "type": "string"
+        },
+        "statement": {
+          "maxLength": 500,
+          "minLength": 1,
+          "type": "string"
+        },
+        "subject": {
+          "$ref": "#/$defs/subject"
+        },
+        "temporal": {
+          "$ref": "#/$defs/temporalDraft"
+        }
+      },
+      "required": [
+        "kind",
+        "statement",
+        "subject",
+        "epistemic",
+        "temporal",
+        "evidence_quotes",
+        "semantic_reason",
+        "confidence",
+        "relation_suggestions"
+      ],
+      "type": "object"
+    },
+    "relationTargets": {
+      "items": {
+        "$ref": "#/$defs/identifier"
+      },
+      "maxItems": 16,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "relations": {
+      "additionalProperties": false,
+      "properties": {
+        "contradicts": {
+          "$ref": "#/$defs/relationTargets"
+        },
+        "refines": {
+          "$ref": "#/$defs/relationTargets"
+        },
+        "semantic_slot": {
+          "maxLength": 200,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "supersedes": {
+          "$ref": "#/$defs/relationTargets"
+        }
+      },
+      "required": [
+        "semantic_slot",
+        "supersedes",
+        "contradicts",
+        "refines"
+      ],
+      "type": "object"
+    },
+    "subject": {
+      "additionalProperties": false,
+      "properties": {
+        "display_name": {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "entity_id": {
+          "$ref": "#/$defs/nullableIdentifier"
+        },
+        "type": {
+          "enum": [
+            "player",
+            "character",
+            "both",
+            "relationship",
+            "third_party"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "entity_id",
+        "display_name"
+      ],
+      "type": "object"
+    },
+    "temporalDraft": {
+      "additionalProperties": false,
+      "properties": {
+        "anchor_event_id": {
+          "$ref": "#/$defs/nullableIdentifier"
+        },
+        "end_at": {
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "precision": {
+          "enum": [
+            "instant",
+            "minute",
+            "hour",
+            "part_of_day",
+            "day",
+            "range",
+            "unknown",
+            "not_applicable"
+          ],
+          "type": "string"
+        },
+        "relation": {
+          "enum": [
+            "past",
+            "present",
+            "future",
+            "atemporal",
+            "unknown"
+          ],
+          "type": "string"
+        },
+        "resolution": {
+          "enum": [
+            "resolved",
+            "relative",
+            "ambiguous",
+            "not_applicable"
+          ],
+          "type": "string"
+        },
+        "source_text": {
+          "maxLength": 200,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "start_at": {
+          "format": "date-time",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "timezone": {
+          "maxLength": 128,
+          "minLength": 1,
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "relation",
+        "resolution",
+        "source_text",
+        "anchor_event_id",
+        "start_at",
+        "end_at",
+        "timezone",
+        "precision"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "https://aipeople.local/schemas/memory_propose_result_v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "mode": {
+      "const": "MEMORY_PROPOSE"
+    },
+    "proposal_run_id": {
+      "maxLength": 256,
+      "minLength": 1,
+      "pattern": "^\\S+$",
+      "type": "string"
+    },
+    "proposals": {
+      "items": {
+        "$ref": "#/$defs/proposal"
+      },
+      "maxItems": 8,
+      "minItems": 0,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "mode",
+    "proposal_run_id",
+    "proposals"
+  ],
+  "title": "MEMORY_PROPOSE result v1",
+  "type": "object"
+}

@@ -1,0 +1,49 @@
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 71/71 [00:00<00:00, 35578.92it/s]
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:  58%|¨€¨€¨€¨€¨€¨‚    | 180/310 [00:00<00:00, 1783.90it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 310/310 [00:00<00:00, 1969.13it/s]
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 71/71 [00:00<00:00, 23677.79it/s]
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:  60%|¨€¨€¨€¨€¨€¨€    | 187/310 [00:00<00:00, 1859.78it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 310/310 [00:00<00:00, 2031.55it/s]
+Traceback (most recent call last):
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 110, in propose
+    text = await self.backend.complete_chat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\tools\run_sys11_one_hour_stability.py", line 115, in complete_chat
+    raw = await self.backend.complete_chat(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\sys12.py", line 251, in complete_chat
+    return await self.backend.complete_chat(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\adapters\llama_cpp.py", line 299, in complete_chat
+    async for chunk in stream:
+  File "F:\AiPeople\runtime\adapters\llama_cpp.py", line 666, in _stream_chat_http
+    raise LlamaCppProtocolError(
+runtime.adapters.llama_cpp.LlamaCppProtocolError: llama.cpp returned HTTP 400
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\AiPeople\tools\run_sys11_one_hour_stability.py", line 1153, in <module>
+    code = asyncio.run(operation)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "F:\AiPeople\tools\run_sys11_one_hour_stability.py", line 529, in _child
+    proposals = await repository.propose_from_request(memory_request_id, proposer)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_repository.py", line 200, in propose_from_request
+    return await self.propose(
+           ^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_repository.py", line 225, in propose
+    drafts = await proposer.propose(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 148, in propose
+    raise V6MemoryProposeError(
+runtime.world_mind.memory_proposer.V6MemoryProposeError: MEMORY_PROPOSE failed after retries
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 71/71 [00:00<00:00, 17756.58it/s]
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:  60%|¨€¨€¨€¨€¨€¨€    | 186/310 [00:00<00:00, 1852.30it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 310/310 [00:00<00:00, 1907.41it/s]

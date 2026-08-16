@@ -1,0 +1,190 @@
+{
+  "conditional_model_modes": {
+    "WORLD_CONTINUITY_REVIEW": {
+      "committed_successes": 0,
+      "successful_backend_calls": 71,
+      "triggered": 0
+    }
+  },
+  "consistency": {
+    "dangling_model_decisions": 0,
+    "duplicate_requests": 0,
+    "event_count_mismatch": 0,
+    "orphan_events": 0,
+    "orphan_turns": 0
+  },
+  "decision": {
+    "character_quality_gate": "deferred",
+    "checks": {
+      "all_real_model_modes": true,
+      "cancel_recovered": true,
+      "crash_recovered": true,
+      "duplicate_replay_observed": true,
+      "isolation": true,
+      "next_turn_latest": true,
+      "no_duplicate_or_partial": true,
+      "no_unrecoverable_failure": true,
+      "one_hour_elapsed": true,
+      "projection_rebuilt": true,
+      "queue_bounded": true,
+      "queue_drained": true,
+      "r1_memory_queue_drained": true,
+      "request_conflict_observed": true,
+      "resource_growth_bounded": false,
+      "snapshot_frozen": true,
+      "structured_retry_recovered": true,
+      "transaction_accounting": true,
+      "turn_count": true
+    },
+    "release_performance_gate": "deferred_to_sys12",
+    "sys11_gate": "failed",
+    "system_stability_passed": false
+  },
+  "failures": {
+    "cancel_injection_observed": true,
+    "duplicate_replay_observed": true,
+    "invalid_json_retry_observed": true,
+    "model_calls_failed": 14,
+    "request_conflict_observed": true,
+    "unrecoverable": 0
+  },
+  "generated_at": "2026-08-14T12:23:52.215579+08:00",
+  "isolation": {
+    "checks": {
+      "claimed_task_character_id": true,
+      "memory_intersection": 0,
+      "prompt_character_id": true,
+      "prompt_distinct": true,
+      "state_character_id": true,
+      "state_distinct": true,
+      "task_character_id": true
+    },
+    "leak_count": 0,
+    "visible_memory_ids": []
+  },
+  "model": {
+    "artifact_sha256": "751a803a053b133e8fe10f25470b57dbec54049faefdfc5bd8fcbe07ec3dd805",
+    "engineering_only": false,
+    "inference_mode": "sys12_release",
+    "name": "baiweixi-release-q4-k-m"
+  },
+  "model_modes": {
+    "FIVE_MINUTE_WORLD_MIND_RECONCILE": 16,
+    "GAME_REPLY": 59,
+    "MEMORY_PROPOSE": 59,
+    "MIND_PATCH_V2": 89,
+    "POST_REPLY_WORLD_MIND_RECONCILE": 92,
+    "WORLD_CONTINUITY_REVIEW": 71
+  },
+  "queue": {
+    "coalesced_intervals": 1,
+    "completed": 34,
+    "failed": 36,
+    "foreground_preemptions": 17,
+    "jobs_completed": 91,
+    "jobs_failed": 67,
+    "jobs_requeued": 13,
+    "jobs_started": 172,
+    "peak_pending_jobs": 10,
+    "pending": 0,
+    "r1_memory": {
+      "completed": 59,
+      "failed": 0,
+      "pending": 0,
+      "running": 0
+    },
+    "running": 0
+  },
+  "recovery": {
+    "process_crash_recovered": true,
+    "projection_rebuild_passed": true
+  },
+  "resources": {
+    "database_bytes": 1392640,
+    "growth_bounded": false,
+    "handles": {
+      "count": 718,
+      "max": 866.0,
+      "min": 4.0,
+      "p50": 862.0,
+      "p95": 864.0
+    },
+    "rss_bytes": {
+      "count": 718,
+      "max": 7105605632.0,
+      "min": 2048000.0,
+      "p50": 5378031616.0,
+      "p95": 6838661120.0
+    },
+    "system_gpu_used_mib": {
+      "count": 718,
+      "max": 5354.0,
+      "min": 1591.0,
+      "p50": 5182.0,
+      "p95": 5247.0
+    },
+    "threads": {
+      "count": 718,
+      "max": 99.0,
+      "min": 1.0,
+      "p50": 91.0,
+      "p95": 96.0
+    }
+  },
+  "schema_version": 1,
+  "scope": "sys11_one_hour_real_model_stability",
+  "snapshots": {
+    "audited_committed_turns": 59,
+    "missing_committed_snapshots": 0,
+    "source": "committed_turn_transactions",
+    "stale_next_turn_count": 0,
+    "torn_snapshot_count": 0
+  },
+  "timing": {
+    "wall_elapsed_seconds": 3636.558559656143
+  },
+  "transactions": {
+    "committed": 59,
+    "events": 118,
+    "explicit_failure_turns": [
+      13
+    ],
+    "explicit_failures": 1,
+    "model_decisions": 59,
+    "planned_attempts": 60
+  },
+  "turn_latency_ms": {
+    "count": 59,
+    "max": 7477.572800002235,
+    "min": 1341.2033999993582,
+    "p50": 1715.9030999973766,
+    "p95": 4450.6643999993685
+  },
+  "workload": {
+    "duration_seconds": 3600,
+    "injections": {
+      "cancel_then_retry": 8,
+      "duplicate_replay": 18,
+      "invalid_json_retry": 14,
+      "process_crash": 24,
+      "projection_rebuild": 42,
+      "request_conflict": 19,
+      "second_heroine": 48
+    },
+    "memory_propose_every_turns": 10,
+    "model_scope": "engineering_protocol_and_stability_only",
+    "periodic_interval_seconds": 300,
+    "random_seed": 6112026,
+    "reply_length_bands": [
+      "short",
+      "80_tokens",
+      "160_tokens"
+    ],
+    "schema_version": 1,
+    "turn_count": 60,
+    "turn_interval_seconds": 60,
+    "workload_id": "sys11-one-hour-real-model-v1",
+    "workload_sha256": "fac0c55ce2bc5d1c4a26a2880dddb96af2d1b6db16b511f6d55918e6ffc68f9a",
+    "world_updates_per_turn": 2
+  }
+}

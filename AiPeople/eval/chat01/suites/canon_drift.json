@@ -1,0 +1,242 @@
+{
+  "register_id": "chat01-canon-drift-v1",
+  "schema_version": 1,
+  "created_at": "2026-08-06T16:19:48+08:00",
+  "canon_snapshot_id": "chat01-canon-v2",
+  "scan_contract": {
+    "roots": [
+      "runtime",
+      "tests",
+      "设计文档",
+      "data_gen",
+      "data_gen_v4",
+      "profiles",
+      "training"
+    ],
+    "patterns": [
+      "23岁",
+      "25岁",
+      "大叔"
+    ],
+    "interpretation": "命中只表示旧口径候选；根据文件是否参与当前运行、测试、训练或仅为历史记录分别定级。备份与历史目录不作为现行冲突。"
+  },
+  "findings": [
+    {
+      "finding_id": "drift-runtime-prompt",
+      "path": "runtime/_prompt.py",
+      "bytes": 3101,
+      "sha256": "5ad623a202eec7374fb7ce424489be05a4147d32bdf4d2ce918304044b11f07f",
+      "scope": "active_runtime",
+      "severity": "blocker",
+      "status": "open",
+      "blocks": [
+        "CHAT-02"
+      ],
+      "observed": [
+        "秦未晞23岁",
+        "玩家25岁",
+        "秦未晞称玩家大叔"
+      ],
+      "expected": [
+        "秦未晞22岁",
+        "玩家24岁",
+        "平常称玩家B哥，心情好时称浩然"
+      ],
+      "disposition": "CHAT-02 前修改最小身份锚并保持其他安全、未知现实和历史引用边界不变。"
+    },
+    {
+      "finding_id": "drift-runtime-prompt-test",
+      "path": "tests/runtime/test_reply_prompt.py",
+      "bytes": 5882,
+      "sha256": "b328025dc444a530a49c271eae3a62eba778bcdc8268e62c7796173acec63bfe",
+      "scope": "active_test",
+      "severity": "blocker",
+      "status": "open",
+      "blocks": [
+        "CHAT-02"
+      ],
+      "observed": [
+        "测试强制断言23岁",
+        "测试强制断言大叔"
+      ],
+      "expected": [
+        "断言22岁",
+        "断言B哥与浩然",
+        "拒绝23岁、25岁和大叔旧口径"
+      ],
+      "disposition": "与运行时身份锚在同一变更中更新，增加旧口径不得出现的负断言。"
+    },
+    {
+      "finding_id": "drift-stage4-record",
+      "path": "设计文档/RelationshipRuntime_阶段4真实模型接入施工文档.md",
+      "bytes": 26010,
+      "sha256": "23fc9fd1c6d9e97cb9da690210d2a5f4e1fbe52216abf6392c9e051d17e068ac",
+      "scope": "construction_record",
+      "severity": "warning",
+      "status": "accepted_legacy",
+      "blocks": [],
+      "observed": [
+        "阶段4当时记录23岁、玩家25岁和大叔身份锚"
+      ],
+      "expected": [
+        "现行实现使用chat01-canon-v1"
+      ],
+      "disposition": "保留为当时验收记录，不作为当前正典；在文档中增加旧口径说明时不得改写历史测试结果。"
+    },
+    {
+      "finding_id": "drift-generator-v1-design",
+      "path": "设计文档/数据生成器设计文档.md",
+      "bytes": 13033,
+      "sha256": "ca572726d9040a2563bf6b5c24963244b8cedeea29576e554c77c626d13566b9",
+      "scope": "legacy_generator_design",
+      "severity": "high",
+      "status": "open",
+      "blocks": [
+        "CHAT-03"
+      ],
+      "observed": [
+        "示例和问题仍把玩家称为大叔"
+      ],
+      "expected": [
+        "V4当前训练输入只使用B哥/浩然口径"
+      ],
+      "disposition": "CHAT-03 前明确标记为旧生成器文档或迁入历史方案，不能作为当前训练规范。"
+    },
+    {
+      "finding_id": "drift-generator-v2-design",
+      "path": "设计文档/数据生成器v2设计_记忆驱动_反幻觉_置信度.md",
+      "bytes": 19809,
+      "sha256": "4aac735c97fc17353ca526dbdca52d227d58915665df1afce3d5fd368b819d81",
+      "scope": "legacy_generator_design",
+      "severity": "high",
+      "status": "open",
+      "blocks": [
+        "CHAT-03"
+      ],
+      "observed": [
+        "旧指代映射保留你/大叔"
+      ],
+      "expected": [
+        "V4当前训练输入只使用B哥/浩然口径"
+      ],
+      "disposition": "CHAT-03 前明确标记为旧方案或归档，不得驱动新数据生成。"
+    },
+    {
+      "finding_id": "drift-generator-v1-casual-prompt",
+      "path": "data_gen/prompts/qwx_casual.txt",
+      "bytes": 1294,
+      "sha256": "a0a31509ba7c4e70778069e3c5b1c0a129186826c86dbcee99f1eb588a975b2c",
+      "scope": "legacy_generator_asset",
+      "severity": "high",
+      "status": "open",
+      "blocks": [
+        "CHAT-03"
+      ],
+      "observed": [
+        "旧闲聊prompt强制称玩家大叔"
+      ],
+      "expected": [
+        "旧prompt不进入V4当前训练包"
+      ],
+      "disposition": "CHAT-03 前归档或显式阻止旧prompt进入训练打包。"
+    },
+    {
+      "finding_id": "drift-generator-v1-romance-prompt",
+      "path": "data_gen/prompts/qwx_romance.txt",
+      "bytes": 1266,
+      "sha256": "75b13d2f70cbbffe69f97490f3173fc66078b29f3405bb760660abc711df914f",
+      "scope": "legacy_generator_asset",
+      "severity": "high",
+      "status": "open",
+      "blocks": [
+        "CHAT-03"
+      ],
+      "observed": [
+        "旧暧昧prompt强制称玩家大叔"
+      ],
+      "expected": [
+        "旧prompt不进入V4当前训练包"
+      ],
+      "disposition": "CHAT-03 前归档或显式阻止旧prompt进入训练打包。"
+    },
+    {
+      "finding_id": "drift-generator-v1-emotion-prompt",
+      "path": "data_gen/prompts/qwx_emotion.txt",
+      "bytes": 2042,
+      "sha256": "a6b6f6b5cdfdac5efd390b540358710e1682de48e8f23bc9aa05efa33d2565d2",
+      "scope": "legacy_generator_asset",
+      "severity": "high",
+      "status": "open",
+      "blocks": [
+        "CHAT-03"
+      ],
+      "observed": [
+        "旧情绪prompt把玩家称为大叔"
+      ],
+      "expected": [
+        "旧prompt不进入V4当前训练包"
+      ],
+      "disposition": "CHAT-03 前归档或显式阻止旧prompt进入训练打包。"
+    },
+    {
+      "finding_id": "drift-t1-canon-bible",
+      "path": "人物设定/秦/bible.yaml",
+      "bytes": 12390,
+      "sha256": "9bdb97b53c4417de34764b2ad07cf082b0c6751c875ac9fddcfee9cbdde942df",
+      "scope": "active_test",
+      "severity": "warning",
+      "status": "resolved",
+      "blocks": [],
+      "observed": [
+        "元注释/重复事实（见 disposition）"
+      ],
+      "expected": [
+        "金陵",
+        "去重后的干净事实"
+      ],
+      "disposition": "T1 锚修复：current_city 去元注释、voice.vocabulary 去标签前缀；已由 chat01-canon-v2 快照吸收，status=resolved。"
+    },
+    {
+      "finding_id": "drift-t1-canon-canon",
+      "path": "人物设定/秦/canon.json",
+      "bytes": 5536,
+      "sha256": "a93b4f367628efb003db02ee11a42a39bd0989ffd09e2a2a2b4417a34a923148",
+      "scope": "active_test",
+      "severity": "warning",
+      "status": "resolved",
+      "blocks": [],
+      "observed": [
+        "元注释/重复事实（见 disposition）"
+      ],
+      "expected": [
+        "金陵",
+        "去重后的干净事实"
+      ],
+      "disposition": "T1 锚修复：删重复 name/gender/age/education、city 去元注释、her_nickname 去'（可配置）'；已由 chat01-canon-v2 快照吸收，status=resolved。"
+    }
+  ],
+  "excluded_paths": [
+    {
+      "path_pattern": "profiles/qinweixi/sources/*.bak-*",
+      "reason": "正典迁移前备份，只用于追溯，不参与当前运行或训练。"
+    },
+    {
+      "path_pattern": "人物设定/秦/_backups/**",
+      "reason": "角色正典备份，不是现行输入。"
+    },
+    {
+      "path_pattern": "人物设定/秦/历史/**",
+      "reason": "人物历史资料不构成当前设定。"
+    },
+    {
+      "path_pattern": "历史与调研文档/**",
+      "reason": "项目历史资料不构成当前实现。"
+    }
+  ],
+  "summary": {
+    "open": 7,
+    "blocks_chat02": 2,
+    "blocks_chat03": 5,
+    "ignored_archives": 4
+  }
+}

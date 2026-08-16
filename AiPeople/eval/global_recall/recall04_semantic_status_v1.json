@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "checkpoint": "RECALL-04",
+  "metric": "global_recall_at_32",
+  "case_set": "recall04-semantic-cases-v1",
+  "status": "pending_real_local_BGE_asset",
+  "score": null,
+  "required_encoder": {
+    "model_id": "BAAI/bge-small-zh-v1.5",
+    "revision": "must_match_delivered_local_asset",
+    "artifact_sha256": "must_match_delivered_local_asset",
+    "dimension": 512,
+    "pooling": "mean",
+    "max_sequence_length": 512,
+    "normalization": "runtime_l2"
+  },
+  "reason": "No real local BGE asset or corresponding prediction artifact is present in the workspace. Synthetic vectors prove exact scan correctness but are not semantic recall evidence.",
+  "completion_command": ".venv\\Scripts\\python.exe -m eval.global_recall.evaluate <real-bge-predictions.json>",
+  "forbidden_substitutes": [
+    "keyword matching",
+    "fake encoder scores",
+    "random vectors",
+    "online model download"
+  ]
+}
+

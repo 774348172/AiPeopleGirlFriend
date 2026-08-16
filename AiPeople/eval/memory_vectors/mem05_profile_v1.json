@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "checkpoint": "MEM-05",
+  "selector_view_profile": {
+    "profile_id": "mem05-selector-view-v1",
+    "indexable_statuses": ["active", "disputed"],
+    "view_order": ["statement", "temporal", "evidence"],
+    "whitespace_normalization": "unicode_split_join_single_ascii_space",
+    "source_revision": "sha256(canonical_memory_json)"
+  },
+  "encoder_profile": {
+    "model_id": "BAAI/bge-small-zh-v1.5",
+    "asset_source": "explicit_local_directory_only",
+    "revision": "required_explicit_per_asset",
+    "artifact_identity": "sha256(sorted_relative_path_and_file_bytes)",
+    "device": "cpu",
+    "dimension": 512,
+    "pooling": "mean",
+    "max_sequence_length": 512,
+    "normalization": "runtime_l2",
+    "dtype": "float32le",
+    "network_download": false
+  },
+  "projection": {
+    "fact_source": "memories",
+    "storage": "sqlite_generation_metadata_and_float32_blob",
+    "hot_snapshot": "contiguous_row_major_array_f",
+    "incremental_sync": "replace_changed_memory_views_and_remove_non_indexable",
+    "full_rebuild": "new_complete_generation_then_atomic_active_pointer_switch",
+    "stale_read_guard": "join_current_memory_status_and_version",
+    "corruption_guard": "dimension_finite_l2_and_sha256"
+  },
+  "excluded": [
+    "global_similarity_scan",
+    "top32_ranking",
+    "remote_vector_service",
+    "online_training",
+    "background_scheduler"
+  ],
+  "next_checkpoint": "MEM-06"
+}

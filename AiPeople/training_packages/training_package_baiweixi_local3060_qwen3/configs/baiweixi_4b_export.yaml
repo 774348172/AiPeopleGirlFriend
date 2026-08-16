@@ -1,0 +1,11 @@
+# LLaMA-Factory 导出配置 —— 合并 adapter 到基座权重（本机 8G 版）
+# 8G 显存放不下 bf16 基座（8GB），合并必须在 CPU 上跑（慢但稳，约 5-15 分钟）。
+# 用法: llamafactory-cli export configs/baiweixi_4b_export.yaml
+model_name_or_path: Qwen/Qwen3-4B
+adapter_name_or_path: outputs/baiweixi_4b
+template: qwen3_nothink
+finetuning_type: lora
+export_dir: outputs/baiweixi_4b_merged
+export_size: 4
+export_device: cpu
+export_legacy_format: false

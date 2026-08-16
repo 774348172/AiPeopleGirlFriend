@@ -1,0 +1,168 @@
+{
+  "consistency": {
+    "dangling_model_decisions": 0,
+    "duplicate_requests": 0,
+    "event_count_mismatch": 0,
+    "orphan_events": 0,
+    "orphan_turns": 0
+  },
+  "decision": {
+    "character_quality_gate": "deferred",
+    "checks": {
+      "all_real_model_modes": false,
+      "cancel_recovered": false,
+      "crash_recovered": false,
+      "duplicate_replay_observed": false,
+      "isolation": true,
+      "next_turn_latest": true,
+      "no_duplicate_or_partial": true,
+      "no_unrecoverable_failure": true,
+      "one_hour_elapsed": false,
+      "projection_rebuilt": true,
+      "queue_bounded": true,
+      "queue_drained": true,
+      "request_conflict_observed": false,
+      "resource_growth_bounded": false,
+      "snapshot_frozen": true,
+      "structured_retry_recovered": false,
+      "transaction_accounting": false,
+      "turn_count": false
+    },
+    "release_performance_gate": "deferred_to_sys12",
+    "sys11_gate": "failed",
+    "system_stability_passed": false
+  },
+  "failures": {
+    "cancel_injection_observed": false,
+    "duplicate_replay_observed": false,
+    "invalid_json_retry_observed": false,
+    "model_calls_failed": 2,
+    "request_conflict_observed": false,
+    "unrecoverable": 0
+  },
+  "generated_at": "2026-08-12T18:54:40.324203+08:00",
+  "isolation": {
+    "checks": {
+      "claimed_task_character_id": true,
+      "memory_intersection": 0,
+      "prompt_character_id": true,
+      "prompt_distinct": true,
+      "state_character_id": true,
+      "state_distinct": true,
+      "task_character_id": true
+    },
+    "leak_count": 0,
+    "visible_memory_ids": []
+  },
+  "model": {
+    "artifact_sha256": "751a803a053b133e8fe10f25470b57dbec54049faefdfc5bd8fcbe07ec3dd805",
+    "engineering_only": false,
+    "inference_mode": "sys12_release",
+    "name": "baiweixi-release-q4-k-m"
+  },
+  "model_modes": {
+    "GAME_REPLY": 3,
+    "POST_REPLY_WORLD_MIND_RECONCILE": 14,
+    "TURN_MIND_ADVANCE": 3,
+    "WORLD_CONTINUITY_REVIEW": 3
+  },
+  "queue": {
+    "coalesced_intervals": 0,
+    "completed": 0,
+    "failed": 3,
+    "foreground_preemptions": 2,
+    "jobs_completed": 0,
+    "jobs_failed": 7,
+    "jobs_requeued": 2,
+    "jobs_started": 9,
+    "peak_pending_jobs": 3,
+    "pending": 0,
+    "running": 0
+  },
+  "recovery": {
+    "process_crash_recovered": false,
+    "projection_rebuild_passed": true
+  },
+  "resources": {
+    "database_bytes": 323584,
+    "growth_bounded": false,
+    "handles": {
+      "count": 90,
+      "max": 866.0,
+      "min": 88.0,
+      "p50": 864.0,
+      "p95": 866.0
+    },
+    "rss_bytes": {
+      "count": 90,
+      "max": 6671708160.0,
+      "min": 6963200.0,
+      "p50": 5628862464.0,
+      "p95": 6517121024.0
+    },
+    "system_gpu_used_mib": {
+      "count": 90,
+      "max": 4883.0,
+      "min": 1313.0,
+      "p50": 4883.0,
+      "p95": 4883.0
+    },
+    "threads": {
+      "count": 90,
+      "max": 99.0,
+      "min": 4.0,
+      "p50": 93.0,
+      "p95": 98.0
+    }
+  },
+  "schema_version": 1,
+  "scope": "sys11_one_hour_real_model_stability",
+  "snapshots": {
+    "stale_next_turn_count": 0,
+    "torn_snapshot_count": 0
+  },
+  "timing": {
+    "wall_elapsed_seconds": 443.287385225296
+  },
+  "transactions": {
+    "committed": 3,
+    "events": 6,
+    "explicit_failure_turns": [],
+    "explicit_failures": 0,
+    "model_decisions": 3,
+    "planned_attempts": 3
+  },
+  "turn_latency_ms": {
+    "count": 3,
+    "max": 78875.03159999324,
+    "min": 58815.94369999948,
+    "p50": 69895.87819999724,
+    "p95": 78875.03159999324
+  },
+  "workload": {
+    "duration_seconds": 180,
+    "injections": {
+      "cancel_then_retry": 99,
+      "duplicate_replay": 99,
+      "invalid_json_retry": 99,
+      "process_crash": 99,
+      "projection_rebuild": 99,
+      "request_conflict": 99,
+      "second_heroine": 99
+    },
+    "memory_propose_every_turns": 10,
+    "model_scope": "sys12_release_foreground_scheduling_diagnostic_only",
+    "periodic_interval_seconds": 300,
+    "random_seed": 6112026,
+    "reply_length_bands": [
+      "short",
+      "80_tokens",
+      "160_tokens"
+    ],
+    "schema_version": 1,
+    "turn_count": 3,
+    "turn_interval_seconds": 60,
+    "workload_id": "sys12-release-three-turn-diagnostic",
+    "world_updates_per_turn": 2
+  }
+}

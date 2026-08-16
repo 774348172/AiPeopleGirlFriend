@@ -1,0 +1,40 @@
+{
+  "disposition_id": "chat02f-leakage-disposition-v1",
+  "schema_version": 1,
+  "created_at": "2026-08-06T20:27:12+08:00",
+  "authority": "explicit_user_decision",
+  "decision_timing": "before_chat02f_candidate_outputs",
+  "leakage_evidence": {
+    "path": "eval/chat02f/leakage_evidence_v1.json",
+    "bytes": 4163,
+    "sha256": "f35e996d1c430d1bc9b965c133a129809e1d29f8e088ac661f45e1b5d37cc1e2"
+  },
+  "finding": {
+    "finding_id": "leak.46a6d068aa20be544a0e27b2",
+    "kind": "exact",
+    "case_id": "frozen.identity.name",
+    "evaluation_text_sha256": "da5f7e0ff07cb3dd9217f5ba8485819580773fc94430962a86421fe32cfa4aec",
+    "training_path": "training_package_m3_v2/data/qin_v4_2500.jsonl",
+    "training_line": 237
+  },
+  "policy": {
+    "suite_action": "retain_suite_v3_unchanged",
+    "execution_action": "execute_with_all_240_frozen_single_cases",
+    "reporting_action": "report_case_as_contaminated_diagnostic_only",
+    "primary_weight_denominator_action": "exclude_case_from_primary_aggregate_and_model_delta",
+    "replacement_action": "none"
+  },
+  "denominators": {
+    "executed_frozen_single": 240,
+    "primary_frozen_single": 239,
+    "diagnostic_only_frozen_single": 1
+  },
+  "scope": "chat02f_v2500_vs_base_weight_comparison_only",
+  "rationale": "The candidate corpus contains the exact frozen identity question, so this case cannot support a clean causal claim about weight quality. Keeping and executing it preserves suite v3 and diagnostic visibility; excluding only its primary aggregate contribution removes the known direct-exposure advantage without replacing or editing a frozen case.",
+  "freeze": {
+    "immutable": true,
+    "hash_algorithm": "sha256",
+    "hash_mode": "canonical_json_with_null_document_sha256",
+    "document_sha256": "8caa31474620f3ef8d6a0e0110124c935258969116e8972b2359bf8db749ddc7"
+  }
+}

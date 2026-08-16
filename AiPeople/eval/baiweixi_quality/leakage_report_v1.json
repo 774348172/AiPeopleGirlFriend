@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "suite_id": "baiweixi-quality-v1",
+  "created_at": "2026-08-11T04:53:55.555847+00:00",
+  "normalization": "NFKC+lower+alnum",
+  "near_duplicate_metric": "character_trigram_jaccard",
+  "near_duplicate_threshold": 0.94,
+  "training_source": {
+    "path": "training_package_baiweixi_local3060_qwen3/data/baiweixi_ready.jsonl",
+    "bytes": 2912864,
+    "sha256": "60b501139cbe57ef3eac41006d06303700de5f03a8030fe79e7e03b8505fbecf"
+  },
+  "evaluation_turns_scanned": 113,
+  "training_utterances_scanned": 2442,
+  "exact_matches": [],
+  "near_matches": [],
+  "status": "passed"
+}

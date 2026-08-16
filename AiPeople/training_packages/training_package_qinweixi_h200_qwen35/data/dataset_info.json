@@ -1,0 +1,10 @@
+{
+  "_comment": "LLaMA-Factory 数据集注册。把本文件与 qin_v4_ready.jsonl 一起放到 LLaMA-Factory 的 data/ 目录（或 dataset_dir: data 指向本包 data/）。sharegpt 格式：conversations=[{from,value}]，from=human/gpt/system。",
+  "qin_v4_ready": {
+    "file_name": "qin_v4_ready.jsonl",
+    "columns": {
+      "messages": "conversations"
+    },
+    "formatting": "sharegpt"
+  }
+}

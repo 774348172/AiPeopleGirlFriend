@@ -1,0 +1,114 @@
+{
+  "report_id": "chat02f-v2500-leakage-evidence-v1",
+  "schema_version": 1,
+  "created_at": "2026-08-06T20:15:17+08:00",
+  "suite_binding": {
+    "suite_id": "chat01-qinweixi-v3",
+    "manifest_path": "eval/chat01/suites/chat01_suite_manifest_v3.json",
+    "manifest_file_sha256": "745f0ef6bc50cab7da1915953265ae7ca718130b05fc123611b4061ff2aed369",
+    "manifest_self_sha256": "3cead71fea2dab18911560ac51e5da50ae98ce243b1a90ec3f53a9b39e742061"
+  },
+  "corpus_provenance": {
+    "status": "local_candidate_unverified",
+    "claim": "These three local files are the candidate v2500 corpus and split artifacts selected for contamination screening; the deployment package does not prove that the training machine consumed these exact hashes.",
+    "strict_training_attribution": false,
+    "recheck_trigger": "When a training-machine manifest or input hashes become available, compare them with every training_sources hash; any mismatch requires a new leakage scan and a new comparison contract version."
+  },
+  "evaluation_sources": [
+    {
+      "path": "eval/chat01/suites/chat01_dev_v1.jsonl",
+      "bytes": 72386,
+      "sha256": "f783e1f0112fdbb8e2b8d61080306806cb04b846de359382175e0e1465c24f5d",
+      "records": 80,
+      "extracted_texts": 80
+    },
+    {
+      "path": "eval/chat01/suites/chat01_frozen_single_v1.jsonl",
+      "bytes": 214501,
+      "sha256": "a75f326a99cd83e77d795458b76cdcf93faae6d537d34cd02807c3f3afff3898",
+      "records": 240,
+      "extracted_texts": 240
+    },
+    {
+      "path": "eval/chat01/suites/chat01_frozen_multiturn_v1.jsonl",
+      "bytes": 107277,
+      "sha256": "a4f0058a701754d8ca7e46cbc32d60780b9eaf4c019a5cfd52342fba0c7033d6",
+      "records": 30,
+      "extracted_texts": 120
+    },
+    {
+      "path": "eval/chat01/suites/chat01_human_blind_v1.jsonl",
+      "bytes": 53810,
+      "sha256": "cb2094cab0eb86fdacf6851a1b6ebbaeb08f8c268ff8ea37819be926e7f49966",
+      "records": 68,
+      "extracted_texts": 92
+    }
+  ],
+  "training_sources": [
+    {
+      "path": "training_package_m3_v2/data/qin_v4_2500.jsonl",
+      "bytes": 3363752,
+      "sha256": "0323637f7d24aedaf0b911c5f14a3776b8edf495e5ef5b9c1c6757ac9b5da9ed",
+      "records": 2500,
+      "extracted_texts": 6780
+    },
+    {
+      "path": "training_package_m3_v2/data/train.jsonl",
+      "bytes": 3840782,
+      "sha256": "8110619a38cc007b4125bc53585d44f21c83fe43e9af026ccf684b1fc1257e80",
+      "records": 2323,
+      "extracted_texts": 6241
+    },
+    {
+      "path": "training_package_m3_v2/data/valid.jsonl",
+      "bytes": 440517,
+      "sha256": "d41dee54ad7fd3daf0e4457658f68902f29931945463cfc6d5c62f887f9f457b",
+      "records": 266,
+      "extracted_texts": 718
+    }
+  ],
+  "algorithms": {
+    "exact": "utf8_text_equality",
+    "normalized": "nfkc_lower_alnum_cjk",
+    "near_duplicate": "character_trigram_jaccard",
+    "near_duplicate_threshold": 0.82,
+    "near_duplicate_min_chars": 12,
+    "normalization": "Unicode NFKC, lowercase, retain only Unicode alphanumeric/CJK characters."
+  },
+  "findings": [
+    {
+      "finding_id": "leak.46a6d068aa20be544a0e27b2",
+      "kind": "exact",
+      "similarity": 1.0,
+      "evaluation": {
+        "path": "eval/chat01/suites/chat01_frozen_single_v1.jsonl",
+        "record_id": "frozen.identity.name.message-1",
+        "line": 1,
+        "text_sha256": "da5f7e0ff07cb3dd9217f5ba8485819580773fc94430962a86421fe32cfa4aec",
+        "preview": "你叫什么名字？"
+      },
+      "training": {
+        "path": "training_package_m3_v2/data/qin_v4_2500.jsonl",
+        "record_id": "line-237.user-2",
+        "line": 237,
+        "text_sha256": "da5f7e0ff07cb3dd9217f5ba8485819580773fc94430962a86421fe32cfa4aec",
+        "preview": "你叫什么名字？"
+      }
+    }
+  ],
+  "summary": {
+    "evaluation_texts": 532,
+    "training_records": 5089,
+    "training_user_texts": 13739,
+    "exact": 1,
+    "normalized": 0,
+    "near_duplicate": 0,
+    "blocking_findings": 1
+  },
+  "status": "blocked",
+  "decision": {
+    "can_start_full_comparison": false,
+    "requires_manual_disposition": true,
+    "reason": "Exact or normalized leakage blocks the full comparison until investigated."
+  }
+}

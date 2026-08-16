@@ -1,0 +1,48 @@
+# LLaMA-Factory 训练配置 —— 白未晞人格（H200 全精度 LoRA）
+# H200: 141GB HBM3e, 全精度, 不量化, bf16, 大 batch
+# 数据: baiweixi_ready.jsonl（1190 条人工复核通过的 REPLY 数据，已剔除 rerank）
+#
+# 训练: llamafactory-cli train configs/baiweixi_4b_h200.yaml
+# 导出: llamafactory-cli export configs/baiweixi_4b_export.yaml
+
+### ----- model -----
+model_name_or_path: Qwen/Qwen3.5-4B  # 2026-08-10 白未晞基座（VLM）
+trust_remote_code: true
+adapter_name_or_path:
+# 不设 quantization_bit —— H200 显存够，全精度训练
+
+### ----- method -----
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 16                                # H200 可用更大 rank 提升人格容量
+lora_alpha: 32
+lora_dropout: 0.05
+
+### ----- dataset -----
+dataset: baiweixi_ready
+template: qwen3_5_nothink                      # 关闭 reasoning 思考（与 M3 包 nothink 一致）
+cutoff_len: 2048                             # 覆盖全部样本（最长 ~1076 字符）
+dataset_dir: data
+overwrite_cache: true
+preprocessing_num_workers: 8
+
+### ----- output -----
+output_dir: outputs/baiweixi_4b
+logging_steps: 20
+save_steps: 500
+save_total_limit: 2
+plot_loss: true
+overwrite_output_dir: true
+
+### ----- train -----
+per_device_train_batch_size: 8               # H200 可用大 batch
+gradient_accumulation_steps: 2
+learning_rate: 5.0e-5
+num_train_epochs: 3.0                        # 1190 条 × 3 epoch（约 450 steps/等效 batch 8）
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+weight_decay: 0.01
+bf16: true                                   # H200 原生支持 bf16
+optim: adamw_torch                           # H200 不需要 8-bit 优化器

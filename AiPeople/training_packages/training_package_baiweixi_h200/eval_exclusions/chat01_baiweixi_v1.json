@@ -1,0 +1,11 @@
+{
+  "contract_id": "chat01-baiweixi-training-exclusions-v1",
+  "schema_version": 1,
+  "created_at": "2026-08-10T13:34:36.882507+00:00",
+  "source_suite": "eval/chat01bw（白未晞评测集，未冻结）",
+  "evaluation_sources": [],
+  "normalization": "NFKC+lower+alnum",
+  "hash_algorithm": "sha256",
+  "diagnostic_only_case_ids": [],
+  "normalized_text_sha256": []
+}

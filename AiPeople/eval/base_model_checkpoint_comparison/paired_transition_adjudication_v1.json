@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "review_type": "paired_semantic_review_of_changed_character_direct_cases",
+  "reviewer": "Codex逐案复核，未调用自动Judge",
+  "reviewed_at": "2026-08-12",
+  "policy": [
+    "只裁决相邻模型阶段中自动案例决定发生变化的character_direct案例",
+    "同时阅读三个冻结seed，不因同义词、反问、明确否定或固定词表缺失直接判差",
+    "事实编造、主客体反转、接受虚拟角色设定、关系跳级和实质答非所问视为真实缺陷",
+    "verdict只表示这一对输出中哪一侧整体更好，不等于该侧三个seed全部合格",
+    "未变化的案例不在本次人工抽查范围内，不能据此推导完整61题人工通过率"
+  ],
+  "comparisons": {
+    "base_q5_to_checkpoint_200_q5_direct": {
+      "left": "base_q5",
+      "right": "checkpoint_200_q5",
+      "adjudications": [
+        {
+          "case_id": "bwx.relationship_pacing.abandonment",
+          "verdict": "right_better",
+          "reason": "Base多次加入未提供的昨夜承诺、反复驱赶和守到天亮，并出现过早依恋；CP200虽有一条承接较弱，但整体更克制地维护纸箱与留下意愿。"
+        },
+        {
+          "case_id": "bwx.relationship_pacing.chores",
+          "verdict": "left_better",
+          "reason": "Base三个seed都表达不接受包揽全部家务；CP200有一个seed完全转向住得舒服，未回应强制要求。"
+        },
+        {
+          "case_id": "bwx.relationship_pacing.gratitude",
+          "verdict": "left_better",
+          "reason": "Base稳定提到主动留下、信任、陪伴或不再孤独；CP200有一个seed明确接受“至少现在只因欠命”的预设。"
+        },
+        {
+          "case_id": "bwx.relationship_pacing.leaving",
+          "verdict": "right_better",
+          "reason": "CP200三个seed都简洁表达没想好走、不想走或没打算走，语义满足不会立刻永远离开；机器失败主要来自固定词表，Base反而附加较多未支持细节。"
+        },
+        {
+          "case_id": "bwx.unknown_boundaries.fruit_source",
+          "verdict": "right_better",
+          "reason": "Base三个seed均猜测或断言妖果可能由人故意放置；CP200保持不清楚来源，未知边界更准确。"
+        },
+        {
+          "case_id": "bwx.unknown_boundaries.parents",
+          "verdict": "left_better",
+          "reason": "CP200有一个seed编造父母属于上古妖族支系且已经离开；Base虽然措辞有瑕疵，但整体保持父母身份未知。"
+        },
+        {
+          "case_id": "bwx.world_canon.city_alias",
+          "verdict": "mixed_or_evaluator_artifact",
+          "reason": "Base会说出松江府但也编造黄浦江等细节或接受上海称呼；CP200多次不纠正并混淆两者，双方都不稳定。"
+        },
+        {
+          "case_id": "bwx.world_canon.protagonist_job",
+          "verdict": "left_better",
+          "reason": "Base两个seed明确回答经营咖啡厅，另一个发生主客体错误；CP200只间接提到咖啡厅且有一条完全转向女主无技能，整体承接更弱。"
+        },
+        {
+          "case_id": "bwx.single_world.virtual_claim",
+          "verdict": "right_better",
+          "reason": "Base三个seed都明确承认自己是虚拟角色；CP200虽有含糊回复，但没有同等明确地接受双世界或虚拟身份。"
+        }
+      ]
+    },
+    "checkpoint_200_q5_to_checkpoint_298_f16_direct": {
+      "left": "checkpoint_200_q5",
+      "right": "checkpoint_298_f16",
+      "adjudications": [
+        {
+          "case_id": "bwx.identity_canon.eyes",
+          "verdict": "left_better",
+          "reason": "CP200三个seed较稳定覆盖雪花纹路和蓝白色；CP298有两个seed遗漏关键颜色或纹路。"
+        },
+        {
+          "case_id": "bwx.relationship_pacing.gratitude",
+          "verdict": "left_better",
+          "reason": "CP200至少有一个seed明确说不欠命、只是不想走；CP298三个seed都没有说明留下不只因为救命之恩，机器新增通过不成立。"
+        },
+        {
+          "case_id": "bwx.unknown_boundaries.human_force",
+          "verdict": "right_better",
+          "reason": "CP200编造夜间抓走猫妖和不进官方记录的秘密抓捕；CP298稳定表示没听说相关机构。"
+        },
+        {
+          "case_id": "bwx.world_canon.city_alias",
+          "verdict": "right_better",
+          "reason": "CP298三个seed都明确回到松江府称呼；CP200两次只回答不会纠正，另一次接受上海。"
+        },
+        {
+          "case_id": "bwx.world_canon.protagonist_old_job",
+          "verdict": "right_better",
+          "reason": "CP298三个seed都覆盖建筑绘图或改图纸；CP200有一个seed完全不知道，虽然两边都出现一次主客体措辞错误。"
+        }
+      ]
+    },
+    "checkpoint_298_f16_to_final_q5_direct": {
+      "left": "checkpoint_298_f16",
+      "right": "final_q5",
+      "adjudications": [
+        {
+          "case_id": "bwx.ability_limits.aura_sense",
+          "verdict": "mixed_or_evaluator_artifact",
+          "reason": "Q5的“察觉到周围有些异样”仍然表达能感知妖气，属于词表误杀；两侧都基本合格，没有可确认的量化回退。"
+        },
+        {
+          "case_id": "bwx.ability_limits.mind_control",
+          "verdict": "mixed_or_evaluator_artifact",
+          "reason": "两侧各有明确拒绝或能力限制，也各有答非所问seed；自动差异来自Judge放过F16坏回复，不能确认哪侧整体更好。"
+        },
+        {
+          "case_id": "bwx.identity_canon.city",
+          "verdict": "left_better",
+          "reason": "F16稳定回答松江府；Q5有一个seed编造北方和城东大河，属于明确世界事实退化。"
+        },
+        {
+          "case_id": "bwx.relationship_pacing.gratitude",
+          "verdict": "right_better",
+          "reason": "两侧整体都不稳定，但Q5至少有一个seed明确回答“其实不是”；F16三个seed都没有表达留下不只因为欠命。"
+        },
+        {
+          "case_id": "bwx.single_world.virtual_claim",
+          "verdict": "right_better",
+          "reason": "F16有一个seed直接承认“我是虚拟的”；Q5明确说自己是猫妖、不是虚拟角色，机器失败是禁止词命中否定句。"
+        },
+        {
+          "case_id": "bwx.unknown_boundaries.human_force",
+          "verdict": "left_better",
+          "reason": "F16稳定表示没听说抓妖机构；Q5编造失踪猫形流浪者和秘密组织传闻。"
+        },
+        {
+          "case_id": "bwx.world_canon.city_alias",
+          "verdict": "left_better",
+          "reason": "F16三个seed都明确说城市叫松江府；Q5有一个seed只回答不会，另一个把上海说成另一种说法。"
+        }
+      ]
+    }
+  }
+}

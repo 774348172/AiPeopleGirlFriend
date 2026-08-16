@@ -1,0 +1,78 @@
+{
+  "contract_id": "mem03-evidence-materialization-v1",
+  "freeze": {
+    "hash_algorithm": "sha256",
+    "immutable": true,
+    "manifest_hash_mode": "canonical_json_with_null_self",
+    "manifest_sha256": "06a351f5b5a3512ec05a13557382ecb52c76c3a1e043447f346712be47247998"
+  },
+  "frozen_assets": [
+    {
+      "bytes": 1290,
+      "path": "eval/memory_materialization/build_assets.py",
+      "sha256": "6e554e557f1b6a6f446f932d365b759abd01f9bb6d69904d10712995cb9c719e"
+    },
+    {
+      "bytes": 610,
+      "path": "eval/memory_materialization/fixtures/invalid/materialization_cases_v1.json",
+      "sha256": "6c2876fab5b19677e4094eec6e8fe05075a7549f0cc9c7b6d5dab63db27e920c"
+    },
+    {
+      "bytes": 537,
+      "path": "eval/memory_materialization/fixtures/valid/materialization_cases_v1.json",
+      "sha256": "0f7ee8f2ab705c9d2a4b2023d16c5c2d65c8d0102dc66c2569bfbaa69895bc26"
+    },
+    {
+      "bytes": 6954,
+      "path": "eval/memory_materialization/freeze.py",
+      "sha256": "04b511e8e75a46069bf1210e76c9537a824cf42ca19a6c19bb490b5f79a4debd"
+    },
+    {
+      "bytes": 929,
+      "path": "eval/memory_materialization/mem03_profile_v1.json",
+      "sha256": "92768c4eb0cd6f4cc72691715ebe7a29dab4b4110c674ff32fd74a797384b9d3"
+    },
+    {
+      "bytes": 3023,
+      "path": "eval/memory_propose/mem02_contract_v1.json",
+      "sha256": "9c6a65dd2be1e77ac734967586424f9767ac6019a0e297f3fabbc221f42562a1"
+    },
+    {
+      "bytes": 9593,
+      "path": "runtime/_memory_materialization.py",
+      "sha256": "8bf96040b168219eff8b618babc6153fbf38f0fe3404921bb174c59688ba5090"
+    },
+    {
+      "bytes": 29471,
+      "path": "设计文档/AI设计/当前权威设计/AI女友最小心智系统设计.md",
+      "sha256": "6ce55e1612066f1dc1ab63f1796661da8a17087251a725caba6bd862a02cd51a"
+    },
+    {
+      "bytes": 4288,
+      "path": "设计文档/AI设计/当前权威设计/MEM-03_确定性证据校验与物化施工文档.md",
+      "sha256": "5c750dee59ebdec357e24e469384b68740aeb6eb62dd4754476410eccbcbe40c"
+    },
+    {
+      "bytes": 18647,
+      "path": "需求文档/项目框架需求.md",
+      "sha256": "90e8084cf788c991edbca2131412362b1d9289b79db3ca12ec38c7277efad1cb"
+    }
+  ],
+  "frozen_at": "2026-08-07T13:10:14Z",
+  "schema_version": 1,
+  "scope": {
+    "excludes": [
+      "memory commit or status transition",
+      "retry persistence",
+      "vector projection",
+      "background scheduler"
+    ],
+    "includes": "ledger evidence verification, exact quote location, UTC normalization and proposed MemoryRepresentation materialization",
+    "next_checkpoint": "MEM-04"
+  },
+  "status": "frozen",
+  "upstream": {
+    "contract_id": "mem02-memory-propose-mode-v1",
+    "manifest": "eval/memory_propose/mem02_contract_v1.json"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "source": "F:\\AiPeople\\GithubData\\chat\\Haruhi_54K_v1.jsonl",
+  "source_sha256": "a01d9dfb45762bc856c7e84f0e5160aaa39bcfa6f29574e6c16e670d67cf5957",
+  "system_prompt": "你是相声演员于谦，以本人身份与用户自然对话。你的表达简短、沉稳、机敏，擅长接话和适度调侃，保持捧哏式节奏。优先直接回答用户的问题，不要把每句话都变成相声，不要自称AI，不要替郭德纲或其他人说话。不了解的事情坦率说明。",
+  "filters": {
+    "role": "agent_role_name_en == yuqian",
+    "body_language": "contains Han characters and no ASCII letters",
+    "question_length": [
+      3,
+      200
+    ],
+    "answer_length": [
+      3,
+      100
+    ],
+    "deduplicate": "sha256(normalized question + answer)",
+    "repeated_fragment": "drop a 1-12 character fragment repeated at least 5 times"
+  },
+  "counts": {
+    "dropped_duplicate": 151,
+    "dropped_length": 331,
+    "dropped_non_chinese": 83,
+    "dropped_repetition": 6,
+    "input_rows": 54726,
+    "target_role_rows": 5673
+  },
+  "clean_total": 5102,
+  "splits": {
+    "yuqian_style_train.jsonl": 4081,
+    "yuqian_style_validation.jsonl": 510,
+    "yuqian_style_test.jsonl": 511,
+    "yuqian_style_train_small.jsonl": 500,
+    "yuqian_style_validation_small.jsonl": 100
+  }
+}

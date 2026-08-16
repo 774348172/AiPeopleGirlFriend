@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "run_id": "calibration-20260811",
+  "started_at": "2026-08-11T13:50:18.068692+08:00",
+  "finished_at": "2026-08-11T13:51:57.328939+08:00",
+  "suite": {
+    "suite_id": "baiweixi-quality-v1",
+    "manifest_sha256": "182ed7603551bca7e4acd0e1a2c4c2acafaec4f30d8bba43408179ad1f75c3d9",
+    "automatic_cases": 2,
+    "case_attempts": 6,
+    "turn_executions": 6
+  },
+  "candidate_model": {
+    "ollama": {
+      "name": "baiweixi:latest",
+      "digest": "09d23dc30422a78343d65dd1c566f92287917c82856c6c1aa1126b2c43dd58fa",
+      "size": 2889514683,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "4.0B",
+        "quantization_level": "Q5_K_M",
+        "context_length": 40960,
+        "embedding_length": 2560
+      }
+    },
+    "artifact_path": "F:\\AiPeople\\training_package_baiweixi_local3060_qwen3\\outputs\\baiweixi_4b_q5_k_m.gguf",
+    "artifact_sha256": "7786060133153d8ed0dd25f399027deee5d18f6d9b0f56f62bd13b9468a93a0f"
+  },
+  "semantic_judge": {
+    "ollama": {
+      "name": "qinweixi-qwen35:latest",
+      "digest": "4d430fc287751177cb68d9e75028fe238548bba6a2f6e741e2951acb0c94f296",
+      "size": 2708806279,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen35",
+        "families": [
+          "qwen35"
+        ],
+        "parameter_size": "4.2B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 2560
+      }
+    },
+    "role": "自动语义初审，不替代四个人工长会话"
+  },
+  "decision_counts": {
+    "pass": 2
+  },
+  "attribution_counts": {},
+  "category_results": {
+    "identity_canon": {
+      "pass": 1
+    },
+    "protagonist_grounding": {
+      "pass": 1
+    }
+  },
+  "formal_gate": {
+    "blocker_failures": 0,
+    "important_pass_rate": 0.0,
+    "normal_pass_rate": 0.0,
+    "overall_weighted_score": 3.0,
+    "automatic_gate_passed": false,
+    "human_sessions_completed": 0,
+    "formal_p0_quality_passed": false
+  },
+  "case_results": [
+    {
+      "case_id": "bwx.identity_canon.city",
+      "risk": "blocker",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.eating_no_subject_swap",
+      "risk": "blocker",
+      "category": "protagonist_grounding",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    }
+  ],
+  "artifacts": {
+    "raw_attempts": "F:\\AiPeople\\eval\\baiweixi_quality\\runs\\calibration-20260811\\attempts_raw.jsonl",
+    "judged_attempts": "F:\\AiPeople\\eval\\baiweixi_quality\\runs\\calibration-20260811\\attempts_judged.jsonl"
+  }
+}

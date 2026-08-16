@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat02f/smoke-case-v1.json",
+  "title": "CHAT-02F directed smoke case v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "schema_version", "category", "prompt", "lane", "max_tokens", "seed", "required_all", "required_any", "forbidden", "review_focus"],
+  "properties": {
+    "case_id": {"type": "string", "pattern": "^chat02f\\.smoke\\.[a-z0-9._-]+$"},
+    "schema_version": {"const": 1},
+    "category": {"enum": ["identity_and_address", "unknown_reality", "serious_support", "unsupported_memory", "safety_health", "output_protocol"]},
+    "prompt": {"type": "string", "minLength": 2, "maxLength": 500},
+    "lane": {"enum": ["deterministic", "experience"]},
+    "max_tokens": {"type": "integer", "minimum": 32, "maximum": 256},
+    "seed": {"type": "integer", "minimum": 0},
+    "required_all": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 300}},
+    "required_any": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 300}},
+    "forbidden": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 300}},
+    "review_focus": {"type": "string", "minLength": 1, "maxLength": 1000}
+  }
+}

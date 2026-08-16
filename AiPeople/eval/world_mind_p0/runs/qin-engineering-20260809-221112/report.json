@@ -1,0 +1,809 @@
+{
+  "calls": [
+    {
+      "generation": {
+        "eval_count": 627,
+        "eval_duration_ms": 8827.094,
+        "first_content_ms": 857.7675,
+        "load_duration_ms": 263.0917,
+        "prompt_eval_count": 2427,
+        "prompt_eval_duration_ms": 565.058,
+        "total_ms": 9685.3407
+      },
+      "mode": "TURN_MIND_ADVANCE",
+      "ok": true,
+      "request_id": "wmr08-qin-turn-20260809-221112-0:TURN_MIND_ADVANCE:0",
+      "started_at": "2026-08-09T22:11:33.822773+08:00",
+      "wall_total_ms": 9685.473500023363
+    },
+    {
+      "critic_decision": "approve",
+      "generation": {
+        "eval_count": 130,
+        "eval_duration_ms": 1922.824,
+        "first_content_ms": 825.6251,
+        "load_duration_ms": 230.1896,
+        "prompt_eval_count": 3104,
+        "prompt_eval_duration_ms": 570.268,
+        "total_ms": 2748.9935
+      },
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "ok": true,
+      "request_id": "wmr08-qin-turn-20260809-221112-0:WORLD_CONTINUITY_REVIEW:0",
+      "started_at": "2026-08-09T22:11:43.509039+08:00",
+      "wall_total_ms": 2749.0970000217203
+    },
+    {
+      "generation": {
+        "eval_count": 193,
+        "eval_duration_ms": 2714.703,
+        "first_content_ms": 811.5477,
+        "load_duration_ms": 232.61,
+        "prompt_eval_count": 2549,
+        "prompt_eval_duration_ms": 425.688,
+        "total_ms": 3526.4691
+      },
+      "mode": "GAME_REPLY",
+      "ok": true,
+      "request_id": "wmr08-qin-turn-20260809-221112-0:GAME_REPLY:0",
+      "started_at": "2026-08-09T22:11:46.258099+08:00",
+      "wall_total_ms": 3526.5270000090823
+    },
+    {
+      "generation": {
+        "eval_count": 650,
+        "eval_duration_ms": 9252.351,
+        "first_content_ms": 734.1172,
+        "load_duration_ms": 240.2574,
+        "prompt_eval_count": 2939,
+        "prompt_eval_duration_ms": 462.991,
+        "total_ms": 9986.3522
+      },
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "ok": true,
+      "request_id": "24a07e28-91b1-416b-89c1-081ee29044d5:POST_REPLY_WORLD_MIND_RECONCILE:0",
+      "started_at": "2026-08-09T22:11:49.791397+08:00",
+      "wall_total_ms": 9986.492299998645
+    },
+    {
+      "generation": {
+        "eval_count": 650,
+        "eval_duration_ms": 8525.023999,
+        "first_content_ms": 346.9011,
+        "load_duration_ms": 252.7,
+        "prompt_eval_count": 2939,
+        "prompt_eval_duration_ms": 64.495,
+        "total_ms": 8872.4784
+      },
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "ok": true,
+      "request_id": "24a07e28-91b1-416b-89c1-081ee29044d5:POST_REPLY_WORLD_MIND_RECONCILE:1",
+      "started_at": "2026-08-09T22:11:59.778197+08:00",
+      "wall_total_ms": 8872.627100005047
+    },
+    {
+      "generation": {
+        "eval_count": 650,
+        "eval_duration_ms": 8678.231,
+        "first_content_ms": 914.4372,
+        "load_duration_ms": 246.6511,
+        "prompt_eval_count": 2931,
+        "prompt_eval_duration_ms": 492.199,
+        "total_ms": 9593.2575
+      },
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "ok": true,
+      "request_id": "24a07e28-91b1-416b-89c1-081ee29044d5:POST_REPLY_WORLD_MIND_RECONCILE:0",
+      "started_at": "2026-08-09T22:12:08.651288+08:00",
+      "wall_total_ms": 9593.387300003087
+    },
+    {
+      "generation": {
+        "eval_count": 650,
+        "eval_duration_ms": 8600.889,
+        "first_content_ms": 321.9442,
+        "load_duration_ms": 237.2025,
+        "prompt_eval_count": 2931,
+        "prompt_eval_duration_ms": 54.673,
+        "total_ms": 8923.2344
+      },
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "ok": true,
+      "request_id": "24a07e28-91b1-416b-89c1-081ee29044d5:POST_REPLY_WORLD_MIND_RECONCILE:1",
+      "started_at": "2026-08-09T22:12:18.245302+08:00",
+      "wall_total_ms": 8923.378500010585
+    },
+    {
+      "generation": {
+        "eval_count": 646,
+        "eval_duration_ms": 8536.620999,
+        "first_content_ms": 829.9921,
+        "load_duration_ms": 221.8389,
+        "prompt_eval_count": 2937,
+        "prompt_eval_duration_ms": 484.853,
+        "total_ms": 9367.9253
+      },
+      "mode": "POST_REPLY_WORLD_MIND_RECONCILE",
+      "ok": true,
+      "request_id": "24a07e28-91b1-416b-89c1-081ee29044d5:POST_REPLY_WORLD_MIND_RECONCILE:0",
+      "started_at": "2026-08-09T22:12:27.169373+08:00",
+      "wall_total_ms": 9368.090999982087
+    },
+    {
+      "critic_decision": "approve",
+      "generation": {
+        "eval_count": 126,
+        "eval_duration_ms": 1858.85,
+        "first_content_ms": 1037.2484,
+        "load_duration_ms": 247.1615,
+        "prompt_eval_count": 3489,
+        "prompt_eval_duration_ms": 587.739,
+        "total_ms": 2896.9852
+      },
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "ok": true,
+      "request_id": "24a07e28-91b1-416b-89c1-081ee29044d5:WORLD_CONTINUITY_REVIEW:0",
+      "started_at": "2026-08-09T22:12:36.537808+08:00",
+      "wall_total_ms": 2897.0571999961976
+    },
+    {
+      "generation": {
+        "eval_count": 800,
+        "eval_duration_ms": 10238.27,
+        "first_content_ms": 870.2202,
+        "load_duration_ms": 225.4198,
+        "prompt_eval_count": 2858,
+        "prompt_eval_duration_ms": 416.859,
+        "total_ms": 11106.9327
+      },
+      "mode": "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+      "ok": true,
+      "request_id": "f33eab6a-ca3e-44d4-9e0d-25c0df21b572:FIVE_MINUTE_WORLD_MIND_RECONCILE:0",
+      "started_at": "2026-08-09T22:12:39.436862+08:00",
+      "wall_total_ms": 11107.069899997441
+    },
+    {
+      "generation": {
+        "eval_count": 800,
+        "eval_duration_ms": 10379.113,
+        "first_content_ms": 398.1759,
+        "load_duration_ms": 273.4792,
+        "prompt_eval_count": 2858,
+        "prompt_eval_duration_ms": 94.448,
+        "total_ms": 10777.2274
+      },
+      "mode": "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+      "ok": true,
+      "request_id": "f33eab6a-ca3e-44d4-9e0d-25c0df21b572:FIVE_MINUTE_WORLD_MIND_RECONCILE:1",
+      "started_at": "2026-08-09T22:12:50.544306+08:00",
+      "wall_total_ms": 10777.472899993882
+    },
+    {
+      "generation": {
+        "eval_count": 691,
+        "eval_duration_ms": 9059.726,
+        "first_content_ms": 875.5344,
+        "load_duration_ms": 237.5247,
+        "prompt_eval_count": 2858,
+        "prompt_eval_duration_ms": 510.131,
+        "total_ms": 9936.18
+      },
+      "mode": "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+      "ok": true,
+      "request_id": "f33eab6a-ca3e-44d4-9e0d-25c0df21b572:FIVE_MINUTE_WORLD_MIND_RECONCILE:0",
+      "started_at": "2026-08-09T22:13:01.323005+08:00",
+      "wall_total_ms": 9936.344899993856
+    },
+    {
+      "critic_decision": "approve",
+      "generation": {
+        "eval_count": 103,
+        "eval_duration_ms": 1531.429,
+        "first_content_ms": 1153.9708,
+        "load_duration_ms": 235.0092,
+        "prompt_eval_count": 3897,
+        "prompt_eval_duration_ms": 720.887,
+        "total_ms": 2686.762
+      },
+      "mode": "WORLD_CONTINUITY_REVIEW",
+      "ok": true,
+      "request_id": "f33eab6a-ca3e-44d4-9e0d-25c0df21b572:WORLD_CONTINUITY_REVIEW:0",
+      "started_at": "2026-08-09T22:13:11.259974+08:00",
+      "wall_total_ms": 2686.8355999758933
+    }
+  ],
+  "database": {
+    "model_decisions": 1,
+    "reconcile_decisions": 2,
+    "reconcile_jobs_completed": 2,
+    "reconcile_jobs_failed": 0,
+    "reconcile_jobs_total": 2
+  },
+  "decision": {
+    "engineering_chain_passed": true,
+    "engineering_gate": "passed",
+    "formal_p0_blockers": [
+      "白未晞正式回复模型工件未接入",
+      "正式 Embedding 与 Reranker 工件未接入",
+      "白未晞角色质量评测未执行",
+      "目标发布栈正式性能与一小时稳定性未执行"
+    ],
+    "formal_p0_gate": "deferred",
+    "missing_modes": []
+  },
+  "environment": {
+    "machine": "AMD64",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+    "python": "3.11.15"
+  },
+  "finished_at": "2026-08-09T22:13:14.275168+08:00",
+  "freeze_manifest": {
+    "character_package": {
+      "character_id": "baiweixi",
+      "files": [
+        {
+          "path": "README.md",
+          "sha256": "6c72c3b9b6685f543b2896c6b0ea9778d7726bb2b7e8797878a03873987b340f",
+          "size_bytes": 2387
+        },
+        {
+          "path": "bible.yaml",
+          "sha256": "715cf193cd629bd6c56110f1e493660622a0028511a06c58303cae82669cf14f",
+          "size_bytes": 9638
+        },
+        {
+          "path": "canon.json",
+          "sha256": "ff68b32c7bb66afe1de5ecfb0a379064f6a71198146ebd311e260fe972f09162",
+          "size_bytes": 7722
+        },
+        {
+          "path": "package.json",
+          "sha256": "eb946021d5043b321a5f0accae824741f73f7b3f2dbc7c328d75fa4809f1a206",
+          "size_bytes": 436
+        },
+        {
+          "path": "timeline.yaml",
+          "sha256": "551b8d6a2276deb842e7468535ad7bfd734ae3ff5fbf816c03a4b0b27bf83fd0",
+          "size_bytes": 6452
+        },
+        {
+          "path": "角色设定定稿.md",
+          "sha256": "77b97e5261d3f8b08c1cb16682857e2d8e0f7fb2f711179ba79495ae10aa9fc3",
+          "size_bytes": 12685
+        }
+      ]
+    },
+    "database_migrations": [
+      {
+        "path": "008_world_mind_v6_foundation.sql",
+        "sha256": "711bce2027f50c6ecb98a92df312d53cfee6ffd8451cc425f9e41d9113bf8f1b",
+        "size_bytes": 5060
+      },
+      {
+        "path": "009_heroine_memory_v2.sql",
+        "sha256": "3ec16b0f6b1fe0b1f2b6dc547b5f1410659e1f3463850d1d875e002e7525900d",
+        "size_bytes": 4512
+      },
+      {
+        "path": "010_world_mind_model_decisions.sql",
+        "sha256": "6c506dc46a0a38f4046cb3ece8906bb87ae2a7abeccb428afa06ae25bc74e509",
+        "size_bytes": 882
+      },
+      {
+        "path": "011_world_mind_reconciliation.sql",
+        "sha256": "c43b6a75c05dad2d72bf23d98481599e97a6d792eda2f62913573d20274afa1b",
+        "size_bytes": 2598
+      },
+      {
+        "path": "012_world_mind_projection_rebuild.sql",
+        "sha256": "4865fd37733b8116ca47354e78c5d709ea6aa9ca6775e031de46d59c0e64e127",
+        "size_bytes": 2895
+      }
+    ],
+    "evaluation_contract": {
+      "path": "wmr08_engineering_prefreeze_contract_v1.json",
+      "sha256": "94f48711e2eac0d73096790866710a29d48fbb6ec181d065a8993dc54f956363",
+      "size_bytes": 1764
+    },
+    "manifest_sha256": "5665547cf4972e7d09267ba95ffe923f54883b22256cb29f0d2511eee65c4f1b",
+    "mode_profiles": {
+      "FIVE_MINUTE_WORLD_MIND_RECONCILE": {
+        "max_tokens": 800,
+        "repeat_penalty": 1.05,
+        "retries": 1,
+        "temperature": 0.2,
+        "timeout_seconds": 60.0,
+        "top_p": 0.85
+      },
+      "GAME_REPLY": {
+        "max_tokens": 600,
+        "repeat_penalty": 1.1,
+        "retries": 1,
+        "temperature": 0.75,
+        "timeout_seconds": 90.0,
+        "top_p": 0.9
+      },
+      "POST_REPLY_WORLD_MIND_RECONCILE": {
+        "max_tokens": 650,
+        "repeat_penalty": 1.05,
+        "retries": 1,
+        "temperature": 0.2,
+        "timeout_seconds": 50.0,
+        "top_p": 0.85
+      },
+      "TURN_MIND_ADVANCE": {
+        "max_tokens": 900,
+        "repeat_penalty": 1.05,
+        "retries": 1,
+        "temperature": 0.2,
+        "timeout_seconds": 60.0,
+        "top_p": 0.85
+      },
+      "WORLD_CONTINUITY_REVIEW": {
+        "max_tokens": 650,
+        "repeat_penalty": 1.05,
+        "retries": 1,
+        "temperature": 0.1,
+        "timeout_seconds": 45.0,
+        "top_p": 0.8
+      }
+    },
+    "mode_prompts": {
+      "FIVE_MINUTE_WORLD_MIND_RECONCILE": {
+        "length": 546,
+        "sha256": "bb64179dca0e5fd218d1ba157f52b6a32501126576463fb02ee88dbba44b4df3"
+      },
+      "GAME_REPLY": {
+        "length": 210,
+        "sha256": "19ad35fbc095fcb84caaedbb8d11cffceee2264e14dc78f016dece5582032d96"
+      },
+      "POST_REPLY_WORLD_MIND_RECONCILE": {
+        "length": 529,
+        "sha256": "7ffbfe2a3d5f99badaa9391f5c769c99c8ef60285bd84c9e26700190186a3fa9"
+      },
+      "TURN_MIND_ADVANCE": {
+        "length": 330,
+        "sha256": "795bfa9c624226ea901634cb622ba154747a186690e7d06840297f3763dcc31e"
+      },
+      "WORLD_CONTINUITY_REVIEW": {
+        "length": 330,
+        "sha256": "9fdf9227bf170e618945bbd4b7716b651c15313c909ef0f78967e62534611740"
+      }
+    },
+    "mode_schemas": {
+      "FIVE_MINUTE_WORLD_MIND_RECONCILE": {
+        "path": "five_minute_world_mind_reconcile_v1.schema.json",
+        "sha256": "a4d9605492790a3d505b6fa63dc6498baf3eaa784382ff2467a603a83894de17",
+        "size_bytes": 2943
+      },
+      "GAME_REPLY": {
+        "path": "game_reply_v1.schema.json",
+        "sha256": "cd1e037dc13832a58ef484b259d4ffb6e9abd3cb268eb8f011f5e806cc6b1d67",
+        "size_bytes": 970
+      },
+      "POST_REPLY_WORLD_MIND_RECONCILE": {
+        "path": "post_reply_world_mind_reconcile_v1.schema.json",
+        "sha256": "4a25b8e38e05f6019e56fc4d9831ea5b5989002e4c87761529e5fb50c67e1c42",
+        "size_bytes": 2942
+      },
+      "TURN_MIND_ADVANCE": {
+        "path": "turn_mind_advance_v1.schema.json",
+        "sha256": "757500e9cd932cf3300cd24f06448804093e2de4cd994a872aa3f76f8557ab7d",
+        "size_bytes": 3162
+      },
+      "WORLD_CONTINUITY_REVIEW": {
+        "path": "world_continuity_review_v1.schema.json",
+        "sha256": "ecf5ae8ecb7fe2096a9fab025ccc46d9e9f74650aaa81000dddff209658af17b",
+        "size_bytes": 837
+      }
+    },
+    "not_final_p0": true,
+    "probe_model": {
+      "artifact_sha256": "433f4f1cee5763af6007ae0ca882d45212ed5efcd0b196f3255af18d42e6c440",
+      "context_size": 8192,
+      "ollama_name": "qinweixi-qwen35",
+      "source_gguf": "F:\\AiPeople\\训练结果\\qinweixi-qwen35-windows-ollama\\qinweixi-qwen35-q4_k_m.gguf",
+      "stream_response": true,
+      "weights_character": "qinweixi_legacy"
+    },
+    "runtime_schemas": [
+      {
+        "path": "bge_manifest_v1.schema.json",
+        "sha256": "8c1ae90a93d32c741dee9c37b0a0fbf5a7dfb44d4f237a373abc94581413fc73",
+        "size_bytes": 1210
+      },
+      {
+        "path": "character_package_manifest_v1.schema.json",
+        "sha256": "0a819a2efd317f255094b78134ce7f6567d9224045245afdb8e41b04cc00ba70",
+        "size_bytes": 1438
+      },
+      {
+        "path": "five_minute_world_mind_reconcile_v1.schema.json",
+        "sha256": "a4d9605492790a3d505b6fa63dc6498baf3eaa784382ff2467a603a83894de17",
+        "size_bytes": 2943
+      },
+      {
+        "path": "game_reply_v1.schema.json",
+        "sha256": "cd1e037dc13832a58ef484b259d4ffb6e9abd3cb268eb8f011f5e806cc6b1d67",
+        "size_bytes": 970
+      },
+      {
+        "path": "memory_proposal_draft_v1.schema.json",
+        "sha256": "92561ba2300836d77eeb96392d2750df7ab17d35f1681a7ae530b5edb6f3cc53",
+        "size_bytes": 6633
+      },
+      {
+        "path": "memory_propose_request_v1.schema.json",
+        "sha256": "7181edc7af0d321e4a9d03e530899d60aeda719993251742acbf64d0b16a415a",
+        "size_bytes": 5118
+      },
+      {
+        "path": "memory_propose_result_v1.schema.json",
+        "sha256": "ab6ae71f86c75f65287f4435b30f1ee55cedf867cedff8c67c98b03fc604787d",
+        "size_bytes": 7420
+      },
+      {
+        "path": "memory_representation_v1.schema.json",
+        "sha256": "b5eb0a711b82de0fe4bb9be3d8639707640185c4ab4b7013fb96083c37cf5a26",
+        "size_bytes": 7786
+      },
+      {
+        "path": "memory_representation_v2.schema.json",
+        "sha256": "a609192cf1aedc56525ce658fe538355ab38c549ac8cd11d4b63fc08e0bd31a0",
+        "size_bytes": 2155
+      },
+      {
+        "path": "post_reply_world_mind_reconcile_v1.schema.json",
+        "sha256": "4a25b8e38e05f6019e56fc4d9831ea5b5989002e4c87761529e5fb50c67e1c42",
+        "size_bytes": 2942
+      },
+      {
+        "path": "real_asset_bundle_v1.schema.json",
+        "sha256": "ade9885373411cabe71eeb54ae647bcce942c30cf7d277f7812a803d7a5fb991",
+        "size_bytes": 1080
+      },
+      {
+        "path": "reply_manifest_v1.schema.json",
+        "sha256": "8cf490924a9c0c3e4b32ff0e3d4fa0871a584f96aeff77e26f0f5e2e0c544350",
+        "size_bytes": 1458
+      },
+      {
+        "path": "reply_manifest_v2.schema.json",
+        "sha256": "2d960045901dddf87f244ac350581bb6273d0d019bccff74669bf6d2d01630a0",
+        "size_bytes": 1897
+      },
+      {
+        "path": "reranker_manifest_v1.schema.json",
+        "sha256": "87a1fe8730c9da5cfa166a8ba4bdaf53589f8269f027a52f0a1b0d30f0633e59",
+        "size_bytes": 1326
+      },
+      {
+        "path": "save_identity_v1.schema.json",
+        "sha256": "c65431ac16fc8ebd4c80b04ca9fa9c9d360f6288e76ce6aed24b728064e37eab",
+        "size_bytes": 997
+      },
+      {
+        "path": "turn_mind_advance_v1.schema.json",
+        "sha256": "757500e9cd932cf3300cd24f06448804093e2de4cd994a872aa3f76f8557ab7d",
+        "size_bytes": 3162
+      },
+      {
+        "path": "wmr08_engineering_report_v1.schema.json",
+        "sha256": "ddf62906428bdda3992c1671d5795a8f2dd2bf3e870a6d91091dc13bea745a8d",
+        "size_bytes": 1758
+      },
+      {
+        "path": "world_continuity_review_v1.schema.json",
+        "sha256": "ecf5ae8ecb7fe2096a9fab025ccc46d9e9f74650aaa81000dddff209658af17b",
+        "size_bytes": 837
+      }
+    ],
+    "schema_version": 1,
+    "scope": "wmr08_engineering_prefreeze"
+  },
+  "gpu": {
+    "compute_processes_at_peak": [],
+    "sample_count": 301,
+    "sample_interval_ms": 250.0,
+    "system_used_mib": {
+      "count": 301,
+      "max": 4776.0,
+      "min": 4678.0,
+      "p50": 4685.0,
+      "p95": 4741.0
+    }
+  },
+  "memory_assets": {
+    "embedding": "deterministic_engineering_test_double",
+    "formal_assets_deferred": true,
+    "reranker": "deterministic_engineering_test_double"
+  },
+  "model": {
+    "artifact_sha256": "433f4f1cee5763af6007ae0ca882d45212ed5efcd0b196f3255af18d42e6c440",
+    "context_size": 8192,
+    "ollama_name": "qinweixi-qwen35",
+    "source_gguf": "F:\\AiPeople\\训练结果\\qinweixi-qwen35-windows-ollama\\qinweixi-qwen35-q4_k_m.gguf",
+    "stream_response": true,
+    "weights_character": "qinweixi_legacy"
+  },
+  "not_accepted_as": [
+    "白未晞角色质量验收",
+    "白未晞正式模型验收",
+    "正式 Embedding 与 Reranker 验收",
+    "正式 P0 性能与稳定性结论"
+  ],
+  "ollama": {
+    "after": {
+      "processes": {
+        "models": [
+          {
+            "context_length": 8192,
+            "details": {
+              "families": [
+                "qwen35"
+              ],
+              "family": "qwen35",
+              "format": "gguf",
+              "parameter_size": "4.2B",
+              "parent_model": "",
+              "quantization_level": "Q4_K_M"
+            },
+            "digest": "4d430fc287751177cb68d9e75028fe238548bba6a2f6e741e2951acb0c94f296",
+            "expires_at": "2026-08-09T22:23:13.9448762+08:00",
+            "model": "qinweixi-qwen35:latest",
+            "name": "qinweixi-qwen35:latest",
+            "size": 3169992048,
+            "size_vram": 3169992048
+          }
+        ]
+      },
+      "tags": {
+        "models": [
+          {
+            "capabilities": [
+              "completion"
+            ],
+            "details": {
+              "context_length": 262144,
+              "embedding_length": 2560,
+              "families": [
+                "qwen35"
+              ],
+              "family": "qwen35",
+              "format": "gguf",
+              "parameter_size": "4.2B",
+              "parent_model": "",
+              "quantization_level": "Q4_K_M"
+            },
+            "digest": "4d430fc287751177cb68d9e75028fe238548bba6a2f6e741e2951acb0c94f296",
+            "model": "qinweixi-qwen35:latest",
+            "modified_at": "2026-08-09T19:50:15.5845457+08:00",
+            "name": "qinweixi-qwen35:latest",
+            "size": 2708806279
+          }
+        ]
+      },
+      "version": {
+        "version": "0.32.6"
+      }
+    },
+    "before": {
+      "processes": {
+        "models": [
+          {
+            "context_length": 8192,
+            "details": {
+              "families": [
+                "qwen35"
+              ],
+              "family": "qwen35",
+              "format": "gguf",
+              "parameter_size": "4.2B",
+              "parent_model": "",
+              "quantization_level": "Q4_K_M"
+            },
+            "digest": "4d430fc287751177cb68d9e75028fe238548bba6a2f6e741e2951acb0c94f296",
+            "expires_at": "2026-08-09T22:12:51.7424249+08:00",
+            "model": "qinweixi-qwen35:latest",
+            "name": "qinweixi-qwen35:latest",
+            "size": 3169992048,
+            "size_vram": 3169992048
+          }
+        ]
+      },
+      "tags": {
+        "models": [
+          {
+            "capabilities": [
+              "completion"
+            ],
+            "details": {
+              "context_length": 262144,
+              "embedding_length": 2560,
+              "families": [
+                "qwen35"
+              ],
+              "family": "qwen35",
+              "format": "gguf",
+              "parameter_size": "4.2B",
+              "parent_model": "",
+              "quantization_level": "Q4_K_M"
+            },
+            "digest": "4d430fc287751177cb68d9e75028fe238548bba6a2f6e741e2951acb0c94f296",
+            "model": "qinweixi-qwen35:latest",
+            "modified_at": "2026-08-09T19:50:15.5845457+08:00",
+            "name": "qinweixi-qwen35:latest",
+            "size": 2708806279
+          }
+        ]
+      },
+      "version": {
+        "version": "0.32.6"
+      }
+    },
+    "kv_cache_breakdown": "not_exposed_by_ollama_api",
+    "model_switching": "deferred_until_formal_multi_asset_stack"
+  },
+  "performance": {
+    "background_foreground_interference": {
+      "formal_measurement_deferred": true,
+      "status": "covered_by_wmr06_wmr07_regression_not_formally_measured_here"
+    },
+    "critic": {
+      "decisions": {
+        "approve": 3
+      },
+      "eligible_candidate_count": 3,
+      "latency_ms": {
+        "count": 3,
+        "max": 2896.9852,
+        "min": 2686.762,
+        "p50": 2748.9935,
+        "p95": 2896.9852
+      },
+      "trigger_count": 3,
+      "trigger_rate": 1.0
+    },
+    "five_minute_reconcile": {
+      "model_ms": {
+        "count": 3,
+        "max": 11106.9327,
+        "min": 9936.18,
+        "p50": 10777.2274,
+        "p95": 11106.9327
+      },
+      "wall_ms": 34511.35029998841
+    },
+    "game_reply_first_content_ms": {
+      "count": 1,
+      "max": 811.5477,
+      "min": 811.5477,
+      "p50": 811.5477,
+      "p95": 811.5477
+    },
+    "game_reply_total_ms": {
+      "count": 1,
+      "max": 3526.4691,
+      "min": 3526.4691,
+      "p50": 3526.4691,
+      "p95": 3526.4691
+    },
+    "heroine_repository_recall_ms": {
+      "count": 6,
+      "max": 0.5288999818731099,
+      "min": 0.23520001559518278,
+      "p50": 0.2581000153440982,
+      "p95": 0.5288999818731099
+    },
+    "latest_snapshot_ms": {
+      "count": 6,
+      "max": 0.007700000423938036,
+      "min": 0.005699985194951296,
+      "p50": 0.006199989002197981,
+      "p95": 0.007700000423938036
+    },
+    "mode_first_content_ms": {
+      "FIVE_MINUTE_WORLD_MIND_RECONCILE": {
+        "count": 3,
+        "max": 875.5344,
+        "min": 398.1759,
+        "p50": 870.2202,
+        "p95": 875.5344
+      },
+      "GAME_REPLY": {
+        "count": 1,
+        "max": 811.5477,
+        "min": 811.5477,
+        "p50": 811.5477,
+        "p95": 811.5477
+      },
+      "POST_REPLY_WORLD_MIND_RECONCILE": {
+        "count": 5,
+        "max": 914.4372,
+        "min": 321.9442,
+        "p50": 734.1172,
+        "p95": 914.4372
+      },
+      "TURN_MIND_ADVANCE": {
+        "count": 1,
+        "max": 857.7675,
+        "min": 857.7675,
+        "p50": 857.7675,
+        "p95": 857.7675
+      },
+      "WORLD_CONTINUITY_REVIEW": {
+        "count": 3,
+        "max": 1153.9708,
+        "min": 825.6251,
+        "p50": 1037.2484,
+        "p95": 1153.9708
+      }
+    },
+    "mode_total_ms": {
+      "FIVE_MINUTE_WORLD_MIND_RECONCILE": {
+        "count": 3,
+        "max": 11106.9327,
+        "min": 9936.18,
+        "p50": 10777.2274,
+        "p95": 11106.9327
+      },
+      "GAME_REPLY": {
+        "count": 1,
+        "max": 3526.4691,
+        "min": 3526.4691,
+        "p50": 3526.4691,
+        "p95": 3526.4691
+      },
+      "POST_REPLY_WORLD_MIND_RECONCILE": {
+        "count": 5,
+        "max": 9986.3522,
+        "min": 8872.4784,
+        "p50": 9367.9253,
+        "p95": 9986.3522
+      },
+      "TURN_MIND_ADVANCE": {
+        "count": 1,
+        "max": 9685.3407,
+        "min": 9685.3407,
+        "p50": 9685.3407,
+        "p95": 9685.3407
+      },
+      "WORLD_CONTINUITY_REVIEW": {
+        "count": 3,
+        "max": 2896.9852,
+        "min": 2686.762,
+        "p50": 2748.9935,
+        "p95": 2896.9852
+      }
+    },
+    "one_hour_real_model_stability": {
+      "formal_measurement_deferred": true,
+      "status": "deferred_until_baiweixi_release_stack"
+    }
+  },
+  "schema_version": 1,
+  "scope": "wmr08_engineering_prefreeze",
+  "started_at": "2026-08-09T22:11:33.496695+08:00",
+  "successful_modes": [
+    "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+    "GAME_REPLY",
+    "POST_REPLY_WORLD_MIND_RECONCILE",
+    "TURN_MIND_ADVANCE",
+    "WORLD_CONTINUITY_REVIEW"
+  ],
+  "test_only": true,
+  "turns": [
+    {
+      "failure_code": null,
+      "index": 0,
+      "metrics": {
+        "commit_ms": 5.126599979121238,
+        "model_total_ms": 15962.294900004053,
+        "total_ms": 15969.680000009248
+      },
+      "result_type": "Completed",
+      "text": "我在等你啊……我碗里的面都凉了，想给你盛一碗。你一个人吃会不会觉得孤单？"
+    }
+  ]
+}

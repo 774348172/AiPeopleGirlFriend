@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "scope": "sys12_frozen_release_acceptance",
+  "generated_at": "2026-08-14T01:47:32.876652+08:00",
+  "hardware": {
+    "os": "Windows-10-10.0.26200-SP0",
+    "machine": "AMD64",
+    "gpu": "NVIDIA GeForce RTX 3070, 8192, 591.86"
+  },
+  "manifest": "F:\\AiPeople\\local_runtime\\sys12_release_manifest.json",
+  "release_path": {
+    "name": "llama_cpp",
+    "asset_sha256": "751a803a053b133e8fe10f25470b57dbec54049faefdfc5bd8fcbe07ec3dd805",
+    "lifecycle_passed": true,
+    "combined_gpu_peak_mib": 5087.0,
+    "warm_first_visible_token_p95_ms": 40.96450000361074,
+    "reply_80_tokens_p95_ms": 2685.8769999962533,
+    "reply_160_tokens_p95_ms": 4960.948699997971
+  },
+  "memory_selection_incremental_p95_ms": 86.24049999343697,
+  "foreground_priority_passed": true,
+  "resilience": {
+    "schema_version": 1,
+    "scope": "sys12_release_resilience",
+    "generated_at": "2026-08-12T19:27:28.563806+08:00",
+    "asset_sha256": "751a803a053b133e8fe10f25470b57dbec54049faefdfc5bd8fcbe07ec3dd805",
+    "priority": {
+      "background_cancelled": true,
+      "background_requeued_completed": true,
+      "foreground_ms": 3691.6652000072645,
+      "foreground_output": "前台已响应。",
+      "gate_metrics": {
+        "foreground_preemptions": 1,
+        "tasks_started": 3,
+        "tasks_completed": 2,
+        "tasks_cancelled": 1,
+        "peak_waiters": 1
+      }
+    },
+    "recovery": {
+      "passed": true,
+      "old_pid": 22456,
+      "new_pid": 16164,
+      "recovery_ms": 3709.749000001466,
+      "before_output": "恢复前。",
+      "after_output": "恢复后。"
+    },
+    "lifecycle": {
+      "passed": true,
+      "cycles": [
+        {
+          "cycle": 0,
+          "startup_ms": 5028.296400007093,
+          "output": "周期0"
+        },
+        {
+          "cycle": 1,
+          "startup_ms": 5049.834899997222,
+          "output": "周期1"
+        },
+        {
+          "cycle": 2,
+          "startup_ms": 4985.221099996124,
+          "output": "周期2"
+        }
+      ]
+    },
+    "decision": {
+      "foreground_priority_passed": true,
+      "crash_recovery_passed": true,
+      "repeatable_lifecycle_passed": true,
+      "passed": true
+    }
+  },
+  "stability": {
+    "minutes": 61.19941008090973,
+    "passed": false,
+    "transaction_violations": 0,
+    "report": "F:\\AiPeople\\eval\\world_mind_p0\\runs_minimal_input_20260814\\sys11-20260814-003748\\report.json",
+    "turn_latency_ms": {
+      "count": 59,
+      "max": 47511.06940000318,
+      "min": 1435.455999977421,
+      "p50": 2267.532800004119,
+      "p95": 8088.327600009507
+    },
+    "model_modes": {
+      "GAME_REPLY": 59,
+      "MEMORY_PROPOSE": 98,
+      "MIND_PATCH_V2": 83,
+      "POST_REPLY_WORLD_MIND_RECONCILE": 49
+    }
+  },
+  "evidence": {
+    "performance": "F:\\AiPeople\\eval\\world_mind_p0\\sys12_release_performance_final.json",
+    "combined_resource": "F:\\AiPeople\\eval\\world_mind_p0\\sys12_combined_resource_report.json",
+    "retrieval": "F:\\AiPeople\\eval\\world_mind_p0\\sys09_retrieval_report.json",
+    "resilience": "F:\\AiPeople\\eval\\world_mind_p0\\sys12_release_resilience_report.json",
+    "stability": "F:\\AiPeople\\eval\\world_mind_p0\\runs_minimal_input_20260814\\sys11-20260814-003748\\report.json"
+  },
+  "decision": {
+    "checks": {
+      "release_path_frozen": true,
+      "asset_identity_verified": true,
+      "repeatable_lifecycle": true,
+      "gpu_peak": true,
+      "warm_first_visible_p95": true,
+      "reply_80_p95": true,
+      "reply_160_p95": true,
+      "memory_selection_p95": true,
+      "foreground_priority": true,
+      "one_hour_release_stability": false,
+      "no_transaction_pollution": true
+    },
+    "sys12_gate": "failed",
+    "release_performance_passed": false
+  }
+}

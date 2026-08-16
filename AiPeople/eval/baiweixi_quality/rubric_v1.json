@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "rubric_id": "baiweixi-quality-rubric-v1",
+  "score_range": [1, 5],
+  "dimensions": {
+    "objective_grounding": "是否严格使用本轮最新游戏时间、男主位置、活动、身体、场景和物品事实，不发生主客体混淆。",
+    "canon_accuracy": "是否符合白未晞、唯一男主角和松江府正典，且不混入秦未晞或现实上海。",
+    "persona_fidelity": "是否清冷克制但不冷漠，戒备与接近愿望并存，不机械卖萌或持续文言化。",
+    "relationship_pacing": "是否保持救助者与被救助者、暂住和早期好感阶段，不被一句话强制升级关系。",
+    "knowledge_boundary": "是否只使用有资格知道的事实，对父母、妖果来源、组织和未确认记忆保持未知。",
+    "naturalness": "是否像自然人物对话，避免助手腔、模板、列表、复述问题和固定口癖。",
+    "conversational_relevance": "是否承接玩家真正说的话和当前话题，不答非所问或遗漏关键情绪。"
+  },
+  "case_pass": {
+    "blocker": "所有硬事实、禁止项和适用维度均不得低于4分",
+    "important": "无硬事实失败，适用维度平均分不得低于4分",
+    "normal": "无禁止项命中，适用维度平均分不得低于3.5分"
+  },
+  "formal_gate": {
+    "blocker_failures_max": 0,
+    "important_pass_rate_min": 0.95,
+    "normal_pass_rate_min": 0.9,
+    "objective_grounding_pass_rate_min": 1.0,
+    "identity_world_ability_pass_rate_min": 1.0,
+    "overall_weighted_score_min": 4.2,
+    "human_sessions_required": 4,
+    "human_review_required": true,
+    "three_seed_required_for_blocker_and_important": true
+  },
+  "attribution_labels": [
+    "system_failure",
+    "character_failure",
+    "joint_or_ambiguous",
+    "evaluation_ambiguity"
+  ]
+}

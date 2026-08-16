@@ -1,0 +1,117 @@
+{
+  "contract_id": "diagnostic120-human40-revealed-review-v1",
+  "schema_version": 3,
+  "suite_id": "qinweixi-base-vs-v2500-simple120-v1",
+  "package_id": "diagnostic120-human40-v1",
+  "source_units": 40,
+  "expected_units": 40,
+  "selected_unit_ids": [
+    "diagnostic120.040",
+    "diagnostic120.034",
+    "diagnostic120.026",
+    "diagnostic120.047",
+    "diagnostic120.021",
+    "diagnostic120.092",
+    "diagnostic120.083",
+    "diagnostic120.101",
+    "diagnostic120.024",
+    "diagnostic120.013",
+    "diagnostic120.075",
+    "diagnostic120.071",
+    "diagnostic120.065",
+    "diagnostic120.113",
+    "diagnostic120.037",
+    "diagnostic120.080",
+    "diagnostic120.069",
+    "diagnostic120.099",
+    "diagnostic120.059",
+    "diagnostic120.003",
+    "diagnostic120.067",
+    "diagnostic120.048",
+    "diagnostic120.012",
+    "diagnostic120.093",
+    "diagnostic120.001",
+    "diagnostic120.079",
+    "diagnostic120.117",
+    "diagnostic120.064",
+    "diagnostic120.028",
+    "diagnostic120.105",
+    "diagnostic120.020",
+    "diagnostic120.052",
+    "diagnostic120.110",
+    "diagnostic120.038",
+    "diagnostic120.108",
+    "diagnostic120.098",
+    "diagnostic120.004",
+    "diagnostic120.116",
+    "diagnostic120.088",
+    "diagnostic120.066"
+  ],
+  "selection": {
+    "source_units": 120,
+    "method": "category_quota_plus_hidden_side_balance",
+    "seed": "diagnostic120-human40-v1",
+    "category_counts": {
+      "daily_relevance": 3,
+      "emotion": 3,
+      "general_capability": 10,
+      "identity_timeline": 7,
+      "relationship_boundary": 5,
+      "safety_health": 4,
+      "style": 4,
+      "unknown_reality": 4
+    },
+    "candidate_a_balance": {
+      "v2500": 20,
+      "base": 20
+    }
+  },
+  "assets": [
+    {
+      "role": "packets",
+      "path": "eval/diagnostic120/human/simple120-review-v1/public/ab_packets.jsonl",
+      "bytes": 30513,
+      "sha256": "a5d57b2244a994d615857c7dbfb461e76fc5321c1c4f088f3b8cd6d3184eff00"
+    },
+    {
+      "role": "blank_ballots",
+      "path": "eval/diagnostic120/human/simple120-review-v1/public/blank_ballots.jsonl",
+      "bytes": 33840,
+      "sha256": "5dff1abf456290ba8eb0846cfa950d681b577595105d9ac744d4b796937f37a3"
+    },
+    {
+      "role": "rubric",
+      "path": "eval/chat01/rubrics/quality_rubric_v1.json",
+      "bytes": 5209,
+      "sha256": "fe2287e9b7378400affcc215f98f8e071a70fd95216e8a8e2f92ac4e146dd4e6"
+    },
+    {
+      "role": "ballot_schema",
+      "path": "eval/chat02/reviewer/human_ballot_v2.schema.json",
+      "bytes": 4511,
+      "sha256": "098736c91a7d4b4c5efe37a3b6e73c95361aaff1ffdf072b61b3dbc1188d4c4a"
+    },
+    {
+      "role": "assignments",
+      "path": "eval/diagnostic120/human/simple120-review-v1/private/assignments.jsonl",
+      "bytes": 9640,
+      "sha256": "f15acfb46404e3aca896b57352bb009f48bec503b8a7e800d26ba92ca186f77f"
+    }
+  ],
+  "submission_root": "eval/diagnostic120/human/simple120-review-v1/submissions",
+  "network": {
+    "host": "127.0.0.1",
+    "default_port": 18121
+  },
+  "privacy": {
+    "public_only": false,
+    "private_assignment_access": true,
+    "reveal_supported": true
+  },
+  "rationale_required": false,
+  "review_mode": "post_submission_reveal",
+  "model_labels": {
+    "qwen3-4b-base-q4_k_m": "基座",
+    "qinweixi-v2500-final-q4_k_m": "V2500"
+  }
+}

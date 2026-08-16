@@ -1,0 +1,8 @@
+model_name_or_path: Qwen/Qwen3-4B
+adapter_name_or_path: training_package_baiweixi_local3060_qwen3/outputs/baiweixi_4b/checkpoint-298
+template: qwen3_nothink
+finetuning_type: lora
+export_dir: local_runtime/tmp/baiweixi_checkpoint_comparison/checkpoint-298-merged
+export_size: 4
+export_device: cpu
+export_legacy_format: false

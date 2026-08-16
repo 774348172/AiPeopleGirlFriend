@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/training/freeze02-contract-v1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_id", "schema_version", "status", "created_at", "purpose", "authority",
+    "dataset_families", "split_contract", "leakage_contract", "evaluation_contamination",
+    "frozen_assets", "freeze", "next_checkpoint"
+  ],
+  "properties": {
+    "contract_id": {"const": "freeze02-training-boundary-v1"},
+    "schema_version": {"const": 1},
+    "status": {"const": "frozen"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "purpose": {"type": "string", "minLength": 1, "maxLength": 2000},
+    "authority": {
+      "type": "object", "additionalProperties": false,
+      "required": ["chat01_suite", "canon_snapshot"],
+      "properties": {
+        "chat01_suite": {"$ref": "#/$defs/fileRef"},
+        "canon_snapshot": {"$ref": "#/$defs/fileRef"}
+      }
+    },
+    "dataset_families": {
+      "type": "array", "minItems": 3, "maxItems": 3,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["family", "physical_root", "record_schema", "allowed_modes", "first_candidate_modes", "data_admission", "separation_rules"],
+        "properties": {
+          "family": {"enum": ["visible_reply", "background_structured", "memory_reranker"]},
+          "physical_root": {"$ref": "#/$defs/relativePath"},
+          "record_schema": {"$ref": "#/$defs/fileRef"},
+          "allowed_modes": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+          "first_candidate_modes": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+          "data_admission": {"enum": ["allowed_after_dataset_freeze", "blocked_until_mode_schemas_frozen", "blocked_until_select01"]},
+          "separation_rules": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "split_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["ratios", "max_ratio_deviation", "isolation_keys", "cross_split_near_duplicate"],
+      "properties": {
+        "ratios": {"const": {"train": 0.8, "dev": 0.1, "test": 0.1}},
+        "max_ratio_deviation": {"const": 0.02},
+        "isolation_keys": {"const": ["conversation_group_id", "leakage_group_id", "source_record_ids"]},
+        "cross_split_near_duplicate": {
+          "const": {"algorithm": "character_trigram_jaccard", "threshold": 0.9, "minimum_normalized_characters": 12, "blocking": true}
+        }
+      }
+    },
+    "leakage_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["evaluation_sources", "blocklist", "exact", "normalized", "near_duplicate", "failure_policy"],
+      "properties": {
+        "evaluation_sources": {"type": "array", "minItems": 4, "items": {"$ref": "#/$defs/fileRef"}},
+        "blocklist": {"$ref": "#/$defs/fileRef"},
+        "exact": {"const": {"algorithm": "utf8_text_equality", "blocking": true}},
+        "normalized": {"const": {"algorithm": "nfkc_lower_alnum_cjk", "blocking": true}},
+        "near_duplicate": {"const": {"algorithm": "character_trigram_jaccard", "threshold": 0.82, "minimum_normalized_characters": 12, "minimum_length_ratio": 0.7, "blocking": true}},
+        "failure_policy": {"const": "reject_whole_sample_and_fail_dataset_freeze"}
+      }
+    },
+    "evaluation_contamination": {
+      "type": "object", "additionalProperties": false,
+      "required": ["diagnostic_only_case_ids", "execution", "primary_statistics", "training_use"],
+      "properties": {
+        "diagnostic_only_case_ids": {"const": ["frozen.identity.name"]},
+        "execution": {"const": "execute_with_full_suite"},
+        "primary_statistics": {"const": "exclude_from_weighted_gain_denominator"},
+        "training_use": {"const": "always_forbidden"}
+      }
+    },
+    "frozen_assets": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/assetRef"}},
+    "freeze": {
+      "type": "object", "additionalProperties": false,
+      "required": ["hash_algorithm", "manifest_hash_mode", "immutable", "manifest_sha256"],
+      "properties": {
+        "hash_algorithm": {"const": "sha256"},
+        "manifest_hash_mode": {"const": "canonical_json_with_null_self"},
+        "immutable": {"const": true},
+        "manifest_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "next_checkpoint": {"const": "FREEZE-03"}
+  },
+  "$defs": {
+    "relativePath": {"type": "string", "pattern": "^(?![A-Za-z]:)(?!/)(?!\\\\)(?!.*\\\\)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "fileRef": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {"path": {"$ref": "#/$defs/relativePath"}, "bytes": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "assetRef": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "role", "bytes", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/relativePath"},
+        "role": {"enum": ["schema", "verifier", "evaluation_contract", "blocklist"]},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    }
+  }
+}

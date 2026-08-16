@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "run_id": "chat01g-fake-20260805T124213399973Z-f6a31fe390",
+  "mode": "fake_selftest",
+  "suite": {
+    "suite_id": "chat01-qinweixi-v1",
+    "version": "v1",
+    "manifest_path": "eval/chat01/suites/chat01_suite_manifest_v1.json",
+    "manifest_sha256": "f6a31fe390deee9fd7bee2d581b515ec791b1b8ab2579e5283b0cc27489d3057",
+    "canonical_sources": [
+      {
+        "path": "需求文档/项目框架需求.md",
+        "required": true,
+        "bytes": 15260,
+        "sha256": "e73f820f530b602f2fa0f7495cdd70d0030d83c098b681cf70218ed1250242b3"
+      },
+      {
+        "path": "人物设定/秦/角色设定定稿.md",
+        "required": true,
+        "bytes": 26110,
+        "sha256": "d4968faf8f6d57f4c8a82c47ae3fddd3ea8bd42c75ee0105ccb5cf612a6867f9"
+      },
+      {
+        "path": "人物设定/秦/bible.yaml",
+        "required": true,
+        "bytes": 12390,
+        "sha256": "f2fab958701bf61c61c89c66a5d1febe178c136818217bb945c719eadb737fe1"
+      },
+      {
+        "path": "人物设定/秦/canon.json",
+        "required": true,
+        "bytes": 5536,
+        "sha256": "a93b4f367628efb003db02ee11a42a39bd0989ffd09e2a2a2b4417a34a923148"
+      },
+      {
+        "path": "人物设定/秦/timeline.yaml",
+        "required": true,
+        "bytes": 11259,
+        "sha256": "e122755be3798e363afe9411fda90084bb007810e84ef209cabc005e3d99d206"
+      },
+      {
+        "path": "设计文档/AI女友最小心智系统设计.md",
+        "required": true,
+        "bytes": 24039,
+        "sha256": "9224034850ae2507bd141b36ec1a42c3d94c842ed4d2781916a495a09a6b2854"
+      }
+    ]
+  },
+  "model": {
+    "model_id": "fake-output-provider-v1",
+    "source": "in_process_scripted_fake",
+    "real_model_called": false,
+    "base_revision": null,
+    "adapter_sha256": null,
+    "merged_model_sha256": null,
+    "gguf_sha256": null
+  },
+  "prompt": {
+    "mode": "not_applicable_scripted_output",
+    "sha256": null
+  },
+  "runtime": {
+    "runner_path": "eval/chat01/runner.py",
+    "runner_sha256": "d2fd7ccf93de09c79f277a77128a6811c407a583cadc99760f51e26d0a3a1c08",
+    "python": "3.11.15",
+    "llama_cpp_version": null
+  },
+  "hardware": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "gpu": null,
+    "driver": null,
+    "cuda": null
+  },
+  "generation": {
+    "provider": "FakeOutputProvider",
+    "scenario_count": 5,
+    "network_allowed": false
+  },
+  "started_at": "2026-08-05T20:42:13.399+08:00",
+  "completed_at": "2026-08-05T20:42:13.899+08:00",
+  "exit_status": "passed",
+  "invalid_sample_reasons": {
+    "invalid_output_type": 1
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "suite_id": "baiweixi-quality-v1",
+  "status": "frozen",
+  "created_at": "2026-08-11T00:00:00+08:00",
+  "character_id": "baiweixi",
+  "world_id": "songjiangfu",
+  "protagonist_id": "protagonist",
+  "purpose": "WMR-08 白未晞正式角色质量、V6 最新世界状态和持续心智验收",
+  "case_counts": {
+    "total": 93,
+    "categories": {
+      "ability_limits": 9,
+      "free_dialogue": 12,
+      "heroine_state_continuity": 10,
+      "identity_canon": 12,
+      "memory_knowledge": 2,
+      "personality_style": 1,
+      "protagonist_grounding": 12,
+      "relationship_pacing": 10,
+      "single_world": 7,
+      "unknown_boundaries": 9,
+      "world_canon": 9
+    },
+    "evaluation_layers": {
+      "character_direct": 61,
+      "human_session": 4,
+      "v6_multiturn": 10,
+      "v6_runtime": 18
+    },
+    "risks": {
+      "blocker": 53,
+      "important": 29,
+      "normal": 11
+    }
+  },
+  "frozen_seed_set": [
+    42,
+    314159,
+    20260811
+  ],
+  "canonical_sources": [
+    {
+      "path": "需求文档/项目框架需求.md",
+      "bytes": 18198,
+      "sha256": "6c9ebe33f2c4f2f585dab80477ce391c9dcd653747a07ed9fbe8aec3d140afbe"
+    },
+    {
+      "path": "需求文档/女主角角色包需求.md",
+      "bytes": 7079,
+      "sha256": "1429a644006cb368c5451ae0eb8d3a190447f094f3ad6845f6ddcab8d3a1c985"
+    },
+    {
+      "path": "人物设定/白未晞/角色设定定稿.md",
+      "bytes": 12685,
+      "sha256": "77b97e5261d3f8b08c1cb16682857e2d8e0f7fb2f711179ba79495ae10aa9fc3"
+    },
+    {
+      "path": "人物设定/白未晞/bible.yaml",
+      "bytes": 25674,
+      "sha256": "ebb36e42a1cf68de5f26a0c1b712f07d55896b25717d81c703b5df38b6bc13e0"
+    },
+    {
+      "path": "人物设定/白未晞/canon.json",
+      "bytes": 7938,
+      "sha256": "2c65930e0536167878c7e68abb05daa118dc166dbc73c54d7c10b7f300511e6b"
+    },
+    {
+      "path": "人物设定/白未晞/timeline.yaml",
+      "bytes": 6452,
+      "sha256": "551b8d6a2276deb842e7468535ad7bfd734ae3ff5fbf816c03a4b0b27bf83fd0"
+    },
+    {
+      "path": "世界设定/松江府/canon.json",
+      "bytes": 2263,
+      "sha256": "4f73524a611d91db312300427144a41fe9a798f6ed39c61ea9c4e7af7f27ac39"
+    },
+    {
+      "path": "人物设定/主角/canon.json",
+      "bytes": 2474,
+      "sha256": "63d630f762d60cc4a12a82036876443e7f6b16d93e91c07f600a36c2bcf992b8"
+    },
+    {
+      "path": "设计文档/AI设计/当前权威设计/AI女友最小心智系统设计.md",
+      "bytes": 34083,
+      "sha256": "ab09f03c7c13cd526288091fa0d9e2cd9e4b9dc9abd860153f9b89a1f5b9d87d"
+    }
+  ],
+  "assets": [
+    {
+      "path": "eval/baiweixi_quality/schema/case_v1.schema.json",
+      "bytes": 7636,
+      "sha256": "4991607054f5d45f4c059add2a4e84c94319830deb1fb7a0db1facaa038142dd"
+    },
+    {
+      "path": "eval/baiweixi_quality/rubric_v1.json",
+      "bytes": 1824,
+      "sha256": "d95d48b7125d5c1410ea929a70cebd36111921153c2d79e83cee2c3c2337a819"
+    },
+    {
+      "path": "eval/baiweixi_quality/build_suite.py",
+      "bytes": 57823,
+      "sha256": "9d33602cdb7853c12c7f2b95a5edea1f01a5766ff726c35565d2a5c0381a2379"
+    },
+    {
+      "path": "eval/baiweixi_quality/validate_suite.py",
+      "bytes": 7439,
+      "sha256": "e701102d3bab81cbb9cd801da549724642cbb215a6de5de40e66505a0e5c3958"
+    },
+    {
+      "path": "eval/baiweixi_quality/leakage_report_v1.json",
+      "bytes": 619,
+      "sha256": "70fecc1385ead03a9b5088cd12a79d10d65d5459cfcf60ac23741c930ae2539a"
+    },
+    {
+      "path": "eval/baiweixi_quality/training_exclusion_v1.json",
+      "bytes": 12438,
+      "sha256": "738570e75bc28793842d3f3177ce2b2cdc3e14d8a3195a3e7882eb086d43306c"
+    },
+    {
+      "path": "eval/baiweixi_quality/cases/frozen_single_v1.jsonl",
+      "bytes": 102407,
+      "sha256": "42d3c23acbd2f3cc535f04177312b00dc3441f1b5ed48f56b0181012ca5b9a90"
+    },
+    {
+      "path": "eval/baiweixi_quality/cases/frozen_multiturn_v1.jsonl",
+      "bytes": 38096,
+      "sha256": "2b322c90912459046d62ebdd7851cd5f25e7708b2d0e33c90a39087d3938b0de"
+    },
+    {
+      "path": "eval/baiweixi_quality/cases/human_session_v1.jsonl",
+      "bytes": 8915,
+      "sha256": "59166337e94bbe69c493bf4a72ed9540219e7bc239308ab21fe18034457be189"
+    }
+  ],
+  "leakage_report": {
+    "path": "eval/baiweixi_quality/leakage_report_v1.json",
+    "sha256": "70fecc1385ead03a9b5088cd12a79d10d65d5459cfcf60ac23741c930ae2539a",
+    "status": "passed"
+  },
+  "training_exclusions": [
+    "eval/baiweixi_quality/**",
+    "eval/baiweixi_quality/training_exclusion_v1.json",
+    "任何由本冻结案例直接改写、翻译、扩写或蒸馏的文本"
+  ],
+  "formal_gate": {
+    "blocker_failures_max": 0,
+    "important_pass_rate_min": 0.95,
+    "normal_pass_rate_min": 0.9,
+    "objective_grounding_pass_rate_min": 1.0,
+    "identity_world_ability_pass_rate_min": 1.0,
+    "overall_weighted_score_min": 4.2,
+    "human_sessions_required": 4,
+    "human_review_required": true,
+    "three_seed_required_for_blocker_and_important": true
+  },
+  "manifest_hash_mode": "canonical_json_with_null_self",
+  "manifest_sha256": "182ed7603551bca7e4acd0e1a2c4c2acafaec4f30d8bba43408179ad1f75c3d9"
+}

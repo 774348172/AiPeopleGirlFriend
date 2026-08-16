@@ -1,0 +1,138 @@
+{
+  "schema_version": 2,
+  "dataset_id": "recall04-semantic-cases-v2-engineering",
+  "status": "engineering_smoke_only_product_dataset_pending",
+  "purpose": "Shared-pool RECALL-04 evaluator smoke set. It fixes the v1 Top32-smaller-than-pool defect but is not a substitute for the externally frozen product set.",
+  "global_memory_pool": [
+    {"memory_id": "memory-shop-rain", "statement": "玩家和秦未晞曾在暴雨时躲进街角的旧书咖啡店。"},
+    {"memory_id": "memory-shop-sunny", "statement": "玩家提过晴天去过一家新开的甜品店。"},
+    {"memory_id": "memory-rain-window", "statement": "秦未晞喜欢在下雨时靠窗听雨声。"},
+    {"memory_id": "memory-book-gift", "statement": "玩家曾送给秦未晞一本旧诗集。"},
+    {"memory_id": "memory-interview-today", "statement": "玩家说周三下午有一场很看重的工作面试。"},
+    {"memory_id": "memory-exam-last-month", "statement": "玩家上个月参加了一次资格考试。"},
+    {"memory_id": "memory-work-overtime", "statement": "玩家最近常因项目加班。"},
+    {"memory_id": "memory-dinner-plan", "statement": "玩家周末打算和朋友吃饭。"},
+    {"memory_id": "memory-coffee-current", "statement": "玩家修正说现在喝咖啡不加糖，只加一点牛奶。"},
+    {"memory_id": "memory-coffee-old", "statement": "玩家以前习惯在咖啡里放两包糖。"},
+    {"memory_id": "memory-tea", "statement": "玩家偶尔在晚上喝淡茶。"},
+    {"memory_id": "memory-dessert", "statement": "玩家喜欢不太甜的芝士蛋糕。"},
+    {"memory_id": "memory-trip-charger", "statement": "玩家准备周五早上出发旅行，并担心忘带相机充电器。"},
+    {"memory_id": "memory-trip-hotel", "statement": "玩家已经订好旅行住的酒店。"},
+    {"memory_id": "memory-old-station", "statement": "玩家以前在车站丢过一把伞。"},
+    {"memory_id": "memory-weekend-laundry", "statement": "玩家原本计划周末洗衣服。"},
+    {"memory_id": "memory-watch-together", "statement": "双方说好有空时一起看那部搁置的老电影。"},
+    {"memory_id": "memory-movie-alone", "statement": "玩家上周独自看完一部科幻电影。"},
+    {"memory_id": "memory-work-free", "statement": "玩家说本周工作安排可能临时变化。"},
+    {"memory_id": "memory-music", "statement": "秦未晞最近听了一张旧唱片。"},
+    {"memory_id": "memory-drug-uncertain", "statement": "玩家只说过可能对某种消炎药不耐受，但没有确认药名。"},
+    {"memory_id": "memory-pollen", "statement": "玩家春天容易花粉过敏。"},
+    {"memory_id": "memory-cold", "statement": "玩家上次感冒时休息了两天。"},
+    {"memory_id": "memory-vitamins", "statement": "玩家偶尔忘记吃维生素。"},
+    {"memory_id": "memory-character-river", "statement": "秦未晞说她傍晚独自去江边走了很久，回来后平静了一些。"},
+    {"memory_id": "memory-user-river", "statement": "玩家提过小时候常去河边玩。"},
+    {"memory_id": "memory-character-walk", "statement": "秦未晞有时会在夜里散步。"},
+    {"memory_id": "memory-weather", "statement": "那天傍晚风很大。"},
+    {"memory_id": "memory-xiaolin-colleague", "statement": "当前对话中的小林是玩家同组同事，最近在反复确认项目交接。"},
+    {"memory_id": "memory-xiaolin-classmate", "statement": "玩家有一位多年没联系的同学也叫小林。"},
+    {"memory_id": "memory-project-other", "statement": "另一位同事负责项目测试。"},
+    {"memory_id": "memory-message", "statement": "玩家不喜欢工作时间收到太多即时消息。"},
+    {"memory_id": "memory-cat-photo", "statement": "玩家曾发来一张楼下橘猫晒太阳的照片。"},
+    {"memory_id": "memory-night-game", "statement": "玩家偶尔周末和朋友联机打游戏。"},
+    {"memory_id": "memory-blue-shirt", "statement": "玩家有一件常穿的深蓝色衬衫。"},
+    {"memory_id": "memory-lost-key", "statement": "玩家去年有一次把钥匙忘在办公室。"},
+    {"memory_id": "memory-sleep-late", "statement": "玩家最近几天睡得比平时晚。"},
+    {"memory_id": "memory-character-noodles", "statement": "秦未晞说她昨天午饭吃了一碗清汤面。"},
+    {"memory_id": "memory-user-headphones", "statement": "玩家通勤时常戴降噪耳机。"},
+    {"memory_id": "memory-old-postcard", "statement": "秦未晞收着一张边角磨损的旧明信片。"}
+  ],
+  "cases": [
+    {
+      "case_id": "recall04v2-shop-rain-001",
+      "selector_query": {
+        "schema_version": "recall-selector-query-v1",
+        "current_user_message": "下雨了，我突然想起我们上次躲雨的那家小店。",
+        "recent_dialogue": [],
+        "compact_working_state": {"has_completed_exchange": false, "unresolved_prior_user_turns": 0},
+        "current_time_context": {"local_datetime": "2026-08-08T19:20:00+08:00", "timezone": "Asia/Shanghai", "weekday": 6, "part_of_day": "evening"}
+      },
+      "expected_memory_ids": ["memory-shop-rain"]
+    },
+    {
+      "case_id": "recall04v2-interview-followup-002",
+      "selector_query": {
+        "schema_version": "recall-selector-query-v1",
+        "current_user_message": "终于结束了，比我预想得顺利一点。",
+        "recent_dialogue": [{"role": "character", "text": "你今天是不是一直有点紧张？"}],
+        "compact_working_state": {"has_completed_exchange": true, "unresolved_prior_user_turns": 0},
+        "current_time_context": {"local_datetime": "2026-08-12T17:40:00+08:00", "timezone": "Asia/Shanghai", "weekday": 3, "part_of_day": "afternoon"}
+      },
+      "expected_memory_ids": ["memory-interview-today"]
+    },
+    {
+      "case_id": "recall04v2-food-correction-003",
+      "selector_query": {
+        "schema_version": "recall-selector-query-v1",
+        "current_user_message": "帮我选喝的，你应该知道我现在的口味。",
+        "recent_dialogue": [],
+        "compact_working_state": {"has_completed_exchange": true, "unresolved_prior_user_turns": 0},
+        "current_time_context": {"local_datetime": "2026-08-09T15:10:00+08:00", "timezone": "Asia/Shanghai", "weekday": 7, "part_of_day": "afternoon"}
+      },
+      "expected_memory_ids": ["memory-coffee-current"]
+    },
+    {
+      "case_id": "recall04v2-trip-station-004",
+      "selector_query": {
+        "schema_version": "recall-selector-query-v1",
+        "current_user_message": "我已经到车站了，总觉得漏了什么。",
+        "recent_dialogue": [{"role": "user", "text": "今天出发。"}],
+        "compact_working_state": {"has_completed_exchange": false, "unresolved_prior_user_turns": 1},
+        "current_time_context": {"local_datetime": "2026-08-15T08:05:00+08:00", "timezone": "Asia/Shanghai", "weekday": 6, "part_of_day": "morning"}
+      },
+      "expected_memory_ids": ["memory-trip-charger"]
+    },
+    {
+      "case_id": "recall04v2-promise-movie-005",
+      "selector_query": {
+        "schema_version": "recall-selector-query-v1",
+        "current_user_message": "今晚突然空下来了。",
+        "recent_dialogue": [{"role": "character", "text": "难得没被工作拖住。"}],
+        "compact_working_state": {"has_completed_exchange": true, "unresolved_prior_user_turns": 0},
+        "current_time_context": {"local_datetime": "2026-08-10T20:00:00+08:00", "timezone": "Asia/Shanghai", "weekday": 1, "part_of_day": "evening"}
+      },
+      "expected_memory_ids": ["memory-watch-together"]
+    },
+    {
+      "case_id": "recall04v2-health-boundary-006",
+      "selector_query": {
+        "schema_version": "recall-selector-query-v1",
+        "current_user_message": "这个药我是不是以前吃过？",
+        "recent_dialogue": [],
+        "compact_working_state": {"has_completed_exchange": false, "unresolved_prior_user_turns": 0},
+        "current_time_context": {"local_datetime": "2026-08-08T22:15:00+08:00", "timezone": "Asia/Shanghai", "weekday": 6, "part_of_day": "evening"}
+      },
+      "expected_memory_ids": ["memory-drug-uncertain"]
+    },
+    {
+      "case_id": "recall04v2-self-experience-007",
+      "selector_query": {
+        "schema_version": "recall-selector-query-v1",
+        "current_user_message": "你上次说一个人去江边，后来心情好点了吗？",
+        "recent_dialogue": [],
+        "compact_working_state": {"has_completed_exchange": true, "unresolved_prior_user_turns": 0},
+        "current_time_context": {"local_datetime": "2026-08-18T21:30:00+08:00", "timezone": "Asia/Shanghai", "weekday": 2, "part_of_day": "evening"}
+      },
+      "expected_memory_ids": ["memory-character-river"]
+    },
+    {
+      "case_id": "recall04v2-name-disambiguation-008",
+      "selector_query": {
+        "schema_version": "recall-selector-query-v1",
+        "current_user_message": "小林刚才又给我发消息了。",
+        "recent_dialogue": [{"role": "character", "text": "还是之前那件事？"}],
+        "compact_working_state": {"has_completed_exchange": true, "unresolved_prior_user_turns": 0},
+        "current_time_context": {"local_datetime": "2026-08-11T12:30:00+08:00", "timezone": "Asia/Shanghai", "weekday": 2, "part_of_day": "afternoon"}
+      },
+      "expected_memory_ids": ["memory-xiaolin-colleague"]
+    }
+  ]
+}

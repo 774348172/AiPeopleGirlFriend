@@ -1,0 +1,17 @@
+{
+  "bge": {
+    "artifact_sha256": "318eca6bb1bc25f52ec4d1fb4d48dc5790b7d97d61e453748516741f51559a4e",
+    "path": "F:\\AiPeople\\local_runtime\\models\\retrieval\\bge-small-zh-v1.5",
+    "revision": "7999e1d3359715c523056ef9478215996d62a620",
+    "size_bytes": 96378309
+  },
+  "download_endpoint": "https://hf-mirror.com",
+  "network_access_at_runtime": "forbidden",
+  "reranker": {
+    "artifact_sha256": "98851a6c1b6bb348cc8686b4adbdeca8e13f0443db0587dfdeb23529d35de889",
+    "path": "F:\\AiPeople\\local_runtime\\models\\retrieval\\qwen3-reranker-0.6b",
+    "revision": "e61197ed45024b0ed8a2d74b80b4d909f1255473",
+    "size_bytes": 1207471008
+  },
+  "schema_version": 1
+}

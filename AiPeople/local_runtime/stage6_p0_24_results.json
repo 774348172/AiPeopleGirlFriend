@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-05",
+  "checkpoint": "P0-24",
+  "status": "passed",
+  "parser": {
+    "side_effect_free": true,
+    "model_calls": 0,
+    "database_reads": 0,
+    "database_writes": 0,
+    "maximum_commands_per_input": 1,
+    "maximum_parsed_input_chars": 1000,
+    "actions": ["create", "confirm", "cancel", "complete"],
+    "kinds": ["promise", "reminder", "shared_plan"],
+    "exact_date_forms": [
+      "YYYY-MM-DD HH:MM",
+      "YYYY年M月D日H点M分",
+      "今天/明天/后天 + Arabic clock"
+    ]
+  },
+  "acceptance": {
+    "exact_time_normalized_to_utc": true,
+    "ambiguous_time_stays_proposed": true,
+    "missing_required_time_stays_proposed": true,
+    "past_or_invalid_time_stays_proposed": true,
+    "explicit_promise_without_deadline_can_confirm": true,
+    "transition_requires_kind_and_target": true,
+    "generic_target_rejected": true,
+    "conditional_reported_negated_and_question_forms_rejected": true,
+    "same_inputs_are_deterministic": true
+  },
+  "regression": {
+    "parser_tests_passed": 35,
+    "compileall": "passed",
+    "pytest_passed": 460,
+    "pytest_skipped": 3,
+    "warnings": 5,
+    "warning_scope": "unmodified data_gen_v4 schema validator deprecations"
+  },
+  "not_implemented_yet": [
+    "active_plan_target_resolution",
+    "automatic_turn_integration",
+    "plan_transition_database_mutation_from_chat",
+    "working_activation_plan_injection",
+    "due_and_missed_clock_sweep",
+    "proactive_messages",
+    "extra_model_calls"
+  ]
+}

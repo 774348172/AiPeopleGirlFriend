@@ -1,0 +1,228 @@
+[
+  {
+    "case_id": "important-future",
+    "output": {
+      "mode": "MEMORY_PROPOSE",
+      "proposal_run_id": "proposal-run-fixture",
+      "proposals": [
+        {
+          "confidence": 0.94,
+          "epistemic": {
+            "grounding": "speaker_report",
+            "modality": "uncertain",
+            "polarity": "affirmed"
+          },
+          "evidence_quotes": [
+            {
+              "event_id": "event-user-10",
+              "quote": "我下周可能去上海出差，还没定。",
+              "role": "support",
+              "start_hint": 0
+            }
+          ],
+          "kind": "future_event",
+          "relation_suggestions": {
+            "contradicts": [],
+            "refines": [],
+            "semantic_slot": "player.future.travel",
+            "supersedes": []
+          },
+          "semantic_reason": "后续对话中可能自然关心出差是否确定",
+          "statement": "玩家表示下周可能去上海出差，但尚未确定",
+          "subject": {
+            "display_name": null,
+            "entity_id": null,
+            "type": "player"
+          },
+          "temporal": {
+            "anchor_event_id": "event-user-10",
+            "end_at": null,
+            "precision": "unknown",
+            "relation": "future",
+            "resolution": "ambiguous",
+            "source_text": "下周",
+            "start_at": null,
+            "timezone": null
+          }
+        }
+      ],
+      "schema_version": 1
+    },
+    "request": {
+      "conversation_id": "conversation-fixture",
+      "events": [
+        {
+          "actor": "user",
+          "commit_state": "committed",
+          "conversation_id": "conversation-fixture",
+          "event_id": "event-user-10",
+          "event_type": "message",
+          "occurred_at": "2026-08-07T07:00:00Z",
+          "sequence_no": 10,
+          "text": "我下周可能去上海出差，还没定。",
+          "timezone": "Asia/Shanghai"
+        },
+        {
+          "actor": "character",
+          "commit_state": "committed",
+          "conversation_id": "conversation-fixture",
+          "event_id": "event-character-11",
+          "event_type": "message",
+          "occurred_at": "2026-08-07T07:00:05Z",
+          "sequence_no": 11,
+          "text": "还没定的话，就先别急着替未来的自己收拾行李。",
+          "timezone": "Asia/Shanghai"
+        }
+      ],
+      "existing_memories": [],
+      "from_sequence_no": 10,
+      "max_proposals": 8,
+      "mode": "MEMORY_PROPOSE",
+      "proposal_run_id": "proposal-run-fixture",
+      "schema_version": 1,
+      "through_sequence_no": 11
+    }
+  },
+  {
+    "case_id": "unimportant-empty",
+    "output": {
+      "mode": "MEMORY_PROPOSE",
+      "proposal_run_id": "proposal-run-fixture",
+      "proposals": [],
+      "schema_version": 1
+    },
+    "request": {
+      "conversation_id": "conversation-fixture",
+      "events": [
+        {
+          "actor": "user",
+          "commit_state": "committed",
+          "conversation_id": "conversation-fixture",
+          "event_id": "event-user-10",
+          "event_type": "message",
+          "occurred_at": "2026-08-07T07:00:00Z",
+          "sequence_no": 10,
+          "text": "我下周可能去上海出差，还没定。",
+          "timezone": "Asia/Shanghai"
+        },
+        {
+          "actor": "character",
+          "commit_state": "committed",
+          "conversation_id": "conversation-fixture",
+          "event_id": "event-character-11",
+          "event_type": "message",
+          "occurred_at": "2026-08-07T07:00:05Z",
+          "sequence_no": 11,
+          "text": "还没定的话，就先别急着替未来的自己收拾行李。",
+          "timezone": "Asia/Shanghai"
+        }
+      ],
+      "existing_memories": [],
+      "from_sequence_no": 10,
+      "max_proposals": 8,
+      "mode": "MEMORY_PROPOSE",
+      "proposal_run_id": "proposal-run-fixture",
+      "schema_version": 1,
+      "through_sequence_no": 11
+    }
+  },
+  {
+    "case_id": "correction-existing-target",
+    "output": {
+      "mode": "MEMORY_PROPOSE",
+      "proposal_run_id": "proposal-run-fixture",
+      "proposals": [
+        {
+          "confidence": 0.94,
+          "epistemic": {
+            "grounding": "speaker_report",
+            "modality": "uncertain",
+            "polarity": "affirmed"
+          },
+          "evidence_quotes": [
+            {
+              "event_id": "event-user-10",
+              "quote": "我刚才说错了，不是去北京，是下周可能去上海，还没定。",
+              "role": "correction",
+              "start_hint": 0
+            }
+          ],
+          "kind": "future_event",
+          "relation_suggestions": {
+            "contradicts": [],
+            "refines": [],
+            "semantic_slot": "player.future.travel",
+            "supersedes": [
+              "memory-old-trip"
+            ]
+          },
+          "semantic_reason": "后续对话中可能自然关心出差是否确定",
+          "statement": "玩家改口表示下周可能去上海，而非此前确定去北京",
+          "subject": {
+            "display_name": null,
+            "entity_id": null,
+            "type": "player"
+          },
+          "temporal": {
+            "anchor_event_id": "event-user-10",
+            "end_at": null,
+            "precision": "unknown",
+            "relation": "future",
+            "resolution": "ambiguous",
+            "source_text": "下周",
+            "start_at": null,
+            "timezone": null
+          }
+        }
+      ],
+      "schema_version": 1
+    },
+    "request": {
+      "conversation_id": "conversation-fixture",
+      "events": [
+        {
+          "actor": "user",
+          "commit_state": "committed",
+          "conversation_id": "conversation-fixture",
+          "event_id": "event-user-10",
+          "event_type": "message",
+          "occurred_at": "2026-08-07T07:00:00Z",
+          "sequence_no": 10,
+          "text": "我刚才说错了，不是去北京，是下周可能去上海，还没定。",
+          "timezone": "Asia/Shanghai"
+        },
+        {
+          "actor": "character",
+          "commit_state": "committed",
+          "conversation_id": "conversation-fixture",
+          "event_id": "event-character-11",
+          "event_type": "message",
+          "occurred_at": "2026-08-07T07:00:05Z",
+          "sequence_no": 11,
+          "text": "还没定的话，就先别急着替未来的自己收拾行李。",
+          "timezone": "Asia/Shanghai"
+        }
+      ],
+      "existing_memories": [
+        {
+          "conversation_id": "conversation-fixture",
+          "kind": "future_event",
+          "memory_id": "memory-old-trip",
+          "statement": "玩家此前表示下周确定去北京出差",
+          "status": "active",
+          "subject": {
+            "display_name": null,
+            "entity_id": null,
+            "type": "player"
+          }
+        }
+      ],
+      "from_sequence_no": 10,
+      "max_proposals": 8,
+      "mode": "MEMORY_PROPOSE",
+      "proposal_run_id": "proposal-run-fixture",
+      "schema_version": 1,
+      "through_sequence_no": 11
+    }
+  }
+]

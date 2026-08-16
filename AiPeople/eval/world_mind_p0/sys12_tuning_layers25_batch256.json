@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "scope": "sys12_same_artifact_inference_comparison",
+  "generated_at": "2026-08-12T17:16:47.275678+08:00",
+  "manifest": "F:\\AiPeople\\local_runtime\\sys12_release_manifest.json",
+  "asset_sha256": "751a803a053b133e8fe10f25470b57dbec54049faefdfc5bd8fcbe07ec3dd805",
+  "sample_plan": {
+    "cold_starts": 1,
+    "warm_calls": 5,
+    "reply_80": 5,
+    "reply_160": 5,
+    "structured": 3
+  },
+  "candidates": {
+    "llama_cpp": {
+      "name": "llama_cpp",
+      "asset_sha256": "751a803a053b133e8fe10f25470b57dbec54049faefdfc5bd8fcbe07ec3dd805",
+      "lifecycle_passed": true,
+      "cold_start_ms": {
+        "count": 1,
+        "min": 4915.55309999967,
+        "p50": 4915.55309999967,
+        "p95": 4915.55309999967,
+        "max": 4915.55309999967
+      },
+      "cold_first_call": {
+        "request_id": "cold-first-call",
+        "first_visible_ms": 150.38710000226274,
+        "total_ms": 351.6630999947665,
+        "generated_tokens": 7,
+        "output_chars": 9,
+        "structured_valid": true
+      },
+      "combined_gpu_peak_mib": 3446.0,
+      "warm_first_visible_token_ms": {
+        "count": 5,
+        "min": 41.82369999762159,
+        "p50": 43.965999997453764,
+        "p95": 45.82499999378342,
+        "max": 45.82499999378342
+      },
+      "warm_total_ms": {
+        "count": 5,
+        "min": 239.2256000021007,
+        "p50": 243.3009999949718,
+        "p95": 248.04399999266025,
+        "max": 248.04399999266025
+      },
+      "reply_80_tokens_ms": {
+        "count": 5,
+        "min": 2798.4983999922406,
+        "p50": 3120.357099993271,
+        "p95": 3341.0086000076262,
+        "max": 3341.0086000076262
+      },
+      "reply_160_tokens_ms": {
+        "count": 5,
+        "min": 5811.227400001371,
+        "p50": 5824.48039999872,
+        "p95": 5889.62729999912,
+        "max": 5889.62729999912
+      },
+      "structured_total_ms": {
+        "count": 3,
+        "min": 857.7325999940513,
+        "p50": 893.7808999908157,
+        "p95": 1096.6054999880726,
+        "max": 1096.6054999880726
+      },
+      "structured_success_rate": 1.0,
+      "records": {
+        "warm": [
+          {
+            "request_id": "warm-0",
+            "first_visible_ms": 43.03020000224933,
+            "total_ms": 243.3009999949718,
+            "generated_tokens": 7,
+            "output_chars": 8,
+            "structured_valid": true
+          },
+          {
+            "request_id": "warm-1",
+            "first_visible_ms": 45.79230000672396,
+            "total_ms": 241.57939999713562,
+            "generated_tokens": 7,
+            "output_chars": 8,
+            "structured_valid": true
+          },
+          {
+            "request_id": "warm-2",
+            "first_visible_ms": 43.965999997453764,
+            "total_ms": 248.04399999266025,
+            "generated_tokens": 7,
+            "output_chars": 8,
+            "structured_valid": true
+          },
+          {
+            "request_id": "warm-3",
+            "first_visible_ms": 45.82499999378342,
+            "total_ms": 244.45810000179335,
+            "generated_tokens": 7,
+            "output_chars": 8,
+            "structured_valid": true
+          },
+          {
+            "request_id": "warm-4",
+            "first_visible_ms": 41.82369999762159,
+            "total_ms": 239.2256000021007,
+            "generated_tokens": 7,
+            "output_chars": 8,
+            "structured_valid": true
+          }
+        ],
+        "reply_80": [
+          {
+            "request_id": "reply_80-0",
+            "first_visible_ms": 130.15769999765325,
+            "total_ms": 2798.4983999922406,
+            "generated_tokens": 80,
+            "output_chars": 114,
+            "structured_valid": true
+          },
+          {
+            "request_id": "reply_80-1",
+            "first_visible_ms": 56.49950000224635,
+            "total_ms": 2989.492799999425,
+            "generated_tokens": 80,
+            "output_chars": 114,
+            "structured_valid": true
+          },
+          {
+            "request_id": "reply_80-2",
+            "first_visible_ms": 49.96920000121463,
+            "total_ms": 3120.357099993271,
+            "generated_tokens": 80,
+            "output_chars": 114,
+            "structured_valid": true
+          },
+          {
+            "request_id": "reply_80-3",
+            "first_visible_ms": 51.862699998309836,
+            "total_ms": 3276.6737999918405,
+            "generated_tokens": 80,
+            "output_chars": 114,
+            "structured_valid": true
+          },
+          {
+            "request_id": "reply_80-4",
+            "first_visible_ms": 56.36110001069028,
+            "total_ms": 3341.0086000076262,
+            "generated_tokens": 80,
+            "output_chars": 114,
+            "structured_valid": true
+          }
+        ],
+        "reply_160": [
+          {
+            "request_id": "reply_160-0",
+            "first_visible_ms": 52.65109999163542,
+            "total_ms": 5842.224699998042,
+            "generated_tokens": 140,
+            "output_chars": 197,
+            "structured_valid": true
+          },
+          {
+            "request_id": "reply_160-1",
+            "first_visible_ms": 57.76749999495223,
+            "total_ms": 5822.939799996675,
+            "generated_tokens": 140,
+            "output_chars": 197,
+            "structured_valid": true
+          },
+          {
+            "request_id": "reply_160-2",
+            "first_visible_ms": 53.561599997919984,
+            "total_ms": 5811.227400001371,
+            "generated_tokens": 140,
+            "output_chars": 197,
+            "structured_valid": true
+          },
+          {
+            "request_id": "reply_160-3",
+            "first_visible_ms": 56.1846000055084,
+            "total_ms": 5889.62729999912,
+            "generated_tokens": 140,
+            "output_chars": 197,
+            "structured_valid": true
+          },
+          {
+            "request_id": "reply_160-4",
+            "first_visible_ms": 52.45950000244193,
+            "total_ms": 5824.48039999872,
+            "generated_tokens": 140,
+            "output_chars": 197,
+            "structured_valid": true
+          }
+        ],
+        "structured": [
+          {
+            "request_id": "structured-0",
+            "first_visible_ms": 239.9098000023514,
+            "total_ms": 1096.6054999880726,
+            "generated_tokens": 19,
+            "output_chars": 37,
+            "structured_valid": true
+          },
+          {
+            "request_id": "structured-1",
+            "first_visible_ms": 55.13789999531582,
+            "total_ms": 893.7808999908157,
+            "generated_tokens": 19,
+            "output_chars": 37,
+            "structured_valid": true
+          },
+          {
+            "request_id": "structured-2",
+            "first_visible_ms": 55.64730000332929,
+            "total_ms": 857.7325999940513,
+            "generated_tokens": 19,
+            "output_chars": 37,
+            "structured_valid": true
+          }
+        ]
+      }
+    }
+  }
+}

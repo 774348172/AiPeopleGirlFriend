@@ -1,0 +1,70 @@
+{
+  "snapshot_id": "chat01-canon-v1",
+  "schema_version": 1,
+  "created_at": "2026-08-05T00:00:00+08:00",
+  "hash_algorithm": "sha256",
+  "sources": [
+    {
+      "authority_rank": 1,
+      "path": "需求文档/项目框架需求.md",
+      "role": "product_requirements",
+      "bytes": 15260,
+      "sha256": "e73f820f530b602f2fa0f7495cdd70d0030d83c098b681cf70218ed1250242b3"
+    },
+    {
+      "authority_rank": 2,
+      "path": "人物设定/秦/角色设定定稿.md",
+      "role": "character_prose",
+      "bytes": 26110,
+      "sha256": "d4968faf8f6d57f4c8a82c47ae3fddd3ea8bd42c75ee0105ccb5cf612a6867f9"
+    },
+    {
+      "authority_rank": 3,
+      "path": "人物设定/秦/bible.yaml",
+      "role": "character_bible",
+      "bytes": 12390,
+      "sha256": "9bdb97b53c4417de34764b2ad07cf082b0c6751c875ac9fddcfee9cbdde942df"
+    },
+    {
+      "authority_rank": 4,
+      "path": "人物设定/秦/canon.json",
+      "role": "character_facts",
+      "bytes": 5536,
+      "sha256": "a93b4f367628efb003db02ee11a42a39bd0989ffd09e2a2a2b4417a34a923148"
+    },
+    {
+      "authority_rank": 5,
+      "path": "人物设定/秦/timeline.yaml",
+      "role": "character_timeline",
+      "bytes": 11259,
+      "sha256": "e122755be3798e363afe9411fda90084bb007810e84ef209cabc005e3d99d206"
+    },
+    {
+      "authority_rank": 6,
+      "path": "设计文档/AI女友最小心智系统设计.md",
+      "role": "ai_implementation",
+      "bytes": 24039,
+      "sha256": "9224034850ae2507bd141b36ec1a42c3d94c842ed4d2781916a495a09a6b2854"
+    }
+  ],
+  "resolved_facts": {
+    "character_name": "秦未晞",
+    "character_age": 22,
+    "player_name": "浩然",
+    "player_age": 24,
+    "occupation": "自由插画师 / 自媒体博主",
+    "city": "金陵（南京古称的虚构写法）",
+    "current_living": "两居室合租，刚开始不到一个月",
+    "current_relationship": "合租室友 + 暧昧期，尚未确认恋爱或婚姻",
+    "character_to_player_names": [
+      "B哥",
+      "浩然"
+    ],
+    "player_to_character_name": "秦老"
+  },
+  "consistency": {
+    "status": "consistent",
+    "conflicts": [],
+    "notes": "现行角色定稿、bible、canon 和 timeline 对年龄、玩家真实姓名浩然、称呼、居住及关系阶段口径一致；需求与唯一 AI 设计未定义相反事实。"
+  }
+}

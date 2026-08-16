@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "scope": "sys12_frozen_release_acceptance",
+  "generated_at": "2026-08-12T21:45:00+08:00",
+  "manifest": "F:\\AiPeople\\local_runtime\\sys12_release_manifest.json",
+  "candidate": {
+    "release_path": "llama_cpp",
+    "model_sha256": "751a803a053b133e8fe10f25470b57dbec54049faefdfc5bd8fcbe07ec3dd805",
+    "context_size": 4096,
+    "gpu_layers": 28,
+    "batch_size": 128,
+    "ubatch_size": 64,
+    "kv_cache": "q4_0/q4_0"
+  },
+  "previously_passed_evidence": {
+    "warm_first_visible_token_p95_ms": 40.96,
+    "reply_80_tokens_p95_ms": 2685.88,
+    "reply_160_tokens_p95_ms": 4960.95,
+    "memory_selection_incremental_p95_ms": 86.24,
+    "combined_gpu_peak_mib": 5087,
+    "foreground_priority_and_recovery": true
+  },
+  "formal_stability_run": {
+    "run_dir": "F:\\AiPeople\\eval\\world_mind_p0\\runs_sys12_release_acceptance\\sys11-20260812-211634",
+    "planned_turns": 60,
+    "next_turn": 9,
+    "wall_minutes": 25.1,
+    "model_calls": 72,
+    "successful_model_calls": 68,
+    "committed_transactions": 2,
+    "model_decisions": 2,
+    "restart_count": 4,
+    "foreground_preemptions": 17,
+    "peak_pending_jobs": 2,
+    "observed_gpu_peak_mib": 4872,
+    "http_400_after_context_compaction": 0,
+    "unrecoverable_exit": true
+  },
+  "blocking_failures": [
+    {
+      "component": "TURN_MIND_ADVANCE",
+      "classification": "model_protocol_compatibility",
+      "detail": "The Q4 candidate repeatedly filled the 520-token structured-output budget, producing incomplete JSON and preventing atomic turn commits."
+    },
+    {
+      "component": "MEMORY_PROPOSE",
+      "classification": "model_protocol_compatibility",
+      "detail": "The model produced invalid or incomplete structured memory payloads, including non-RFC3339 temporal.start_at values, after bounded retries."
+    },
+    {
+      "component": "release_throughput",
+      "classification": "formal_performance",
+      "detail": "The frozen 60-turn workload could not complete in one hour; only nine turns were attempted and two transactions committed before exit."
+    }
+  ],
+  "decision": {
+    "sys12_gate": "failed",
+    "system_engineering_gate": "failed",
+    "character_quality_gate": "deferred",
+    "formal_p0_gate": "failed",
+    "release_stack_frozen": false
+  }
+}

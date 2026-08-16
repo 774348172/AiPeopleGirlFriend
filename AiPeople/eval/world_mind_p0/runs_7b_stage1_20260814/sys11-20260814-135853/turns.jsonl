@@ -1,0 +1,14 @@
+{"after_world_version": 2, "before_world_version": 1, "committed": true, "expected_snapshot_world_version": 1, "failure_code": null, "replayed": false, "request_id": "sys11-turn-00", "result_type": "Completed", "total_ms": 10810.244899999816, "turn": 0}
+{"cancelled": true, "committed": false, "turn": 1}
+{"after_world_version": 4, "before_world_version": 3, "committed": true, "expected_snapshot_world_version": 4, "failure_code": null, "replayed": false, "request_id": "sys11-turn-01", "result_type": "Completed", "total_ms": 10951.46509999904, "turn": 1}
+{"after_world_version": 6, "before_world_version": 5, "committed": true, "expected_snapshot_world_version": 5, "failure_code": null, "replayed": false, "request_id": "sys11-turn-02", "result_type": "Completed", "total_ms": 11529.514699999709, "turn": 2}
+{"after_world_version": 8, "before_world_version": 7, "committed": true, "expected_snapshot_world_version": 7, "failure_code": null, "replayed": false, "request_id": "sys11-turn-03", "result_type": "Completed", "total_ms": 12467.736999999033, "turn": 3}
+{"duplicate_replay": true, "replayed": true, "target_request_id": "sys11-turn-03", "turn": 3}
+{"after_world_version": 10, "before_world_version": 9, "committed": true, "expected_snapshot_world_version": 9, "failure_code": null, "replayed": false, "request_id": "sys11-turn-04", "result_type": "Completed", "total_ms": 11910.640199996124, "turn": 4}
+{"failure_code": "request_conflict", "request_conflict": true, "target_request_id": "sys11-turn-04", "turn": 4}
+{"after_world_version": 12, "before_world_version": 11, "committed": true, "expected_snapshot_world_version": 11, "failure_code": null, "replayed": false, "request_id": "sys11-turn-05", "result_type": "Completed", "total_ms": 11202.36489999661, "turn": 5}
+{"after_world_version": 14, "before_world_version": 13, "committed": true, "expected_snapshot_world_version": 13, "failure_code": null, "replayed": false, "request_id": "sys11-turn-06", "result_type": "Completed", "total_ms": 11150.178800002323, "turn": 6}
+{"after_world_version": 16, "before_world_version": 15, "committed": true, "expected_snapshot_world_version": 15, "failure_code": null, "replayed": false, "request_id": "sys11-turn-07", "result_type": "Completed", "total_ms": 10293.24810000253, "turn": 7}
+{"mind_version": 10, "online_projection_rebuild": true, "turn": 7, "world_version": 16}
+{"after_world_version": 18, "before_world_version": 17, "committed": true, "expected_snapshot_world_version": 17, "failure_code": null, "replayed": false, "request_id": "sys11-turn-08", "result_type": "Completed", "total_ms": 10847.316699997464, "turn": 8}
+{"after_world_version": 20, "before_world_version": 19, "committed": true, "expected_snapshot_world_version": 19, "failure_code": null, "replayed": false, "request_id": "sys11-turn-09", "result_type": "Completed", "total_ms": 11543.162099995243, "turn": 9}

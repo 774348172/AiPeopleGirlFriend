@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "checkpoint": "P0-19",
+  "executed_at": "2026-08-04T23:11:44+08:00",
+  "implementation": {
+    "context_assembler_deep_module": true,
+    "rebuildable_working_activation": true,
+    "recent_verbatim_event_ids": true,
+    "last_completed_exchange": true,
+    "unresolved_user_events": true,
+    "structured_explicit_recall_cues": true,
+    "bounded_dynamic_system_context": true,
+    "additional_model_calls": 0,
+    "semantic_topic_or_mood_projection": false
+  },
+  "real_model_smoke": {
+    "llama_cpp_release": "b10256",
+    "model_alias": "qinweixi",
+    "first_prompt_tokens": 252,
+    "second_prompt_tokens": 303,
+    "history_and_dynamic_context_accepted": true,
+    "expected_recalled_text": "青塔",
+    "model_used_context": true,
+    "fabricated_unprovided_shared_detail": "黑曜",
+    "content_quality_passed": false,
+    "wall_seconds": 210.8,
+    "performance_gate": false
+  },
+  "test_results": {
+    "runtime_passed": 132,
+    "runtime_skipped": 1,
+    "full_repository_passed": 366,
+    "full_repository_skipped": 1,
+    "unrelated_deprecation_warnings": 5,
+    "compileall": "passed",
+    "diff_check": "passed"
+  },
+  "decision": {
+    "p0_19": "passed",
+    "next_checkpoint": "P0-20"
+  }
+}

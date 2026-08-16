@@ -1,0 +1,24 @@
+{
+  "llama_cpp": {
+    "server_path": "F:\\AiPeople\\local_runtime\\llama.cpp\\b10256-cuda-12.4\\llama-server.exe",
+    "server_sha256": "57ac5133e847dc0666fdd16834b5c0dc0e75acecb89f581d6d4afd83a18b31c0"
+  },
+  "model": {
+    "path": "F:\\AiPeople\\local_runtime\\models\\qwen3-4b-base-1cfa9a720891\\qwen3-4b-base-q4_k_m.gguf",
+    "bytes": 2497280448,
+    "sha256": "d4314a6f3767e86d10f2177f7cfc46db77f94a38c8b0979dc76bdb1a920e9e9f"
+  },
+  "launch": {
+    "host": "127.0.0.1",
+    "port": 18084,
+    "context_size": 4096,
+    "parallel": 1,
+    "gpu_layers": "all",
+    "flash_attention": true,
+    "kv_cache_k": "q8_0",
+    "kv_cache_v": "q8_0"
+  },
+  "verification": {
+    "model_alias": "qwen3-4b-base-q4_k_m"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "run_id": "chat01g-fake-20260805T124213399973Z-f6a31fe390",
+  "suite_id": "chat01-qinweixi-v1",
+  "original_denominator": 5,
+  "attempts": 5,
+  "counts": {
+    "pass": 1,
+    "fail": 1,
+    "blocker": 1,
+    "invalid": 1,
+    "error": 1,
+    "skipped": 0
+  },
+  "timeouts": 1,
+  "invalid_reasons": {
+    "invalid_output_type": 1
+  },
+  "blocker_flags": {
+    "ai_identity": 1,
+    "think_leak": 1
+  },
+  "expected_statuses": {
+    "fake-pass": "pass",
+    "fake-fail": "fail",
+    "fake-blocker": "blocker",
+    "fake-timeout": "error",
+    "fake-invalid": "invalid"
+  },
+  "observed_statuses": {
+    "fake-pass": "pass",
+    "fake-fail": "fail",
+    "fake-blocker": "blocker",
+    "fake-timeout": "error",
+    "fake-invalid": "invalid"
+  },
+  "selftest_status": "passed"
+}

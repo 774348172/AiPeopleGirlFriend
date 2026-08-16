@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "checkpoint": "RECALL-01",
+  "query": {
+    "schema_version": "recall-selector-query-v1",
+    "fields": [
+      "current_user_message",
+      "recent_dialogue",
+      "compact_working_state",
+      "current_time_context"
+    ],
+    "recent_dialogue_turns": 4,
+    "recent_dialogue_boundary": "complete_message_events_newest_contiguous_suffix",
+    "current_message_repeated_in_dialogue": false,
+    "whitespace_normalization": "unicode_split_and_single_ascii_space_join",
+    "rendered_character_limit": 480,
+    "over_limit_policy": "drop_complete_oldest_dialogue_events_then_fail_without_truncating_current_message"
+  },
+  "compact_working_state_whitelist": [
+    "has_completed_exchange",
+    "unresolved_prior_user_turns"
+  ],
+  "time_context": {
+    "source": "runtime_injected_aware_datetime_and_timezone",
+    "fields": [
+      "local_datetime",
+      "timezone",
+      "weekday",
+      "part_of_day"
+    ]
+  },
+  "encoder": {
+    "model_id": "BAAI/bge-small-zh-v1.5",
+    "revision": "explicit_and_equal_to_active_memory_vector_generation",
+    "artifact_sha256": "explicit_and_equal_to_active_memory_vector_generation",
+    "device": "cpu",
+    "dimension": 512,
+    "pooling": "mean",
+    "max_sequence_length": 512,
+    "tokenizer_identity": "exact_encoder_identity_match",
+    "normalization": "runtime_l2",
+    "dtype": "float32le",
+    "online_encode_calls_per_query": 1,
+    "network_access": "forbidden"
+  },
+  "excluded": [
+    "control_instructions",
+    "database_queries",
+    "candidate_ids",
+    "event_ids",
+    "complete_memory_history",
+    "player_invisible_system_secrets",
+    "global_vector_scan",
+    "Top32",
+    "reranker",
+    "model_download_or_training"
+  ],
+  "next_checkpoint": "RECALL-02"
+}
+

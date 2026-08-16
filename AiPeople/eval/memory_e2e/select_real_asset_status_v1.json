@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "checkpoint": "SELECT-01/04/05 real asset gate",
+  "status": "pending_project_owner_delivery",
+  "required_model_id": "Qwen/Qwen3-Reranker-0.6B",
+  "required_package_file": "reranker_manifest.json",
+  "required_manifest_fields": [
+    "revision",
+    "artifact_sha256",
+    "deployment_profile",
+    "activation_threshold",
+    "maximum_pair_tokens",
+    "output_contract",
+    "weights",
+    "tokenizer_files"
+  ],
+  "forbidden_substitutes": [
+    "download model at runtime",
+    "train or tune a model in this construction line",
+    "keyword reranker",
+    "CrossEncoder silent fallback",
+    "FakeMemoryReranker quality or performance numbers"
+  ]
+}
+

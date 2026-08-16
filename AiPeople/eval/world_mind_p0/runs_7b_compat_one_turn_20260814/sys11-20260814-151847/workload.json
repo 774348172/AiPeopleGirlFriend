@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "workload_id": "sys12-7b-compat-one-turn",
+  "random_seed": 6112026,
+  "duration_seconds": 1,
+  "turn_count": 1,
+  "turn_interval_seconds": 0,
+  "periodic_interval_seconds": 300,
+  "memory_propose_every_turns": 1,
+  "world_updates_per_turn": 2,
+  "reply_length_bands": ["short"],
+  "injections": {
+    "cancel_then_retry": 99,
+    "invalid_json_retry": 99,
+    "duplicate_replay": 99,
+    "request_conflict": 99,
+    "process_crash": 99,
+    "projection_rebuild": 99,
+    "second_heroine": 99
+  },
+  "model_scope": "7b_runtime_compatibility_only",
+  "workload_sha256": "short-workload-not-release-gate"
+}

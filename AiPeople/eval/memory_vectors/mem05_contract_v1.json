@@ -1,0 +1,73 @@
+{
+  "contract_id": "mem05-local-bge-vector-projection-v1",
+  "freeze": {
+    "hash_algorithm": "sha256",
+    "immutable": true,
+    "manifest_hash_mode": "canonical_json_with_null_self",
+    "manifest_sha256": "20c19937125e7e6ae7fdf60b237745d944a4cb5a77dbfe2590730f3e1718df06"
+  },
+  "frozen_assets": [
+    {
+      "bytes": 2871,
+      "path": "eval/memory_commit/mem04_contract_v1.json",
+      "sha256": "0c4dd21d67d0195fcdbd0827b4ce54f96e2b8692ef825f090b29900a75d47649"
+    },
+    {
+      "bytes": 6810,
+      "path": "eval/memory_vectors/freeze.py",
+      "sha256": "ad4116fc19aa0a931a952d4c9a0a8383ebae592d345d6cc33e1839e7b049071c"
+    },
+    {
+      "bytes": 1431,
+      "path": "eval/memory_vectors/mem05_profile_v1.json",
+      "sha256": "4a751d5abb0e843e0613beb407794ad5976026dffcbd9027ac5e2d2722ed834b"
+    },
+    {
+      "bytes": 22723,
+      "path": "runtime/_memory_vectors.py",
+      "sha256": "e12115783c8c13fc4500231a6f6df341f0ee7e00762f1f1c5e77d7216c3ce2f1"
+    },
+    {
+      "bytes": 2213,
+      "path": "runtime/migrations/006_memory_vectors.sql",
+      "sha256": "1856fdbc5d01f801437a38d478bc5409c3fabde4f036fa6c240db899eee8e70d"
+    },
+    {
+      "bytes": 29471,
+      "path": "设计文档/AI设计/当前权威设计/AI女友最小心智系统设计.md",
+      "sha256": "6ce55e1612066f1dc1ab63f1796661da8a17087251a725caba6bd862a02cd51a"
+    },
+    {
+      "bytes": 4809,
+      "path": "设计文档/AI设计/当前权威设计/MEM-05_selector_view本地BGE向量增量失效与全量重建施工文档.md",
+      "sha256": "d2830baeabafa5ebe4e1c136160595b4d78e1bedb95bf787504ab879222005cf"
+    },
+    {
+      "bytes": 16997,
+      "path": "设计文档/AI设计/当前权威设计/RelationshipRuntime_全局记忆选择器训练与模型决策方案_V2.md",
+      "sha256": "1d484d5af75f3da448728f99a4c4f1478d8ee99535f7e3ca351db59b5679cf3e"
+    },
+    {
+      "bytes": 18647,
+      "path": "需求文档/项目框架需求.md",
+      "sha256": "90e8084cf788c991edbca2131412362b1d9289b79db3ca12ec38c7277efad1cb"
+    }
+  ],
+  "frozen_at": "2026-08-07T16:11:36Z",
+  "schema_version": 1,
+  "scope": {
+    "excludes": [
+      "global similarity scan and Top32",
+      "remote vector service",
+      "online training",
+      "background scheduler"
+    ],
+    "includes": "selector views, local BGE vectors, incremental invalidation, atomic full rebuild and contiguous matrix snapshot",
+    "next_checkpoint": "MEM-06"
+  },
+  "status": "frozen",
+  "upstream": {
+    "contract_id": "mem04-append-only-memory-commit-v1",
+    "manifest": "eval/memory_commit/mem04_contract_v1.json"
+  }
+}

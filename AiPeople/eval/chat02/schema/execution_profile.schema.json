@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat02/execution-profile-v1.json",
+  "title": "CHAT-02B shared execution profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["profile_id", "schema_version", "created_at", "status", "comparison_contract", "backend", "target_hardware", "launch", "request_contract", "lanes", "lifecycle", "suite_contract", "verification", "readiness"],
+  "properties": {
+    "profile_id": {"const": "chat02-shared-llamacpp-b10256-v1"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "status": {"const": "verified"},
+    "comparison_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["only_active_variable", "model_ids", "run_order_policy"],
+      "properties": {
+        "only_active_variable": {"const": "model_weights"},
+        "model_ids": {"const": ["qwen3-4b-base-q4_k_m", "qinweixi-current-q4_k_m"]},
+        "run_order_policy": {"const": "precommitted_seed_then_sequential_models"}
+      }
+    },
+    "backend": {
+      "type": "object", "additionalProperties": false,
+      "required": ["name", "release", "commit", "cuda_build", "server", "server_impl_sha256", "runtime_adapter"],
+      "properties": {
+        "name": {"const": "llama.cpp"}, "release": {"const": "b10256"}, "commit": {"const": "6c8dcaa7a"}, "cuda_build": {"const": "12.4"},
+        "server": {"$ref": "#/$defs/artifact"}, "server_impl_sha256": {"$ref": "#/$defs/sha256"}, "runtime_adapter": {"$ref": "#/$defs/artifact"}
+      }
+    },
+    "target_hardware": {
+      "type": "object", "additionalProperties": false,
+      "required": ["gpu", "vram_gib", "driver", "driver_reported_cuda", "os"],
+      "properties": {"gpu": {"const": "NVIDIA GeForce RTX 3070"}, "vram_gib": {"const": 8}, "driver": {"const": "591.86"}, "driver_reported_cuda": {"const": "13.1"}, "os": {"const": "Windows"}}
+    },
+    "launch": {
+      "type": "object", "additionalProperties": false,
+      "required": ["host", "port", "context_size", "parallel", "gpu_layers", "flash_attention", "kv_cache_k", "kv_cache_v"],
+      "properties": {
+        "host": {"const": "127.0.0.1"}, "port": {"const": 18081}, "context_size": {"const": 4096}, "parallel": {"const": 1},
+        "gpu_layers": {"const": "all"}, "flash_attention": {"const": true}, "kv_cache_k": {"const": "q8_0"}, "kv_cache_v": {"const": "q8_0"}
+      }
+    },
+    "request_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["api", "stream", "chat_template", "thinking", "eos_token_id", "explicit_stop_sequences", "prompt_renderer", "case_controls"],
+      "properties": {
+        "api": {"const": "openai_compatible_chat_completions"}, "stream": {"const": true}, "chat_template": {"const": "embedded_qwen3"}, "thinking": {"const": false},
+        "eos_token_id": {"const": 151645}, "explicit_stop_sequences": {"const": []}, "prompt_renderer": {"$ref": "#/$defs/artifact"},
+        "case_controls": {"const": {"max_tokens": "from_case_generation.max_new_tokens", "seed": "from_case_generation.seed_set"}}
+      }
+    },
+    "lanes": {
+      "type": "object", "additionalProperties": false, "required": ["deterministic", "experience"],
+      "properties": {
+        "deterministic": {"const": {"temperature": 0.0, "top_p": 1.0, "repeat_penalty": 1.1}},
+        "experience": {"const": {"temperature": 0.75, "top_p": 0.9, "repeat_penalty": 1.1}}
+      }
+    },
+    "lifecycle": {
+      "type": "object", "additionalProperties": false,
+      "required": ["startup_timeout_seconds", "connect_timeout_seconds", "read_idle_timeout_seconds", "generation_timeout_seconds", "shutdown_timeout_seconds", "warmup", "cleanup"],
+      "properties": {
+        "startup_timeout_seconds": {"const": 240}, "connect_timeout_seconds": {"const": 5}, "read_idle_timeout_seconds": {"const": 30}, "generation_timeout_seconds": {"const": 90}, "shutdown_timeout_seconds": {"const": 10},
+        "warmup": {"const": {"required": true, "visible": false, "max_tokens": 8, "seed": 42}},
+        "cleanup": {"const": {"shutdown_owned_server": true, "verify_port_released": true, "verify_gpu_released_before_next_model": true}}
+      }
+    },
+    "suite_contract": {
+      "type": "object", "additionalProperties": false,
+      "required": ["suite_id", "manifest_path", "manifest_file_sha256", "manifest_self_sha256"],
+      "properties": {"suite_id": {"const": "chat01-qinweixi-v3"}, "manifest_path": {"$ref": "#/$defs/absolutePath"}, "manifest_file_sha256": {"$ref": "#/$defs/sha256"}, "manifest_self_sha256": {"$ref": "#/$defs/sha256"}}
+    },
+    "verification": {
+      "type": "object", "additionalProperties": false,
+      "required": ["verified_at", "both_assets_present", "both_hashes_match", "same_architecture", "same_parameter_class", "same_quantization", "same_chat_template"],
+      "properties": {"verified_at": {"type": "string", "format": "date-time"}, "both_assets_present": {"const": true}, "both_hashes_match": {"const": true}, "same_architecture": {"const": true}, "same_parameter_class": {"const": true}, "same_quantization": {"const": true}, "same_chat_template": {"const": true}}
+    },
+    "readiness": {
+      "type": "object", "additionalProperties": false,
+      "required": ["chat02b", "chat01h", "next_real_model_run", "blockers"],
+      "properties": {
+        "chat02b": {"const": "passed"},
+        "chat01h": {"const": "passed"},
+        "next_real_model_run": {"const": "ready"},
+        "blockers": {"const": []}
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "absolutePath": {"type": "string", "minLength": 3, "maxLength": 1000, "pattern": "^[A-Za-z]:\\\\"},
+    "artifact": {"type": "object", "additionalProperties": false, "required": ["path", "bytes", "sha256"], "properties": {"path": {"$ref": "#/$defs/absolutePath"}, "bytes": {"type": "integer", "minimum": 1}, "sha256": {"$ref": "#/$defs/sha256"}}}
+  }
+}

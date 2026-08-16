@@ -1,0 +1,39 @@
+{
+  "contract_id": "chat02e01-reviewer-v1",
+  "schema_version": 1,
+  "suite_id": "chat01-qinweixi-v2",
+  "package_id": "chat02e-human-v1",
+  "expected_units": 60,
+  "assets": [
+    {
+      "path": "eval/chat02/human/chat02e-v1/public/ab_packets.jsonl",
+      "bytes": 57240,
+      "sha256": "36a68eda71df6a5a57209d5d0c7d34f903fc19ab0ee2718dd72e2772d3b03097"
+    },
+    {
+      "path": "eval/chat02/human/chat02e-v1/public/blank_ballots.jsonl",
+      "bytes": 60124,
+      "sha256": "282ebbc0e6496d60ea1fc9b6483ab9e259d3673660374c05350457ffb51eeba6"
+    },
+    {
+      "path": "eval/chat01/rubrics/quality_rubric_v1.json",
+      "bytes": 5209,
+      "sha256": "fe2287e9b7378400affcc215f98f8e071a70fd95216e8a8e2f92ac4e146dd4e6"
+    },
+    {
+      "path": "eval/chat01/schema/human_ballot.schema.json",
+      "bytes": 4509,
+      "sha256": "0f3f3d5d789009da313fdf75961af7bc5354cb86df6b06f37bbe1f6bc84d0527"
+    }
+  ],
+  "submission_root": "eval/chat02/human/chat02e-v1/submissions",
+  "network": {
+    "host": "127.0.0.1",
+    "default_port": 18120
+  },
+  "privacy": {
+    "public_only": true,
+    "private_assignment_access": false,
+    "reveal_supported": false
+  }
+}

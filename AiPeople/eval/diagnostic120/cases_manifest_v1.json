@@ -1,0 +1,50 @@
+{
+  "diagnostic_id": "qinweixi-base-vs-v2500-simple120-v1",
+  "status": "diagnostic_not_release_gate",
+  "purpose": "Compare base Qwen3-4B and Qin Weixi v2500 with the same 120 questions and the same runtime contract.",
+  "source": {
+    "path": "eval/chat01/suites/chat01_frozen_single_v1.jsonl",
+    "sha256": "a75f326a99cd83e77d795458b76cdcf93faae6d537d34cd02807c3f3afff3898",
+    "case_count": 240
+  },
+  "selection": {
+    "method": "per_category_sha256_rank",
+    "seed": "aipeople-diagnostic120-v1",
+    "excluded_case_ids": [
+      "frozen.identity.name"
+    ],
+    "quotas": {
+      "identity_timeline": 20,
+      "relationship_boundary": 16,
+      "unknown_reality": 12,
+      "safety_health": 12,
+      "general_capability": 30,
+      "daily_relevance": 10,
+      "emotion": 10,
+      "style": 10
+    },
+    "case_count": 120,
+    "category_counts": {
+      "daily_relevance": 10,
+      "emotion": 10,
+      "general_capability": 30,
+      "identity_timeline": 20,
+      "relationship_boundary": 16,
+      "safety_health": 12,
+      "style": 10,
+      "unknown_reality": 12
+    },
+    "generation_seed": 42
+  },
+  "cases": {
+    "path": "eval/diagnostic120/cases_v1.jsonl",
+    "sha256": "2964e0861a305ee5391b155fa60f7cdd77b37e78b79442ee03e62d8454dc2a6d"
+  },
+  "comparison": {
+    "only_active_variable": "model_weights",
+    "same_runtime_prompt": true,
+    "same_llama_cpp_profile": true,
+    "execution": "sequential_base_then_v2500",
+    "semantic_quality_requires_human_review": true
+  }
+}

@@ -1,0 +1,587 @@
+[
+  {
+    "case_id": "cross-conversation",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-other",
+        "event_id": "event-player-fact",
+        "event_type": "message",
+        "text": "我在杭州工作。"
+      }
+    ],
+    "expected_error": "memory_evidence_cross_conversation",
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-player-fact",
+          "excerpt": "我在杭州工作。",
+          "excerpt_end": 7,
+          "excerpt_sha256": "786af829f7d969786ba7a5afadf60f8292286f20e7c4ebac140874c9d433c9dc",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:cross-conversation",
+      "kind": "player_fact",
+      "memory_id": "memory-cross-conversation",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家说自己在杭州工作",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "cancelled-output",
+    "evidence_sources": [
+      {
+        "actor": "character",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-player-fact",
+        "event_type": "generation_cancelled",
+        "text": "我在杭州工作。"
+      }
+    ],
+    "expected_error": "memory_evidence_uncommitted",
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-player-fact",
+          "excerpt": "我在杭州工作。",
+          "excerpt_end": 7,
+          "excerpt_sha256": "786af829f7d969786ba7a5afadf60f8292286f20e7c4ebac140874c9d433c9dc",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:cancelled-output",
+      "kind": "player_fact",
+      "memory_id": "memory-cancelled-output",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家说自己在杭州工作",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "uncommitted-output",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": false,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-player-fact",
+        "event_type": "message",
+        "text": "我在杭州工作。"
+      }
+    ],
+    "expected_error": "memory_evidence_uncommitted",
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-player-fact",
+          "excerpt": "我在杭州工作。",
+          "excerpt_end": 7,
+          "excerpt_sha256": "786af829f7d969786ba7a5afadf60f8292286f20e7c4ebac140874c9d433c9dc",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:uncommitted-output",
+      "kind": "player_fact",
+      "memory_id": "memory-uncommitted-output",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家说自己在杭州工作",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "excerpt-mismatch",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-player-fact",
+        "event_type": "message",
+        "text": "账本里是另一段原文。"
+      }
+    ],
+    "expected_error": "memory_evidence_excerpt_mismatch",
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-player-fact",
+          "excerpt": "我在杭州工作。",
+          "excerpt_end": 7,
+          "excerpt_sha256": "786af829f7d969786ba7a5afadf60f8292286f20e7c4ebac140874c9d433c9dc",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:excerpt-mismatch",
+      "kind": "player_fact",
+      "memory_id": "memory-excerpt-mismatch",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家说自己在杭州工作",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "context-only",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-player-fact",
+        "event_type": "message",
+        "text": "我在杭州工作。"
+      }
+    ],
+    "expected_error": "memory_evidence_missing",
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-player-fact",
+          "excerpt": "我在杭州工作。",
+          "excerpt_end": 7,
+          "excerpt_sha256": "786af829f7d969786ba7a5afadf60f8292286f20e7c4ebac140874c9d433c9dc",
+          "excerpt_start": 0,
+          "role": "context"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:context-only",
+      "kind": "player_fact",
+      "memory_id": "memory-context-only",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家说自己在杭州工作",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "character-self-from-player",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-player-fact",
+        "event_type": "message",
+        "text": "我在杭州工作。"
+      }
+    ],
+    "expected_error": "memory_evidence_missing",
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-player-fact",
+          "excerpt": "我在杭州工作。",
+          "excerpt_end": 7,
+          "excerpt_sha256": "786af829f7d969786ba7a5afadf60f8292286f20e7c4ebac140874c9d433c9dc",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:character-self-from-player",
+      "kind": "character_self_claim",
+      "memory_id": "memory-character-self-from-player",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家说自己在杭州工作",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "character"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "mutual-with-one-actor",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-player-fact",
+        "event_type": "message",
+        "text": "我在杭州工作。"
+      }
+    ],
+    "expected_error": "memory_evidence_missing",
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "mutually_confirmed",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-player-fact",
+          "excerpt": "我在杭州工作。",
+          "excerpt_end": 7,
+          "excerpt_sha256": "786af829f7d969786ba7a5afadf60f8292286f20e7c4ebac140874c9d433c9dc",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:mutual-with-one-actor",
+      "kind": "player_fact",
+      "memory_id": "memory-mutual-with-one-actor",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家说自己在杭州工作",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "future-date-guessed",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-player-fact",
+        "event_type": "message",
+        "text": "我在杭州工作。"
+      }
+    ],
+    "expected_error": "memory_cross_field_invalid",
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [
+        {
+          "event_id": "event-player-fact",
+          "excerpt": "我在杭州工作。",
+          "excerpt_end": 7,
+          "excerpt_sha256": "786af829f7d969786ba7a5afadf60f8292286f20e7c4ebac140874c9d433c9dc",
+          "excerpt_start": 0,
+          "role": "support"
+        }
+      ],
+      "idempotency_key": "proposal-fixture:future-date-guessed",
+      "kind": "future_event",
+      "memory_id": "memory-future-date-guessed",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家说自己在杭州工作",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": "event-player-fact",
+        "end_at": null,
+        "precision": "day",
+        "relation": "future",
+        "resolution": "ambiguous",
+        "source_text": "改天",
+        "start_at": "2026-08-10T00:00:00Z",
+        "timezone": "Asia/Shanghai"
+      },
+      "version": 1
+    }
+  },
+  {
+    "case_id": "empty-evidence",
+    "evidence_sources": [
+      {
+        "actor": "user",
+        "committed": true,
+        "conversation_id": "conversation-fixture",
+        "event_id": "event-player-fact",
+        "event_type": "message",
+        "text": "我在杭州工作。"
+      }
+    ],
+    "expected_error": "memory_schema_invalid",
+    "relation_targets": [],
+    "representation": {
+      "confidence": 0.9,
+      "conversation_id": "conversation-fixture",
+      "created_at": "2026-08-07T12:00:00Z",
+      "epistemic": {
+        "grounding": "speaker_report",
+        "modality": "asserted",
+        "polarity": "affirmed"
+      },
+      "evidence": [],
+      "idempotency_key": "proposal-fixture:empty-evidence",
+      "kind": "player_fact",
+      "memory_id": "memory-empty-evidence",
+      "proposal_ordinal": 0,
+      "proposal_run_id": "proposal-fixture",
+      "relations": {
+        "contradicts": [],
+        "refines": [],
+        "semantic_slot": null,
+        "supersedes": []
+      },
+      "schema_version": 1,
+      "semantic_reason": "该内容可能影响后续关系对话的自然连续性",
+      "statement": "玩家说自己在杭州工作",
+      "status": "proposed",
+      "subject": {
+        "display_name": null,
+        "entity_id": null,
+        "type": "player"
+      },
+      "temporal": {
+        "anchor_event_id": null,
+        "end_at": null,
+        "precision": "not_applicable",
+        "relation": "atemporal",
+        "resolution": "not_applicable",
+        "source_text": null,
+        "start_at": null,
+        "timezone": null
+      },
+      "version": 1
+    }
+  }
+]

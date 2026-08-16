@@ -1,0 +1,46 @@
+{
+  "results": [
+    {
+      "question": "你是谁？",
+      "output": "我记得讨厌你来蹭我。",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 8,
+        "prompt_tokens": 191,
+        "total_tokens": 199,
+        "prompt_tokens_details": {
+          "cached_tokens": 3
+        }
+      },
+      "elapsed_ms": 12679.661
+    },
+    {
+      "question": "你住在哪里？",
+      "output": "我记得，你说过过，松江府。。。，",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 14,
+        "prompt_tokens": 192,
+        "total_tokens": 206,
+        "prompt_tokens_details": {
+          "cached_tokens": 183
+        }
+      },
+      "elapsed_ms": 3316.745
+    },
+    {
+      "question": "伤好了你会走吗？",
+      "output": "反正都，我",
+      "finish_reason": "stop",
+      "usage": {
+        "completion_tokens": 5,
+        "prompt_tokens": 194,
+        "total_tokens": 199,
+        "prompt_tokens_details": {
+          "cached_tokens": 183
+        }
+      },
+      "elapsed_ms": 1167.571
+    }
+  ]
+}

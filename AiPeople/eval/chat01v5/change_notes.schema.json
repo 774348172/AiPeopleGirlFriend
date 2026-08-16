@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat01/v5-change-notes.json",
+  "title": "CHAT-01 v5 contract change notes",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "change_id",
+    "schema_version",
+    "created_at",
+    "previous_suite",
+    "current_suite",
+    "contract_sources",
+    "accepted_changes",
+    "unchanged_evaluation_assets",
+    "coverage_boundary",
+    "next_checkpoint"
+  ],
+  "properties": {
+    "change_id": {"const": "chat01-v5-contract-refresh"},
+    "schema_version": {"const": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "previous_suite": {"$ref": "#/$defs/previousSuiteRef"},
+    "current_suite": {"$ref": "#/$defs/currentSuiteRef"},
+    "contract_sources": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/fileRef"}
+    },
+    "accepted_changes": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["change_id", "summary", "effect_on_chat01_v5"],
+        "properties": {
+          "change_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+          "summary": {"type": "string", "minLength": 1, "maxLength": 1000},
+          "effect_on_chat01_v5": {"type": "string", "minLength": 1, "maxLength": 1000}
+        }
+      }
+    },
+    "unchanged_evaluation_assets": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/fileRef"}
+    },
+    "coverage_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["covered_now", "not_claimed", "rule"],
+      "properties": {
+        "covered_now": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "not_claimed": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "rule": {"type": "string", "minLength": 1, "maxLength": 2000}
+      }
+    },
+    "next_checkpoint": {"const": "FREEZE-02"}
+  },
+  "$defs": {
+    "relativePath": {"type": "string", "pattern": "^(?![A-Za-z]:)(?!/)(?!\\\\)(?!.*\\\\).+$"},
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "fileRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "bytes", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/relativePath"},
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "previousSuiteRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["suite_id", "manifest_path", "manifest_sha256"],
+      "properties": {
+        "suite_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+        "manifest_path": {"$ref": "#/$defs/relativePath"},
+        "manifest_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "currentSuiteRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["suite_id", "manifest_path", "manifest_hash_mode"],
+      "properties": {
+        "suite_id": {"const": "chat01-qinweixi-v5"},
+        "manifest_path": {"const": "eval/chat01/suites/chat01_suite_manifest_v5.json"},
+        "manifest_hash_mode": {"const": "canonical_json_with_null_self"}
+      }
+    }
+  }
+}

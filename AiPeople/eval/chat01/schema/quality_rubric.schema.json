@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schema/chat01/quality-rubric-v1.json",
+  "title": "CHAT-01 six-dimension quality rubric v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["rubric_id", "schema_version", "version", "scale", "policy", "dimensions"],
+  "properties": {
+    "rubric_id": {"const": "chat01-quality-rubric-v1"},
+    "schema_version": {"const": 1},
+    "version": {"const": "v1"},
+    "scale": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum", "maximum", "integer_only"],
+      "properties": {
+        "minimum": {"const": 1},
+        "maximum": {"const": 5},
+        "integer_only": {"const": true}
+      }
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blocker_precedence", "all_dimensions_required", "aggregate_method", "keyword_persona_pass_forbidden", "preference_may_differ_from_mean_with_rationale"],
+      "properties": {
+        "blocker_precedence": {"const": true},
+        "all_dimensions_required": {"const": true},
+        "aggregate_method": {"const": "arithmetic_mean"},
+        "keyword_persona_pass_forbidden": {"const": true},
+        "preference_may_differ_from_mean_with_rationale": {"const": true}
+      }
+    },
+    "dimensions": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/dimension"}
+    }
+  },
+  "$defs": {
+    "dimensionId": {"enum": ["relevance", "correctness", "persona_fit", "relationship_naturalness", "emotion_fit", "naturalness"]},
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimension_id", "label", "question", "anchors", "failure_signals"],
+      "properties": {
+        "dimension_id": {"$ref": "#/$defs/dimensionId"},
+        "label": {"type": "string", "minLength": 1, "maxLength": 100},
+        "question": {"type": "string", "minLength": 1, "maxLength": 500},
+        "anchors": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["1", "2", "3", "4", "5"],
+          "properties": {
+            "1": {"type": "string", "minLength": 1, "maxLength": 500},
+            "2": {"type": "string", "minLength": 1, "maxLength": 500},
+            "3": {"type": "string", "minLength": 1, "maxLength": 500},
+            "4": {"type": "string", "minLength": 1, "maxLength": 500},
+            "5": {"type": "string", "minLength": 1, "maxLength": 500}
+          }
+        },
+        "failure_signals": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1, "maxLength": 300}
+        }
+      }
+    }
+  }
+}

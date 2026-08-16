@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "workload_id": "sys12-six-turn-background-context-diagnostic",
+  "random_seed": 6112026,
+  "duration_seconds": 360,
+  "turn_count": 6,
+  "turn_interval_seconds": 4,
+  "periodic_interval_seconds": 12,
+  "memory_propose_every_turns": 5,
+  "world_updates_per_turn": 2,
+  "reply_length_bands": ["short", "80_tokens", "160_tokens"],
+  "injections": {
+    "cancel_then_retry": 0,
+    "invalid_json_retry": 1,
+    "duplicate_replay": 2,
+    "request_conflict": 3,
+    "process_crash": 4,
+    "projection_rebuild": 5,
+    "second_heroine": 5
+  },
+  "model_scope": "sys12_release_background_context_diagnostic_only"
+}

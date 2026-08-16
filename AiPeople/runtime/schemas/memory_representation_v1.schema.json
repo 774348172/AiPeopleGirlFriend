@@ -1,0 +1,373 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.aipeople.local/runtime/memory_representation_v1.schema.json",
+  "title": "MemoryRepresentation v1",
+  "description": "Runtime-materialized, evidence-linked and rebuildable semantic memory representation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "memory_id",
+    "version",
+    "conversation_id",
+    "proposal_run_id",
+    "proposal_ordinal",
+    "kind",
+    "statement",
+    "subject",
+    "epistemic",
+    "temporal",
+    "evidence",
+    "semantic_reason",
+    "confidence",
+    "relations",
+    "status",
+    "created_at",
+    "idempotency_key"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "memory_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "conversation_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "proposal_run_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "proposal_ordinal": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "kind": {
+      "$ref": "#/$defs/memoryKind"
+    },
+    "statement": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500
+    },
+    "subject": {
+      "$ref": "#/$defs/subject"
+    },
+    "epistemic": {
+      "$ref": "#/$defs/epistemic"
+    },
+    "temporal": {
+      "$ref": "#/$defs/temporalMaterialized"
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "semantic_reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "relations": {
+      "$ref": "#/$defs/relations"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "proposed",
+        "active",
+        "disputed",
+        "superseded",
+        "rejected"
+      ]
+    },
+    "created_at": {
+      "$ref": "#/$defs/utcDateTime"
+    },
+    "idempotency_key": {
+      "$ref": "#/$defs/identifier"
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "pattern": "^\\S+$"
+    },
+    "nullableIdentifier": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/identifier"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "utcDateTime": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "nullableUtcDateTime": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/utcDateTime"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "memoryKind": {
+      "type": "string",
+      "enum": [
+        "player_fact",
+        "preference_boundary",
+        "person_relation",
+        "shared_experience",
+        "relationship_meaning",
+        "future_event",
+        "unfinished_topic",
+        "character_self_claim"
+      ]
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "entity_id",
+        "display_name"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "player",
+            "character",
+            "both",
+            "relationship",
+            "third_party"
+          ]
+        },
+        "entity_id": {
+          "$ref": "#/$defs/nullableIdentifier"
+        },
+        "display_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 100
+        }
+      }
+    },
+    "epistemic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "polarity",
+        "modality",
+        "grounding"
+      ],
+      "properties": {
+        "polarity": {
+          "type": "string",
+          "enum": [
+            "affirmed",
+            "negated"
+          ]
+        },
+        "modality": {
+          "type": "string",
+          "enum": [
+            "asserted",
+            "uncertain",
+            "hypothetical",
+            "joking",
+            "quoted"
+          ]
+        },
+        "grounding": {
+          "type": "string",
+          "enum": [
+            "speaker_report",
+            "acknowledged",
+            "mutually_confirmed",
+            "runtime_observed"
+          ]
+        }
+      }
+    },
+    "temporalMaterialized": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relation",
+        "resolution",
+        "source_text",
+        "anchor_event_id",
+        "start_at",
+        "end_at",
+        "timezone",
+        "precision"
+      ],
+      "properties": {
+        "relation": {
+          "type": "string",
+          "enum": [
+            "past",
+            "present",
+            "future",
+            "atemporal",
+            "unknown"
+          ]
+        },
+        "resolution": {
+          "type": "string",
+          "enum": [
+            "resolved",
+            "relative",
+            "ambiguous",
+            "not_applicable"
+          ]
+        },
+        "source_text": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "anchor_event_id": {
+          "$ref": "#/$defs/nullableIdentifier"
+        },
+        "start_at": {
+          "$ref": "#/$defs/nullableUtcDateTime"
+        },
+        "end_at": {
+          "$ref": "#/$defs/nullableUtcDateTime"
+        },
+        "timezone": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "precision": {
+          "type": "string",
+          "enum": [
+            "instant",
+            "minute",
+            "hour",
+            "part_of_day",
+            "day",
+            "range",
+            "unknown",
+            "not_applicable"
+          ]
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "role",
+        "excerpt_start",
+        "excerpt_end",
+        "excerpt",
+        "excerpt_sha256"
+      ],
+      "properties": {
+        "event_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "support",
+            "contradict",
+            "correction",
+            "context"
+          ]
+        },
+        "excerpt_start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "excerpt_end": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "excerpt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "excerpt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "relationTargets": {
+      "type": "array",
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/identifier"
+      }
+    },
+    "relations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semantic_slot",
+        "supersedes",
+        "contradicts",
+        "refines"
+      ],
+      "properties": {
+        "semantic_slot": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "supersedes": {
+          "$ref": "#/$defs/relationTargets"
+        },
+        "contradicts": {
+          "$ref": "#/$defs/relationTargets"
+        },
+        "refines": {
+          "$ref": "#/$defs/relationTargets"
+        }
+      }
+    }
+  }
+}

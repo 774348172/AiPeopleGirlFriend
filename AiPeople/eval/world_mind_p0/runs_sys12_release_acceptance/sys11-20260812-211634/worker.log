@@ -1,0 +1,159 @@
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 71/71 [00:00<00:00, 23677.79it/s]
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:  61%|¨€¨€¨€¨€¨€¨€¨‡   | 190/310 [00:00<00:00, 1841.43it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 310/310 [00:00<00:00, 2050.53it/s]
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 71/71 [00:00<00:00, 17754.46it/s]
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:  46%|¨€¨€¨€¨€¨ƒ     | 144/310 [00:00<00:00, 1431.41it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 310/310 [00:00<00:00, 1686.41it/s]
+Traceback (most recent call last):
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 122, in propose
+    drafts = _parse_result(text, request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 211, in _parse_result
+    value = json.loads(text)
+            ^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Unterminated string starting at: line 1 column 738 (char 737)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\AiPeople\tools\run_sys11_one_hour_stability.py", line 1153, in <module>
+    code = asyncio.run(operation)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "F:\AiPeople\tools\run_sys11_one_hour_stability.py", line 529, in _child
+    proposals = await repository.propose_from_request(memory_request_id, proposer)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_repository.py", line 200, in propose_from_request
+    return await self.propose(
+           ^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_repository.py", line 225, in propose
+    drafts = await proposer.propose(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 149, in propose
+    raise V6MemoryProposeError(
+runtime.world_mind.memory_proposer.V6MemoryProposeError: MEMORY_PROPOSE failed after retries
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 71/71 [00:00<00:00, 17681.72it/s]
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:  38%|¨€¨€¨€¨‚      | 119/310 [00:00<00:00, 1183.78it/s]Loading weights:  90%|¨€¨€¨€¨€¨€¨€¨€¨€¨ | 278/310 [00:00<00:00, 1420.53it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 310/310 [00:00<00:00, 1436.97it/s]
+Traceback (most recent call last):
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 122, in propose
+    drafts = _parse_result(text, request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 211, in _parse_result
+    value = json.loads(text)
+            ^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\json\decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Unterminated string starting at: line 1 column 760 (char 759)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\AiPeople\tools\run_sys11_one_hour_stability.py", line 1153, in <module>
+    code = asyncio.run(operation)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "F:\AiPeople\tools\run_sys11_one_hour_stability.py", line 529, in _child
+    proposals = await repository.propose_from_request(memory_request_id, proposer)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_repository.py", line 200, in propose_from_request
+    return await self.propose(
+           ^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_repository.py", line 225, in propose
+    drafts = await proposer.propose(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 149, in propose
+    raise V6MemoryProposeError(
+runtime.world_mind.memory_proposer.V6MemoryProposeError: MEMORY_PROPOSE failed after retries
+Loading weights:   0%|          | 0/71 [00:00<?, ?it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 71/71 [00:00<00:00, 13909.18it/s]
+Loading weights:   0%|          | 0/310 [00:00<?, ?it/s]Loading weights:  55%|¨€¨€¨€¨€¨€¨…    | 169/310 [00:00<00:00, 1663.55it/s]Loading weights: 100%|¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€| 310/310 [00:00<00:00, 1751.03it/s]
+Traceback (most recent call last):
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 122, in propose
+    drafts = _parse_result(text, request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 225, in _parse_result
+    drafts = tuple(memory_proposal_draft_from_dict(item) for item in proposals)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 225, in <genexpr>
+    drafts = tuple(memory_proposal_draft_from_dict(item) for item in proposals)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\_memory_contracts.py", line 499, in memory_proposal_draft_from_dict
+    return _capture_parse_errors(lambda: _memory_proposal_draft_from_dict(value))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\_memory_contracts.py", line 1004, in _capture_parse_errors
+    return builder()
+           ^^^^^^^^^
+  File "F:\AiPeople\runtime\_memory_contracts.py", line 499, in <lambda>
+    return _capture_parse_errors(lambda: _memory_proposal_draft_from_dict(value))
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\_memory_contracts.py", line 509, in _memory_proposal_draft_from_dict
+    temporal=_temporal_from_dict(item["temporal"]),
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\_memory_contracts.py", line 1033, in _temporal_from_dict
+    return MemoryTemporal(
+           ^^^^^^^^^^^^^^^
+  File "<string>", line 11, in __init__
+  File "F:\AiPeople\runtime\_memory_contracts.py", line 294, in __post_init__
+    _require_optional_rfc3339(self.start_at, "temporal.start_at")
+  File "F:\AiPeople\runtime\_memory_contracts.py", line 1312, in _require_optional_rfc3339
+    _require_rfc3339(value, name)
+  File "F:\AiPeople\runtime\_memory_contracts.py", line 1300, in _require_rfc3339
+    raise MemoryContractError(f"{name} must be RFC3339 date-time")
+runtime._memory_contracts.MemoryContractError: temporal.start_at must be RFC3339 date-time
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "F:\AiPeople\tools\run_sys11_one_hour_stability.py", line 1153, in <module>
+    code = asyncio.run(operation)
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zenghaoran\AppData\Roaming\uv\python\cpython-3.11.15-windows-x86_64-none\Lib\asyncio\base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "F:\AiPeople\tools\run_sys11_one_hour_stability.py", line 529, in _child
+    proposals = await repository.propose_from_request(memory_request_id, proposer)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_repository.py", line 200, in propose_from_request
+    return await self.propose(
+           ^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_repository.py", line 225, in propose
+    drafts = await proposer.propose(request)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "F:\AiPeople\runtime\world_mind\memory_proposer.py", line 149, in propose
+    raise V6MemoryProposeError(
+runtime.world_mind.memory_proposer.V6MemoryProposeError: MEMORY_PROPOSE failed after retries

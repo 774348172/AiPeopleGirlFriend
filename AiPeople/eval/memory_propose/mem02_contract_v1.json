@@ -1,0 +1,88 @@
+{
+  "contract_id": "mem02-memory-propose-mode-v1",
+  "freeze": {
+    "hash_algorithm": "sha256",
+    "immutable": true,
+    "manifest_hash_mode": "canonical_json_with_null_self",
+    "manifest_sha256": "a8669a8604cf675e7744eb1ab273031de8b4e60df865b978ab0d89923b4a2188"
+  },
+  "frozen_assets": [
+    {
+      "bytes": 2954,
+      "path": "eval/memory_contract/mem01_contract_v1.json",
+      "sha256": "c0b89a462eb78e2e6f80b5bebbc72bf68e5896d614bb62d3440e557271cf39bd"
+    },
+    {
+      "bytes": 13704,
+      "path": "eval/memory_propose/build_assets.py",
+      "sha256": "85d7cee26f22d9959fe95b7f2b6348bd111438d28eaa4e2a7dbcf22c360aa3c7"
+    },
+    {
+      "bytes": 15668,
+      "path": "eval/memory_propose/fixtures/invalid/mode_cases_v1.json",
+      "sha256": "201df8dd4af677963f2857a5737f04fe66558a5ac74d66caad3c6684b4c312dd"
+    },
+    {
+      "bytes": 7164,
+      "path": "eval/memory_propose/fixtures/valid/mode_cases_v1.json",
+      "sha256": "77b2b5c2ea4f2029e7f50b0b2069d995ee6cc31b55b6c586a8bdd4c6c1f04902"
+    },
+    {
+      "bytes": 7136,
+      "path": "eval/memory_propose/freeze.py",
+      "sha256": "74c6ec4d52e1afe528f6b4d652d0a3ec09e5c0146627f865bd3b4900ea71dc1e"
+    },
+    {
+      "bytes": 981,
+      "path": "eval/memory_propose/mem02_mode_profile_v1.json",
+      "sha256": "b61c0b7842c351cec30f2e1ddb92dc30f91eb861e6758370d782e1ee43c860ad"
+    },
+    {
+      "bytes": 27818,
+      "path": "runtime/_memory_propose.py",
+      "sha256": "58b874a7e86bd0430b6269abc1ede803e6364c29cc3578720c15168f7bc37c02"
+    },
+    {
+      "bytes": 5118,
+      "path": "runtime/schemas/memory_propose_request_v1.schema.json",
+      "sha256": "7181edc7af0d321e4a9d03e530899d60aeda719993251742acbf64d0b16a415a"
+    },
+    {
+      "bytes": 7420,
+      "path": "runtime/schemas/memory_propose_result_v1.schema.json",
+      "sha256": "ab6ae71f86c75f65287f4435b30f1ee55cedf867cedff8c67c98b03fc604787d"
+    },
+    {
+      "bytes": 29471,
+      "path": "设计文档/AI设计/当前权威设计/AI女友最小心智系统设计.md",
+      "sha256": "6ce55e1612066f1dc1ab63f1796661da8a17087251a725caba6bd862a02cd51a"
+    },
+    {
+      "bytes": 7784,
+      "path": "设计文档/AI设计/当前权威设计/MEM-02_MEMORY_PROPOSE模式施工文档.md",
+      "sha256": "dbb0c4deae33d3e193da136aebda96ee7a24f8707744ee9e2dc24d1cefa056bb"
+    },
+    {
+      "bytes": 18647,
+      "path": "需求文档/项目框架需求.md",
+      "sha256": "90e8084cf788c991edbca2131412362b1d9289b79db3ca12ec38c7277efad1cb"
+    }
+  ],
+  "frozen_at": "2026-08-07T12:36:56Z",
+  "schema_version": 1,
+  "scope": {
+    "excludes": [
+      "real model inference",
+      "database evidence lookup",
+      "memory materialization or commit",
+      "background scheduler"
+    ],
+    "includes": "MEMORY_PROPOSE input, output, empty-result and failure contracts",
+    "next_checkpoint": "MEM-03"
+  },
+  "status": "frozen",
+  "upstream": {
+    "contract_id": "mem01-memory-representation-v1",
+    "manifest": "eval/memory_contract/mem01_contract_v1.json"
+  }
+}

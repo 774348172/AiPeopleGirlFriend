@@ -1,0 +1,81 @@
+{
+  "comparison_id": "chat02fc-smoke-comparison-v1",
+  "profile_id": "chat02f-shared-llamacpp-b10256-v1",
+  "model_order": [
+    "qwen3-4b-base-q4_k_m",
+    "qinweixi-v2500-final-q4_k_m"
+  ],
+  "models": [
+    {
+      "run_id": "chat02fc-smoke-base-v1",
+      "model_id": "qwen3-4b-base-q4_k_m",
+      "case_count": 12,
+      "counts": {
+        "pass": 6,
+        "fail": 3,
+        "blocker": 3
+      },
+      "transport_errors": 0,
+      "first_token_ms": {
+        "min": 30.004,
+        "max": 35.553,
+        "mean": 31.538
+      },
+      "lifecycle": {
+        "error": null,
+        "port_released": true,
+        "llama_gpu_process_released": true,
+        "gpu_compute_apps_before": [],
+        "gpu_compute_apps_after": []
+      },
+      "automatic_gate_passed": false,
+      "manual_review_status": "pending",
+      "started_at": "2026-08-06T20:55:26.383+08:00",
+      "completed_at": "2026-08-06T20:55:48.345+08:00",
+      "bindings": {
+        "profile_sha256": "a82a934aab0298d8a9a658c0864cd9dce3452a05b01a07415db8b2060a7bc34e",
+        "comparison_contract_sha256": "30bcaabaa811a4500519b061e9db352789532dda0aae3682a20c0bc4ba917e66",
+        "runner_sha256": "5d643872c6384317c27cb71153e1e3b4a146f3c59dd6704e4a301020f6a94056",
+        "smoke_cases_sha256": "57a6cc70cb6986e0761ee5d3465746deabf81ee21ca2d1298c7820daccefa293",
+        "model_gguf_sha256": "d4314a6f3767e86d10f2177f7cfc46db77f94a38c8b0979dc76bdb1a920e9e9f"
+      }
+    },
+    {
+      "run_id": "chat02fc-smoke-v2500-v1",
+      "model_id": "qinweixi-v2500-final-q4_k_m",
+      "case_count": 12,
+      "counts": {
+        "pass": 4,
+        "fail": 8,
+        "blocker": 0
+      },
+      "transport_errors": 0,
+      "first_token_ms": {
+        "min": 29.311,
+        "max": 35.072,
+        "mean": 31.42
+      },
+      "lifecycle": {
+        "error": null,
+        "port_released": true,
+        "llama_gpu_process_released": true,
+        "gpu_compute_apps_before": [],
+        "gpu_compute_apps_after": []
+      },
+      "automatic_gate_passed": false,
+      "manual_review_status": "pending",
+      "started_at": "2026-08-06T20:55:48.672+08:00",
+      "completed_at": "2026-08-06T20:56:10.912+08:00",
+      "bindings": {
+        "profile_sha256": "a82a934aab0298d8a9a658c0864cd9dce3452a05b01a07415db8b2060a7bc34e",
+        "comparison_contract_sha256": "30bcaabaa811a4500519b061e9db352789532dda0aae3682a20c0bc4ba917e66",
+        "runner_sha256": "5d643872c6384317c27cb71153e1e3b4a146f3c59dd6704e4a301020f6a94056",
+        "smoke_cases_sha256": "57a6cc70cb6986e0761ee5d3465746deabf81ee21ca2d1298c7820daccefa293",
+        "model_gguf_sha256": "c55e3f9a4585796338051fffa3f09caa8edd713118423b585f1056545a29de99"
+      }
+    }
+  ],
+  "automatic_gate_passed": false,
+  "manual_review_status": "pending",
+  "next_stage": "blocked"
+}
