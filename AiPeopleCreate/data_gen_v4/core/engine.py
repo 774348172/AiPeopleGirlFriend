@@ -540,6 +540,7 @@ class GenerationEngineV4:
             support_spans=payload.get("support_spans", item.support_spans),
             knowledge_scope=item.knowledge_scope,
             visibility_scope=item.visibility_scope,
+            memory_type=item.memory_type,
             evidence_state=item.evidence_state,
             desired_policy=item.desired_policy,
             required_behaviors=item.required_behaviors,

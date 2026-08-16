@@ -148,6 +148,16 @@ def pick_items(plan, count: int):
     return picked[:count]
 
 
+def _task_key(task: str) -> str:
+    """task_type 归一化：CLI 短名（casual）与全名（reply_casual）兼容。
+
+    2026-08-15 修复：--skip-types/--range-types 帮助文本用短名（casual=250），
+    但 pick_* 拿 item.task_type（reply_casual）查表永远匹配不上——只有
+    rerank_memory（无前缀）碰巧生效。归一化后两种写法都可用。
+    """
+    return task.removeprefix("reply_")
+
+
 def pick_after_skip(plan, per_type_skip: int):
     """跳过每类型前 per_type_skip 条取剩余（补跑用：与第一次 run 拼接成完整配额）。"""
     picked: list = []
@@ -167,7 +177,8 @@ def pick_remainder(plan, done: dict[str, int]):
     for item in plan.items:
         task = item.task_type
         seen[task] = seen.get(task, 0) + 1
-        if seen[task] > done.get(task, 0):
+        limit = done.get(task, done.get(_task_key(task), 0))
+        if seen[task] > limit:
             picked.append(item)
     return picked
 
@@ -180,7 +191,7 @@ def pick_range(plan, ranges: dict[str, tuple[int, int]]):
         task = item.task_type
         idx = seen.get(task, 0)
         seen[task] = idx + 1
-        lo, hi = ranges.get(task, (0, 0))
+        lo, hi = ranges.get(task, ranges.get(_task_key(task), (0, 0)))
         if lo <= idx < hi:
             picked.append(item)
     return picked
@@ -659,6 +670,7 @@ def main() -> None:
                         "sample_id": winner.sample_id,
                         "task_type": winner.task_type,
                         "mode": training.mode,
+                        "memory_type": winner.memory_type,
                         "evidence_state": winner.evidence_state,
                         "desired_policy": winner.desired_policy,
                         "family_id": winner.family_id,

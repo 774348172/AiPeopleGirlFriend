@@ -16,6 +16,21 @@ _DEFAULT_RENDER_PROFILE = "reply-runtime-v1"
 _DEFAULT_PROMPT_VERSION = "reply-style-v1"
 _DEFAULT_CONFIG_HASH = "config:reply:v1"
 
+# 记忆类型轴缺省推断表（2026-08-14 §24）：池条目显式 memory_type 优先；
+# 未声明时按 task_type 通用推断（不内置角色知识，未覆盖类型不标注）。
+_MEMORY_TYPE_INFERENCE: dict[str, str] = {
+    "reply_identity": "persona",
+    "reply_canon_qa": "persona",
+    "reply_general": "general",
+    "reply_safety": "general",
+    "reply_memory": "special",
+    "reply_item": "item",
+}
+
+
+def _infer_memory_type(task_type: str) -> str | None:
+    return _MEMORY_TYPE_INFERENCE.get(task_type)
+
 
 def _sample_weighted(
     distribution: dict[str, float], index: int, seed: int, *, default: str
@@ -176,6 +191,7 @@ class RecipeDrivenItemFactory:
             family_role=family_role,
             knowledge_scope=sample.get("knowledge_scope", ["general_knowledge"]),
             visibility_scope=sample.get("visibility_scope", ["profile_public"]),
+            memory_type=sample.get("memory_type") or _infer_memory_type(task_type),
             evidence_state=sample.get("evidence_state", "not_required"),
             desired_policy=sample.get("desired_policy", "answer"),
             required_behaviors=sample.get("required_behaviors", []),

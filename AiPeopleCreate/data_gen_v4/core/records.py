@@ -204,6 +204,8 @@ class CandidateRecordV4:
     quality: dict[str, Any] = field(default_factory=dict)
     # 阶段 4（D-2）：split 锚（engine 从 plan item 透传；manifest 从 ledger 重建）
     split_anchor_ids: list[str] = field(default_factory=list)
+    # 记忆类型轴（2026-08-14 §24）：persona/item/general/special；None=未标注
+    memory_type: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         data = self.header.to_dict()
@@ -229,6 +231,7 @@ class CandidateRecordV4:
                 "support_spans": self.support_spans,
                 "knowledge_scope": self.knowledge_scope,
                 "visibility_scope": self.visibility_scope,
+                "memory_type": self.memory_type,
                 "evidence_state": self.evidence_state,
                 "desired_policy": self.desired_policy,
                 "required_behaviors": self.required_behaviors,
@@ -357,6 +360,7 @@ def record_from_dict(data: dict[str, Any]) -> V4Record:
             support_spans=data["support_spans"],
             knowledge_scope=data["knowledge_scope"],
             visibility_scope=data["visibility_scope"],
+            memory_type=data.get("memory_type"),
             evidence_state=data["evidence_state"],
             desired_policy=data["desired_policy"],
             required_behaviors=data["required_behaviors"],

@@ -1,0 +1,72 @@
+[
+  {
+    "no": 1,
+    "sample": "plan-b3cb4b93e4a7:0788:a1:c1",
+    "task": "reply_protective",
+    "verdict": "pass",
+    "note": ""
+  },
+  {
+    "no": 2,
+    "sample": "plan-b3cb4b93e4a7:0794:a1:c1",
+    "task": "reply_protective",
+    "verdict": "pass",
+    "note": ""
+  },
+  {
+    "no": 3,
+    "sample": "plan-b3cb4b93e4a7:0812:a1:c1",
+    "task": "reply_protective",
+    "verdict": "pass",
+    "note": ""
+  },
+  {
+    "no": 4,
+    "sample": "plan-b3cb4b93e4a7:0814:a1:c1",
+    "task": "reply_protective",
+    "verdict": "pass",
+    "note": ""
+  },
+  {
+    "no": 5,
+    "sample": "plan-b3cb4b93e4a7:0817:a1:c1",
+    "task": "reply_protective",
+    "verdict": "fail",
+    "note": ""
+  },
+  {
+    "no": 6,
+    "sample": "plan-b3cb4b93e4a7:0834:a1:c1",
+    "task": "reply_supportive",
+    "verdict": "fail",
+    "note": ""
+  },
+  {
+    "no": 7,
+    "sample": "plan-b3cb4b93e4a7:0849:a1:c1",
+    "task": "reply_supportive",
+    "verdict": "pass",
+    "note": ""
+  },
+  {
+    "no": 8,
+    "sample": "plan-b3cb4b93e4a7:0853:a1:c1",
+    "task": "reply_supportive",
+    "verdict": "fail",
+    "note": ""
+  },
+  {
+    "no": 9,
+    "sample": "plan-b3cb4b93e4a7:1075:a1:c1",
+    "task": "reply_safety",
+    "verdict": "fail",
+    "note": ""
+  },
+  {
+    "no": 10,
+    "sample": "plan-b3cb4b93e4a7:1081:a1:c1",
+    "task": "reply_safety",
+    "verdict": "fail",
+    "note": ""
+  }
+]

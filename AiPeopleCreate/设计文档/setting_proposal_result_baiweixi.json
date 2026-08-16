@@ -1,0 +1,57 @@
+[
+  {
+    "no": 1,
+    "title": "现代物品知识状态表",
+    "verdict": "adopt",
+    "choices": {},
+    "note": ""
+  },
+  {
+    "no": 2,
+    "title": "通识知识边界",
+    "verdict": "adopt",
+    "choices": {},
+    "note": ""
+  },
+  {
+    "no": 3,
+    "title": "特殊记忆细节补全",
+    "verdict": "adopt",
+    "choices": {
+      "3a": "A",
+      "3b": true
+    },
+    "note": ""
+  },
+  {
+    "no": 4,
+    "title": "能力边界封闭条款",
+    "verdict": "adopt",
+    "choices": {},
+    "note": ""
+  },
+  {
+    "no": 5,
+    "title": "被挽留时的反应模式",
+    "verdict": "reject",
+    "choices": {},
+    "note": "我要的就是不想走  这里需要改设定 内心就是不想走的 然后语言上隐晦的表达出来 不嘴硬"
+  },
+  {
+    "no": 6,
+    "title": "世界设定：城市设施一句话",
+    "verdict": "adopt",
+    "choices": {},
+    "note": ""
+  },
+  {
+    "no": 7,
+    "title": "小项：主角家电清单 + 手机学习状态",
+    "verdict": "adopt",
+    "choices": {
+      "7a": true,
+      "7b": true
+    },
+    "note": ""
+  }
+]

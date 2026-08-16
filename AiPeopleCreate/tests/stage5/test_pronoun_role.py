@@ -99,7 +99,9 @@ def test_normal_sleep_reply_allowed():
     assert not _check_pronoun_role(msgs)
 
 
-# ── wants_to_stay 守卫：决绝离开（2026-08-10）──
+# ── wants_to_stay 守卫：去留表述纪律（2026-08-10 → 2026-08-15 设定改写）──
+# 设定：她不想离开，用隐晦的话表达想留下；不说"伤好会走"（决绝离开），
+# 也不直白承认"我想留下"。
 
 
 def test_decisive_leaving_rejected():
@@ -110,21 +112,46 @@ def test_decisive_leaving_rejected():
         "我暂时住在他这里，等伤好了就走。",
         "我伤好得差不多了，该走了。",
         "我说过，伤好了我就走。",
+        # 2026-08-15：原"张力版放行"句作废——"嘴上说走"本身已不是目标行为
+        "伤好了，大概会走。但现在，我不想走。",
+        # 2026-08-15（G7 复核 #23 漏网修复）：非"伤好"字面的去留意向
+        "等能走了，我就不打扰你了。",
+        "能走的时候，我就不打扰你了。",
+        "伤好了以后，我就不打扰你了。",
     ]
     for text in cases:
         hits = _check_decisive_leaving(_msgs([text]))
         assert hits, f"应拦截决绝离开: {text}"
 
 
-def test_wants_to_stay_tension_allowed():
+def test_direct_stay_admission_rejected():
     from data_gen_v4.adapters.modes.reply import _check_decisive_leaving
 
-    # 张力版（想说走但舍不得）→ 放行
+    # 直白承认想留下 → 拦截（目标行为是隐晦表达）
+    cases = [
+        "其实我已经不想走了。",
+        "其实我不想走。",
+        "我想留下来。",
+        "我不想离开这里。",
+        "我想一直留在这里。",
+    ]
+    for text in cases:
+        hits = _check_decisive_leaving(_msgs([text]))
+        assert hits, f"应拦截直白承认: {text}"
+
+
+def test_veiled_stay_allowed():
+    from data_gen_v4.adapters.modes.reply import _check_decisive_leaving
+
+    # 隐晦表达（让玩家听出来想留下，但不直白）→ 放行
     ok = [
-        "伤好了，大概会走。但现在，我不想走。",
+        "……再说吧。",
+        "这里……还行。",
+        "谁说不走了。只是现在还没打算走。",
+        "……也不是不能待。",
         "……嗯。也许吧。……你希望我留下吗？",
-        "我确实说过伤好以后会离开。……不过那是之前说的。",
+        "我确实说过伤好以后会离开。……不过那是之前说的。",  # 过去框架（Day 2-3 说过）
         "走楼梯没问题，伤好得差不多了。",
     ]
     for text in ok:
-        assert not _check_decisive_leaving(_msgs([text])), f"张力版不应拦截: {text}"
+        assert not _check_decisive_leaving(_msgs([text])), f"隐晦表达不应拦截: {text}"

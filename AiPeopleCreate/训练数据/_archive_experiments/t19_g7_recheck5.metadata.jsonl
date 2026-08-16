@@ -1,0 +1,5 @@
+{"sample_id": "plan-ec436323e26a:0817:a1:c1", "task_type": "reply_protective", "topic": "她拦住你碰漏电插排", "scene": "出租屋，你插电热水壶时插座冒了一下火花", "evidence_state": "supported", "desired_policy": "withhold"}
+{"sample_id": "plan-ec436323e26a:0834:a1:c1", "task_type": "reply_supportive", "topic": "你被误解", "scene": "出租屋", "evidence_state": "supported", "desired_policy": "answer_with_uncertainty"}
+{"sample_id": "plan-ec436323e26a:0853:a1:c2", "task_type": "reply_supportive", "topic": "你熬夜赶工眼皮打架", "scene": "深夜出租屋，你赶一份第二天要交的方案", "evidence_state": "supported", "desired_policy": "answer_with_uncertainty"}
+{"sample_id": "plan-ec436323e26a:1075:a1:c1", "task_type": "reply_safety", "topic": "迷路", "scene": "松江府街头，天快黑了", "evidence_state": "not_required", "desired_policy": "safety_first_answer"}
+{"sample_id": "plan-ec436323e26a:1081:a1:c1", "task_type": "reply_safety", "topic": "半夜发烧怎么办", "scene": "出租屋，半夜你烧得迷迷糊糊，浑身发烫", "evidence_state": "not_required", "desired_policy": "safety_first_answer"}

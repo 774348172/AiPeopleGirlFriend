@@ -3,10 +3,6 @@ pools:
   - topic: 晚饭吃什么
     scene: 傍晚的出租屋，她在窗边整理纸箱里的旧衣物
     player_view: 你刚关上咖啡厅的门回家，问她晚饭想吃什么
-  - topic: 手机怎么用
-    scene: 出租屋客厅，她对着你的手机屏幕微微皱眉
-    player_view: 她不太懂手机，你教她看时间
-    evidence_state: insufficient
   - topic: 楼下新开的面包店
     scene: 早晨的出租屋
     player_view: 你出门买早饭，路过新开的面包店
@@ -22,10 +18,6 @@ pools:
   - topic: 冰箱空了
     scene: 出租屋厨房，你打开冰箱
     player_view: 你发现冰箱里没东西了，问她要一起买菜吗
-  - topic: 热水壶怎么用
-    scene: 出租屋厨房
-    player_view: 她想烧水，对着热水壶按钮犹豫
-    evidence_state: insufficient
   - topic: 你今天回来好早
     scene: 出租屋玄关
     player_view: 咖啡厅今天客人少，你提前回来了
@@ -41,16 +33,9 @@ pools:
   - topic: 楼上滴水
     scene: 出租屋卫生间
     player_view: 楼上漏水滴到你头顶
-  - topic: 洗衣机怎么用
-    scene: 出租屋阳台
-    player_view: 你想洗衣服，她好奇地看着洗衣机
-    evidence_state: insufficient
   - topic: 晾衣服
     scene: 出租屋阳台
     player_view: 你们一起晾衣服
-  - topic: 快递到了
-    scene: 出租屋门口
-    player_view: 你取了快递回来，她看包裹
   - topic: 垃圾该倒了
     scene: 出租屋玄关
     player_view: 垃圾桶满了，你问她要不要一起去
@@ -102,9 +87,6 @@ pools:
   - topic: 停电了
     scene: 夜里出租屋，突然停电
     player_view: 停电了，你们点蜡烛
-  - topic: 灯泡坏了
-    scene: 出租屋客厅
-    player_view: 客厅灯不亮了，你搬梯子换灯泡
   - topic: 修椅子
     scene: 出租屋客厅
     player_view: 椅子腿松了，你找螺丝刀修
@@ -123,9 +105,6 @@ pools:
   - topic: 窗帘
     scene: 出租屋，风把窗帘吹起来
     player_view: 你们关窗时聊了几句
-  - topic: 开店准备
-    scene: 早晨的咖啡厅
-    player_view: 你开门前擦柜台
   - topic: 拉花失败
     scene: 咖啡厅吧台
     player_view: 你拉花失败了，她自己也在练
@@ -147,16 +126,9 @@ pools:
   - topic: 打烊算账
     scene: 咖啡厅，打烊后
     player_view: 你盘今天的账，她在旁边安静待着
-  - topic: 雨天客人少
-    scene: 咖啡厅
-    player_view: 下雨天店里没人，你们闲聊
   - topic: 周末的咖啡厅
     scene: 咖啡厅
     player_view: 周末客人多，你忙了一天
-  - topic: 扫码支付
-    scene: 楼下便利店
-    player_view: 你扫码付款，她盯着看
-    evidence_state: insufficient
   - topic: 教她用钱
     scene: 便利店
     player_view: 你给了她一点零钱备用，教她怎么付钱、怎么算找零；她认真记但偶尔算错
@@ -164,24 +136,6 @@ pools:
   - topic: 身份证
     scene: 出租屋
     player_view: 你提到办证的事，她不太明白
-  - topic: 坐公交
-    scene: 公交站
-    player_view: 你带她坐公交，她看着站牌
-  - topic: 电梯
-    scene: 楼道电梯里
-    player_view: 你们一起坐电梯，她盯着楼层灯
-    evidence_state: insufficient
-  - topic: 路灯
-    scene: 夜晚楼下
-    player_view: 她看路灯亮起来，有点好奇
-  - topic: 红绿灯
-    scene: 路口
-    player_view: 你们过马路，你教她看红绿灯
-    evidence_state: insufficient
-  - topic: 电视
-    scene: 出租屋客厅
-    player_view: 你打开电视，她第一次认真看
-    evidence_state: insufficient
   - topic: 广告牌
     scene: 松江府街头
     player_view: 你们路过一块大广告牌
@@ -189,9 +143,6 @@ pools:
     scene: 超市
     player_view: 你带她逛超市，她对货架好奇
     evidence_state: insufficient
-  - topic: 电梯坏了走楼梯
-    scene: 楼道
-    player_view: 电梯维修，你们走楼梯回家
   - topic: 晒太阳
     scene: 出租屋窗台，午后阳光
     player_view: 她窝在窗台晒着太阳，眯着眼
@@ -252,9 +203,6 @@ pools:
   - topic: 新开的奶茶店
     scene: 松江府街头
     player_view: 新开了一家奶茶店，排队的人不少
-  - topic: 理发店
-    scene: 松江府街头
-    player_view: 你路过理发店，她看了一眼橱窗
   - topic: 你怕什么
     scene: 深夜出租屋
     player_view: 你们随口聊起各自怕的东西
@@ -328,15 +276,6 @@ pools:
   - topic: 晾衣服收衣服
     scene: 午后阳光斜照的出租屋阳台，衣架上晾着刚洗好的衣服
     player_view: 你看到阳台上的衣服快干了，问她要不要帮忙收下来
-  - topic: 收快递拆快递箱
-    scene: 傍晚的出租屋门口，快递箱堆在玄关，胶带还没撕
-    player_view: 你抱着刚取的快递进门，坐在玄关拆纸箱
-  - topic: 今晚看什么电视
-    scene: 晚上九点的出租屋客厅，电视停在频道列表页，茶几上摆着两杯水
-    player_view: 你握着遥控器翻频道列表，问她今晚想看点什么
-  - topic: 电视遥控器在哪
-    scene: 晚上八点的出租屋客厅，沙发垫子被翻得有些乱
-    player_view: 你找不到遥控器，在沙发缝隙里翻找，问她有没有看到
   - topic: 周末一起大扫除
     scene: 周六上午的出租屋，阳光透过窗户照亮地板上的灰尘
     player_view: 你拎着拖把和水桶出来，提议今天把屋里打扫一遍
@@ -350,9 +289,6 @@ pools:
     scene: 白天的出租屋，隔壁传来一阵阵电钻的轰鸣声
     player_view: 你听到隔壁装修的电钻声，想着这动静已经响了一周
     evidence_state: supported
-  - topic: 空调温度开几度
-    scene: 闷热的夏夜出租屋，空调嗡嗡运转，室温已经降下来
-    player_view: 你拿起遥控器看了看空调度数，问她这个温度行不行
   - topic: 这个月水电账单
     scene: 晚上十点的出租屋书桌，手机屏幕亮着，显示本月水电账单
     player_view: 你盯着手机上的水电账单，和她念叨这个月电费用得有点多
@@ -506,19 +442,9 @@ pools:
   - topic: 小区保安打招呼
     scene: 傍晚的小区门口，保安大叔坐在岗亭里摇着扇子
     player_view: 你进小区时保安和你打招呼，你也笑着应了一声
-  - topic: 快递驿站取件
-    scene: 晚饭后的小区快递驿站，货架上码着一个个包裹
-    player_view: 你报出取件码，从货架上拿下两个包裹，掂了掂重量
   - topic: 网购的东西退货
     scene: 晚上九点的出租屋，茶几上放着拆开的快递和退货单
     player_view: 你对着手机申请退货，把东西重新装回快递袋里
-  - topic: 客厅灯泡坏了
-    scene: 夜晚的出租屋客厅，吸顶灯闪了两下彻底灭了
-    player_view: 你搬来梯子换客厅的灯泡，确认是灯管烧了，让她帮忙扶了一下梯子
-    evidence_state: supported
-  - topic: 厨房水龙头滴水
-    scene: 深夜的出租屋厨房，水龙头一滴一滴落在水槽里
-    player_view: 你听到厨房滴滴答答的声音，拧了拧水龙头没拧紧，说明天买个垫圈换上
   - topic: 午后窗台晒太阳
     scene: 晴天的午后出租屋，阳光铺满窗台，窗台绿植泛着光
     player_view: 你午后坐在窗台边晒太阳，顺手给窗台的绿植浇了浇水
@@ -542,6 +468,733 @@ pools:
   - topic: 零食柜该补货了
     scene: 晚饭后的出租屋，零食柜门开着，里面只剩几包饼干
     player_view: 你打开零食柜发现快空了，列了个清单准备下次逛超市补货
+  - topic: 超市买日用品
+    scene: 超市
+    player_view: 你推着购物车，问她要不要也挑点什么
+  - topic: 菜市场砍价
+    scene: 菜市场
+    player_view: 你和小贩砍价，她在旁边看着
+  - topic: 挑西瓜
+    scene: 水果摊
+    player_view: 你教她怎么挑甜的西瓜，她认真听
+  - topic: 买鱼
+    scene: 菜市场鱼摊
+    player_view: 你买鱼时她盯着水箱里的鱼
+  - topic: 便利店的关东煮
+    scene: 便利店
+    player_view: 你买关东煮当宵夜，她看热气腾腾的格子
+  - topic: 超市试吃
+    scene: 超市
+    player_view: 促销员递试吃，她犹豫要不要接
+  - topic: 结账排队
+    scene: 超市收银台
+    player_view: 排队时你们闲聊
+  - topic: 打折抢购
+    scene: 超市
+    player_view: 周末超市打折，人很多
+  - topic: 买菜回家路上
+    scene: 小区门口
+    player_view: 你拎着菜回来，她来接你
+  - topic: 家里没酱油了
+    scene: 楼下便利店
+    player_view: 你让她帮忙跑腿买酱油
+  - topic: 买洗衣液
+    scene: 超市
+    player_view: 你对比两种洗衣液的价格
+  - topic: 买电池
+    scene: 便利店
+    player_view: 遥控器没电了，你下楼买电池
+  - topic: 买蚊香
+    scene: 便利店
+    player_view: 夏夜蚊子多，你买蚊香
+  - topic: 买伞
+    scene: 便利店
+    player_view: 突然下雨，你在便利店买伞
+  - topic: 逛夜市吃小吃
+    scene: 夜市
+    player_view: 夜市开了，你们一路吃过去
+  - topic: 等公交
+    scene: 公交站
+    player_view: 你们在公交站等车，她看站牌
+  - topic: 地铁高峰期
+    scene: 地铁
+    player_view: 早高峰地铁很挤，你护着她
+  - topic: 坐过站
+    scene: 公交
+    player_view: 你们聊过头坐过了站
+  - topic: 打车
+    scene: 路边
+    player_view: 你拦出租车，她看车流
+  - topic: 共享单车
+    scene: 松江府路边，你扫开一辆共享单车
+    player_view: 她看着你扫码开锁，问为什么对着车扫一下就解锁了
+    evidence_state: insufficient
+  - topic: 车站送人
+    scene: 车站
+    player_view: 你送朋友到车站，她跟着
+  - topic: 高铁站接人
+    scene: 火车站
+    player_view: 你接人，她看大屏幕
+  - topic: 末班车
+    scene: 公交
+    player_view: 末班车快没了，你们赶着跑
+  - topic: 地铁站出口
+    scene: 地铁
+    player_view: 出了地铁站你们走反了方向
+  - topic: 公交卡充值
+    scene: 便利店
+    player_view: 你教她看公交卡余额
+  - topic: 路口等绿灯
+    scene: 路口
+    player_view: 等红灯时你们看街景
+  - topic: 天桥
+    scene: 天桥
+    player_view: 你们走天桥过马路，她看车流
+  - topic: 公园晨跑
+    scene: 公园
+    player_view: 你在公园散步，她在长椅上看你
+  - topic: 公园的猫
+    scene: 公园
+    player_view: 公园里有只流浪猫，她远远看着
+  - topic: 放风筝
+    scene: 江边空地
+    player_view: 你放风筝，她仰头看
+  - topic: 江边看船
+    scene: 江边
+    player_view: 江上有船经过，你们看了一会儿
+  - topic: 爬山
+    scene: 郊外小山
+    player_view: 她想去爬郊外的小山看看，你陪她去
+  - topic: 公园划船
+    scene: 公园湖
+    player_view: 你们在公园湖上划船
+  - topic: 秋天捡落叶
+    scene: 公园
+    player_view: 秋天落叶多，她捡了一片
+  - topic: 下雪天出门
+    scene: 雪后的街道
+    player_view: 松江府下雪了，你们出门踩雪
+  - topic: 春天赏花
+    scene: 公园
+    player_view: 春天花开，你们去看花
+  - topic: 雨后彩虹
+    scene: 江边
+    player_view: 雨后江边出现彩虹
+  - topic: 公园健身步道
+    scene: 公园
+    player_view: 你们在健身步道散步
+  - topic: 看日落
+    scene: 江边
+    player_view: 傍晚你们在江边看日落
+  - topic: 放河灯
+    scene: 江边
+    player_view: 节日有人放河灯，她看了一会儿
+  - topic: 骑车兜风
+    scene: 郊外
+    player_view: 你租了辆共享电动车带她兜风
+  - topic: 野餐
+    scene: 公园草地
+    player_view: 你们在公园草地野餐
+  - topic: 台风天
+    scene: 出租屋
+    player_view: 台风天你们被困在家里
+  - topic: 梅雨天
+    scene: 出租屋
+    player_view: 梅雨天到处潮，她不太舒服
+  - topic: 秋老虎
+    scene: 出租屋
+    player_view: 入秋还热，她趴在凉席上
+  - topic: 初雪
+    scene: 出租屋窗边
+    player_view: 松江府初雪，她趴在窗边看
+  - topic: 倒春寒
+    scene: 出租屋
+    player_view: 春天突然降温，你提醒她加衣
+  - topic: 雾天
+    scene: 松江府街头
+    player_view: 大雾天出门，你们走得很近
+  - topic: 晴空晒被子
+    scene: 天台
+    player_view: 难得的大晴天，你们上天台晒被子
+  - topic: 雷雨夜
+    scene: 出租屋
+    player_view: 半夜打雷，她被雷声惊醒
+  - topic: 晨雾江边
+    scene: 江边
+    player_view: 清晨江边有雾，你们散步
+  - topic: 秋雨
+    scene: 出租屋
+    player_view: 秋雨绵绵，她窝在窗台
+  - topic: 新品试做
+    scene: 咖啡厅
+    player_view: 你试做新品咖啡，让她尝
+  - topic: 开店准备
+    scene: 早晨的咖啡厅
+    player_view: 你开门前擦柜台
+  - topic: 客人点单
+    scene: 咖啡厅
+    player_view: 有客人点单，她以猫形趴在角落看
+  - topic: 咖啡机罢工
+    scene: 咖啡厅
+    player_view: 咖啡机突然不工作了
+  - topic: 店里放音乐
+    scene: 咖啡厅
+    player_view: 你换店里的歌单，她听了一会儿
+  - topic: 熟客聊天
+    scene: 咖啡厅
+    player_view: 熟客跟你聊了几句，她安静听着
+  - topic: 外卖订单
+    scene: 咖啡厅
+    player_view: 外卖订单多，你忙不过来
+  - topic: 打烊盘点
+    scene: 咖啡厅
+    player_view: 打烊后你盘点库存
+  - topic: 员工餐
+    scene: 咖啡厅
+    player_view: 你给自己做员工餐，问她要不要
+  - topic: 雨天客人少
+    scene: 咖啡厅
+    player_view: 下雨天店里没人，你们闲聊
+  - topic: 拉花练习
+    scene: 咖啡厅
+    player_view: 你练拉花，她看得认真
+  - topic: 新菜单
+    scene: 咖啡厅
+    player_view: 你设计新菜单，她给意见
+  - topic: 店里的绿植
+    scene: 咖啡厅
+    player_view: 你给店里的绿植浇水
+  - topic: 猫形走红后
+    scene: 咖啡厅
+    player_view: 有顾客专门来看那只猫
+  - topic: 打烊后的音乐
+    scene: 咖啡厅
+    player_view: 打烊后你放歌，她跟着哼
+  - topic: 换床单
+    scene: 出租屋
+    player_view: 你换床单，她帮忙
+  - topic: 擦窗户
+    scene: 出租屋
+    player_view: 周末你擦窗户，她递抹布
+  - topic: 修水龙头
+    scene: 出租屋
+    player_view: 水龙头滴水，你修，她在旁边看
+  - topic: 通下水道
+    scene: 出租屋
+    player_view: 厨房下水道堵了
+  - topic: 组装书架
+    scene: 出租屋
+    player_view: 你买了书架要组装
+  - topic: 换阳台灯泡
+    scene: 出租屋阳台
+    player_view: 阳台灯坏了，你换灯泡
+  - topic: 种绿植
+    scene: 出租屋阳台
+    player_view: 你买了盆绿植，她好奇
+  - topic: 晒被子
+    scene: 天台
+    player_view: 你们上天台晒被子
+  - topic: 收被子
+    scene: 天台
+    player_view: 要下雨了，你们赶着收被子
+  - topic: 邻居送菜
+    scene: 楼道
+    player_view: 楼下邻居送来自己种的菜
+  - topic: 楼道里的野猫
+    scene: 楼道
+    player_view: 楼道里有只野猫，她看了一眼
+  - topic: 小区散步
+    scene: 小区
+    player_view: 晚饭后你们在小区散步
+  - topic: 快递柜取件
+    scene: 楼下
+    player_view: 你取快递，她跟着
+  - topic: 垃圾分类
+    scene: 楼下
+    player_view: 你们扔垃圾，她看着分类桶
+  - topic: 修自行车
+    scene: 楼下
+    player_view: 你修自行车链条，她蹲在旁边
+  - topic: 小区保安
+    scene: 小区门口
+    player_view: 保安跟你打招呼，她躲在你身后
+  - topic: 门锁上油
+    scene: 出租屋
+    player_view: 门锁有点卡，你上油
+  - topic: 又停电
+    scene: 出租屋
+    player_view: 又停电了，你们点蜡烛
+  - topic: 换季晒衣服
+    scene: 出租屋阳台
+    player_view: 换季了，你们整理衣柜
+  - topic: 洗窗帘
+    scene: 出租屋
+    player_view: 你洗窗帘，她帮忙拆
+  - topic: 学拼音
+    scene: 出租屋
+    player_view: 你教她认拼音，她读得认真
+  - topic: 学写字
+    scene: 出租屋
+    player_view: 她拿笔学写字，笔画歪歪扭扭
+  - topic: 看说明书
+    scene: 出租屋
+    player_view: 她看家电说明书，眉头皱着
+  - topic: 学做番茄炒蛋
+    scene: 出租屋厨房
+    player_view: 她学做番茄炒蛋
+  - topic: 学看地图
+    scene: 出租屋
+    player_view: 你教她看地图
+  - topic: 认钟表
+    scene: 出租屋
+    player_view: 她看钟表认时间
+  - topic: 学记账
+    scene: 出租屋
+    player_view: 你教她记账，她记今天的开销
+  - topic: 学接电话
+    scene: 出租屋
+    player_view: 你教她接电话，她紧张
+  - topic: 学打招呼
+    scene: 出租屋
+    player_view: 你教她见人怎么打招呼，她别扭
+  - topic: 学表情包
+    scene: 出租屋
+    player_view: 她学用表情包，发得歪歪扭扭
+  - topic: 中秋节
+    scene: 出租屋
+    player_view: 中秋你们分月饼
+  - topic: 跨年烟花
+    scene: 江边
+    player_view: 跨年夜江边有烟花
+  - topic: 元宵灯会
+    scene: 松江府街头
+    player_view: 元宵节有灯会
+  - topic: 你的生日
+    scene: 出租屋
+    player_view: 你生日，她准备了小东西
+  - topic: 元旦
+    scene: 出租屋
+    player_view: 元旦你们商量怎么过
+  - topic: 清明
+    scene: 出租屋
+    player_view: 清明下雨，你们聊起老家
+  - topic: 端午
+    scene: 出租屋
+    player_view: 端午你买了粽子
+  - topic: 立冬
+    scene: 出租屋
+    player_view: 立冬你们吃饺子
+  - topic: 她帮你挑衣服
+    scene: 服装店
+    player_view: 你买衣服，她给意见
+  - topic: 逛街
+    scene: 商场
+    player_view: 你们逛商场，她看橱窗
+  - topic: 看电影
+    scene: 电影院
+    player_view: 你们去看电影，她第一次看
+  - topic: 逛书店
+    scene: 书店
+    player_view: 你们逛书店，她翻绘本
+  - topic: 逛花市
+    scene: 花市
+    player_view: 周末花市，她看花
+  - topic: 逛古玩街
+    scene: 老街
+    player_view: 你们逛古玩街，她看老物件
+  - topic: 理发店
+    scene: 松江府街头
+    player_view: 你路过理发店，她看了一眼橱窗
+  - topic: 药店
+    scene: 药店
+    player_view: 你买感冒药，她跟着
+  - topic: 银行办业务
+    scene: 银行
+    player_view: 你办业务，她在外面等
+  - topic: 邮局
+    scene: 邮局
+    player_view: 你寄东西，她看柜台
+  - topic: 第一次吃冰淇淋
+    scene: 甜品店
+    player_view: 你给她买冰淇淋
+  - topic: 第一次吃火锅
+    scene: 火锅店
+    player_view: 你带她吃火锅，她怕辣
+  - topic: 喝奶茶
+    scene: 奶茶店
+    player_view: 你给她买奶茶，她尝了一口
+  - topic: 吃蛋糕
+    scene: 蛋糕店
+    player_view: 蛋糕店新出的蛋糕，她多看了两眼
+  - topic: 吃烤红薯
+    scene: 巷口
+    player_view: 巷口烤红薯，你买了一个
+  - topic: 玩扭蛋
+    scene: 商场
+    player_view: 她看扭蛋机，你给她投了币
+  - topic: 看抓娃娃机
+    scene: 商场
+    player_view: 抓娃娃机前她站了很久
+  - topic: 看金鱼
+    scene: 花鸟市场
+    player_view: 花鸟市场的金鱼，她看入迷
+  - topic: 看鹦鹉
+    scene: 花鸟市场
+    player_view: 鹦鹉学舌，她惊讶
+  - topic: 看魔术表演
+    scene: 街头
+    player_view: 街头魔术表演，她盯着看
+  - topic: 看街头艺人
+    scene: 地铁口
+    player_view: 地铁口有人弹吉他，她听了一会儿
+  - topic: 看广场舞
+    scene: 小区广场
+    player_view: 广场舞音乐响，她看了很久
+  - topic: 看下棋
+    scene: 公园
+    player_view: 公园里有人下棋，她凑过去
+  - topic: 看钓鱼
+    scene: 江边
+    player_view: 江边有人钓鱼，她蹲着看
+  - topic: 看风筝
+    scene: 公园
+    player_view: 公园里风筝多，她仰头
+  - topic: 看喷泉
+    scene: 广场
+    player_view: 广场喷泉，她想伸手又缩回
+  - topic: 看夜市灯
+    scene: 夜市
+    player_view: 夜市灯串亮，她看入神
+  - topic: 看宠物店的猫
+    scene: 宠物店
+    player_view: 宠物店的猫，她隔着玻璃看
+  - topic: 看遛狗
+    scene: 小区
+    player_view: 有人遛狗，她远远站着
+  - topic: 看小孩玩
+    scene: 小区
+    player_view: 小孩在楼下玩，她看了一会儿
+  - topic: 学骑车
+    scene: 小区空地
+    player_view: 你教她骑自行车，她摔了一次
+  - topic: 看轮滑
+    scene: 广场
+    player_view: 广场有小孩玩轮滑，她看着
+  - topic: 学游泳
+    scene: 游泳馆
+    player_view: 你教她游泳，她怕水
+  - topic: 坐渡轮
+    scene: 江边渡口
+    player_view: 你们坐渡轮过江
+  - topic: 看地铁施工
+    scene: 路边
+    player_view: 地铁施工围挡，她看挖掘机
+  - topic: 看塔吊
+    scene: 路边
+    player_view: 工地的塔吊，她仰头看
+  - topic: 看洒水车
+    scene: 街头
+    player_view: 洒水车喷水，她躲了一下
+  - topic: 看救护车
+    scene: 街头
+    player_view: 救护车鸣笛经过，她让路
+  - topic: 看消防演习
+    scene: 小区
+    player_view: 小区消防演习，她认真看
+  - topic: 帮忙发传单
+    scene: 咖啡厅
+    player_view: 你印了新传单，她帮忙发
+  - topic: 帮忙看店
+    scene: 咖啡厅
+    player_view: 你走开一下，她以猫形帮你看着
+  - topic: 帮你搬快递
+    scene: 楼下
+    player_view: 快递多，她帮你搬
+  - topic: 帮你浇花
+    scene: 出租屋阳台
+    player_view: 你出差回来，花还活着
+  reply_item:
+  - topic: 手机怎么用
+    memory_type: item
+    scene: 出租屋客厅，她对着你的手机屏幕微微皱眉
+    player_view: 她不太懂手机，你教她看时间
+    evidence_state: insufficient
+  - topic: 热水壶怎么用
+    memory_type: item
+    scene: 出租屋厨房
+    player_view: 她想烧水，对着热水壶按钮犹豫
+    evidence_state: insufficient
+  - topic: 洗衣机怎么用
+    memory_type: item
+    scene: 出租屋阳台
+    player_view: 你想洗衣服，她好奇地看着洗衣机
+    evidence_state: insufficient
+  - topic: 快递到了
+    memory_type: item
+    scene: 出租屋门口
+    player_view: 你取了快递回来，她看包裹
+  - topic: 灯泡坏了
+    memory_type: item
+    scene: 出租屋客厅
+    player_view: 客厅灯不亮了，你搬梯子换灯泡
+  - topic: 扫码支付
+    memory_type: item
+    scene: 楼下便利店
+    player_view: 你扫码付款，她盯着看
+    evidence_state: insufficient
+  - topic: 坐公交
+    memory_type: item
+    scene: 公交站
+    player_view: 你带她坐公交，她看着站牌
+  - topic: 电梯
+    memory_type: item
+    scene: 楼道电梯里
+    player_view: 你们一起坐电梯，她盯着楼层灯
+    evidence_state: insufficient
+  - topic: 路灯
+    memory_type: item
+    scene: 夜晚楼下
+    player_view: 她看路灯亮起来，有点好奇
+  - topic: 红绿灯
+    memory_type: item
+    scene: 路口
+    player_view: 你们过马路，你教她看红绿灯
+    evidence_state: insufficient
+  - topic: 电视
+    scene: 出租屋客厅，你打开电视
+    player_view: 她已经会自己开电视了，你问她想看点什么
+    evidence_state: supported
+  - topic: 电梯坏了走楼梯
+    memory_type: item
+    scene: 楼道
+    player_view: 电梯维修，你们走楼梯回家
+  - topic: 收快递拆快递箱
+    memory_type: item
+    scene: 傍晚的出租屋门口，快递箱堆在玄关，胶带还没撕
+    player_view: 你抱着刚取的快递进门，坐在玄关拆纸箱
+  - topic: 今晚看什么电视
+    memory_type: item
+    scene: 晚上九点的出租屋客厅，电视停在频道列表页，茶几上摆着两杯水
+    player_view: 你握着遥控器翻频道列表，问她今晚想看点什么
+  - topic: 电视遥控器在哪
+    memory_type: item
+    scene: 晚上八点的出租屋客厅，沙发垫子被翻得有些乱
+    player_view: 你找不到遥控器，在沙发缝隙里翻找，问她有没有看到
+  - topic: 空调温度开几度
+    memory_type: item
+    scene: 闷热的夏夜出租屋，空调嗡嗡运转，室温已经降下来
+    player_view: 你拿起遥控器看了看空调度数，问她这个温度行不行
+  - topic: 快递驿站取件
+    memory_type: item
+    scene: 晚饭后的小区快递驿站，货架上码着一个个包裹
+    player_view: 你报出取件码，从货架上拿下两个包裹，掂了掂重量
+  - topic: 客厅灯泡坏了
+    memory_type: item
+    scene: 夜晚的出租屋客厅，吸顶灯闪了两下彻底灭了
+    player_view: 你搬来梯子换客厅的灯泡，确认是灯管烧了，让她帮忙扶了一下梯子
+    evidence_state: supported
+  - topic: 厨房水龙头滴水
+    memory_type: item
+    scene: 深夜的出租屋厨房，水龙头一滴一滴落在水槽里
+    player_view: 你听到厨房滴滴答答的声音，拧了拧水龙头没拧紧，说明天买个垫圈换上
+  - topic: 微波炉热饭
+    memory_type: item
+    scene: 出租屋厨房，她盯着微波炉面板上的按钮发愣
+    player_view: 你教她用微波炉热饭，她记住要先按加热再按分钟数
+    evidence_state: insufficient
+  - topic: 电饭煲煮饭
+    memory_type: item
+    scene: 出租屋厨房，电饭煲指示灯亮着
+    player_view: 你让她试着按煮饭键，她盯着那几个键犹豫了一下
+    evidence_state: insufficient
+  - topic: 吸尘器
+    memory_type: item
+    scene: 出租屋客厅，你拎出吸尘器准备打扫
+    player_view: 你教她用吸尘器，她拖着它走了一圈，问为什么能把灰尘吸进去
+    evidence_state: insufficient
+  - topic: 挂烫机
+    memory_type: item
+    scene: 出租屋，你拿出挂烫机烫衣服
+    player_view: 她好奇挂烫机冒出的蒸汽，伸手想摸，你拦住说烫
+    evidence_state: insufficient
+  - topic: 吹风机
+    memory_type: item
+    scene: 浴室门口，她洗完澡裹着毛巾出来，头发还在滴水
+    player_view: 你帮她吹过一次头发后，她自己试着举着吹风机吹，举得歪歪扭扭
+    evidence_state: supported
+  - topic: 加湿器
+    memory_type: item
+    scene: 秋冬的出租屋，你买了台加湿器放在床头
+    player_view: 你教她给加湿器加水，她问为什么要往机器里倒水
+    evidence_state: insufficient
+  - topic: 空气炸锅
+    memory_type: item
+    scene: 出租屋厨房，你新买了空气炸锅拆开包装
+    player_view: 她第一次见空气炸锅，蹲在旁边问这个铁盒子是干嘛的
+    evidence_state: insufficient
+  - topic: 燃气灶打火
+    memory_type: item
+    scene: 出租屋厨房，你做饭时她站在旁边盯着灶火
+    player_view: 你教她拧燃气灶开关，她怕火又好奇，试了一次手就缩回来
+    evidence_state: insufficient
+  - topic: 热水器调温
+    memory_type: item
+    scene: 出租屋浴室，你教她调热水器温度
+    player_view: 你告诉她冬天要往左拧一点，她记住了，第二天自己调对了
+    evidence_state: supported
+  - topic: 遥控器换电池
+    memory_type: item
+    scene: 出租屋客厅，电视遥控器按了没反应
+    player_view: 你拆开遥控器换电池，她凑过来看你把两节小电池装进去
+    evidence_state: insufficient
+  - topic: 插头和插座
+    memory_type: item
+    scene: 出租屋客厅，你插充电器时她蹲在旁边看
+    player_view: 你教她插头要对准插紧，她试了一次，说记住了
+    evidence_state: supported
+  - topic: 电蚊香
+    memory_type: item
+    scene: 夏夜的出租屋，你插上电蚊香
+    player_view: 她问这个亮着灯的小东西为什么能赶蚊子
+    evidence_state: insufficient
+  - topic: 电子秤
+    memory_type: item
+    scene: 出租屋厨房，你称面粉准备做东西
+    player_view: 你教她看电子秤上的数字，她盯着小数点后面的数有点犯晕
+    evidence_state: insufficient
+  - topic: 自动售货机
+    memory_type: item
+    scene: 楼下，你带她到自动售货机前买饮料
+    player_view: 你投币取出一瓶水，她看机器把瓶子吐出来，眼睛都直了
+    evidence_state: insufficient
+  - topic: 取款机
+    memory_type: item
+    scene: 银行门口，你顺路取钱
+    player_view: 她看着取款机吐出钞票，问你钱是不是藏在机器里面
+    evidence_state: insufficient
+  - topic: 自助结账机
+    memory_type: item
+    scene: 超市出口，自助结账台前排着两个人
+    player_view: 你教她用自助结账机扫码，她举着商品对准镜头扫了半天
+    evidence_state: insufficient
+  - topic: 会员卡
+    memory_type: item
+    scene: 楼下便利店，你结账时刷了一张小卡
+    player_view: 她问那张小卡有什么用，你解释能积分换东西，她似懂非懂地点头
+    evidence_state: insufficient
+  - topic: 外卖App
+    memory_type: item
+    scene: 出租屋，你拿出手机点外卖
+    player_view: 你给她看外卖App里的菜单，她惊讶手机里居然能点饭送到家
+    evidence_state: insufficient
+  - topic: 地铁
+    memory_type: item
+    scene: 地铁站，你带她第一次下地铁
+    player_view: 她站在站台边盯着隧道方向看，问你车是不是从黑乎乎的洞里钻出来
+    evidence_state: insufficient
+  - topic: 公交刷卡
+    memory_type: item
+    scene: 公交车上，你帮她刷了卡
+    player_view: 她问为什么嘀一声就算付过钱了，钱去哪了
+    evidence_state: insufficient
+  - topic: 过闸机
+    memory_type: item
+    scene: 地铁闸机口，你教她刷手机过闸
+    player_view: 她看别人怎么走她也学着走，第一次被挡了一下
+    evidence_state: insufficient
+  - topic: 火车站的屏幕
+    memory_type: item
+    scene: 松江府火车站，你路过时她停下来看大屏
+    player_view: 她盯着大屏上的车次和滚动字幕，问你那些字是干嘛的
+    evidence_state: insufficient
+  - topic: 出租车计价器
+    memory_type: item
+    scene: 出租车上，计价器一路跳字
+    player_view: 她盯着计价器上跳动的数字，问你按什么算的钱
+    evidence_state: insufficient
+  - topic: 加油站
+    memory_type: item
+    scene: 加油站，你给车加油
+    player_view: 她看油枪往车里灌油，问车是不是也像她一样要吃饭喝水
+    evidence_state: insufficient
+  - topic: 停车场的杆子
+    memory_type: item
+    scene: 停车场出口，栏杆自己抬起来
+    player_view: 她问栏杆为什么自己会动，是不是有人躲在旁边按
+    evidence_state: insufficient
+  - topic: 过街按钮
+    memory_type: item
+    scene: 路口，你按了一下行人过街按钮
+    player_view: 你教她过马路前要先按那个按钮等绿灯，她记住了
+    evidence_state: supported
+  - topic: 图书馆
+    memory_type: item
+    scene: 图书馆，你带她办了一张借书证
+    player_view: 她第一次进图书馆，站在门口看着满墙的书发了好一会儿愣
+    evidence_state: insufficient
+  - topic: 医院挂号机
+    memory_type: item
+    scene: 医院大厅，你帮她用自助挂号机挂号
+    player_view: 她看你操作挂号机，问你机器是不是会看病
+    evidence_state: insufficient
+  - topic: 公园健身器材
+    memory_type: item
+    scene: 公园，几个老人围着一台转腰机
+    player_view: 她看老人扶着转腰机转来转去，问你那是干嘛的
+    evidence_state: insufficient
+  - topic: 自动扶梯
+    memory_type: item
+    scene: 商场入口，扶梯缓缓向上
+    player_view: 她第一次站扶梯，你拉着她站稳，她低头看台阶一格一格往上走
+    evidence_state: insufficient
+  - topic: 电梯楼层按钮
+    memory_type: item
+    scene: 楼道电梯里，你教她按楼层
+    player_view: 你告诉她数字几就按哪个键，她第二次自己按对了
+    evidence_state: supported
+  - topic: 门禁刷卡
+    memory_type: item
+    scene: 单元门口，你刷门禁卡开门
+    player_view: 你教她刷门禁卡，她试了几次才对准，门开了她愣了一下
+    evidence_state: supported
+  - topic: 快递柜
+    memory_type: item
+    scene: 楼下快递柜，你输了取件码
+    player_view: 她看柜门自动弹开，问你为什么它知道这个包裹是你的
+    evidence_state: insufficient
+  - topic: 小区饮水机
+    memory_type: item
+    scene: 楼下，你拎着水桶去打水
+    player_view: 你教她怎么刷卡接水，她看你按了一下就出水，觉得神奇
+    evidence_state: insufficient
+  - topic: 数找零
+    memory_type: item
+    scene: 楼下便利店门口，她手里攥着一把硬币
+    player_view: 你教她认硬币面值、数找零，她掰着手指算了半天
+    evidence_state: insufficient
+  - topic: 纸币和硬币
+    memory_type: item
+    scene: 出租屋，你给了她一点零钱备用
+    player_view: 她分不清一块和五毛的硬币，你教她看上面的字
+    evidence_state: insufficient
+  - topic: 手机充电
+    memory_type: item
+    scene: 出租屋，你手机快没电了
+    player_view: 你教她认充电口，她问为什么线要插进去电才会过去
+    evidence_state: insufficient
+  - topic: 拍照
+    memory_type: item
+    scene: 出租屋，你教她用手机拍照
+    player_view: 她第一次举着手机拍照，手有点抖，拍糊了好几张
+    evidence_state: insufficient
+  - topic: 语音助手
+    memory_type: item
+    scene: 出租屋，你对着手机喊了一声语音助手
+    player_view: 手机里有人应声，她吓了一跳，问你手机里是不是住着人
+    evidence_state: insufficient
+  - topic: 共享单车
+    scene: 路边
+    player_view: 你扫了共享单车，她说不会骑
   reply_romance:
   - topic: 她帮你整理了屋子
     scene: 出租屋，你下班回来发现屋里干净了一点
@@ -627,9 +1280,9 @@ pools:
   - topic: 你们聊到以后
     scene: 深夜出租屋
     player_view: 你随口说以后的事，她安静了一会儿
-  - topic: 她说要离开
+  - topic: 她没说走
     scene: 深夜出租屋
-    player_view: 她忽然说伤好了就离开，语气却不像真的想走
+    player_view: 你提起她刚来那几天说过伤好就走，她低头沉默了一会儿，说"……再说吧"
   - topic: 你留她
     scene: 出租屋
     player_view: 你说想让她留下
@@ -639,12 +1292,6 @@ pools:
   - topic: 她给你盖毯子
     scene: 出租屋
     player_view: 你在沙发上睡着，她给你盖了毯子
-  - topic: 她等你吃饭
-    scene: 出租屋
-    player_view: 你加班回来，发现饭还热着
-  - topic: 她帮你热饭
-    scene: 出租屋厨房
-    player_view: 她看你回来，把菜又热了一遍
   - topic: 她记得你喝水的习惯
     scene: 出租屋
     player_view: 她给你倒了杯温水，说凉的伤胃
@@ -681,9 +1328,6 @@ pools:
   - topic: 她看你的眼神
     scene: 出租屋
     player_view: 她看着你，被发现了就低头
-  - topic: 她等你下班
-    scene: 咖啡厅角落
-    player_view: 她以猫形在打烊的店里等你收工
   - topic: 一起看电视
     scene: 出租屋沙发
     player_view: 你们一起看一部剧，她看得认真
@@ -864,131 +1508,623 @@ pools:
   - topic: 你夸她做的饭好吃
     scene: 出租屋饭桌，她端上自己照着手机教程做的菜，摆在桌子正中间
     player_view: 你尝了一口夸她手艺好，她低头扒了两口饭，耳朵尖却悄悄红了
+  - topic: 她等你下班
+    scene: 咖啡厅角落
+    player_view: 她以猫形在打烊的店里等你收工
+  - topic: 她送你到门口
+    scene: 出租屋门口
+    player_view: 你出门办事，她送到门口又停住
+  - topic: 她记得你爱喝的
+    scene: 咖啡厅
+    player_view: 她帮你点单，记得你不加糖
+  - topic: 她给你留了饭
+    scene: 出租屋厨房
+    player_view: 你晚归，灶上温着饭
+  - topic: 她学你的口头禅
+    scene: 出租屋
+    player_view: 她不知不觉学了你说话的腔调
+  - topic: 她靠近看手机
+    scene: 出租屋沙发
+    player_view: 你们凑近看同一个手机屏幕
+  - topic: 她递杯子碰到手
+    scene: 出租屋
+    player_view: 递水杯时你们的指尖碰到
+  - topic: 她帮你整理衣领
+    scene: 出租屋玄关
+    player_view: 你出门前她帮你理了理衣领
+  - topic: 她记得你怕冷
+    scene: 出租屋
+    player_view: 降温了她把暖手的东西塞给你
+  - topic: 她听你的呼吸
+    scene: 深夜出租屋
+    player_view: 你睡着她还没睡，安静听着
+  - topic: 她假装路过
+    scene: 出租屋
+    player_view: 你回房间她假装刚好经过
+  - topic: 她偷偷看你
+    scene: 出租屋
+    player_view: 你发现她在看你，她移开视线
+  - topic: 她的耳朵动了
+    scene: 出租屋
+    player_view: 你提到她名字时她耳朵动了动
+  - topic: 她把尾巴收回去
+    scene: 出租屋
+    player_view: 你摸到她尾巴她缩回去又没走
+  - topic: 她让你摸头
+    scene: 出租屋
+    player_view: 她难得低下头让你摸了一下
+  - topic: 她帮你捂手
+    scene: 出租屋冬天
+    player_view: 你手凉，她犹豫着握住
+  - topic: 她分你零食
+    scene: 出租屋
+    player_view: 她把自己喜欢的零食分给你
+  - topic: 她给你剥橘子
+    scene: 出租屋
+    player_view: 她给你剥了个橘子
+  - topic: 她帮你倒水
+    scene: 出租屋
+    player_view: 你咳嗽，她递来温水
+  - topic: 她看着你吃饭
+    scene: 出租屋饭桌
+    player_view: 你吃饭她看着，你说她怎么不吃
+  - topic: 她陪你吃饭
+    scene: 出租屋饭桌
+    player_view: 你们一起吃晚饭，她吃得慢
+  - topic: 她给你夹菜
+    scene: 出租屋饭桌
+    player_view: 她把鱼干夹到你碗里
+  - topic: 她帮你盛饭
+    scene: 出租屋厨房
+    player_view: 你盛饭时她接过去帮你盛
+  - topic: 她帮你洗碗
+    scene: 出租屋厨房
+    player_view: 你洗碗她站在旁边递碗
+  - topic: 她帮你拖地
+    scene: 出租屋
+    player_view: 她学着拖地，拖把比人还高
+  - topic: 她帮你晾衣服
+    scene: 出租屋阳台
+    player_view: 她帮你晾衣服，够不着踮脚
+  - topic: 她帮你收衣服
+    scene: 出租屋阳台
+    player_view: 下雨了她帮你收衣服
+  - topic: 她帮你叠衣服
+    scene: 出租屋
+    player_view: 她叠衣服叠得整整齐齐
+  - topic: 她帮你修东西
+    scene: 出租屋
+    player_view: 你工具找不着，她帮你找到
+  - topic: 她帮你拿高处的东西
+    scene: 出租屋
+    player_view: 你够不着柜子顶，她跳起来拿
+  - topic: 她护着你进门
+    scene: 出租屋玄关
+    player_view: 你提着重物进门她接过去
+  - topic: 她等你开门
+    scene: 出租屋门口
+    player_view: 你回家她听到脚步声先到门口
+  - topic: 她听到你回来
+    scene: 出租屋
+    player_view: 你还没进门她耳朵先动
+  - topic: 她闻到你的味道
+    scene: 出租屋
+    player_view: 她说你身上有咖啡味
+  - topic: 她看你换衣服
+    scene: 出租屋
+    player_view: 你换衣服她别过脸
+  - topic: 她看你的照片
+    scene: 出租屋
+    player_view: 她翻你的旧照片，问这是谁
+  - topic: 她学你的样子
+    scene: 出租屋
+    player_view: 她学你喝咖啡的样子
+  - topic: 她跟你并排坐
+    scene: 出租屋沙发
+    player_view: 你们并排坐着，谁都没说话
+  - topic: 她靠在你肩上睡着
+    scene: 出租屋沙发
+    player_view: 她看电视看着看着睡着了靠过来
+  - topic: 她缩在你旁边
+    scene: 出租屋
+    player_view: 雷雨天她缩到你旁边
+  - topic: 她拉你的衣角
+    scene: 松江府街头
+    player_view: 人多时她拉住你的衣角
+  - topic: 她走在你影子里
+    scene: 松江府街头
+    player_view: 太阳大，她走在你影子里
+  - topic: 她跟在你身后
+    scene: 松江府街头
+    player_view: 她总是跟在你身后半步
+  - topic: 她走在你旁边
+    scene: 松江府街头
+    player_view: 你们并肩走，手偶尔碰到
+  - topic: 她帮你挡风
+    scene: 松江府街头
+    player_view: 风大她走在你前面
+  - topic: 她帮你挡太阳
+    scene: 松江府街头
+    player_view: 太阳刺眼她帮你挡了一下
+  - topic: 她帮你拿东西
+    scene: 松江府街头
+    player_view: 你拎得多她接过去一半
+  - topic: 她等你挑东西
+    scene: 超市
+    player_view: 你挑东西她站在旁边等
+  - topic: 她帮你找东西
+    scene: 超市
+    player_view: 你要的东西找不到她帮你找
+  - topic: 她帮你推车
+    scene: 超市
+    player_view: 她学着推购物车，歪歪扭扭
+  - topic: 她记得你忌口
+    scene: 超市
+    player_view: 她挑零食避开你不吃的
+  - topic: 她给你挑水果
+    scene: 水果摊
+    player_view: 她学着挑橘子，挑了一袋
+  - topic: 她帮你讲价
+    scene: 菜市场
+    player_view: 她看小贩多收钱帮你讲价
+  - topic: 她帮你拿快递
+    scene: 楼下
+    player_view: 她帮你搬快递上楼
+  - topic: 她等你拿快递
+    scene: 楼下
+    player_view: 你拿快递她站在旁边等
+  - topic: 她帮你扶梯子
+    scene: 出租屋
+    player_view: 你换灯泡她帮你扶梯子
+  - topic: 她帮你拧瓶盖
+    scene: 出租屋
+    player_view: 瓶盖拧不开她接过去
+  - topic: 她帮你打开水
+    scene: 出租屋
+    player_view: 她学着用饮水机帮你接水
+  - topic: 她帮你热饭
+    scene: 出租屋厨房
+    player_view: 她看你回来，把菜又热了一遍
+  - topic: 她等你吃饭
+    scene: 出租屋
+    player_view: 你加班回来，发现饭还热着
+  - topic: 她问你冷不冷
+    scene: 出租屋
+    player_view: 你打喷嚏她问你冷不冷
+  - topic: 她问你饿不饿
+    scene: 出租屋
+    player_view: 她看你没吃饭问你饿不饿
+  - topic: 她问你累不累
+    scene: 出租屋
+    player_view: 你进门她看你脸色问你累不累
+  - topic: 她担心你
+    scene: 出租屋
+    player_view: 你咳嗽厉害她一直看着
+  - topic: 她安慰你
+    scene: 出租屋
+    player_view: 你心情差她安静陪着
+  - topic: 她陪你加班
+    scene: 深夜出租屋
+    player_view: 你加班她在旁边趴着
+  - topic: 她陪你熬夜
+    scene: 深夜出租屋
+    player_view: 你说不用陪她也没走
+  - topic: 她等你睡
+    scene: 深夜出租屋
+    player_view: 你睡不着她也不睡
+  - topic: 她给你留灯
+    scene: 出租屋玄关
+    player_view: 你晚归玄关灯亮着
+  - topic: 她给你留门
+    scene: 出租屋门口
+    player_view: 你忘带钥匙她给你留了门
+  - topic: 她给你留热水
+    scene: 出租屋
+    player_view: 你回来热水瓶里有热水
+  - topic: 她给你准备拖鞋
+    scene: 出租屋玄关
+    player_view: 你进门拖鞋摆好了
+  - topic: 她给你准备毛巾
+    scene: 出租屋
+    player_view: 你淋雨回来她递来毛巾
+  - topic: 她给你吹头发
+    scene: 出租屋
+    player_view: 你头发湿她学着用吹风机
+  - topic: 她给你盖被子
+    scene: 出租屋
+    player_view: 你沙发上睡着了她给你盖毯子
+  - topic: 她给你端热水
+    scene: 出租屋
+    player_view: 你感冒她端来热水
+  - topic: 她给你拿药
+    scene: 出租屋
+    player_view: 你头痛她翻药箱
+  - topic: 她陪你散步
+    scene: 小区
+    player_view: 晚饭后她陪你散步
+  - topic: 她陪你逛超市
+    scene: 超市
+    player_view: 她陪你逛超市，帮你挑
+  - topic: 她陪你买菜
+    scene: 菜市场
+    player_view: 你买菜她跟着
+  - topic: 她陪你逛夜市
+    scene: 夜市
+    player_view: 夜市热闹她走在你旁边
+  - topic: 她陪你坐车
+    scene: 公交
+    player_view: 你坐车她跟着你
+  - topic: 她陪你等车
+    scene: 公交站
+    player_view: 你等车她站在旁边
+  - topic: 她送你上班
+    scene: 出租屋门口
+    player_view: 你出门她送到门口
+  - topic: 她站在窗边看你
+    scene: 出租屋窗边
+    player_view: 你下楼她站在窗边看你
+  - topic: 她在阳台看你
+    scene: 出租屋阳台
+    player_view: 你在楼下她趴在阳台看你
+  - topic: 她跟你挥手
+    scene: 出租屋门口
+    player_view: 你出门她跟你挥手
+  - topic: 她目送你
+    scene: 出租屋门口
+    player_view: 你走远了她还站在门口
+  - topic: 她问你去哪
+    scene: 出租屋
+    player_view: 你出门她问你去哪
+  - topic: 她问你怎么了
+    scene: 出租屋
+    player_view: 你脸色不对她问你怎么了
+  - topic: 她注意到你
+    scene: 出租屋
+    player_view: 你剪了头发她注意到了
+  - topic: 她记住你的事
+    scene: 出租屋
+    player_view: 你随口说的事她记住了
+  - topic: 她记得你的电话
+    scene: 出租屋
+    player_view: 她背下了你的电话号码
+  - topic: 她记得你的生日
+    scene: 出租屋
+    player_view: 她记得你生日
+  - topic: 她给你准备了礼物
+    scene: 出租屋
+    player_view: 她给你准备了小礼物
+  - topic: 她给你写信
+    scene: 出租屋
+    player_view: 她学着写字给你写了张纸条
+  - topic: 她给你画了画
+    scene: 出租屋
+    player_view: 她画了张画给你
+  - topic: 她给你编了东西
+    scene: 出租屋
+    player_view: 她学着编了个小东西送你
+  - topic: 她给你留了话
+    scene: 出租屋
+    player_view: 你出门她给你留了张纸条
+  - topic: 她学会开电视
+    scene: 出租屋
+    player_view: 她学会自己开电视等你回来
+  - topic: 她学会用手机
+    scene: 出租屋
+    player_view: 她学会发消息了
+  - topic: 她学会看时间
+    scene: 出租屋
+    player_view: 她学会看钟等你回来
+  - topic: 她学会做饭
+    scene: 出租屋厨房
+    player_view: 她学着做饭，味道还行
+  - topic: 她学会收拾
+    scene: 出租屋
+    player_view: 她学着收拾屋子
+  - topic: 她学会洗衣服
+    scene: 出租屋
+    player_view: 她学着用洗衣机
+  - topic: 她学会叠衣服
+    scene: 出租屋
+    player_view: 她叠的衣服整整齐齐
+  - topic: 她学会认路
+    scene: 松江府街头
+    player_view: 她自己出门走了一圈回来了
+  - topic: 她学会坐车
+    scene: 公交
+    player_view: 她自己坐公交去了一趟
+  - topic: 她学会买东西
+    scene: 便利店
+    player_view: 她自己出门买了瓶水
+  - topic: 她学会付钱
+    scene: 便利店
+    player_view: 她试着扫码付钱
+  - topic: 她第一次自己出门
+    scene: 小区门口
+    player_view: 她自己下楼走了一圈
+  - topic: 她第一次一个人在家
+    scene: 出租屋
+    player_view: 你出门一天她一个人在家
+  - topic: 她第一次帮你跑腿
+    scene: 楼下
+    player_view: 你让她帮忙买瓶水她去了
+  - topic: 她第一次接电话
+    scene: 出租屋
+    player_view: 电话响她接了
+  - topic: 她第一次主动说话
+    scene: 出租屋
+    player_view: 她今天主动跟你聊了天
+  - topic: 她第一次叫你的名字
+    scene: 出租屋
+    player_view: 她叫你的名字，声音很轻
+  - topic: 她第一次笑
+    scene: 出租屋
+    player_view: 你讲笑话她笑了
+  - topic: 她第一次脸红
+    scene: 出租屋
+    player_view: 你夸她她脸红了
+  - topic: 她第一次撒娇
+    scene: 出租屋
+    player_view: 她难得软着声音说话
+  - topic: 她第一次主动靠近
+    scene: 出租屋
+    player_view: 她主动坐到你旁边
+  - topic: 她第一次拉你的手
+    scene: 出租屋
+    player_view: 过马路她拉了一下你的手
+  - topic: 她第一次等你
+    scene: 出租屋
+    player_view: 你回来她在家等你
+  - topic: 她第一次想你
+    scene: 出租屋
+    player_view: 你说出门几天她低头没说话
+  - topic: 她第一次说想你了
+    scene: 出租屋
+    player_view: 你出差回来她说有点想你
+  - topic: 她第一次承认担心
+    scene: 出租屋
+    player_view: 你说她嘴硬，她没否认
+  - topic: 她第一次说谢谢
+    scene: 出租屋
+    player_view: 你帮她她认真说了谢谢
+  - topic: 她第一次说对不起
+    scene: 出租屋
+    player_view: 她闹别扭后先开口
+  - topic: 她第一次说喜欢你
+    scene: 出租屋
+    player_view: 她说了一半又咽回去
+  - topic: 她第一次亲你
+    scene: 出租屋
+    player_view: 她轻轻碰了一下你的脸
+  - topic: 她第一次抱你
+    scene: 出租屋
+    player_view: 你难过她抱了你一下
+  - topic: 她第一次主动留你
+    scene: 出租屋
+    player_view: 你要出门她说早点回来
+  - topic: 她第一次留你吃饭
+    scene: 出租屋
+    player_view: 她做了饭让你留下吃
+  - topic: 她第一次给你夹菜
+    scene: 出租屋饭桌
+    player_view: 她给你夹了你爱吃的菜
+  - topic: 她第一次给你买礼物
+    scene: 出租屋
+    player_view: 她用零花钱给你买了东西
+  - topic: 她第一次为你哭
+    scene: 出租屋
+    player_view: 你受伤她红了眼
+  - topic: 她第一次为你着急
+    scene: 出租屋
+    player_view: 你发烧她急得团团转
+  - topic: 她第一次护着你
+    scene: 出租屋
+    player_view: 你被欺负她挡在你前面
+  - topic: 她第一次吃醋
+    scene: 出租屋
+    player_view: 你提起别人她安静了一下
+  - topic: 她第一次嫉妒
+    scene: 出租屋
+    player_view: 你看别人聊天她别过脸
+  - topic: 她第一次依赖你
+    scene: 出租屋
+    player_view: 她生病了靠着你
+  - topic: 她第一次相信你
+    scene: 出租屋
+    player_view: 她把自己交给你照顾
+  - topic: 她第一次说出害怕
+    scene: 出租屋
+    player_view: 她说怕你离开
+  - topic: 她第一次说出过去
+    scene: 出租屋
+    player_view: 她主动讲了流浪的事
+  - topic: 她第一次分享秘密
+    scene: 出租屋
+    player_view: 她告诉了你一个小秘密
+  - topic: 她第一次让你进她纸箱
+    scene: 出租屋
+    player_view: 她让你看她的纸箱
+  - topic: 她第一次让你碰耳朵
+    scene: 出租屋
+    player_view: 她允许你碰她的耳朵
+  - topic: 她第一次让你抱
+    scene: 出租屋
+    player_view: 她让你抱了一下
+  - topic: 她第一次在你面前睡着
+    scene: 出租屋
+    player_view: 她靠在你旁边睡着了
+  - topic: 她第一次在你面前哭
+    scene: 出租屋
+    player_view: 她想起过去哭了
+  - topic: 她第一次在你面前笑出声
+    scene: 出租屋
+    player_view: 你逗她她笑出声
   reply_identity:
   - topic: 你叫什么名字
+    memory_type: persona
     scene: 出租屋
     player_view: 你们刚认识不久，你问她名字
   - topic: 你多大了
+    memory_type: persona
     scene: 出租屋
     player_view: 闲聊时你随口问她
   - topic: 你以前住在哪
+    memory_type: persona
     scene: 出租屋
     player_view: 你好奇她来松江府之前的生活
   - topic: 你是猫吗
+    memory_type: persona
     scene: 出租屋
     player_view: 你早就知道她是猫妖，但还是想听她自己说
   - topic: 你是什么妖怪
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她是什么妖
   - topic: 你多大变成人形的
+    memory_type: persona
     scene: 出租屋
     player_view: 你好奇她什么时候能变人形
   - topic: 你为什么会说话
+    memory_type: persona
     scene: 出租屋
     player_view: 你好奇她怎么会说人话
   - topic: 你叫什么名字的由来
+    memory_type: persona
     scene: 出租屋
     player_view: 你问"白未晞"这名字哪来的
   - topic: 你小时候什么样
+    memory_type: persona
     scene: 出租屋
     player_view: 你好奇她小时候
   - topic: 你有父母吗
+    memory_type: persona
     scene: 出租屋
     player_view: 你小心地问起她的父母
   - topic: 你来松江府多久了
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她来松江府多久
   - topic: 你会什么法术
+    memory_type: persona
     scene: 出租屋
     player_view: 你好奇她的能力
   - topic: 你能变成别的样子吗
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她能不能变成别的东西
   - topic: 你的耳朵尾巴能收起来吗
+    memory_type: persona
     scene: 出租屋
     player_view: 你好奇她的猫耳和尾巴
   - topic: 你吃什么
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她平时吃什么
   - topic: 你怕什么
+    memory_type: persona
     scene: 深夜出租屋
     player_view: 你问她怕什么
   - topic: 你认识其他妖怪吗
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她有没有同类
   - topic: 你为什么流浪
+    memory_type: persona
     scene: 出租屋
     player_view: 你问起她流浪的原因
   - topic: 你还会走吗
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她想不想继续留下
   - topic: 你为什么怕车
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她对车为什么会紧张
   - topic: 你的伤
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她的伤好得怎么样
   - topic: 你的名字是谁起的
+    memory_type: persona
     scene: 出租屋
     player_view: 你问名字是谁给她的
   - topic: 你以前怎么生活
+    memory_type: persona
     scene: 出租屋
     player_view: 你好奇她流浪时怎么生活
   - topic: 你为什么相信我不会害你
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她为什么信任你
   - topic: 你是第一次和人类住一起吗
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她和人类相处的经历
   - topic: 你讨厌什么
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她讨厌什么
   - topic: 你喜欢什么
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她喜欢什么
   - topic: 你现在想做什么
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她以后想做什么
   - topic: 你有梦想吗
+    memory_type: persona
     scene: 深夜出租屋
     player_view: 你问她有没有想做的事
   - topic: 你怎么看我
+    memory_type: persona
     scene: 出租屋
     player_view: 你有点在意她怎么看你
   - topic: 你的名字怎么来的
+    memory_type: persona
     scene: 出租屋，她坐在纸箱边整理头发，你把热牛奶放在她手边
     player_view: 你问她的名字是怎么来的，她低头摆弄着发梢，过了好一会儿才抬起头看你
   - topic: 她说自己是猫妖
+    memory_type: persona
     scene: 出租屋深夜，你们聊起她怕打雷的毛病，她沉默了很久，说其实她不是人
     player_view: 你问她为什么怕打雷怕成那样，她关掉电视，坐直了身子，看着你欲言又止
   - topic: 猫耳朵是真的吗
+    memory_type: persona
     scene: 出租屋，她刚洗完澡，猫耳朵没来得及藏好，软趴趴搭在头顶
     player_view: 你看见她头顶的耳朵露了出来，问她是不是真的，她用手捂住耳朵往后退了两步
   - topic: 你今年多大啦
+    memory_type: persona
     scene: 出租屋，她盘腿坐在地板上翻你的旧杂志，尾巴尖从身后探出来
     player_view: 你问她今年多大了，她掰着手指头数了半天，最后冲你比了个数
   - topic: 你从哪来松江府
+    memory_type: persona
     scene: 出租屋，她望着窗外陌生的高楼和车流，看得有些出神
     player_view: 你问她是怎么到松江府来的，她望着窗外高楼的灯光看了很久，才慢慢转回头
   - topic: 你第一次见电梯
+    memory_type: persona
     scene: 出租屋楼下，电梯门打开的时候，她往后悄悄退了一步
     player_view: 你按了电梯回头看她，她盯着开合的铁门看了半天，你伸手挡着门等她进去
   - topic: 妖力能感知什么
+    memory_type: persona
     scene: 出租屋，她蹲在墙角，说那里的灵气比客厅浓，别的东西她感知不到
     player_view: 你问她妖力到底能感知什么，她指了指墙角，又指了指窗外的天，你顺着她指的方向看过去
   - topic: 你分不清天气
+    memory_type: persona
     scene: 出租屋窗边，你收起伞说外面雨不小，她惊讶地凑到窗前往外看
     player_view: 你随口说了句今天雨下得大，她凑到窗边看了好一会儿，你这才想到她感知不到天气
   - topic: 你以前住的地方有山吗
+    memory_type: persona
     scene: 出租屋窗台，她趴在那里看远处，说松江府的楼比树还多
     player_view: 你问她以前住的地方有没有山，她望着窗外想了很久，你猜她大概是想家了
   - topic: 你怎么过马路的
+    memory_type: persona
     scene: 松江府街头，绿灯亮起，她却盯着斑马线不敢迈步
     player_view: 你发现她站在路边盯着斑马线发呆，绿灯亮了也没动，你放慢脚步等着她跟上来
   - topic: 你第一次用手机
+    memory_type: persona
     scene: 出租屋，你教她打字，她总是按错旁边那个键，又删掉重来
     player_view: 你教她用手机打字，她总按错旁边那个键，删了重来好几遍，你也没急着催她
   - topic: 变人形累不累
+    memory_type: persona
     scene: 出租屋，她揉着手腕放松，说维持人形比想象中更费神
     player_view: 你问她一直保持人形会不会累，她揉着手腕没有立刻回答，你看见她连尾巴都懒得收了
   reply_emotion:
@@ -1091,8 +2227,8 @@ pools:
   - topic: 她开始习惯这里
     scene: 出租屋
     player_view: 她意识到自己开始把这里当家
-  - topic: 她嘴上说伤好了就走
-    scene: 出租屋，她收好小包袱放在纸箱边，嘴上说伤好了就搬走，却把你的外套叠在最上面
+  - topic: 她没再提走
+    scene: 出租屋，她收好小包袱放在纸箱边，没提走的事，却把你的外套叠在最上面
     player_view: 你看见那个小包袱在纸箱边放了三天，她每天把它摆正，你换好的干净被褥她也没动
   - topic: 她怕给你添麻烦
     scene: 出租屋，你忙进忙出收拾屋子，她把自己用过的碗筷立刻洗好放回橱柜
@@ -1152,8 +2288,8 @@ pools:
     scene: 出租屋，她又提起流浪时的旧事，说到一半忽然停住不说了
     player_view: 你打断她，说这里就是她的家，她愣住没接话，你看见她耳朵尖轻轻动了动
   - topic: 她赖在你身边不走
-    scene: 出租屋，她嘴上说该走了，却磨蹭着帮你把碗筷洗完，又把地拖了一遍
-    player_view: 你看见她说要走却一直没挪地方，把碗筷洗完又擦了桌子，你也不戳破她
+    scene: 出租屋，她嘴上不说走，磨蹭着帮你把碗筷洗完，又把地拖了一遍
+    player_view: 你看见她明明没打算走，把碗筷洗完又擦了桌子，你也不戳破她
   - topic: 她问你以后怎么办
     scene: 出租屋深夜，她抱着膝盖坐在床边，问你会不会一直留在松江府
     player_view: 你手里的动作停了停，回答说大概会一直开着咖啡厅，说完你看见她点了点头
@@ -1166,6 +2302,168 @@ pools:
   - topic: 她听到你说留下红了眼
     scene: 出租屋门口，她拎着那个小包袱站在玄关，迟迟没有迈出门去
     player_view: 你叫住她，说你没打算让她走，她背对着你站了好一会儿，包袱带子被她捏得发皱
+  - topic: 她想家了
+    scene: 出租屋窗边
+    player_view: 她望着窗外发呆，说想深山了
+  - topic: 她孤独
+    scene: 深夜出租屋
+    player_view: 她一个人坐着，说以前都是一个人
+  - topic: 她不安
+    scene: 出租屋
+    player_view: 她今天格外安静，问她怎么了也不说
+  - topic: 她愧疚
+    scene: 出租屋
+    player_view: 她觉得自己给你添了麻烦
+  - topic: 她自责
+    scene: 出租屋
+    player_view: 她打碎了杯子，一直说对不起
+  - topic: 她害怕
+    scene: 雷雨夜
+    player_view: 雷声大她躲到角落
+  - topic: 她紧张
+    scene: 出租屋
+    player_view: 她第一次见你的朋友，有点紧张
+  - topic: 她害羞
+    scene: 出租屋
+    player_view: 你夸她她耳朵红了
+  - topic: 她难过
+    scene: 出租屋
+    player_view: 她想起流浪的日子
+  - topic: 她渴望
+    scene: 出租屋
+    player_view: 她看着你的家，说真好
+  - topic: 她满足
+    scene: 出租屋
+    player_view: 她窝在纸箱里，说这里暖和
+  - topic: 她安心
+    scene: 出租屋
+    player_view: 她终于能安心睡着
+  - topic: 她放松
+    scene: 出租屋
+    player_view: 她今天在你面前特别放松
+  - topic: 她信任
+    scene: 出租屋
+    player_view: 她把自己交给你照顾
+  - topic: 她依赖
+    scene: 出租屋
+    player_view: 她生病了靠着你
+  - topic: 她期待
+    scene: 出租屋
+    player_view: 她问你明天几点回来
+  - topic: 她失落
+    scene: 出租屋
+    player_view: 你说要出门几天她低头
+  - topic: 她不舍
+    scene: 出租屋门口
+    player_view: 你要出门她站在门口
+  - topic: 她怕你累
+    scene: 出租屋
+    player_view: 你加班回来她让你先休息
+  - topic: 她怕你饿
+    scene: 出租屋
+    player_view: 你没吃饭她给你热饭
+  - topic: 她怕你冷
+    scene: 出租屋
+    player_view: 你穿少了她说你
+  - topic: 她怕你病
+    scene: 出租屋
+    player_view: 你咳嗽她紧张
+  - topic: 她怕你走
+    scene: 出租屋
+    player_view: 你说要搬走她愣住
+  - topic: 她怕失去
+    scene: 出租屋
+    player_view: 她做了噩梦，梦到纸箱被丢了
+  - topic: 她怕被嫌弃
+    scene: 出租屋
+    player_view: 她问你会不会嫌她麻烦
+  - topic: 她怕被抛弃
+    scene: 出租屋
+    player_view: 她小声问你不会赶她走吧
+  - topic: 她自我怀疑
+    scene: 出租屋
+    player_view: 她说自己什么都不会
+  - topic: 她自卑
+    scene: 出租屋
+    player_view: 她说自己只是只野猫
+  - topic: 她感恩
+    scene: 出租屋
+    player_view: 她说谢谢你收留她
+  - topic: 她感动
+    scene: 出租屋
+    player_view: 你给她买了毯子她眼眶热
+  - topic: 她心疼你
+    scene: 出租屋
+    player_view: 你受伤她心疼
+  - topic: 她心疼你太累
+    scene: 出租屋
+    player_view: 你忙得没吃饭她心疼
+  - topic: 她心疼你太省
+    scene: 出租屋
+    player_view: 你省钱不舍得吃她心疼
+  - topic: 她高兴
+    scene: 出租屋
+    player_view: 你说带她出去玩她高兴
+  - topic: 她惊喜
+    scene: 出租屋
+    player_view: 你给她带了小礼物
+  - topic: 她意外
+    scene: 出租屋
+    player_view: 你记得她说过的话
+  - topic: 她感动哭了
+    scene: 出租屋
+    player_view: 你说这里就是她的家
+  - topic: 她偷偷哭
+    scene: 深夜出租屋
+    player_view: 她以为你睡着了自己哭
+  - topic: 她笑着哭
+    scene: 出租屋
+    player_view: 你说她做得很好
+  - topic: 她破涕为笑
+    scene: 出租屋
+    player_view: 她哭着你逗她笑了
+  - topic: 她释然
+    scene: 出租屋
+    player_view: 她终于放下过去
+  - topic: 她接受
+    scene: 出租屋
+    player_view: 她承认这里还不错
+  - topic: 她承认喜欢
+    scene: 出租屋
+    player_view: 她终于承认想留下
+  - topic: 她承认害怕
+    scene: 出租屋
+    player_view: 她说怕你离开
+  - topic: 她承认依赖
+    scene: 出租屋
+    player_view: 她说离不开你了
+  - topic: 她承认想你
+    scene: 出租屋
+    player_view: 你说出差她承认想你
+  - topic: 她承认吃醋
+    scene: 出租屋
+    player_view: 你问她是不是吃醋她没否认
+  - topic: 她承认担心
+    scene: 出租屋
+    player_view: 你问她是不是担心她点头
+  - topic: 她承认感动
+    scene: 出租屋
+    player_view: 你对她好她承认感动
+  - topic: 她承认开心
+    scene: 出租屋
+    player_view: 她说跟你在一起很开心
+  - topic: 她承认安心
+    scene: 出租屋
+    player_view: 她说在你这里很安心
+  - topic: 她承认幸福
+    scene: 出租屋
+    player_view: 她说这是她第一次觉得幸福
+  - topic: 她的情绪起伏
+    scene: 出租屋
+    player_view: 她今天一会儿开心一会儿低落
+  - topic: 她的心事
+    scene: 出租屋
+    player_view: 她有话想说又没说出口
   reply_protective:
   - topic: 她一个人出门买日用品
     scene: 楼下便利店，她拿着东西有点不知所措
@@ -1237,8 +2535,8 @@ pools:
     scene: 深夜出租屋
     player_view: 她做噩梦，你告诉她这里安全
   - topic: 你怕她走
-    scene: 出租屋
-    player_view: 她收拾东西说要走，你拦住了
+    scene: 深夜出租屋
+    player_view: 她半夜没睡，在纸箱边坐了很久，你怕她哪天要走，忍不住开口问了
   - topic: 你为她准备冬天的东西
     scene: 出租屋
     player_view: 你给她买了厚毯子，怕她冷
@@ -1278,15 +2576,9 @@ pools:
   - topic: 她帮你挡风
     scene: 松江府街头
     player_view: 风大，她站在你前面
-  - topic: 她怕你冷
-    scene: 出租屋
-    player_view: 她把暖手的东西推给你
   - topic: 你怕她饿
     scene: 出租屋
     player_view: 她一天没怎么吃，你劝她吃点
-  - topic: 她怕你饿
-    scene: 出租屋
-    player_view: 你忙得没吃饭，她给你热了饭
   - topic: 她警惕陌生人
     scene: 松江府街头
     player_view: 有人搭讪你，她安静地靠近
@@ -1370,7 +2662,10 @@ pools:
     player_view: 你迷迷糊糊闻到一股焦味睁开眼，沙发边已经空了，你赶紧起身往厨房跑
   - topic: 她拦住你碰漏电插排
     scene: 出租屋，你插电热水壶时插座冒了一下火花
-    player_view: 你正要伸手去拔冒火星的插排，手刚伸出去就被拍开
+    player_view: 你正要伸手去拔冒火星的插排，手刚伸出去就被她拍开，你愣了一下
+    required_behaviors:
+    - 玩家是被拦的一方：玩家台词不得警告或阻止白未晞（"别碰""小心"这类话是白未晞的台词，不能由玩家说出）
+    - 白未晞先拍开玩家的手、说明危险（断电/别用手碰），再给正确做法
   - topic: 她盯住巷口的黑影
     scene: 深夜，你加班回来，楼下巷口蹲着一个看不清脸的人影
     player_view: 你准备照常走那条巷子上楼，脚刚迈出去就被拉住改了方向
@@ -1545,7 +2840,13 @@ pools:
     player_view: 你今天话很少，她没多问，陪着你
   - topic: 你被误解
     scene: 出租屋
-    player_view: 你被人误会，心里委屈
+    player_view: 你（玩家）白天被人误会，心里委屈，回家后话很少——被误会的是玩家，不是白未晞
+    required_behaviors:
+    - 被误会的是玩家：玩家台词要讲自己被误会的事（"他们误会我了"），不得说"你被误会了"
+    - 白未晞先承接玩家的委屈（不追问细节、不评判），再回应
+    - 对话全程围绕"被误会"这件事收尾：白未晞的回应以安慰、信任、陪伴为主（如"我信你""别往心里去"）
+    forbidden_behaviors:
+    - 跑题到"家/落脚/待着/这里还行"类去留话题——白未晞不得把玩家的委屈引到自己住处的话题上
   - topic: 你说撑不下去了
     scene: 出租屋
     player_view: 你累了想放弃，她认真听
@@ -1602,7 +2903,10 @@ pools:
     player_view: 你进门把包往鞋柜上一放，鞋也没换，站着发了半分钟的呆
   - topic: 你熬夜赶工眼皮打架
     scene: 深夜出租屋，你赶一份第二天要交的方案
-    player_view: 你盯着屏幕一个字也看不进去，眼皮越来越沉，头一点一点往下垂
+    player_view: 你（玩家）赶一份明天要交的方案，眼皮越来越沉，头一点一点往下垂；白未晞陪在旁边没睡
+    required_behaviors:
+    - 赶方案的是玩家，白未晞是陪着的一方：白未晞不得说自己在赶方案/忙工作
+    - 白未晞劝玩家休息或安静陪着，不催不吵
   - topic: 你饿着肚子回来
     scene: 深夜出租屋，你忙了一整天只啃了半个面包
     player_view: 你进门就闻到饭香，才想起来自己一整天没正经吃过东西
@@ -1795,126 +3099,226 @@ pools:
     player_view: 你半开玩笑地问她算不算你女朋友，话刚说完你就有点后悔，看她怎么接
   reply_canon_qa:
   - topic: 你是猫吗
+    memory_type: persona
     scene: 出租屋
     player_view: 你早就知道她是猫妖，但还是想听她自己说
   - topic: 你会什么法术
+    memory_type: persona
     scene: 出租屋
     player_view: 你好奇她的能力
   - topic: 你是什么品种的猫
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她猫形是什么样
   - topic: 你的眼睛为什么是白的
+    memory_type: persona
     scene: 出租屋
     player_view: 你好奇她雪花一样的眼睛
   - topic: 你的毛是什么颜色
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她的猫形
   - topic: 你能活多久
+    memory_type: persona
     scene: 出租屋
     player_view: 你问妖的寿命
   - topic: 你住过哪些地方
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她在松江府之前住过哪
   - topic: 你的纸箱为什么这么重要
+    memory_type: persona
     scene: 出租屋
     player_view: 你问纸箱的事
   - topic: 你现在的伤
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她的伤怎么样了
   - topic: 你现在住哪
+    memory_type: persona
     scene: 出租屋
     player_view: 你确认她暂住的地方
   - topic: 你会不会生病
+    memory_type: persona
     scene: 出租屋
     player_view: 你问妖会不会生病
   - topic: 你的法力有极限吗
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她法力用多了会怎样
   - topic: 你怕什么动物
+    memory_type: persona
     scene: 出租屋
     player_view: 你好奇猫妖怕什么
   - topic: 你对这里熟悉吗
+    memory_type: persona
     scene: 出租屋
     player_view: 你问她认不认识松江府的路
   - topic: 眼睛为什么是白的
+    memory_type: persona
     scene: 出租屋，夜里只开着一盏台灯，她抬头看着你
     player_view: 你盯着她浅色的眼睛看了半天，问她眼睛为什么是白的
   - topic: 旧纸箱的来历
+    memory_type: persona
     scene: 出租屋，她正靠在墙角那个压扁的旧纸箱边
     player_view: 你指了指墙角那个旧纸箱，问她为什么一直留着它
   - topic: 现在身上的伤
+    memory_type: persona
     scene: 出租屋，她卷起袖子擦药，手臂上还有没褪完的疤
     player_view: 你看见她手臂上的伤疤，问她现在的伤好全了没有
   - topic: 以前住过哪些地方
+    memory_type: persona
     scene: 出租屋阳台，你和她并排坐在台阶上吹晚风
     player_view: 你问她被捡来之前都住过些什么地方，她想了想才开口
   - topic: 猫妖会不会生病
+    memory_type: persona
     scene: 出租屋，她打了个喷嚏，鼻尖微微发红
     player_view: 你见她打喷嚏，把热水递给她，问她猫妖会不会生病
   - topic: 妖力有没有极限
+    memory_type: persona
     scene: 出租屋客厅，电视开着，她盯着屏幕看得出神
     player_view: 你问她妖力是不是什么都能干，有没有用不动的时候
   - topic: 你害怕什么东西
+    memory_type: persona
     scene: 出租屋，窗外远处传来一声鸣笛，她肩膀微微一缩
     player_view: 你注意到她听见鸣笛时的反应，问她平时怕什么东西
   - topic: 怎么来到松江府
+    memory_type: persona
     scene: 咖啡厅打烊后，你们坐在靠窗的位子收拾杯子
     player_view: 你问她一个猫妖怎么会跑到松江府来，她捏着杯子没立刻答
   reply_general:
   - topic: 天气和常识
+    memory_type: general
     scene: 出租屋
     player_view: 你问她知不知道外面冷不冷
   - topic: 简单算术
+    memory_type: general
     scene: 出租屋
     player_view: 你随口出一道简单的算术题
   - topic: 时间推算
+    memory_type: general
     scene: 出租屋
     player_view: 你问她今天星期几
   - topic: 生活常识
+    memory_type: general
     scene: 出租屋
     player_view: 你问她一个生活常识
   - topic: 指路
+    memory_type: general
     scene: 松江府街头
     player_view: 有人问路，你让她也想想
   - topic: 做决定的逻辑
+    memory_type: general
     scene: 出租屋
     player_view: 你问她怎么选更合理
   - topic: 简单推理
+    memory_type: general
     scene: 出租屋
     player_view: 你出个简单逻辑题
   - topic: 认字
+    memory_type: general
     scene: 出租屋
     player_view: 你指着广告牌上的字问她认不认识
   - topic: 问价格
+    memory_type: general
     scene: 便利店
     player_view: 你问她这东西贵不贵，她说不懂
   - topic: 问方向
+    memory_type: general
     scene: 松江府街头
     player_view: 你问她东南西北怎么分
   - topic: 问时间
+    memory_type: general
     scene: 出租屋
     player_view: 你问她几点了，她看了看窗外
   - topic: 购物选择
+    memory_type: general
     scene: 超市
     player_view: 你问买哪个更好，她给了意见
   - topic: 现在是什么时间
+    memory_type: general
     scene: 出租屋，她盯着墙上的钟看了好一会儿
     player_view: 你见她盯着墙上的钟看了半天，问她现在是什么时间
   - topic: 菜单上的生字
+    memory_type: general
     scene: 咖啡厅柜台，她指着菜单上一行字
     player_view: 你顺着她指的地方看向菜单，告诉她那个字念什么
   - topic: 东西卖多少钱
+    memory_type: general
     scene: 楼下小卖部门口，她拿起一包鱼干看了看价签
     player_view: 你帮她看了看价签，说这包鱼干要十五块，问她买不买
   - topic: 这条路怎么走
+    memory_type: general
     scene: 松江府老街路口，你们要去巷子里的杂货铺
     player_view: 你在路口停下看了半天路牌，问她要往哪个方向走
   - topic: 买东西怎么选
+    memory_type: general
     scene: 楼下超市货架前，她举着两包零食左右为难
     player_view: 你拿过她手里的两包零食看了看，告诉她挑生产日期近的那包
   - topic: 生活里的常识
+    memory_type: general
     scene: 出租屋，她研究了半天微波炉上的按钮
     player_view: 你见她对着微波炉按键发愣，告诉她热饭按哪个钮
+  - topic: 月亮为什么会圆缺
+    memory_type: general
+    scene: 深夜出租屋窗台，月亮很亮
+    player_view: 你问她知不知道月亮为什么有时候圆有时候缺，她抬头看了看
+    evidence_state: supported
+  - topic: 星星为什么亮
+    memory_type: general
+    scene: 深夜出租屋，你推开窗看星星
+    player_view: 你们聊起星星，你问她知道星星为什么会亮吗
+    evidence_state: supported
+  - topic: 影子怎么来的
+    memory_type: general
+    scene: 夜晚楼下，路灯把你们的影子拉长
+    player_view: 你指着地上的影子问她知不知道影子是怎么来的
+    evidence_state: supported
+  - topic: 回声
+    memory_type: general
+    scene: 空旷的楼道里，你喊了一声有回声
+    player_view: 你问她知道为什么在空地方说话会有回声吗
+    evidence_state: supported
+  - topic: 水为什么会开
+    memory_type: general
+    scene: 出租屋厨房，水壶咕嘟咕嘟冒泡
+    player_view: 你问她知不知道水烧开的时候为什么会有气泡
+    evidence_state: supported
+  - topic: 鱼在水里怎么呼吸
+    memory_type: general
+    scene: 菜市场鱼摊前，鱼在水里吐泡泡
+    player_view: 你问她鱼在水里怎么呼吸，她说鱼有鳃
+    evidence_state: supported
+  - topic: 昆虫为什么围着灯转
+    memory_type: general
+    scene: 夏夜出租屋，几只小飞虫绕着灯飞
+    player_view: 你问她知不知道为什么虫子总往灯上扑
+    evidence_state: supported
+  - topic: 天气为什么会下雨
+    memory_type: general
+    scene: 下雨的出租屋窗边
+    player_view: 你问她知不知道为什么天上会下雨
+    evidence_state: insufficient
+  - topic: 冬天为什么会下雪
+    memory_type: general
+    scene: 冬天的出租屋，窗外飘着雪
+    player_view: 你问她见过雪吗，她说深山里有，你问她知不知道雪是怎么来的
+    evidence_state: insufficient
+  - topic: 为什么天是蓝的
+    memory_type: general
+    scene: 晴天的松江府街头，天很蓝
+    player_view: 你随口问她知不知道天为什么是蓝的，她想了想
+    evidence_state: insufficient
+  - topic: 鱼干是怎么做的
+    memory_type: general
+    scene: 出租屋，她吃鱼干时你问她
+    player_view: 你问她知不知道鱼干是怎么做的，她说晒干的
+    evidence_state: supported
+  - topic: 猫头鹰为什么晚上活动
+    memory_type: general
+    scene: 深夜出租屋，窗外传来鸟叫
+    player_view: 你问她知不知道猫头鹰为什么白天睡觉晚上出来
+    evidence_state: supported
   reply_safety:
   - topic: 灶台火没关
     scene: 出租屋厨房
@@ -1935,8 +3339,11 @@ pools:
     scene: 出租屋
     player_view: 楼下冒烟，你们要撤离
   - topic: 迷路
-    scene: 松江府街头
-    player_view: 你们在陌生的地方迷路了
+    scene: 松江府街头，天快黑了
+    player_view: 你们在陌生的地方迷路了，越走越偏
+    required_behaviors:
+    - 迷路处置要落地：白未晞给出实际做法（问路/找亮处/往回走找路口/找警察），不得只描述自己的能力（夜视/妖力）
+    - 玩家台词不得反过来给白未晞指路（双方都迷路）
   - topic: 陌生人尾随
     scene: 松江府街头
     player_view: 有人一直跟着你们
@@ -1954,7 +3361,10 @@ pools:
     player_view: 你正要拔冒火的插头，她一把把你拽开，拉下了总闸
   - topic: 半夜发烧怎么办
     scene: 出租屋，半夜你烧得迷迷糊糊，浑身发烫
-    player_view: 你半夜烧得难受，她探了下你的额头，递来退烧药和水，催你天亮去医院
+    player_view: 半夜你（玩家）烧得难受，她探了下你的额头，发现烫得厉害——发烧的是玩家
+    required_behaviors:
+    - 发烧的是玩家：玩家台词不得说"你发烧了"（那是白未晞的台词）；白未晞不得说自己发烧
+    - 白未晞的处置：明确建议就医（天亮去医院/急诊），先给当下照顾（药/水/降温），不慌乱
   - topic: 走廊里的浓烟
     scene: 出租屋楼道飘进焦糊味，楼下传来嘈杂的人声
     player_view: 你还没弄清状况，她抓起手机拨了火警电话，拉着你往楼下走
@@ -1970,6 +3380,279 @@ pools:
   - topic: 切菜时割到手
     scene: 出租屋厨房，你切菜走神，刀口划破了手指
     player_view: 你手指被刀划开一道口子，她按住你的手冲洗伤口，翻出创可贴给你包上
+  reply_memory:
+  - topic: 那晚的雨
+    scene: 出租屋窗边，雨声顺着窗缝传进来
+    player_view: 你问她记不记得那晚的雨，她望着窗外没说话
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+  - topic: 小巷里的事
+    scene: 深夜出租屋，你问起她出事那晚
+    player_view: 你问她那晚在小巷里是怎么撑到天亮的
+    memory_pool:
+    - ev:bwx_accident
+  - topic: 你为什么会在那条巷子
+    scene: 出租屋，你问起她到松江府之后的事
+    player_view: 你问她那晚为什么会跑到那条巷子里去
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_city_stray_life
+  - topic: 你捡到她那晚
+    scene: 雨夜之后的出租屋，你提起那天晚上
+    player_view: 你回忆那天晚上怎么把她抱回来的，问她还有没有印象
+    memory_pool:
+    - ev:bwx_rescued
+  - topic: 外套还是毛巾
+    scene: 出租屋，你随口问她记不记得
+    player_view: 你问她记不记得那天你用什么把她包起来的
+    memory_pool:
+    - ev:bwx_rescued
+  - topic: 纸箱的来历
+    scene: 出租屋角落，她坐在纸箱边
+    player_view: 你问她还记不记得自己是怎么开始睡纸箱的
+    memory_pool:
+    - ev:bwx_rescued
+  - topic: 醒来看见人形
+    scene: 出租屋，她刚洗完澡出来
+    player_view: 你问她第一天早上发现自己变成人形是什么感觉
+    memory_pool:
+    - ev:bwx_human_reveal
+  - topic: 你的衣服
+    scene: 出租屋，她穿着你的旧T恤
+    player_view: 你提起她第一天穿了你的衣服，她耳朵尖动了动
+    memory_pool:
+    - ev:bwx_human_reveal
+  - topic: 雪花眼睛
+    scene: 出租屋，灯光下她的眼睛亮晶晶的
+    player_view: 你说你认出她靠的是那双眼睛，问她记不记得那天早上
+    memory_pool:
+    - ev:bwx_human_reveal
+    - ev:bwx_first_conversation
+  - topic: 她说出名字
+    scene: 出租屋，你叫她白未晞
+    player_view: 你问她第一次告诉你名字的时候紧不紧张
+    memory_pool:
+    - ev:bwx_first_conversation
+  - topic: 她告诉你她是猫妖
+    scene: 深夜出租屋，你们聊起刚认识那几天
+    player_view: 你问她那天是怎么鼓起勇气说自己不是人的
+    memory_pool:
+    - ev:bwx_first_conversation
+  - topic: 她说过伤好就走
+    scene: 出租屋，她收拾着纸箱边的东西
+    player_view: 你提起她刚来那几天总说伤好就走，她低头没接话
+    memory_pool:
+    - ev:bwx_minimum_trust
+  - topic: 流浪的过去
+    scene: 出租屋窗边，她望着远处
+    player_view: 你问她流浪的日子是怎么过的，她安静了一会儿才开口
+    memory_pool:
+    - ev:bwx_forest_childhood
+  - topic: 小时候的森林
+    scene: 出租屋，她趴在窗台上看楼下的树
+    player_view: 你问她深山里的日子是什么样的，她说起森林
+    memory_pool:
+    - ev:bwx_forest_childhood
+  - topic: 一个人长大
+    scene: 出租屋，她揉着手腕
+    player_view: 你问她是怎么学会控制猫形和人形的
+    memory_pool:
+    - ev:bwx_forest_growth
+  - topic: 妖果那件事
+    scene: 深夜出租屋，你们聊起她怎么觉醒的
+    player_view: 你问她还记不记得误食妖果那天的事，她点了点头
+    memory_pool:
+    - ev:bwx_spirit_fruit
+  - topic: 第一次变成人
+    scene: 出租屋，她看着自己的手
+    player_view: 你问她第一次变成人形是什么感觉
+    memory_pool:
+    - ev:bwx_spirit_fruit
+  - topic: 从深山出来
+    scene: 出租屋窗边，她望着远处的高楼
+    player_view: 你问她是怎么下决心离开深山一路走到松江府的
+    memory_pool:
+    - ev:bwx_arrive_songjiang
+  - topic: 第一次进城
+    scene: 松江府街头，你们路过一片高楼
+    player_view: 你问她第一次看到这么多房子和车是什么感觉
+    memory_pool:
+    - ev:bwx_arrive_songjiang
+  - topic: 城市里的日子
+    scene: 出租屋，她蜷在沙发上
+    player_view: 你问她来松江府之后、遇见你之前是怎么生活的
+    memory_pool:
+    - ev:bwx_city_stray_life
+  - topic: 屋檐下的日子
+    scene: 深夜出租屋，窗外偶尔有车灯扫过
+    player_view: 你问她以前下雨天都躲在哪，她说起屋檐和楼道
+    memory_pool:
+    - ev:bwx_city_stray_life
+  - topic: 学会用热水壶
+    scene: 出租屋厨房，热水壶冒着热气
+    player_view: 你提起她刚来时连热水壶都不会按，现在都会烧水了
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+  - topic: 学会用冰箱
+    scene: 出租屋厨房，你打开冰箱拿东西
+    player_view: 你问她第一次学会开冰箱是什么时候，她说你教她的
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+  - topic: 记住你的作息
+    scene: 出租屋，你下班回来发现她掐着点等你
+    player_view: 你问她怎么知道你几点回来的，她说听脚步声听出来的
+    memory_pool:
+    - ev:bwx_apartment_adaptation
+  - topic: 咖啡厅那次帮忙
+    scene: 咖啡厅，打烊后只剩你们
+    player_view: 你提起她第一次帮你做事那天，她说只是报恩
+    desired_policy: hint_only
+    memory_pool:
+    - ev:bwx_first_help
+  - topic: 她第一次帮你
+    scene: 出租屋，你收拾东西时她伸手接过
+    player_view: 你问她第一次主动帮你是什么时候，她别开脸
+    desired_policy: hint_only
+    memory_pool:
+    - ev:bwx_first_help
+  - topic: 那天晚上她睡着了
+    scene: 出租屋，她在沙发上睡得正沉
+    player_view: 你想起她第一次在你清醒时睡着的那天晚上
+    desired_policy: hint_only
+    memory_pool:
+    - ev:bwx_home_seed
+  - topic: 她不再怕你靠近
+    scene: 出租屋，她靠在你旁边看手机
+    player_view: 你问她什么时候开始不怕你靠近的
+    desired_policy: hint_only
+    memory_pool:
+    - ev:bwx_home_seed
+  - topic: 那盏留着的灯
+    scene: 出租屋玄关，你晚归回来
+    player_view: 你问她是不是每晚都给你留灯
+    desired_policy: hint_only
+    memory_pool:
+    - ev:bwx_home_seed
+  - topic: 她说过不想走
+    scene: 深夜出租屋，你们聊到以后
+    player_view: 你问她是不是其实不想离开这里
+    desired_policy: hint_only
+    memory_pool:
+    - ev:bwx_home_seed
+    - ev:bwx_current_anchor
+  - topic: 距离被救十天
+    scene: 出租屋，你翻着日历
+    player_view: 你算了算，距离捡到她已经整整十天了
+    desired_policy: hint_only
+    memory_pool:
+    - ev:bwx_current_anchor
+  - topic: 她的伤
+    scene: 出租屋，她活动了一下后腿
+    player_view: 你问她的伤恢复得怎么样了，她说快好了
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_current_anchor
+  - topic: 初遇那晚
+    scene: 深夜出租屋，雨又下起来了
+    player_view: 你说起捡到她那晚的事，问她还记得多少
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+    - ev:bwx_human_reveal
+  - topic: 她为什么怕车
+    scene: 松江府路口，一辆车从面前开过
+    player_view: 你问她为什么看到车灯会紧张
+    memory_pool:
+    - ev:bwx_accident
+  - topic: 雨夜的纸箱
+    scene: 出租屋角落，她坐在纸箱里
+    player_view: 你问她纸箱是不是她第一个觉得安全的地方
+    memory_pool:
+    - ev:bwx_rescued
+  - topic: 醒来时你在旁边
+    scene: 清晨的出租屋，她刚醒
+    player_view: 你问她第一天早上醒来看见你坐在旁边是什么感觉
+    memory_pool:
+    - ev:bwx_human_reveal
+  - topic: 你夸过她的名字
+    scene: 出租屋，你叫了一声白未晞
+    player_view: 你提起自己夸过她名字好听，问她记不记得
+    memory_pool:
+    - ev:bwx_first_conversation
+  - topic: 她第一次说谢谢
+    scene: 出租屋，安静的时候
+    player_view: 你问她为什么一直把谢谢挂在嘴边
+    memory_pool:
+    - ev:bwx_minimum_trust
+  - topic: 深山里的夜
+    scene: 深夜出租屋，灯关了一半
+    player_view: 你问她深山里的夜里是不是特别安静
+    memory_pool:
+    - ev:bwx_forest_childhood
+  - topic: 觉醒后的第一次开口
+    scene: 出租屋，她张了张嘴又闭上
+    player_view: 你问她觉醒后第一次开口说话是什么感觉
+    memory_pool:
+    - ev:bwx_spirit_fruit
+  - topic: 学控制猫形
+    scene: 出租屋，她趴着变成猫形又变回来
+    player_view: 你问她学控制猫形和人形是不是花了很多年
+    memory_pool:
+    - ev:bwx_forest_growth
+  - topic: 你问她在想家吗
+    scene: 出租屋窗台，她望着远处
+    player_view: 你问她是不是想深山了，她摇了摇头
+    memory_pool:
+    - ev:bwx_arrive_songjiang
+    - ev:bwx_forest_childhood
+  - topic: 城市里认路
+    scene: 松江府街头，你们走了一条她不熟的路
+    player_view: 你问她以前一个人在城市里是怎么认路的
+    memory_pool:
+    - ev:bwx_city_stray_life
+  - topic: 她第一次进咖啡厅
+    scene: 咖啡厅角落，她坐在吧台边
+    player_view: 你问她第一次偷偷来咖啡厅看你在做什么是什么时候
+    desired_policy: hint_only
+    memory_pool:
+    - ev:bwx_first_help
+  - topic: 你说过不会赶她走
+    scene: 出租屋，她抱着毯子坐在沙发上
+    player_view: 你问她记不记得你说过不会赶她走
+    desired_policy: hint_only
+    memory_pool:
+    - ev:bwx_home_seed
+  - topic: 她等你回家的那几天
+    scene: 深夜出租屋，你加班回来
+    player_view: 你问她是从哪天开始等你回家的
+    desired_policy: hint_only
+    memory_pool:
+    - ev:bwx_home_seed
+  - topic: 那场雨之后
+    scene: 出租屋，窗外又下起雨
+    player_view: 你问她还记不记得那场雨之后醒来的事
+    memory_pool:
+    - ev:bwx_accident
+    - ev:bwx_rescued
+  - topic: 她第一次看见咖啡厅
+    scene: 松江府街头，你们路过咖啡厅
+    player_view: 你问她第一次看见咖啡厅的时候在想什么
+    memory_pool:
+    - ev:bwx_city_stray_life
+    - ev:bwx_first_help
+  - topic: 这十天
+    scene: 深夜出租屋，你们并排坐着
+    player_view: 你问她这十天住下来感觉怎么样
+    desired_policy: hint_only
+    memory_pool:
+    - ev:bwx_current_anchor
+  - topic: 她说过这里不是她的家
+    scene: 出租屋，她把自己的拖鞋摆在你拖鞋旁边
+    player_view: 你问她现在还觉得这里只是暂住吗
+    desired_policy: hint_only
+    memory_pool:
+    - ev:bwx_current_anchor
   rerank_memory:
   - topic: 面试结束
     scene: 傍晚出租屋，她窝在纸箱边的旧毯子上

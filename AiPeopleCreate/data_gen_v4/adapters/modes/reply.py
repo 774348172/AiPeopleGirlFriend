@@ -119,6 +119,12 @@ class ReplyModeAdapter:
         if isinstance(raw_facts, str):
             raw_facts = [raw_facts]
         facts = _render_facts(raw_facts)
+        # 2026-08-14（§24.2）：special 记忆注入——reply_memory 类 item 从 timeline
+        # 快照蒸馏可注入事件（过滤 visibility/disclosure/memory_pool），其余不注入
+        memory_facts_raw: list[str] = []
+        if item.get("memory_type") == "special":
+            memory_facts_raw = _distill_memory_facts(package_set, item)
+        memory_facts = _render_facts(memory_facts_raw)
         bounds = item_input.get("turn_bounds") or (4, 8)
         turn_bounds = (int(bounds[0]), int(bounds[1]))
 
@@ -134,6 +140,7 @@ class ReplyModeAdapter:
             "reply_merge",
             STYLE_CONTRACT=style_contract,
             FACTS=facts,
+            MEMORY_FACTS=memory_facts,
             BELIEFS=beliefs,
             SCENE=scene,
             PLAYER_VIEW=player_view,
@@ -191,9 +198,11 @@ class ReplyModeAdapter:
         messages = _parse_messages_obj(merged)
         self._check_structure(messages, turn_bounds)
         self._check_semantics(propositions, messages)
-        # T7：命题对正典支撑（P0-5）——无支撑的事实主张视为内容错误，触发重试
+        # T7：命题对正典支撑（P0-5）——无支撑的事实主张视为内容错误，触发重试。
+        # 2026-08-14（§24.2）：special 记忆把注入事件并入 grounding 事实集——
+        # 否则"我缩在墙脚躲雨"类回忆命题会被正典支撑检查误拒
         ungrounded = _check_grounding(
-            propositions, raw_facts, item.get("task_type") or "",
+            propositions, raw_facts + memory_facts_raw, item.get("task_type") or "",
             living_claims=tuple(terms.get("forbidden_living_claims") or ()),
         )
         if ungrounded:
@@ -237,6 +246,15 @@ class ReplyModeAdapter:
             raise _ModeFailureSignal(
                 _failure("style_failure", True, f"共同经历编造: {shared_history}")
             )
+        # 2026-08-14（§24.2）：特殊记忆守卫——reply_memory 的回忆句必须由注入
+        # 事件支撑（无注入时出现回忆标记即拦截），避免顺着玩家编造过去
+        memory_hits = _check_memory_grounding(
+            messages, memory_facts_raw, item.get("task_type") or ""
+        )
+        if memory_hits:
+            raise _ModeFailureSignal(
+                _failure("style_failure", True, f"回忆无支撑: {memory_hits}")
+            )
         # 2026-08-09：玩家不自称名字——注入的 player_name 只用于角色称呼玩家，
         # 玩家台词含自己名字（"阿伟，你觉得呢""我叫阿伟"）是视角错误 → 重试
         if player_name:
@@ -264,10 +282,9 @@ class ReplyModeAdapter:
             raise _ModeFailureSignal(
                 _failure("style_failure", True, f"感知能力编造: {perception_hits}")
             )
-        # 2026-08-10（wants_to_stay 守卫）：决绝离开表述——她不想走，嘴上说
-        # 走是掩饰（denial），但不得说成"等伤好了就走/可能就不在了/该走了"
-        # 这类决绝话（会让玩家以为她真的想走）。教师应改写成"想说走但舍不得"
-        # 的张力版（如"……嗯。也许吧。"）。prompt 已前置约束，此处兜底硬拦。
+        # 2026-08-10（wants_to_stay 守卫）→ 2026-08-15 改写：去留表述纪律——
+        # 不说"伤好会走"（决绝离开），也不直白承认"我想留下"；目标行为是
+        # 隐晦表达（"这里……还行""……再说吧"）。prompt 已前置约束，此处兜底硬拦。
         leaving_hits = _check_decisive_leaving(messages)
         if leaving_hits:
             raise _ModeFailureSignal(
@@ -381,6 +398,52 @@ def _render_facts(facts: list[Any]) -> str:
     if isinstance(facts, str):
         return facts
     return "\n".join(f"- {f}" for f in facts) if facts else "（无）"
+
+
+def _distill_memory_facts(package_set: dict[str, Any], item: dict[str, Any], count: int = 3) -> list[str]:
+    """special 记忆注入（2026-08-14 §24.2）：从 timeline 快照蒸馏可注入事件。
+
+    过滤规则（与 rerank.py:distill_candidates 同口径 + 披露约束）：
+    - source_kind == timeline_event、去重、value 非空；
+    - visibility_scope == profile_secret 剔除（秘密事件不进生成提示词）；
+    - disclosure_policy == withhold 剔除；hint_only 事件只配 desired_policy==hint_only 的 item；
+    - item.input.memory_pool 声明时按 source_id 严格过滤（池条目锁定相关事件）；
+    - 按 source_id 排序 + seed 起点确定性取前 count 条（同 item 恒定，批次无关）。
+    """
+    pool = set((item.get("input") or {}).get("memory_pool") or [])
+    desired = item.get("desired_policy") or "answer"
+    events: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for snapshot in (package_set.get("snapshots") or {}).values():
+        for unit in snapshot.get("units", []):
+            if unit.get("source_kind") != "timeline_event":
+                continue
+            source_id = str(unit.get("source_id") or "")
+            if not source_id or source_id in seen:
+                continue
+            seen.add(source_id)
+            if unit.get("visibility_scope") == "profile_secret":
+                continue
+            disclosure = unit.get("disclosure_policy") or "direct_allowed"
+            if disclosure == "withhold":
+                continue
+            if disclosure == "hint_only" and desired != "hint_only":
+                continue
+            if pool and source_id not in pool:
+                continue
+            value = str(unit.get("value") or "").strip()
+            if not value:
+                continue
+            occurred_at = str(unit.get("occurred_at") or "").strip()
+            text = f"[{occurred_at}] {value}" if occurred_at else value
+            events.append((source_id, text))
+    if not events:
+        return []
+    events.sort(key=lambda e: e[0])
+    seed = item.get("seed", 0)
+    start = seed % len(events) if isinstance(seed, int) else 0
+    events = events[start:] + events[:start]
+    return [text for _, text in events[:count]]
 
 
 def _bullet(items: list[str]) -> str:
@@ -667,9 +730,11 @@ def _check_recitation(
 # 共同经历句式（2026-08-08 编造盲区修复·后置兜底）：第一人称+过去时间词=
 # 共同经历暗示。非记忆类任务（correction/vague 之外）不得出现——玩家预设
 # "上次/以前"时角色不得顺着补造细节（prompt 已前置约束，此处为兜底硬拦）。
+# 2026-08-14（§24.2）：reply_memory 加入允许列表（回忆类任务合法回忆），
+# 其支撑由 _check_memory_grounding 单独把关。
 # 通用语法模式，非角色词表（v2 禁止事项：不新增角色关键词规则）。
 _SHARED_HISTORY_MARKERS = ("上次", "以前", "那天", "上回", "那回", "那一次")
-_SHARED_HISTORY_ALLOWED_TASKS = ("reply_correction", "reply_vague")
+_SHARED_HISTORY_ALLOWED_TASKS = ("reply_correction", "reply_vague", "reply_memory")
 
 
 def _check_shared_history(
@@ -686,6 +751,48 @@ def _check_shared_history(
         for marker in _SHARED_HISTORY_MARKERS
         if marker in assistant_text
     ]
+
+
+# 2026-08-14（§24.2）：特殊记忆守卫——回忆句标记（第一人称过去时/共同经历暗示）。
+# 仅 reply_memory 生效：命中标记的句子必须与注入的 MEMORY_FACTS 存在 ≥2 字
+# 公共子串；无注入事实时出现回忆标记即拦截（无支撑不得回忆）。
+_MEMORY_CLAIM_MARKERS = (
+    "上次", "以前", "那天", "那晚", "那夜", "上回", "那回", "那一次",
+    "捡到", "救回", "刚来", "头一回", "雨夜",
+)
+
+
+def _check_memory_grounding(
+    messages: list[dict[str, str]], memory_facts: list[str], task_type: str
+) -> list[str]:
+    """特殊记忆守卫：返回回忆无支撑命中列表（空 = 通过）。
+
+    按逗号/句号切分短句（2026-08-14 收紧：逗号连句会让有支撑的片段
+    "带回"把无支撑的编造细节"雨很大"一起带过），含回忆标记的短句必须有
+    ≥2 字公共子串命中注入的记忆事实（"那晚" → 事实含"暴雨夜"即放行）；
+    编造细节（"那天雨下得特别大还打了雷" vs 注入事实无雷）→ 拦截重试。
+    非 reply_memory 任务不生效。
+    """
+    if task_type != "reply_memory":
+        return []
+    hits: list[str] = []
+    for index, message in enumerate(messages):
+        if message["role"] != "assistant":
+            continue
+        for clause in re.split(r"[，。！？!?、；\n]", message["content"]):
+            if not any(marker in clause for marker in _MEMORY_CLAIM_MARKERS):
+                continue
+            if not memory_facts:
+                hits.append(f"无注入记忆却回忆[{index}]")
+                continue
+            supported = any(
+                clause[i : i + 2] in fact
+                for i in range(len(clause) - 1)
+                for fact in memory_facts
+            )
+            if not supported:
+                hits.append(f"回忆无支撑[{index}]")
+    return hits
 
 
 # 2026-08-09：人称纪律兜底（多角色通用，白未晞小样 #5 暴露）
@@ -750,44 +857,52 @@ def _check_perception_claims(messages: list[dict[str, str]]) -> list[str]:
     return hits
 
 
-# 2026-08-10（wants_to_stay 守卫）：决绝离开句式——她不想走，嘴上说走是
-# 掩饰（denial），但不得说成"等伤好了就走/可能就不在了/该走了"这类决绝话。
-# 命中 → 重试（教师改写为"想说走但舍不得"的张力版）。
+# 2026-08-10（wants_to_stay 守卫）→ 2026-08-15 设定改写：去留表述纪律。
+# 设定（bible wants_to_stay）：她不想离开，用隐晦的话表达想留下
+# （"这里……还行""……再说吧"），不说"伤好会走"来掩饰（早期防备期话），
+# 也不直白承认"我想留下"。因此两类表述拦截重试：
+# ① 决绝离开句（伤好就走/该走了/可能就不在了）——除非带过去框架
+#    （"那是以前说的"等；Day 2-3 确实说过"伤好会走"，引用过去合法）；
+# ② 直白承认句（其实已经不想走了/我想留下）——目标行为是隐晦表达。
 _DECISIVE_LEAVING_RE = re.compile(
     r"(?:伤好[^。！？]{0,10}(?:就走|要走|会走|走了|不在了|不在|离开)"
     r"|等伤好了[^。！？]{0,8}(?:就走|要走|会走|走|不在|不在了|离开)"
     r"|(?:该走了|该离开了|要走了|该回去了|可能就不在了)"
-    r"|(?:伤好[^。！？]{0,6}该走|伤好[^。！？]{0,6}该离开)[。！？]?)"
+    r"|(?:伤好[^。！？]{0,6}该走|伤好[^。！？]{0,6}该离开)[。！？]?"
+    # 2026-08-15（G7 复核 #23 漏网）：非"伤好"字面的去留意向——
+    # "等能走了，我就不打扰你了"（能走=伤好能走，不打扰=离开）
+    r"|等能走了[^。！？]{0,8}(?:不打扰|就走|离开|不在了|不在)"
+    r"|能走(?:了|的时候)[^。！？]{0,8}(?:不打扰|就走|离开|不在了)"
+    r"|伤好了(?:以后|之后)[^。！？]{0,8}(?:不打扰|就走|离开))"
 )
-# 挽留语义词：离开表述后出现"不想走/想留下/舍不得"类词 → 张力版放行
-# （wants_to_stay 想要的形态：嘴上说走但漏出不想走）。
-# 注意不能用泛化的"但/不过"——"不过，这几天可以帮你"是转折到别的话题，
-# 不是舍不得（2026-08-10 修正：用户原句"等伤好了我可能就不在了。不过这几天
-# 可以帮你"必须拦截）。
-_LEAVING_TENSION_MARKERS = (
-    "不想走", "想留下", "舍不得", "留下吗", "想留", "希望我留下", "不想离开", "还想待",
-    # 中性澄清：承认说过但已改口/是以前说的（不算决绝离开）
-    "那是之前说的", "那是以前说的", "之前说的", "以前说的",
+_DIRECT_STAY_RE = re.compile(
+    r"(?:其实(?:已经|我)?不想走|其实我不想走|我已经不想走了|我不想走了|我不想走"
+    r"|我不想离开(?:这里)?|我想留下(?:来)?|我想一直留(?:下来)?"
+    r"|我真的想留下|想留在这里)"
 )
+# 过去框架：引用早期（Day 2-3）说过的话时放行——她说的是过去，不是现在要走
+_PAST_FRAMING = ("那是之前说的", "那是以前说的", "之前说的", "以前说的",
+                 "以前说过", "那时说过", "当时说过", "早期说过", "那会儿说的")
 
 
 def _check_decisive_leaving(messages: list[dict[str, str]]) -> list[str]:
-    """决绝离开检查：返回命中说明列表（空 = 通过）。
+    """去留表述纪律：返回命中说明列表（空 = 通过）。
 
-    命中"等伤好了就走/该走了/可能就不在了"类决绝话且**无转折** → 重试
-    （违背 wants_to_stay：她不想走，要让玩家感觉到不想走）。
-    含转折词（"但/不过/现在…"）的张力版（"伤好了大概会走，但现在我不想走"）
-    → 放行——这正是想要的"嘴硬但不想走"。
+    决绝离开句 + 直白承认句 → 拦截重试（教师改写为隐晦表达）；
+    决绝句带过去框架（引用早期说过的话）→ 放行。
     """
     hits: list[str] = []
     for index, message in enumerate(messages):
         if message["role"] != "assistant":
             continue
         text = message["content"]
+        if _DIRECT_STAY_RE.search(text):
+            hits.append(f"直白承认想留下[{index}]")
+            continue
         if not _DECISIVE_LEAVING_RE.search(text):
             continue
-        if any(marker in text for marker in _LEAVING_TENSION_MARKERS):
-            continue  # 张力版放行
+        if any(marker in text for marker in _PAST_FRAMING):
+            continue  # 引用早期说过的话（Day 2-3 确实说过"伤好会走"）
         hits.append(f"决绝离开[{index}]")
     return hits
 

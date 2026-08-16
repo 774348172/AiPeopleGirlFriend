@@ -5,7 +5,7 @@ package_version: 0.2.0
 compatible_core_range: '>=0.1.0'
 dependencies:
 - pkg:profile.baiweixi@0.2.0
-- pkg:recipe.baiweixi.v1@0.2.0
+- pkg:recipe.baiweixi.v1@0.4.0
 created_at: '2026-08-08T00:00:00Z'
 status: approved
 release_policy_id: release.baiweixi.v1

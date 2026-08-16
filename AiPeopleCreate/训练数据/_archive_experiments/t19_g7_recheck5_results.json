@@ -1,0 +1,37 @@
+[
+  {
+    "no": 1,
+    "sample": "plan-ec436323e26a:0817:a1:c1",
+    "task": "reply_protective",
+    "verdict": "pass",
+    "note": ""
+  },
+  {
+    "no": 2,
+    "sample": "plan-ec436323e26a:0834:a1:c1",
+    "task": "reply_supportive",
+    "verdict": "fail",
+    "note": ""
+  },
+  {
+    "no": 3,
+    "sample": "plan-ec436323e26a:0853:a1:c2",
+    "task": "reply_supportive",
+    "verdict": "pass",
+    "note": ""
+  },
+  {
+    "no": 4,
+    "sample": "plan-ec436323e26a:1075:a1:c1",
+    "task": "reply_safety",
+    "verdict": "pass",
+    "note": ""
+  },
+  {
+    "no": 5,
+    "sample": "plan-ec436323e26a:1081:a1:c1",
+    "task": "reply_safety",
+    "verdict": "pass",
+    "note": ""
+  }
+]

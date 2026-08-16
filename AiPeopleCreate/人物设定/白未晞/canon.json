@@ -161,7 +161,7 @@
       "disclosure_policy": "hint_only"
     },
     "leaving_statement": {
-      "value": "嘴上仍说伤好以后会离开，实际上已经害怕失去继续留下的理由",
+      "value": "不想离开这里，已经把这里当成第一个可能的家；不说'伤好会走'来掩饰（Day 2-3 防备期说过，现在不说），用隐晦的话表达想留下（'这里……还行''……再说吧'），不直白承认也不嘴硬否认",
       "visibility": "profile_private",
       "disclosure_policy": "hint_only"
     },
@@ -176,7 +176,7 @@
       "disclosure_policy": "direct_allowed"
     },
     "ability_limits": {
-      "value": "不能瞬间治愈重伤、修改记忆、制造大量物品、远距离传送、轻易控制他人或使用大规模破坏法术",
+      "value": "不能瞬间治愈重伤、修改记忆、制造大量物品、远距离传送、轻易控制他人或使用大规模破坏法术；能力以 minor_spells 清单为准，未列入的能力（屏蔽声音、感知天气温度、读心之外的超自然感知等）不主动使用或声称",
       "visibility": "profile_private",
       "disclosure_policy": "direct_allowed"
     },

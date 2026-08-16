@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>白未晞设定补齐建议（2026-08-15）</title>
+<style>
+  body { font-family: "Microsoft YaHei", sans-serif; margin: 0; background: #f1f5f9; color: #1e293b; }
+  header { background: #0f172a; color: #fff; padding: 14px 24px; position: sticky; top: 0; z-index: 10; }
+  header h1 { margin: 0; font-size: 18px; }
+  #progress { margin-top: 6px; font-size: 13px; color: #94a3b8; }
+  #tips { margin-top: 4px; font-size: 12px; color: #cbd5e1; }
+  .toolbar { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .btn { padding: 6px 14px; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  .btn.primary { background: #3b82f6; color: #fff; }
+  .btn.gray { background: #334155; color: #fff; }
+  .btn.green { background: #16a34a; color: #fff; }
+  main { max-width: 900px; margin: 20px auto; padding: 0 16px; }
+  .card { background: #fff; border-radius: 10px; padding: 18px 20px; margin-bottom: 16px;
+          box-shadow: 0 1px 3px rgba(0,0,0,.08); border-left: 4px solid #cbd5e1; }
+  .card.adopt { border-left-color: #22c55e; }
+  .card.reject { border-left-color: #ef4444; }
+  .card h2 { margin: 0 0 8px; font-size: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .tag { padding: 2px 8px; border-radius: 999px; color: #fff; font-size: 12px; }
+  .sec { font-size: 12px; color: #64748b; margin: 10px 0 4px; font-weight: 600; }
+  .current { background: #fef3c7; border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.7; color: #78350f; }
+  pre.yaml { background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 12px 14px; font-size: 12.5px;
+             line-height: 1.6; overflow-x: auto; margin: 6px 0 0; white-space: pre; font-family: Consolas, monospace; }
+  .followup { background: #ecfdf5; border-radius: 8px; padding: 8px 12px; font-size: 12.5px; color: #065f46; margin-top: 8px; }
+  .choices { margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .choice { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 4px 10px;
+            border: 1px solid #cbd5e1; border-radius: 999px; cursor: pointer; user-select: none; background: #fff; }
+  .choice.on { border-color: #0d9488; background: #ccfbf1; color: #134e4a; }
+  .verdict { margin-top: 14px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .vbtn { padding: 6px 18px; border: 2px solid #cbd5e1; border-radius: 8px; cursor: pointer; font-size: 14px; background: #fff; }
+  .vbtn.on-adopt { border-color: #22c55e; background: #dcfce7; color: #166534; }
+  .vbtn.on-reject { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+  .note { flex: 1; min-width: 180px; padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>主角（玩家）设定补齐建议（7 项）</h1>
+  <div id="progress">已判定 0 / 7</div>
+  <div id="tips">逐项选择 采用/不采用；带子选项的项（#3/#5/#7）可细选。判定存本地，完成后点「导出 JSON」把结果发回。</div>
+  <div class="toolbar">
+    <button class="btn primary" id="nextBtn">下一个未判定 ↓</button>
+    <button class="btn primary" id="exportBtn">导出 JSON</button>
+    <button class="btn green" id="copyBtn">复制结果</button>
+    <button class="btn gray" id="resetBtn">重置</button>
+  </div>
+</header>
+<main id="main"></main>
+<script>
+const KEY = "protagonist_setting_proposal_20260815";
+const ITEMS = [{"no": 1, "title": "日常动线与作息", "tag": "新场景玩家行为支撑", "color": "#3b82f6", "current": "只知道经营街角咖啡厅；几点开店/打烊、休息日做什么无设定。新话题（公园晨跑/爬山/野餐/逛夜市/跨年）的玩家行为无依据，教师只能自由发挥。", "blocks": [["bible.yaml daily_life 新增", "daily_life:\n  cafe_hours: 工作日 9:00-20:00，周末 10:00-21:00；周二店休（补货/整理/休息）\n  rest_day: 周二店休日：睡懒觉、买菜、收拾屋子，偶尔带白未晞出门（超市/公园/江边）\n  evening: 打烊后回家做饭、看会儿电视或手机，睡前检查门窗\n  commute: 步行上下班（咖啡厅在住处附近，走路 10 分钟）\n  exercise: 不常运动；周末偶尔去公园散步，不晨跑（把\"公园晨跑\"话题的玩家行为改为散步）\n  sleep: 作息偏晚（开店作息），但尽量 12 点前睡；白未晞来了之后睡得更晚了些"]], "followup": "同步调整池条目：\"公园晨跑\"→散步行为。", "choices": []}, {"no": 2, "title": "口味与饮食", "tag": "支撑饮食类话题", "color": "#f59e0b", "current": "四川人已知，但\"四川人=能吃辣\"未写死；咖啡师自己喝什么、下厨水平无设定。", "blocks": [["bible.yaml diet 新增", "diet:\n  spice_tolerance: 四川人，能吃辣也喜欢辣；但工作忙时吃得很随便\n  coffee_preference: 自己喝美式或拿铁，不挑；拉花练过但不算高手\n  cooking: 会做家常菜（四川口味：回锅肉/番茄炒蛋/下面），不算大厨但饿不着\n  eating_habits: 忙的时候会忘记吃饭、将就吃泡面（支撑\"忘了吃饭/泡面将就\"话题）\n  snacks: 偶尔买零食，鱼干是给白未晞买的"]], "followup": "无数据连锁。", "choices": []}, {"no": 3, "title": "休闲与出行", "tag": "支撑出行类话题", "color": "#06b6d4", "current": "出行方式无设定（新话题\"共享单车/骑车兜风/坐渡轮/公交卡\"的玩家行为无依据）。", "blocks": [["bible.yaml leisure_transport 新增", "leisure_transport:\n  transport: 日常步行+公交+地铁；没有电动车（\"骑车兜风\"话题改为\"租共享电动车\"或删掉）\n  bike: 会骑自行车（共享单车），但不常骑\n  hobbies: 看电影（偏好老片）、听歌（咖啡厅歌单是自己挑的）、偶尔打游戏（手机小游戏）\n  outdoor: 周末偶尔去公园/江边散步，不爬山不钓鱼（\"爬山/钓鱼\"话题玩家行为需调整或删）\n  night_market: 偶尔逛夜市，爱吃烤串和糖葫芦"]], "followup": "同步调整池条目：\"骑车兜风\"→共享电动车、\"爬山/钓鱼\"话题调整。", "choices": []}, {"no": 4, "title": "社交圈", "tag": "支撑社交类话题", "color": "#8b5cf6", "current": "只有\"熟客/楼下邻居/保安\"最小接触；家人关系（\"家人打电话\"话题）无设定。", "blocks": [["bible.yaml social 新增", "social:\n  family: 老家四川，父母在老家；偶尔通电话，报喜不报忧；有一个姐姐/妹妹（作者定）\n  friends: 大学同学两三个，散在各地，偶尔线上联系；松江府本地没有深交朋友\n  regulars: 咖啡厅有几个熟客（程序员/退休教师/自由职业者），点头之交\n  neighbors: 楼下邻居阿姨偶尔送菜，保安大叔面熟；其余无深交\n  online: 用手机支付/点外卖/网购，不刷短视频成瘾，偶尔看新闻"]], "followup": "无数据连锁。", "choices": []}, {"no": 5, "title": "经济与消费习惯", "tag": "支撑消费类话题", "color": "#10b981", "current": "收入勉强维持已知；具体消费习惯无设定（支撑\"房租发愁/水电费/打折抢购\"话题）。", "blocks": [["bible.yaml finance 新增", "finance:\n  income: 咖啡厅收入勉强覆盖房租+生活费，每月略有结余但不多\n  rent: 房租是最大支出，换季时最担心\n  saving: 有少量积蓄（接手咖啡厅时的底子），不到万不得已不动\n  spending: 精打细算：买菜挑打折的、网购比价、不买非必需品；给白未晞买东西不算账\n  debt: 无外债；咖啡厅设备是二手买的"]], "followup": "无数据连锁。", "choices": []}, {"no": 6, "title": "健康与体质", "tag": "支撑 supportive/safety 话题", "color": "#ef4444", "current": "无设定（支撑\"感冒/低血糖/失眠/烫伤/切菜割手\"话题）。", "blocks": [["bible.yaml health 新增", "health:\n  constitution: 一般；换季容易感冒，忙起来容易忘吃饭导致低血糖\n  sleep: 偶尔失眠（想事情/压力大），睡不好第二天没精神\n  injuries: 干活偶尔小伤（切菜割手/烫到），不严重但怕感染\n  allergies: 无已知过敏；对辣椒耐受好\n  medical: 小病自己扛/买药，大病才去医院；医保在老家（异地就医麻烦，支撑\"陪她去医院\"的顾虑）"]], "followup": "无数据连锁。", "choices": []}, {"no": 7, "title": "家庭背景", "tag": "支撑老家/过年类话题", "color": "#64748b", "current": "四川人、大学毕业后到松江府、建筑行业两年失业已知；父母/老家细节无设定。", "blocks": [["bible.yaml family_background 新增", "family_background:\n  hometown: 四川小城/县城（作者定），父母开小店/普通职工（作者定）\n  education: 大学毕业（建筑相关），专业是绘图/设计类\n  career_path: 毕业后在建筑公司做绘图设计约两年 → 行业不景气失业 → 用积蓄接手咖啡厅\n  relation_with_family: 报喜不报忧，家人知道他开店但不知道具体经营状况；过年可能回老家（支撑\"过年/想家\"话题）"]], "followup": "无数据连锁。", "choices": []}];
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e) {}
+
+function render() {
+  const main = document.getElementById("main");
+  main.innerHTML = "";
+  let judged = 0;
+  ITEMS.forEach(it => {
+    const v = state[it.no] || {};
+    if (v.verdict) judged++;
+    const card = document.createElement("div");
+    card.className = "card " + (v.verdict === "adopt" ? "adopt" : v.verdict === "reject" ? "reject" : "");
+    let blocksHtml = "";
+    it.blocks.forEach(b => {
+      blocksHtml += `<div class="sec">${b[0]}</div><pre class="yaml">${b[1]}</pre>`;
+    });
+    let choicesHtml = "";
+    it.choices.forEach(c => {
+      const key = c.key;
+      if (c.toggle) {
+        const on = (v.choices || {})[key] === true;
+        choicesHtml += `<span class="choice ${on ? "on" : ""}" data-no="${it.no}" data-key="${key}" data-toggle="1">${c.label} ${on ? "✓" : "☐"}</span>`;
+      } else {
+        const cur = (v.choices || {})[key] || "";
+        const opts = c.options.map(o =>
+          `<span class="choice ${cur === o ? "on" : ""}" data-no="${it.no}" data-key="${key}" data-opt="${o}">${o}</span>`
+        ).join("");
+        choicesHtml += `<span style="font-size:13px;color:#475569">${c.label}：</span>${opts}`;
+      }
+    });
+    card.innerHTML = `
+      <h2><span class="tag" style="background:${it.color}">${it.tag}</span>
+          <span>#${it.no} ${it.title}</span></h2>
+      <div class="sec">现状</div>
+      <div class="current">${it.current}</div>
+      ${blocksHtml}
+      <div class="followup">📎 采用后连锁：${it.followup}</div>
+      ${choicesHtml ? `<div class="choices">${choicesHtml}</div>` : ""}
+      <div class="verdict">
+        <button class="vbtn ${v.verdict === "adopt" ? "on-adopt" : ""}" data-no="${it.no}" data-v="adopt">✓ 采用</button>
+        <button class="vbtn ${v.verdict === "reject" ? "on-reject" : ""}" data-no="${it.no}" data-v="reject">✗ 不采用</button>
+        <input class="note" data-no="${it.no}" placeholder="备注（可选）" value="${(v.note || "").replace(/"/g, "&quot;")}">
+      </div>`;
+    main.appendChild(card);
+  });
+  document.getElementById("progress").textContent = `已判定 ${judged} / ${ITEMS.length}`;
+}
+
+function save() {
+  localStorage.setItem(KEY, JSON.stringify(state));
+  render();
+}
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".vbtn");
+  if (btn) {
+    state[btn.dataset.no] = state[btn.dataset.no] || {};
+    state[btn.dataset.no].verdict = btn.dataset.v;
+    save();
+  }
+  const choice = e.target.closest(".choice");
+  if (choice) {
+    const no = choice.dataset.no, key = choice.dataset.key;
+    state[no] = state[no] || {};
+    state[no].choices = state[no].choices || {};
+    if (choice.dataset.toggle) {
+      state[no].choices[key] = !state[no].choices[key];
+    } else {
+      state[no].choices[key] = choice.dataset.opt;
+    }
+    save();
+  }
+  if (e.target.id === "nextBtn") {
+    const first = ITEMS.find(it => !(state[it.no] || {}).verdict);
+    if (first) document.querySelector(`[data-no="${first.no}"]`)?.scrollIntoView({behavior: "smooth"});
+    else alert("全部已判定");
+  }
+  if (e.target.id === "exportBtn" || e.target.id === "copyBtn") {
+    const out = ITEMS.map(it => {
+      const v = state[it.no] || {};
+      return { no: it.no, title: it.title, verdict: v.verdict || "", choices: v.choices || {}, note: v.note || "" };
+    });
+    const text = JSON.stringify(out, null, 2);
+    if (e.target.id === "exportBtn") {
+      const blob = new Blob([text], {type: "application/json"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "setting_proposal_result_baiweixi.json";
+      a.click();
+    } else {
+      navigator.clipboard.writeText(text).then(() => alert("已复制 JSON"));
+    }
+  }
+  if (e.target.id === "resetBtn") {
+    if (confirm("确认重置全部判定？")) { state = {}; localStorage.removeItem(KEY); render(); }
+  }
+});
+
+document.addEventListener("input", e => {
+  if (e.target.classList.contains("note")) {
+    state[e.target.dataset.no] = state[e.target.dataset.no] || {};
+    state[e.target.dataset.no].note = e.target.value;
+    localStorage.setItem(KEY, JSON.stringify(state));
+  }
+});
+
+render();
+</script>
+</body>
+</html>

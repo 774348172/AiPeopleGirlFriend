@@ -25,6 +25,7 @@
 | 多角色接线说明_20260808.md | 通用入口 + style resolver 通用化（gen_v4.py） |
 | 白未晞可发布化验收_20260809.md | pools 扩充 + 质量修复 + 六项验收 + G7 复核闭环 |
 | 数据质量校准闭环_20260810.md | judge 校准 + STRONG_MODEL 分离 + 分层抽样审核（一劳永逸） |
+| 训练数据记忆类型分类方案_20260814.md | 记忆类型轴（persona/item/general/special）+ reply_item/reply_memory + timeline 注入对话生成，方案已批，按本文施工 |
 
 ### 历史设计
 

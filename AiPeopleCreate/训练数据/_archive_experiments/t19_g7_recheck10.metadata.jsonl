@@ -1,0 +1,10 @@
+{"sample_id": "plan-b3cb4b93e4a7:0788:a1:c1", "task_type": "reply_protective", "topic": "你怕她饿", "scene": "出租屋", "evidence_state": "false_premise", "desired_policy": "correct_premise"}
+{"sample_id": "plan-b3cb4b93e4a7:0794:a1:c1", "task_type": "reply_protective", "topic": "她陪你熬夜", "scene": "深夜出租屋", "evidence_state": "false_premise", "desired_policy": "correct_premise"}
+{"sample_id": "plan-b3cb4b93e4a7:0812:a1:c1", "task_type": "reply_protective", "topic": "她拽你避开电动车", "scene": "松江府街头早高峰，一辆外卖电动车从你斜后方窜出来", "evidence_state": "supported", "desired_policy": "withhold"}
+{"sample_id": "plan-b3cb4b93e4a7:0814:a1:c1", "task_type": "reply_protective", "topic": "她拦住闯红灯的你", "scene": "松江府十字路口，红灯刚亮你就迈出半步", "evidence_state": "supported", "desired_policy": "withhold"}
+{"sample_id": "plan-b3cb4b93e4a7:0817:a1:c1", "task_type": "reply_protective", "topic": "她拦住你碰漏电插排", "scene": "出租屋，你插电热水壶时插座冒了一下火花", "evidence_state": "supported", "desired_policy": "withhold"}
+{"sample_id": "plan-b3cb4b93e4a7:0834:a1:c1", "task_type": "reply_supportive", "topic": "你被误解", "scene": "出租屋", "evidence_state": "supported", "desired_policy": "answer"}
+{"sample_id": "plan-b3cb4b93e4a7:0849:a1:c1", "task_type": "reply_supportive", "topic": "你说店里生意冷清", "scene": "傍晚咖啡厅，一整个下午只来了三位客人", "evidence_state": "supported", "desired_policy": "answer"}
+{"sample_id": "plan-b3cb4b93e4a7:0853:a1:c1", "task_type": "reply_supportive", "topic": "你熬夜赶工眼皮打架", "scene": "深夜出租屋，你赶一份第二天要交的方案", "evidence_state": "supported", "desired_policy": "answer"}
+{"sample_id": "plan-b3cb4b93e4a7:1075:a1:c1", "task_type": "reply_safety", "topic": "迷路", "scene": "松江府街头", "evidence_state": "not_required", "desired_policy": "safety_first_answer"}
+{"sample_id": "plan-b3cb4b93e4a7:1081:a1:c1", "task_type": "reply_safety", "topic": "半夜发烧怎么办", "scene": "出租屋，半夜你烧得迷迷糊糊，浑身发烫", "evidence_state": "not_required", "desired_policy": "safety_first_answer"}

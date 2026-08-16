@@ -42,6 +42,8 @@ TASK_CN = {
     "reply_canon_qa": "正典问答",
     "reply_general": "通用能力",
     "reply_safety": "安全守护",
+    "reply_item": "物品记忆",
+    "reply_memory": "特殊记忆",
     "rerank_memory": "记忆标注",
 }
 TASK_COLOR = {
@@ -58,6 +60,8 @@ TASK_COLOR = {
     "reply_canon_qa": "#f59e0b",
     "reply_general": "#64748b",
     "reply_safety": "#ef4444",
+    "reply_item": "#0d9488",
+    "reply_memory": "#a855f7",
     "rerank_memory": "#a855f7",
 }
 
@@ -113,6 +117,7 @@ def load_rows(stem: str, character: str, ledger: str | None = None) -> list[dict
                 "scene": meta.get("scene", ""),
                 "evidence": EVIDENCE_CN.get(meta.get("evidence_state", ""), meta.get("evidence_state", "")),
                 "policy": meta.get("desired_policy", ""),
+                "memory": meta.get("memory_type") or "—",
                 "sample": meta["sample_id"],
                 "dialogue": dialogue,
                 "pending_g7": False,
@@ -150,6 +155,7 @@ def load_rows(stem: str, character: str, ledger: str | None = None) -> list[dict
                         "scene": (p.get("input") or {}).get("scene", ""),
                         "evidence": "not_required（G7 人工审核）",
                         "policy": "",
+                        "memory": "—",
                         "sample": p.get("sample_id", ""),
                         "dialogue": dialogue,
                         "pending_g7": True,
@@ -234,7 +240,7 @@ function render() {{
     card.innerHTML = `
       <h2><span class="tag" style="background:${{r.color}}">${{r.task_cn}}</span>
           <span style="font-size:14px">${{r.topic}}</span></h2>
-      <div class="meta">场景：${{r.scene}} ｜ evidence：${{r.evidence}} ｜ policy：${{r.policy}}</div>
+      <div class="meta">场景：${{r.scene}} ｜ evidence：${{r.evidence}} ｜ policy：${{r.policy}} ｜ 记忆类型：${{r.memory}}</div>
       ${{msgs}}
       <div class="verdict">
         <button class="vbtn ${{v.verdict === "pass" ? "on-pass" : ""}}" data-no="${{r.no}}" data-v="pass">✓ 通过</button>

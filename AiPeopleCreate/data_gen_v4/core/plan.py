@@ -87,6 +87,8 @@ class PlanItemV4:
     profile_snapshot_id: str | None = None
     protocol_bundle_id: str | None = None
     recipe_id: str | None = None
+    # 记忆类型轴（2026-08-14 §24）：persona/item/general/special；None=未标注
+    memory_type: str | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -105,6 +107,7 @@ class PlanItemV4:
             "support_spans": self.support_spans,
             "knowledge_scope": self.knowledge_scope,
             "visibility_scope": self.visibility_scope,
+            "memory_type": self.memory_type,
             "evidence_state": self.evidence_state,
             "desired_policy": self.desired_policy,
             "required_behaviors": self.required_behaviors,
@@ -138,6 +141,7 @@ class PlanItemV4:
             family_role=data["family_role"],
             knowledge_scope=data["knowledge_scope"],
             visibility_scope=data["visibility_scope"],
+            memory_type=data.get("memory_type"),
             evidence_state=data["evidence_state"],
             desired_policy=data["desired_policy"],
             required_behaviors=data["required_behaviors"],

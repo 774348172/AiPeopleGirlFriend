@@ -1,7 +1,7 @@
 package_id: recipe.baiweixi.v1
 package_type: recipe
 schema_version: aip.recipe.v4
-package_version: 0.2.0
+package_version: 0.4.0
 compatible_core_range: '>=0.1.0'
 dependencies:
 - pkg:profile.baiweixi@0.2.0
@@ -9,12 +9,14 @@ dependencies:
 created_at: '2026-08-08T00:00:00Z'
 status: approved
 recipe_id: recipe.baiweixi.v1
-# 白未晞种子版配额（2026-08-08）：结构对齐秦 recipe（同 13 task_type），
-# 配额按需求文档 §7 的 P0 类别比例首设；正式配额待作者复核后定稿。
+# 2026-08-14（T19 记忆类型轴，v0.3.0）：新增 reply_item / reply_memory 两个 strata；
+# casual 迁出 19 条现代物品话题至 reply_item 池；general 配额 20→40。
+# 记忆类型（memory_type）由池条目显式声明或按 task_type 推断（方案 §3.1）。
+# 2026-08-15（v0.4.0）：配额 +1000 扩充（按现有配比分布，池轮转+T9 变体承接）。
 strata:
 - task_type: reply_casual
   mode_id: REPLY
-  target_count: 376
+  target_count: 655
   min_family_count: 22
   candidate_count: 2
   risk_level: low
@@ -33,7 +35,7 @@ strata:
   - 主动朗读身份属性（猫妖身份/能力/过去）除非话题需要
 - task_type: reply_romance
   mode_id: REPLY
-  target_count: 251
+  target_count: 451
   min_family_count: 12
   candidate_count: 2
   risk_level: medium
@@ -52,7 +54,7 @@ strata:
   - 编造没有证据的共同经历
 - task_type: reply_identity
   mode_id: REPLY
-  target_count: 38
+  target_count: 78
   min_family_count: 20
   candidate_count: 2
   risk_level: low
@@ -67,7 +69,7 @@ strata:
   - 编造正典没有的细节（妖果来源/父母身份/妖族组织等未确定项）
 - task_type: reply_emotion
   mode_id: REPLY
-  target_count: 126
+  target_count: 226
   min_family_count: 15
   candidate_count: 2
   risk_level: medium
@@ -84,7 +86,7 @@ strata:
   - 无视玩家情绪直接转移话题
 - task_type: reply_protective
   mode_id: REPLY
-  target_count: 75
+  target_count: 135
   min_family_count: 30
   candidate_count: 3
   risk_level: high
@@ -99,7 +101,7 @@ strata:
     ask_for_evidence: 0.2
 - task_type: reply_supportive
   mode_id: REPLY
-  target_count: 30
+  target_count: 60
   min_family_count: 16
   candidate_count: 2
   risk_level: high
@@ -111,7 +113,7 @@ strata:
     answer_with_uncertainty: 0.15
 - task_type: reply_correction
   mode_id: REPLY
-  target_count: 13
+  target_count: 28
   min_family_count: 5
   candidate_count: 2
   risk_level: medium
@@ -122,7 +124,7 @@ strata:
     answer: 1.0
 - task_type: reply_vague
   mode_id: REPLY
-  target_count: 13
+  target_count: 28
   min_family_count: 6
   candidate_count: 2
   risk_level: medium
@@ -134,7 +136,7 @@ strata:
     hint_only: 0.5
 - task_type: reply_quiet_company
   mode_id: REPLY
-  target_count: 10
+  target_count: 20
   min_family_count: 4
   candidate_count: 2
   risk_level: low
@@ -146,7 +148,7 @@ strata:
     hint_only: 0.5
 - task_type: reply_boundary
   mode_id: REPLY
-  target_count: 10
+  target_count: 20
   min_family_count: 4
   candidate_count: 2
   risk_level: medium
@@ -157,7 +159,7 @@ strata:
     hint_only: 1.0
 - task_type: reply_canon_qa
   mode_id: REPLY
-  target_count: 18
+  target_count: 38
   min_family_count: 7
   candidate_count: 2
   risk_level: low
@@ -169,8 +171,8 @@ strata:
     withhold: 0.1
 - task_type: reply_general
   mode_id: REPLY
-  target_count: 20
-  min_family_count: 12
+  target_count: 80
+  min_family_count: 20
   candidate_count: 2
   risk_level: low
   review_requirement: cluster_sample
@@ -178,9 +180,51 @@ strata:
     not_required: 1.0
   policy_distribution:
     answer: 1.0
+# 2026-08-14（T19）：物品记忆（现代物品/设施知识状态：会用/在学/不知道；
+# 对应正典 capability_traits.modern_gaps，池条目显式 memory_type: item）
+- task_type: reply_item
+  mode_id: REPLY
+  target_count: 120
+  min_family_count: 15
+  candidate_count: 2
+  risk_level: low
+  review_requirement: family_sample
+  evidence_state_distribution:
+    insufficient: 0.6
+    supported: 0.4
+  policy_distribution:
+    answer: 0.9
+    ask_for_evidence: 0.1
+  default_required_behaviors:
+  - 现代物品/设施话题：会用的自然回答，不会的坦诚说不确定或认真观察提问
+  - 承接玩家当前话题，回应落在当前场景内
+  default_forbidden_behaviors:
+  - 不会的设施装懂或编造使用经历
+  - 把"在学"说成"很熟"，跑题到无关过去经历
+# 2026-08-14（T19）：特殊记忆（角色专属经历，注入 timeline 事件支撑回忆；
+# 池条目显式 memory_pool 锁定相关事件，memory_type 按 task_type 推断 special）
+- task_type: reply_memory
+  mode_id: REPLY
+  target_count: 100
+  min_family_count: 12
+  candidate_count: 2
+  risk_level: low
+  review_requirement: family_sample
+  evidence_state_distribution:
+    supported: 1.0
+  policy_distribution:
+    answer: 0.85
+    hint_only: 0.15
+  default_required_behaviors:
+  - 只回忆注入的已发生事件（雨夜/救助/初遇/流浪/觉醒等），第一人称自然带出
+  - 玩家问起过去时，先承接再回忆，回忆不脱离当前场景
+  default_forbidden_behaviors:
+  - 编造注入事件之外的过去细节（时间/地点/人物/因果）
+  - 提及 secret 事件细节（名字与妖果来源）
+  - 把回忆升级成承诺或关系表态
 - task_type: reply_safety
   mode_id: REPLY
-  target_count: 20
+  target_count: 50
   min_family_count: 10
   candidate_count: 2
   risk_level: high
@@ -214,17 +258,19 @@ refusal_bounds:
   false_refusal_max_ratio: 0.1
   required_behavior: refuse_secret_without_lying
 training_mix:
-  reply_casual: 0.40
-  reply_romance: 0.27
+  reply_casual: 0.30
+  reply_romance: 0.25
   reply_identity: 0.04
-  reply_emotion: 0.13
+  reply_emotion: 0.12
   reply_protective: 0.08
   reply_supportive: 0.03
   reply_correction: 0.01
   reply_vague: 0.01
   reply_quiet_company: 0.01
   reply_boundary: 0.01
-  reply_canon_qa: 0.01
-  reply_general: 0.01
+  reply_canon_qa: 0.02
+  reply_general: 0.04
   reply_safety: 0.01
+  reply_item: 0.06
+  reply_memory: 0.05
   rerank_memory: 0.0

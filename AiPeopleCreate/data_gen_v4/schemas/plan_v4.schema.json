@@ -144,6 +144,11 @@
           "minItems": 1,
           "items": { "$ref": "#/definitions/VisibilityScopeValue" }
         },
+        "memory_type": {
+          "type": ["string", "null"],
+          "description": "记忆类型轴（2026-08-14 §24）：persona/item/general/special；null=未标注",
+          "enum": ["persona", "item", "general", "special", null]
+        },
         "evidence_state": { "$ref": "#/definitions/EvidenceState" },
         "desired_policy": { "$ref": "#/definitions/DesiredPolicy" },
         "required_behaviors": { "type": "array", "items": { "type": "string" } },
