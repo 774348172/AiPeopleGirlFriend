@@ -26,30 +26,38 @@
 
 ## 当前训练数据（2026-08-15 扩充归档后）
 
-**主训练文件：`baiweixi_v4_training.jsonl`（2882 行）**
+**主训练文件：`baiweixi_v4_training.jsonl`（1973 行 · 话题级去重版）**
+
+全量 2882 行（T19 987 + 扩池重跑 1659 + G7 放行 236）经**话题级去重**：每话题保留 judge 分
+top 2，消除跨批次/轮转重复（全量保留在 `baiweixi_v4_final.*`）。
 
 | 类型 | 行数 |
 |---|---|
-| reply_casual | 911 |
-| reply_romance | 629 |
-| reply_emotion | 299 |
-| reply_protective | 203 |
-| reply_item | 173 |
-| reply_memory | 141 |
-| reply_general | 103 |
-| reply_identity | 101 |
-| reply_supportive | 88 |
-| reply_safety | 68 |
-| reply_canon_qa | 46 |
-| reply_correction | 35 |
-| reply_vague | 34 |
-| reply_quiet_company | 26 |
-| reply_boundary | 25 |
-| **合计** | **2882** |
+| reply_casual | 574 |
+| reply_romance | 427 |
+| reply_emotion | 209 |
+| reply_protective | 184 |
+| reply_item | 118 |
+| reply_memory | 98 |
+| reply_identity | 76 |
+| reply_supportive | 61 |
+| reply_general | 57 |
+| reply_safety | 36 |
+| reply_canon_qa | 34 |
+| reply_correction | 29 |
+| reply_vague | 28 |
+| reply_quiet_company | 21 |
+| reply_boundary | 21 |
+| **合计** | **1973** |
 
-记忆类型：persona 147 / item 173 / general 103 / special 141 / 日常 2318。
-来源：v4_1089 批次（987）+ v4_2089 扩池重跑批次（1659，雷同修复后）+ G7 复核放行（236，
-7 条抽检不通过剔除）。守卫复检：记忆行 141/141、去留 0 违规。
+记忆类型：persona 110 / item 118 / general 57 / special 98 / 日常 1590。
+
+## 话题记账与互补生成（2026-08-15）
+
+- 已用话题 1087 个登记于 `_topic_ledger.jsonl`（`tools/topic_ledger.py --scan`）。
+- 未用话题 26 个（casual 2 / romance 10 / identity 2 / emotion 1 / protective 2 /
+  correction 2 / quiet_company 2 / canon_qa 3 / memory 1）：`tools/topic_ledger.py --unused`。
+- **下次扩充用 `--topics` 只生成未用话题** → 与现有数据零话题重复（批次间互补）。
 
 ## 使用约定
 
