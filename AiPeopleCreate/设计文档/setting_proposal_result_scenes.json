@@ -1,0 +1,51 @@
+[
+  {
+    "no": 1,
+    "title": "节日庆典（补全节日线）",
+    "verdict": "reject",
+    "choices": {},
+    "note": ""
+  },
+  {
+    "no": 2,
+    "title": "城市事件（世界观活动）",
+    "verdict": "adopt",
+    "choices": {},
+    "note": ""
+  },
+  {
+    "no": 3,
+    "title": "咖啡厅经营深场景",
+    "verdict": "adopt",
+    "choices": {},
+    "note": ""
+  },
+  {
+    "no": 4,
+    "title": "自然与季节深场景",
+    "verdict": "adopt",
+    "choices": {},
+    "note": ""
+  },
+  {
+    "no": 5,
+    "title": "社交场景",
+    "verdict": "adopt",
+    "choices": {},
+    "note": ""
+  },
+  {
+    "no": 6,
+    "title": "学习成长场景",
+    "verdict": "adopt",
+    "choices": {},
+    "note": ""
+  },
+  {
+    "no": 7,
+    "title": "关系推进场景（早期好感切片）",
+    "verdict": "adopt",
+    "choices": {},
+    "note": ""
+  }
+]

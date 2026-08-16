@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>白未晞设定补齐建议（2026-08-15）</title>
+<style>
+  body { font-family: "Microsoft YaHei", sans-serif; margin: 0; background: #f1f5f9; color: #1e293b; }
+  header { background: #0f172a; color: #fff; padding: 14px 24px; position: sticky; top: 0; z-index: 10; }
+  header h1 { margin: 0; font-size: 18px; }
+  #progress { margin-top: 6px; font-size: 13px; color: #94a3b8; }
+  #tips { margin-top: 4px; font-size: 12px; color: #cbd5e1; }
+  .toolbar { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .btn { padding: 6px 14px; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  .btn.primary { background: #3b82f6; color: #fff; }
+  .btn.gray { background: #334155; color: #fff; }
+  .btn.green { background: #16a34a; color: #fff; }
+  main { max-width: 900px; margin: 20px auto; padding: 0 16px; }
+  .card { background: #fff; border-radius: 10px; padding: 18px 20px; margin-bottom: 16px;
+          box-shadow: 0 1px 3px rgba(0,0,0,.08); border-left: 4px solid #cbd5e1; }
+  .card.adopt { border-left-color: #22c55e; }
+  .card.reject { border-left-color: #ef4444; }
+  .card h2 { margin: 0 0 8px; font-size: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .tag { padding: 2px 8px; border-radius: 999px; color: #fff; font-size: 12px; }
+  .sec { font-size: 12px; color: #64748b; margin: 10px 0 4px; font-weight: 600; }
+  .current { background: #fef3c7; border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.7; color: #78350f; }
+  pre.yaml { background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 12px 14px; font-size: 12.5px;
+             line-height: 1.6; overflow-x: auto; margin: 6px 0 0; white-space: pre; font-family: Consolas, monospace; }
+  .followup { background: #ecfdf5; border-radius: 8px; padding: 8px 12px; font-size: 12.5px; color: #065f46; margin-top: 8px; }
+  .choices { margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .choice { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 4px 10px;
+            border: 1px solid #cbd5e1; border-radius: 999px; cursor: pointer; user-select: none; background: #fff; }
+  .choice.on { border-color: #0d9488; background: #ccfbf1; color: #134e4a; }
+  .verdict { margin-top: 14px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .vbtn { padding: 6px 18px; border: 2px solid #cbd5e1; border-radius: 8px; cursor: pointer; font-size: 14px; background: #fff; }
+  .vbtn.on-adopt { border-color: #22c55e; background: #dcfce7; color: #166534; }
+  .vbtn.on-reject { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+  .note { flex: 1; min-width: 180px; padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>训练对话场景扩充建议（7 项）</h1>
+  <div id="progress">已判定 0 / 7</div>
+  <div id="tips">逐项选择 采用/不采用；带子选项的项（#3/#5/#7）可细选。判定存本地，完成后点「导出 JSON」把结果发回。</div>
+  <div class="toolbar">
+    <button class="btn primary" id="nextBtn">下一个未判定 ↓</button>
+    <button class="btn primary" id="exportBtn">导出 JSON</button>
+    <button class="btn green" id="copyBtn">复制结果</button>
+    <button class="btn gray" id="resetBtn">重置</button>
+  </div>
+</header>
+<main id="main"></main>
+<script>
+const KEY = "scene_expansion_proposal_20260815";
+const ITEMS = [{"no": 1, "title": "节日庆典（补全节日线）", "tag": "场景族", "color": "#ef4444", "current": "已有中秋/元宵/跨年/元旦/端午/立冬。可补：春节（回老家？）、七夕、城市灯会、庙会、万圣节式城市活动。", "blocks": [["示例话题（casual）", "春节前买年货 / 春节联欢晚会 / 除夕包饺子 / 初一拜年（她第一次过年）\n七夕的灯 / 城市灯会 / 庙会小吃 / 猜灯谜 / 看舞狮 / 看皮影戏"]], "followup": "采用后写池（约 10 条）。", "choices": []}, {"no": 2, "title": "城市事件（世界观活动）", "tag": "场景族", "color": "#3b82f6", "current": "无。松江府是\"现代大都市\"（世界 bible 已声明），应有城市级活动。", "blocks": [["示例话题（casual）", "马拉松封路（绕路看热闹） / 周末市集（手作摊/旧书摊） / 花展（秋天的菊展）\n书展（她看漫画摊位） / 音乐节（广场演出） / 车展（她看跑车）\n动漫展（她看 cosplay，好奇） / 夜市美食节 / 江边灯光秀 / 无人机表演"]], "followup": "采用后写池（约 10 条）。", "choices": []}, {"no": 3, "title": "咖啡厅经营深场景", "tag": "场景族", "color": "#f59e0b", "current": "已有开店/打烊/拉花/菜单/外卖/熟客/绿植。可补：经营事件与阶段事件。", "blocks": [["示例话题（casual）", "咖啡厅一周年（你回想这一年） / 店庆活动（买一送一） / 装修翻新（她帮忙收拾）\n新品季（秋季限定） / 外卖平台评分（差评你发愁） / 会员日 / 供应商涨价\n雨天停电只能手冲 / 打烊后算账（她看你按计算器） / 换招牌 / 招聘兼职（她说不用招）"]], "followup": "采用后写池（约 11 条）。", "choices": []}, {"no": 4, "title": "自然与季节深场景", "tag": "场景族", "color": "#10b981", "current": "已有雨/雪/台风/梅雨/秋雨/初雪。可补：星空/日出/城市自然切片。", "blocks": [["示例话题（casual）", "看流星雨（她说深山里的星星更亮） / 江边看日出 / 清晨江雾 / 秋天的银杏大道\n桂花开（满城香） / 霜降（窗玻璃结霜） / 雷雨后彩虹 / 冬夜星空 / 春江水暖\n城市里的燕子（屋檐下的窝） / 老城区的梧桐树 / 江边的芦苇"]], "followup": "采用后写池（约 12 条）。", "choices": []}, {"no": 5, "title": "社交场景", "tag": "场景族", "color": "#8b5cf6", "current": "social 设定有大学同学/父母/熟客；社交类话题少。", "blocks": [["示例话题（casual/romance）", "同学来松江府出差（约吃饭，她问要不要一起去） / 朋友视频电话（她躲镜头）\n父母打电话问对象（他含糊带过，她听见了） / 邻居阿姨串门（送菜，她躲房间）\n熟客带小孩来（小孩摸猫，她躲） / 老同学聚会（他回来晚了，她等他）"]], "followup": "采用后写池（约 6 条）。", "choices": []}, {"no": 6, "title": "学习成长场景", "tag": "场景族", "color": "#06b6d4", "current": "已有学拼音/写字/地图/记账等基础。可补：现代生活进阶。", "blocks": [["示例话题（casual）", "学查公交路线（她第一次自己查） / 学转账（她怕按错） / 学网购（看物流）\n学拍照构图（她给你拍照） / 学做咖啡（拉花失败） / 学做饭进阶（学会两道菜）\n学认路自己回家（她走回来一脸得意） / 学用洗衣机分色（把白衣服染了）"]], "followup": "采用后写池（约 8 条）。", "choices": []}, {"no": 7, "title": "关系推进场景（早期好感切片）", "tag": "场景族", "color": "#ec4899", "current": "romance 池已有大量暧昧互动。可补：试探/依赖/想念/吃醋的进阶切片。", "blocks": [["示例话题（romance）", "她问你会不会一直开咖啡厅（试探你的未来有没有她） / 你出差她发消息（第一次主动联系）\n她学会等你消息 / 你生病她守着整夜 / 她吃醋（你夸女顾客拉花好看）\n她给你留了夜宵 / 你们聊到\"以后\"她没接话 / 她偷偷学你爱听的歌"]], "followup": "采用后写池（约 8 条）。", "choices": []}];
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e) {}
+
+function render() {
+  const main = document.getElementById("main");
+  main.innerHTML = "";
+  let judged = 0;
+  ITEMS.forEach(it => {
+    const v = state[it.no] || {};
+    if (v.verdict) judged++;
+    const card = document.createElement("div");
+    card.className = "card " + (v.verdict === "adopt" ? "adopt" : v.verdict === "reject" ? "reject" : "");
+    let blocksHtml = "";
+    it.blocks.forEach(b => {
+      blocksHtml += `<div class="sec">${b[0]}</div><pre class="yaml">${b[1]}</pre>`;
+    });
+    let choicesHtml = "";
+    it.choices.forEach(c => {
+      const key = c.key;
+      if (c.toggle) {
+        const on = (v.choices || {})[key] === true;
+        choicesHtml += `<span class="choice ${on ? "on" : ""}" data-no="${it.no}" data-key="${key}" data-toggle="1">${c.label} ${on ? "✓" : "☐"}</span>`;
+      } else {
+        const cur = (v.choices || {})[key] || "";
+        const opts = c.options.map(o =>
+          `<span class="choice ${cur === o ? "on" : ""}" data-no="${it.no}" data-key="${key}" data-opt="${o}">${o}</span>`
+        ).join("");
+        choicesHtml += `<span style="font-size:13px;color:#475569">${c.label}：</span>${opts}`;
+      }
+    });
+    card.innerHTML = `
+      <h2><span class="tag" style="background:${it.color}">${it.tag}</span>
+          <span>#${it.no} ${it.title}</span></h2>
+      <div class="sec">现状</div>
+      <div class="current">${it.current}</div>
+      ${blocksHtml}
+      <div class="followup">📎 采用后连锁：${it.followup}</div>
+      ${choicesHtml ? `<div class="choices">${choicesHtml}</div>` : ""}
+      <div class="verdict">
+        <button class="vbtn ${v.verdict === "adopt" ? "on-adopt" : ""}" data-no="${it.no}" data-v="adopt">✓ 采用</button>
+        <button class="vbtn ${v.verdict === "reject" ? "on-reject" : ""}" data-no="${it.no}" data-v="reject">✗ 不采用</button>
+        <input class="note" data-no="${it.no}" placeholder="备注（可选）" value="${(v.note || "").replace(/"/g, "&quot;")}">
+      </div>`;
+    main.appendChild(card);
+  });
+  document.getElementById("progress").textContent = `已判定 ${judged} / ${ITEMS.length}`;
+}
+
+function save() {
+  localStorage.setItem(KEY, JSON.stringify(state));
+  render();
+}
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".vbtn");
+  if (btn) {
+    state[btn.dataset.no] = state[btn.dataset.no] || {};
+    state[btn.dataset.no].verdict = btn.dataset.v;
+    save();
+  }
+  const choice = e.target.closest(".choice");
+  if (choice) {
+    const no = choice.dataset.no, key = choice.dataset.key;
+    state[no] = state[no] || {};
+    state[no].choices = state[no].choices || {};
+    if (choice.dataset.toggle) {
+      state[no].choices[key] = !state[no].choices[key];
+    } else {
+      state[no].choices[key] = choice.dataset.opt;
+    }
+    save();
+  }
+  if (e.target.id === "nextBtn") {
+    const first = ITEMS.find(it => !(state[it.no] || {}).verdict);
+    if (first) document.querySelector(`[data-no="${first.no}"]`)?.scrollIntoView({behavior: "smooth"});
+    else alert("全部已判定");
+  }
+  if (e.target.id === "exportBtn" || e.target.id === "copyBtn") {
+    const out = ITEMS.map(it => {
+      const v = state[it.no] || {};
+      return { no: it.no, title: it.title, verdict: v.verdict || "", choices: v.choices || {}, note: v.note || "" };
+    });
+    const text = JSON.stringify(out, null, 2);
+    if (e.target.id === "exportBtn") {
+      const blob = new Blob([text], {type: "application/json"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "setting_proposal_result_baiweixi.json";
+      a.click();
+    } else {
+      navigator.clipboard.writeText(text).then(() => alert("已复制 JSON"));
+    }
+  }
+  if (e.target.id === "resetBtn") {
+    if (confirm("确认重置全部判定？")) { state = {}; localStorage.removeItem(KEY); render(); }
+  }
+});
+
+document.addEventListener("input", e => {
+  if (e.target.classList.contains("note")) {
+    state[e.target.dataset.no] = state[e.target.dataset.no] || {};
+    state[e.target.dataset.no].note = e.target.value;
+    localStorage.setItem(KEY, JSON.stringify(state));
+  }
+});
+
+render();
+</script>
+</body>
+</html>

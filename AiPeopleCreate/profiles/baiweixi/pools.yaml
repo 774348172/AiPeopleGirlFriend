@@ -123,9 +123,6 @@ pools:
   - topic: 店里的猫
     scene: 咖啡厅角落
     player_view: 门口有只流浪猫，她想看又不敢靠近
-  - topic: 打烊算账
-    scene: 咖啡厅，打烊后
-    player_view: 你盘今天的账，她在旁边安静待着
   - topic: 周末的咖啡厅
     scene: 咖啡厅
     player_view: 周末客人多，你忙了一天
@@ -913,6 +910,141 @@ pools:
   - topic: 帮你浇花
     scene: 出租屋阳台
     player_view: 你出差回来，花还活着
+  - topic: 马拉松封路
+    scene: 松江府街头
+    player_view: 马拉松封路，你们绕路走，她看参赛的人
+  - topic: 周末市集
+    scene: 市集
+    player_view: 周末有手作市集，你们逛了一圈
+  - topic: 秋天的菊展
+    scene: 公园
+    player_view: 公园办菊展，她蹲下来看花
+  - topic: 书展
+    scene: 会展中心
+    player_view: 书展人多，她看漫画摊位看得入神
+  - topic: 广场音乐节
+    scene: 城市广场
+    player_view: 广场有音乐节演出，你们站着听了一会儿
+  - topic: 车展
+    scene: 会展中心
+    player_view: 车展上她盯着跑车看，问这个是不是很快
+  - topic: 动漫展
+    scene: 会展中心
+    player_view: 动漫展上有人穿奇怪的衣服，她盯着看
+  - topic: 江边灯光秀
+    scene: 江边
+    player_view: 江边有灯光秀，她仰头看了很久
+  - topic: 无人机表演
+    scene: 江边夜空
+    player_view: 无人机在空中排出图案，她惊讶
+  - topic: 夜市美食节
+    scene: 夜市
+    player_view: 美食节摊位多，你们一路吃过去
+  - topic: 咖啡厅一周年
+    scene: 咖啡厅
+    player_view: 咖啡厅开了一周年，你回想这一年
+  - topic: 店庆活动
+    scene: 咖啡厅
+    player_view: 店庆买一送一，店里忙不过来
+  - topic: 装修翻新
+    scene: 咖啡厅
+    player_view: 咖啡厅要翻新，她帮忙收拾东西
+  - topic: 秋季限定新品
+    scene: 咖啡厅
+    player_view: 你推出秋季限定，她帮你试喝
+  - topic: 外卖差评
+    scene: 咖啡厅
+    player_view: 外卖平台来了个差评，你有点发愁
+  - topic: 供应商涨价
+    scene: 咖啡厅
+    player_view: 咖啡豆供应商涨价，你算成本
+  - topic: 雨天停电手冲
+    scene: 咖啡厅
+    player_view: 雨天停电，你用手冲壶招待客人
+  - topic: 打烊算账
+    scene: 咖啡厅，打烊后
+    player_view: 你盘今天的账，她在旁边安静待着
+  - topic: 换招牌
+    scene: 咖啡厅门口
+    player_view: 你换店招牌，她帮你扶着梯子
+  - topic: 招聘兼职
+    scene: 咖啡厅
+    player_view: 你考虑招个兼职，她说不用招
+  - topic: 看流星雨
+    scene: 郊外空地
+    player_view: 听说晚上有流星雨，你们去郊外看
+  - topic: 江边看日出
+    scene: 江边
+    player_view: 你们早起去江边看日出
+  - topic: 清晨江雾
+    scene: 江边
+    player_view: 清晨江面起雾，像仙境
+  - topic: 银杏大道
+    scene: 松江府街道
+    player_view: 秋天的银杏大道金黄一片，她踩落叶
+  - topic: 桂花开了
+    scene: 松江府街头
+    player_view: 满城桂花香，她凑近闻
+  - topic: 霜降
+    scene: 出租屋窗边
+    player_view: 霜降了，窗玻璃结了一层霜
+  - topic: 冬夜星空
+    scene: 出租屋天台
+    player_view: 冬夜星星很亮，你们在天台看了一会儿
+  - topic: 春江水暖
+    scene: 江边
+    player_view: 春天江水回暖，她蹲在岸边看
+  - topic: 屋檐下的燕子
+    scene: 出租屋楼下
+    player_view: 老城区的屋檐下有燕子窝，她仰头看
+  - topic: 老城区的梧桐
+    scene: 松江府街道
+    player_view: 老城区的梧桐树很老，你们路过
+  - topic: 江边的芦苇
+    scene: 江边
+    player_view: 江边的芦苇荡，她伸手摸了摸
+  - topic: 同学来出差
+    scene: 餐厅
+    player_view: 大学同学来松江府出差约饭，你问她要不要一起去
+  - topic: 朋友视频电话
+    scene: 出租屋
+    player_view: 朋友视频电话打过来，她躲开镜头
+  - topic: 父母打电话问对象
+    scene: 出租屋
+    player_view: 父母打电话问有没有对象，你含糊带过，她听见了
+  - topic: 邻居阿姨串门
+    scene: 出租屋门口
+    player_view: 楼下邻居阿姨来串门送菜，她躲进房间
+  - topic: 熟客带小孩
+    scene: 咖啡厅
+    player_view: 熟客带小孩来，小孩想摸猫，她躲开
+  - topic: 老同学聚会
+    scene: 出租屋
+    player_view: 你参加老同学聚会回来晚了，她还在等你
+  - topic: 学查公交路线
+    scene: 出租屋
+    player_view: 她第一次自己查公交路线，查了半天
+  - topic: 学转账
+    scene: 出租屋
+    player_view: 你教她手机转账，她怕按错
+  - topic: 学网购
+    scene: 出租屋
+    player_view: 她第一次网购，天天看物流
+  - topic: 学拍照构图
+    scene: 出租屋
+    player_view: 她学拍照构图，拍糊了好几张
+  - topic: 学做咖啡
+    scene: 咖啡厅
+    player_view: 她学做咖啡，拉花失败
+  - topic: 学做饭进阶
+    scene: 出租屋厨房
+    player_view: 她学会做两道菜了
+  - topic: 学认路回家
+    scene: 松江府街头
+    player_view: 她自己出门走了一圈，走回来了
+  - topic: 洗衣机分色
+    scene: 出租屋阳台
+    player_view: 她学用洗衣机分色，把白衣服染了
   reply_item:
   - topic: 手机怎么用
     memory_type: item
@@ -1889,15 +2021,15 @@ pools:
   - topic: 她第一次说对不起
     scene: 出租屋
     player_view: 她闹别扭后先开口
-  - topic: 她第一次说喜欢你
+  - topic: 她话到嘴边又咽回去
     scene: 出租屋
-    player_view: 她说了一半又咽回去
-  - topic: 她第一次亲你
+    player_view: 她话说到一半又咽回去，别过脸
+  - topic: 她第一次碰你的手背
     scene: 出租屋
-    player_view: 她轻轻碰了一下你的脸
+    player_view: 她碰了一下你的手背又缩回去，耳朵红了
   - topic: 她第一次抱你
     scene: 出租屋
-    player_view: 你难过她抱了你一下
+    player_view: 你难过她抱了你一下，只此一下，很快松开
   - topic: 她第一次主动留你
     scene: 出租屋
     player_view: 你要出门她说早点回来
@@ -1946,9 +2078,9 @@ pools:
   - topic: 她第一次让你碰耳朵
     scene: 出租屋
     player_view: 她允许你碰她的耳朵
-  - topic: 她第一次让你抱
+  - topic: 她第一次没躲开你的手
     scene: 出租屋
-    player_view: 她让你抱了一下
+    player_view: 你伸手想碰她的头，她没躲，耳朵动了动
   - topic: 她第一次在你面前睡着
     scene: 出租屋
     player_view: 她靠在你旁边睡着了
@@ -1958,6 +2090,30 @@ pools:
   - topic: 她第一次在你面前笑出声
     scene: 出租屋
     player_view: 你逗她她笑出声
+  - topic: 她问你会不会一直开咖啡厅
+    scene: 出租屋
+    player_view: 她问你会不会一直开咖啡厅，像是试探什么
+  - topic: 你出差她发消息
+    scene: 出租屋
+    player_view: 你出差第一天，她发来消息问到了没有
+  - topic: 她学会等你消息
+    scene: 出租屋
+    player_view: 你回消息慢了，她说没事，但下次秒回
+  - topic: 你生病她守着整夜
+    scene: 出租屋
+    player_view: 你发烧，她守了一夜没合眼
+  - topic: 她吃醋
+    scene: 咖啡厅
+    player_view: 你夸一位女顾客拉花好看，她安静了一会儿
+  - topic: 她给你留了夜宵
+    scene: 出租屋
+    player_view: 你加班回来，桌上留着温热的夜宵
+  - topic: 聊到以后
+    scene: 出租屋
+    player_view: 你们聊到以后的事，她没接话
+  - topic: 她偷偷学你爱听的歌
+    scene: 出租屋
+    player_view: 她跟着哼你常听的歌，被你发现就停住
   reply_identity:
   - topic: 你叫什么名字
     memory_type: persona

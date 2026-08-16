@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>白未晞设定补齐建议（2026-08-15）</title>
+<style>
+  body { font-family: "Microsoft YaHei", sans-serif; margin: 0; background: #f1f5f9; color: #1e293b; }
+  header { background: #0f172a; color: #fff; padding: 14px 24px; position: sticky; top: 0; z-index: 10; }
+  header h1 { margin: 0; font-size: 18px; }
+  #progress { margin-top: 6px; font-size: 13px; color: #94a3b8; }
+  #tips { margin-top: 4px; font-size: 12px; color: #cbd5e1; }
+  .toolbar { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .btn { padding: 6px 14px; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  .btn.primary { background: #3b82f6; color: #fff; }
+  .btn.gray { background: #334155; color: #fff; }
+  .btn.green { background: #16a34a; color: #fff; }
+  main { max-width: 900px; margin: 20px auto; padding: 0 16px; }
+  .card { background: #fff; border-radius: 10px; padding: 18px 20px; margin-bottom: 16px;
+          box-shadow: 0 1px 3px rgba(0,0,0,.08); border-left: 4px solid #cbd5e1; }
+  .card.adopt { border-left-color: #22c55e; }
+  .card.reject { border-left-color: #ef4444; }
+  .card h2 { margin: 0 0 8px; font-size: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .tag { padding: 2px 8px; border-radius: 999px; color: #fff; font-size: 12px; }
+  .sec { font-size: 12px; color: #64748b; margin: 10px 0 4px; font-weight: 600; }
+  .current { background: #fef3c7; border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.7; color: #78350f; }
+  pre.yaml { background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 12px 14px; font-size: 12.5px;
+             line-height: 1.6; overflow-x: auto; margin: 6px 0 0; white-space: pre; font-family: Consolas, monospace; }
+  .followup { background: #ecfdf5; border-radius: 8px; padding: 8px 12px; font-size: 12.5px; color: #065f46; margin-top: 8px; }
+  .choices { margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .choice { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 4px 10px;
+            border: 1px solid #cbd5e1; border-radius: 999px; cursor: pointer; user-select: none; background: #fff; }
+  .choice.on { border-color: #0d9488; background: #ccfbf1; color: #134e4a; }
+  .verdict { margin-top: 14px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .vbtn { padding: 6px 18px; border: 2px solid #cbd5e1; border-radius: 8px; cursor: pointer; font-size: 14px; background: #fff; }
+  .vbtn.on-adopt { border-color: #22c55e; background: #dcfce7; color: #166534; }
+  .vbtn.on-reject { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+  .note { flex: 1; min-width: 180px; padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>白未晞 人设完善建议（三）（3 项）</h1>
+  <div id="progress">已判定 0 / 3</div>
+  <div id="tips">逐项选择 采用/不采用；带子选项的项（#3/#5/#7）可细选。判定存本地，完成后点「导出 JSON」把结果发回。</div>
+  <div class="toolbar">
+    <button class="btn primary" id="nextBtn">下一个未判定 ↓</button>
+    <button class="btn primary" id="exportBtn">导出 JSON</button>
+    <button class="btn green" id="copyBtn">复制结果</button>
+    <button class="btn gray" id="resetBtn">重置</button>
+  </div>
+</header>
+<main id="main"></main>
+<script>
+const KEY = "baiweixi_persona_proposal3_20260815";
+const ITEMS = [{"no": 1, "title": "妖力系统细节", "tag": "C · 防乱写", "color": "#8b5cf6", "current": "minor_spells 5 项 + 封闭条款；但每项法术的使用条件/消耗/恢复节奏无细节，教师生成妖力场景仍可能乱写。", "blocks": [["bible abilities 补 magic_system", "  magic_system:   # 妖力使用细节（2026-08-15；与 minor_spells/limits 一致）\n    recovery: Day 11 恢复约七成；完全恢复约需 1-2 周（期间大消耗后需半天-一天缓）\n    switch_cost: 猫形↔人形切换有消耗：一天 3-4 次以内轻松，多次连续切换会明显疲惫\n    spell_cost:\n      hide_ears_tail: 短时（数小时）隐藏；长时间隐藏会疲惫并可能露馅\n      move_light:     轻物小幅移动，距离 1-2 米内，重物/大件不行\n      sense_qi:       被动感知明显灵气/妖气；需要专注，嘈杂环境不灵\n      night_vision:   被动；黑暗中清晰，不消耗妖力\n      heal_fast:      小伤加速愈合（擦伤/淤青），重伤不行、不能替代治疗\n    exhaustion: 妖力透支表现：耳尾藏不住、打盹、虚弱；不会昏迷/失忆/暴走（不写夸张后果）"]], "followup": "写入 bible + 定稿。", "choices": []}, {"no": 2, "title": "句式库扩展（6 组）", "tag": "E · 生成多样性", "color": "#3b82f6", "current": "speech_patterns 现有 8 组；缺吃醋/拒绝/被逗/软/生气/和好场景句式——生成时教师靠自由发挥，口吻容易跑偏。", "blocks": [["bible speech_patterns 补 6 组", "  jealous:       # 吃醋（说不关心，却追问）\n    - \"……哦。她明天还来？\"\n    - \"挺好的。……你们聊得挺多。\"\n    - \"我又没问。……不过她住附近吗？\"\n  refuse:        # 拒绝（不冷、不解释太多）\n    - \"不用。……我自己来。\"\n    - \"我不去。……你玩得开心。\"\n    - \"再说吧。……今天不想出门。\"\n  teased:        # 被逗（嘴硬但不生气）\n    - \"……你话真多。\"\n    - \"少来。……我才没有。\"\n    - \"……哼。（耳朵动了动）\"\n  soft:          # 软（撒娇边界内，不卖萌）\n    - \"……嗯。你回来啦。\"\n    - \"……我等你呢。\"\n    - \"……今天可以多待一会儿。\"\n  angry:         # 生气（闹别扭不吵架）\n    - \"……随你。\"\n    - \"我没事。……你别管我。\"\n    - \"（不理你，背对着）\"\n  makeup:        # 和好（借别的事开口）\n    - \"……粥好了，来喝。\"\n    - \"你饿不饿？……我热了饭。\"\n    - \"……你鞋带散了。\""]], "followup": "写入 bible speech_patterns。", "choices": []}, {"no": 3, "title": "关系推进节奏表", "tag": "H · 长期主线边界", "color": "#ef4444", "current": "plot_reserve 只有一句\"不推进到确认恋爱\"；无阶段定义/触发条件——长期数据生成没有边界，教师可能突然写关系飞跃。", "blocks": [["bible plot_reserve 补 relationship_stages", "  relationship_stages:\n    stage2_current:      # 当前：早期好感·暂住稳定（Day 11 起）\n      marker: 隐晦表达不想走、同房睡着、咖啡厅钥匙帮忙、允许碰耳尾\n      allowed: 行动关心（留灯/递水/盖毯子）、暧昧试探（她问你会不会一直开咖啡厅）、吃醋\n      not_allowed: 亲吻、告白、索抱、同床、亲密称呼、规划共同未来\n    stage3_future:       # 未来：好感确认·暧昧加深（未触发）\n      trigger_candidates: 她主动交付一个秘密（如传承细节）/ 玩家持续照顾的某个关键时刻 /\n                          某个共同经历的事件（作者从候选选定）\n      marker: 她承认喜欢（隐晦→半明）、允许更亲密接触（拥抱不躲）\n    stage4_far:          # 更远：确认关系（未触发）\n      marker: 正式确认恋爱关系、亲密称呼、共同规划\n    rule: 阶段不自动推进：无触发事件不得越阶段；数据生成始终落在当前阶段边界内"]], "followup": "触发条件作者选定后写入；未选定时 stage3 保持未触发。", "choices": []}];
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e) {}
+
+function render() {
+  const main = document.getElementById("main");
+  main.innerHTML = "";
+  let judged = 0;
+  ITEMS.forEach(it => {
+    const v = state[it.no] || {};
+    if (v.verdict) judged++;
+    const card = document.createElement("div");
+    card.className = "card " + (v.verdict === "adopt" ? "adopt" : v.verdict === "reject" ? "reject" : "");
+    let blocksHtml = "";
+    it.blocks.forEach(b => {
+      blocksHtml += `<div class="sec">${b[0]}</div><pre class="yaml">${b[1]}</pre>`;
+    });
+    let choicesHtml = "";
+    it.choices.forEach(c => {
+      const key = c.key;
+      if (c.toggle) {
+        const on = (v.choices || {})[key] === true;
+        choicesHtml += `<span class="choice ${on ? "on" : ""}" data-no="${it.no}" data-key="${key}" data-toggle="1">${c.label} ${on ? "✓" : "☐"}</span>`;
+      } else {
+        const cur = (v.choices || {})[key] || "";
+        const opts = c.options.map(o =>
+          `<span class="choice ${cur === o ? "on" : ""}" data-no="${it.no}" data-key="${key}" data-opt="${o}">${o}</span>`
+        ).join("");
+        choicesHtml += `<span style="font-size:13px;color:#475569">${c.label}：</span>${opts}`;
+      }
+    });
+    card.innerHTML = `
+      <h2><span class="tag" style="background:${it.color}">${it.tag}</span>
+          <span>#${it.no} ${it.title}</span></h2>
+      <div class="sec">现状</div>
+      <div class="current">${it.current}</div>
+      ${blocksHtml}
+      <div class="followup">📎 采用后连锁：${it.followup}</div>
+      ${choicesHtml ? `<div class="choices">${choicesHtml}</div>` : ""}
+      <div class="verdict">
+        <button class="vbtn ${v.verdict === "adopt" ? "on-adopt" : ""}" data-no="${it.no}" data-v="adopt">✓ 采用</button>
+        <button class="vbtn ${v.verdict === "reject" ? "on-reject" : ""}" data-no="${it.no}" data-v="reject">✗ 不采用</button>
+        <input class="note" data-no="${it.no}" placeholder="备注（可选）" value="${(v.note || "").replace(/"/g, "&quot;")}">
+      </div>`;
+    main.appendChild(card);
+  });
+  document.getElementById("progress").textContent = `已判定 ${judged} / ${ITEMS.length}`;
+}
+
+function save() {
+  localStorage.setItem(KEY, JSON.stringify(state));
+  render();
+}
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".vbtn");
+  if (btn) {
+    state[btn.dataset.no] = state[btn.dataset.no] || {};
+    state[btn.dataset.no].verdict = btn.dataset.v;
+    save();
+  }
+  const choice = e.target.closest(".choice");
+  if (choice) {
+    const no = choice.dataset.no, key = choice.dataset.key;
+    state[no] = state[no] || {};
+    state[no].choices = state[no].choices || {};
+    if (choice.dataset.toggle) {
+      state[no].choices[key] = !state[no].choices[key];
+    } else {
+      state[no].choices[key] = choice.dataset.opt;
+    }
+    save();
+  }
+  if (e.target.id === "nextBtn") {
+    const first = ITEMS.find(it => !(state[it.no] || {}).verdict);
+    if (first) document.querySelector(`[data-no="${first.no}"]`)?.scrollIntoView({behavior: "smooth"});
+    else alert("全部已判定");
+  }
+  if (e.target.id === "exportBtn" || e.target.id === "copyBtn") {
+    const out = ITEMS.map(it => {
+      const v = state[it.no] || {};
+      return { no: it.no, title: it.title, verdict: v.verdict || "", choices: v.choices || {}, note: v.note || "" };
+    });
+    const text = JSON.stringify(out, null, 2);
+    if (e.target.id === "exportBtn") {
+      const blob = new Blob([text], {type: "application/json"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "setting_proposal_result_baiweixi.json";
+      a.click();
+    } else {
+      navigator.clipboard.writeText(text).then(() => alert("已复制 JSON"));
+    }
+  }
+  if (e.target.id === "resetBtn") {
+    if (confirm("确认重置全部判定？")) { state = {}; localStorage.removeItem(KEY); render(); }
+  }
+});
+
+document.addEventListener("input", e => {
+  if (e.target.classList.contains("note")) {
+    state[e.target.dataset.no] = state[e.target.dataset.no] || {};
+    state[e.target.dataset.no].note = e.target.value;
+    localStorage.setItem(KEY, JSON.stringify(state));
+  }
+});
+
+render();
+</script>
+</body>
+</html>

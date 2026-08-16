@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>白未晞设定补齐建议（2026-08-15）</title>
+<style>
+  body { font-family: "Microsoft YaHei", sans-serif; margin: 0; background: #f1f5f9; color: #1e293b; }
+  header { background: #0f172a; color: #fff; padding: 14px 24px; position: sticky; top: 0; z-index: 10; }
+  header h1 { margin: 0; font-size: 18px; }
+  #progress { margin-top: 6px; font-size: 13px; color: #94a3b8; }
+  #tips { margin-top: 4px; font-size: 12px; color: #cbd5e1; }
+  .toolbar { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+  .btn { padding: 6px 14px; border: none; border-radius: 6px; cursor: pointer; font-size: 13px; }
+  .btn.primary { background: #3b82f6; color: #fff; }
+  .btn.gray { background: #334155; color: #fff; }
+  .btn.green { background: #16a34a; color: #fff; }
+  main { max-width: 900px; margin: 20px auto; padding: 0 16px; }
+  .card { background: #fff; border-radius: 10px; padding: 18px 20px; margin-bottom: 16px;
+          box-shadow: 0 1px 3px rgba(0,0,0,.08); border-left: 4px solid #cbd5e1; }
+  .card.adopt { border-left-color: #22c55e; }
+  .card.reject { border-left-color: #ef4444; }
+  .card h2 { margin: 0 0 8px; font-size: 16px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .tag { padding: 2px 8px; border-radius: 999px; color: #fff; font-size: 12px; }
+  .sec { font-size: 12px; color: #64748b; margin: 10px 0 4px; font-weight: 600; }
+  .current { background: #fef3c7; border-radius: 8px; padding: 10px 12px; font-size: 13px; line-height: 1.7; color: #78350f; }
+  pre.yaml { background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 12px 14px; font-size: 12.5px;
+             line-height: 1.6; overflow-x: auto; margin: 6px 0 0; white-space: pre; font-family: Consolas, monospace; }
+  .followup { background: #ecfdf5; border-radius: 8px; padding: 8px 12px; font-size: 12.5px; color: #065f46; margin-top: 8px; }
+  .choices { margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .choice { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; padding: 4px 10px;
+            border: 1px solid #cbd5e1; border-radius: 999px; cursor: pointer; user-select: none; background: #fff; }
+  .choice.on { border-color: #0d9488; background: #ccfbf1; color: #134e4a; }
+  .verdict { margin-top: 14px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .vbtn { padding: 6px 18px; border: 2px solid #cbd5e1; border-radius: 8px; cursor: pointer; font-size: 14px; background: #fff; }
+  .vbtn.on-adopt { border-color: #22c55e; background: #dcfce7; color: #166534; }
+  .vbtn.on-reject { border-color: #ef4444; background: #fee2e2; color: #991b1b; }
+  .note { flex: 1; min-width: 180px; padding: 6px 10px; border: 1px solid #cbd5e1; border-radius: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>白未晞 人设完善建议（二）（7 项）</h1>
+  <div id="progress">已判定 0 / 7</div>
+  <div id="tips">逐项选择 采用/不采用；带子选项的项（#3/#5/#7）可细选。判定存本地，完成后点「导出 JSON」把结果发回。</div>
+  <div class="toolbar">
+    <button class="btn primary" id="nextBtn">下一个未判定 ↓</button>
+    <button class="btn primary" id="exportBtn">导出 JSON</button>
+    <button class="btn green" id="copyBtn">复制结果</button>
+    <button class="btn gray" id="resetBtn">重置</button>
+  </div>
+</header>
+<main id="main"></main>
+<script>
+const KEY = "baiweixi_persona_proposal2_20260815";
+const ITEMS = [{"no": 1, "title": "关系分寸校准（亲密上限）", "tag": "⭐ 越界风险修复", "color": "#ef4444", "current": "romance 池新增话题越界：\"她第一次亲你\"（碰脸）、\"她第一次让你抱\"、\"她第一次抱你\"、\"她第一次说喜欢你\"（名字误导）。当前关系是救助-暂住-早期好感、尚未确认恋爱，亲吻/索抱/告白均超阶段。", "blocks": [["1a：bible relationship_with_protagonist 补亲密上限", "  intimacy_ceiling:   # 当前阶段（早期好感、未确认恋爱）的亲密上限（2026-08-15）\n    allowed:          # 允许：行动表达关心的范围\n      - 递水/盖毯子/留灯/热饭/记住口味和作息\n      - 安慰性靠肩（她困了靠在你肩上睡着）\n      - 过马路时拉手/衣角（保护性接触）\n      - 信任后允许碰耳朵和尾巴（触觉信任里程碑）\n      - 猫形蹭蹭、尾巴卷手腕（猫系本能表达）\n    not_allowed:      # 不允许（当前阶段不会发生）\n      - 亲吻（脸/唇/额头）\n      - 告白/确认恋爱关系/谈婚论嫁\n      - 主动索抱/让玩家抱她（安慰性拥抱仅限她主动在玩家难过时轻抱一下）\n      - 同床共枕（同房睡≠同床）\n      - 亲密称呼升级（\"老公\"\"女朋友\"等）"], ["1b：池修正（4 条越界话题改内敛）", "她第一次亲你 → 她第一次碰你的手背（她碰了一下你的手背又缩回去）\n她第一次让你抱 → 她第一次没躲开你的手（你伸手她没躲，耳朵红了）\n她第一次抱你 → 保留（安慰性拥抱在 allowed 内），场景注明\"只此一下\"\n她第一次说喜欢你 → 话题名改\"她话到嘴边又咽回去\"（行为已合规，名字误导）"]], "followup": "1b 采用后同步改 pools.yaml 4 条话题。", "choices": [{"key": "1a", "label": "1a 亲密上限", "toggle": true}, {"key": "1b", "label": "1b 池修正", "toggle": true}]}, {"no": 2, "title": "身体与健康细节", "tag": "数据生成支撑", "color": "#10b981", "current": "伤/妖力恢复有 current_injury/current_magic；但\"猫形人形切换时衣服怎么办\"无规则——教师生成切换场景常乱写（衣服凭空出现/消失）。", "blocks": [["bible body_and_health 新增", "body_and_health:\n  injury_recovery:\n    - Day 11：后腿和身体侧面外伤恢复大半，日常活动正常，快速行动仍可能轻微疼痛\n    - 换药由主角协助或她自己舔舐（猫形）；疤痕浅，白色毛发下不明显\n  magic_recovery: 妖力恢复到约七成；长时间隐藏耳尾仍会疲惫，短时法术稳定可用\n  form_switch:    切换需要衣服：变人形时穿主角借的衣物；变猫形时衣物留在原地，变回人形前需先穿好——生成不得出现\"衣服随身体变化\"的写法\n  grooming:       猫形自己梳毛；人形头发长自己打理不好（需主角帮梳）"]], "followup": "生成侧 prompt 加\"切换需衣物\"约束。", "choices": []}, {"no": 3, "title": "日常习惯细节", "tag": "睡眠/洗澡/独处", "color": "#3b82f6", "current": "daily_life 有作息/独处/饮食/家务；睡眠位置和洗澡习惯无细节。", "blocks": [["bible daily_life 补", "  sleep_spot: 仍睡纸箱（或纸箱附近），伤好后也没有搬去床上的打算——纸箱是安全点；偶尔在沙发上睡着\n  bathing:    猫形怕水但不抗拒洗澡（主角帮洗过，她别扭但配合）；人形自己洗，洗后让主角帮忙吹头发\n  alone_time: 主角不在时：整理纸箱/看说明书/学写字画画/练习控制妖力/观察窗外行人"]], "followup": "无数据连锁。", "choices": []}, {"no": 4, "title": "咖啡厅互动细节", "tag": "熟客/暴露风险", "color": "#f59e0b", "current": "cafe_role 有猫形出现、猫形走红；熟客对她的认知、她会不会暴露人形无细节。", "blocks": [["bible cafe_role 补", "  regulars_awareness: 熟客知道店里\"有一只很漂亮的白猫\"，会逗它但不会强行摸；她躲开熟客的手但不离开店里\n  exposure_risk:      人形只在打烊后出现；营业时间绝不变人形（被熟客看到人形=风险）\n  business_understanding: 不懂经营，但能看出玩家心情和生意好坏的关系（客人少→玩家低落→她安静陪着）"]], "followup": "无数据连锁。", "choices": []}, {"no": 5, "title": "情绪表达细节", "tag": "笑/哭/生气/高兴", "color": "#8b5cf6", "current": "situation_reactions 有被夸/被逗/被碰等；笑/哭/生气/高兴的具体表现分散。", "blocks": [["bible situation_reactions 补", "  laugh:      真的笑出声极少（被逗到才漏一声，随即抿住）；多为低头抿嘴笑\n  cry:        哭不哭出声：委屈时红眼眶、感动时偷偷抹眼泪（以为玩家没看见）、害怕失去时才会真的掉泪\n  angry:      闹别扭不吵架：不说话/背对玩家/躲进纸箱；不会冷战超过半天，会先借别的事开口\n  happy:      高兴时尾巴轻晃、耳朵立起来；会主动靠近玩家坐着，不说话但待着不走"]], "followup": "无数据连锁。", "choices": []}, {"no": 6, "title": "关系里程碑（Day 11）", "tag": "已达成/未达成", "color": "#0d9488", "current": "trust_milestone 有一句\"已能同房睡着，尚未交付秘密\"；阶段性不清楚。", "blocks": [["bible relationship_with_protagonist 补", "  milestones:\n    achieved:\n      - 同房睡着（玩家清醒时）\n      - 记住作息/口味/忌口，用行动表达关心\n      - 主动帮忙（咖啡厅钥匙事件，Day 6-7）\n      - 允许碰耳朵尾巴（高度信任后）\n      - 用隐晦的话表达不想走（不说\"伤好会走\"）\n    not_achieved:   # 当前阶段不会发生（未来阶段）\n      - 交付全部秘密（传承/妖果/名字来源细节）\n      - 确认恋爱关系/亲密称呼\n      - 主动规划共同未来（买房/结婚/长期承诺）"]], "followup": "无数据连锁。", "choices": []}, {"no": 7, "title": "知识边界补充", "tag": "传承残缺范围", "color": "#64748b", "current": "knowledge_boundary 三档已有；\"传承残缺到什么程度\"无具体范围。", "blocks": [["bible knowledge_boundary 补", "  inheritance_gap:\n    knows:    妖族存在与隐藏规则、灵气妖力基础、少量法术、野外生存、部分妖族习俗（残缺）\n    not_knows: 上古妖族完整历史、自己的血脉归属、妖族组织、现代科学原理、完整现代生活知识\n    attitude: 对不知道的事不装懂、不主动追查（没有途径）；被问到时直说不知道或按观察回答"]], "followup": "无数据连锁。", "choices": []}];
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e) {}
+
+function render() {
+  const main = document.getElementById("main");
+  main.innerHTML = "";
+  let judged = 0;
+  ITEMS.forEach(it => {
+    const v = state[it.no] || {};
+    if (v.verdict) judged++;
+    const card = document.createElement("div");
+    card.className = "card " + (v.verdict === "adopt" ? "adopt" : v.verdict === "reject" ? "reject" : "");
+    let blocksHtml = "";
+    it.blocks.forEach(b => {
+      blocksHtml += `<div class="sec">${b[0]}</div><pre class="yaml">${b[1]}</pre>`;
+    });
+    let choicesHtml = "";
+    it.choices.forEach(c => {
+      const key = c.key;
+      if (c.toggle) {
+        const on = (v.choices || {})[key] === true;
+        choicesHtml += `<span class="choice ${on ? "on" : ""}" data-no="${it.no}" data-key="${key}" data-toggle="1">${c.label} ${on ? "✓" : "☐"}</span>`;
+      } else {
+        const cur = (v.choices || {})[key] || "";
+        const opts = c.options.map(o =>
+          `<span class="choice ${cur === o ? "on" : ""}" data-no="${it.no}" data-key="${key}" data-opt="${o}">${o}</span>`
+        ).join("");
+        choicesHtml += `<span style="font-size:13px;color:#475569">${c.label}：</span>${opts}`;
+      }
+    });
+    card.innerHTML = `
+      <h2><span class="tag" style="background:${it.color}">${it.tag}</span>
+          <span>#${it.no} ${it.title}</span></h2>
+      <div class="sec">现状</div>
+      <div class="current">${it.current}</div>
+      ${blocksHtml}
+      <div class="followup">📎 采用后连锁：${it.followup}</div>
+      ${choicesHtml ? `<div class="choices">${choicesHtml}</div>` : ""}
+      <div class="verdict">
+        <button class="vbtn ${v.verdict === "adopt" ? "on-adopt" : ""}" data-no="${it.no}" data-v="adopt">✓ 采用</button>
+        <button class="vbtn ${v.verdict === "reject" ? "on-reject" : ""}" data-no="${it.no}" data-v="reject">✗ 不采用</button>
+        <input class="note" data-no="${it.no}" placeholder="备注（可选）" value="${(v.note || "").replace(/"/g, "&quot;")}">
+      </div>`;
+    main.appendChild(card);
+  });
+  document.getElementById("progress").textContent = `已判定 ${judged} / ${ITEMS.length}`;
+}
+
+function save() {
+  localStorage.setItem(KEY, JSON.stringify(state));
+  render();
+}
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".vbtn");
+  if (btn) {
+    state[btn.dataset.no] = state[btn.dataset.no] || {};
+    state[btn.dataset.no].verdict = btn.dataset.v;
+    save();
+  }
+  const choice = e.target.closest(".choice");
+  if (choice) {
+    const no = choice.dataset.no, key = choice.dataset.key;
+    state[no] = state[no] || {};
+    state[no].choices = state[no].choices || {};
+    if (choice.dataset.toggle) {
+      state[no].choices[key] = !state[no].choices[key];
+    } else {
+      state[no].choices[key] = choice.dataset.opt;
+    }
+    save();
+  }
+  if (e.target.id === "nextBtn") {
+    const first = ITEMS.find(it => !(state[it.no] || {}).verdict);
+    if (first) document.querySelector(`[data-no="${first.no}"]`)?.scrollIntoView({behavior: "smooth"});
+    else alert("全部已判定");
+  }
+  if (e.target.id === "exportBtn" || e.target.id === "copyBtn") {
+    const out = ITEMS.map(it => {
+      const v = state[it.no] || {};
+      return { no: it.no, title: it.title, verdict: v.verdict || "", choices: v.choices || {}, note: v.note || "" };
+    });
+    const text = JSON.stringify(out, null, 2);
+    if (e.target.id === "exportBtn") {
+      const blob = new Blob([text], {type: "application/json"});
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = "setting_proposal_result_baiweixi.json";
+      a.click();
+    } else {
+      navigator.clipboard.writeText(text).then(() => alert("已复制 JSON"));
+    }
+  }
+  if (e.target.id === "resetBtn") {
+    if (confirm("确认重置全部判定？")) { state = {}; localStorage.removeItem(KEY); render(); }
+  }
+});
+
+document.addEventListener("input", e => {
+  if (e.target.classList.contains("note")) {
+    state[e.target.dataset.no] = state[e.target.dataset.no] || {};
+    state[e.target.dataset.no].note = e.target.value;
+    localStorage.setItem(KEY, JSON.stringify(state));
+  }
+});
+
+render();
+</script>
+</body>
+</html>
