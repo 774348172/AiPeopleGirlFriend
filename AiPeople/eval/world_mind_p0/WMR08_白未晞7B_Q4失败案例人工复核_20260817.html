@@ -151,11 +151,11 @@ function render(){
     });
 
     const d = v.decision;
-    const btn = function(val, label, cls){ return '<button class="'+(d===val?cls:'')+'" onclick="setVerdict('+ci+','+JSON.stringify(val)+')">'+label+'</button>'; };
+    const btn = function(val, label, cls){ return '<button type="button" data-ci="'+ci+'" data-verdict="'+val+'" class="'+(d===val?cls:'')+'">'+label+'</button>'; };
     body += '<div class="verdict">'+
       btn('pass','PASS 误杀','on-pass')+btn('fail','FAIL 真失败','on-fail')+btn('joint','JOINT 联合','on-joint')+
-      '<button onclick="setVerdict('+ci+','+JSON.stringify('')+')">清除</button></div>'+
-      '<input class="note-input" placeholder="裁决备注（可选）" value="'+esc(v.note||'')+'" onchange="setNote('+ci+', this.value)">';
+      '<button type="button" data-ci="'+ci+'" data-verdict="">清除</button></div>'+
+      '<input class="note-input" placeholder="裁决备注（可选）" value="'+esc(v.note||'')+'" data-ci="'+ci+'">';
 
     box.insertAdjacentHTML('beforeend', '<div class="case" id="case-'+ci+'">'+head+'<div class="case-body">'+body+'</div></div>');
   });
@@ -181,6 +181,20 @@ function setNote(ci, val){
   verdicts[c.case_id] = {decision:(verdicts[c.case_id]||{}).decision||'', note:val};
   localStorage.setItem(KEY, JSON.stringify(verdicts));
 }
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('button[data-ci]');
+  if(!btn) return;
+  const ci = parseInt(btn.getAttribute('data-ci'), 10);
+  if(!isFinite(ci)) return;
+  setVerdict(ci, btn.getAttribute('data-verdict') || '');
+});
+document.addEventListener('change', function(e){
+  if(e.target.classList && e.target.classList.contains('note-input')){
+    const ci = parseInt(e.target.getAttribute('data-ci'), 10);
+    if(!isFinite(ci)) return;
+    setNote(ci, e.target.value);
+  }
+});
 function clearAll(){
   if(!confirm('清空全部裁决记录？')) return;
   verdicts = {}; localStorage.removeItem(KEY); render();
