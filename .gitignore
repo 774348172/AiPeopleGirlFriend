@@ -1,0 +1,5 @@
+# 正典单副本：物理文件只存在于仓库根 人物设定/。
+# AiPeople/人物设定 与 AiPeopleCreate/人物设定 是指向它的 Windows junction，
+# 内容由根目录 人物设定/ 跟踪，junction 路径本身不进入 git。
+/AiPeople/人物设定/
+/AiPeopleCreate/人物设定/

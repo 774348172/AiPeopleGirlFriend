@@ -9,7 +9,7 @@
 data_gen/              旧生成器（V1 管线：gen_qwx / gen_yuqian）
 data_gen_v4/           V4 通用生成器核心（core / adapters / schemas / packages / prompts）
 profiles/              V4 角色包（当前：baiweixi/ 白未晞 P0 女主角；qinweixi/ 秦未晞历史包）
-人物设定/              正典唯一物理副本（AI 程序侧为 junction；维护只改本目录）
+人物设定/              正典 junction（物理副本在仓库根 `人物设定/`，与本目录同级；维护只改仓库根物理文件）
 历史与调研文档/        历史角色正典副本（秦未晞 2026-08-08 迁入，供历史包编译对照）
 gen_v4.py              V4 通用生成入口（--profile <id> / --count / --range-types / --regen-indexes）
 gen_qin_v4.py          秦未晞历史兼容壳（等价 gen_v4.py --profile qinweixi，保留旧符号）
@@ -32,10 +32,10 @@ config.yaml            本仓库配置（正典指向本仓库副本）
 |---|---|
 | 生成器 → AI 程序（只读） | 评测文本 `F:\AiPeople\eval\chat02\...`（blocklist 工具）；锚快照 `runtime/_prompt.py`（T2 一致性守卫测试与 repair 工具）；旧 GGUF / llama-server（check_label_prefix 工具） |
 | 生成器 → AI 程序（写） | `tools/build_chat02_blocklist.py` 把契约写入 `F:\AiPeople\training_package_*\eval_exclusions\` |
-| 正典 | **唯一正典在本仓库 `人物设定/`**（2026-08-07 从 AI 程序仓库迁移）。AI 程序侧 `F:\AiPeople\人物设定` 为 junction，透明指向本目录。维护只改本目录；改后运行 `python tools/check_profile_sync.py --sync` 同步 `profiles/qinweixi/sources` |
+| 正典 | **唯一正典物理副本在仓库根 `人物设定/`**（2026-08-17 从本仓库迁至仓库根）。本目录 `人物设定/` 与 AI 程序侧 `AiPeople/人物设定` 均为指向仓库根 `人物设定/` 的 junction。维护只改仓库根物理文件；改后运行 `python tools/check_profile_sync.py --sync` 同步 `profiles/qinweixi/sources` |
 | AI 程序 → 生成器 | 无代码 import（仅 junction 链接与 blocklist 契约读取） |
 
-**规则**：正典唯一物理副本在本仓库 `人物设定/`；AI 程序侧经 junction 访问（若复制仓库请连同 junction 目标一起处理）。本仓库对 AI 程序侧除 blocklist 写入外一律只读。
+**规则**：正典唯一物理副本在仓库根 `人物设定/`；本目录与 AI 程序侧均经 junction 访问（若复制仓库请连同 junction 目标一起处理）。本仓库对 AI 程序侧除 blocklist 写入外一律只读。
 
 ## 使用
 

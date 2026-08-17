@@ -56,11 +56,14 @@ local_runtime/         推理运行库与 manifest；模型权重仍为外部资
 
 - 生成器侧见 `F:\ai-girlfriend\AiPeopleCreate\README.md`（结构、配置、只读正典引用说明）。
 - 本目录只保留 AI 程序（runtime、eval、训练包、评测契约）。
-- **正典单副本**：`人物设定` 为 junction，物理文件在 `F:\ai-girlfriend\AiPeopleCreate\人物设定`。维护正典只改生成器侧物理文件。
+- **正典单副本（2026-08-17 起）**：物理正典只存在于仓库根 `人物设定/`（本目录与 `AiPeopleCreate/` 同级），本目录 `人物设定` 与 `AiPeopleCreate/人物设定` 都是指向仓库根 `人物设定/` 的 Windows junction，git 只跟踪仓库根一份。克隆新机器后需重建两个 junction：
+  `mklink /J <repo>\AiPeople\人物设定 <repo>\人物设定`
+  `mklink /J <repo>\AiPeopleCreate\人物设定 <repo>\人物设定`
+  维护正典只改仓库根物理文件。junction 路径已写入仓库根 `.gitignore`，git 不跟踪链接本身。
 - 生成器产出的历史秦未晞训练数据（原 `人物设定/秦/训练数据/`）位于 `F:\ai-girlfriend\AiPeopleCreate\训练数据/`；
   训练包为自包含产物，不受影响。
 - 唯一跨侧引用：
-  1. 生成器侧正典（`AiPeopleCreate/人物设定`）即本目录 `人物设定` 链接指向的物理文件；
+  1. 本目录 `人物设定` 与生成器侧 `AiPeopleCreate/人物设定` 均为仓库根 `人物设定/` 的 junction（同一物理文件）；
   2. `runtime/_prompt.py` 的锚快照与生成器锚渲染的一致性守卫测试
      （`F:\ai-girlfriend\AiPeopleCreate\tests\runtime\test_reply_prompt.py`）从生成器侧读本快照；
   3. `eval/chat01v5/freeze.py` 的 scan_contract roots 仍保留 `data_gen_v4`/`profiles/qinweixi`
