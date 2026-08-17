@@ -1,7 +1,7 @@
 # LLaMA-Factory 导出配置 —— 合并 adapter 到基座权重（Qwen3.5-4B）
 # 8G 显存无法 GPU 合并（VLM 基座 bf16 ~9GB），用 CPU 合并（export_device: cpu）
 # 用法: llamafactory-cli export configs/baiweixi_4b_export.yaml
-model_name_or_path: Qwen/Qwen3.5-4B
+model_name_or_path: D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B
 adapter_name_or_path: outputs/baiweixi_4b
 template: qwen3_nothink
 finetuning_type: lora

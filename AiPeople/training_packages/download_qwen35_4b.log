@@ -1,0 +1,3 @@
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 14 files:   7%|▋         | 1/14 [00:00<00:03,  4.23it/s]Fetching 14 files:  21%|██▏       | 3/14 [00:00<00:01,  9.18it/s]Fetching 14 files:  50%|█████     | 7/14 [00:00<00:00, 19.21it/s]Fetching 14 files:  71%|███████▏  | 10/14 [00:00<00:00, 18.57it/s]Fetching 14 files:  93%|█████████▎| 13/14 [00:02<00:00,  4.43it/s]Fetching 14 files: 100%|██████████| 14/14 [00:03<00:00,  4.56it/s]
+DONE D:\AIPeopleGit\ai-girlfriend\AiPeople\training_packages\models\Qwen3.5-4B

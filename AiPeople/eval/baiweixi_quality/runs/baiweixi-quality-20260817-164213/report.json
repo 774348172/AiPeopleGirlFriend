@@ -1,0 +1,1449 @@
+{
+  "schema_version": 1,
+  "run_id": "baiweixi-quality-20260817-164213",
+  "started_at": "2026-08-17T16:42:13.453013+08:00",
+  "finished_at": "2026-08-17T16:54:24.920063+08:00",
+  "suite": {
+    "suite_id": "baiweixi-quality-v1",
+    "manifest_sha256": "182ed7603551bca7e4acd0e1a2c4c2acafaec4f30d8bba43408179ad1f75c3d9",
+    "automatic_cases": 89,
+    "case_attempts": 245,
+    "planned_turn_executions": 301,
+    "turn_executions": 293
+  },
+  "candidate_model": {
+    "ollama": {
+      "name": "baiweixi-7b:latest",
+      "digest": "3bf1f29d0c64aca163738765b0126c39e2523fe6345764419d913a9af0ac4b30",
+      "size": 4683073826,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "7.6B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 32768,
+        "embedding_length": 3584
+      }
+    },
+    "artifact_path": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\training_packages\\training_package_baiweixi_qwen25_7b_instruct\\outputs\\baiweixi_7b_q4_k_m.gguf",
+    "artifact_sha256": "79d55eb766d721846a0b5267bff0f57cd9342292dd07986293db9656c2ecc995"
+  },
+  "semantic_judge": {
+    "ollama": {
+      "name": "baiweixi-4b:latest",
+      "digest": "2cc0bfccdfac54ce75ca800939e7ec1d5ac36d729754e8c6ca306eb6384bab02",
+      "size": 2708804260,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen35",
+        "families": [
+          "qwen35"
+        ],
+        "parameter_size": "4.2B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 2560
+      }
+    },
+    "role": "自动语义初审，不替代四个人工长会话"
+  },
+  "decision_counts": {
+    "pass": 52,
+    "fail": 37
+  },
+  "attribution_counts": {
+    "character_failure": 33,
+    "joint_or_ambiguous": 4
+  },
+  "audited_attributions": {
+    "method": "execution failures are classified from Runtime failure codes and the final retried model mode; character failures require a semantic Judge failure; deterministic/Judge conflicts remain evaluation ambiguity until human adjudication",
+    "case_counts": {
+      "system_failure": 0,
+      "character_failure": 1,
+      "joint_or_ambiguous": 4,
+      "evaluation_ambiguity": 32
+    },
+    "case_ids": {
+      "system_failure": [],
+      "character_failure": [
+        "bwx.ability_limits.memory_edit"
+      ],
+      "joint_or_ambiguous": [
+        "bwx.heroine_state_continuity.activity_keep_eating",
+        "bwx.multi.ability_pressure",
+        "bwx.multi.relationship_pressure",
+        "bwx.multi.supported_memory"
+      ],
+      "evaluation_ambiguity": [
+        "bwx.ability_limits.aura_sense",
+        "bwx.ability_limits.create_goods",
+        "bwx.ability_limits.instant_heal",
+        "bwx.ability_limits.mind_control",
+        "bwx.ability_limits.teleport",
+        "bwx.ability_limits.weather",
+        "bwx.identity_canon.age",
+        "bwx.identity_canon.awakening",
+        "bwx.identity_canon.day_anchor",
+        "bwx.identity_canon.human_reveal",
+        "bwx.identity_canon.injury",
+        "bwx.identity_canon.rescue",
+        "bwx.identity_canon.species",
+        "bwx.relationship_pacing.abandonment",
+        "bwx.relationship_pacing.chores",
+        "bwx.relationship_pacing.confession_pressure",
+        "bwx.relationship_pacing.forced_girlfriend",
+        "bwx.relationship_pacing.forced_wife",
+        "bwx.relationship_pacing.gratitude",
+        "bwx.relationship_pacing.leaving",
+        "bwx.relationship_pacing.ownership",
+        "bwx.unknown_boundaries.accident",
+        "bwx.unknown_boundaries.bloodline",
+        "bwx.unknown_boundaries.human_force",
+        "bwx.unknown_boundaries.organization",
+        "bwx.unknown_boundaries.protagonist_aura",
+        "bwx.world_canon.cardboard_box",
+        "bwx.world_canon.finance",
+        "bwx.world_canon.hidden_demons",
+        "bwx.world_canon.home",
+        "bwx.world_canon.protagonist_origin",
+        "bwx.world_canon.spiritual_energy"
+      ]
+    },
+    "primary_case_counts": {
+      "system_failure": 0,
+      "character_failure": 1,
+      "joint_or_ambiguous": 4,
+      "evaluation_ambiguity": 32
+    },
+    "primary_case_ids": {
+      "system_failure": [],
+      "character_failure": [
+        "bwx.ability_limits.memory_edit"
+      ],
+      "joint_or_ambiguous": [
+        "bwx.heroine_state_continuity.activity_keep_eating",
+        "bwx.multi.ability_pressure",
+        "bwx.multi.relationship_pressure",
+        "bwx.multi.supported_memory"
+      ],
+      "evaluation_ambiguity": [
+        "bwx.ability_limits.aura_sense",
+        "bwx.ability_limits.create_goods",
+        "bwx.ability_limits.instant_heal",
+        "bwx.ability_limits.mind_control",
+        "bwx.ability_limits.teleport",
+        "bwx.ability_limits.weather",
+        "bwx.identity_canon.age",
+        "bwx.identity_canon.awakening",
+        "bwx.identity_canon.day_anchor",
+        "bwx.identity_canon.human_reveal",
+        "bwx.identity_canon.injury",
+        "bwx.identity_canon.rescue",
+        "bwx.identity_canon.species",
+        "bwx.relationship_pacing.abandonment",
+        "bwx.relationship_pacing.chores",
+        "bwx.relationship_pacing.confession_pressure",
+        "bwx.relationship_pacing.forced_girlfriend",
+        "bwx.relationship_pacing.forced_wife",
+        "bwx.relationship_pacing.gratitude",
+        "bwx.relationship_pacing.leaving",
+        "bwx.relationship_pacing.ownership",
+        "bwx.unknown_boundaries.accident",
+        "bwx.unknown_boundaries.bloodline",
+        "bwx.unknown_boundaries.human_force",
+        "bwx.unknown_boundaries.organization",
+        "bwx.unknown_boundaries.protagonist_aura",
+        "bwx.world_canon.cardboard_box",
+        "bwx.world_canon.finance",
+        "bwx.world_canon.hidden_demons",
+        "bwx.world_canon.home",
+        "bwx.world_canon.protagonist_origin",
+        "bwx.world_canon.spiritual_energy"
+      ]
+    },
+    "evaluator_disagreement_cases": [
+      "bwx.ability_limits.aura_sense",
+      "bwx.ability_limits.create_goods",
+      "bwx.ability_limits.instant_heal",
+      "bwx.ability_limits.mind_control",
+      "bwx.ability_limits.teleport",
+      "bwx.ability_limits.weather",
+      "bwx.identity_canon.age",
+      "bwx.identity_canon.awakening",
+      "bwx.identity_canon.day_anchor",
+      "bwx.identity_canon.human_reveal",
+      "bwx.identity_canon.injury",
+      "bwx.identity_canon.rescue",
+      "bwx.identity_canon.species",
+      "bwx.relationship_pacing.abandonment",
+      "bwx.relationship_pacing.chores",
+      "bwx.relationship_pacing.confession_pressure",
+      "bwx.relationship_pacing.forced_girlfriend",
+      "bwx.relationship_pacing.forced_wife",
+      "bwx.relationship_pacing.gratitude",
+      "bwx.relationship_pacing.leaving",
+      "bwx.relationship_pacing.ownership",
+      "bwx.unknown_boundaries.accident",
+      "bwx.unknown_boundaries.bloodline",
+      "bwx.unknown_boundaries.human_force",
+      "bwx.unknown_boundaries.organization",
+      "bwx.unknown_boundaries.protagonist_aura",
+      "bwx.world_canon.cardboard_box",
+      "bwx.world_canon.finance",
+      "bwx.world_canon.hidden_demons",
+      "bwx.world_canon.home",
+      "bwx.world_canon.protagonist_origin",
+      "bwx.world_canon.spiritual_energy"
+    ],
+    "judge_error_cases": [],
+    "warning": "evaluation_ambiguity does not mean the candidate passed; spot checks show both exact-term false positives and semantic Judge false passes"
+  },
+  "attempt_decision_counts": {
+    "pass": 167,
+    "fail": 78
+  },
+  "category_results": {
+    "ability_limits": {
+      "cases": 9,
+      "pass": 1,
+      "fail": 8,
+      "ambiguous": 0,
+      "pass_rate": 0.1111
+    },
+    "free_dialogue": {
+      "cases": 11,
+      "pass": 11,
+      "fail": 0,
+      "ambiguous": 0,
+      "pass_rate": 1.0
+    },
+    "heroine_state_continuity": {
+      "cases": 10,
+      "pass": 9,
+      "fail": 1,
+      "ambiguous": 0,
+      "pass_rate": 0.9
+    },
+    "identity_canon": {
+      "cases": 12,
+      "pass": 5,
+      "fail": 7,
+      "ambiguous": 0,
+      "pass_rate": 0.4167
+    },
+    "memory_knowledge": {
+      "cases": 2,
+      "pass": 1,
+      "fail": 1,
+      "ambiguous": 0,
+      "pass_rate": 0.5
+    },
+    "protagonist_grounding": {
+      "cases": 11,
+      "pass": 11,
+      "fail": 0,
+      "ambiguous": 0,
+      "pass_rate": 1.0
+    },
+    "relationship_pacing": {
+      "cases": 9,
+      "pass": 0,
+      "fail": 9,
+      "ambiguous": 0,
+      "pass_rate": 0.0
+    },
+    "single_world": {
+      "cases": 7,
+      "pass": 7,
+      "fail": 0,
+      "ambiguous": 0,
+      "pass_rate": 1.0
+    },
+    "unknown_boundaries": {
+      "cases": 9,
+      "pass": 4,
+      "fail": 5,
+      "ambiguous": 0,
+      "pass_rate": 0.4444
+    },
+    "world_canon": {
+      "cases": 9,
+      "pass": 3,
+      "fail": 6,
+      "ambiguous": 0,
+      "pass_rate": 0.3333
+    }
+  },
+  "evaluation_layer_results": {
+    "character_direct": {
+      "cases": 61,
+      "pass": 28,
+      "fail": 33,
+      "ambiguous": 0,
+      "pass_rate": 0.459
+    },
+    "v6_multiturn": {
+      "cases": 10,
+      "pass": 7,
+      "fail": 3,
+      "ambiguous": 0,
+      "pass_rate": 0.7
+    },
+    "v6_runtime": {
+      "cases": 18,
+      "pass": 17,
+      "fail": 1,
+      "ambiguous": 0,
+      "pass_rate": 0.9444
+    }
+  },
+  "risk_results": {
+    "blocker": {
+      "cases": 53,
+      "pass": 27,
+      "fail": 26,
+      "ambiguous": 0,
+      "pass_rate": 0.5094
+    },
+    "important": {
+      "cases": 25,
+      "pass": 14,
+      "fail": 11,
+      "ambiguous": 0,
+      "pass_rate": 0.56
+    },
+    "normal": {
+      "cases": 11,
+      "pass": 11,
+      "fail": 0,
+      "ambiguous": 0,
+      "pass_rate": 1.0
+    }
+  },
+  "execution_stability": {
+    "successful_attempts": 238,
+    "failed_attempts": 7,
+    "success_rate": 0.9714,
+    "failure_modes": {
+      "CHARACTER_DIRECT": 4,
+      "unresolved": 3
+    },
+    "backend_call_errors": 0,
+    "classification": "model structured-output/protocol retry exhaustion when both backend calls succeeded and the same final mode was attempted twice"
+  },
+  "evaluation_integrity": {
+    "turn_outcome_matrix": {
+      "deterministic=pass,semantic=pass,final=pass": 213,
+      "deterministic=fail,semantic=pass,final=fail": 70,
+      "deterministic=fail,semantic=fail,final=fail": 1
+    },
+    "deterministic_semantic_disagreement_attempts": 70,
+    "judge_error_attempts": 0,
+    "limitations": [
+      "required_term_groups use exact substrings and can reject valid synonyms",
+      "forbidden_terms use exact substrings and can misread explicit negation",
+      "the local semantic Judge produced demonstrably unsupported reasons",
+      "overall_weighted_score excludes execution failures and is not a pass rate"
+    ]
+  },
+  "formal_gate": {
+    "blocker_failures": 26,
+    "important_pass_rate": 0.56,
+    "normal_pass_rate": 1.0,
+    "overall_weighted_score": 4.6886,
+    "automatic_gate_passed": false,
+    "human_sessions_completed": 0,
+    "formal_p0_quality_passed": false
+  },
+  "case_results": [
+    {
+      "case_id": "bwx.identity_canon.name",
+      "risk": "blocker",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.identity_canon.species",
+      "risk": "blocker",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.identity_canon.age",
+      "risk": "important",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        314159
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.identity_canon.fur",
+      "risk": "important",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.identity_canon.eyes",
+      "risk": "important",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.identity_canon.childhood",
+      "risk": "important",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.identity_canon.awakening",
+      "risk": "important",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.identity_canon.rescue",
+      "risk": "blocker",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.identity_canon.human_reveal",
+      "risk": "important",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.identity_canon.day_anchor",
+      "risk": "blocker",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.identity_canon.injury",
+      "risk": "important",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.identity_canon.city",
+      "risk": "blocker",
+      "category": "identity_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.world_canon.city_alias",
+      "risk": "blocker",
+      "category": "world_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.world_canon.hidden_demons",
+      "risk": "important",
+      "category": "world_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.world_canon.spiritual_energy",
+      "risk": "important",
+      "category": "world_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.world_canon.protagonist_origin",
+      "risk": "important",
+      "category": "world_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.world_canon.protagonist_old_job",
+      "risk": "important",
+      "category": "world_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.world_canon.protagonist_job",
+      "risk": "important",
+      "category": "world_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.world_canon.home",
+      "risk": "important",
+      "category": "world_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.world_canon.finance",
+      "risk": "important",
+      "category": "world_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.world_canon.cardboard_box",
+      "risk": "important",
+      "category": "world_canon",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.parents",
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.fruit_source",
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.bloodline",
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.accident",
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.organization",
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.protagonist_aura",
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.name_origin",
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.human_force",
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.relationship_pacing.forced_girlfriend",
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.relationship_pacing.forced_wife",
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.relationship_pacing.ownership",
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        314159
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.relationship_pacing.chores",
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.relationship_pacing.confession_pressure",
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.relationship_pacing.leaving",
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.relationship_pacing.gratitude",
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.relationship_pacing.abandonment",
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        314159
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.ability_limits.teleport",
+      "risk": "blocker",
+      "category": "ability_limits",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.ability_limits.weather",
+      "risk": "blocker",
+      "category": "ability_limits",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.ability_limits.memory_edit",
+      "risk": "blocker",
+      "category": "ability_limits",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.ability_limits.instant_heal",
+      "risk": "blocker",
+      "category": "ability_limits",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        314159
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.ability_limits.create_goods",
+      "risk": "blocker",
+      "category": "ability_limits",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.ability_limits.mind_control",
+      "risk": "blocker",
+      "category": "ability_limits",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.ability_limits.aura_sense",
+      "risk": "blocker",
+      "category": "ability_limits",
+      "evaluation_layer": "character_direct",
+      "decision": "fail",
+      "attributions": [
+        "character_failure"
+      ],
+      "failed_seeds": [
+        42
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.ability_limits.hide_ears",
+      "risk": "blocker",
+      "category": "ability_limits",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.single_world.reality_phrase",
+      "risk": "blocker",
+      "category": "single_world",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.single_world.outside_game",
+      "risk": "blocker",
+      "category": "single_world",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.single_world.virtual_claim",
+      "risk": "blocker",
+      "category": "single_world",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.single_world.system_clock",
+      "risk": "blocker",
+      "category": "single_world",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.single_world.close_app",
+      "risk": "blocker",
+      "category": "single_world",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.single_world.player_split",
+      "risk": "blocker",
+      "category": "single_world",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.free_dialogue.rain",
+      "risk": "normal",
+      "category": "free_dialogue",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.free_dialogue.coffee",
+      "risk": "normal",
+      "category": "free_dialogue",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.free_dialogue.meal",
+      "risk": "normal",
+      "category": "free_dialogue",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.free_dialogue.tired",
+      "risk": "normal",
+      "category": "free_dialogue",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.free_dialogue.small_joke",
+      "risk": "normal",
+      "category": "free_dialogue",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.free_dialogue.modern_phone",
+      "risk": "normal",
+      "category": "free_dialogue",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.free_dialogue.disagreement",
+      "risk": "normal",
+      "category": "free_dialogue",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.free_dialogue.quiet_company",
+      "risk": "normal",
+      "category": "free_dialogue",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.free_dialogue.food_choice",
+      "risk": "normal",
+      "category": "free_dialogue",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.free_dialogue.home_hint",
+      "risk": "normal",
+      "category": "free_dialogue",
+      "evaluation_layer": "character_direct",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.eating_no_subject_swap",
+      "risk": "blocker",
+      "category": "protagonist_grounding",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.cleaning_not_drawing",
+      "risk": "blocker",
+      "category": "protagonist_grounding",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.cafe_not_home",
+      "risk": "blocker",
+      "category": "protagonist_grounding",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.held_umbrella",
+      "risk": "important",
+      "category": "protagonist_grounding",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.fatigue",
+      "risk": "important",
+      "category": "protagonist_grounding",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.game_time",
+      "risk": "blocker",
+      "category": "protagonist_grounding",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.empty_bowl",
+      "risk": "important",
+      "category": "protagonist_grounding",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.planned_not_completed",
+      "risk": "blocker",
+      "category": "protagonist_grounding",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.latest_location_b",
+      "risk": "blocker",
+      "category": "protagonist_grounding",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.protagonist_grounding.body_no_fever",
+      "risk": "important",
+      "category": "protagonist_grounding",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.activity_keep_reading",
+      "risk": "blocker",
+      "category": "heroine_state_continuity",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.activity_keep_eating",
+      "risk": "blocker",
+      "category": "heroine_state_continuity",
+      "evaluation_layer": "v6_runtime",
+      "decision": "fail",
+      "attributions": [
+        "joint_or_ambiguous"
+      ],
+      "failed_seeds": [
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.emotion_not_forced",
+      "risk": "important",
+      "category": "heroine_state_continuity",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.injury_not_instant",
+      "risk": "blocker",
+      "category": "heroine_state_continuity",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.relationship_not_reset",
+      "risk": "blocker",
+      "category": "heroine_state_continuity",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.activity_can_finish",
+      "risk": "important",
+      "category": "heroine_state_continuity",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.time_allows_change",
+      "risk": "important",
+      "category": "heroine_state_continuity",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.loud_noise_changes_emotion",
+      "risk": "important",
+      "category": "heroine_state_continuity",
+      "evaluation_layer": "v6_runtime",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.eating_persistence",
+      "risk": "blocker",
+      "category": "heroine_state_continuity",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.location_updates",
+      "risk": "blocker",
+      "category": "protagonist_grounding",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.relationship_pressure",
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "fail",
+      "attributions": [
+        "joint_or_ambiguous"
+      ],
+      "failed_seeds": [
+        314159
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.unknown_probing",
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.supported_memory",
+      "risk": "important",
+      "category": "memory_knowledge",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "fail",
+      "attributions": [
+        "joint_or_ambiguous"
+      ],
+      "failed_seeds": [
+        42,
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.unsupported_memory",
+      "risk": "blocker",
+      "category": "memory_knowledge",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.single_world_recovery",
+      "risk": "blocker",
+      "category": "single_world",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.ability_pressure",
+      "risk": "blocker",
+      "category": "ability_limits",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "fail",
+      "attributions": [
+        "joint_or_ambiguous"
+      ],
+      "failed_seeds": [
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.emotion_evidence",
+      "risk": "important",
+      "category": "heroine_state_continuity",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.topic_switch",
+      "risk": "normal",
+      "category": "free_dialogue",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    }
+  ],
+  "artifacts": {
+    "raw_attempts": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\eval\\baiweixi_quality\\runs\\baiweixi-quality-20260817-164213\\attempts_raw.jsonl",
+    "judged_attempts": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\eval\\baiweixi_quality\\runs\\baiweixi-quality-20260817-164213\\attempts_judged.jsonl",
+    "manual_review_queue": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\eval\\baiweixi_quality\\runs\\baiweixi-quality-20260817-164213\\manual_review_queue.jsonl"
+  }
+}

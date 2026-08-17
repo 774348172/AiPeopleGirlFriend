@@ -6,7 +6,7 @@
 import sys
 
 ADAPTER = sys.argv[1] if len(sys.argv) > 1 else "outputs/baiweixi_4b"
-MODEL = "Qwen/Qwen3.5-4B"
+MODEL = "D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B"
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig

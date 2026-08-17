@@ -211,7 +211,7 @@ class EvaluationMemoryFactory:
                 SelectedMemory(
                     memory_id=f"eval_memory_{index}",
                     memory_version=1,
-                    kind="event_memory",
+                    kind="player_fact",
                     statement=statement,
                     subject_type="protagonist",
                     subject_display_name="男主",
@@ -1296,6 +1296,7 @@ async def _run(args: argparse.Namespace) -> int:
         ).system_prompt
         try:
             for case, seed in pending_attempts:
+                key = _attempt_key(case["case_id"], seed)
                 if case["evaluation_layer"] == "character_direct":
                     value = await _run_direct_attempt(case, seed, shared, prompt)
                 else:

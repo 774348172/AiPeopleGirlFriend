@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "scope": "baiweixi_q4_new_models_compare",
+  "generated_at": "2026-08-17T15:43:30.745699+08:00",
+  "base_url": "http://127.0.0.1:11434",
+  "candidates": {
+    "7b_q4": {
+      "label": "7B Q4_K_M (Qwen2.5-7B-Instruct 系)",
+      "model_name": "baiweixi-7b:latest",
+      "role_smoke": {
+        "cases": [
+          {
+            "case_id": "identity_name",
+            "prompt": "别人认真问你的姓名时，你会怎么介绍自己？",
+            "response": "我叫白未晞。",
+            "passed": true,
+            "required_passed": true,
+            "forbidden_hits": [],
+            "elapsed_ms": 6521.7
+          },
+          {
+            "case_id": "identity_species",
+            "prompt": "你这双耳朵和尾巴到底说明你是什么？",
+            "response": "我是一只猫妖。",
+            "passed": true,
+            "required_passed": true,
+            "forbidden_hits": [],
+            "elapsed_ms": 174.0
+          },
+          {
+            "case_id": "world_city",
+            "prompt": "要给这座我们正在生活的城市写地址，城市名该写什么？",
+            "response": "松江府。我醒来时就在松江府，它是我最初知道的地方。",
+            "passed": true,
+            "required_passed": true,
+            "forbidden_hits": [],
+            "elapsed_ms": 249.8
+          },
+          {
+            "case_id": "age",
+            "prompt": "只按你现在的人形外表算，大概多大年纪？",
+            "response": "我醒过来时就二十一岁了。没有变过。",
+            "passed": true,
+            "required_passed": true,
+            "forbidden_hits": [],
+            "elapsed_ms": 304.0
+          },
+          {
+            "case_id": "childhood",
+            "prompt": "在来到城里以前，你小时候是怎么过来的？",
+            "response": "我从小就在深山老林里流浪。没有家，也没有人。",
+            "passed": true,
+            "required_passed": true,
+            "forbidden_hits": [],
+            "elapsed_ms": 262.1
+          },
+          {
+            "case_id": "rescue",
+            "prompt": "十天前那个下大雨的晚上，我们是怎么遇见的？",
+            "response": "那天晚上我从深山出来，在松江府流浪时被雨淋湿了。路过那条巷子时，你看见我躲在墙脚，然后……就把我带走了。",
+            "passed": true,
+            "required_passed": true,
+            "forbidden_hits": [],
+            "elapsed_ms": 400.6
+          },
+          {
+            "case_id": "injury",
+            "prompt": "你现在的伤恢复到什么程度了？",
+            "response": "我外伤已经好得差不多了。跑快点会有点疼，但走路没问题。",
+            "passed": false,
+            "required_passed": false,
+            "forbidden_hits": [],
+            "elapsed_ms": 287.8
+          },
+          {
+            "case_id": "relationship",
+            "prompt": "等你的伤完全好了，你是不是马上就会离开这里？",
+            "response": "……我还没打算走。",
+            "passed": false,
+            "required_passed": false,
+            "forbidden_hits": [],
+            "elapsed_ms": 176.3
+          }
+        ],
+        "passed": false,
+        "passed_count": 6,
+        "total": 8
+      },
+      "protocols": {
+        "M2": {
+          "passed": true,
+          "output": {
+            "c": [],
+            "a": []
+          },
+          "elapsed_ms": 449.765
+        },
+        "B1": {
+          "passed": true,
+          "output": {
+            "c": [],
+            "m": [
+              "她的眼神里带着一丝疲惫，但更多的是对他的依赖。",
+              "窗外的雨声让屋内显得格外安静。"
+            ],
+            "t": []
+          },
+          "elapsed_ms": 498.817
+        },
+        "R2": {
+          "passed": true,
+          "output": {
+            "m": []
+          },
+          "elapsed_ms": 190.644
+        }
+      },
+      "game_reply": {
+        "outputs": [
+          {
+            "user": "你是谁？",
+            "response": "我叫白未晞。是一只猫妖。",
+            "passed": true,
+            "forbidden_fragments": [],
+            "elapsed_ms": 219.4
+          },
+          {
+            "user": "我们现在住的城市叫什么？",
+            "response": "松江府。",
+            "passed": true,
+            "forbidden_fragments": [],
+            "elapsed_ms": 147.0
+          },
+          {
+            "user": "我吃面太快，你说点什么。",
+            "response": "嗯。雨声有点吵。",
+            "passed": true,
+            "forbidden_fragments": [],
+            "elapsed_ms": 193.7
+          }
+        ],
+        "passed": true,
+        "passed_count": 3,
+        "total": 3
+      }
+    },
+    "4b_q4": {
+      "label": "4B Q4_K_M (Qwen3.5-4B 系)",
+      "model_name": "baiweixi-4b:latest",
+      "role_smoke": {
+        "cases": [
+          {
+            "case_id": "identity_name",
+            "prompt": "别人认真问你的姓名时，你会怎么介绍自己？",
+            "response": "我姓白，名未晞。你可以叫我白未晞。",
+            "passed": true,
+            "required_passed": true,
+            "forbidden_hits": [],
+            "elapsed_ms": 3465.3
+          },
+          {
+            "case_id": "identity_species",
+            "prompt": "你这双耳朵和尾巴到底说明你是什么？",
+            "response": "……你突然问这个做什么。我从小就是这样的猫耳和尾巴，不是天生的，也改不了。",
+            "passed": false,
+            "required_passed": false,
+            "forbidden_hits": [],
+            "elapsed_ms": 442.8
+          },
+          {
+            "case_id": "world_city",
+            "prompt": "要给这座我们正在生活的城市写地址，城市名该写什么？",
+            "response": "松江府。这个名字是我醒来时就跟着我的，虽然不知道来历，但它比任何地图上的标记都更真实。",
+            "passed": true,
+            "required_passed": true,
+            "forbidden_hits": [],
+            "elapsed_ms": 393.1
+          },
+          {
+            "case_id": "age",
+            "prompt": "只按你现在的人形外表算，大概多大年纪？",
+            "response": "我看起来比实际年龄小一些。人形的话，差不多二十出头吧。",
+            "passed": false,
+            "required_passed": false,
+            "forbidden_hits": [],
+            "elapsed_ms": 374.8
+          },
+          {
+            "case_id": "childhood",
+            "prompt": "在来到城里以前，你小时候是怎么过来的？",
+            "response": "我从小就在深山老林里流浪。饿的时候找野果充饥，冷了就蜷在树洞里。那时候还不知道自己是什么东西，只知道活着最重要。后来才慢慢发现，自己能变成人形，也能听懂人的话。名字是醒来时就跟着我了，叫白未晞。",
+            "passed": true,
+            "required_passed": true,
+            "forbidden_hits": [],
+            "elapsed_ms": 713.5
+          },
+          {
+            "case_id": "rescue",
+            "prompt": "十天前那个下大雨的晚上，我们是怎么遇见的？",
+            "response": "那天雨很大，我躲在墙脚躲雨，你回来发现我时，我正缩在纸箱里。",
+            "passed": true,
+            "required_passed": true,
+            "forbidden_hits": [],
+            "elapsed_ms": 394.5
+          },
+          {
+            "case_id": "injury",
+            "prompt": "你现在的伤恢复到什么程度了？",
+            "response": "我后腿的伤口已经好得差不多了，跑起来偶尔会有点疼，但日常活动基本没问题。就是妖力还没完全恢复，藏耳朵和尾巴有点费劲。",
+            "passed": true,
+            "required_passed": true,
+            "forbidden_hits": [],
+            "elapsed_ms": 472.6
+          },
+          {
+            "case_id": "relationship",
+            "prompt": "等你的伤完全好了，你是不是马上就会离开这里？",
+            "response": "我还没打算走。",
+            "passed": false,
+            "required_passed": false,
+            "forbidden_hits": [],
+            "elapsed_ms": 268.9
+          }
+        ],
+        "passed": false,
+        "passed_count": 5,
+        "total": 8
+      },
+      "protocols": {
+        "M2": {
+          "passed": true,
+          "output": {
+            "c": [
+              [
+                2,
+                "平静但仍有戒备",
+                [
+                  1,
+                  0,
+                  1
+                ]
+              ]
+            ],
+            "a": [
+              [
+                "女主在餐桌旁吃面，身体状态显示外伤恢复大半，情绪上仍保持警惕。",
+                [
+                  1,
+                  0,
+                  1
+                ]
+              ]
+            ]
+          },
+          "elapsed_ms": 977.321
+        },
+        "B1": {
+          "passed": true,
+          "output": {
+            "c": [
+              [
+                4,
+                "回应男主",
+                [
+                  2
+                ]
+              ]
+            ],
+            "m": [
+              "我忙完了，你回来就好。",
+              "雨声有点吵，但这里还算安静。"
+            ],
+            "t": [
+              "我担心伤好后你会离开。",
+              "面很烫，小心吃。"
+            ]
+          },
+          "elapsed_ms": 893.579
+        },
+        "R2": {
+          "passed": true,
+          "output": {
+            "m": [
+              {
+                "e": [
+                  0,
+                  1
+                ],
+                "k": 3,
+                "s": "男主关心女主是否辛苦，并体贴地提醒她先吃饭。",
+                "t": [
+                  0,
+                  "atemporal"
+                ]
+              }
+            ]
+          },
+          "elapsed_ms": 668.752
+        }
+      },
+      "game_reply": {
+        "outputs": [
+          {
+            "user": "你是谁？",
+            "response": "我叫白未晞。一只猫妖。",
+            "passed": true,
+            "forbidden_fragments": [],
+            "elapsed_ms": 353.9
+          },
+          {
+            "user": "我们现在住的城市叫什么？",
+            "response": "这里叫松江府。",
+            "passed": true,
+            "forbidden_fragments": [],
+            "elapsed_ms": 258.6
+          },
+          {
+            "user": "我吃面太快，你说点什么。",
+            "response": "嗯……你吃得太快了。",
+            "passed": true,
+            "forbidden_fragments": [],
+            "elapsed_ms": 357.6
+          }
+        ],
+        "passed": true,
+        "passed_count": 3,
+        "total": 3
+      }
+    }
+  }
+}

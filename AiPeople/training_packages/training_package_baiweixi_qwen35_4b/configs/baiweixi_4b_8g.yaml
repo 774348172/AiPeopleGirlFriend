@@ -12,7 +12,7 @@
 #           建议先 1 epoch 验证人格（约 20 小时），满意后 RESUME 续训 2-3 epoch
 
 ### ----- model -----
-model_name_or_path: Qwen/Qwen3.5-4B
+model_name_or_path: D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B
 trust_remote_code: true
 adapter_name_or_path:
 quantization_bit: 4                          # QLoRA：8G 显存必须 4bit 量化

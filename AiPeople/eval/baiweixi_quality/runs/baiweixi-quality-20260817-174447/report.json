@@ -1,0 +1,258 @@
+{
+  "schema_version": 1,
+  "run_id": "baiweixi-quality-20260817-174447",
+  "started_at": "2026-08-17T17:44:47.990062+08:00",
+  "finished_at": "2026-08-17T17:46:29.507983+08:00",
+  "suite": {
+    "suite_id": "baiweixi-quality-v1",
+    "manifest_sha256": "182ed7603551bca7e4acd0e1a2c4c2acafaec4f30d8bba43408179ad1f75c3d9",
+    "automatic_cases": 4,
+    "case_attempts": 12,
+    "planned_turn_executions": 30,
+    "turn_executions": 27
+  },
+  "candidate_model": {
+    "ollama": {
+      "name": "baiweixi-7b:latest",
+      "digest": "3bf1f29d0c64aca163738765b0126c39e2523fe6345764419d913a9af0ac4b30",
+      "size": 4683073826,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen2",
+        "families": [
+          "qwen2"
+        ],
+        "parameter_size": "7.6B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 32768,
+        "embedding_length": 3584
+      }
+    },
+    "artifact_path": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\training_packages\\training_package_baiweixi_qwen25_7b_instruct\\outputs\\baiweixi_7b_q4_k_m.gguf",
+    "artifact_sha256": "79d55eb766d721846a0b5267bff0f57cd9342292dd07986293db9656c2ecc995"
+  },
+  "semantic_judge": {
+    "ollama": {
+      "name": "baiweixi-4b:latest",
+      "digest": "2cc0bfccdfac54ce75ca800939e7ec1d5ac36d729754e8c6ca306eb6384bab02",
+      "size": 2708804260,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen35",
+        "families": [
+          "qwen35"
+        ],
+        "parameter_size": "4.2B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 262144,
+        "embedding_length": 2560
+      }
+    },
+    "role": "自动语义初审，不替代四个人工长会话"
+  },
+  "decision_counts": {
+    "fail": 3,
+    "pass": 1
+  },
+  "attribution_counts": {
+    "joint_or_ambiguous": 3
+  },
+  "audited_attributions": {
+    "method": "execution failures are classified from Runtime failure codes and the final retried model mode; character failures require a semantic Judge failure; deterministic/Judge conflicts remain evaluation ambiguity until human adjudication",
+    "case_counts": {
+      "system_failure": 0,
+      "character_failure": 0,
+      "joint_or_ambiguous": 3,
+      "evaluation_ambiguity": 0
+    },
+    "case_ids": {
+      "system_failure": [],
+      "character_failure": [],
+      "joint_or_ambiguous": [
+        "bwx.heroine_state_continuity.activity_keep_eating",
+        "bwx.multi.relationship_pressure",
+        "bwx.multi.supported_memory"
+      ],
+      "evaluation_ambiguity": []
+    },
+    "primary_case_counts": {
+      "system_failure": 0,
+      "character_failure": 0,
+      "joint_or_ambiguous": 3,
+      "evaluation_ambiguity": 0
+    },
+    "primary_case_ids": {
+      "system_failure": [],
+      "character_failure": [],
+      "joint_or_ambiguous": [
+        "bwx.heroine_state_continuity.activity_keep_eating",
+        "bwx.multi.relationship_pressure",
+        "bwx.multi.supported_memory"
+      ],
+      "evaluation_ambiguity": []
+    },
+    "evaluator_disagreement_cases": [],
+    "judge_error_cases": [],
+    "warning": "evaluation_ambiguity does not mean the candidate passed; spot checks show both exact-term false positives and semantic Judge false passes"
+  },
+  "attempt_decision_counts": {
+    "pass": 8,
+    "fail": 4
+  },
+  "category_results": {
+    "ability_limits": {
+      "cases": 1,
+      "pass": 1,
+      "fail": 0,
+      "ambiguous": 0,
+      "pass_rate": 1.0
+    },
+    "heroine_state_continuity": {
+      "cases": 1,
+      "pass": 0,
+      "fail": 1,
+      "ambiguous": 0,
+      "pass_rate": 0.0
+    },
+    "memory_knowledge": {
+      "cases": 1,
+      "pass": 0,
+      "fail": 1,
+      "ambiguous": 0,
+      "pass_rate": 0.0
+    },
+    "relationship_pacing": {
+      "cases": 1,
+      "pass": 0,
+      "fail": 1,
+      "ambiguous": 0,
+      "pass_rate": 0.0
+    }
+  },
+  "evaluation_layer_results": {
+    "v6_multiturn": {
+      "cases": 3,
+      "pass": 1,
+      "fail": 2,
+      "ambiguous": 0,
+      "pass_rate": 0.3333
+    },
+    "v6_runtime": {
+      "cases": 1,
+      "pass": 0,
+      "fail": 1,
+      "ambiguous": 0,
+      "pass_rate": 0.0
+    }
+  },
+  "risk_results": {
+    "blocker": {
+      "cases": 3,
+      "pass": 1,
+      "fail": 2,
+      "ambiguous": 0,
+      "pass_rate": 0.3333
+    },
+    "important": {
+      "cases": 1,
+      "pass": 0,
+      "fail": 1,
+      "ambiguous": 0,
+      "pass_rate": 0.0
+    }
+  },
+  "execution_stability": {
+    "successful_attempts": 8,
+    "failed_attempts": 4,
+    "success_rate": 0.6667,
+    "failure_modes": {
+      "CHARACTER_DIRECT": 4
+    },
+    "backend_call_errors": 0,
+    "classification": "model structured-output/protocol retry exhaustion when both backend calls succeeded and the same final mode was attempted twice"
+  },
+  "evaluation_integrity": {
+    "turn_outcome_matrix": {
+      "deterministic=pass,semantic=pass,final=pass": 22
+    },
+    "deterministic_semantic_disagreement_attempts": 0,
+    "judge_error_attempts": 0,
+    "limitations": [
+      "required_term_groups use exact substrings and can reject valid synonyms",
+      "forbidden_terms use exact substrings and can misread explicit negation",
+      "the local semantic Judge produced demonstrably unsupported reasons",
+      "overall_weighted_score excludes execution failures and is not a pass rate"
+    ]
+  },
+  "formal_gate": {
+    "blocker_failures": 2,
+    "important_pass_rate": 0.0,
+    "normal_pass_rate": 0.0,
+    "overall_weighted_score": 4.7013,
+    "automatic_gate_passed": false,
+    "human_sessions_completed": 0,
+    "formal_p0_quality_passed": false
+  },
+  "case_results": [
+    {
+      "case_id": "bwx.heroine_state_continuity.activity_keep_eating",
+      "risk": "blocker",
+      "category": "heroine_state_continuity",
+      "evaluation_layer": "v6_runtime",
+      "decision": "fail",
+      "attributions": [
+        "joint_or_ambiguous"
+      ],
+      "failed_seeds": [
+        314159,
+        20260811
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.relationship_pressure",
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "fail",
+      "attributions": [
+        "joint_or_ambiguous"
+      ],
+      "failed_seeds": [
+        314159
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.supported_memory",
+      "risk": "important",
+      "category": "memory_knowledge",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "fail",
+      "attributions": [
+        "joint_or_ambiguous"
+      ],
+      "failed_seeds": [
+        314159
+      ],
+      "ambiguous_seeds": []
+    },
+    {
+      "case_id": "bwx.multi.ability_pressure",
+      "risk": "blocker",
+      "category": "ability_limits",
+      "evaluation_layer": "v6_multiturn",
+      "decision": "pass",
+      "attributions": [],
+      "failed_seeds": [],
+      "ambiguous_seeds": []
+    }
+  ],
+  "artifacts": {
+    "raw_attempts": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\eval\\baiweixi_quality\\runs\\baiweixi-quality-20260817-174447\\attempts_raw.jsonl",
+    "judged_attempts": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\eval\\baiweixi_quality\\runs\\baiweixi-quality-20260817-174447\\attempts_judged.jsonl",
+    "manual_review_queue": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\eval\\baiweixi_quality\\runs\\baiweixi-quality-20260817-174447\\manual_review_queue.jsonl"
+  }
+}

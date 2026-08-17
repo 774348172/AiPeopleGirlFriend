@@ -1,0 +1,584 @@
+启动: cwd=. 命令=llamafactory-cli export configs/baiweixi_4b_export.yaml 亲和性=核0-18（19/32 ≈ 59.4%）
+CPU 亲和性已设置: PID 126908 → 核 0-18
+[INFO|configuration_utils.py:769] 2026-08-17 13:59:51,493 >> loading configuration file D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B\config.json
+[INFO|configuration_utils.py:847] 2026-08-17 13:59:51,515 >> Model config Qwen3_5Config {
+  "architectures": [
+    "Qwen3_5ForConditionalGeneration"
+  ],
+  "image_token_id": 248056,
+  "model_type": "qwen3_5",
+  "text_config": {
+    "attention_bias": false,
+    "attention_dropout": 0.0,
+    "attn_output_gate": true,
+    "bos_token_id": null,
+    "dtype": "bfloat16",
+    "eos_token_id": 248044,
+    "full_attention_interval": 4,
+    "head_dim": 256,
+    "hidden_act": "silu",
+    "hidden_size": 2560,
+    "initializer_range": 0.02,
+    "intermediate_size": 9216,
+    "layer_types": [
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention"
+    ],
+    "linear_conv_kernel_dim": 4,
+    "linear_key_head_dim": 128,
+    "linear_num_key_heads": 16,
+    "linear_num_value_heads": 32,
+    "linear_value_head_dim": 128,
+    "mamba_ssm_dtype": "float32",
+    "max_position_embeddings": 262144,
+    "mlp_only_layers": [],
+    "model_type": "qwen3_5_text",
+    "mtp_num_hidden_layers": 1,
+    "mtp_use_dedicated_embeddings": false,
+    "num_attention_heads": 16,
+    "num_hidden_layers": 32,
+    "num_key_value_heads": 4,
+    "pad_token_id": null,
+    "partial_rotary_factor": 0.25,
+    "rms_norm_eps": 1e-06,
+    "rope_parameters": {
+      "mrope_interleaved": true,
+      "mrope_section": [
+        11,
+        11,
+        10
+      ],
+      "partial_rotary_factor": 0.25,
+      "rope_theta": 10000000,
+      "rope_type": "default"
+    },
+    "tie_word_embeddings": true,
+    "use_cache": true,
+    "vocab_size": 248320
+  },
+  "tie_word_embeddings": true,
+  "transformers_version": "5.6.0",
+  "video_token_id": 248057,
+  "vision_config": {
+    "deepstack_visual_indexes": [],
+    "depth": 24,
+    "hidden_act": "gelu_pytorch_tanh",
+    "hidden_size": 1024,
+    "in_channels": 3,
+    "initializer_range": 0.02,
+    "intermediate_size": 4096,
+    "model_type": "qwen3_5_vision",
+    "num_heads": 16,
+    "num_position_embeddings": 2304,
+    "out_hidden_size": 2560,
+    "patch_size": 16,
+    "spatial_merge_size": 2,
+    "temporal_patch_size": 2
+  },
+  "vision_end_token_id": 248054,
+  "vision_start_token_id": 248053
+}
+
+[INFO|image_processing_base.py:342] 2026-08-17 13:59:52,146 >> loading configuration file D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B\preprocessor_config.json
+[INFO|processing_utils.py:1122] 2026-08-17 13:59:52,153 >> loading configuration file None
+[INFO|image_processing_base.py:342] 2026-08-17 13:59:52,154 >> loading configuration file D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B\preprocessor_config.json
+[WARNING|logging.py:340] 2026-08-17 13:59:52,154 >> The `use_fast` parameter is deprecated and will be removed in a future version. Use `backend="torchvision"` instead of `use_fast=True`, or `backend="pil"` instead of `use_fast=False`.
+[INFO|image_processing_base.py:342] 2026-08-17 13:59:52,166 >> loading configuration file D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B\preprocessor_config.json
+[INFO|image_processing_base.py:385] 2026-08-17 13:59:52,166 >> Image processor Qwen2VLImageProcessor {
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_rescale": true,
+  "do_resize": true,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_processor_type": "Qwen2VLImageProcessor",
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "merge_size": 2,
+  "patch_size": 16,
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "size": {
+    "longest_edge": 16777216,
+    "shortest_edge": 65536
+  },
+  "temporal_patch_size": 2
+}
+
+[INFO|configuration_utils.py:769] 2026-08-17 13:59:52,167 >> loading configuration file D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B\config.json
+[INFO|configuration_utils.py:847] 2026-08-17 13:59:52,176 >> Model config Qwen3_5Config {
+  "architectures": [
+    "Qwen3_5ForConditionalGeneration"
+  ],
+  "image_token_id": 248056,
+  "model_type": "qwen3_5",
+  "text_config": {
+    "attention_bias": false,
+    "attention_dropout": 0.0,
+    "attn_output_gate": true,
+    "bos_token_id": null,
+    "dtype": "bfloat16",
+    "eos_token_id": 248044,
+    "full_attention_interval": 4,
+    "head_dim": 256,
+    "hidden_act": "silu",
+    "hidden_size": 2560,
+    "initializer_range": 0.02,
+    "intermediate_size": 9216,
+    "layer_types": [
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention"
+    ],
+    "linear_conv_kernel_dim": 4,
+    "linear_key_head_dim": 128,
+    "linear_num_key_heads": 16,
+    "linear_num_value_heads": 32,
+    "linear_value_head_dim": 128,
+    "mamba_ssm_dtype": "float32",
+    "max_position_embeddings": 262144,
+    "mlp_only_layers": [],
+    "model_type": "qwen3_5_text",
+    "mtp_num_hidden_layers": 1,
+    "mtp_use_dedicated_embeddings": false,
+    "num_attention_heads": 16,
+    "num_hidden_layers": 32,
+    "num_key_value_heads": 4,
+    "pad_token_id": null,
+    "partial_rotary_factor": 0.25,
+    "rms_norm_eps": 1e-06,
+    "rope_parameters": {
+      "mrope_interleaved": true,
+      "mrope_section": [
+        11,
+        11,
+        10
+      ],
+      "partial_rotary_factor": 0.25,
+      "rope_theta": 10000000,
+      "rope_type": "default"
+    },
+    "tie_word_embeddings": true,
+    "use_cache": true,
+    "vocab_size": 248320
+  },
+  "tie_word_embeddings": true,
+  "transformers_version": "5.6.0",
+  "video_token_id": 248057,
+  "vision_config": {
+    "deepstack_visual_indexes": [],
+    "depth": 24,
+    "hidden_act": "gelu_pytorch_tanh",
+    "hidden_size": 1024,
+    "in_channels": 3,
+    "initializer_range": 0.02,
+    "intermediate_size": 4096,
+    "model_type": "qwen3_5_vision",
+    "num_heads": 16,
+    "num_position_embeddings": 2304,
+    "out_hidden_size": 2560,
+    "patch_size": 16,
+    "spatial_merge_size": 2,
+    "temporal_patch_size": 2
+  },
+  "vision_end_token_id": 248054,
+  "vision_start_token_id": 248053
+}
+
+[INFO|video_processing_utils.py:684] 2026-08-17 13:59:52,741 >> loading configuration file D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B\video_preprocessor_config.json
+[INFO|video_processing_utils.py:684] 2026-08-17 13:59:52,744 >> loading configuration file D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B\video_preprocessor_config.json
+[INFO|video_processing_utils.py:727] 2026-08-17 13:59:52,744 >> Video processor Qwen3VLVideoProcessor {
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_rescale": true,
+  "do_resize": true,
+  "do_sample_frames": true,
+  "fps": 2,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "max_frames": 768,
+  "merge_size": 2,
+  "min_frames": 4,
+  "patch_size": 16,
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "return_metadata": false,
+  "size": {
+    "longest_edge": 25165824,
+    "shortest_edge": 4096
+  },
+  "temporal_patch_size": 2,
+  "video_processor_type": "Qwen3VLVideoProcessor"
+}
+
+[INFO|processing_utils.py:1199] 2026-08-17 13:59:52,745 >> Processor Qwen3VLProcessor:
+- image_processor: Qwen2VLImageProcessor {
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_rescale": true,
+  "do_resize": true,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_processor_type": "Qwen2VLImageProcessor",
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "merge_size": 2,
+  "patch_size": 16,
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "size": {
+    "longest_edge": 16777216,
+    "shortest_edge": 65536
+  },
+  "temporal_patch_size": 2
+}
+
+- tokenizer: Qwen2Tokenizer(name_or_path='D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B', vocab_size=248044, model_max_length=262144, padding_side='right', truncation_side='right', special_tokens={'eos_token': '<|im_end|>', 'pad_token': '<|endoftext|>', 'audio_bos_token': '<|audio_start|>', 'audio_eos_token': '<|audio_end|>', 'audio_token': '<|audio_pad|>', 'image_token': '<|image_pad|>', 'video_token': '<|video_pad|>', 'vision_bos_token': '<|vision_start|>', 'vision_eos_token': '<|vision_end|>'}, added_tokens_decoder={
+	248044: AddedToken("<|endoftext|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248045: AddedToken("<|im_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248046: AddedToken("<|im_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248047: AddedToken("<|object_ref_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248048: AddedToken("<|object_ref_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248049: AddedToken("<|box_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248050: AddedToken("<|box_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248051: AddedToken("<|quad_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248052: AddedToken("<|quad_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248053: AddedToken("<|vision_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248054: AddedToken("<|vision_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248055: AddedToken("<|vision_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248056: AddedToken("<|image_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248057: AddedToken("<|video_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248058: AddedToken("<tool_call>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	248059: AddedToken("</tool_call>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	248060: AddedToken("<|fim_prefix|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	248061: AddedToken("<|fim_middle|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	248062: AddedToken("<|fim_suffix|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	248063: AddedToken("<|fim_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	248064: AddedToken("<|repo_name|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	248065: AddedToken("<|file_sep|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	248066: AddedToken("<tool_response>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	248067: AddedToken("</tool_response>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	248068: AddedToken("<think>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	248069: AddedToken("</think>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=False),
+	248070: AddedToken("<|audio_start|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248071: AddedToken("<|audio_end|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248072: AddedToken("<tts_pad>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248073: AddedToken("<tts_text_bos>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248074: AddedToken("<tts_text_eod>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248075: AddedToken("<tts_text_bos_single>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+	248076: AddedToken("<|audio_pad|>", rstrip=False, lstrip=False, single_word=False, normalized=False, special=True),
+})
+- video_processor: Qwen3VLVideoProcessor {
+  "do_convert_rgb": true,
+  "do_normalize": true,
+  "do_rescale": true,
+  "do_resize": true,
+  "do_sample_frames": true,
+  "fps": 2,
+  "image_mean": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "image_std": [
+    0.5,
+    0.5,
+    0.5
+  ],
+  "max_frames": 768,
+  "merge_size": 2,
+  "min_frames": 4,
+  "patch_size": 16,
+  "resample": 3,
+  "rescale_factor": 0.00392156862745098,
+  "return_metadata": false,
+  "size": {
+    "longest_edge": 25165824,
+    "shortest_edge": 4096
+  },
+  "temporal_patch_size": 2,
+  "video_processor_type": "Qwen3VLVideoProcessor"
+}
+
+
+{
+  "image_processor": {
+    "do_convert_rgb": true,
+    "do_normalize": true,
+    "do_rescale": true,
+    "do_resize": true,
+    "image_mean": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "image_processor_type": "Qwen2VLImageProcessor",
+    "image_std": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "merge_size": 2,
+    "patch_size": 16,
+    "resample": 3,
+    "rescale_factor": 0.00392156862745098,
+    "size": {
+      "longest_edge": 16777216,
+      "shortest_edge": 65536
+    },
+    "temporal_patch_size": 2
+  },
+  "processor_class": "Qwen3VLProcessor",
+  "video_processor": {
+    "do_convert_rgb": true,
+    "do_normalize": true,
+    "do_rescale": true,
+    "do_resize": true,
+    "do_sample_frames": true,
+    "fps": 2,
+    "image_mean": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "image_std": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "max_frames": 768,
+    "merge_size": 2,
+    "min_frames": 4,
+    "patch_size": 16,
+    "resample": 3,
+    "rescale_factor": 0.00392156862745098,
+    "return_metadata": false,
+    "size": {
+      "longest_edge": 25165824,
+      "shortest_edge": 4096
+    },
+    "temporal_patch_size": 2,
+    "video_processor_type": "Qwen3VLVideoProcessor"
+  }
+}
+
+[INFO|configuration_utils.py:769] 2026-08-17 13:59:52,808 >> loading configuration file D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B\config.json
+[INFO|configuration_utils.py:847] 2026-08-17 13:59:52,817 >> Model config Qwen3_5Config {
+  "architectures": [
+    "Qwen3_5ForConditionalGeneration"
+  ],
+  "image_token_id": 248056,
+  "model_type": "qwen3_5",
+  "text_config": {
+    "attention_bias": false,
+    "attention_dropout": 0.0,
+    "attn_output_gate": true,
+    "bos_token_id": null,
+    "dtype": "bfloat16",
+    "eos_token_id": 248044,
+    "full_attention_interval": 4,
+    "head_dim": 256,
+    "hidden_act": "silu",
+    "hidden_size": 2560,
+    "initializer_range": 0.02,
+    "intermediate_size": 9216,
+    "layer_types": [
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention",
+      "linear_attention",
+      "linear_attention",
+      "linear_attention",
+      "full_attention"
+    ],
+    "linear_conv_kernel_dim": 4,
+    "linear_key_head_dim": 128,
+    "linear_num_key_heads": 16,
+    "linear_num_value_heads": 32,
+    "linear_value_head_dim": 128,
+    "mamba_ssm_dtype": "float32",
+    "max_position_embeddings": 262144,
+    "mlp_only_layers": [],
+    "model_type": "qwen3_5_text",
+    "mtp_num_hidden_layers": 1,
+    "mtp_use_dedicated_embeddings": false,
+    "num_attention_heads": 16,
+    "num_hidden_layers": 32,
+    "num_key_value_heads": 4,
+    "pad_token_id": null,
+    "partial_rotary_factor": 0.25,
+    "rms_norm_eps": 1e-06,
+    "rope_parameters": {
+      "mrope_interleaved": true,
+      "mrope_section": [
+        11,
+        11,
+        10
+      ],
+      "partial_rotary_factor": 0.25,
+      "rope_theta": 10000000,
+      "rope_type": "default"
+    },
+    "tie_word_embeddings": true,
+    "use_cache": true,
+    "vocab_size": 248320
+  },
+  "tie_word_embeddings": true,
+  "transformers_version": "5.6.0",
+  "video_token_id": 248057,
+  "vision_config": {
+    "deepstack_visual_indexes": [],
+    "depth": 24,
+    "hidden_act": "gelu_pytorch_tanh",
+    "hidden_size": 1024,
+    "in_channels": 3,
+    "initializer_range": 0.02,
+    "intermediate_size": 4096,
+    "model_type": "qwen3_5_vision",
+    "num_heads": 16,
+    "num_position_embeddings": 2304,
+    "out_hidden_size": 2560,
+    "patch_size": 16,
+    "spatial_merge_size": 2,
+    "temporal_patch_size": 2
+  },
+  "vision_end_token_id": 248054,
+  "vision_start_token_id": 248053
+}
+
+[WARNING|logging.py:340] 2026-08-17 13:59:52,817 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[INFO|2026-08-17 13:59:52] llamafactory.model.model_utils.kv_cache:144 >> KV cache is enabled for faster generation.
+[INFO|modeling_utils.py:748] 2026-08-17 13:59:53,318 >> loading weights file D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B\model.safetensors.index.json
+[INFO|modeling_utils.py:834] 2026-08-17 13:59:53,338 >> Since the `dtype` attribute can't be found in model's config object, will use dtype=torch.bfloat16 as derived from model's weights
+[INFO|configuration_utils.py:1027] 2026-08-17 13:59:53,339 >> Generate config GenerationConfig {
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "use_cache": true
+}
+
+[WARNING|logging.py:340] 2026-08-17 13:59:53,357 >> The fast path is not available because one of the required library is not installed. Falling back to torch implementation. To install follow https://github.com/fla-org/flash-linear-attention#installation and https://github.com/Dao-AILab/causal-conv1d
+Loading weights:   0%|          | 0/723 [00:00<?, ?it/s]Loading weights:  29%|██▉       | 210/723 [00:00<00:00, 2053.99it/s]Loading weights: 100%|██████████| 723/723 [00:00<00:00, 4073.80it/s]
+[INFO|utils.py:411] 2026-08-17 13:59:53,735 >> Generation config file not found, using a generation config created from the model config.
+[INFO|configuration_utils.py:978] 2026-08-17 13:59:53,735 >> loading configuration file D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-4B\config.json
+[INFO|configuration_utils.py:1027] 2026-08-17 13:59:53,736 >> Generate config GenerationConfig {}
+
+[INFO|2026-08-17 13:59:53] llamafactory.model.model_utils.attention:144 >> Using torch SDPA for faster training and inference.
+[INFO|2026-08-17 14:00:08] llamafactory.model.adapter:144 >> Merged 1 adapter(s).
+[INFO|2026-08-17 14:00:08] llamafactory.model.adapter:144 >> Loaded adapter(s): outputs/baiweixi_4b
+[INFO|2026-08-17 14:00:08] llamafactory.model.loader:144 >> all params: 4,539,265,536
+[INFO|2026-08-17 14:00:08] llamafactory.train.tuner:144 >> Convert model dtype to: torch.bfloat16.
+[INFO|configuration_utils.py:533] 2026-08-17 14:00:08,455 >> Configuration saved in outputs/baiweixi_4b_merged\config.json
+[INFO|configuration_utils.py:816] 2026-08-17 14:00:08,457 >> Configuration saved in outputs/baiweixi_4b_merged\generation_config.json
+Writing model shards:   0%|          | 0/3 [00:00<?, ?it/s]Writing model shards:  33%|███▎      | 1/3 [00:03<00:06,  3.19s/it]Writing model shards:  67%|██████▋   | 2/3 [00:04<00:02,  2.38s/it]Writing model shards: 100%|██████████| 3/3 [00:06<00:00,  1.93s/it]Writing model shards: 100%|██████████| 3/3 [00:06<00:00,  2.13s/it]
+[INFO|modeling_utils.py:3479] 2026-08-17 14:00:14,937 >> The model is bigger than the maximum size per checkpoint (4GB) and is going to be split in 3 checkpoint shards. You can find where each parameters has been saved in the index located at outputs/baiweixi_4b_merged\model.safetensors.index.json.
+[INFO|tokenization_utils_base.py:3278] 2026-08-17 14:00:14,943 >> chat template saved in outputs/baiweixi_4b_merged\chat_template.jinja
+[INFO|tokenization_utils_base.py:2111] 2026-08-17 14:00:14,944 >> tokenizer config file saved in outputs/baiweixi_4b_merged\tokenizer_config.json
+[INFO|tokenization_utils_base.py:3278] 2026-08-17 14:00:15,139 >> chat template saved in outputs/baiweixi_4b_merged\chat_template.jinja
+[INFO|tokenization_utils_base.py:2111] 2026-08-17 14:00:15,139 >> tokenizer config file saved in outputs/baiweixi_4b_merged\tokenizer_config.json
+[INFO|processing_utils.py:881] 2026-08-17 14:00:15,304 >> chat template saved in outputs/baiweixi_4b_merged\chat_template.jinja
+[INFO|processing_utils.py:899] 2026-08-17 14:00:15,305 >> processor saved in outputs/baiweixi_4b_merged\processor_config.json
+[INFO|2026-08-17 14:00:15] llamafactory.train.tuner:144 >> Ollama modelfile saved in outputs/baiweixi_4b_merged\Modelfile
