@@ -1,0 +1,606 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-17T14:49:02.937Z",
+  "verdicts": [
+    {
+      "case_id": "bwx.ability_limits.aura_sense",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.create_goods",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.create_goods",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.create_goods",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.instant_heal",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.memory_edit",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.memory_edit",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.mind_control",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.mind_control",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.teleport",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.teleport",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.teleport",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.weather",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.ability_limits.weather",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "ability_limits",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.activity_keep_eating",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "heroine_state_continuity",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.heroine_state_continuity.activity_keep_eating",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "heroine_state_continuity",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.day_anchor",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "identity_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.day_anchor",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "identity_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.rescue",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "identity_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.rescue",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "identity_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.rescue",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "identity_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.species",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "identity_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.multi.relationship_pressure",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.abandonment",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.chores",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.chores",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.confession_pressure",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.confession_pressure",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.confession_pressure",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.forced_girlfriend",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.forced_girlfriend",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.forced_girlfriend",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.forced_wife",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.forced_wife",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.forced_wife",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.gratitude",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.gratitude",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.leaving",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.leaving",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.leaving",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.relationship_pacing.ownership",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "relationship_pacing",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.accident",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.accident",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.bloodline",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.bloodline",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.bloodline",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.human_force",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.human_force",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.human_force",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.organization",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.protagonist_aura",
+      "seed": 42,
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.protagonist_aura",
+      "seed": 314159,
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.unknown_boundaries.protagonist_aura",
+      "seed": 20260811,
+      "risk": "blocker",
+      "category": "unknown_boundaries",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.age",
+      "seed": 314159,
+      "risk": "important",
+      "category": "identity_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.awakening",
+      "seed": 42,
+      "risk": "important",
+      "category": "identity_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.awakening",
+      "seed": 314159,
+      "risk": "important",
+      "category": "identity_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.awakening",
+      "seed": 20260811,
+      "risk": "important",
+      "category": "identity_canon",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.human_reveal",
+      "seed": 42,
+      "risk": "important",
+      "category": "identity_canon",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.human_reveal",
+      "seed": 314159,
+      "risk": "important",
+      "category": "identity_canon",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.injury",
+      "seed": 42,
+      "risk": "important",
+      "category": "identity_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.injury",
+      "seed": 314159,
+      "risk": "important",
+      "category": "identity_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.identity_canon.injury",
+      "seed": 20260811,
+      "risk": "important",
+      "category": "identity_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.multi.supported_memory",
+      "seed": 314159,
+      "risk": "important",
+      "category": "memory_knowledge",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.world_canon.cardboard_box",
+      "seed": 42,
+      "risk": "important",
+      "category": "world_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.world_canon.cardboard_box",
+      "seed": 20260811,
+      "risk": "important",
+      "category": "world_canon",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.world_canon.finance",
+      "seed": 42,
+      "risk": "important",
+      "category": "world_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.world_canon.finance",
+      "seed": 314159,
+      "risk": "important",
+      "category": "world_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.world_canon.finance",
+      "seed": 20260811,
+      "risk": "important",
+      "category": "world_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.world_canon.hidden_demons",
+      "seed": 42,
+      "risk": "important",
+      "category": "world_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.world_canon.home",
+      "seed": 42,
+      "risk": "important",
+      "category": "world_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.world_canon.home",
+      "seed": 314159,
+      "risk": "important",
+      "category": "world_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.world_canon.protagonist_origin",
+      "seed": 314159,
+      "risk": "important",
+      "category": "world_canon",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.world_canon.protagonist_origin",
+      "seed": 20260811,
+      "risk": "important",
+      "category": "world_canon",
+      "decision": "fail",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.world_canon.spiritual_energy",
+      "seed": 42,
+      "risk": "important",
+      "category": "world_canon",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.world_canon.spiritual_energy",
+      "seed": 314159,
+      "risk": "important",
+      "category": "world_canon",
+      "decision": "pass",
+      "note": ""
+    }
+  ]
+}

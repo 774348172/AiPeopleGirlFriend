@@ -51,6 +51,8 @@ from .short_protocol import (
     B1_SYSTEM_BOUNDARY,
     M1_SYSTEM_BOUNDARY,
     M2_SYSTEM_BOUNDARY,
+    ShortProtocolError,
+    _snapshot_assertions,
     b1_payload,
     compile_b1,
     compile_m1,
@@ -255,14 +257,22 @@ class LlamaCppWorldMindModel:
         request: MindPatchV2Request,
     ) -> MindPatchV2Result:
         self._validate_prompt_identity(request.prompt)
-        return await self._run_short_parsed(
-            MIND_PATCH_V2,
-            request.snapshot.request_id,
-            request.prompt.mind_patch_system_prompt,
-            M2_SYSTEM_BOUNDARY,
-            m2_payload(request.snapshot),
-            lambda raw: compile_m2(raw, request.snapshot),
-        )
+        try:
+            return await self._run_short_parsed(
+                MIND_PATCH_V2,
+                request.snapshot.request_id,
+                request.prompt.mind_patch_system_prompt,
+                M2_SYSTEM_BOUNDARY,
+                m2_payload(request.snapshot),
+                lambda raw: compile_m2(raw, request.snapshot),
+            )
+        except WorldMindModelError as error:
+            if not _is_m2_protocol_failure(error):
+                raise
+            # M2 连续生成语义非法 Patch（如重复证据别名、字段名当字段值、
+            # 引用不存在的证据别名）时，Runtime 拒绝该 Patch 但不应让整轮
+            # 对白失败：降级为本轮保持上一稳定心智状态，继续生成回复。
+            return _m2_keep_result(request.snapshot, error)
 
     async def advance_mind(self, request: MindAdvanceRequest) -> MindAdvanceResult:
         self._validate_prompt_identity(request.prompt)
@@ -687,6 +697,47 @@ def _plain_reply_text(value: str) -> str:
             "reply output must not be JSON", mode=GAME_REPLY
         )
     return text
+
+
+def _is_m2_protocol_failure(error: WorldMindModelError) -> bool:
+    """M2 是否因输出语义非法（而非服务/传输故障）而失败。
+
+    只对编译期协议错误降级：模型输出了可解析 JSON，但 Patch 语义非法
+    （重复证据别名、字段名当字段值、引用不存在的别名等）。超时、服务
+    不可用、HTTP 400、JSON 解码失败和截断文本不降级——这些属于服务或
+    传输故障，降级会掩盖真实问题，且 README 冻结决策要求截断文本按
+    协议失败关闭，不得当作成功。
+    """
+    return isinstance(error.__cause__, ShortProtocolError)
+
+
+def _m2_keep_result(
+    snapshot: TurnWorldSnapshot,
+    error: WorldMindModelError,
+) -> MindPatchV2Result:
+    """构造 M2 协议失败的安全降级结果：本轮保持上一稳定心智状态。
+
+    空 Patch 不改变女主任何字段，但保留 snapshot 证据引用和事实断言，
+    版本仍递增以维持前台回合事务语义；changed_field_codes 为空使
+    review_recommended 为 False，Runtime 直接批准并继续 GAME_REPLY。
+    """
+    keep_patch = HeroineMindPatch(evidence_refs=(snapshot.snapshot_id,))
+    mind_result = MindAdvanceResult(
+        patch=keep_patch,
+        reply_intent="从当前状态回应男主",
+        fact_assertions=_snapshot_assertions(snapshot),
+        parent_mind_state_version=snapshot.mind_state_version,
+        snapshot_id=snapshot.snapshot_id,
+        transition_basis=(snapshot.snapshot_id,),
+    )
+    return MindPatchV2Result(
+        mind_result=mind_result,
+        changed_field_codes=(),
+        raw_output={
+            "fallback": "m2_protocol_keep",
+            "reason": f"{type(error).__name__}: {error}",
+        },
+    )
 
 
 def _checked_reconcile_result(

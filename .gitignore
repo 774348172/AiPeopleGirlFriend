@@ -3,3 +3,6 @@
 # 内容由根目录 人物设定/ 跟踪，junction 路径本身不进入 git。
 /AiPeople/人物设定/
 /AiPeopleCreate/人物设定/
+
+# 训练优化器状态不再入库（2026-08-18 已从历史清理，防止再次误提交）
+optimizer.pt

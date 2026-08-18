@@ -661,3 +661,101 @@ def test_real_gateway_runs_inside_world_mind_runtime_and_commits_all_modes(
             harness.store.close()
 
     asyncio.run(scenario())
+
+
+def _m2_keep_result_fields(snapshot):
+    """构造与 compile_m2 输出一致的合法 M2 结果（用于降级后 GAME_REPLY 正常）。"""
+    return {
+        "c": [],
+    }
+
+
+def test_real_gateway_m2_duplicate_alias_falls_back_to_keep() -> None:
+    """M2 重复证据别名（语义非法 Patch）重试耗尽后降级为空 Patch，不整轮失败。"""
+    async def scenario() -> None:
+        prompt, _heroine, snapshot = _requests()
+        snapshot = replace(
+            snapshot,
+            protagonist_utterance_event_id="event-preallocated-user",
+        )
+        backend = ScriptedChatBackend(
+            [
+                {"c": [[5, "提醒男主慢一点吃", [1, 1]]]},  # duplicate aliases
+                {"c": [[5, "提醒男主慢一点吃", [1, 1]]]},
+            ]
+        )
+        model = LlamaCppWorldMindModel(backend, identity=_identity())
+        result = await model.propose_mind_patch_v2(
+            MindPatchV2Request(prompt, snapshot)
+        )
+        # 降级结果：空 Patch，不改变字段
+        assert result.changed_field_codes == ()
+        assert result.mind_result.patch.living_mind.immediate_intent is None
+        assert result.mind_result.patch.evidence_refs == (snapshot.snapshot_id,)
+        assert result.mind_result.snapshot_id == snapshot.snapshot_id
+        assert result.mind_result.parent_mind_state_version == snapshot.mind_state_version
+        assert result.raw_output is not None
+        assert result.raw_output["fallback"] == "m2_protocol_keep"
+        # 不触发 Critic
+        assert result.review_recommended is False
+        assert len(backend.calls) == 2
+
+    asyncio.run(scenario())
+
+
+def test_real_gateway_m2_field_name_as_value_falls_back_to_keep() -> None:
+    """M2 把字段名当成字段值（README 记录的 4B 长测失败模式）降级为空 Patch。"""
+    async def scenario() -> None:
+        prompt, _heroine, snapshot = _requests()
+        snapshot = replace(
+            snapshot,
+            protagonist_utterance_event_id="event-preallocated-user",
+        )
+        # 编译错误：code 5 但 change 长度不是 3（字段名被当作字段值导致结构错误）
+        backend = ScriptedChatBackend(
+            [
+                {"c": [[5, "immediate_intent", "提醒男主慢一点吃", [0, 1]]]},
+                {"c": [[5, "immediate_intent", "提醒男主慢一点吃", [0, 1]]]},
+            ]
+        )
+        model = LlamaCppWorldMindModel(backend, identity=_identity())
+        result = await model.propose_mind_patch_v2(
+            MindPatchV2Request(prompt, snapshot)
+        )
+        assert result.changed_field_codes == ()
+        assert result.raw_output["fallback"] == "m2_protocol_keep"
+
+    asyncio.run(scenario())
+
+
+def test_real_gateway_m2_service_failure_still_fails() -> None:
+    """服务/传输故障（非协议错误）不降级，保持整轮失败语义。"""
+    async def scenario() -> None:
+        prompt, _heroine, snapshot = _requests()
+        backend = ScriptedChatBackend(
+            [TimeoutError("M2 timed out"), TimeoutError("M2 timed out")]
+        )
+        model = LlamaCppWorldMindModel(backend, identity=_identity())
+        with pytest.raises(WorldMindModelError) as captured:
+            await model.propose_mind_patch_v2(
+                MindPatchV2Request(prompt, snapshot)
+            )
+        assert captured.value.code == "model_timeout"
+
+    asyncio.run(scenario())
+
+
+def test_real_gateway_m2_json_garbage_still_fails() -> None:
+    """模型输出不可解析 JSON（截断/乱码）不降级——README 冻结决策要求
+    截断文本按协议失败关闭，不得当作成功。"""
+    async def scenario() -> None:
+        prompt, _heroine, snapshot = _requests()
+        backend = ScriptedChatBackend(["not-json", "still-not-json"])
+        model = LlamaCppWorldMindModel(backend, identity=_identity())
+        with pytest.raises(WorldMindModelError) as captured:
+            await model.propose_mind_patch_v2(
+                MindPatchV2Request(prompt, snapshot)
+            )
+        assert captured.value.code == "model_invalid_json"
+
+    asyncio.run(scenario())

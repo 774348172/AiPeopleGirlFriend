@@ -1,18 +1,18 @@
 {
   "schema_version": 1,
-  "status": "sys12_7b_instruct_candidate_pending_validation",
-  "release_path": "llama_cpp",
-  "diagnostic_path": "ollama",
+  "status": "sys12_7b_q4_k_m_candidate_pending_validation",
+  "release_path": "ollama",
+  "diagnostic_path": "llama_cpp",
   "network_access_at_runtime": "forbidden",
   "cloud_fallback": "forbidden",
   "model_fallback": "forbidden",
   "foreground_protocol": "mind_patch_v2",
   "model": {
-    "name": "baiweixi-7b-instruct-q5-k-m",
-    "path": "F:\\AiPeople\\local_runtime\\models\\baiweixi_release_7b_instruct_q5_k_m.gguf",
-    "sha256": "be1b6f203eee64e50e4bf3a026c9a8e8226b3eb63b81725153c615992290b575",
-    "bytes": 5444831136,
-    "quantization": "Q5_K_M",
+    "name": "baiweixi-7b-instruct-q4-k-m",
+    "path": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\training_packages\\training_package_baiweixi_qwen25_7b_instruct\\outputs\\baiweixi_7b_q4_k_m.gguf",
+    "sha256": "79d55eb766d721846a0b5267bff0f57cd9342292dd07986293db9656c2ecc995",
+    "bytes": 4683073408,
+    "quantization": "Q4_K_M",
     "character_id": "baiweixi",
     "world_id": "songjiangfu",
     "protagonist_id": "protagonist",
@@ -46,14 +46,14 @@
     "FIVE_MINUTE_WORLD_MIND_RECONCILE": 90
   },
   "llama_cpp": {
-    "server_path": "F:\\ai-girlfriend\\AiPeople\\local_runtime\\llama.cpp\\b10256-cuda-12.4\\llama-server.exe",
+    "server_path": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\local_runtime\\llama.cpp\\b10256-cuda-12.4\\llama-server.exe",
     "server_sha256": "57ac5133e847dc0666fdd16834b5c0dc0e75acecb89f581d6d4afd83a18b31c0",
     "host": "127.0.0.1",
     "port": 18082,
     "model_alias": "baiweixi"
   },
   "ollama": {
-    "model_name": "baiweixi-7b-instruct-q5-k-m:latest",
+    "model_name": "baiweixi-7b:latest",
     "base_url": "http://127.0.0.1:11434",
     "keep_alive": "10m"
   },
