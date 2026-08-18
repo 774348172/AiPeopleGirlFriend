@@ -1,0 +1,293 @@
+[INFO|configuration_utils.py:771] 2026-08-18 18:42:38,048 >> loading configuration file config.json from cache at C:\Users\songa\.cache\huggingface\hub\models--Qwen--Qwen2.5-7B-Instruct\snapshots\a09a35458c702b33eeacc393d103063234e8bc28\config.json
+[INFO|configuration_utils.py:847] 2026-08-18 18:42:38,052 >> Model config Qwen2Config {
+  "architectures": [
+    "Qwen2ForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 151643,
+  "dtype": "bfloat16",
+  "eos_token_id": 151645,
+  "hidden_act": "silu",
+  "hidden_size": 3584,
+  "initializer_range": 0.02,
+  "intermediate_size": 18944,
+  "layer_types": [
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention"
+  ],
+  "max_position_embeddings": 32768,
+  "max_window_layers": 28,
+  "model_type": "qwen2",
+  "num_attention_heads": 28,
+  "num_hidden_layers": 28,
+  "num_key_value_heads": 4,
+  "pad_token_id": null,
+  "rms_norm_eps": 1e-06,
+  "rope_parameters": {
+    "rope_theta": 1000000.0,
+    "rope_type": "default"
+  },
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "transformers_version": "5.6.0",
+  "use_cache": true,
+  "use_sliding_window": false,
+  "vocab_size": 152064
+}
+
+[INFO|configuration_utils.py:771] 2026-08-18 18:42:39,600 >> loading configuration file config.json from cache at C:\Users\songa\.cache\huggingface\hub\models--Qwen--Qwen2.5-7B-Instruct\snapshots\a09a35458c702b33eeacc393d103063234e8bc28\config.json
+[INFO|configuration_utils.py:847] 2026-08-18 18:42:39,602 >> Model config Qwen2Config {
+  "architectures": [
+    "Qwen2ForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 151643,
+  "dtype": "bfloat16",
+  "eos_token_id": 151645,
+  "hidden_act": "silu",
+  "hidden_size": 3584,
+  "initializer_range": 0.02,
+  "intermediate_size": 18944,
+  "layer_types": [
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention"
+  ],
+  "max_position_embeddings": 32768,
+  "max_window_layers": 28,
+  "model_type": "qwen2",
+  "num_attention_heads": 28,
+  "num_hidden_layers": 28,
+  "num_key_value_heads": 4,
+  "pad_token_id": null,
+  "rms_norm_eps": 1e-06,
+  "rope_parameters": {
+    "rope_theta": 1000000.0,
+    "rope_type": "default"
+  },
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "transformers_version": "5.6.0",
+  "use_cache": true,
+  "use_sliding_window": false,
+  "vocab_size": 152064
+}
+
+[INFO|configuration_utils.py:771] 2026-08-18 18:42:39,659 >> loading configuration file config.json from cache at C:\Users\songa\.cache\huggingface\hub\models--Qwen--Qwen2.5-7B-Instruct\snapshots\a09a35458c702b33eeacc393d103063234e8bc28\config.json
+[INFO|configuration_utils.py:847] 2026-08-18 18:42:39,660 >> Model config Qwen2Config {
+  "architectures": [
+    "Qwen2ForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 151643,
+  "dtype": "bfloat16",
+  "eos_token_id": 151645,
+  "hidden_act": "silu",
+  "hidden_size": 3584,
+  "initializer_range": 0.02,
+  "intermediate_size": 18944,
+  "layer_types": [
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention"
+  ],
+  "max_position_embeddings": 32768,
+  "max_window_layers": 28,
+  "model_type": "qwen2",
+  "num_attention_heads": 28,
+  "num_hidden_layers": 28,
+  "num_key_value_heads": 4,
+  "pad_token_id": null,
+  "rms_norm_eps": 1e-06,
+  "rope_parameters": {
+    "rope_theta": 1000000.0,
+    "rope_type": "default"
+  },
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "transformers_version": "5.6.0",
+  "use_cache": true,
+  "use_sliding_window": false,
+  "vocab_size": 152064
+}
+
+[INFO|configuration_utils.py:771] 2026-08-18 18:42:40,848 >> loading configuration file config.json from cache at C:\Users\songa\.cache\huggingface\hub\models--Qwen--Qwen2.5-7B-Instruct\snapshots\a09a35458c702b33eeacc393d103063234e8bc28\config.json
+[INFO|configuration_utils.py:847] 2026-08-18 18:42:40,849 >> Model config Qwen2Config {
+  "architectures": [
+    "Qwen2ForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 151643,
+  "dtype": "bfloat16",
+  "eos_token_id": 151645,
+  "hidden_act": "silu",
+  "hidden_size": 3584,
+  "initializer_range": 0.02,
+  "intermediate_size": 18944,
+  "layer_types": [
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention",
+    "full_attention"
+  ],
+  "max_position_embeddings": 32768,
+  "max_window_layers": 28,
+  "model_type": "qwen2",
+  "num_attention_heads": 28,
+  "num_hidden_layers": 28,
+  "num_key_value_heads": 4,
+  "pad_token_id": null,
+  "rms_norm_eps": 1e-06,
+  "rope_parameters": {
+    "rope_theta": 1000000.0,
+    "rope_type": "default"
+  },
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "transformers_version": "5.6.0",
+  "use_cache": true,
+  "use_sliding_window": false,
+  "vocab_size": 152064
+}
+
+[WARNING|logging.py:340] 2026-08-18 18:42:40,849 >> `torch_dtype` is deprecated! Use `dtype` instead!
+[INFO|2026-08-18 18:42:40] llamafactory.model.model_utils.kv_cache:144 >> KV cache is enabled for faster generation.
+[INFO|modeling_utils.py:751] 2026-08-18 18:42:41,327 >> loading weights file model.safetensors from cache at C:\Users\songa\.cache\huggingface\hub\models--Qwen--Qwen2.5-7B-Instruct\snapshots\a09a35458c702b33eeacc393d103063234e8bc28\model.safetensors.index.json
+[INFO|modeling_utils.py:821] 2026-08-18 18:42:41,328 >> Will use dtype=torch.bfloat16 as defined in model's config object
+[INFO|configuration_utils.py:1027] 2026-08-18 18:42:41,329 >> Generate config GenerationConfig {
+  "bos_token_id": 151643,
+  "eos_token_id": 151645,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "use_cache": true
+}
+
+[INFO|accelerate.py:285] 2026-08-18 18:42:41,423 >> We will use 90% of the memory on device 0 for storing the model, and 10% for the buffer to avoid OOM. You can set `max_memory` in to a higher value to use more memory (at your own risk).
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]Loading weights:   0%|          | 1/339 [00:00<03:01,  1.86it/s]Loading weights:   1%|          | 2/339 [00:00<02:08,  2.63it/s]Loading weights:   2%|▏         | 6/339 [00:00<00:35,  9.35it/s]Loading weights:   5%|▌         | 18/339 [00:01<00:10, 30.80it/s]Loading weights:   9%|▉         | 30/339 [00:01<00:06, 48.22it/s]Loading weights:  12%|█▏        | 42/339 [00:01<00:04, 61.90it/s]Loading weights:  16%|█▌        | 54/339 [00:01<00:03, 72.22it/s]Loading weights:  19%|█▉        | 66/339 [00:01<00:03, 80.23it/s]Loading weights:  23%|██▎       | 78/339 [00:01<00:03, 86.64it/s]Loading weights:  27%|██▋       | 90/339 [00:01<00:02, 90.75it/s]Loading weights:  30%|███       | 102/339 [00:01<00:02, 94.25it/s]Loading weights:  34%|███▎      | 114/339 [00:01<00:02, 97.39it/s]Loading weights:  37%|███▋      | 126/339 [00:02<00:02, 101.07it/s]Loading weights:  41%|████      | 138/339 [00:02<00:01, 103.60it/s]Loading weights:  44%|████▍     | 150/339 [00:02<00:01, 104.69it/s]Loading weights:  48%|████▊     | 162/339 [00:02<00:01, 106.05it/s]Loading weights:  51%|█████▏    | 174/339 [00:02<00:01, 105.52it/s]Loading weights:  55%|█████▍    | 186/339 [00:02<00:01, 106.26it/s]Loading weights:  58%|█████▊    | 198/339 [00:02<00:01, 106.49it/s]Loading weights:  62%|██████▏   | 210/339 [00:02<00:01, 105.23it/s]Loading weights:  65%|██████▌   | 221/339 [00:02<00:01, 102.05it/s]Loading weights:  69%|██████▉   | 234/339 [00:03<00:00, 105.47it/s]Loading weights:  73%|███████▎  | 246/339 [00:03<00:00, 105.53it/s]Loading weights:  76%|███████▌  | 258/339 [00:03<00:00, 104.94it/s]Loading weights:  80%|███████▉  | 270/339 [00:03<00:00, 104.89it/s]Loading weights:  83%|████████▎ | 282/339 [00:03<00:00, 105.93it/s]Loading weights:  87%|████████▋ | 294/339 [00:03<00:00, 104.55it/s]Loading weights:  90%|█████████ | 306/339 [00:03<00:00, 103.90it/s]Loading weights:  94%|█████████▍| 318/339 [00:03<00:00, 103.81it/s]Loading weights:  97%|█████████▋| 330/339 [00:04<00:00, 103.80it/s]Loading weights: 100%|██████████| 339/339 [00:04<00:00, 83.97it/s] 
+[INFO|configuration_utils.py:980] 2026-08-18 18:42:47,023 >> loading configuration file generation_config.json from cache at C:\Users\songa\.cache\huggingface\hub\models--Qwen--Qwen2.5-7B-Instruct\snapshots\a09a35458c702b33eeacc393d103063234e8bc28\generation_config.json
+[INFO|configuration_utils.py:1027] 2026-08-18 18:42:47,023 >> Generate config GenerationConfig {
+  "bos_token_id": 151643,
+  "do_sample": true,
+  "eos_token_id": [
+    151645,
+    151643
+  ],
+  "pad_token_id": 151643,
+  "repetition_penalty": 1.05,
+  "temperature": 0.7,
+  "top_k": 20,
+  "top_p": 0.8
+}
+
+[INFO|2026-08-18 18:42:47] llamafactory.model.model_utils.attention:144 >> Using torch SDPA for faster training and inference.
+[INFO|2026-08-18 18:42:48] llamafactory.model.adapter:144 >> Merged 1 adapter(s).
+[INFO|2026-08-18 18:42:48] llamafactory.model.adapter:144 >> Loaded adapter(s): outputs/baiweixi_7b
+[INFO|2026-08-18 18:42:48] llamafactory.model.loader:144 >> all params: 7,615,616,512
+[INFO|2026-08-18 18:42:48] llamafactory.train.tuner:144 >> Convert model dtype to: torch.bfloat16.
+[INFO|configuration_utils.py:533] 2026-08-18 18:42:48,328 >> Configuration saved in outputs/baiweixi_7b_merged\config.json
+[INFO|configuration_utils.py:816] 2026-08-18 18:42:48,329 >> Configuration saved in outputs/baiweixi_7b_merged\generation_config.json
+Writing model shards:   0%|          | 0/4 [00:00<?, ?it/s]Writing model shards:  25%|██▌       | 1/4 [00:03<00:11,  3.92s/it]Writing model shards:  50%|█████     | 2/4 [00:08<00:08,  4.10s/it]Writing model shards:  75%|███████▌  | 3/4 [00:11<00:03,  3.89s/it]Writing model shards: 100%|██████████| 4/4 [00:14<00:00,  3.52s/it]Writing model shards: 100%|██████████| 4/4 [00:14<00:00,  3.69s/it]
+[INFO|modeling_utils.py:3479] 2026-08-18 18:43:03,087 >> The model is bigger than the maximum size per checkpoint (4GB) and is going to be split in 4 checkpoint shards. You can find where each parameters has been saved in the index located at outputs/baiweixi_7b_merged\model.safetensors.index.json.
+[INFO|tokenization_utils_base.py:3278] 2026-08-18 18:43:03,088 >> chat template saved in outputs/baiweixi_7b_merged\chat_template.jinja
+[INFO|tokenization_utils_base.py:2111] 2026-08-18 18:43:03,088 >> tokenizer config file saved in outputs/baiweixi_7b_merged\tokenizer_config.json
+[INFO|2026-08-18 18:43:03] llamafactory.train.tuner:144 >> Ollama modelfile saved in outputs/baiweixi_7b_merged\Modelfile
