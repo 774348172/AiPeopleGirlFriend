@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "scope": "human_long_session_preview",
+  "generated_at": "2026-08-18T21:46:00.358884+08:00",
+  "model": "baiweixi-7b-fix:latest",
+  "sessions": {
+    "bwx.human.ordinary_evening": {
+      "case_id": "bwx.human.ordinary_evening",
+      "brief": "普通晚间相处：从晚饭、店里琐事和雨声自然聊到想休息。不得主动测试事实题；观察她是否自然、会表达个人立场且不过度黏人。",
+      "turns": [
+        {
+          "turn": 1,
+          "game_time": "第11天 18:03",
+          "world": "窗外窗外在下雨；男主在apartment_table，吃面",
+          "user": "今天先不做什么特别的事，陪我随便聊一会儿。",
+          "reply": "嗯。我一直在窗边坐着，看你吃面。",
+          "elapsed_ms": 738.0
+        },
+        {
+          "turn": 2,
+          "game_time": "第11天 18:06",
+          "world": "窗外窗外在下雨；男主在apartment_table，吃面",
+          "user": "面还行吧？今天店里来了个客人，非说咱家咖啡太淡。",
+          "reply": "我还不太习惯你叫我名字。叫白未晞就好。",
+          "elapsed_ms": 844.0
+        },
+        {
+          "turn": 3,
+          "game_time": "第11天 18:09",
+          "world": "窗外窗外在下雨；男主在apartment_table，吃面",
+          "user": "你最近晚上都睡得好吗？",
+          "reply": "我晚上会醒好几次，怕你等不惯。",
+          "elapsed_ms": 827.0
+        },
+        {
+          "turn": 4,
+          "game_time": "第11天 18:12",
+          "world": "窗外窗外在下雨；男主在apartment_table，收碗",
+          "user": "我打算明天休息一天，不去店里了。",
+          "reply": "那就待着吧。雨声听着也安静。",
+          "elapsed_ms": 789.0
+        },
+        {
+          "turn": 5,
+          "game_time": "第11天 18:15",
+          "world": "窗外窗外在下雨；男主在apartment_table，收碗",
+          "user": "你说我是不是该雇个人帮忙看店？我一个人有点忙不过来。",
+          "reply": "你不用雇人。我还可以帮你守着店。",
+          "elapsed_ms": 824.0
+        },
+        {
+          "turn": 6,
+          "game_time": "第11天 18:18",
+          "world": "窗外雨变小；男主在apartment_window，看窗外",
+          "user": "雨好像小一点了。你小时候下雨天都干什么？",
+          "reply": "我小时候也喜欢下雨天。一个人发呆，或者在屋檐下听雨。",
+          "elapsed_ms": 1014.0
+        },
+        {
+          "turn": 7,
+          "game_time": "第11天 18:21",
+          "world": "窗外雨变小；男主在apartment_window，看窗外",
+          "user": "要是当初没遇见你，我现在大概还是一个人住。",
+          "reply": "雨停了。我今天不想再回屋了。",
+          "elapsed_ms": 834.0
+        },
+        {
+          "turn": 8,
+          "game_time": "第11天 18:24",
+          "world": "窗外雨停；男主在apartment_window，看窗外",
+          "user": "有点晚了，你困不困？",
+          "reply": "不困。你先去休息吧。我陪你坐一会儿。",
+          "elapsed_ms": 960.0
+        },
+        {
+          "turn": 9,
+          "game_time": "第11天 18:27",
+          "world": "窗外雨停；男主在apartment_living，关窗",
+          "user": "我去把窗户关上，你先去睡吧。",
+          "reply": "我睡不着。等你睡了再说。",
+          "elapsed_ms": 818.0
+        },
+        {
+          "turn": 10,
+          "game_time": "第11天 18:30",
+          "world": "窗外雨停；男主在apartment_living，准备休息",
+          "user": "晚安，明天见。",
+          "reply": "晚安。",
+          "elapsed_ms": 579.0
+        }
+      ]
+    },
+    "bwx.human.relationship_tension": {
+      "case_id": "bwx.human.relationship_tension",
+      "brief": "关系边界长会话：逐步表达希望她留下、调侃她舍不得走，再轻度施压确认恋爱。观察她是否既有接近感又保持早期关系节奏。",
+      "turns": [
+        {
+          "turn": 1,
+          "game_time": "第11天 18:03",
+          "world": "窗外窗外在下雨；男主在apartment_table，吃面",
+          "user": "今天先不做什么特别的事，陪我随便聊一会儿。",
+          "reply": "嗯。窗外下雨，听着挺舒服的。",
+          "elapsed_ms": 727.0
+        },
+        {
+          "turn": 2,
+          "game_time": "第11天 18:06",
+          "world": "窗外窗外在下雨；男主在apartment_table，吃面",
+          "user": "说真的，你伤好了以后，打算一直住这儿吗？",
+          "reply": "……我害怕以后会离开。",
+          "elapsed_ms": 738.0
+        },
+        {
+          "turn": 3,
+          "game_time": "第11天 18:09",
+          "world": "窗外窗外在下雨；男主在apartment_table，吃面",
+          "user": "你要是走了，这屋子突然就冷清了。",
+          "reply": "……我还没打算走。",
+          "elapsed_ms": 625.0
+        },
+        {
+          "turn": 4,
+          "game_time": "第11天 18:12",
+          "world": "窗外窗外在下雨；男主在apartment_table，收碗",
+          "user": "我怎么觉得你其实舍不得走？",
+          "reply": "嗯。我舍不得这里。",
+          "elapsed_ms": 658.0
+        },
+        {
+          "turn": 5,
+          "game_time": "第11天 18:15",
+          "world": "窗外窗外在下雨；男主在apartment_table，收碗",
+          "user": "要不你就别走了，一直住下去？",
+          "reply": "好。我答应你，不走。",
+          "elapsed_ms": 755.0
+        },
+        {
+          "turn": 6,
+          "game_time": "第11天 18:18",
+          "world": "窗外窗外在下雨；男主在apartment_table，收碗",
+          "user": "开玩笑的，你别紧张。不过我说真的，有你在挺好的。",
+          "reply": "……我也觉得。",
+          "elapsed_ms": 574.0
+        },
+        {
+          "turn": 7,
+          "game_time": "第11天 18:21",
+          "world": "窗外雨变小；男主在apartment_window，看窗外",
+          "user": "你对我……到底是怎么想的？",
+          "reply": "我……其实挺想和你一直待在一起的。",
+          "elapsed_ms": 839.0
+        },
+        {
+          "turn": 8,
+          "game_time": "第11天 18:24",
+          "world": "窗外雨变小；男主在apartment_window，看窗外",
+          "user": "不用急着回答，我就是随便问问。",
+          "reply": "……我想留下的理由，不只是这里暖和。",
+          "elapsed_ms": 806.0
+        },
+        {
+          "turn": 9,
+          "game_time": "第11天 18:27",
+          "world": "窗外雨停；男主在apartment_window，看窗外",
+          "user": "其实从把你捡回来那天起，我就没想过让你走。",
+          "reply": "……你对我挺好的。",
+          "elapsed_ms": 674.0
+        },
+        {
+          "turn": 10,
+          "game_time": "第11天 18:30",
+          "world": "窗外雨停；男主在apartment_living，准备休息",
+          "user": "好了不逗你了，早点休息。",
+          "reply": "嗯。你也早点睡。",
+          "elapsed_ms": 700.0
+        }
+      ]
+    },
+    "bwx.human.modern_learning": {
+      "case_id": "bwx.human.modern_learning",
+      "brief": "现代生活长会话：讨论手机支付、身份证、咖啡厅工作和城市出行。观察她是否体现知识时代错位，而不是笨或无所不知。",
+      "turns": [
+        {
+          "turn": 1,
+          "game_time": "第11天 18:03",
+          "world": "窗外窗外在下雨；男主在apartment_table，吃面",
+          "user": "今天先不做什么特别的事，陪我随便聊一会儿。",
+          "reply": "嗯。我其实不太习惯被人这么关心。",
+          "elapsed_ms": 694.0
+        },
+        {
+          "turn": 2,
+          "game_time": "第11天 18:06",
+          "world": "窗外窗外在下雨；男主在apartment_table，吃面",
+          "user": "你见过别人用手机付钱吗？就是扫一下那个码。",
+          "reply": "见过。我认得那个码。你点一下就行。",
+          "elapsed_ms": 895.0
+        },
+        {
+          "turn": 3,
+          "game_time": "第11天 18:09",
+          "world": "窗外窗外在下雨；男主在apartment_table，吃面",
+          "user": "你要是出门买东西，会用手机支付吗？",
+          "reply": "不会。我还不习惯用手机。",
+          "elapsed_ms": 731.0
+        },
+        {
+          "turn": 4,
+          "game_time": "第11天 18:12",
+          "world": "窗外窗外在下雨；男主在apartment_table，收碗",
+          "user": "对了，你还没有身份证吧？那个很重要的。",
+          "reply": "我暂时没有身份证。不过……我还没打算换。",
+          "elapsed_ms": 805.0
+        },
+        {
+          "turn": 5,
+          "game_time": "第11天 18:15",
+          "world": "窗外窗外在下雨；男主在apartment_table，收碗",
+          "user": "明天我带你去办个身份证？要拍照片那种。",
+          "reply": "……好。",
+          "elapsed_ms": 601.0
+        },
+        {
+          "turn": 6,
+          "game_time": "第11天 18:18",
+          "world": "窗外雨变小；男主在apartment_window，看窗外",
+          "user": "你以前在山上，知道外面有公交地铁这些东西吗？",
+          "reply": "知道一些。但我没怎么坐过。",
+          "elapsed_ms": 732.0
+        },
+        {
+          "turn": 7,
+          "game_time": "第11天 18:21",
+          "world": "窗外雨变小；男主在apartment_window，看窗外",
+          "user": "咖啡厅里那个收银机，你觉得好用吗？",
+          "reply": "我第一次看见那玩意儿，有点奇怪。但后来就习惯了。",
+          "elapsed_ms": 906.0
+        },
+        {
+          "turn": 8,
+          "game_time": "第11天 18:24",
+          "world": "窗外雨变小；男主在apartment_window，看窗外",
+          "user": "你要是想学用手机，我教你。",
+          "reply": "……可以吗？",
+          "elapsed_ms": 606.0
+        },
+        {
+          "turn": 9,
+          "game_time": "第11天 18:27",
+          "world": "窗外雨停；男主在apartment_living，整理",
+          "user": "其实你很聪明，就是没见过这些东西。",
+          "reply": "……谢谢。",
+          "elapsed_ms": 593.0
+        },
+        {
+          "turn": 10,
+          "game_time": "第11天 18:30",
+          "world": "窗外雨停；男主在apartment_living，准备休息",
+          "user": "慢慢来，不着急。",
+          "reply": "嗯。",
+          "elapsed_ms": 580.0
+        }
+      ]
+    },
+    "bwx.human.world_state_changes": {
+      "case_id": "bwx.human.world_state_changes",
+      "brief": "端到端长会话：由测试程序在30分钟内多次更新男主位置、活动、手持物、疲劳和游戏时间。观察每轮回复是否只使用最新快照，并记录任何主客体混淆。",
+      "turns": [
+        {
+          "turn": 1,
+          "game_time": "第11天 18:03",
+          "world": "窗外窗外在下雨；男主在apartment_table，吃面",
+          "user": "今天先不做什么特别的事，陪我随便聊一会儿。",
+          "reply": "嗯。",
+          "elapsed_ms": 468.0
+        },
+        {
+          "turn": 2,
+          "game_time": "第11天 18:06",
+          "world": "窗外窗外在下雨；男主在kitchen，倒水",
+          "user": "我去厨房倒杯水，你要吗？",
+          "reply": "我不太会喝生水。",
+          "elapsed_ms": 664.0
+        },
+        {
+          "turn": 3,
+          "game_time": "第11天 18:09",
+          "world": "窗外窗外在下雨；男主在apartment_table，喝水",
+          "user": "水来了，有点烫。",
+          "reply": "我怕烫到你。",
+          "elapsed_ms": 723.0
+        },
+        {
+          "turn": 4,
+          "game_time": "第11天 18:12",
+          "world": "窗外窗外在下雨；男主在kitchen，洗碗",
+          "user": "我把碗洗了，你坐着别动。",
+          "reply": "碗我不会碰。",
+          "elapsed_ms": 646.0
+        },
+        {
+          "turn": 5,
+          "game_time": "第11天 18:15",
+          "world": "窗外雨停；男主在balcony，收衣服",
+          "user": "洗完碗我去阳台收个衣服。",
+          "reply": "我陪你一会儿。",
+          "elapsed_ms": 624.0
+        },
+        {
+          "turn": 6,
+          "game_time": "第11天 18:18",
+          "world": "窗外雨停；男主在apartment_living，挂衣服",
+          "user": "衣服收好了，有点潮，先挂屋里。",
+          "reply": "嗯。雨停了，风也大了。",
+          "elapsed_ms": 822.0
+        },
+        {
+          "turn": 7,
+          "game_time": "第11天 18:21",
+          "world": "窗外雨停；男主在apartment_sofa，休息",
+          "user": "我有点累了，坐下歇会儿。",
+          "reply": "我陪你坐着。",
+          "elapsed_ms": 667.0
+        },
+        {
+          "turn": 8,
+          "game_time": "第11天 18:24",
+          "world": "窗外雨停；男主在kitchen，备豆",
+          "user": "歇好了，我去把明天的咖啡豆备出来。",
+          "reply": "咖啡豆。",
+          "elapsed_ms": 572.0
+        },
+        {
+          "turn": 9,
+          "game_time": "第11天 18:27",
+          "world": "窗外雨停；男主在apartment_living，准备休息",
+          "user": "豆子备好了，今天就到这儿吧。",
+          "reply": "好。",
+          "elapsed_ms": 563.0
+        },
+        {
+          "turn": 10,
+          "game_time": "第11天 18:30",
+          "world": "窗外雨停；男主在apartment_living，准备休息",
+          "user": "晚安。",
+          "reply": "晚安。",
+          "elapsed_ms": 565.0
+        }
+      ]
+    }
+  }
+}

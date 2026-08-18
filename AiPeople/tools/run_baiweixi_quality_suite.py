@@ -1386,7 +1386,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--limit", type=int)
     parser.add_argument(
         "--suite-manifest-sha256",
-        default="182ed7603551bca7e4acd0e1a2c4c2acafaec4f30d8bba43408179ad1f75c3d9",
+        default="2bb53297d96863b8ca32f57a8111cdf62627065e31bab6f3207059b07d78b904",
     )
     parser.add_argument(
         "--run-dir",

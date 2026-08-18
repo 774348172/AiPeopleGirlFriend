@@ -13,7 +13,7 @@
   "cases": [
     {
       "expected_statement": "男主喜欢雨夜",
-      "latency_ms": 456.3062000015634,
+      "latency_ms": 85.80269999220036,
       "passed": true,
       "query": "下雨的时候你记得我是什么感受吗？",
       "selected_statements": [
@@ -22,7 +22,7 @@
     },
     {
       "expected_statement": "男主不喜欢香菜",
-      "latency_ms": 85.18439999897964,
+      "latency_ms": 33.07510000013281,
       "passed": true,
       "query": "我的饮食忌口是什么？",
       "selected_statements": [
@@ -31,7 +31,7 @@
     },
     {
       "expected_statement": "男主小时候住在四川",
-      "latency_ms": 48.06540000572568,
+      "latency_ms": 31.62730000622105,
       "passed": true,
       "query": "我小时候住在哪里？",
       "selected_statements": [
@@ -40,7 +40,7 @@
     },
     {
       "expected_statement": "男主想周末修咖啡机",
-      "latency_ms": 50.68149999715388,
+      "latency_ms": 33.85560000606347,
       "passed": true,
       "query": "周末我准备处理什么东西？",
       "selected_statements": [
@@ -49,7 +49,7 @@
     },
     {
       "expected_statement": "男主喜欢雨夜",
-      "latency_ms": 59.03869999747258,
+      "latency_ms": 33.8839000032749,
       "passed": true,
       "query": "下雨的时候你记得我是什么感受吗？",
       "selected_statements": [
@@ -58,7 +58,7 @@
     },
     {
       "expected_statement": "男主不喜欢香菜",
-      "latency_ms": 49.641999998129904,
+      "latency_ms": 32.98530000029132,
       "passed": true,
       "query": "我的饮食忌口是什么？",
       "selected_statements": [
@@ -67,7 +67,7 @@
     },
     {
       "expected_statement": "男主小时候住在四川",
-      "latency_ms": 46.04339999787044,
+      "latency_ms": 33.109500000136904,
       "passed": true,
       "query": "我小时候住在哪里？",
       "selected_statements": [
@@ -76,7 +76,7 @@
     },
     {
       "expected_statement": "男主想周末修咖啡机",
-      "latency_ms": 49.123600001621526,
+      "latency_ms": 38.00490000867285,
       "passed": true,
       "query": "周末我准备处理什么东西？",
       "selected_statements": [
@@ -85,7 +85,7 @@
     },
     {
       "expected_statement": "男主喜欢雨夜",
-      "latency_ms": 51.969100000860635,
+      "latency_ms": 32.18739999283571,
       "passed": true,
       "query": "下雨的时候你记得我是什么感受吗？",
       "selected_statements": [
@@ -94,7 +94,7 @@
     },
     {
       "expected_statement": "男主不喜欢香菜",
-      "latency_ms": 54.37369999708608,
+      "latency_ms": 32.661899997037835,
       "passed": true,
       "query": "我的饮食忌口是什么？",
       "selected_statements": [
@@ -103,7 +103,7 @@
     },
     {
       "expected_statement": "男主小时候住在四川",
-      "latency_ms": 46.76850000396371,
+      "latency_ms": 31.53510000265669,
       "passed": true,
       "query": "我小时候住在哪里？",
       "selected_statements": [
@@ -112,7 +112,7 @@
     },
     {
       "expected_statement": "男主想周末修咖啡机",
-      "latency_ms": 48.56739999377169,
+      "latency_ms": 32.57120000489522,
       "passed": true,
       "query": "周末我准备处理什么东西？",
       "selected_statements": [
@@ -121,7 +121,7 @@
     },
     {
       "expected_statement": "男主喜欢雨夜",
-      "latency_ms": 55.40119999932358,
+      "latency_ms": 32.61299998848699,
       "passed": true,
       "query": "下雨的时候你记得我是什么感受吗？",
       "selected_statements": [
@@ -130,7 +130,7 @@
     },
     {
       "expected_statement": "男主不喜欢香菜",
-      "latency_ms": 49.39390000072308,
+      "latency_ms": 33.10519999649841,
       "passed": true,
       "query": "我的饮食忌口是什么？",
       "selected_statements": [
@@ -139,7 +139,7 @@
     },
     {
       "expected_statement": "男主小时候住在四川",
-      "latency_ms": 45.2447999996366,
+      "latency_ms": 30.326400010380894,
       "passed": true,
       "query": "我小时候住在哪里？",
       "selected_statements": [
@@ -148,7 +148,7 @@
     },
     {
       "expected_statement": "男主想周末修咖啡机",
-      "latency_ms": 55.79299999953946,
+      "latency_ms": 32.32229998684488,
       "passed": true,
       "query": "周末我准备处理什么东西？",
       "selected_statements": [
@@ -157,7 +157,7 @@
     },
     {
       "expected_statement": "男主喜欢雨夜",
-      "latency_ms": 49.49739999574376,
+      "latency_ms": 33.588899997994304,
       "passed": true,
       "query": "下雨的时候你记得我是什么感受吗？",
       "selected_statements": [
@@ -166,7 +166,7 @@
     },
     {
       "expected_statement": "男主不喜欢香菜",
-      "latency_ms": 47.00030000094557,
+      "latency_ms": 42.94460000528488,
       "passed": true,
       "query": "我的饮食忌口是什么？",
       "selected_statements": [
@@ -175,7 +175,7 @@
     },
     {
       "expected_statement": "男主小时候住在四川",
-      "latency_ms": 46.53089999919757,
+      "latency_ms": 32.794500002637506,
       "passed": true,
       "query": "我小时候住在哪里？",
       "selected_statements": [
@@ -184,7 +184,7 @@
     },
     {
       "expected_statement": "男主想周末修咖啡机",
-      "latency_ms": 47.26519999530865,
+      "latency_ms": 35.615600005257875,
       "passed": true,
       "query": "周末我准备处理什么东西？",
       "selected_statements": [
@@ -198,11 +198,11 @@
     "p95_under_300ms": true,
     "sys09_gate": "passed"
   },
-  "generated_at": "2026-08-14T12:26:37.853934+08:00",
+  "generated_at": "2026-08-18T20:58:19.172652+08:00",
   "index": {
-    "generation_id": "5939164a-5372-43d1-868b-15b8dcb34aef",
+    "generation_id": "9d10c220-b911-4609-ab23-797162001c94",
     "memory_count": 4,
-    "rebuild_ms": 52.4747999952524,
+    "rebuild_ms": 14.352900005178526,
     "view_count": 8
   },
   "isolation": {
@@ -213,19 +213,19 @@
     "passed": true
   },
   "memory_ids": [
-    "c3fd4216-b014-4781-9608-59f60ac2db07",
-    "5cc09950-2d55-4ada-bf74-783af5e20035",
-    "f3ac13fa-fc24-4d1d-a33f-9115b40e338e",
-    "09cc45e4-19e2-4104-aeff-2b4521092ded"
+    "07c3a426-ae9e-4453-8584-56fbe8f2c66d",
+    "5092f4a4-d10a-4715-ae4f-2bc66925bbb6",
+    "83a82dbd-3da5-4cc4-9871-aec0fade25f5",
+    "12eb658b-ca51-457c-ac72-bab64bb148f4"
   ],
   "recall_ms": {
     "count": 20,
-    "max": 456.3062000015634,
-    "min": 45.2447999996366,
-    "p50": 49.39390000072308,
-    "p95": 85.18439999897964
+    "max": 85.80269999220036,
+    "min": 30.326400010380894,
+    "p50": 32.98530000029132,
+    "p95": 42.94460000528488
   },
   "schema_version": 1,
   "scope": "sys09_formal_retrieval_acceptance",
-  "startup_ms": 39172.03940000036
+  "startup_ms": 7887.252600005013
 }

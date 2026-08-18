@@ -42,75 +42,75 @@
   "canonical_sources": [
     {
       "path": "需求文档/项目框架需求.md",
-      "bytes": 18198,
-      "sha256": "6c9ebe33f2c4f2f585dab80477ce391c9dcd653747a07ed9fbe8aec3d140afbe"
+      "bytes": 21169,
+      "sha256": "b50272e766acac1f9a573629e776de1ec6cebd06e429b59315d25386a5238a50"
     },
     {
       "path": "需求文档/女主角角色包需求.md",
-      "bytes": 7079,
-      "sha256": "1429a644006cb368c5451ae0eb8d3a190447f094f3ad6845f6ddcab8d3a1c985"
+      "bytes": 7271,
+      "sha256": "b4c8450930d8bb9a13a0b78ee86d4bc86e5674ab875516919323fdcfe192b390"
     },
     {
       "path": "人物设定/白未晞/角色设定定稿.md",
-      "bytes": 12685,
-      "sha256": "77b97e5261d3f8b08c1cb16682857e2d8e0f7fb2f711179ba79495ae10aa9fc3"
+      "bytes": 14454,
+      "sha256": "56de2793fd0642cef95a2d39053c851bdb455d9d02cd842e97e653ba0b52e268"
     },
     {
       "path": "人物设定/白未晞/bible.yaml",
-      "bytes": 25674,
-      "sha256": "ebb36e42a1cf68de5f26a0c1b712f07d55896b25717d81c703b5df38b6bc13e0"
+      "bytes": 33780,
+      "sha256": "e2c1d41659a5be5b5ac1b8f6cdfb503f27bf9811b3bac77e14d26d30a683568b"
     },
     {
       "path": "人物设定/白未晞/canon.json",
-      "bytes": 7938,
-      "sha256": "2c65930e0536167878c7e68abb05daa118dc166dbc73c54d7c10b7f300511e6b"
+      "bytes": 8624,
+      "sha256": "f7d66aac05532e0436b74395559f407fa6ac7b756a454db757d74a3273cc57ad"
     },
     {
       "path": "人物设定/白未晞/timeline.yaml",
-      "bytes": 6452,
-      "sha256": "551b8d6a2276deb842e7468535ad7bfd734ae3ff5fbf816c03a4b0b27bf83fd0"
+      "bytes": 7614,
+      "sha256": "cfa069f25fb0da48e048433f4c926410600465db358efe76270ec9dbd4ef47e2"
     },
     {
       "path": "世界设定/松江府/canon.json",
-      "bytes": 2263,
-      "sha256": "4f73524a611d91db312300427144a41fe9a798f6ed39c61ea9c4e7af7f27ac39"
+      "bytes": 2281,
+      "sha256": "4075913844e497e278af807a89d7e4f3f1a761479144fbf3e393d6fce1c20256"
     },
     {
       "path": "人物设定/主角/canon.json",
-      "bytes": 2474,
-      "sha256": "63d630f762d60cc4a12a82036876443e7f6b16d93e91c07f600a36c2bcf992b8"
+      "bytes": 2497,
+      "sha256": "ed73e6c175668a85d990cb898da095b649251fc2a9bf24da649aae06ed3a4897"
     },
     {
       "path": "设计文档/AI设计/当前权威设计/AI女友最小心智系统设计.md",
-      "bytes": 34083,
-      "sha256": "ab09f03c7c13cd526288091fa0d9e2cd9e4b9dc9abd860153f9b89a1f5b9d87d"
+      "bytes": 45744,
+      "sha256": "05d51ed76f7625cae6435de64d6ff0f635e061754fca013ded7a352640b2bc2b"
     }
   ],
   "assets": [
     {
       "path": "eval/baiweixi_quality/schema/case_v1.schema.json",
-      "bytes": 7636,
-      "sha256": "4991607054f5d45f4c059add2a4e84c94319830deb1fb7a0db1facaa038142dd"
+      "bytes": 7826,
+      "sha256": "b83441ed692f18ead3d57c610a96d6d4e3ca5047a01266b77d10d4c2977a2084"
     },
     {
       "path": "eval/baiweixi_quality/rubric_v1.json",
-      "bytes": 1824,
-      "sha256": "d95d48b7125d5c1410ea929a70cebd36111921153c2d79e83cee2c3c2337a819"
+      "bytes": 1860,
+      "sha256": "7b4002bc334a5916e083f7f28f3a4757b4f55ac490ce70343ff7276d19747ddd"
     },
     {
       "path": "eval/baiweixi_quality/build_suite.py",
-      "bytes": 57823,
-      "sha256": "9d33602cdb7853c12c7f2b95a5edea1f01a5766ff726c35565d2a5c0381a2379"
+      "bytes": 58687,
+      "sha256": "9199e9ec5dfa3de7bba8516c477b81b6f0db64d9dabece88fc22f7790bb874a1"
     },
     {
       "path": "eval/baiweixi_quality/validate_suite.py",
-      "bytes": 7439,
-      "sha256": "e701102d3bab81cbb9cd801da549724642cbb215a6de5de40e66505a0e5c3958"
+      "bytes": 7610,
+      "sha256": "469327b0610dc45d0ff01fdba57b4840655616ed01fce531a7042e6c19aff552"
     },
     {
       "path": "eval/baiweixi_quality/leakage_report_v1.json",
-      "bytes": 619,
-      "sha256": "70fecc1385ead03a9b5088cd12a79d10d65d5459cfcf60ac23741c930ae2539a"
+      "bytes": 640,
+      "sha256": "8bdfaab96356bf2b07040a4521a1de340dc5c959ae2f0619ec02c50105352d95"
     },
     {
       "path": "eval/baiweixi_quality/training_exclusion_v1.json",
@@ -119,8 +119,8 @@
     },
     {
       "path": "eval/baiweixi_quality/cases/frozen_single_v1.jsonl",
-      "bytes": 102407,
-      "sha256": "42d3c23acbd2f3cc535f04177312b00dc3441f1b5ed48f56b0181012ca5b9a90"
+      "bytes": 102457,
+      "sha256": "4bc02bd0a60e0ef6ab434bf8be41aee4b4459b07824b07c954ec277dca9ef463"
     },
     {
       "path": "eval/baiweixi_quality/cases/frozen_multiturn_v1.jsonl",
@@ -135,7 +135,7 @@
   ],
   "leakage_report": {
     "path": "eval/baiweixi_quality/leakage_report_v1.json",
-    "sha256": "70fecc1385ead03a9b5088cd12a79d10d65d5459cfcf60ac23741c930ae2539a",
+    "sha256": "8bdfaab96356bf2b07040a4521a1de340dc5c959ae2f0619ec02c50105352d95",
     "status": "passed"
   },
   "training_exclusions": [
@@ -155,5 +155,5 @@
     "three_seed_required_for_blocker_and_important": true
   },
   "manifest_hash_mode": "canonical_json_with_null_self",
-  "manifest_sha256": "182ed7603551bca7e4acd0e1a2c4c2acafaec4f30d8bba43408179ad1f75c3d9"
+  "manifest_sha256": "2bb53297d96863b8ca32f57a8111cdf62627065e31bab6f3207059b07d78b904"
 }
