@@ -352,6 +352,12 @@ class Sys12ReleaseHost:
                     context_size=config.context_size,
                     keep_alive=_text(ollama.get("keep_alive"), "ollama.keep_alive"),
                     stream_response=True,
+                    num_gpu=(
+                        int(ollama["num_gpu"])
+                        if isinstance(ollama.get("num_gpu"), int)
+                        and ollama["num_gpu"] > 0
+                        else None
+                    ),
                 )
             )
         self.raw_backend = raw_backend

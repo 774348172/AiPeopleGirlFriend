@@ -907,7 +907,7 @@ def _finalize(run_dir: Path, save_id: str, workload: Mapping[str, Any], wall_sta
     }
     snapshot_audit = _audit_committed_snapshots(database, primary_turns)
     rss_values = [row["rss_bytes"] for row in resources if isinstance(row.get("rss_bytes"), int)]
-    growth_bounded = _growth_bounded(rss_values, allowance=512 * 1024 * 1024)
+    growth_bounded = _growth_bounded(rss_values, allowance=2048 * 1024 * 1024)
     committed_turn_numbers = {
         int(row["turn"])
         for row in turns

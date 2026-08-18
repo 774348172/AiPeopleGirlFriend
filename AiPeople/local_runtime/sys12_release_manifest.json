@@ -55,7 +55,8 @@
   "ollama": {
     "model_name": "baiweixi-7b:latest",
     "base_url": "http://127.0.0.1:11434",
-    "keep_alive": "10m"
+    "keep_alive": "10m",
+    "num_gpu": 20
   },
   "thresholds": {
     "combined_gpu_peak_mib_max": 5120,

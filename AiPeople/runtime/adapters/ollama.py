@@ -47,6 +47,7 @@ class OllamaConfig:
     disable_thinking: bool = True
     grammar_max_string_length: int = 1000
     stream_response: bool = False
+    num_gpu: int | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.model_name, str) or not self.model_name.strip():
@@ -61,6 +62,8 @@ class OllamaConfig:
             raise ValueError("request_timeout_seconds must be positive")
         if self.grammar_max_string_length <= 0:
             raise ValueError("grammar_max_string_length must be positive")
+        if self.num_gpu is not None and self.num_gpu < 0:
+            raise ValueError("num_gpu must be non-negative")
 
 
 class OllamaWorldMindBackend:
@@ -143,6 +146,8 @@ class OllamaWorldMindBackend:
                 "repeat_penalty": options.repeat_penalty,
             },
         }
+        if self.config.num_gpu is not None:
+            body["options"]["num_gpu"] = self.config.num_gpu
         if options.seed is not None:
             body["options"]["seed"] = options.seed
         format_value = _ollama_format(
