@@ -1,7 +1,7 @@
 # AiPeopleCreate — 通用数据生成器仓库
 
 > 2026-08-07 目录整理：通用数据生成器及其产物从 `F:\AiPeople` 独立至此，与 AI 程序（runtime / eval / 训练包）解耦。
-> AI 程序侧见 `F:\AiPeople\README.md`。
+> AI 程序侧见 `F:\AiPeople\README.md`。   
 
 ## 目录结构
 
