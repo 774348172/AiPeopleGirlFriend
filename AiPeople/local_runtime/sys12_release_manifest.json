@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "sys12_7b_q4_k_m_candidate_pending_validation",
+  "status": "sys12_7b_q4_k_m_fix_frozen",
   "release_path": "ollama",
   "diagnostic_path": "llama_cpp",
   "network_access_at_runtime": "forbidden",
@@ -8,9 +8,9 @@
   "model_fallback": "forbidden",
   "foreground_protocol": "mind_patch_v2",
   "model": {
-    "name": "baiweixi-7b-instruct-q4-k-m",
+    "name": "baiweixi-7b-instruct-q4-k-m-fix",
     "path": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\training_packages\\training_package_baiweixi_qwen25_7b_instruct\\outputs\\baiweixi_7b_q4_k_m.gguf",
-    "sha256": "79d55eb766d721846a0b5267bff0f57cd9342292dd07986293db9656c2ecc995",
+    "sha256": "df6eefdce93ec512587131d6e566c32287a77fa601c4a8c423b8f8073a44b842",
     "bytes": 4683073408,
     "quantization": "Q4_K_M",
     "character_id": "baiweixi",

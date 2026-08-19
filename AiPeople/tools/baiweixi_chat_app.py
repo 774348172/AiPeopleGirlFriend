@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import asyncio
 import re
+import sys
 import time
 import uuid
 from contextlib import asynccontextmanager
@@ -10,6 +11,10 @@ from dataclasses import asdict
 from datetime import datetime
 from pathlib import Path
 from typing import Annotated, Any
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 import uvicorn
 from fastapi import FastAPI, HTTPException
@@ -44,7 +49,6 @@ from runtime.world_mind.model_gateway import (
 from runtime.world_mind.real_stack import build_real_retrieval_stack
 from runtime.world_mind.sys12 import Sys12ReleaseConfig, Sys12ReleaseHost
 
-ROOT = Path(__file__).resolve().parents[1]
 STATIC_ROOT = ROOT / "tools" / "baiweixi_chat_static"
 DATA_ROOT = ROOT / "eval" / "world_mind_p0" / "interactive_chat"
 DATABASE_PATH = DATA_ROOT / "baiweixi_interactive.sqlite3"
@@ -196,7 +200,14 @@ class BaiWeixiChatService:
         if self.store.load_live_world(session) is not None and world_input is None:
             return
         value = world_input or WorldInput()
-        held = (value.held_item.strip(),) if value.held_item.strip() else ()
+        # held_item 是面向测试者的自由文本（可能是中文），held_item_ids 要求
+        # 小写标识符：文本转 slug，空文本保持空元组。
+        held_text = value.held_item.strip()
+        held = (
+            (re.sub(r"[^a-z0-9_]", "_", held_text.lower()).strip("_") or "item",)
+            if held_text
+            else ()
+        )
         await self.world.update_latest(
             session,
             ProtagonistLiveState(
