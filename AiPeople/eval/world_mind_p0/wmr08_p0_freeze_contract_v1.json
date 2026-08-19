@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "contract_id": "wmr08-p0-freeze-v1",
+  "status": "frozen",
+  "scope": "白未晞 P0 正式冻结：角色质量、V6 系统稳定性、检索、发布配置",
+  "frozen_at": "2026-08-19",
+  "candidate": {
+    "model_name": "baiweixi-7b-fix:latest",
+    "architecture": "Qwen2.5-7B-Instruct",
+    "quantization": "Q4_K_M",
+    "gguf_sha256": "df6eefdce93ec512587131d6e566c32287a77fa601c4a8c423b8f8073a44b842",
+    "training": "bf16 LoRA，1987 条（1973 + 14 条针对性样本），loss 1.699",
+    "inference": "Ollama，num_gpu=20（8GB 卡预验证 3.73GB 模型显存）",
+    "retrieval": {
+      "bge_sha256": "318eca6bb1bc25f52ec4d1fb4d48dc5790b7d97d61e453748516741f51559a4e",
+      "reranker_sha256": "98851a6c1b6bb348cc8686b4adbdeca8e13f0443db0587dfdeb23529d35de889"
+    }
+  },
+  "frozen_assets": {
+    "schemas": {
+      "mind_patch_m2": "4e40360cba0fa331ce02b352dcd22e86e30a9a4a8d3b7b109d418b4a267f0605",
+      "game_reply_plain_text_v2": "0bebb8a86ea50c895fb7800bfd0ffbf757fa85c58abf60e3d1c5a4f6d244b1be",
+      "world_continuity_review_v1": "b1d5ba1c2cd10c2825554806666c1ae8e3b5bb333bb50d026ad5559ec874cc45",
+      "background_mind_patch_b1": "89c4525df96edd5057e189180ec9ea21495293805ac8789143849042e4753160",
+      "heroine_memory_r2": "8bc23471793971932b6463fcfd2a487392ce50de52995a20212a4af992a3f445"
+    },
+    "migrations": "001~014（含 008~014 V6 链），详见迁移目录 SHA256 清单",
+    "quality_suite": "baiweixi-quality-v1，manifest 2bb53297d96863b8ca32f57a8111cdf62627065e31bab6f3207059b07d78b904",
+    "retrieval_assets": "local_runtime/models/retrieval/retrieval_assets.json",
+    "release_manifest": "local_runtime/sys12_release_manifest.json（num_gpu=20）"
+  },
+  "gate_evidence": {
+    "1_character_package_dynamic_load": "WMR-01 通过；白未晞角色包加载测试通过",
+    "2_realtime_world_stable": "SYS-11 长测 60/60 轮提交，0 事务污染",
+    "3_latest_snapshot_per_turn": "SYS-11 快照审计 0 撕裂、0 缺失",
+    "4_heroine_memory_isolation": "SYS-11 多女主隔离泄漏 0；SYS-09 跨角色/跨存档零泄漏",
+    "5_atomic_turn_transaction": "SYS-11 0 显式失败、0 孤儿事件、0 悬空决策",
+    "6_model_reconcile_long_trajectory": "SYS-11 回答后 95 次 + 五分钟 13 次整理成功",
+    "7_concurrency_no_torn_state": "SYS-11 快照冻结合同通过，后台队列排空",
+    "8_crash_recovery": "SYS-11 进程崩溃注入恢复成功",
+    "9_synthetic_second_heroine_isolation": "SYS-11 第二女主隔离通过",
+    "10_target_hardware_stability": "4090 上一小时长测通过；8GB 目标卡显存预验证完成（num_gpu=20，3.73GB），目标卡实测延期",
+    "quality_judge_zero_fail": "完整 89 案例复验判官（baiweixi-4b）零失败",
+    "human_sessions": "4 会话评审 3 pass + 1 issue（宽松口径），human_sessions_completed=4",
+    "retrieval_acceptance": "SYS-09 通过（20/20，P95 43ms）",
+    "m2_fault_tolerance": "M2 编译协议错误降级为空 Patch，长测零整轮失败"
+  },
+  "known_deferred": {
+    "8gb_target_card_measurement": "需目标硬件实测；本机预验证证明 num_gpu=20 配置可行",
+    "quality_vocabulary_remainder": "33 个词表误杀待后续词表扩充（不影响判官口径判定）",
+    "1_real_failure_protagonist_job": "protagonist_job seed=20260811 编造'摆摊'，待补样本",
+    "2_real_failure_species_age": "species seed=42 答非所问、age 说不知道年龄，待补样本"
+  },
+  "judgment_basis": "以语义判官为准（7 维度），词表仅作机器初筛（2026-08-19 决策，见 eval/baiweixi_quality/README.md）",
+  "p0_status": "冻结（8GB 目标卡实测与 3 个真实失败样本为已知延期项，不影响当前冻结）"
+}
