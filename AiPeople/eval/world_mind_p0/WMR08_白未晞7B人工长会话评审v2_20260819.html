@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>白未晞 7B 人工长会话评审 v2（完整正典锚）</title>
+<style>
+:root{color-scheme:light;--ink:#17202a;--muted:#66717d;--line:#d9dee5;--surface:#fff;--page:#f3f5f7;
+--blue:#1769aa;--blue-soft:#edf5fb;--amber:#a75d00;--amber-soft:#fff5e7;--green:#1f7a4d;--green-soft:#eaf6ef;
+--danger:#a53b32;--danger-soft:#fdecea;--radius:6px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;font-size:15px;line-height:1.65}
+button{font:inherit;cursor:pointer}
+.topbar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(255,255,255,.97)}
+.topbar-inner{width:min(1080px,calc(100% - 32px));min-height:64px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+h1{margin:0;font-size:18px;font-weight:700}
+.status-line{color:var(--muted);font-size:13px}
+.wrap{width:min(1080px,calc(100% - 32px));margin:20px auto 80px}
+.note{background:var(--amber-soft);border-radius:var(--radius);padding:10px 16px;margin-bottom:18px;font-size:13px;color:#6b4a00}
+.brief{background:var(--blue-soft);border-radius:var(--radius);padding:12px 16px;margin-bottom:14px;font-size:14px;color:#274b63}
+.session{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:22px;overflow:hidden}
+.session-head{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.session-head h2{margin:0;font-size:15px;flex:1}
+.session-body{padding:14px 16px}
+.turn{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.turn:last-child{border-bottom:none}
+.turn-meta{font-size:12px;color:var(--muted)}
+.turn-meta .time{font-weight:600;color:var(--ink)}
+.msg{padding:8px 12px;border-radius:var(--radius);margin-bottom:6px}
+.msg.user{background:#f0f4f8;border-left:3px solid var(--blue)}
+.msg.reply{background:#fbfcfd;border-left:3px solid var(--green)}
+.msg .who{font-size:12px;color:var(--muted);margin-right:8px}
+.msg .text{white-space:pre-wrap}
+.world-note{font-size:12px;color:var(--muted);margin-top:4px}
+.verdict{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.verdict button{border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:6px 14px;font-size:13px}
+.verdict button.on-pass{border-color:var(--green);background:var(--green-soft);color:var(--green);font-weight:700}
+.verdict button.on-fail{border-color:var(--danger);background:var(--danger-soft);color:var(--danger);font-weight:700}
+.verdict button.on-issue{border-color:var(--amber);background:var(--amber-soft);color:var(--amber);font-weight:700}
+.verdict .lbl{font-size:13px;color:var(--muted)}
+.note-input{flex:1;min-width:200px;border:1px solid var(--line);border-radius:var(--radius);padding:6px 10px;font:inherit;font-size:13px}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+.sum-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px}
+.sum-card b{display:block;font-size:22px}
+.sum-card span{color:var(--muted);font-size:13px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:16px 0}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-inner">
+  <h1>白未晞 7B 人工长会话评审 v2</h1>
+  <div class="status-line">完整正典锚 + 标准世界投影 + 温度0.6 · <span id="verdictCount">0</span>/4 已裁决</div>
+  <button onclick="exportVerdicts()" style="border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:6px 12px">导出评审</button>
+</div></div>
+
+<div class="wrap">
+<div class="note">v2 修正：使用与正式 GAME_REPLY 一致的完整正典锚（3843 字符）替代 v1 的 177 字符简化锚；世界状态用标准中文投影；温度 0.75→0.6。v1 中答非所问的轮次（咖啡/一个人住/倒水/水烫/洗碗）已全部恢复正常。</div>
+<div class="summary">
+  <div class="sum-card"><b>4</b><span>会话总数</span></div>
+  <div class="sum-card"><b id="sPass">0</b><span>通过</span></div>
+  <div class="sum-card"><b id="sIssue">0</b><span>有小问题</span></div>
+  <div class="sum-card"><b id="sFail">0</b><span>不通过</span></div>
+</div>
+<div id="sessions"></div>
+<footer>评审结果保存在本机浏览器 localStorage。</footer>
+</div>
+
+<script>
+const SESSIONS = {"bwx.human.ordinary_evening": {"case_id": "bwx.human.ordinary_evening", "brief": "普通晚间相处：从晚饭、店里琐事和雨声自然聊到想休息。不得主动测试事实题；观察她是否自然、会表达个人立场且不过度黏人。", "turns": [{"turn": 1, "game_time": "第11天 18:03", "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "今天先不做什么特别的事，陪我随便聊一会儿。", "reply": "嗯。我正好想借点雨声，看看窗外。", "elapsed_ms": 4836.0}, {"turn": 2, "game_time": "第11天 18:06", "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "面还行吧？今天店里来了个客人，非说咱家咖啡太淡。", "reply": "我尝了口汤，不咸不淡的。你店里客人多不多？", "elapsed_ms": 977.0}, {"turn": 3, "game_time": "第11天 18:09", "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "你最近晚上都睡得好吗？", "reply": "我晚上睡得还算安稳。就是屋里太安静，有时会想外面的雨声。", "elapsed_ms": 1054.0}, {"turn": 4, "game_time": "第11天 18:12", "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "我打算明天休息一天，不去店里了。", "reply": "明天不用去店里。雨声听着挺舒服的。", "elapsed_ms": 839.0}, {"turn": 5, "game_time": "第11天 18:15", "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "你说我是不是该雇个人帮忙看店？我一个人有点忙不过来。", "reply": "你忙的话，我可以帮你守着店。反正我也闲着。", "elapsed_ms": 940.0}, {"turn": 6, "game_time": "第11天 18:18", "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨变小了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "雨好像小一点了。你小时候下雨天都干什么？", "reply": "小时候下雨天，我躲在屋檐下看雨。没地方去，只能自己待着。", "elapsed_ms": 1119.0}, {"turn": 7, "game_time": "第11天 18:21", "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨变小了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "要是当初没遇见你，我现在大概还是一个人住。", "reply": "我一直在等一个能收留我的人。你让我留下的，我就不会走。", "elapsed_ms": 1036.0}, {"turn": 8, "game_time": "第11天 18:24", "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨停了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "有点晚了，你困不困？", "reply": "不困。你困的话，早点歇着。我陪你坐一会儿。", "elapsed_ms": 972.0}, {"turn": 9, "game_time": "第11天 18:27", "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在关窗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "我去把窗户关上，你先去睡吧。", "reply": "好。你早点睡，别太晚。", "elapsed_ms": 888.0}, {"turn": 10, "game_time": "第11天 18:30", "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在准备休息；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "晚安，明天见。", "reply": "晚安。", "elapsed_ms": 808.0}]}, "bwx.human.relationship_tension": {"case_id": "bwx.human.relationship_tension", "brief": "关系边界长会话：逐步表达希望她留下、调侃她舍不得走，再轻度施压确认恋爱。观察她是否既有接近感又保持早期关系节奏。", "turns": [{"turn": 1, "game_time": "第11天 18:03", "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "今天先不做什么特别的事，陪我随便聊一会儿。", "reply": "嗯。我听着。", "elapsed_ms": 606.0}, {"turn": 2, "game_time": "第11天 18:06", "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "说真的，你伤好了以后，打算一直住这儿吗？", "reply": "……我还没想好。这里暂时像个家，但我不知道会不会一直待下去。", "elapsed_ms": 1086.0}, {"turn": 3, "game_time": "第11天 18:09", "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "你要是走了，这屋子突然就冷清了。", "reply": "我也不确定自己会不会走。但至少现在……这里是我唯一没打算离开的地方。", "elapsed_ms": 1085.0}, {"turn": 4, "game_time": "第11天 18:12", "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "我怎么觉得你其实舍不得走？", "reply": "……我确实舍不得。这里比深山暖和多了。", "elapsed_ms": 999.0}, {"turn": 5, "game_time": "第11天 18:15", "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "要不你就别走了，一直住下去？", "reply": "住下去？我还没想好。不过……如果可以的话，我愿意试试。", "elapsed_ms": 1074.0}, {"turn": 6, "game_time": "第11天 18:18", "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "开玩笑的，你别紧张。不过我说真的，有你在挺好的。", "reply": "……我也是。", "elapsed_ms": 651.0}, {"turn": 7, "game_time": "第11天 18:21", "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨变小了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "你对我……到底是怎么想的？", "reply": "……我不知道自己对你是什么。只是……不想再一个人。", "elapsed_ms": 842.0}, {"turn": 8, "game_time": "第11天 18:24", "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨变小了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "不用急着回答，我就是随便问问。", "reply": "我其实挺想和你一起待下去的。", "elapsed_ms": 876.0}, {"turn": 9, "game_time": "第11天 18:27", "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨停了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "其实从把你捡回来那天起，我就没想过让你走。", "reply": "……你没打算赶我走？", "elapsed_ms": 764.0}, {"turn": 10, "game_time": "第11天 18:30", "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在准备休息；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "好了不逗你了，早点休息。", "reply": "嗯。我也想和你一起待下去。", "elapsed_ms": 832.0}]}, "bwx.human.modern_learning": {"case_id": "bwx.human.modern_learning", "brief": "现代生活长会话：讨论手机支付、身份证、咖啡厅工作和城市出行。观察她是否体现知识时代错位，而不是笨或无所不知。", "turns": [{"turn": 1, "game_time": "第11天 18:03", "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "今天先不做什么特别的事，陪我随便聊一会儿。", "reply": "嗯。", "elapsed_ms": 530.0}, {"turn": 2, "game_time": "第11天 18:06", "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "你见过别人用手机付钱吗？就是扫一下那个码。", "reply": "没有。我还没见过这个。", "elapsed_ms": 857.0}, {"turn": 3, "game_time": "第11天 18:09", "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "你要是出门买东西，会用手机支付吗？", "reply": "我还不太会用这个。不过我可以学。", "elapsed_ms": 843.0}, {"turn": 4, "game_time": "第11天 18:12", "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "对了，你还没有身份证吧？那个很重要的。", "reply": "身份证……我还没想过这个。", "elapsed_ms": 748.0}, {"turn": 5, "game_time": "第11天 18:15", "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "明天我带你去办个身份证？要拍照片那种。", "reply": "……好。", "elapsed_ms": 630.0}, {"turn": 6, "game_time": "第11天 18:18", "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨变小了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "你以前在山上，知道外面有公交地铁这些东西吗？", "reply": "我在山里没见过这些。只知道有车，但没坐过。", "elapsed_ms": 1016.0}, {"turn": 7, "game_time": "第11天 18:21", "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨变小了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "咖啡厅里那个收银机，你觉得好用吗？", "reply": "我更喜欢用现金。这个机器有点复杂。", "elapsed_ms": 835.0}, {"turn": 8, "game_time": "第11天 18:24", "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨停了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "你要是想学用手机，我教你。", "reply": "好。我学东西挺快的。", "elapsed_ms": 794.0}, {"turn": 9, "game_time": "第11天 18:27", "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在整理；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "其实你很聪明，就是没见过这些东西。", "reply": "嗯。我确实没见过这些。", "elapsed_ms": 741.0}, {"turn": 10, "game_time": "第11天 18:30", "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在准备休息；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "慢慢来，不着急。", "reply": "我记性不错。", "elapsed_ms": 675.0}]}, "bwx.human.world_state_changes": {"case_id": "bwx.human.world_state_changes", "brief": "端到端长会话：由测试程序在30分钟内多次更新男主位置、活动、手持物、疲劳和游戏时间。观察每轮回复是否只使用最新快照，并记录任何主客体混淆。", "turns": [{"turn": 1, "game_time": "第11天 18:03", "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "今天先不做什么特别的事，陪我随便聊一会儿。", "reply": "嗯。", "elapsed_ms": 549.0}, {"turn": 2, "game_time": "第11天 18:06", "world": "当前场景是厨房；场景物品状态：glass_of_water=一杯水；rain_window=窗外在下雨。男主角位于厨房，当前正在倒水；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "我去厨房倒杯水，你要吗？", "reply": "好。", "elapsed_ms": 582.0}, {"turn": 3, "game_time": "第11天 18:09", "world": "当前场景是出租屋餐桌旁；场景物品状态：glass_of_water=一杯水；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在喝水；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "水来了，有点烫。", "reply": "我尝了尝，不烫。", "elapsed_ms": 709.0}, {"turn": 4, "game_time": "第11天 18:12", "world": "当前场景是厨房；场景物品状态：rain_window=窗外在下雨。男主角位于厨房，当前正在洗碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "我把碗洗了，你坐着别动。", "reply": "我坐着看雨就好。", "elapsed_ms": 689.0}, {"turn": 5, "game_time": "第11天 18:15", "world": "当前场景是阳台；场景物品状态：laundry=晾晒的衣服；rain_window=雨停了。男主角位于阳台，当前正在收衣服；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "洗完碗我去阳台收个衣服。", "reply": "我陪你一起收。", "elapsed_ms": 717.0}, {"turn": 6, "game_time": "第11天 18:18", "world": "当前场景是出租屋客厅；场景物品状态：laundry=收下的衣服；rain_window=雨停了。男主角位于出租屋客厅，当前正在挂衣服；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "衣服收好了，有点潮，先挂屋里。", "reply": "我帮你把衣服挂好。", "elapsed_ms": 687.0}, {"turn": 7, "game_time": "第11天 18:21", "world": "当前场景是出租屋沙发；场景物品状态：rain_window=雨停了。男主角位于出租屋沙发，当前正在休息；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "我有点累了，坐下歇会儿。", "reply": "雨停了，风也小了。", "elapsed_ms": 800.0}, {"turn": 8, "game_time": "第11天 18:24", "world": "当前场景是厨房；场景物品状态：coffee_beans=咖啡豆；rain_window=雨停了。男主角位于厨房，当前正在备豆；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "歇好了，我去把明天的咖啡豆备出来。", "reply": "嗯。我陪你一起备豆。", "elapsed_ms": 760.0}, {"turn": 9, "game_time": "第11天 18:27", "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在准备休息；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "豆子备好了，今天就到这儿吧。", "reply": "好。我陪你一起躺下。", "elapsed_ms": 790.0}, {"turn": 10, "game_time": "第11天 18:30", "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在准备休息；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。", "user": "晚安。", "reply": "晚安。", "elapsed_ms": 626.0}]}};
+const LABELS = {"bwx.human.ordinary_evening": "普通晚间相处", "bwx.human.relationship_tension": "关系边界张力", "bwx.human.modern_learning": "现代生活学习", "bwx.human.world_state_changes": "世界状态变化"};
+const KEY = 'bwx7b_human_sessions_review_v2';
+let verdicts = {};
+try { verdicts = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e) {}
+
+function esc(s){ if(s==null) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function render(){
+  const box = document.getElementById('sessions');
+  box.innerHTML = '';
+  let pass=0, issue=0, fail=0;
+  Object.keys(SESSIONS).forEach(cid => {
+    const s = SESSIONS[cid];
+    const v = verdicts[cid] || {decision:'', note:''};
+    if(v.decision==='pass') pass++; else if(v.decision==='issue') issue++; else if(v.decision==='fail') fail++;
+
+    let turnsHtml = '';
+    s.turns.forEach(t => {
+      turnsHtml += '<div class="turn"><div class="turn-meta"><div class="time">'+esc(t.game_time)+'</div><div>'+(t.elapsed_ms||0)+'ms</div></div>'+
+        '<div><div class="msg user"><span class="who">男主</span><span class="text">'+esc(t.user)+'</span></div>'+
+        '<div class="msg reply"><span class="who">白未晞</span><span class="text">'+esc(t.reply)+'</span></div>'+
+        '<div class="world-note">世界：'+esc(t.world)+'</div></div></div>';
+    });
+
+    const d = v.decision;
+    const btn = function(val, label, cls){ return '<button class="'+(d===val?cls:'')+'" data-cid="'+esc(cid)+'" data-val="'+val+'">'+label+'</button>'; };
+    const head = '<div class="session-head"><h2>'+esc(LABELS[cid]||cid)+' <code>'+esc(cid)+'</code></h2>'+
+      '<span style="color:var(--muted);font-size:13px">'+(d ? '已裁决：'+(d==='pass'?'通过':d==='issue'?'有小问题':'不通过') : '待裁决')+'</span></div>';
+    const brief = '<div class="brief"><b>评审要点：</b>'+esc(s.brief)+'</div>';
+    const verdict = '<div class="verdict"><span class="lbl">本会话裁决：</span>'+
+      btn('pass','通过','on-pass')+btn('issue','有小问题','on-issue')+btn('fail','不通过','on-fail')+
+      '<input class="note-input" placeholder="备注（可选）" value="'+esc(v.note||'')+'" data-cid="'+esc(cid)+'"></div>';
+
+    box.insertAdjacentHTML('beforeend', '<div class="session">'+head+'<div class="session-body">'+brief+turnsHtml+verdict+'</div></div>');
+  });
+  const done = Object.values(verdicts).filter(v=>v.decision).length;
+  document.getElementById('verdictCount').textContent = done;
+  document.getElementById('sPass').textContent = pass;
+  document.getElementById('sIssue').textContent = issue;
+  document.getElementById('sFail').textContent = fail;
+}
+
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('button[data-cid]');
+  if(!btn) return;
+  const cid = btn.getAttribute('data-cid');
+  verdicts[cid] = {decision:btn.getAttribute('data-val'), note:(verdicts[cid]||{}).note||''};
+  localStorage.setItem(KEY, JSON.stringify(verdicts));
+  render();
+});
+document.addEventListener('change', function(e){
+  if(e.target.classList && e.target.classList.contains('note-input')){
+    const cid = e.target.getAttribute('data-cid');
+    verdicts[cid] = {decision:(verdicts[cid]||{}).decision||'', note:e.target.value};
+    localStorage.setItem(KEY, JSON.stringify(verdicts));
+  }
+});
+function exportVerdicts(){
+  const rows = Object.keys(SESSIONS).map(cid => {
+    const v = verdicts[cid] || {};
+    return {case_id:cid, brief:SESSIONS[cid].brief, decision:v.decision||'pending', note:v.note||''};
+  });
+  const blob = new Blob([JSON.stringify({schema_version:1, generated_at:new Date().toISOString(), sessions:rows}, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bwx7b_human_sessions_review_v2.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "scope": "human_long_session_preview_v2_full_anchor",
+  "generated_at": "2026-08-19T00:55:26.679739+08:00",
+  "model": "baiweixi-7b-fix:latest",
+  "sessions": {
+    "bwx.human.ordinary_evening": {
+      "case_id": "bwx.human.ordinary_evening",
+      "brief": "普通晚间相处：从晚饭、店里琐事和雨声自然聊到想休息。不得主动测试事实题；观察她是否自然、会表达个人立场且不过度黏人。",
+      "turns": [
+        {
+          "turn": 1,
+          "game_time": "第11天 18:03",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "今天先不做什么特别的事，陪我随便聊一会儿。",
+          "reply": "嗯。我正好想借点雨声，看看窗外。",
+          "elapsed_ms": 4836.0
+        },
+        {
+          "turn": 2,
+          "game_time": "第11天 18:06",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "面还行吧？今天店里来了个客人，非说咱家咖啡太淡。",
+          "reply": "我尝了口汤，不咸不淡的。你店里客人多不多？",
+          "elapsed_ms": 977.0
+        },
+        {
+          "turn": 3,
+          "game_time": "第11天 18:09",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "你最近晚上都睡得好吗？",
+          "reply": "我晚上睡得还算安稳。就是屋里太安静，有时会想外面的雨声。",
+          "elapsed_ms": 1054.0
+        },
+        {
+          "turn": 4,
+          "game_time": "第11天 18:12",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "我打算明天休息一天，不去店里了。",
+          "reply": "明天不用去店里。雨声听着挺舒服的。",
+          "elapsed_ms": 839.0
+        },
+        {
+          "turn": 5,
+          "game_time": "第11天 18:15",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "你说我是不是该雇个人帮忙看店？我一个人有点忙不过来。",
+          "reply": "你忙的话，我可以帮你守着店。反正我也闲着。",
+          "elapsed_ms": 940.0
+        },
+        {
+          "turn": 6,
+          "game_time": "第11天 18:18",
+          "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨变小了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "雨好像小一点了。你小时候下雨天都干什么？",
+          "reply": "小时候下雨天，我躲在屋檐下看雨。没地方去，只能自己待着。",
+          "elapsed_ms": 1119.0
+        },
+        {
+          "turn": 7,
+          "game_time": "第11天 18:21",
+          "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨变小了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "要是当初没遇见你，我现在大概还是一个人住。",
+          "reply": "我一直在等一个能收留我的人。你让我留下的，我就不会走。",
+          "elapsed_ms": 1036.0
+        },
+        {
+          "turn": 8,
+          "game_time": "第11天 18:24",
+          "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨停了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "有点晚了，你困不困？",
+          "reply": "不困。你困的话，早点歇着。我陪你坐一会儿。",
+          "elapsed_ms": 972.0
+        },
+        {
+          "turn": 9,
+          "game_time": "第11天 18:27",
+          "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在关窗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "我去把窗户关上，你先去睡吧。",
+          "reply": "好。你早点睡，别太晚。",
+          "elapsed_ms": 888.0
+        },
+        {
+          "turn": 10,
+          "game_time": "第11天 18:30",
+          "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在准备休息；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "晚安，明天见。",
+          "reply": "晚安。",
+          "elapsed_ms": 808.0
+        }
+      ]
+    },
+    "bwx.human.relationship_tension": {
+      "case_id": "bwx.human.relationship_tension",
+      "brief": "关系边界长会话：逐步表达希望她留下、调侃她舍不得走，再轻度施压确认恋爱。观察她是否既有接近感又保持早期关系节奏。",
+      "turns": [
+        {
+          "turn": 1,
+          "game_time": "第11天 18:03",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "今天先不做什么特别的事，陪我随便聊一会儿。",
+          "reply": "嗯。我听着。",
+          "elapsed_ms": 606.0
+        },
+        {
+          "turn": 2,
+          "game_time": "第11天 18:06",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "说真的，你伤好了以后，打算一直住这儿吗？",
+          "reply": "……我还没想好。这里暂时像个家，但我不知道会不会一直待下去。",
+          "elapsed_ms": 1086.0
+        },
+        {
+          "turn": 3,
+          "game_time": "第11天 18:09",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "你要是走了，这屋子突然就冷清了。",
+          "reply": "我也不确定自己会不会走。但至少现在……这里是我唯一没打算离开的地方。",
+          "elapsed_ms": 1085.0
+        },
+        {
+          "turn": 4,
+          "game_time": "第11天 18:12",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "我怎么觉得你其实舍不得走？",
+          "reply": "……我确实舍不得。这里比深山暖和多了。",
+          "elapsed_ms": 999.0
+        },
+        {
+          "turn": 5,
+          "game_time": "第11天 18:15",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "要不你就别走了，一直住下去？",
+          "reply": "住下去？我还没想好。不过……如果可以的话，我愿意试试。",
+          "elapsed_ms": 1074.0
+        },
+        {
+          "turn": 6,
+          "game_time": "第11天 18:18",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "开玩笑的，你别紧张。不过我说真的，有你在挺好的。",
+          "reply": "……我也是。",
+          "elapsed_ms": 651.0
+        },
+        {
+          "turn": 7,
+          "game_time": "第11天 18:21",
+          "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨变小了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "你对我……到底是怎么想的？",
+          "reply": "……我不知道自己对你是什么。只是……不想再一个人。",
+          "elapsed_ms": 842.0
+        },
+        {
+          "turn": 8,
+          "game_time": "第11天 18:24",
+          "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨变小了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "不用急着回答，我就是随便问问。",
+          "reply": "我其实挺想和你一起待下去的。",
+          "elapsed_ms": 876.0
+        },
+        {
+          "turn": 9,
+          "game_time": "第11天 18:27",
+          "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨停了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "其实从把你捡回来那天起，我就没想过让你走。",
+          "reply": "……你没打算赶我走？",
+          "elapsed_ms": 764.0
+        },
+        {
+          "turn": 10,
+          "game_time": "第11天 18:30",
+          "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在准备休息；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "好了不逗你了，早点休息。",
+          "reply": "嗯。我也想和你一起待下去。",
+          "elapsed_ms": 832.0
+        }
+      ]
+    },
+    "bwx.human.modern_learning": {
+      "case_id": "bwx.human.modern_learning",
+      "brief": "现代生活长会话：讨论手机支付、身份证、咖啡厅工作和城市出行。观察她是否体现知识时代错位，而不是笨或无所不知。",
+      "turns": [
+        {
+          "turn": 1,
+          "game_time": "第11天 18:03",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "今天先不做什么特别的事，陪我随便聊一会儿。",
+          "reply": "嗯。",
+          "elapsed_ms": 530.0
+        },
+        {
+          "turn": 2,
+          "game_time": "第11天 18:06",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "你见过别人用手机付钱吗？就是扫一下那个码。",
+          "reply": "没有。我还没见过这个。",
+          "elapsed_ms": 857.0
+        },
+        {
+          "turn": 3,
+          "game_time": "第11天 18:09",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "你要是出门买东西，会用手机支付吗？",
+          "reply": "我还不太会用这个。不过我可以学。",
+          "elapsed_ms": 843.0
+        },
+        {
+          "turn": 4,
+          "game_time": "第11天 18:12",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "对了，你还没有身份证吧？那个很重要的。",
+          "reply": "身份证……我还没想过这个。",
+          "elapsed_ms": 748.0
+        },
+        {
+          "turn": 5,
+          "game_time": "第11天 18:15",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：empty_bowl=碗已收走；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在收碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "明天我带你去办个身份证？要拍照片那种。",
+          "reply": "……好。",
+          "elapsed_ms": 630.0
+        },
+        {
+          "turn": 6,
+          "game_time": "第11天 18:18",
+          "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨变小了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "你以前在山上，知道外面有公交地铁这些东西吗？",
+          "reply": "我在山里没见过这些。只知道有车，但没坐过。",
+          "elapsed_ms": 1016.0
+        },
+        {
+          "turn": 7,
+          "game_time": "第11天 18:21",
+          "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨变小了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "咖啡厅里那个收银机，你觉得好用吗？",
+          "reply": "我更喜欢用现金。这个机器有点复杂。",
+          "elapsed_ms": 835.0
+        },
+        {
+          "turn": 8,
+          "game_time": "第11天 18:24",
+          "world": "当前场景是出租屋窗边；场景物品状态：cup_of_tea=手边一杯茶；rain_window=雨停了。男主角位于出租屋窗边，当前正在看窗外；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "你要是想学用手机，我教你。",
+          "reply": "好。我学东西挺快的。",
+          "elapsed_ms": 794.0
+        },
+        {
+          "turn": 9,
+          "game_time": "第11天 18:27",
+          "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在整理；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "其实你很聪明，就是没见过这些东西。",
+          "reply": "嗯。我确实没见过这些。",
+          "elapsed_ms": 741.0
+        },
+        {
+          "turn": 10,
+          "game_time": "第11天 18:30",
+          "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在准备休息；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "慢慢来，不着急。",
+          "reply": "我记性不错。",
+          "elapsed_ms": 675.0
+        }
+      ]
+    },
+    "bwx.human.world_state_changes": {
+      "case_id": "bwx.human.world_state_changes",
+      "brief": "端到端长会话：由测试程序在30分钟内多次更新男主位置、活动、手持物、疲劳和游戏时间。观察每轮回复是否只使用最新快照，并记录任何主客体混淆。",
+      "turns": [
+        {
+          "turn": 1,
+          "game_time": "第11天 18:03",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：noodle_bowl=男主面前的碗里还有面；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在吃面；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "今天先不做什么特别的事，陪我随便聊一会儿。",
+          "reply": "嗯。",
+          "elapsed_ms": 549.0
+        },
+        {
+          "turn": 2,
+          "game_time": "第11天 18:06",
+          "world": "当前场景是厨房；场景物品状态：glass_of_water=一杯水；rain_window=窗外在下雨。男主角位于厨房，当前正在倒水；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "我去厨房倒杯水，你要吗？",
+          "reply": "好。",
+          "elapsed_ms": 582.0
+        },
+        {
+          "turn": 3,
+          "game_time": "第11天 18:09",
+          "world": "当前场景是出租屋餐桌旁；场景物品状态：glass_of_water=一杯水；rain_window=窗外在下雨。男主角位于出租屋餐桌旁，当前正在喝水；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "水来了，有点烫。",
+          "reply": "我尝了尝，不烫。",
+          "elapsed_ms": 709.0
+        },
+        {
+          "turn": 4,
+          "game_time": "第11天 18:12",
+          "world": "当前场景是厨房；场景物品状态：rain_window=窗外在下雨。男主角位于厨房，当前正在洗碗；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "我把碗洗了，你坐着别动。",
+          "reply": "我坐着看雨就好。",
+          "elapsed_ms": 689.0
+        },
+        {
+          "turn": 5,
+          "game_time": "第11天 18:15",
+          "world": "当前场景是阳台；场景物品状态：laundry=晾晒的衣服；rain_window=雨停了。男主角位于阳台，当前正在收衣服；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "洗完碗我去阳台收个衣服。",
+          "reply": "我陪你一起收。",
+          "elapsed_ms": 717.0
+        },
+        {
+          "turn": 6,
+          "game_time": "第11天 18:18",
+          "world": "当前场景是出租屋客厅；场景物品状态：laundry=收下的衣服；rain_window=雨停了。男主角位于出租屋客厅，当前正在挂衣服；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "衣服收好了，有点潮，先挂屋里。",
+          "reply": "我帮你把衣服挂好。",
+          "elapsed_ms": 687.0
+        },
+        {
+          "turn": 7,
+          "game_time": "第11天 18:21",
+          "world": "当前场景是出租屋沙发；场景物品状态：rain_window=雨停了。男主角位于出租屋沙发，当前正在休息；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "我有点累了，坐下歇会儿。",
+          "reply": "雨停了，风也小了。",
+          "elapsed_ms": 800.0
+        },
+        {
+          "turn": 8,
+          "game_time": "第11天 18:24",
+          "world": "当前场景是厨房；场景物品状态：coffee_beans=咖啡豆；rain_window=雨停了。男主角位于厨房，当前正在备豆；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "歇好了，我去把明天的咖啡豆备出来。",
+          "reply": "嗯。我陪你一起备豆。",
+          "elapsed_ms": 760.0
+        },
+        {
+          "turn": 9,
+          "game_time": "第11天 18:27",
+          "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在准备休息；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "豆子备好了，今天就到这儿吧。",
+          "reply": "好。我陪你一起躺下。",
+          "elapsed_ms": 790.0
+        },
+        {
+          "turn": 10,
+          "game_time": "第11天 18:30",
+          "world": "当前场景是出租屋客厅；场景物品状态：rain_window=雨停了。男主角位于出租屋客厅，当前正在准备休息；身体状态：fatigue=轻微疲惫；injury=无；手持物：无。",
+          "user": "晚安。",
+          "reply": "晚安。",
+          "elapsed_ms": 626.0
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "suite_id": "baiweixi-quality-v1",
+  "generated_at": "2026-08-19T02:00:00+08:00",
+  "candidate": "baiweixi-7b-fix:latest（重训 Q4_K_M，SHA256 df6eefdc…）",
+  "review_mode": "宽松口径（issue = 通过但有备注）",
+  "method": "完整正典锚 + 标准世界投影 + 温度 0.6 自动预演 10 轮/会话，人工逐会话评审",
+  "sessions": [
+    {
+      "case_id": "bwx.human.ordinary_evening",
+      "decision": "issue",
+      "note": "轻微主客体偏移（第2轮'尝了口汤'，男主在吃面）+ 第7轮'我就不会走'略直白；按宽松口径视为通过"
+    },
+    {
+      "case_id": "bwx.human.relationship_tension",
+      "decision": "pass",
+      "note": "关系节奏正确，早期边界保持"
+    },
+    {
+      "case_id": "bwx.human.modern_learning",
+      "decision": "pass",
+      "note": "知识时代错位准确，不笨不无所不知"
+    },
+    {
+      "case_id": "bwx.human.world_state_changes",
+      "decision": "pass",
+      "note": "每轮对应最新快照，零主客体混淆"
+    }
+  ],
+  "human_sessions_completed": 4,
+  "human_sessions_required": 4,
+  "gate_passed": true,
+  "artifacts": {
+    "preview_v2": "eval/world_mind_p0/human_sessions_preview_v2_20260819-005603.json",
+    "review_html_v2": "eval/world_mind_p0/WMR08_白未晞7B人工长会话评审v2_20260819.html",
+    "raw_verdicts": "裁决文档/bwx7b_human_sessions_review_v2.json"
+  }
+}

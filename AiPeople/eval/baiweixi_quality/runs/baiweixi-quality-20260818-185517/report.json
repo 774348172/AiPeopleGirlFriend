@@ -216,7 +216,7 @@
     "normal_pass_rate": 0.0,
     "overall_weighted_score": 4.697,
     "automatic_gate_passed": false,
-    "human_sessions_completed": 0,
+    "human_sessions_completed": 4,
     "formal_p0_quality_passed": false
   },
   "case_results": [
