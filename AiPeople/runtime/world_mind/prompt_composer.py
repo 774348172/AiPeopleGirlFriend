@@ -32,6 +32,7 @@ class CharacterPrompt:
     world_id: str
     protagonist_id: str
     character_id: str
+    character_display_name: str
     package_version: str
     system_prompt: str
     mind_patch_system_prompt: str
@@ -75,6 +76,7 @@ class CharacterPackagePromptComposer:
             world_id=session.world_id,
             protagonist_id=session.protagonist_id,
             character_id=session.active_character_id,
+            character_display_name=character.display_name,
             package_version=character.package.manifest.package_version,
             system_prompt=prompt,
             mind_patch_system_prompt=_render_mind_patch_prompt(character),

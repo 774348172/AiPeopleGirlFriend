@@ -107,7 +107,9 @@ def _session(save_id: str) -> RuntimeSessionIdentity:
 def _profiles(config: Sys12ReleaseConfig) -> dict[str, WorldMindModeProfile]:
     values = {
         MIND_PATCH_V2: (180, 0.2, 0.85, 1.05, 1),
-        GAME_REPLY: (360, 0.55, 0.9, 1.08, 1),
+        # GAME_REPLY: temp 0.65 + penalty 1.15（2026-08-19 实测）
+        # 原 0.55/1.08 在对抗性多轮对话下易陷入防御性短句循环
+        GAME_REPLY: (360, 0.65, 0.9, 1.15, 1),
         WORLD_CONTINUITY_REVIEW: (650, 0.1, 0.8, 1.05, 1),
         POST_REPLY_WORLD_MIND_RECONCILE: (320, 0.2, 0.85, 1.05, 0),
         FIVE_MINUTE_WORLD_MIND_RECONCILE: (320, 0.2, 0.85, 1.05, 0),

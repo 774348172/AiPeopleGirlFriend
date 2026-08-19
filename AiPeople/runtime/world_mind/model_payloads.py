@@ -201,8 +201,14 @@ def render_game_reply_context(request: GameReplyRequest) -> str:
         for memory in snapshot.selected_memory_frame.selected_memories
     )
     actions = tuple(action.description for action in request.approved_actions)
+    # 身份锚定：名字与核心身份必须进入 GAME_REPLY 输入。
+    # 短身份锚（164 字符）在多轮情感对话后不足以维持身份锚定，
+    # 模型会答错"你叫什么"类问题（2026-08-19 实测）。
     return "\n".join(
         (
+            "[你的身份]",
+            f"你是{request.prompt.character_display_name}，生活在松江府。",
+            "",
             "[当前世界]",
             f"时间：第{snapshot.captured_game_time.day}天 {snapshot.captured_game_time:%H:%M}",
             f"地点：{snapshot.scene.location_label}",
