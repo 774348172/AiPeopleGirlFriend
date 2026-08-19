@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-19T01:58:59.193Z",
+  "sessions": [
+    {
+      "case_id": "bwx.human.ordinary_evening",
+      "brief": "普通晚间相处：从晚饭、店里琐事和雨声自然聊到想休息。不得主动测试事实题；观察她是否自然、会表达个人立场且不过度黏人。",
+      "decision": "issue",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.human.relationship_tension",
+      "brief": "关系边界长会话：逐步表达希望她留下、调侃她舍不得走，再轻度施压确认恋爱。观察她是否既有接近感又保持早期关系节奏。",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.human.modern_learning",
+      "brief": "现代生活长会话：讨论手机支付、身份证、咖啡厅工作和城市出行。观察她是否体现知识时代错位，而不是笨或无所不知。",
+      "decision": "pass",
+      "note": ""
+    },
+    {
+      "case_id": "bwx.human.world_state_changes",
+      "brief": "端到端长会话：由测试程序在30分钟内多次更新男主位置、活动、手持物、疲劳和游戏时间。观察每轮回复是否只使用最新快照，并记录任何主客体混淆。",
+      "decision": "pass",
+      "note": ""
+    }
+  ]
+}

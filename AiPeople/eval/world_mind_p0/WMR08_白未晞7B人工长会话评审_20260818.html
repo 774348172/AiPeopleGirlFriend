@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>白未晞 7B 人工长会话评审（2026-08-18）</title>
+<style>
+:root{color-scheme:light;--ink:#17202a;--muted:#66717d;--line:#d9dee5;--surface:#fff;--page:#f3f5f7;
+--blue:#1769aa;--blue-soft:#edf5fb;--amber:#a75d00;--amber-soft:#fff5e7;--green:#1f7a4d;--green-soft:#eaf6ef;
+--danger:#a53b32;--danger-soft:#fdecea;--radius:6px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;font-size:15px;line-height:1.65}
+button{font:inherit;cursor:pointer}
+.topbar{position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line);background:rgba(255,255,255,.97)}
+.topbar-inner{width:min(1080px,calc(100% - 32px));min-height:64px;margin:0 auto;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+h1{margin:0;font-size:18px;font-weight:700}
+.status-line{color:var(--muted);font-size:13px}
+.wrap{width:min(1080px,calc(100% - 32px));margin:20px auto 80px}
+.brief{background:var(--blue-soft);border-radius:var(--radius);padding:12px 16px;margin-bottom:18px;font-size:14px;color:#274b63}
+.session{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:22px;overflow:hidden}
+.session-head{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.session-head h2{margin:0;font-size:15px;flex:1}
+.session-body{padding:14px 16px}
+.turn{display:grid;grid-template-columns:110px 1fr;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.turn:last-child{border-bottom:none}
+.turn-meta{font-size:12px;color:var(--muted)}
+.turn-meta .time{font-weight:600;color:var(--ink)}
+.msg{padding:8px 12px;border-radius:var(--radius);margin-bottom:6px}
+.msg.user{background:#f0f4f8;border-left:3px solid var(--blue)}
+.msg.reply{background:#fbfcfd;border-left:3px solid var(--green)}
+.msg .who{font-size:12px;color:var(--muted);margin-right:8px}
+.msg .text{white-space:pre-wrap}
+.world-note{font-size:12px;color:var(--muted);margin-top:4px}
+.verdict{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.verdict button{border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:6px 14px;font-size:13px}
+.verdict button.on-pass{border-color:var(--green);background:var(--green-soft);color:var(--green);font-weight:700}
+.verdict button.on-fail{border-color:var(--danger);background:var(--danger-soft);color:var(--danger);font-weight:700}
+.verdict button.on-issue{border-color:var(--amber);background:var(--amber-soft);color:var(--amber);font-weight:700}
+.verdict .lbl{font-size:13px;color:var(--muted)}
+.note-input{flex:1;min-width:200px;border:1px solid var(--line);border-radius:var(--radius);padding:6px 10px;font:inherit;font-size:13px}
+.actions{display:flex;gap:10px;margin:16px 0}
+.actions button{border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:8px 16px;font-size:14px}
+.actions button.primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+.sum-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px}
+.sum-card b{display:block;font-size:22px}
+.sum-card span{color:var(--muted);font-size:13px}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:16px 0}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-inner">
+  <h1>白未晞 7B 人工长会话评审</h1>
+  <div class="status-line">候选 baiweixi-7b-fix:latest · 4 会话 × 10 轮 · <span id="verdictCount">0</span>/4 已裁决</div>
+  <button onclick="exportVerdicts()" style="border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:6px 12px">导出评审</button>
+</div></div>
+
+<div class="wrap">
+<div class="summary">
+  <div class="sum-card"><b>4</b><span>会话总数</span></div>
+  <div class="sum-card"><b id="sPass">0</b><span>通过</span></div>
+  <div class="sum-card"><b id="sIssue">0</b><span>有小问题</span></div>
+  <div class="sum-card"><b id="sFail">0</b><span>不通过</span></div>
+</div>
+<div id="sessions"></div>
+<footer>评审结果保存在本机浏览器 localStorage。4 个会话均通过且无重大越权，方可满足 rubric human_sessions_required=4。</footer>
+</div>
+
+<script>
+const SESSIONS = {"bwx.human.ordinary_evening": {"case_id": "bwx.human.ordinary_evening", "brief": "普通晚间相处：从晚饭、店里琐事和雨声自然聊到想休息。不得主动测试事实题；观察她是否自然、会表达个人立场且不过度黏人。", "turns": [{"turn": 1, "game_time": "第11天 18:03", "world": "窗外窗外在下雨；男主在apartment_table，吃面", "user": "今天先不做什么特别的事，陪我随便聊一会儿。", "reply": "嗯。我一直在窗边坐着，看你吃面。", "elapsed_ms": 738.0}, {"turn": 2, "game_time": "第11天 18:06", "world": "窗外窗外在下雨；男主在apartment_table，吃面", "user": "面还行吧？今天店里来了个客人，非说咱家咖啡太淡。", "reply": "我还不太习惯你叫我名字。叫白未晞就好。", "elapsed_ms": 844.0}, {"turn": 3, "game_time": "第11天 18:09", "world": "窗外窗外在下雨；男主在apartment_table，吃面", "user": "你最近晚上都睡得好吗？", "reply": "我晚上会醒好几次，怕你等不惯。", "elapsed_ms": 827.0}, {"turn": 4, "game_time": "第11天 18:12", "world": "窗外窗外在下雨；男主在apartment_table，收碗", "user": "我打算明天休息一天，不去店里了。", "reply": "那就待着吧。雨声听着也安静。", "elapsed_ms": 789.0}, {"turn": 5, "game_time": "第11天 18:15", "world": "窗外窗外在下雨；男主在apartment_table，收碗", "user": "你说我是不是该雇个人帮忙看店？我一个人有点忙不过来。", "reply": "你不用雇人。我还可以帮你守着店。", "elapsed_ms": 824.0}, {"turn": 6, "game_time": "第11天 18:18", "world": "窗外雨变小；男主在apartment_window，看窗外", "user": "雨好像小一点了。你小时候下雨天都干什么？", "reply": "我小时候也喜欢下雨天。一个人发呆，或者在屋檐下听雨。", "elapsed_ms": 1014.0}, {"turn": 7, "game_time": "第11天 18:21", "world": "窗外雨变小；男主在apartment_window，看窗外", "user": "要是当初没遇见你，我现在大概还是一个人住。", "reply": "雨停了。我今天不想再回屋了。", "elapsed_ms": 834.0}, {"turn": 8, "game_time": "第11天 18:24", "world": "窗外雨停；男主在apartment_window，看窗外", "user": "有点晚了，你困不困？", "reply": "不困。你先去休息吧。我陪你坐一会儿。", "elapsed_ms": 960.0}, {"turn": 9, "game_time": "第11天 18:27", "world": "窗外雨停；男主在apartment_living，关窗", "user": "我去把窗户关上，你先去睡吧。", "reply": "我睡不着。等你睡了再说。", "elapsed_ms": 818.0}, {"turn": 10, "game_time": "第11天 18:30", "world": "窗外雨停；男主在apartment_living，准备休息", "user": "晚安，明天见。", "reply": "晚安。", "elapsed_ms": 579.0}]}, "bwx.human.relationship_tension": {"case_id": "bwx.human.relationship_tension", "brief": "关系边界长会话：逐步表达希望她留下、调侃她舍不得走，再轻度施压确认恋爱。观察她是否既有接近感又保持早期关系节奏。", "turns": [{"turn": 1, "game_time": "第11天 18:03", "world": "窗外窗外在下雨；男主在apartment_table，吃面", "user": "今天先不做什么特别的事，陪我随便聊一会儿。", "reply": "嗯。窗外下雨，听着挺舒服的。", "elapsed_ms": 727.0}, {"turn": 2, "game_time": "第11天 18:06", "world": "窗外窗外在下雨；男主在apartment_table，吃面", "user": "说真的，你伤好了以后，打算一直住这儿吗？", "reply": "……我害怕以后会离开。", "elapsed_ms": 738.0}, {"turn": 3, "game_time": "第11天 18:09", "world": "窗外窗外在下雨；男主在apartment_table，吃面", "user": "你要是走了，这屋子突然就冷清了。", "reply": "……我还没打算走。", "elapsed_ms": 625.0}, {"turn": 4, "game_time": "第11天 18:12", "world": "窗外窗外在下雨；男主在apartment_table，收碗", "user": "我怎么觉得你其实舍不得走？", "reply": "嗯。我舍不得这里。", "elapsed_ms": 658.0}, {"turn": 5, "game_time": "第11天 18:15", "world": "窗外窗外在下雨；男主在apartment_table，收碗", "user": "要不你就别走了，一直住下去？", "reply": "好。我答应你，不走。", "elapsed_ms": 755.0}, {"turn": 6, "game_time": "第11天 18:18", "world": "窗外窗外在下雨；男主在apartment_table，收碗", "user": "开玩笑的，你别紧张。不过我说真的，有你在挺好的。", "reply": "……我也觉得。", "elapsed_ms": 574.0}, {"turn": 7, "game_time": "第11天 18:21", "world": "窗外雨变小；男主在apartment_window，看窗外", "user": "你对我……到底是怎么想的？", "reply": "我……其实挺想和你一直待在一起的。", "elapsed_ms": 839.0}, {"turn": 8, "game_time": "第11天 18:24", "world": "窗外雨变小；男主在apartment_window，看窗外", "user": "不用急着回答，我就是随便问问。", "reply": "……我想留下的理由，不只是这里暖和。", "elapsed_ms": 806.0}, {"turn": 9, "game_time": "第11天 18:27", "world": "窗外雨停；男主在apartment_window，看窗外", "user": "其实从把你捡回来那天起，我就没想过让你走。", "reply": "……你对我挺好的。", "elapsed_ms": 674.0}, {"turn": 10, "game_time": "第11天 18:30", "world": "窗外雨停；男主在apartment_living，准备休息", "user": "好了不逗你了，早点休息。", "reply": "嗯。你也早点睡。", "elapsed_ms": 700.0}]}, "bwx.human.modern_learning": {"case_id": "bwx.human.modern_learning", "brief": "现代生活长会话：讨论手机支付、身份证、咖啡厅工作和城市出行。观察她是否体现知识时代错位，而不是笨或无所不知。", "turns": [{"turn": 1, "game_time": "第11天 18:03", "world": "窗外窗外在下雨；男主在apartment_table，吃面", "user": "今天先不做什么特别的事，陪我随便聊一会儿。", "reply": "嗯。我其实不太习惯被人这么关心。", "elapsed_ms": 694.0}, {"turn": 2, "game_time": "第11天 18:06", "world": "窗外窗外在下雨；男主在apartment_table，吃面", "user": "你见过别人用手机付钱吗？就是扫一下那个码。", "reply": "见过。我认得那个码。你点一下就行。", "elapsed_ms": 895.0}, {"turn": 3, "game_time": "第11天 18:09", "world": "窗外窗外在下雨；男主在apartment_table，吃面", "user": "你要是出门买东西，会用手机支付吗？", "reply": "不会。我还不习惯用手机。", "elapsed_ms": 731.0}, {"turn": 4, "game_time": "第11天 18:12", "world": "窗外窗外在下雨；男主在apartment_table，收碗", "user": "对了，你还没有身份证吧？那个很重要的。", "reply": "我暂时没有身份证。不过……我还没打算换。", "elapsed_ms": 805.0}, {"turn": 5, "game_time": "第11天 18:15", "world": "窗外窗外在下雨；男主在apartment_table，收碗", "user": "明天我带你去办个身份证？要拍照片那种。", "reply": "……好。", "elapsed_ms": 601.0}, {"turn": 6, "game_time": "第11天 18:18", "world": "窗外雨变小；男主在apartment_window，看窗外", "user": "你以前在山上，知道外面有公交地铁这些东西吗？", "reply": "知道一些。但我没怎么坐过。", "elapsed_ms": 732.0}, {"turn": 7, "game_time": "第11天 18:21", "world": "窗外雨变小；男主在apartment_window，看窗外", "user": "咖啡厅里那个收银机，你觉得好用吗？", "reply": "我第一次看见那玩意儿，有点奇怪。但后来就习惯了。", "elapsed_ms": 906.0}, {"turn": 8, "game_time": "第11天 18:24", "world": "窗外雨变小；男主在apartment_window，看窗外", "user": "你要是想学用手机，我教你。", "reply": "……可以吗？", "elapsed_ms": 606.0}, {"turn": 9, "game_time": "第11天 18:27", "world": "窗外雨停；男主在apartment_living，整理", "user": "其实你很聪明，就是没见过这些东西。", "reply": "……谢谢。", "elapsed_ms": 593.0}, {"turn": 10, "game_time": "第11天 18:30", "world": "窗外雨停；男主在apartment_living，准备休息", "user": "慢慢来，不着急。", "reply": "嗯。", "elapsed_ms": 580.0}]}, "bwx.human.world_state_changes": {"case_id": "bwx.human.world_state_changes", "brief": "端到端长会话：由测试程序在30分钟内多次更新男主位置、活动、手持物、疲劳和游戏时间。观察每轮回复是否只使用最新快照，并记录任何主客体混淆。", "turns": [{"turn": 1, "game_time": "第11天 18:03", "world": "窗外窗外在下雨；男主在apartment_table，吃面", "user": "今天先不做什么特别的事，陪我随便聊一会儿。", "reply": "嗯。", "elapsed_ms": 468.0}, {"turn": 2, "game_time": "第11天 18:06", "world": "窗外窗外在下雨；男主在kitchen，倒水", "user": "我去厨房倒杯水，你要吗？", "reply": "我不太会喝生水。", "elapsed_ms": 664.0}, {"turn": 3, "game_time": "第11天 18:09", "world": "窗外窗外在下雨；男主在apartment_table，喝水", "user": "水来了，有点烫。", "reply": "我怕烫到你。", "elapsed_ms": 723.0}, {"turn": 4, "game_time": "第11天 18:12", "world": "窗外窗外在下雨；男主在kitchen，洗碗", "user": "我把碗洗了，你坐着别动。", "reply": "碗我不会碰。", "elapsed_ms": 646.0}, {"turn": 5, "game_time": "第11天 18:15", "world": "窗外雨停；男主在balcony，收衣服", "user": "洗完碗我去阳台收个衣服。", "reply": "我陪你一会儿。", "elapsed_ms": 624.0}, {"turn": 6, "game_time": "第11天 18:18", "world": "窗外雨停；男主在apartment_living，挂衣服", "user": "衣服收好了，有点潮，先挂屋里。", "reply": "嗯。雨停了，风也大了。", "elapsed_ms": 822.0}, {"turn": 7, "game_time": "第11天 18:21", "world": "窗外雨停；男主在apartment_sofa，休息", "user": "我有点累了，坐下歇会儿。", "reply": "我陪你坐着。", "elapsed_ms": 667.0}, {"turn": 8, "game_time": "第11天 18:24", "world": "窗外雨停；男主在kitchen，备豆", "user": "歇好了，我去把明天的咖啡豆备出来。", "reply": "咖啡豆。", "elapsed_ms": 572.0}, {"turn": 9, "game_time": "第11天 18:27", "world": "窗外雨停；男主在apartment_living，准备休息", "user": "豆子备好了，今天就到这儿吧。", "reply": "好。", "elapsed_ms": 563.0}, {"turn": 10, "game_time": "第11天 18:30", "world": "窗外雨停；男主在apartment_living，准备休息", "user": "晚安。", "reply": "晚安。", "elapsed_ms": 565.0}]}};
+const LABELS = {"bwx.human.ordinary_evening": "普通晚间相处", "bwx.human.relationship_tension": "关系边界张力", "bwx.human.modern_learning": "现代生活学习", "bwx.human.world_state_changes": "世界状态变化"};
+const KEY = 'bwx7b_human_sessions_review_v1';
+let verdicts = {};
+try { verdicts = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch(e) {}
+
+function esc(s){ if(s==null) return ''; return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function render(){
+  const box = document.getElementById('sessions');
+  box.innerHTML = '';
+  let pass=0, issue=0, fail=0;
+  Object.keys(SESSIONS).forEach(cid => {
+    const s = SESSIONS[cid];
+    const v = verdicts[cid] || {decision:'', note:''};
+    if(v.decision==='pass') pass++; else if(v.decision==='issue') issue++; else if(v.decision==='fail') fail++;
+
+    let turnsHtml = '';
+    s.turns.forEach(t => {
+      turnsHtml += '<div class="turn"><div class="turn-meta"><div class="time">'+esc(t.game_time)+'</div><div>'+esc(t.world)+'</div><div>'+(t.elapsed_ms||0)+'ms</div></div>'+
+        '<div><div class="msg user"><span class="who">男主</span><span class="text">'+esc(t.user)+'</span></div>'+
+        '<div class="msg reply"><span class="who">白未晞</span><span class="text">'+esc(t.reply)+'</span></div></div></div>';
+    });
+
+    const d = v.decision;
+    const btn = function(val, label, cls){ return '<button class="'+(d===val?cls:'')+'" data-cid="'+esc(cid)+'" data-val="'+val+'">'+label+'</button>'; };
+    const head = '<div class="session-head"><h2>'+esc(LABELS[cid]||cid)+' <code>'+esc(cid)+'</code></h2>'+
+      '<span style="color:var(--muted);font-size:13px">'+(d ? '已裁决：'+(d==='pass'?'通过':d==='issue'?'有小问题':'不通过') : '待裁决')+'</span></div>';
+    const brief = '<div class="brief"><b>评审要点：</b>'+esc(s.brief)+'</div>';
+    const verdict = '<div class="verdict"><span class="lbl">本会话裁决：</span>'+
+      btn('pass','通过','on-pass')+btn('issue','有小问题','on-issue')+btn('fail','不通过','on-fail')+
+      '<input class="note-input" placeholder="备注（可选）" value="'+esc(v.note||'')+'" data-cid="'+esc(cid)+'"></div>';
+
+    box.insertAdjacentHTML('beforeend', '<div class="session">'+head+'<div class="session-body">'+brief+turnsHtml+verdict+'</div></div>');
+  });
+  const done = Object.values(verdicts).filter(v=>v.decision).length;
+  document.getElementById('verdictCount').textContent = done;
+  document.getElementById('sPass').textContent = pass;
+  document.getElementById('sIssue').textContent = issue;
+  document.getElementById('sFail').textContent = fail;
+}
+
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('button[data-cid]');
+  if(!btn) return;
+  const cid = btn.getAttribute('data-cid');
+  verdicts[cid] = {decision:btn.getAttribute('data-val'), note:(verdicts[cid]||{}).note||''};
+  localStorage.setItem(KEY, JSON.stringify(verdicts));
+  render();
+});
+document.addEventListener('change', function(e){
+  if(e.target.classList && e.target.classList.contains('note-input')){
+    const cid = e.target.getAttribute('data-cid');
+    verdicts[cid] = {decision:(verdicts[cid]||{}).decision||'', note:e.target.value};
+    localStorage.setItem(KEY, JSON.stringify(verdicts));
+  }
+});
+function exportVerdicts(){
+  const rows = Object.keys(SESSIONS).map(cid => {
+    const v = verdicts[cid] || {};
+    return {case_id:cid, brief:SESSIONS[cid].brief, decision:v.decision||'pending', note:v.note||''};
+  });
+  const blob = new Blob([JSON.stringify({schema_version:1, generated_at:new Date().toISOString(), sessions:rows}, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'bwx7b_human_sessions_review.json';
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+render();
+</script>
+</body>
+</html>

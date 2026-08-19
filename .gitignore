@@ -6,3 +6,13 @@
 
 # 训练优化器状态不再入库（2026-08-18 已从历史清理，防止再次误提交）
 optimizer.pt
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 质量评测运行产物（jsonl + sqlite）：仅早期 8-17 批次在库，后续 run 不入库
+AiPeople/eval/baiweixi_quality/runs/
+
+# 训练输出备份（含模型权重，GB 级），不入库
+**/outputs_bak_*/
