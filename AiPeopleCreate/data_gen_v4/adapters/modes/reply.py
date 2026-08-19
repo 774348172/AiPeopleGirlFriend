@@ -144,6 +144,7 @@ class ReplyModeAdapter:
             BELIEFS=beliefs,
             SCENE=scene,
             PLAYER_VIEW=player_view,
+            GENERATION_GUIDANCE=item_input.get("generation_guidance") or "（无）",
             TOPIC=topic,
             REQUIRED_BEHAVIORS=_bullet(item.get("required_behaviors", [])),
             FORBIDDEN_BEHAVIORS=_bullet(item.get("forbidden_behaviors", [])),
@@ -304,6 +305,7 @@ class ReplyModeAdapter:
             "input": {
                 "scene": scene, "player_view": player_view, "topic": topic,
                 "turn_bounds": list(turn_bounds),
+                "generation_guidance": item_input.get("generation_guidance") or "",
                 # 2026-08-09：称呼注入透传（候选记录持久化，re_export 重导出
                 # 可复现锚注入 → T2 锚一致）
                 **{k: item_input[k] for k in ("player_name", "player_informal", "player_age")

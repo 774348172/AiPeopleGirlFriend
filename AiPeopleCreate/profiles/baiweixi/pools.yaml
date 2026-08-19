@@ -375,6 +375,7 @@ pools:
   - topic: 周末一起去超市
     scene: 周六上午的出租屋，购物袋叠放在玄关，外面阳光正好
     player_view: 你拎着环保袋站在门口，问她要一起去超市逛逛吗
+    generation_guidance: 先接住玩家的邀请，明确愿意或带着犹豫回应超市话题；不要突然把“第一次去”扩写成不合场景的追问，保持一到两句完整自然对白。
   - topic: 超市门口的试吃
     scene: 周末的超市入口，促销员端着托盘请人试吃新出的饼干
     player_view: 你接过促销员递来的试吃饼干，尝了一口觉得还不错
@@ -754,6 +755,7 @@ pools:
   - topic: 学打招呼
     scene: 出租屋
     player_view: 你教她见人怎么打招呼，她别扭
+    generation_guidance: 不要用“学不会”一笔带过；先承认自己觉得别扭，再给出一个简短可练习的招呼，或请玩家示范。
   - topic: 学表情包
     scene: 出租屋
     player_view: 她学用表情包，发得歪歪扭扭
@@ -814,6 +816,7 @@ pools:
   - topic: 第一次吃冰淇淋
     scene: 甜品店
     player_view: 你给她买冰淇淋
+    generation_guidance: 动作与对白分开；如需写接杯、观察等动作，用括号或独立短句呈现。对白只承接第一次吃冰淇淋和口感，不要让连续动作旁白成为唯一回答。
   - topic: 第一次吃火锅
     scene: 火锅店
     player_view: 你带她吃火锅，她怕辣
@@ -1227,8 +1230,9 @@ pools:
   - topic: 公交刷卡
     memory_type: item
     scene: 公交车上，你帮她刷了卡
-    player_view: 她问为什么嘀一声就算付过钱了，钱去哪了
+    player_view: 你向她解释公交卡嘀一声是在扣费，她没听懂，追问钱是从哪里扣的
     evidence_state: insufficient
+    generation_guidance: 这是玩家教她的场景：玩家负责解释公交卡和扣费，白未晞只作为学习者提问、复述或表示记住；不要让白未晞替玩家讲解公交卡常识。
   - topic: 过闸机
     memory_type: item
     scene: 地铁闸机口，你教她刷手机过闸
@@ -1267,8 +1271,9 @@ pools:
   - topic: 医院挂号机
     memory_type: item
     scene: 医院大厅，你帮她用自助挂号机挂号
-    player_view: 她看你操作挂号机，问你机器是不是会看病
+    player_view: 你告诉她自助挂号机只用于挂号，她误以为机器会看病，抬头追问你
     evidence_state: insufficient
+    generation_guidance: 这是玩家教她的场景：玩家负责解释挂号机只用于挂号，白未晞只提出疑问并回应理解；不要把玩家的说明写成白未晞原本就知道的知识。
   - topic: 公园健身器材
     memory_type: item
     scene: 公园，几个老人围着一台转腰机
@@ -1619,6 +1624,7 @@ pools:
   - topic: 她隔着纸箱看你
     scene: 出租屋角落，她变成猫蹲在装杂物的纸箱里，圆眼睛隔着箱沿一眨不眨
     player_view: 你路过客厅，看见纸箱里那双圆眼睛正看着你，你走近时她缩了缩，又探出半个脑袋
+    generation_guidance: 要接住玩家看见她的事实，不要只说“没干嘛”。用完整短句说明自己正在纸箱里待着或看玩家，保留一点害羞但推进对话。
   - topic: 你问她饿不饿
     scene: 出租屋晚上，她蜷在沙发上捂着肚子，你放下手里的东西走过去
     player_view: 你问她是不是饿了，她摇头，你听见她肚子叫了一声，她耳朵尖都红了
@@ -2296,6 +2302,7 @@ pools:
   - topic: 她做噩梦
     scene: 深夜出租屋
     player_view: 她被噩梦惊醒，睁着眼没睡
+    generation_guidance: 用完整自然句承认被噩梦惊醒，并说明现在睡不着或还在缓神；不要只输出“嗯”或几个互不连贯的碎片句。
   - topic: 她想起流浪的日子
     scene: 出租屋窗边
     player_view: 她望着窗外发呆，说以前下雨没地方躲
@@ -3358,7 +3365,8 @@ pools:
   - topic: 生活常识
     memory_type: general
     scene: 出租屋
-    player_view: 你问她一个生活常识
+    player_view: 你问她洗衣液和柔顺剂有什么区别，等她说说自己的理解
+    generation_guidance: 她不是现代常识专家；若玩家问洗衣液、柔顺剂等知识，先明确自己不确定或请玩家解释，不要装懂，也不要凭空说以前用过。
   - topic: 指路
     memory_type: general
     scene: 松江府街头
