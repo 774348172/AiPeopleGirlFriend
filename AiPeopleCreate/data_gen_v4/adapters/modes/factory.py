@@ -218,6 +218,9 @@ class RecipeDrivenItemFactory:
                 "scene": str(sample.get("scene", "日常")),
                 "topic": str(sample.get("topic", "闲聊")),
                 "player_view": str(sample.get("player_view", "")),
+                # 条目级质量指导：只约束当前话题的角色边界与表达方式，
+                # 不进入正典事实，供 REPLY prompt 做局部纠偏。
+                "generation_guidance": str(sample.get("generation_guidance", "")),
                 "turn_bounds": [int(turn_bounds[0]), int(turn_bounds[1])],
                 # 2026-08-09：MEMORY_RERANK 场景字段透传（REPLY 条目缺省空值，
                 # 不影响现有行为；pool 条目可声明 working_state / memory_pool）

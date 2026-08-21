@@ -11,6 +11,11 @@ optimizer.pt
 __pycache__/
 *.pyc
 
+# 本地密钥（只提交 .env.example，不提交真实 .env）
+.env
+**/.env
+!.env.example
+
 # 质量评测运行产物（jsonl + sqlite）：仅早期 8-17 批次在库，后续 run 不入库
 AiPeople/eval/baiweixi_quality/runs/
 

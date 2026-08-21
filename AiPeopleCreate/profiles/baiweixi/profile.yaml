@@ -1,7 +1,7 @@
 package_id: profile.baiweixi
 package_type: profile
 schema_version: aip.profile.v4
-package_version: 0.2.0
+package_version: 0.3.0
 compatible_core_range: '>=0.1.0'
 dependencies:
 - pkg:protocol.relationship.runtime.v1@1.2.0
