@@ -24,6 +24,7 @@ def test_production_runtime_uses_dialogue_only_foreground() -> None:
     config = baiweixi_chat_app._runtime_config()
     assert config.foreground_protocol == "plain_reply_v1"
     assert GAME_REPLY in baiweixi_chat_app._gemma_profiles()
+    assert baiweixi_chat_app.INTERACTIVE_BACKGROUND_EXECUTION_ENABLED is False
 
 
 def test_smoke_contract_has_no_structured_foreground_payload() -> None:

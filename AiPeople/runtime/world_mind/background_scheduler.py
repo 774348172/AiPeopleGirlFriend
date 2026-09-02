@@ -52,6 +52,7 @@ class WorldBackgroundScheduler:
         periodic_interval_seconds: float = 300.0,
         required_before_foreground: bool = True,
         coalesce_pending_required: bool = True,
+        execution_enabled: bool = True,
         queue_limit: int = 16,
         retry_base_delay_seconds: float = 1.0,
         retry_max_delay_seconds: float = 30.0,
@@ -64,6 +65,8 @@ class WorldBackgroundScheduler:
             raise ValueError("retry delays must be positive")
         if retry_base_delay_seconds > retry_max_delay_seconds:
             raise ValueError("retry base delay cannot exceed retry max delay")
+        if not isinstance(execution_enabled, bool):
+            raise TypeError("execution_enabled must be a bool")
         self.store = store
         self.game_clock = game_clock
         self.worker = worker
@@ -71,6 +74,9 @@ class WorldBackgroundScheduler:
         self.periodic_interval_seconds = periodic_interval_seconds
         self.required_before_foreground = required_before_foreground
         self.coalesce_pending_required = coalesce_pending_required
+        # Interactive deployments can retain durable background jobs without
+        # letting model-based maintenance contend with the reply model.
+        self.execution_enabled = execution_enabled
         self.queue_limit = queue_limit
         self.retry_base_delay_seconds = retry_base_delay_seconds
         self.retry_max_delay_seconds = retry_max_delay_seconds
@@ -123,7 +129,9 @@ class WorldBackgroundScheduler:
                 ):
                     raise RuntimeError("scheduler session identity changed")
                 slot.session = session
-            if slot.periodic_task is None or slot.periodic_task.done():
+            if self.execution_enabled and (
+                slot.periodic_task is None or slot.periodic_task.done()
+            ):
                 slot.periodic_task = asyncio.create_task(
                     self._periodic_loop(slot),
                     name=f"world-mind-periodic:{session.save_id}",
@@ -150,7 +158,7 @@ class WorldBackgroundScheduler:
                 slot.foreground_waiters -= 1
                 slot.foreground_active = True
             try:
-                if self.required_before_foreground:
+                if self.execution_enabled and self.required_before_foreground:
                     await self._run_required(slot)
                 yield
             finally:
@@ -180,6 +188,8 @@ class WorldBackgroundScheduler:
         *,
         timeout_seconds: float = 5.0,
     ) -> None:
+        if not self.execution_enabled:
+            return
         async with asyncio.timeout(timeout_seconds):
             while True:
                 slot = self._slots.get(_slot_key(session))
@@ -202,6 +212,7 @@ class WorldBackgroundScheduler:
         async with self._state_lock:
             if (
                 self._closed
+                or not self.execution_enabled
                 or slot.foreground_active
                 or slot.foreground_waiters > 0
                 or (slot.runner_task is not None and not slot.runner_task.done())

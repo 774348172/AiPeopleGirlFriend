@@ -57,6 +57,9 @@ INITIAL_GAME_TIME = datetime(1, 10, 11, 18, 0, 0)
 SAVE_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_-]{7,63}$")
 APP_MODEL_PROFILE = "primary"
 APP_DATABASE_PATH = DATA_ROOT / "baiweixi_gemma4_interactive.sqlite3"
+# This process owns the only Gemma instance used for player-visible replies.
+# Model-based maintenance is durably queued and drained outside live chat.
+INTERACTIVE_BACKGROUND_EXECUTION_ENABLED = False
 
 
 class WorldInput(BaseModel):
@@ -173,6 +176,7 @@ class BaiWeixiChatService:
             periodic_reconcile_seconds=300.0,
             required_reconcile_before_foreground=False,
             coalesce_pending_required_reconcile=True,
+            background_execution_enabled=INTERACTIVE_BACKGROUND_EXECUTION_ENABLED,
             close_store_on_close=True,
         )
         self.send_lock = asyncio.Lock()
@@ -333,6 +337,11 @@ async def health() -> dict[str, Any]:
         "revision": current.reply_asset.identity.revision,
         "model_profile": current.model_profile,
         "protocol": "plain_reply_v1 with program-owned world state",
+        "background_execution": (
+            "enabled"
+            if current.runtime.background_scheduler.execution_enabled
+            else "queued_only"
+        ),
         "uptime_seconds": round(time.time() - current.started_at, 1),
     }
 

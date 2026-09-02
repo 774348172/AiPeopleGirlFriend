@@ -71,6 +71,7 @@ class WorldMindRuntime:
         periodic_reconcile_seconds: float = 300.0,
         required_reconcile_before_foreground: bool = True,
         coalesce_pending_required_reconcile: bool = True,
+        background_execution_enabled: bool = True,
         game_world: GameWorldInterface | None = None,
         id_factory: Callable[[], str] = lambda: str(uuid.uuid4()),
         close_store_on_close: bool = False,
@@ -124,6 +125,7 @@ class WorldMindRuntime:
             periodic_interval_seconds=periodic_reconcile_seconds,
             required_before_foreground=required_reconcile_before_foreground,
             coalesce_pending_required=coalesce_pending_required_reconcile,
+            execution_enabled=background_execution_enabled,
         )
         self._close_store_on_close = close_store_on_close
         self._started = False

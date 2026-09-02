@@ -126,6 +126,7 @@ def _build_runtime(
     proposer_provider,
     encoder=None,
     config=None,
+    background_execution_enabled: bool = True,
 ):
     store = WorldMindStore.open(database)
     monotonic = MutableMonotonic()
@@ -149,6 +150,7 @@ def _build_runtime(
         memory_repository_factory=memory_factory,
         memory_proposer_provider=proposer_provider,
         periodic_reconcile_seconds=86400.0,
+        background_execution_enabled=background_execution_enabled,
     )
     return runtime, store, provider, memory_factory
 
@@ -196,6 +198,38 @@ def test_r1_runs_automatically_after_committed_reply(tmp_path: Path) -> None:
             assert store.count_r1_memory_jobs(
                 "save_001", character_id="baiweixi", state="completed"
             ) == 1
+        finally:
+            await runtime.close()
+            store.close()
+
+    asyncio.run(scenario())
+
+
+def test_deferred_background_keeps_r1_queued_without_model_execution(
+    tmp_path: Path,
+) -> None:
+    async def scenario() -> None:
+        proposer = _Proposer()
+        runtime, store, provider, factory = _build_runtime(
+            tmp_path / "deferred.sqlite3",
+            proposer_provider=lambda _session: proposer,
+            background_execution_enabled=False,
+        )
+        await runtime.start()
+        await _put_world(provider, session())
+        try:
+            result = await runtime.handle_turn(
+                TurnRequest("r1-deferred", session(), "这条只应进入长期记忆队列。")
+            )
+            assert isinstance(result, Completed)
+            await asyncio.sleep(0)
+            assert proposer.calls == 0
+            assert factory.open(session()).list_memories() == ()
+            assert store.count_r1_memory_jobs(
+                "save_001", state="pending"
+            ) == 1
+            assert store.reconcile_queue_snapshot("save_001")["pending"] == 1
+            assert runtime.background_scheduler.snapshot_metrics(session())["jobs_started"] == 0
         finally:
             await runtime.close()
             store.close()
