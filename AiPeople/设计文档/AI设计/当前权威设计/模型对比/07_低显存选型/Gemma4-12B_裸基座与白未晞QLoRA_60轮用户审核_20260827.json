@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "source_report": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\eval\\world_mind_p0\\gemma4_12b_base_qlora_60turn_20260827-104300\\report.json",
+  "created_at": "2026-08-27T10:52:58.093171+08:00",
+  "updated_at": "2026-08-27T11:48:13.750945+08:00",
+  "reviews": {
+    "1": {
+      "turn": 1,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:29:51.474333+08:00"
+    },
+    "2": {
+      "turn": 2,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:29:56.715614+08:00"
+    },
+    "3": {
+      "turn": 3,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:31:17.713859+08:00"
+    },
+    "4": {
+      "turn": 4,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:32:00.864924+08:00"
+    },
+    "5": {
+      "turn": 5,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:32:08.772348+08:00"
+    },
+    "6": {
+      "turn": 6,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:32:24.615846+08:00"
+    },
+    "7": {
+      "turn": 7,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:32:41.492948+08:00"
+    },
+    "8": {
+      "turn": 8,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:32:47.743388+08:00"
+    },
+    "9": {
+      "turn": 9,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:33:08.612549+08:00"
+    },
+    "10": {
+      "turn": 10,
+      "base_quality": "bad",
+      "full_quality": "bad",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:33:28.129251+08:00"
+    },
+    "11": {
+      "turn": 11,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:33:35.660766+08:00"
+    },
+    "12": {
+      "turn": 12,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:33:49.102782+08:00"
+    },
+    "13": {
+      "turn": 13,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:33:58.052022+08:00"
+    },
+    "14": {
+      "turn": 14,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:34:02.912409+08:00"
+    },
+    "15": {
+      "turn": 15,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:34:16.154778+08:00"
+    },
+    "16": {
+      "turn": 16,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:34:22.193108+08:00"
+    },
+    "17": {
+      "turn": 17,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:34:29.714219+08:00"
+    },
+    "18": {
+      "turn": 18,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:35:02.221861+08:00"
+    },
+    "19": {
+      "turn": 19,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:35:54.400157+08:00"
+    },
+    "20": {
+      "turn": 20,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:36:03.730850+08:00"
+    },
+    "21": {
+      "turn": 21,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:36:13.904103+08:00"
+    },
+    "22": {
+      "turn": 22,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:36:36.446776+08:00"
+    },
+    "23": {
+      "turn": 23,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:36:43.061801+08:00"
+    },
+    "24": {
+      "turn": 24,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:36:56.408003+08:00"
+    },
+    "25": {
+      "turn": 25,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:37:10.208600+08:00"
+    },
+    "26": {
+      "turn": 26,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:37:24.272746+08:00"
+    },
+    "27": {
+      "turn": 27,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:37:54.753266+08:00"
+    },
+    "28": {
+      "turn": 28,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:38:13.030217+08:00"
+    },
+    "29": {
+      "turn": 29,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:38:24.823107+08:00"
+    },
+    "30": {
+      "turn": 30,
+      "base_quality": "bad",
+      "full_quality": "bad",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:38:55.896376+08:00"
+    },
+    "31": {
+      "turn": 31,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:39:04.471321+08:00"
+    },
+    "32": {
+      "turn": 32,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:39:08.312276+08:00"
+    },
+    "33": {
+      "turn": 33,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:39:16.413432+08:00"
+    },
+    "34": {
+      "turn": 34,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:39:22.016022+08:00"
+    },
+    "35": {
+      "turn": 35,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:39:31.135093+08:00"
+    },
+    "36": {
+      "turn": 36,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:39:47.850709+08:00"
+    },
+    "37": {
+      "turn": 37,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:40:08.120127+08:00"
+    },
+    "38": {
+      "turn": 38,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:40:19.729959+08:00"
+    },
+    "39": {
+      "turn": 39,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:40:28.814342+08:00"
+    },
+    "40": {
+      "turn": 40,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:40:32.868550+08:00"
+    },
+    "41": {
+      "turn": 41,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:40:38.021484+08:00"
+    },
+    "42": {
+      "turn": 42,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:40:44.162800+08:00"
+    },
+    "43": {
+      "turn": 43,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:40:53.373863+08:00"
+    },
+    "44": {
+      "turn": 44,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:40:59.858140+08:00"
+    },
+    "45": {
+      "turn": 45,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:41:12.091534+08:00"
+    },
+    "46": {
+      "turn": 46,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:41:24.050775+08:00"
+    },
+    "47": {
+      "turn": 47,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:41:29.093980+08:00"
+    },
+    "48": {
+      "turn": 48,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:41:33.167762+08:00"
+    },
+    "49": {
+      "turn": 49,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:41:37.782384+08:00"
+    },
+    "50": {
+      "turn": 50,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:41:43.603533+08:00"
+    },
+    "51": {
+      "turn": 51,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:41:48.318270+08:00"
+    },
+    "52": {
+      "turn": 52,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:46:46.973041+08:00"
+    },
+    "53": {
+      "turn": 53,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:46:54.278176+08:00"
+    },
+    "54": {
+      "turn": 54,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:46:57.831405+08:00"
+    },
+    "55": {
+      "turn": 55,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:47:06.039509+08:00"
+    },
+    "56": {
+      "turn": 56,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:47:10.336893+08:00"
+    },
+    "57": {
+      "turn": 57,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:47:19.532814+08:00"
+    },
+    "58": {
+      "turn": 58,
+      "base_quality": "good",
+      "full_quality": "good",
+      "winner": "tie",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:47:29.080133+08:00"
+    },
+    "59": {
+      "turn": 59,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:47:40.194088+08:00"
+    },
+    "60": {
+      "turn": 60,
+      "base_quality": "good",
+      "full_quality": "bad",
+      "winner": "base",
+      "note": "",
+      "reviewed_at": "2026-08-27T11:48:13.750945+08:00"
+    }
+  }
+}

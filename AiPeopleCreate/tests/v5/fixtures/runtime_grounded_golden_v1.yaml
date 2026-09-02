@@ -1,0 +1,444 @@
+schema_version: aip.runtime_grounded_golden_fixture.v1
+
+# All scenarios inherit this complete production-shaped model view. Individual
+# scenarios replace only evidence-bearing fields; oracle data never enters it.
+model_view_template: &model_view_template
+  mode: JUDGE_TURN
+  evidence_contract:
+    allowed_evidence_refs: [snap-golden, evt-player-current]
+  snapshot:
+    snapshot_id: snap-golden
+    request_id: req-golden
+    job_id: null
+    save_id: save-golden
+    world_id: world-songjiang
+    protagonist_id: protagonist
+    active_character_id: baiweixi
+    captured_game_time: '2026-08-30T18:30:00.000000+08:00'
+    live_world_version: 12
+    mind_state_version: 7
+    world_state:
+      live_world_version: 12
+      scene_text: 傍晚，两人在出租屋客厅说话。
+      protagonist_text: 男主站在客厅里。
+    protagonist:
+      protagonist_id: protagonist
+      location_id: rented_home.living_room
+      location_label: 出租屋客厅
+      activity: talking
+      body_state: {}
+      held_item_ids: []
+    scene:
+      scene_id: rented_home.living_room
+      location_label: 出租屋客厅
+      present_character_ids: [protagonist, baiweixi]
+      item_states: {}
+  previous_heroine_runtime:
+    save_id: save-golden
+    world_id: world-songjiang
+    character_id: baiweixi
+    version: 7
+    living_mind:
+      form: standing
+      body: relaxed
+      emotion: calm
+      attention: protagonist
+      current_activity: talking
+      immediate_intent: answer the protagonist
+    relationship:
+      protagonist_id: protagonist
+      stage: close_companions
+      trust: high
+      unresolved_tension: ''
+    motive_state: {}
+    knowledge_state: {}
+    evidence_refs: []
+    projection_counts:
+      motive_state: 0
+      knowledge_state: 0
+      evidence_refs: 0
+  selected_memory_frame:
+    selector_version: memory-selector-v1
+    source_memory_ids: []
+    source_event_ids: []
+    selected_memories: []
+  current_protagonist_utterance: 这是占位问题。
+  recent_dialogue: []
+  pending_actions: []
+  game_feedback: []
+
+scenarios:
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: accept.dentist.reschedule
+    profile_id: baiweixi
+    task_type: reply_accept_authoritative_update
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 牙医刚通知我，预约改到星期六上午十点了，不是星期五下午。
+      recent_dialogue: ["男主：我原来约的是星期五下午。", "白未晞：我记着呢。"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.dentist.sat, subject: protagonist, predicate: dentist_appointment, object: 星期六上午十点, domain: protagonist_plan, source: current_protagonist_utterance, status: current}
+        - {fact_id: fact.dentist.fri, subject: protagonist, predicate: dentist_appointment, object: 星期五下午, domain: protagonist_plan, source: recent_dialogue, status: stale}
+      correction_direction: accept_authoritative_update
+      answer_shape: acknowledge_update_then_restated_fact
+      required_assertions:
+        - {subject: protagonist, predicate: dentist_appointment, object: 星期六上午十点, source_fact_ids: [fact.dentist.sat]}
+      forbidden_assertions:
+        - {subject: protagonist, predicate: dentist_appointment, object: 星期五下午, source_fact_ids: [fact.dentist.fri]}
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_accept_authoritative_update, family:dentist_schedule, predicate:appointment_time]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: accept.protagonist.no_sugar
+    profile_id: baiweixi
+    task_type: reply_accept_authoritative_update
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 以后我的咖啡都不要加糖，我现在喝无糖的。
+      recent_dialogue: ["白未晞：以前你总要一勺糖。"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.protagonist.coffee.unsweetened, subject: protagonist, predicate: coffee_preference, object: 不加糖, domain: protagonist_preference, source: current_protagonist_utterance, status: current}
+        - {fact_id: fact.protagonist.coffee.sugar, subject: protagonist, predicate: coffee_preference, object: 加一勺糖, domain: protagonist_preference, source: recent_dialogue, status: stale}
+      correction_direction: accept_authoritative_update
+      answer_shape: acknowledge_update_then_restated_fact
+      required_assertions:
+        - {subject: protagonist, predicate: coffee_preference, object: 不加糖, source_fact_ids: [fact.protagonist.coffee.unsweetened]}
+      forbidden_assertions:
+        - {subject: baiweixi, predicate: coffee_preference, object: 不加糖, source_fact_ids: [fact.protagonist.coffee.unsweetened]}
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_accept_authoritative_update, family:coffee_preference_update, subject:protagonist]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: reject.dentist.old_friday
+    profile_id: baiweixi
+    task_type: reply_reject_stale_claim
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 所以我还是星期五下午去看牙，对吗？
+      recent_dialogue: ["男主：诊所把预约改到星期六上午十点了。"]
+      game_feedback: ["当前预约：星期六上午十点；星期五下午的旧时段已失效。"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.dentist.current_sat, subject: protagonist, predicate: dentist_appointment, object: 星期六上午十点, domain: protagonist_plan, source: game_feedback, status: current}
+        - {fact_id: fact.dentist.stale_fri, subject: protagonist, predicate: dentist_appointment, object: 星期五下午, domain: protagonist_plan, source: current_protagonist_utterance, status: stale}
+      correction_direction: reject_stale_claim
+      answer_shape: explicit_no_then_current_fact
+      required_assertions:
+        - {subject: protagonist, predicate: dentist_appointment, object: 星期六上午十点, source_fact_ids: [fact.dentist.current_sat]}
+      forbidden_assertions:
+        - {subject: protagonist, predicate: dentist_appointment, object: 星期五下午, source_fact_ids: [fact.dentist.stale_fri]}
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_reject_stale_claim, family:dentist_schedule, predicate:appointment_time]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: reject.rice_cooker.keep_warm
+    profile_id: baiweixi
+    task_type: reply_reject_stale_claim
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 我按着保温键，米饭应该已经在煮了吧？
+      game_feedback: ["电饭煲当前模式：保温；尚未开始煮饭。"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.cooker.mode.warm, subject: rice_cooker, predicate: operating_mode, object: 保温, domain: objective_world, source: game_feedback, status: current}
+        - {fact_id: fact.cooker.cooking.false, subject: rice_cooker, predicate: operating_mode, object: 煮饭, domain: objective_world, source: current_protagonist_utterance, status: 'false'}
+      correction_direction: reject_stale_claim
+      answer_shape: explicit_no_then_current_fact
+      required_assertions:
+        - {subject: rice_cooker, predicate: operating_mode, object: 保温, source_fact_ids: [fact.cooker.mode.warm]}
+      forbidden_assertions:
+        - {subject: rice_cooker, predicate: operating_mode, object: 煮饭, source_fact_ids: [fact.cooker.cooking.false]}
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_reject_stale_claim, family:rice_cooker_mode, predicate:operating_mode]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: correct.takeout.not_arrived
+    profile_id: baiweixi
+    task_type: reply_correct_false_premise
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 外卖已经到了，你把菜端过来吧。
+      game_feedback: ["外卖订单仍在配送中，门口没有外卖。"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.takeout.in_transit, subject: takeout_order, predicate: delivery_status, object: 配送中, domain: objective_world, source: game_feedback, status: current}
+        - {fact_id: fact.takeout.arrived.false, subject: takeout_order, predicate: delivery_status, object: 已到达, domain: objective_world, source: current_protagonist_utterance, status: 'false'}
+      correction_direction: correct_false_premise
+      answer_shape: correct_premise_then_fact
+      required_assertions:
+        - {subject: takeout_order, predicate: delivery_status, object: 配送中, source_fact_ids: [fact.takeout.in_transit]}
+      forbidden_assertions:
+        - {subject: takeout_order, predicate: delivery_status, object: 已到达, source_fact_ids: [fact.takeout.arrived.false]}
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_correct_false_premise, family:takeout_arrival, predicate:delivery_status]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: correct.scissors.drawer_not_wardrobe
+    profile_id: baiweixi
+    task_type: reply_correct_false_premise
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 剪刀在衣柜里，你帮我拿一下。
+      game_feedback: ["剪刀当前位于书桌抽屉；衣柜中没有剪刀。"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.scissors.drawer, subject: scissors, predicate: location, object: 书桌抽屉, domain: objective_world, source: game_feedback, status: current}
+        - {fact_id: fact.scissors.wardrobe.false, subject: scissors, predicate: location, object: 衣柜, domain: objective_world, source: current_protagonist_utterance, status: 'false'}
+      correction_direction: correct_false_premise
+      answer_shape: correct_premise_then_fact
+      required_assertions:
+        - {subject: scissors, predicate: location, object: 书桌抽屉, source_fact_ids: [fact.scissors.drawer]}
+      forbidden_assertions:
+        - {subject: scissors, predicate: location, object: 衣柜, source_fact_ids: [fact.scissors.wardrobe.false]}
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_correct_false_premise, family:item_location_correction, predicate:location]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: conflict.keys.table_over_memory
+    profile_id: baiweixi
+    task_type: reply_resolve_world_memory_conflict
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 我的钥匙现在到底在哪？
+      game_feedback: ["当前场景物品状态：钥匙在餐桌上。"]
+      selected_memory_frame:
+        selector_version: memory-selector-v1
+        source_memory_ids: [mem-keys-drawer]
+        source_event_ids: [evt-keys-drawer]
+        selected_memories:
+          - memory_id: mem-keys-drawer
+            memory_version: 1
+            kind: episodic
+            statement: 男主此前把钥匙放进玄关抽屉。
+            subject_type: protagonist
+            subject_display_name: 男主
+            temporal_relation: past
+            temporal_source_text: 此前
+            epistemic_polarity: positive
+            epistemic_modality: observed
+            evidence:
+              - {event_id: evt-keys-drawer, role: observation, excerpt: 把钥匙放进玄关抽屉}
+    oracle_view:
+      facts:
+        - {fact_id: fact.keys.table, subject: protagonist_keys, predicate: location, object: 餐桌上, domain: objective_world, source: game_feedback, status: current}
+        - {fact_id: fact.keys.drawer, subject: protagonist_keys, predicate: location, object: 玄关抽屉, domain: shared_history, source: selected_memory_frame, status: stale}
+      correction_direction: prefer_world_over_memory
+      answer_shape: prefer_current_world_then_fact
+      required_assertions:
+        - {subject: protagonist_keys, predicate: location, object: 餐桌上, source_fact_ids: [fact.keys.table]}
+      forbidden_assertions:
+        - {subject: protagonist_keys, predicate: location, object: 玄关抽屉, source_fact_ids: [fact.keys.drawer]}
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_resolve_world_memory_conflict, family:keys_world_memory, predicate:location]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: conflict.cooker.cooking_over_memory
+    profile_id: baiweixi
+    task_type: reply_resolve_world_memory_conflict
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 电饭煲现在是在煮饭还是保温？
+      game_feedback: ["电饭煲当前模式：煮饭。"]
+      selected_memory_frame:
+        selector_version: memory-selector-v1
+        source_memory_ids: [mem-cooker-warm]
+        source_event_ids: [evt-cooker-warm]
+        selected_memories:
+          - memory_id: mem-cooker-warm
+            memory_version: 1
+            kind: episodic
+            statement: 十分钟前电饭煲处于保温模式。
+            subject_type: object
+            subject_display_name: 电饭煲
+            temporal_relation: past
+            temporal_source_text: 十分钟前
+            epistemic_polarity: positive
+            epistemic_modality: observed
+            evidence:
+              - {event_id: evt-cooker-warm, role: observation, excerpt: 处于保温模式}
+    oracle_view:
+      facts:
+        - {fact_id: fact.cooker.current.cook, subject: rice_cooker, predicate: operating_mode, object: 煮饭, domain: objective_world, source: game_feedback, status: current}
+        - {fact_id: fact.cooker.past.warm, subject: rice_cooker, predicate: operating_mode, object: 保温, domain: objective_world, source: selected_memory_frame, status: stale}
+      correction_direction: prefer_world_over_memory
+      answer_shape: prefer_current_world_then_fact
+      required_assertions:
+        - {subject: rice_cooker, predicate: operating_mode, object: 煮饭, source_fact_ids: [fact.cooker.current.cook]}
+      forbidden_assertions:
+        - {subject: rice_cooker, predicate: operating_mode, object: 保温, source_fact_ids: [fact.cooker.past.warm]}
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_resolve_world_memory_conflict, family:cooker_world_memory, predicate:operating_mode]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: confirm.dentist.saturday
+    profile_id: baiweixi
+    task_type: reply_confirm_current_state
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 我的牙医预约是星期六上午十点，对吧？
+      game_feedback: ["当前预约：星期六上午十点。"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.dentist.confirm.sat, subject: protagonist, predicate: dentist_appointment, object: 星期六上午十点, domain: protagonist_plan, source: game_feedback, status: current}
+      correction_direction: confirm_current_state
+      answer_shape: explicit_confirmation_then_fact
+      required_assertions:
+        - {subject: protagonist, predicate: dentist_appointment, object: 星期六上午十点, source_fact_ids: [fact.dentist.confirm.sat]}
+      forbidden_assertions: []
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_confirm_current_state, family:dentist_confirmation, predicate:appointment_time]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: confirm.window.closed
+    profile_id: baiweixi
+    task_type: reply_confirm_current_state
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 卧室窗户现在关着吧？
+      game_feedback: ["卧室窗户状态：已关闭。"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.window.closed, subject: bedroom_window, predicate: state, object: 已关闭, domain: objective_world, source: game_feedback, status: current}
+      correction_direction: confirm_current_state
+      answer_shape: explicit_confirmation_then_fact
+      required_assertions:
+        - {subject: bedroom_window, predicate: state, object: 已关闭, source_fact_ids: [fact.window.closed]}
+      forbidden_assertions: []
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_confirm_current_state, family:window_state, predicate:state]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: subject.protagonist.no_sugar
+    profile_id: baiweixi
+    task_type: reply_subject_attribution
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 你还记得是我喝咖啡不加糖吧？
+      recent_dialogue: ["男主：我的咖啡不要加糖。", "白未晞：知道了。"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.subject.protagonist.no_sugar, subject: protagonist, predicate: coffee_preference, object: 不加糖, domain: protagonist_preference, source: recent_dialogue, status: current}
+      correction_direction: preserve_subject
+      answer_shape: answer_with_original_subject
+      required_assertions:
+        - {subject: protagonist, predicate: coffee_preference, object: 不加糖, source_fact_ids: [fact.subject.protagonist.no_sugar]}
+      forbidden_assertions:
+        - {subject: baiweixi, predicate: coffee_preference, object: 不加糖, source_fact_ids: [fact.subject.protagonist.no_sugar]}
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_subject_attribution, family:preference_subject, subject:protagonist]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: subject.third_party.trip
+    profile_id: baiweixi
+    task_type: reply_subject_attribution
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 小林说明天出差。是谁要出差？
+      recent_dialogue: ["小林：我明天去苏州出差。"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.xiaolin.trip, subject: xiaolin, predicate: travel_plan, object: 明天去苏州出差, domain: third_party, source: recent_dialogue, status: current}
+      correction_direction: preserve_subject
+      answer_shape: answer_with_original_subject
+      required_assertions:
+        - {subject: xiaolin, predicate: travel_plan, object: 明天去苏州出差, source_fact_ids: [fact.xiaolin.trip]}
+      forbidden_assertions:
+        - {subject: protagonist, predicate: travel_plan, object: 明天去苏州出差, source_fact_ids: [fact.xiaolin.trip]}
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_subject_attribution, family:third_party_plan, subject:xiaolin]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: unknown.first_seaside_date
+    profile_id: baiweixi
+    task_type: reply_insufficient_information
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 我们第一次一起看海是哪一天？
+      recent_dialogue: []
+    oracle_view:
+      facts:
+        - {fact_id: fact.seaside.date.unknown, subject: protagonist_and_baiweixi, predicate: first_seaside_date, object: '', domain: shared_history, source: selected_memory_frame, status: unknown}
+      correction_direction: ask_for_clarification
+      answer_shape: state_unknown_then_clarify
+      required_assertions:
+        - {subject: protagonist_and_baiweixi, predicate: first_seaside_date, object: 不知道, source_fact_ids: [fact.seaside.date.unknown]}
+      forbidden_assertions:
+        - {subject: protagonist_and_baiweixi, predicate: first_seaside_date, object: 任意具体日期, source_fact_ids: [fact.seaside.date.unknown]}
+      must_not_be_vague: false
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_insufficient_information, family:unsupported_shared_history, predicate:first_seaside_date]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: unknown.flower.color
+    profile_id: baiweixi
+    task_type: reply_insufficient_information
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 我上次送你的花是什么颜色？
+      recent_dialogue: ["男主：还记得我送过你的花吗？"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.flower.color.unknown, subject: gifted_flower, predicate: color, object: '', domain: shared_history, source: selected_memory_frame, status: unknown}
+      correction_direction: ask_for_clarification
+      answer_shape: state_unknown_then_clarify
+      required_assertions:
+        - {subject: gifted_flower, predicate: color, object: 不知道, source_fact_ids: [fact.flower.color.unknown]}
+      forbidden_assertions:
+        - {subject: gifted_flower, predicate: color, object: 任意具体颜色, source_fact_ids: [fact.flower.color.unknown]}
+      must_not_be_vague: false
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_insufficient_information, family:unsupported_gift_detail, predicate:color]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: direct.thermos.location
+    profile_id: baiweixi
+    task_type: reply_direct_answer
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 保温壶放在哪儿了？
+      game_feedback: ["保温壶当前位于厨房操作台。"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.thermos.counter, subject: thermos, predicate: location, object: 厨房操作台, domain: objective_world, source: game_feedback, status: current}
+      correction_direction: answer_directly
+      answer_shape: direct_answer_then_optional_context
+      required_assertions:
+        - {subject: thermos, predicate: location, object: 厨房操作台, source_fact_ids: [fact.thermos.counter]}
+      forbidden_assertions: []
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_direct_answer, family:item_location_question, predicate:location]
+
+  - schema_version: aip.runtime_grounded_reply_scenario.v1
+    scenario_id: direct.phone.location
+    profile_id: baiweixi
+    task_type: reply_direct_answer
+    model_view:
+      <<: *model_view_template
+      current_protagonist_utterance: 我的手机现在在哪儿？
+      game_feedback: ["男主的手机当前位于沙发右侧坐垫上。"]
+    oracle_view:
+      facts:
+        - {fact_id: fact.phone.sofa, subject: protagonist_phone, predicate: location, object: 沙发右侧坐垫上, domain: objective_world, source: game_feedback, status: current}
+      correction_direction: answer_directly
+      answer_shape: direct_answer_then_optional_context
+      required_assertions:
+        - {subject: protagonist_phone, predicate: location, object: 沙发右侧坐垫上, source_fact_ids: [fact.phone.sofa]}
+      forbidden_assertions: []
+      must_not_be_vague: true
+      unsupported_detail_policy: reject
+    split_anchors: [task:reply_direct_answer, family:item_location_question, predicate:location]

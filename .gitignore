@@ -19,5 +19,16 @@ __pycache__/
 # 质量评测运行产物（jsonl + sqlite）：仅早期 8-17 批次在库，后续 run 不入库
 AiPeople/eval/baiweixi_quality/runs/
 
+# 本地模型、训练输出、临时评测与 Unsloth 编译缓存不属于源码发布。
+# 正式模型身份由 local_runtime 的 Manifest 和 release note 中的 SHA256 记录。
+unsloth_compiled_cache/
+**/unsloth_compiled_cache/
+AiPeople/models/
+AiPeople/training_packages/models/
+AiPeople/training_packages/**/outputs/
+AiPeople/training_packages/**/*.log
+AiPeople/eval/world_mind_p0/
+AiPeople/**/*.sqlite*
+
 # 训练输出备份（含模型权重，GB 级），不入库
 **/outputs_bak_*/

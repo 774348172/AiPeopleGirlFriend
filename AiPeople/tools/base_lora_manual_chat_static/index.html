@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>白未晞 · 模型手测</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">白未晞多轮对话手测</p>
+        <h1 id="modelLabel">正在连接</h1>
+        <p class="model-name" id="modelName">--</p>
+      </div>
+      <div class="status"><span id="statusDot"></span><span id="statusText">启动中</span></div>
+    </header>
+
+    <main>
+      <section class="conversation">
+        <div class="messages" id="messages">
+          <div class="empty" id="emptyState">从第 1 轮开始测试。后续每次发送都会自动携带最近 6 轮对话。</div>
+        </div>
+        <form id="composer">
+          <textarea id="messageInput" rows="1" maxlength="1000" placeholder="输入玩家本轮对白" required></textarea>
+          <button id="sendButton" type="submit" aria-label="发送" title="发送">↑</button>
+        </form>
+        <div class="turn-strip"><span id="turnCount">第 0 轮</span><span id="latency">--</span></div>
+      </section>
+
+      <aside>
+        <div class="aside-heading">
+          <h2>本轮权威输入</h2>
+          <button id="newSession" type="button">新会话</button>
+        </div>
+        <label>地点<input id="location" value="出租屋客厅" maxlength="80"></label>
+        <label>男主正在做什么<input id="activity" value="坐着休息" maxlength="120"></label>
+        <label>男主身体状态<input id="body" value="轻微疲惫，没有受伤" maxlength="120"></label>
+        <label>当前权威场景<textarea id="scene" rows="5" maxlength="1000">窗外下着雨，屋里亮着暖灯。</textarea></label>
+        <label>相关长期记忆<textarea id="memories" rows="6" maxlength="2000" placeholder="每行一条；没有可留空"></textarea></label>
+        <div class="protocol" id="protocol">--</div>
+        <code id="sessionId"></code>
+      </aside>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>

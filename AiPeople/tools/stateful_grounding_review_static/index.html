@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gemma 4 12B 多轮知识边界审核</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .single-result { padding:14px; }
+    .single-result blockquote { min-height:64px; }
+    details { padding:10px 15px; border-top:1px solid #d7dbd8; background:#fafbfa; }
+    summary { cursor:pointer; color:#59615b; font-size:11px; font-weight:700; }
+    pre { max-height:360px; overflow:auto; white-space:pre-wrap; font-size:10px; }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <div><p class="eyebrow">质量路线 · 真实多轮</p><h1>Gemma 4 12B 知识边界验证</h1><p id="experimentSummary" class="subtitle">正在读取实验配置</p></div>
+    <nav class="header-actions"><a href="/api/review-report">下载人工审核</a><a class="secondary-link" href="/api/report">下载原始报告</a></nav>
+  </header>
+  <section class="model-band"><span class="model-mark">G4</span><div><strong id="modelName">Gemma 4 12B</strong><span id="controlSummary">正在读取实验配置</span></div><p id="speedSummary">正在读取速度</p></section>
+  <main>
+    <section class="review-status"><div><p class="eyebrow">你的人工判断</p><h2>审核进度</h2></div><div class="progress-area"><div class="progress-track"><div id="progressBar"></div></div><strong id="progressText">0 / 0</strong><span id="breakdown">尚未开始</span></div><button id="resetReview" class="secondary-button">清空审核</button></section>
+    <section class="audit-section"><div class="section-heading"><div><p class="eyebrow">按真实顺序</p><h2>逐轮审核</h2></div><strong id="resultCount">0 / 0 轮</strong></div><div id="reviewError" class="message error-message" hidden></div><div id="turnList" class="turn-list"><p class="message">正在读取结果...</p></div></section>
+  </main>
+  <template id="caseTemplate">
+    <article class="audit-turn"><header class="turn-header"><div><span class="turn-number"></span><span class="phase-badge"></span></div><span class="turn-state"></span></header><div class="evidence-grid"><section><h3>玩家本轮</h3><p class="question player-text"></p></section><section><h3>本轮相关记忆</h3><p class="memory"></p></section><section><h3>人工审核重点</h3><p class="focus"></p></section></div><section class="single-result"><div class="result-heading"><h3>模型原始回复</h3><span class="latency"></span></div><blockquote></blockquote><section class="manual-review"><div class="review-choice"><strong>本轮判断</strong><label><input type="radio" value="good"><span>好</span></label><label><input type="radio" value="bad"><span>差</span></label></div><fieldset class="issue-fieldset"><legend>问题类型</legend><div class="issue-options"></div></fieldset><label class="note-field"><span>备注</span><textarea maxlength="1000"></textarea></label><div class="save-row"><span class="save-feedback"></span><button class="save-button">保存本轮判断</button></div></section></section><details><summary>展开本轮完整模型输入（含最近 6 条历史）</summary><pre class="raw-input"></pre></details></article>
+  </template>
+  <script src="/app.js?v=2"></script>
+</body>
+</html>

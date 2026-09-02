@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "scope": "gemma_nf4_baiweixi_lora_formal_runtime_smoke",
+  "generated_at": "2026-09-02T14:02:43.277824+08:00",
+  "status": "passed",
+  "controls": {
+    "thinking": false,
+    "adapter_loaded": true,
+    "foreground_protocol": "plain_reply_v1",
+    "structured_foreground_calls": false,
+    "temperature": 0.0,
+    "network_access": "forbidden",
+    "human_adjudication_is_authoritative": true
+  },
+  "memory": {
+    "before_load": {
+      "available": true,
+      "device_name": "NVIDIA GeForce RTX 4090",
+      "device_total_gib": 23.988,
+      "device_used_gib": 1.539,
+      "torch_allocated_gib": 0.0,
+      "torch_reserved_gib": 0.0,
+      "torch_peak_allocated_gib": 0.0,
+      "torch_peak_reserved_gib": 0.0
+    },
+    "after_load": {
+      "available": true,
+      "device_name": "NVIDIA GeForce RTX 4090",
+      "device_total_gib": 23.988,
+      "device_used_gib": 9.488,
+      "torch_allocated_gib": 7.817,
+      "torch_reserved_gib": 7.877,
+      "torch_peak_allocated_gib": 7.939,
+      "torch_peak_reserved_gib": 8.0
+    },
+    "after_close": {
+      "available": true,
+      "device_name": "NVIDIA GeForce RTX 4090",
+      "device_total_gib": 23.988,
+      "device_used_gib": 9.15,
+      "torch_allocated_gib": 0.012,
+      "torch_reserved_gib": 7.523,
+      "torch_peak_allocated_gib": 8.166,
+      "torch_peak_reserved_gib": 8.271
+    }
+  },
+  "cases": {
+    "game_reply_cold": {
+      "response": "不对，你现在是星期六上午十点。",
+      "gate": {
+        "passed": true,
+        "expectation": "appointment",
+        "checks": {
+          "correct_day_present": true,
+          "correct_time_present": true
+        },
+        "note": "This automatic gate only checks the required correction; human review remains authoritative."
+      },
+      "metrics": {
+        "request_id": "gemma-nf4-smoke:game_reply_cold",
+        "first_visible_ms": 19298.06,
+        "total_ms": 21765.95,
+        "prompt_tokens": 343,
+        "generated_tokens": 12,
+        "tokens_per_second": 0.55
+      },
+      "memory": {
+        "available": true,
+        "device_name": "NVIDIA GeForce RTX 4090",
+        "device_total_gib": 23.988,
+        "device_used_gib": 9.898,
+        "torch_allocated_gib": 7.825,
+        "torch_reserved_gib": 8.271,
+        "torch_peak_allocated_gib": 8.182,
+        "torch_peak_reserved_gib": 8.271
+      }
+    },
+    "game_reply_warm": {
+      "response": "不对，你现在是星期六上午十点。",
+      "gate": {
+        "passed": true,
+        "expectation": "appointment",
+        "checks": {
+          "correct_day_present": true,
+          "correct_time_present": true
+        },
+        "note": "This automatic gate only checks the required correction; human review remains authoritative."
+      },
+      "metrics": {
+        "request_id": "gemma-nf4-smoke:game_reply_warm",
+        "first_visible_ms": 225.79,
+        "total_ms": 1497.82,
+        "prompt_tokens": 343,
+        "generated_tokens": 12,
+        "tokens_per_second": 8.01
+      },
+      "memory": {
+        "available": true,
+        "device_name": "NVIDIA GeForce RTX 4090",
+        "device_total_gib": 23.988,
+        "device_used_gib": 9.898,
+        "torch_allocated_gib": 7.825,
+        "torch_reserved_gib": 8.271,
+        "torch_peak_allocated_gib": 8.15,
+        "torch_peak_reserved_gib": 8.271
+      }
+    },
+    "game_reply_unknown": {
+      "response": "我不知道诊所为什么停诊。",
+      "gate": {
+        "passed": true,
+        "expectation": "unknown",
+        "checks": {
+          "unknown_acknowledged": true,
+          "no_json_output": true
+        },
+        "note": "This automatic gate only checks the required correction; human review remains authoritative."
+      },
+      "metrics": {
+        "request_id": "gemma-nf4-smoke:game_reply_unknown",
+        "first_visible_ms": 182.8,
+        "total_ms": 1141.1,
+        "prompt_tokens": 371,
+        "generated_tokens": 9,
+        "tokens_per_second": 7.89
+      },
+      "memory": {
+        "available": true,
+        "device_name": "NVIDIA GeForce RTX 4090",
+        "device_total_gib": 23.988,
+        "device_used_gib": 9.898,
+        "torch_allocated_gib": 7.825,
+        "torch_reserved_gib": 8.271,
+        "torch_peak_allocated_gib": 8.166,
+        "torch_peak_reserved_gib": 8.271
+      }
+    }
+  },
+  "asset": {
+    "manifest": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\local_runtime\\gemma4_nf4_runtime_manifest.json",
+    "model_root": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\training_packages\\models\\Gemma-4-12B-it",
+    "adapter_root": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\training_packages\\training_package_baiweixi_gemma4_12b\\outputs\\baiweixi_v5_full_mixed_adapter",
+    "model_id": "local/baiweixi-gemma-4-12B-v5-full-mixed",
+    "base_model_id": "google/gemma-4-12B-it",
+    "revision": "baiweixi-v5-full-mixed-20260901",
+    "base_revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+    "artifact_sha256": "ec1a14308fbb76fc4a4220e1c367748ac5fff544e11a6e0cc3bef6ccd4dc58bd",
+    "verified_file_count": 7,
+    "verified_adapter_file_count": 5,
+    "verification_ms": 15897.41
+  },
+  "load_ms": 47044.35,
+  "total_ms": 89107.85
+}

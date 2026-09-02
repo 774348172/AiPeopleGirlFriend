@@ -81,9 +81,9 @@
       "sha256": "ed73e6c175668a85d990cb898da095b649251fc2a9bf24da649aae06ed3a4897"
     },
     {
-      "path": "设计文档/AI设计/当前权威设计/AI女友最小心智系统设计.md",
-      "bytes": 45744,
-      "sha256": "05d51ed76f7625cae6435de64d6ff0f635e061754fca013ded7a352640b2bc2b"
+      "path": "设计文档/AI设计/历史设计/AI女友最小心智系统设计.md",
+      "bytes": 47847,
+      "sha256": "dedf8e42e51f6d0b5ff4507300f0af81f88dd0ca279e4e3b7b0478db969197f7"
     }
   ],
   "assets": [
@@ -155,5 +155,5 @@
     "three_seed_required_for_blocker_and_important": true
   },
   "manifest_hash_mode": "canonical_json_with_null_self",
-  "manifest_sha256": "2bb53297d96863b8ca32f57a8111cdf62627065e31bab6f3207059b07d78b904"
+  "manifest_sha256": "e429fdadf3430455db834f5d755b735ae7c72344d338cdb2a676ca56329bbffc"
 }

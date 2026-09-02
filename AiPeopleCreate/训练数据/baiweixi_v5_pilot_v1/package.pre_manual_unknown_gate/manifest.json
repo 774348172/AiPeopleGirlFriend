@@ -1,0 +1,121 @@
+{
+  "schema_version": "aip.runtime_grounded_pilot_manifest.v1",
+  "dataset_id": "baiweixi_v5_pilot_v1",
+  "counts": {
+    "dataset_id": "baiweixi_v5_pilot_v1",
+    "total": 400,
+    "grounded": 240,
+    "static": 160,
+    "split_counts": {
+      "train": 318,
+      "dev": 39,
+      "test": 43
+    },
+    "task_counts": {
+      "reply_accept_authoritative_update": 30,
+      "reply_reject_stale_claim": 30,
+      "reply_correct_false_premise": 30,
+      "reply_resolve_world_memory_conflict": 30,
+      "reply_confirm_current_state": 30,
+      "reply_subject_attribution": 30,
+      "reply_insufficient_information": 30,
+      "reply_direct_answer": 30,
+      "reply_casual": 160
+    },
+    "source_counts": {
+      "current_protagonist_utterance": 90,
+      "recent_dialogue": 60,
+      "game_feedback": 150,
+      "selected_memory_frame": 60
+    },
+    "status_counts": {
+      "current": 210,
+      "stale": 90,
+      "false": 30,
+      "unknown": 30
+    },
+    "assistant_total": {
+      "runtime_grounded": 240,
+      "static_persona": 323
+    },
+    "supervised_message_total": {
+      "runtime_grounded": 240,
+      "static_persona": 323
+    },
+    "supervised_token_total": {
+      "runtime_grounded": 4183,
+      "static_persona": 6310
+    },
+    "rg_gate_counts": {
+      "RG0": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG1": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG2": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG3": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG4": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG5": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG6": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG7": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG8": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG9": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG10": {
+        "passed": 240,
+        "failed": 0
+      }
+    },
+    "sealed_total": 40
+  },
+  "golden_scenarios_excluded": [
+    "accept.dentist.reschedule",
+    "accept.protagonist.no_sugar",
+    "confirm.dentist.saturday",
+    "confirm.window.closed",
+    "conflict.cooker.cooking_over_memory",
+    "conflict.keys.table_over_memory",
+    "correct.scissors.drawer_not_wardrobe",
+    "correct.takeout.not_arrived",
+    "direct.phone.location",
+    "direct.thermos.location",
+    "reject.dentist.old_friday",
+    "reject.rice_cooker.keep_warm",
+    "subject.protagonist.no_sugar",
+    "subject.third_party.trip",
+    "unknown.first_seaside_date",
+    "unknown.flower.color"
+  ],
+  "v4_reply_correction_excluded": true,
+  "model_calls_during_packaging": 0,
+  "training_started": false,
+  "sealed_files": [
+    "sealed.jsonl"
+  ]
+}

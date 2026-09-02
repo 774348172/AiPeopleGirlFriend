@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>60 轮对话质量审核</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="page-header">
+    <div>
+      <p class="eyebrow">白未晞 · 产品级多轮对话评测</p>
+      <h1>60 轮对话质量审核</h1>
+      <p class="subtitle" id="comparisonSubtitle">实名对比：裸基座 + 正常上下文 vs 完整 V6 程序</p>
+    </div>
+    <div class="header-actions">
+      <button id="runButton" type="button">重新运行 60 轮</button>
+      <button id="cancelButton" class="button-secondary" type="button" disabled>停止测试</button>
+      <a href="/api/review-report" id="reviewReportLink">下载人工审核</a>
+      <a href="/api/report" class="link-secondary">下载原始报告</a>
+    </div>
+  </header>
+
+  <section class="identity-band" aria-label="对比产品说明">
+    <div class="identity base-identity">
+      <span class="identity-mark">A</span>
+      <div><strong id="baseIdentityName">裸基座 + 正常上下文</strong><span id="baseIdentityDetail">Qwen2.5-7B Q4 · 当前世界 · 最近 6 条真实消息</span></div>
+    </div>
+    <div class="identity full-identity">
+      <span class="identity-mark">B</span>
+      <div><strong id="fullIdentityName">完整 V6 程序</strong><span id="fullIdentityDetail">冻结白未晞 Q4 · 检索 · M2 · 连续性审查 · GAME_REPLY</span></div>
+    </div>
+    <p>两侧身份全程公开，不随机、不隐藏、不做双盲。</p>
+  </section>
+
+  <section class="run-status" id="runStatus" hidden>
+    <div class="progress-track"><div id="progressBar"></div></div>
+    <strong id="progressText">0 / 60</strong>
+    <span id="stageText">等待启动</span>
+  </section>
+
+  <section class="speed-section" id="speedSection" aria-labelledby="speedTitle" hidden>
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow" id="speedContextNote">同机顺序运行 · 流式计时</p>
+        <h2 id="speedTitle">响应速度对比</h2>
+      </div>
+      <p id="speedLatencyNote">首字指玩家真正看到的回答首字，不是内部思考首token</p>
+    </div>
+    <div class="summary-table-wrap speed-table-wrap">
+      <table class="summary-table">
+        <thead><tr><th>速度指标</th><th id="baseSpeedName">A</th><th id="fullSpeedName">B</th></tr></thead>
+        <tbody id="speedBody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <main>
+    <section class="summary-section" id="summarySection" aria-labelledby="summaryTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">人工逐轮语义复核</p>
+          <h2 id="summaryTitle">审核结论</h2>
+        </div>
+        <p id="generatedAt"></p>
+      </div>
+      <div class="summary-table-wrap">
+        <table class="summary-table">
+          <thead><tr><th>人工审核指标</th><th id="baseSummaryName">裸基座 + 正常上下文</th><th id="fullSummaryName">完整 V6 程序</th></tr></thead>
+          <tbody id="summaryBody"><tr><td colspan="3">正在读取审核结果...</td></tr></tbody>
+        </table>
+      </div>
+      <p class="summary-note">“干净通过”表示同一回复同时满足：回应当前输入、符合权威状态、句内逻辑连贯、没有无依据断言。</p>
+    </section>
+
+    <section class="rereview-status" aria-labelledby="rereviewTitle">
+      <div>
+        <p class="eyebrow">你的独立判断</p>
+        <h2 id="rereviewTitle">重新审核进度</h2>
+      </div>
+      <div class="rereview-progress">
+        <div class="progress-track"><div id="rereviewProgressBar"></div></div>
+        <strong id="rereviewProgressText">0 / 60</strong>
+        <span id="rereviewBreakdown">尚未开始</span>
+      </div>
+      <div class="rereview-actions">
+        <label class="prior-review-toggle">
+          <input id="showPriorReview" type="checkbox">
+          <span>显示原复核结论</span>
+        </label>
+        <button id="resetRereview" class="button-secondary" type="button">清空重审结果</button>
+      </div>
+    </section>
+
+    <section class="audit-section" aria-labelledby="auditTitle">
+      <div class="section-heading audit-heading">
+        <div>
+          <p class="eyebrow">逐轮原文与判定依据</p>
+          <h2 id="auditTitle">对话审核记录</h2>
+        </div>
+        <strong id="resultCount">0 / 60 轮</strong>
+      </div>
+
+      <div class="filter-bar" aria-label="审核筛选">
+        <label class="search-field">
+          <span>搜索</span>
+          <input id="searchInput" type="search" placeholder="玩家输入、回复或审核理由">
+        </label>
+        <label>
+          <span>阶段</span>
+          <select id="phaseFilter"><option value="all">全部阶段</option></select>
+        </label>
+        <label>
+          <span>产品侧</span>
+          <select id="armFilter">
+            <option value="all">两侧任一</option>
+            <option value="base" id="baseArmOption">裸基座 + 正常上下文</option>
+            <option value="full_program" id="fullArmOption">完整 V6 程序</option>
+          </select>
+        </label>
+        <label>
+          <span>缺陷类型</span>
+          <select id="defectFilter">
+            <option value="all">任一问题</option>
+            <option value="address">未正确回应当前输入</option>
+            <option value="state">违反权威状态</option>
+            <option value="logic">句内逻辑断裂</option>
+            <option value="unsupported">无依据断言</option>
+          </select>
+        </label>
+        <label>
+          <span>原标签结论</span>
+          <select id="verdictFilter">
+            <option value="all">全部结论</option>
+            <option value="base" id="baseVerdictOption">裸基座更好</option>
+            <option value="full_program" id="fullVerdictOption">完整 V6 更好</option>
+            <option value="tie">两侧持平</option>
+          </select>
+        </label>
+        <label class="issue-toggle">
+          <input id="issueOnly" type="checkbox">
+          <span>只看问题轮次</span>
+        </label>
+        <label class="issue-toggle">
+          <input id="unreviewedOnly" type="checkbox" checked>
+          <span>只看未重审</span>
+        </label>
+        <button id="resetFilters" class="button-secondary" type="button">重置筛选</button>
+      </div>
+
+      <div id="reviewError" class="message error-message" hidden></div>
+      <div id="turnList" class="turn-list" aria-live="polite">
+        <p class="message">正在读取 60 轮人工审核...</p>
+      </div>
+    </section>
+  </main>
+
+  <template id="turnTemplate">
+    <article class="audit-turn">
+      <div class="turn-title-row">
+        <div><span class="turn-number"></span><span class="phase-badge"></span></div>
+        <div class="turn-findings"></div>
+      </div>
+      <div class="evidence-grid">
+        <section><h3>玩家本轮输入</h3><p class="player-text"></p></section>
+        <section><h3>权威世界</h3><p class="world-text"></p></section>
+        <section><h3>期望处理</h3><p class="expectation-text"></p></section>
+      </div>
+      <div class="comparison-grid">
+        <section class="arm-result base-result"></section>
+        <section class="arm-result full-result"></section>
+      </div>
+      <section class="turn-verdict" aria-label="本轮人工对比结论"></section>
+      <section class="personal-review" aria-label="我的重新审核"></section>
+    </article>
+  </template>
+
+  <script src="/app.js?v=20260826-2"></script>
+</body>
+</html>

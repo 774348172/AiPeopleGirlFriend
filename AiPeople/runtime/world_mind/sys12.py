@@ -132,6 +132,7 @@ class Sys12ReleaseConfig:
             "WORLD_CONTINUITY_REVIEW",
             "POST_REPLY_WORLD_MIND_RECONCILE",
             "FIVE_MINUTE_WORLD_MIND_RECONCILE",
+            "JUDGE_TURN",
         }
         if set(mode_timeouts) != expected_modes:
             raise Sys12ConfigError("world mind mode timeouts must cover every release mode")

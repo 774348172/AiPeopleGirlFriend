@@ -366,6 +366,8 @@ class TurnWorldSnapshot:
     protagonist_utterance: str
     protagonist_utterance_event_id: str | None = None
     selected_memory_frame: SelectedMemoryFrame = SelectedMemoryFrame.empty()
+    pending_actions: tuple[dict[str, object], ...] = ()
+    game_feedback: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         _require_text(self.snapshot_id, "snapshot_id")
@@ -385,6 +387,15 @@ class TurnWorldSnapshot:
             )
         if not isinstance(self.selected_memory_frame, SelectedMemoryFrame):
             raise TypeError("selected_memory_frame must be SelectedMemoryFrame")
+        if not isinstance(self.pending_actions, tuple) or any(
+            not isinstance(item, dict) for item in self.pending_actions
+        ):
+            raise TypeError("pending_actions must contain dict items")
+        if not isinstance(self.game_feedback, tuple) or any(
+            not isinstance(item, str) or not item.strip()
+            for item in self.game_feedback
+        ):
+            raise TypeError("game_feedback must contain non-empty strings")
 
 
 @dataclass(frozen=True, slots=True)

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "dataset_id": "baiweixi_v5_targeted_supplement_v1",
+  "generated_at": "2026-08-31T14:25:41.416617+00:00",
+  "rows": 24,
+  "task_counts": {
+    "reply_insufficient_information": 8,
+    "reply_subject_attribution": 8,
+    "reply_accept_authoritative_update": 8
+  },
+  "response_contract": {
+    "unknown_acknowledgement": "checked",
+    "subject_proposition_binding": "checked",
+    "unsupported_expansion_policy": "reject"
+  },
+  "rg0_rg10_all_passed": true,
+  "files": {
+    "scenarios.jsonl": "83ada81ee6d75c58e6c9709f21b6888ae0f81247c4fdc548fd9a089d4444980e",
+    "candidates.jsonl": "63c00ae61b49359694f7eb06c54c82c35db6a18b7254d71e4125674cddb568b2",
+    "train_supplement.jsonl": "3d345ce5ad7d95fa3dd3f3fc5ce635e69b2904b27610d4fa400c96b8394fc87f"
+  },
+  "sealed_or_diagnostic_family_reuse": false
+}

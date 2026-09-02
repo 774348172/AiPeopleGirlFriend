@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipeople.local/schemas/mode_v5/runtime_grounded_audit.schema.json",
+  "title": "RuntimeGroundedReplyAuditV1",
+  "description": "最终回复的独立事实审核结果。approve 时 RG5-RG10 必须全部为 true。",
+  "type": "object",
+  "required": ["extracted_claims", "verdicts", "decision", "reasons"],
+  "properties": {
+    "extracted_claims": {
+      "type": "array",
+      "items": {"$ref": "#/definitions/Claim"}
+    },
+    "verdicts": {
+      "type": "object",
+      "required": ["RG5", "RG6", "RG7", "RG8", "RG9", "RG10"],
+      "properties": {
+        "RG5": {"type": "boolean"},
+        "RG6": {"type": "boolean"},
+        "RG7": {"type": "boolean"},
+        "RG8": {"type": "boolean"},
+        "RG9": {"type": "boolean"},
+        "RG10": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "decision": {
+      "type": "string",
+      "enum": ["approve", "reject", "human_review"]
+    },
+    "reasons": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {"decision": {"const": "approve"}}
+      },
+      "then": {
+        "properties": {
+          "verdicts": {
+            "properties": {
+              "RG5": {"const": true},
+              "RG6": {"const": true},
+              "RG7": {"const": true},
+              "RG8": {"const": true},
+              "RG9": {"const": true},
+              "RG10": {"const": true}
+            }
+          }
+        }
+      }
+    }
+  ],
+  "definitions": {
+    "Claim": {
+      "type": "object",
+      "required": ["subject", "predicate", "object", "polarity", "temporal_status", "source_fact_ids"],
+      "properties": {
+        "subject": {"type": "string", "minLength": 1},
+        "predicate": {"type": "string", "minLength": 1},
+        "object": {"type": "string"},
+        "polarity": {"type": "string", "enum": ["positive", "negative"]},
+        "temporal_status": {"type": "string", "enum": ["current", "past", "future", "unknown"]},
+        "source_fact_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

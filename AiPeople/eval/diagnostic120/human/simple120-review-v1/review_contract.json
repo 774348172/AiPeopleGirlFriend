@@ -82,14 +82,14 @@
     {
       "role": "rubric",
       "path": "eval/chat01/rubrics/quality_rubric_v1.json",
-      "bytes": 5209,
-      "sha256": "fe2287e9b7378400affcc215f98f8e071a70fd95216e8a8e2f92ac4e146dd4e6"
+      "bytes": 5302,
+      "sha256": "7578f19d25a3bf788934d784eb8c2ed140afca2060f05a5fadf913c7bbd29602"
     },
     {
       "role": "ballot_schema",
       "path": "eval/chat02/reviewer/human_ballot_v2.schema.json",
-      "bytes": 4511,
-      "sha256": "098736c91a7d4b4c5efe37a3b6e73c95361aaff1ffdf072b61b3dbc1188d4c4a"
+      "bytes": 4621,
+      "sha256": "57d8ecb4cd43d259b73fb1ef1f745ebc06454d5d3082be44250b824d91ae7189"
     }
   ],
   "submission_root": "eval/diagnostic120/human/simple120-review-v1/submissions",

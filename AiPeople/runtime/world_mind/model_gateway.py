@@ -6,6 +6,7 @@ from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
 from typing import Mapping, Protocol
 
+from .action_manifest import is_valid_action_id
 from .prompt_composer import CharacterPrompt
 from .state import (
     HeroineMindPatch,
@@ -19,6 +20,7 @@ from .state import (
 TURN_MIND_ADVANCE = "TURN_MIND_ADVANCE"
 FOREGROUND_SEMANTIC_TURN = "FOREGROUND_SEMANTIC_TURN"
 MIND_PATCH_V2 = "MIND_PATCH_V2"
+JUDGE_TURN = "JUDGE_TURN"
 WORLD_CONTINUITY_REVIEW = "WORLD_CONTINUITY_REVIEW"
 GAME_REPLY = "GAME_REPLY"
 POST_REPLY_WORLD_MIND_RECONCILE = "POST_REPLY_WORLD_MIND_RECONCILE"
@@ -33,6 +35,8 @@ CONTINUITY_DECISIONS = frozenset({"approve", "revise", "reject"})
 class HeroineDiegeticAction:
     description: str
     evidence_refs: tuple[str, ...]
+    action_id: str | None = None
+    params: Mapping[str, object] | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.description, str) or not self.description.strip():
@@ -42,12 +46,54 @@ class HeroineDiegeticAction:
             for item in self.evidence_refs
         ):
             raise TypeError("action evidence_refs must be non-empty strings")
+        if self.action_id is not None and (
+            not isinstance(self.action_id, str)
+            or not is_valid_action_id(self.action_id)
+        ):
+            raise ValueError(
+                f"action_id must be a whitelisted action, got {self.action_id!r}"
+            )
+        if self.params is not None and not isinstance(self.params, Mapping):
+            raise TypeError("action params must be a mapping or None")
 
 
 @dataclass(frozen=True, slots=True)
 class MindAdvanceRequest:
     prompt: CharacterPrompt
     snapshot: TurnWorldSnapshot
+
+
+@dataclass(frozen=True, slots=True)
+class JudgeRequest:
+    prompt: CharacterPrompt
+    snapshot: TurnWorldSnapshot
+    recent_dialogue: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True, slots=True)
+class JudgeResult:
+    reply: str
+    mind_patch: HeroineMindPatch | None = None
+    actions: tuple[HeroineDiegeticAction, ...] = ()
+    snapshot_id: str = ""
+    degraded: bool = False
+
+    def __post_init__(self) -> None:
+        if not isinstance(self.reply, str) or not self.reply.strip():
+            raise ValueError("reply cannot be empty")
+        if self.mind_patch is not None and not isinstance(
+            self.mind_patch, HeroineMindPatch
+        ):
+            raise TypeError("mind_patch must be a HeroineMindPatch or None")
+        if not isinstance(self.actions, tuple) or any(
+            not isinstance(item, HeroineDiegeticAction)
+            for item in self.actions
+        ):
+            raise TypeError("actions must contain HeroineDiegeticAction values")
+        if self.snapshot_id and (
+            not isinstance(self.snapshot_id, str) or not self.snapshot_id.strip()
+        ):
+            raise ValueError("snapshot_id must be non-empty text")
 
 
 @dataclass(frozen=True, slots=True)
@@ -356,6 +402,8 @@ class WorldMindModel(Protocol):
 
     async def generate_reply(self, request: GameReplyRequest) -> GameReplyResult: ...
 
+    async def judge_turn(self, request: JudgeRequest) -> JudgeResult: ...
+
     async def reconcile_mind(
         self,
         request: ReconcileMindRequest,
@@ -393,6 +441,10 @@ ReconcileReviewFactory = Callable[
     [ReconcileReviewRequest],
     ContinuityReviewResult | Awaitable[ContinuityReviewResult],
 ]
+JudgeFactory = Callable[
+    [JudgeRequest],
+    JudgeResult | Awaitable[JudgeResult],
+]
 
 
 class FakeWorldMindModel:
@@ -405,6 +457,7 @@ class FakeWorldMindModel:
         reconcile_factory: ReconcileFactory | None = None,
         reconcile_review_factory: ReconcileReviewFactory | None = None,
         foreground_factory: ForegroundFactory | None = None,
+        judge_factory: JudgeFactory | None = None,
         continuity_approved: bool = True,
         wait_event: asyncio.Event | None = None,
         fail_phase: str | None = None,
@@ -417,6 +470,7 @@ class FakeWorldMindModel:
             "reconcile",
             "reconcile_review",
             "foreground",
+            "judge",
         }:
             raise ValueError("unsupported fake model fail_phase")
         self.mind_patch_factory = mind_patch_factory
@@ -425,6 +479,7 @@ class FakeWorldMindModel:
         self.reconcile_factory = reconcile_factory
         self.reconcile_review_factory = reconcile_review_factory
         self.foreground_factory = foreground_factory
+        self.judge_factory = judge_factory
         self.continuity_approved = continuity_approved
         self.wait_event = wait_event
         self.fail_phase = fail_phase
@@ -434,6 +489,7 @@ class FakeWorldMindModel:
         self.reply_requests: list[GameReplyRequest] = []
         self.reconcile_requests: list[ReconcileMindRequest] = []
         self.reconcile_review_requests: list[ReconcileReviewRequest] = []
+        self.judge_requests: list[JudgeRequest] = []
         self.start_calls = 0
         self.close_calls = 0
         self.reply_started = asyncio.Event()
@@ -565,6 +621,17 @@ class FakeWorldMindModel:
             fact_assertions=_snapshot_assertions(request.snapshot),
             snapshot_id=request.snapshot.snapshot_id,
             approved_mind_state_version=request.approved_state.version,
+        )
+
+    async def judge_turn(self, request: JudgeRequest) -> JudgeResult:
+        self.judge_requests.append(request)
+        if self.fail_phase == "judge":
+            raise RuntimeError("configured fake judge failure")
+        if self.judge_factory is not None:
+            return await _maybe_await(self.judge_factory(request))
+        return JudgeResult(
+            reply="我听见了。",
+            snapshot_id=request.snapshot.snapshot_id,
         )
 
     async def reconcile_mind(

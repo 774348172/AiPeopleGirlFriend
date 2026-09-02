@@ -22,6 +22,7 @@ class WorldMindRuntimeConfig:
     character_package_dirs: Mapping[str, Path]
     p0_allowed_character_ids: tuple[str, ...]
     foreground_protocol: str = "mind_patch_v2"
+    judge_review_enabled: bool = False
     _character_packages: Mapping[str, CharacterPackage] = field(
         init=False,
         repr=False,
@@ -35,9 +36,16 @@ class WorldMindRuntimeConfig:
             "mind_patch_v2",
             "legacy_v1",
             "short_semantic_v1",
+            "judge_v1",
+            "plain_reply_v1",
         }:
             raise WorldMindRuntimeConfigError(
-                "foreground_protocol must be mind_patch_v2, legacy_v1, or short_semantic_v1"
+                "foreground_protocol must be mind_patch_v2, legacy_v1, "
+                "short_semantic_v1, judge_v1, or plain_reply_v1"
+            )
+        if not isinstance(self.judge_review_enabled, bool):
+            raise WorldMindRuntimeConfigError(
+                "judge_review_enabled must be a bool"
             )
 
         world_canon_dir = self._require_directory(

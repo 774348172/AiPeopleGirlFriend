@@ -1,0 +1,463 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://aipeople.local/schemas/mode_v5/runtime_grounded_scenario.schema.json",
+  "title": "RuntimeGroundedReplyScenarioV1",
+  "description": "V5 runtime-grounded REPLY 双视图场景合同。model_view 对齐 judge_payload 训练投影，oracle_view 仅供离线生成与审核。",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "scenario_id",
+    "profile_id",
+    "task_type",
+    "model_view",
+    "oracle_view",
+    "split_anchors"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "aip.runtime_grounded_reply_scenario.v1"
+    },
+    "scenario_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"
+    },
+    "profile_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_type": {
+      "type": "string",
+      "enum": [
+        "reply_accept_authoritative_update",
+        "reply_reject_stale_claim",
+        "reply_correct_false_premise",
+        "reply_resolve_world_memory_conflict",
+        "reply_confirm_current_state",
+        "reply_subject_attribution",
+        "reply_insufficient_information",
+        "reply_direct_answer"
+      ]
+    },
+    "model_view": {
+      "$ref": "#/definitions/ModelView"
+    },
+    "oracle_view": {
+      "$ref": "#/definitions/OracleView"
+    },
+    "split_anchors": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "ModelView": {
+      "type": "object",
+      "required": [
+        "mode",
+        "evidence_contract",
+        "snapshot",
+        "previous_heroine_runtime",
+        "selected_memory_frame",
+        "current_protagonist_utterance",
+        "recent_dialogue",
+        "pending_actions",
+        "game_feedback"
+      ],
+      "properties": {
+        "mode": {
+          "const": "JUDGE_TURN"
+        },
+        "evidence_contract": {
+          "type": "object",
+          "required": ["allowed_evidence_refs"],
+          "properties": {
+            "allowed_evidence_refs": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {"type": "string", "minLength": 1}
+            }
+          },
+          "additionalProperties": false
+        },
+        "snapshot": {
+          "$ref": "#/definitions/Snapshot"
+        },
+        "previous_heroine_runtime": {
+          "$ref": "#/definitions/HeroineRuntime"
+        },
+        "selected_memory_frame": {
+          "$ref": "#/definitions/MemoryFrame"
+        },
+        "current_protagonist_utterance": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recent_dialogue": {
+          "type": "array",
+          "maxItems": 6,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "pending_actions": {
+          "type": "array",
+          "items": {"type": "object"}
+        },
+        "game_feedback": {
+          "type": "array",
+          "maxItems": 3,
+          "items": {"type": "string", "minLength": 1}
+        }
+      },
+      "additionalProperties": false
+    },
+    "Snapshot": {
+      "type": "object",
+      "required": [
+        "snapshot_id",
+        "request_id",
+        "job_id",
+        "save_id",
+        "world_id",
+        "protagonist_id",
+        "active_character_id",
+        "captured_game_time",
+        "live_world_version",
+        "mind_state_version",
+        "world_state",
+        "protagonist",
+        "scene"
+      ],
+      "properties": {
+        "snapshot_id": {"type": "string", "minLength": 1},
+        "request_id": {"type": ["string", "null"]},
+        "job_id": {"type": ["string", "null"]},
+        "save_id": {"type": "string", "minLength": 1},
+        "world_id": {"type": "string", "minLength": 1},
+        "protagonist_id": {"type": "string", "minLength": 1},
+        "active_character_id": {"type": "string", "minLength": 1},
+        "captured_game_time": {"type": "string", "minLength": 1},
+        "live_world_version": {"type": "integer", "minimum": 0},
+        "mind_state_version": {"type": "integer", "minimum": 0},
+        "world_state": {
+          "type": "object",
+          "required": ["live_world_version", "scene_text", "protagonist_text"],
+          "properties": {
+            "live_world_version": {"type": "integer", "minimum": 0},
+            "scene_text": {"type": "string"},
+            "protagonist_text": {"type": "string"}
+          },
+          "additionalProperties": false
+        },
+        "protagonist": {
+          "type": "object",
+          "required": [
+            "protagonist_id",
+            "location_id",
+            "location_label",
+            "activity",
+            "body_state",
+            "held_item_ids"
+          ],
+          "properties": {
+            "protagonist_id": {"type": "string", "minLength": 1},
+            "location_id": {"type": "string", "minLength": 1},
+            "location_label": {"type": "string", "minLength": 1},
+            "activity": {"type": "string"},
+            "body_state": {"type": "object"},
+            "held_item_ids": {
+              "type": "array",
+              "items": {"type": "string"}
+            }
+          },
+          "additionalProperties": false
+        },
+        "scene": {
+          "type": "object",
+          "required": ["scene_id", "location_label", "present_character_ids", "item_states"],
+          "properties": {
+            "scene_id": {"type": "string", "minLength": 1},
+            "location_label": {"type": "string", "minLength": 1},
+            "present_character_ids": {
+              "type": "array",
+              "items": {"type": "string", "minLength": 1}
+            },
+            "item_states": {"type": "object"}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "HeroineRuntime": {
+      "type": "object",
+      "required": [
+        "save_id",
+        "world_id",
+        "character_id",
+        "version",
+        "living_mind",
+        "relationship",
+        "motive_state",
+        "knowledge_state",
+        "evidence_refs",
+        "projection_counts"
+      ],
+      "properties": {
+        "save_id": {"type": "string", "minLength": 1},
+        "world_id": {"type": "string", "minLength": 1},
+        "character_id": {"type": "string", "minLength": 1},
+        "version": {"type": "integer", "minimum": 0},
+        "living_mind": {
+          "type": "object",
+          "required": ["form", "body", "emotion", "attention", "current_activity", "immediate_intent"],
+          "properties": {
+            "form": {"type": "string"},
+            "body": {"type": "string"},
+            "emotion": {"type": "string"},
+            "attention": {"type": "string"},
+            "current_activity": {"type": "string"},
+            "immediate_intent": {"type": "string"}
+          },
+          "additionalProperties": false
+        },
+        "relationship": {
+          "type": "object",
+          "required": ["protagonist_id", "stage", "trust", "unresolved_tension"],
+          "properties": {
+            "protagonist_id": {"type": "string", "minLength": 1},
+            "stage": {"type": "string"},
+            "trust": {"type": "string"},
+            "unresolved_tension": {"type": "string"}
+          },
+          "additionalProperties": false
+        },
+        "motive_state": {"type": "object"},
+        "knowledge_state": {"type": "object"},
+        "evidence_refs": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "projection_counts": {
+          "type": "object",
+          "required": ["motive_state", "knowledge_state", "evidence_refs"],
+          "properties": {
+            "motive_state": {"type": "integer", "minimum": 0},
+            "knowledge_state": {"type": "integer", "minimum": 0},
+            "evidence_refs": {"type": "integer", "minimum": 0}
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "MemoryFrame": {
+      "type": "object",
+      "required": ["selector_version", "source_memory_ids", "source_event_ids", "selected_memories"],
+      "properties": {
+        "selector_version": {"type": "string", "minLength": 1},
+        "source_memory_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "source_event_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "selected_memories": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/SelectedMemory"}
+        }
+      },
+      "additionalProperties": false
+    },
+    "SelectedMemory": {
+      "type": "object",
+      "required": [
+        "memory_id",
+        "memory_version",
+        "kind",
+        "statement",
+        "subject_type",
+        "subject_display_name",
+        "temporal_relation",
+        "temporal_source_text",
+        "epistemic_polarity",
+        "epistemic_modality",
+        "evidence"
+      ],
+      "properties": {
+        "memory_id": {"type": "string", "minLength": 1},
+        "memory_version": {"type": "integer", "minimum": 0},
+        "kind": {"type": "string", "minLength": 1},
+        "statement": {"type": "string", "minLength": 1},
+        "subject_type": {"type": "string", "minLength": 1},
+        "subject_display_name": {"type": "string"},
+        "temporal_relation": {"type": "string"},
+        "temporal_source_text": {"type": "string"},
+        "epistemic_polarity": {"type": "string"},
+        "epistemic_modality": {"type": "string"},
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["event_id", "role", "excerpt"],
+            "properties": {
+              "event_id": {"type": "string", "minLength": 1},
+              "role": {"type": "string", "minLength": 1},
+              "excerpt": {"type": "string"}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "OracleView": {
+      "type": "object",
+      "required": [
+        "facts",
+        "correction_direction",
+        "answer_shape",
+        "required_assertions",
+        "forbidden_assertions",
+        "must_not_be_vague",
+        "unsupported_detail_policy"
+      ],
+      "properties": {
+        "facts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/definitions/Fact"}
+        },
+        "correction_direction": {
+          "type": "string",
+          "enum": [
+            "accept_authoritative_update",
+            "reject_stale_claim",
+            "correct_false_premise",
+            "prefer_world_over_memory",
+            "confirm_current_state",
+            "preserve_subject",
+            "ask_for_clarification",
+            "answer_directly"
+          ]
+        },
+        "answer_shape": {
+          "type": "string",
+          "enum": [
+            "acknowledge_update_then_restated_fact",
+            "explicit_no_then_current_fact",
+            "correct_premise_then_fact",
+            "prefer_current_world_then_fact",
+            "explicit_confirmation_then_fact",
+            "answer_with_original_subject",
+            "state_unknown_then_clarify",
+            "direct_answer_then_optional_context"
+          ]
+        },
+        "required_assertions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/definitions/Assertion"}
+        },
+        "forbidden_assertions": {
+          "type": "array",
+          "items": {"$ref": "#/definitions/Assertion"}
+        },
+        "must_not_be_vague": {"type": "boolean"},
+        "response_contract": {"$ref": "#/definitions/ResponseContract"},
+        "unsupported_detail_policy": {
+          "type": "string",
+          "enum": ["reject", "human_review"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ResponseContract": {
+      "type": "object",
+      "required": [
+        "unknown_acknowledgement",
+        "subject_proposition_binding",
+        "unsupported_expansion_policy"
+      ],
+      "properties": {
+        "unknown_acknowledgement": {
+          "type": "string",
+          "enum": ["required", "not_applicable"]
+        },
+        "subject_proposition_binding": {
+          "type": "string",
+          "enum": ["required", "not_applicable"]
+        },
+        "unsupported_expansion_policy": {
+          "type": "string",
+          "enum": ["reject"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Fact": {
+      "type": "object",
+      "required": ["fact_id", "subject", "predicate", "object", "domain", "source", "status"],
+      "properties": {
+        "fact_id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{2,127}$"},
+        "subject": {"type": "string", "minLength": 1},
+        "predicate": {"type": "string", "minLength": 1},
+        "object": {"type": "string"},
+        "domain": {
+          "type": "string",
+          "enum": [
+            "objective_world",
+            "protagonist_preference",
+            "protagonist_subjective",
+            "protagonist_plan",
+            "heroine_internal",
+            "heroine_canon",
+            "shared_history",
+            "third_party"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "snapshot",
+            "game_feedback",
+            "current_protagonist_utterance",
+            "selected_memory_frame",
+            "recent_dialogue",
+            "profile_canon",
+            "previous_heroine_runtime"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["current", "stale", "false", "unknown", "contested"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Assertion": {
+      "type": "object",
+      "required": ["subject", "predicate", "object", "source_fact_ids"],
+      "properties": {
+        "subject": {"type": "string", "minLength": 1},
+        "predicate": {"type": "string", "minLength": 1},
+        "object": {"type": "string"},
+        "source_fact_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

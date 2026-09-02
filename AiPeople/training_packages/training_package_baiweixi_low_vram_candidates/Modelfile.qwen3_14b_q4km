@@ -1,0 +1,2 @@
+FROM D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/training_package_baiweixi_low_vram_candidates/outputs/baiweixi_qwen3_14b_q4_k_m.gguf
+PARAMETER num_ctx 4096

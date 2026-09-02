@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gemma Adapter A/B 人工审核</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .pair-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; padding:14px; }
+    .arm { border:1px solid #d7dbd8; background:#fff; min-width:0; }
+    .arm > header { display:flex; justify-content:space-between; gap:12px; padding:10px 12px; border-bottom:1px solid #d7dbd8; background:#f4f6f4; }
+    .arm blockquote { min-height:76px; }
+    .arm .manual-review { border-top:1px solid #d7dbd8; }
+    details { padding:10px 15px; border-top:1px solid #d7dbd8; background:#fafbfa; }
+    summary { cursor:pointer; color:#59615b; font-size:11px; font-weight:700; }
+    pre { max-height:320px; overflow:auto; white-space:pre-wrap; font-size:10px; }
+    @media (max-width:800px) { .pair-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <div><p class="eyebrow">质量路线 · 实名 A/B</p><h1>Gemma Adapter 对比审核</h1><p class="subtitle">两侧使用相同玩家轨迹、系统策略、记忆投影、采样参数和随机种子；各自回复进入本侧后续历史</p></div>
+    <nav class="header-actions"><a href="/api/review-report">下载人工审核</a><a class="secondary-link" href="/api/report">下载原始报告</a></nav>
+  </header>
+  <section class="model-band"><span class="model-mark">A/B</span><div><strong>Gemma 4 12B NF4</strong><span id="armSummary">正在读取实验配置</span></div><p id="caseSummary">正在读取测试规模</p></section>
+  <main>
+    <section class="review-status"><div><p class="eyebrow">你的人工判断</p><h2>审核进度</h2></div><div class="progress-area"><div class="progress-track"><div id="progressBar"></div></div><strong id="progressText">0 / 40</strong><span id="breakdown">尚未开始</span></div><button id="resetReview" class="secondary-button">清空审核</button></section>
+    <section class="audit-section"><div class="section-heading"><div><p class="eyebrow">实名对比</p><h2>逐题审核</h2></div><strong id="resultCount">0 题</strong></div><div class="filter-bar"><label class="search-field"><span>搜索</span><input id="searchInput" type="search" placeholder="问题、记忆或回复"></label><label><span>类型</span><select id="categoryFilter"><option value="all">全部类型</option></select></label><button id="resetFilters" class="secondary-button">重置筛选</button></div><div id="reviewError" class="message error-message" hidden></div><div id="turnList" class="turn-list"><p class="message">正在读取结果...</p></div></section>
+  </main>
+  <template id="caseTemplate">
+    <article class="audit-turn"><header class="turn-header"><div><span class="turn-number"></span><span class="phase-badge"></span></div><span class="condition"></span></header><div class="evidence-grid"><section><h3>玩家问题</h3><p class="question"></p></section><section><h3>可见相关记忆</h3><p class="memory"></p></section><section><h3>人工审核关注点</h3><p class="focus"></p></section></div><details><summary>展开模型输入（连续对话中两侧历史回复可能不同）</summary><pre class="raw-input"></pre></details><div class="pair-grid"></div></article>
+  </template>
+  <script src="/app.js"></script>
+</body>
+</html>

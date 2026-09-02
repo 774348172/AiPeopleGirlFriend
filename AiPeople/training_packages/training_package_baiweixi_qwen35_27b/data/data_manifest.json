@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-08-25T15:32:30.288224+08:00",
+  "source_path": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\training_packages\\training_package_baiweixi_qwen35_4b\\data\\baiweixi_ready.jsonl",
+  "source_sha256": "9a9433afc83b3b5f36c85c88964a66d5a76cca5bff0d776ee0a88cee73731751",
+  "output_path": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\training_packages\\training_package_baiweixi_qwen35_27b\\data\\baiweixi_27b_ready.jsonl",
+  "output_sha256": "52404515128d27b527ea43a3887fbed3cfed931257f495cea46ae0ee16e7d21a",
+  "rows": 1973,
+  "system_rules_appended": 1973,
+  "rows_with_action_markup_cleaned": 5,
+  "assistant_messages_cleaned": 7,
+  "evaluation_examples_added": 0
+}

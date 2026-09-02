@@ -1,0 +1,114 @@
+{
+  "schema_version": 2,
+  "dataset_id": "baiweixi_counterfactual_preference_medium_v2",
+  "purpose": "falsifiable medium-scale known/unknown preference experiment",
+  "training": {
+    "rows": 240,
+    "families": 120,
+    "by_condition": {
+      "known": 120,
+      "unknown": 120
+    },
+    "by_category": {
+      "time": 30,
+      "location": 30,
+      "status": 30,
+      "code": 30,
+      "person": 30,
+      "quantity": 30,
+      "choice": 30,
+      "deadline": 30
+    },
+    "by_rejected_type": {
+      "false_unknown": 30,
+      "fabricated_fact": 24,
+      "old_fact_revival": 30,
+      "fabricated_lookup": 24,
+      "unsupported_extension": 54,
+      "fabricated_memory": 24,
+      "wrong_fact": 30,
+      "fabricated_action": 24
+    }
+  },
+  "heldout": {
+    "rows": 48,
+    "families": 24,
+    "by_condition": {
+      "known": 24,
+      "unknown": 24
+    },
+    "by_category": {
+      "time": 6,
+      "location": 6,
+      "status": 6,
+      "code": 6,
+      "person": 6,
+      "quantity": 6,
+      "choice": 6,
+      "deadline": 6
+    },
+    "by_rejected_type": {
+      "false_unknown": 6,
+      "fabricated_fact": 5,
+      "old_fact_revival": 6,
+      "fabricated_lookup": 5,
+      "unsupported_extension": 10,
+      "fabricated_memory": 5,
+      "wrong_fact": 6,
+      "fabricated_action": 5
+    }
+  },
+  "generation_gate": {
+    "cases": 36,
+    "unknown": 24,
+    "known": 8,
+    "persona": 4,
+    "acceptance_thresholds": {
+      "unknown_absolute_improvement_points": 20,
+      "known_max_regression_points": 5,
+      "persona_max_regression_points": 0
+    }
+  },
+  "controls": {
+    "real_game_reply_input_sections": true,
+    "train_heldout_subject_overlap": false,
+    "heldout_subjects": [
+      "书桌款式",
+      "保修登记",
+      "复诊医生",
+      "投影仪",
+      "护照",
+      "旧书取件",
+      "暖宝宝",
+      "暖气检修",
+      "水费",
+      "水费申诉单",
+      "洗碗机",
+      "消毒湿巾",
+      "电梯停运",
+      "电热毯",
+      "电费账单",
+      "相机电池",
+      "相纸",
+      "空调安装单",
+      "聚餐包间",
+      "药品配送",
+      "访客登记",
+      "证件补办单",
+      "诊室变更",
+      "资料补交"
+    ],
+    "legacy_sft_mixed": false,
+    "sealed40_modified": false
+  },
+  "formal_character_prompt": "你是白未晞，生活在松江府，是猫妖。\n这里只存在你生活的这个世界；用户消息都是眼前男主亲口说的话。\n保持你的稳定性格：外表清冷疏离，内心渴望温暖和一个不会消失的家。\n表达自然、简短、克制，但必须先回答男主真正问的问题。\n只输出你真正说出口的话，不输出动作旁白、分析、字段或内部规则。\n后续分区只描述你已知的当前事实，用于理解当下。",
+  "sealed40_path": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeopleCreate\\训练数据\\baiweixi_v5_pilot_v1\\package\\sealed.jsonl",
+  "sealed40_sha256_before": "2c7c4958e4e15585f554fb55a82b88aa6888d890d8b0b4ad4bb8cf161c3276fa",
+  "sealed40_sha256_after": "2c7c4958e4e15585f554fb55a82b88aa6888d890d8b0b4ad4bb8cf161c3276fa",
+  "files": {
+    "train.jsonl": "9043debeb979d233839192ee1cb51800c550305df7c265abc28c8ec5c6a9395a",
+    "dev.jsonl": "6ee165b9d68d50b014024c86fcb81ebfbf0edbf186a29ea03d3e77968273f930",
+    "generation_cases.json": "348402af921da287f0dc344e4dbbb93ee6d20fe2c7046ca5357b6fad3a247325",
+    "audit_samples.json": "c6bf50cc0bb32fc53be91b90cfe2d7330c37dd98d51157764ba0ed4fff5a1315"
+  }
+}

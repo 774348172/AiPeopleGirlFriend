@@ -11,6 +11,7 @@ from typing import Protocol, runtime_checkable
 
 from runtime.adapters.llama_cpp import GenerationOptions
 
+from .action_manifest import get_action, is_valid_action_id
 from .model_failures import (
     ClassifiedModelError,
     ModelAttemptObserver,
@@ -21,6 +22,7 @@ from .model_gateway import (
     FIVE_MINUTE_WORLD_MIND_RECONCILE,
     FOREGROUND_SEMANTIC_TURN,
     GAME_REPLY,
+    JUDGE_TURN,
     MIND_PATCH_V2,
     POST_REPLY_WORLD_MIND_RECONCILE,
     TURN_MIND_ADVANCE,
@@ -32,6 +34,8 @@ from .model_gateway import (
     GameReplyRequest,
     GameReplyResult,
     HeroineDiegeticAction,
+    JudgeRequest,
+    JudgeResult,
     MindAdvanceRequest,
     MindAdvanceResult,
     MindPatchV2Request,
@@ -42,8 +46,10 @@ from .model_gateway import (
 )
 from .model_payloads import (
     build_game_reply_messages,
+    build_judge_text_messages,
     build_mode_messages,
     continuity_review_payload,
+    judge_payload,
     mind_advance_payload,
     reconcile_review_payload,
 )
@@ -155,9 +161,10 @@ DEFAULT_MODE_PROFILES = {
         360, 0.55, 0.9, 1.08, 45.0, 1
     ),
     MIND_PATCH_V2: WorldMindModeProfile(180, 0.2, 0.85, 1.05, 30.0, 1),
+    JUDGE_TURN: WorldMindModeProfile(900, 0.65, 0.9, 1.15, 120.0, 1),
     TURN_MIND_ADVANCE: WorldMindModeProfile(900, 0.2, 0.85, 1.05, 60.0, 1),
     WORLD_CONTINUITY_REVIEW: WorldMindModeProfile(650, 0.1, 0.8, 1.05, 45.0, 1),
-    GAME_REPLY: WorldMindModeProfile(600, 0.75, 0.9, 1.1, 90.0, 1),
+    GAME_REPLY: WorldMindModeProfile(600, 0.0, 0.9, 1.1, 90.0, 1),
     POST_REPLY_WORLD_MIND_RECONCILE: WorldMindModeProfile(
         320, 0.2, 0.85, 1.05, 35.0, 0
     ),
@@ -207,6 +214,7 @@ class LlamaCppWorldMindModel:
             GAME_REPLY,
             POST_REPLY_WORLD_MIND_RECONCILE,
             FIVE_MINUTE_WORLD_MIND_RECONCILE,
+            JUDGE_TURN,
         }:
             raise ValueError("mode_profiles must define all world-mind modes")
         if any(not isinstance(item, WorldMindModeProfile) for item in profiles.values()):
@@ -220,6 +228,7 @@ class LlamaCppWorldMindModel:
                 "foreground_semantic_turn_m1.schema.json"
             ),
             MIND_PATCH_V2: _load_schema("mind_patch_m2.schema.json"),
+            JUDGE_TURN: _load_schema("judge_turn_v1.schema.json"),
             TURN_MIND_ADVANCE: _load_schema("turn_mind_advance_v1.schema.json"),
             WORLD_CONTINUITY_REVIEW: _load_schema(
                 "world_continuity_review_v1.schema.json"
@@ -311,6 +320,32 @@ class LlamaCppWorldMindModel:
             snapshot_id=request.snapshot.snapshot_id,
             approved_mind_state_version=request.approved_state.version,
         )
+
+    async def judge_turn(self, request: JudgeRequest) -> JudgeResult:
+        self._validate_prompt_identity(request.prompt)
+        try:
+            return await self._run_parsed(
+                JUDGE_TURN,
+                request.snapshot.request_id,
+                request.prompt.system_prompt,
+                judge_payload(request.snapshot, request.recent_dialogue),
+                lambda raw: _checked_judge_result(
+                    raw, request.snapshot.snapshot_id
+                ),
+            )
+        except WorldMindModelError:
+            # 结构化判断失败 → 降级为纯文本回复（丢弃结构化字段），
+            # 保证回合不整体失败；degraded 标记供评测统计。
+            text = await self._run_text(
+                JUDGE_TURN,
+                request.snapshot.request_id,
+                build_judge_text_messages(request),
+            )
+            return JudgeResult(
+                reply=text,
+                snapshot_id=request.snapshot.snapshot_id,
+                degraded=True,
+            )
 
     async def reconcile_mind(
         self,
@@ -899,14 +934,97 @@ def _actions_from_value(value: object) -> tuple[HeroineDiegeticAction, ...]:
     actions = []
     for raw in value:
         item = _object(raw, "heroine_diegetic_action")
-        _exact_keys(item, {"description", "evidence_refs"}, "action")
+        keys = set(item)
+        if not {"description", "evidence_refs"} <= keys <= {
+            "action_id",
+            "description",
+            "evidence_refs",
+        }:
+            raise WorldMindModelOutputError("action fields do not match schema")
+        action_id = item.get("action_id")
+        if action_id is not None:
+            action_id = _text(action_id, "action_id")
+            if not is_valid_action_id(action_id):
+                raise WorldMindModelOutputError(
+                    f"action_id is not whitelisted: {action_id}"
+                )
         actions.append(
             HeroineDiegeticAction(
                 description=_text(item["description"], "description"),
                 evidence_refs=_text_tuple(item["evidence_refs"], "evidence_refs"),
+                action_id=action_id,
             )
         )
     return tuple(actions)
+
+
+def _judge_actions_from_value(
+    value: object, snapshot_id: str
+) -> tuple[HeroineDiegeticAction, ...]:
+    if not isinstance(value, list):
+        raise WorldMindModelOutputError("actions must be an array")
+    actions = []
+    for raw in value:
+        item = _object(raw, "judge_action")
+        keys = set(item)
+        if not keys <= {"action_id", "params"}:
+            raise WorldMindModelOutputError("judge action fields do not match schema")
+        action_id = _text(item.get("action_id"), "action_id")
+        if not is_valid_action_id(action_id):
+            raise WorldMindModelOutputError(
+                f"action_id is not whitelisted: {action_id}"
+            )
+        params = item.get("params") or {}
+        if not isinstance(params, dict):
+            raise WorldMindModelOutputError("action params must be an object")
+        description = get_action(action_id).description
+        actions.append(
+            HeroineDiegeticAction(
+                description=description,
+                evidence_refs=(snapshot_id,),
+                action_id=action_id,
+                params=params,
+            )
+        )
+    return tuple(actions)
+
+
+def _judge_result_from_dict(
+    value: dict[str, object], snapshot_id: str
+) -> JudgeResult:
+    item = _object(value, "judge_result")
+    _exact_keys(
+        item,
+        {
+            "schema_version",
+            "mode",
+            "snapshot_id",
+            "reply",
+            "mind_patch",
+            "actions",
+        },
+        "judge_result",
+    )
+    if item["schema_version"] != 1 or item["mode"] != JUDGE_TURN:
+        raise WorldMindModelOutputError("invalid judge result version or mode")
+    if item["snapshot_id"] != snapshot_id:
+        raise WorldMindModelOutputError("judge result snapshot_id mismatch")
+    raw_patch = item["mind_patch"]
+    return JudgeResult(
+        reply=_text(item["reply"], "reply"),
+        mind_patch=None if raw_patch is None else _patch_from_dict(raw_patch),
+        actions=_judge_actions_from_value(item["actions"], snapshot_id),
+        snapshot_id=snapshot_id,
+    )
+
+
+def _checked_judge_result(
+    value: dict[str, object], snapshot_id: str
+) -> JudgeResult:
+    result = _judge_result_from_dict(value, snapshot_id)
+    if result.snapshot_id != snapshot_id:
+        raise WorldMindModelOutputError("judge result snapshot_id mismatch")
+    return result
 
 
 def _assertions_from_dict(value: object) -> ReplyFactAssertions:

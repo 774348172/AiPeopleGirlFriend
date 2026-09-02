@@ -1,0 +1,33 @@
+{
+  "schema_version": "aip.runtime_grounded_pilot_freeze.v1",
+  "dataset_id": "baiweixi_v5_pilot_v1",
+  "frozen_at": "2026-08-31T11:45:57+08:00",
+  "human_review": {
+    "total": 80,
+    "approved": 80,
+    "rejected": 0,
+    "source": "user_confirmation_in_current_thread"
+  },
+  "counts": {
+    "train": 318,
+    "dev": 39,
+    "test": 43,
+    "sealed": 40,
+    "grounded": 240,
+    "static": 160
+  },
+  "package_files_sha256": {
+    "package/train.jsonl": "0b9f49a490b15f40d017c7420f8eb6f188bf289232e60a4a6369a561393720f0",
+    "package/dev.jsonl": "83ae2b6fcf5e7e71b3e7f1e7adb91d2a269aedc9e4f685284eeb984271a8eecb",
+    "package/test.jsonl": "22479d0e8d36a764cf0a14b7f9b685cebff4f753841db50d589eb2119bebe5b2",
+    "package/sealed.jsonl": "2c7c4958e4e15585f554fb55a82b88aa6888d890d8b0b4ad4bb8cf161c3276fa",
+    "package/manifest.json": "32f8f4a51131d2e9637cdadae8e7af8ee83ec28eb58d64231fc4deb077242c31",
+    "package/coverage_report.json": "2845178be9cab5c55bdfcdaf4bc529f46f0ef2747bf4bcca81d3493a3cf3786b"
+  },
+  "sealed_policy": {
+    "included_in_training": false,
+    "sample_overlap": 0,
+    "family_overlap": 0
+  },
+  "training_started": false
+}

@@ -1,0 +1,3051 @@
+{
+  "schema_version": "aip.runtime_grounded_spot_check.v1",
+  "reviewer_type": "codex_deterministic_secondary_inspection",
+  "human_review_completed": false,
+  "selection": "sha256 order, 10 per task",
+  "total": 80,
+  "severe_errors": 0,
+  "passed": true,
+  "reviews": [
+    {
+      "sample_id": "pilot.accept.parcel.status",
+      "task_type": "reply_accept_authoritative_update",
+      "reply": "你说得对，现在快递是驿站待取。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.accept.meeting.time",
+      "task_type": "reply_accept_authoritative_update",
+      "reply": "你说你的组会现在是星期三下午两点。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.accept.keys.location",
+      "task_type": "reply_accept_authoritative_update",
+      "reply": "备用钥匙现在挂在玄关挂钩。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.accept.tea.preference",
+      "task_type": "reply_accept_authoritative_update",
+      "reply": "你的茶现在是淡一点。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.accept.medicine.time",
+      "task_type": "reply_accept_authoritative_update",
+      "reply": "你的胃药现在是晚饭后吃。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.accept.fruit.location",
+      "task_type": "reply_accept_authoritative_update",
+      "reply": "你说得对，现在洗好的水果在餐桌果盘。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.accept.alarm.time",
+      "task_type": "reply_accept_authoritative_update",
+      "reply": "你说得对，现在你的闹钟是早上七点半。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.accept.cat_food.location",
+      "task_type": "reply_accept_authoritative_update",
+      "reply": "你说得对，现在猫粮在储物柜下层。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.accept.scarf.location",
+      "task_type": "reply_accept_authoritative_update",
+      "reply": "你说得对，白围巾现在挂在衣帽架。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.accept.takeout.status",
+      "task_type": "reply_accept_authoritative_update",
+      "reply": "你说得对，现在是骑手取餐中。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.reject.notebook.location",
+      "task_type": "reply_reject_stale_claim",
+      "reply": "不是，蓝色笔记本现在放在床边小桌。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.reject.train.time",
+      "task_type": "reply_reject_stale_claim",
+      "reply": "你的火车现在是下午四点二十。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.reject.parcel.status",
+      "task_type": "reply_reject_stale_claim",
+      "reply": "快递现在是在驿站待取，不是已送上门。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.reject.repair.status",
+      "task_type": "reply_reject_stale_claim",
+      "reply": "桌面风扇已经修好了，不是还没修。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.reject.balcony_door.state",
+      "task_type": "reply_reject_stale_claim",
+      "reply": "阳台门已经锁好了，不是还没锁。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.reject.tea.preference",
+      "task_type": "reply_reject_stale_claim",
+      "reply": "你的茶现在还是淡一点。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.reject.keys.location",
+      "task_type": "reply_reject_stale_claim",
+      "reply": "不是，备用钥匙现在挂在玄关挂钩了。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.reject.kettle.state",
+      "task_type": "reply_reject_stale_claim",
+      "reply": "电水壶现在是保温状态，不是正在烧水。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.reject.movie.time",
+      "task_type": "reply_reject_stale_claim",
+      "reply": "电影票现在是星期日晚上七点，不是星期六晚上八点。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.reject.appointment.time",
+      "task_type": "reply_reject_stale_claim",
+      "reply": "不是星期五上午十点，你的理发预约是星期四下午五点。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.correct.kettle.state",
+      "task_type": "reply_correct_false_premise",
+      "reply": "电水壶现在是保温状态，不是正在烧水。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.correct.parcel.status",
+      "task_type": "reply_correct_false_premise",
+      "reply": "快递还在驿站待取，并没有送上门。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.correct.notebook.location",
+      "task_type": "reply_correct_false_premise",
+      "reply": "蓝色笔记本在床边小桌上，不是书包里。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.correct.medicine.time",
+      "task_type": "reply_correct_false_premise",
+      "reply": "你的胃药是晚饭后吃的，不是睡前。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.correct.rice.status",
+      "task_type": "reply_correct_false_premise",
+      "reply": "电饭煲现在是预约煮饭状态，不是保温。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.correct.book.location",
+      "task_type": "reply_correct_false_premise",
+      "reply": "书现在是在书架第二层，不是在餐桌上。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.correct.laundry.mode",
+      "task_type": "reply_correct_false_premise",
+      "reply": "洗衣机现在是漂洗状态，不是脱水。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.correct.umbrella.location",
+      "task_type": "reply_correct_false_premise",
+      "reply": "折叠伞现在是在玄关伞架上，你按这个处理吧。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.correct.repair.status",
+      "task_type": "reply_correct_false_premise",
+      "reply": "桌面风扇已经修好了，你按这个处理吧。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.correct.fridge.state",
+      "task_type": "reply_correct_false_premise",
+      "reply": "冰箱门已经是关严了，你按这个处理吧。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.conflict.heater.state",
+      "task_type": "reply_resolve_world_memory_conflict",
+      "reply": "热水器现在是已经开启的。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.conflict.charger.location",
+      "task_type": "reply_resolve_world_memory_conflict",
+      "reply": "现在手机充电器在沙发旁插座。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.conflict.porridge.preference",
+      "task_type": "reply_resolve_world_memory_conflict",
+      "reply": "你的粥现在是不放糖的。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.conflict.umbrella.location",
+      "task_type": "reply_resolve_world_memory_conflict",
+      "reply": "现在折叠伞在玄关伞架。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.conflict.meeting.time",
+      "task_type": "reply_resolve_world_memory_conflict",
+      "reply": "你的组会是星期三下午两点。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.conflict.towel.location",
+      "task_type": "reply_resolve_world_memory_conflict",
+      "reply": "干净毛巾现在位于浴室柜上层。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.conflict.soup.status",
+      "task_type": "reply_resolve_world_memory_conflict",
+      "reply": "汤锅现在是小火炖着。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.conflict.medicine.time",
+      "task_type": "reply_resolve_world_memory_conflict",
+      "reply": "你的胃药现在是晚饭后吃。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.conflict.kettle.state",
+      "task_type": "reply_resolve_world_memory_conflict",
+      "reply": "电水壶现在是保温状态。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.conflict.repair.status",
+      "task_type": "reply_resolve_world_memory_conflict",
+      "reply": "桌面风扇已经修好了。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.confirm.balcony_door.state",
+      "task_type": "reply_confirm_current_state",
+      "reply": "阳台门已经锁好了。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.confirm.charger.location",
+      "task_type": "reply_confirm_current_state",
+      "reply": "是的，手机充电器现在在沙发旁的插座上。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.confirm.movie.time",
+      "task_type": "reply_confirm_current_state",
+      "reply": "是的，电影票的时间是星期日晚上七点。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.confirm.medicine.time",
+      "task_type": "reply_confirm_current_state",
+      "reply": "是的，你的胃药是在晚饭后吃。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.confirm.umbrella.location",
+      "task_type": "reply_confirm_current_state",
+      "reply": "是的，折叠伞现在在玄关伞架。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.confirm.window.state",
+      "task_type": "reply_confirm_current_state",
+      "reply": "是的，厨房窗户现在是留了一条缝。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.confirm.alarm.time",
+      "task_type": "reply_confirm_current_state",
+      "reply": "是的，你的闹钟现在设在早上七点半。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.confirm.appointment.time",
+      "task_type": "reply_confirm_current_state",
+      "reply": "你的理发预约是星期四下午五点。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.confirm.meeting.time",
+      "task_type": "reply_confirm_current_state",
+      "reply": "你的组会是星期三下午两点，没错。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.confirm.lamp.state",
+      "task_type": "reply_confirm_current_state",
+      "reply": "是的，书桌灯现在是已关闭的。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.subject.soup.status",
+      "task_type": "reply_subject_attribution",
+      "reply": "沈川说汤锅的当前状态是小火炖着。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.subject.keys.location",
+      "task_type": "reply_subject_attribution",
+      "reply": "小乔说备用钥匙在玄关挂钩。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.subject.umbrella.location",
+      "task_type": "reply_subject_attribution",
+      "reply": "小林说折叠伞在玄关伞架。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.subject.fruit.location",
+      "task_type": "reply_subject_attribution",
+      "reply": "白榆说洗好的水果在餐桌果盘。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.subject.medicine.time",
+      "task_type": "reply_subject_attribution",
+      "reply": "苏晴说你的胃药的时间是晚饭后。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.subject.movie.time",
+      "task_type": "reply_subject_attribution",
+      "reply": "季禾说电影票的时间是星期日晚上七点。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.subject.scarf.location",
+      "task_type": "reply_subject_attribution",
+      "reply": "陆遥说白围巾在衣帽架。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.subject.appointment.time",
+      "task_type": "reply_subject_attribution",
+      "reply": "夏宁说你的理发预约的时间是星期四下午五点。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.subject.lamp.state",
+      "task_type": "reply_subject_attribution",
+      "reply": "许舟说书桌灯已关闭。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.subject.porridge.preference",
+      "task_type": "reply_subject_attribution",
+      "reply": "安然说你的粥的偏好是不放糖。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.unknown.repair.status",
+      "task_type": "reply_insufficient_information",
+      "reply": "上次桌面风扇变成这样，我不太记得具体是哪一天了，你可以再提醒我一下吗？",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.unknown.balcony_door.state",
+      "task_type": "reply_insufficient_information",
+      "reply": "上次阳台门变成这样具体是哪一天，我不太记得了，你能给我点提示吗？",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.unknown.rice.status",
+      "task_type": "reply_insufficient_information",
+      "reply": "上次电饭煲变成这样具体是哪一天，我记不清了，你能提供些线索吗？",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.unknown.window.state",
+      "task_type": "reply_insufficient_information",
+      "reply": "上次厨房窗户变成这样，我不太记得具体是哪一天了，你能给我点提示吗？",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.unknown.cat_food.location",
+      "task_type": "reply_insufficient_information",
+      "reply": "上次猫粮变成这样具体是哪一天，我不太记得了，你能给我点提示吗？",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.unknown.fridge.state",
+      "task_type": "reply_insufficient_information",
+      "reply": "上次冰箱门变成这样具体是哪一天，我不太记得了，你能给我点提示吗？",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.unknown.takeout.status",
+      "task_type": "reply_insufficient_information",
+      "reply": "上次粥铺外卖变成这样具体是哪一天，我不太记得了，你能给我点提示吗？",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.unknown.medicine.time",
+      "task_type": "reply_insufficient_information",
+      "reply": "上次你的胃药变成现在这样，具体是哪一天，我记不太清楚了，你可以再提醒我一下吗？",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.unknown.charger.location",
+      "task_type": "reply_insufficient_information",
+      "reply": "上次手机充电器变成这样具体是哪一天，我不太记得了，你可以再提醒我一下吗？",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.unknown.thermometer.location",
+      "task_type": "reply_insufficient_information",
+      "reply": "上次体温计变成这样是什么时候？我不太记得具体日期了，你能给我点提示吗？",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.direct.fruit.location",
+      "task_type": "reply_direct_answer",
+      "reply": "洗好的水果现在在餐桌果盘。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.direct.tea.preference",
+      "task_type": "reply_direct_answer",
+      "reply": "你的茶现在是淡一点。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.direct.heater.state",
+      "task_type": "reply_direct_answer",
+      "reply": "热水器现在是已经开启的。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.direct.balcony_door.state",
+      "task_type": "reply_direct_answer",
+      "reply": "阳台门已经锁好了。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.direct.scarf.location",
+      "task_type": "reply_direct_answer",
+      "reply": "白围巾现在挂在衣帽架。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.direct.thermometer.location",
+      "task_type": "reply_direct_answer",
+      "reply": "体温计现在放在客厅药箱。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.direct.charger.location",
+      "task_type": "reply_direct_answer",
+      "reply": "手机充电器现在在沙发旁的插座上。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.direct.medicine.time",
+      "task_type": "reply_direct_answer",
+      "reply": "你的胃药是晚饭后吃的。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.direct.towel.location",
+      "task_type": "reply_direct_answer",
+      "reply": "干净毛巾现在位于浴室柜上层。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    },
+    {
+      "sample_id": "pilot.direct.keys.location",
+      "task_type": "reply_direct_answer",
+      "reply": "备用钥匙现在挂在玄关挂钩。",
+      "approved": true,
+      "severe_fact_error": false,
+      "subject_error": false,
+      "gate_report": {
+        "verdicts": {
+          "RG0": true,
+          "RG1": true,
+          "RG2": true,
+          "RG3": true,
+          "RG4": true,
+          "RG5": true,
+          "RG6": true,
+          "RG7": true,
+          "RG8": true,
+          "RG9": true,
+          "RG10": true
+        },
+        "reasons": {
+          "RG0": [],
+          "RG1": [],
+          "RG2": [],
+          "RG3": [],
+          "RG4": [],
+          "RG5": [],
+          "RG6": [],
+          "RG7": [],
+          "RG8": [],
+          "RG9": [],
+          "RG10": []
+        },
+        "decision": "approve"
+      },
+      "reviewer_type": "codex_deterministic_secondary_inspection"
+    }
+  ]
+}

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aipeople-data-gen"
-version = "0.1.0"
+version = "0.0.1"
 description = "AiPeople 通用数据生成器（data_gen / data_gen_v4）——独立于 AI 程序仓库"
 requires-python = ">=3.11,<3.12"
 dependencies = [

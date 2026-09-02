@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aipeople.local/schemas/gemma_nf4_runtime_manifest_v1.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "model_id", "base_model_id", "revision", "base_revision", "model_role",
+    "character_id", "world_id", "protagonist_id", "deployment_profile", "adapter_id",
+    "network_access", "thinking", "adapter_loaded", "quantization",
+    "model_root", "adapter_root", "artifact_sha256", "model_files", "adapter_files", "runtime"
+  ],
+  "properties": {
+    "schema_version": {"const": 1},
+    "model_id": {
+      "enum": [
+        "local/baiweixi-gemma-4-12B-v5-full-mixed",
+        "local/baiweixi-gemma-4-12B-v5-targeted"
+      ]
+    },
+    "base_model_id": {"const": "google/gemma-4-12B-it"},
+    "revision": {"type": "string", "minLength": 1},
+    "base_revision": {"type": "string", "minLength": 1},
+    "model_role": {"const": "heroine_reply"},
+    "character_id": {"const": "baiweixi"},
+    "world_id": {"const": "songjiangfu"},
+    "protagonist_id": {"const": "protagonist"},
+    "deployment_profile": {"const": "transformers-unsloth-bnb-nf4-peft-lora-text-only"},
+    "adapter_id": {
+      "enum": [
+        "baiweixi-v5-full-mixed-adapter",
+        "baiweixi-v5-targeted-adapter"
+      ]
+    },
+    "network_access": {"const": "forbidden"},
+    "thinking": {"const": false},
+    "adapter_loaded": {"const": true},
+    "quantization": {"const": "bitsandbytes-nf4-runtime+lora"},
+    "model_root": {"type": "string", "minLength": 3},
+    "adapter_root": {"type": "string", "minLength": 3},
+    "artifact_sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+    "model_files": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "bytes", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "bytes": {"type": "integer", "minimum": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    },
+    "adapter_files": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "bytes", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "bytes": {"type": "integer", "minimum": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_seq_length", "dtype", "device", "load_in_4bit", "text_only",
+        "trust_remote_code", "use_exact_model_name", "attention_implementation"
+      ],
+      "properties": {
+        "max_seq_length": {"type": "integer", "minimum": 1024},
+        "dtype": {"const": "bfloat16"},
+        "device": {"const": "cuda"},
+        "load_in_4bit": {"const": true},
+        "text_only": {"const": true},
+        "trust_remote_code": {"const": true},
+        "use_exact_model_name": {"const": true},
+        "attention_implementation": {"const": "eager"}
+      }
+    }
+  }
+}

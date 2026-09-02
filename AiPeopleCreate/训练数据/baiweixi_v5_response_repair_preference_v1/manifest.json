@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "dataset_id": "baiweixi_v5_response_repair_preference_v1",
+  "generated_at": "2026-09-01T22:07:18.039659+08:00",
+  "purpose": "Continue the approved V5 Adapter with four human-adjudicated response failure clusters while preserving known, unknown, and persona behavior.",
+  "source": {
+    "report": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\eval\\world_mind_p0\\gemma4_lora_stateful_grounding60_correction_first_20260901\\report.json",
+    "report_sha256": "b4922f6981d7c47d34e9ed6f3d076028b8c4010bb495388df4d02ba5c2339545",
+    "review": "C:\\Users\\songa\\Downloads\\gemma4_stateful_grounding60_user_review.json",
+    "review_sha256": "440bf36a3c3820260e62f00642a8a35f5b656e07aee6e4d060f0d92b094e5693",
+    "starting_adapter": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\training_packages\\training_package_baiweixi_gemma4_12b\\outputs\\baiweixi_v5_targeted_adapter\\adapter_model.safetensors",
+    "starting_adapter_sha256": "921e250555824a4551479004f8ae3f67b06d821caee62b69484c1b0ba8fdde61",
+    "retention_train_sha256": "86087cd2d4166c49795103b660cbfaa63ad806c981ab6440d3d952550f9c3697",
+    "retention_dev_sha256": "6ee165b9d68d50b014024c86fcb81ebfbf0edbf186a29ea03d3e77968273f930"
+  },
+  "counts": {
+    "train": 132,
+    "sealed": 48,
+    "train_by_cluster": {
+      "direct_decision": 21,
+      "invalid_plan_request": 21,
+      "multi_request_resolution": 21,
+      "retention_known": 16,
+      "retention_persona": 16,
+      "retention_unknown": 16,
+      "stale_action_completion": 21
+    },
+    "sealed_by_cluster": {
+      "direct_decision": 8,
+      "invalid_plan_request": 8,
+      "multi_request_resolution": 8,
+      "retention_known": 6,
+      "retention_persona": 4,
+      "retention_unknown": 6,
+      "stale_action_completion": 8
+    }
+  },
+  "controls": {
+    "human_bad_turns": [
+      10,
+      18,
+      27,
+      60
+    ],
+    "real_failures_used_only_for_training": true,
+    "sealed_scene_families_disjoint": true,
+    "starting_adapter_continuation_required": true,
+    "clean_base_training_forbidden": true
+  },
+  "files": {
+    "train.jsonl": "84a8d39a68d3a29503aa363504ba3a7e855ca0b7ee790a4bbccd99fd4d4ce7e0",
+    "sealed.jsonl": "37f535a2c4877054705d159e0e5214fc5cef7ce5188fdef4a80ff8cd3804ac78"
+  }
+}

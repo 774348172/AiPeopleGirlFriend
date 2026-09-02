@@ -43,7 +43,8 @@
     "GAME_REPLY": 90,
     "WORLD_CONTINUITY_REVIEW": 60,
     "POST_REPLY_WORLD_MIND_RECONCILE": 75,
-    "FIVE_MINUTE_WORLD_MIND_RECONCILE": 90
+    "FIVE_MINUTE_WORLD_MIND_RECONCILE": 90,
+    "JUDGE_TURN": 120
   },
   "llama_cpp": {
     "server_path": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\local_runtime\\llama.cpp\\b10256-cuda-12.4\\llama-server.exe",
@@ -53,7 +54,7 @@
     "model_alias": "baiweixi"
   },
   "ollama": {
-    "model_name": "baiweixi-7b:latest",
+    "model_name": "baiweixi-7b-fix:latest",
     "base_url": "http://127.0.0.1:11434",
     "keep_alive": "10m",
     "num_gpu": 20

@@ -225,6 +225,12 @@ def test_real_gateway_reply_uses_only_semantic_context_and_dialogue() -> None:
         assert "memory-private-001" not in context
         assert "event-memory" not in context
         assert "selector-secret-v7" not in context
+        assert "男主本轮明确告知或纠正的新事实优先于冲突的旧记忆" in context
+        assert "男主的提问、猜测或反问不能覆盖已有事实" in context
+        assert context.endswith(
+            "不得用常识、猜测、角色设定或看似合理的细节补全答案，"
+            "也不得声称自己查询、查看或确认过。"
+        )
         assert messages[1:3] == (
             {"role": "user", "content": "你还记得我喜欢什么天气吗？"},
             {"role": "assistant", "content": "记得。"},
@@ -234,6 +240,7 @@ def test_real_gateway_reply_uses_only_semantic_context_and_dialogue() -> None:
             "content": snapshot.protagonist_utterance,
         }
         assert call["response_format"] is None
+        assert call["options"].temperature == 0.0
 
     asyncio.run(scenario())
 

@@ -23,41 +23,40 @@ from pydantic import BaseModel, Field
 
 from runtime._real_assets import LocalRetrievalAssetBundle
 from runtime.contracts import Completed, Failed
+from runtime.gemma_nf4_assets import GEMMA4_ADAPTER_IDS, LocalGemmaNF4Package
 from runtime.world_mind import (
     ActiveSceneState,
-    CharacterPackagePromptComposer,
     GameClockService,
-    LlamaCppHeroineMemoryProposer,
-    LlamaCppWorldMindModel,
     PersistentWorldStateProvider,
     ProtagonistLiveState,
     RuntimeSessionIdentity,
     TurnRequest,
-    WorldMindModelIdentity,
     WorldMindModeProfile,
     WorldMindRuntime,
     WorldMindRuntimeConfig,
     WorldMindStore,
 )
 from runtime.world_mind.model_gateway import (
-    FIVE_MINUTE_WORLD_MIND_RECONCILE,
     GAME_REPLY,
-    MIND_PATCH_V2,
-    POST_REPLY_WORLD_MIND_RECONCILE,
-    WORLD_CONTINUITY_REVIEW,
+    JUDGE_TURN,
 )
-from runtime.world_mind.real_stack import build_real_retrieval_stack
-from runtime.world_mind.sys12 import Sys12ReleaseConfig, Sys12ReleaseHost
+from runtime.world_mind.gemma_nf4_stack import build_gemma_nf4_world_mind_stack
 
 STATIC_ROOT = ROOT / "tools" / "baiweixi_chat_static"
 DATA_ROOT = ROOT / "eval" / "world_mind_p0" / "interactive_chat"
-DATABASE_PATH = DATA_ROOT / "baiweixi_interactive.sqlite3"
-RELEASE_MANIFEST = ROOT / "local_runtime" / "sys12_release_manifest.json"
+GEMMA_PRIMARY_MANIFEST = ROOT / "local_runtime" / "gemma4_nf4_runtime_manifest.json"
+GEMMA_FALLBACK_MANIFEST = ROOT / "local_runtime" / "gemma4_nf4_fallback_manifest.json"
+GEMMA_MODEL_MANIFESTS = {
+    "primary": GEMMA_PRIMARY_MANIFEST,
+    "fallback": GEMMA_FALLBACK_MANIFEST,
+}
 RETRIEVAL_MANIFEST = (
     ROOT / "local_runtime" / "models" / "retrieval" / "retrieval_assets.json"
 )
 INITIAL_GAME_TIME = datetime(1, 10, 11, 18, 0, 0)
 SAVE_ID_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9_-]{7,63}$")
+APP_MODEL_PROFILE = "primary"
+APP_DATABASE_PATH = DATA_ROOT / "baiweixi_gemma4_interactive.sqlite3"
 
 
 class WorldInput(BaseModel):
@@ -88,7 +87,9 @@ def _runtime_config() -> WorldMindRuntimeConfig:
         protagonist_canon_dir=ROOT / "人物设定" / "主角",
         character_package_dirs={"baiweixi": ROOT / "人物设定" / "白未晞"},
         p0_allowed_character_ids=("baiweixi",),
-        foreground_protocol="mind_patch_v2",
+        # Full-mixed LoRA is trained for natural dialogue, not state JSON.
+        # World state stays program-owned; the model receives it as evidence.
+        foreground_protocol="plain_reply_v1",
     )
 
 
@@ -104,80 +105,70 @@ def _session(save_id: str) -> RuntimeSessionIdentity:
     )
 
 
-def _profiles(config: Sys12ReleaseConfig) -> dict[str, WorldMindModeProfile]:
-    values = {
-        MIND_PATCH_V2: (180, 0.2, 0.85, 1.05, 1),
-        # GAME_REPLY: temp 0.65 + penalty 1.15（2026-08-19 实测）
-        # 原 0.55/1.08 在对抗性多轮对话下易陷入防御性短句循环
-        GAME_REPLY: (360, 0.65, 0.9, 1.15, 1),
-        WORLD_CONTINUITY_REVIEW: (650, 0.1, 0.8, 1.05, 1),
-        POST_REPLY_WORLD_MIND_RECONCILE: (320, 0.2, 0.85, 1.05, 0),
-        FIVE_MINUTE_WORLD_MIND_RECONCILE: (320, 0.2, 0.85, 1.05, 0),
-    }
+def _gemma_profiles() -> dict[str, WorldMindModeProfile]:
+    # The production 60-turn review used greedy decoding, max_new_tokens=96,
+    # and repetition_penalty=1.05. Keep the foreground policy identical.
     return {
-        mode: WorldMindModeProfile(
-            max_tokens=max_tokens,
-            temperature=temperature,
-            top_p=top_p,
-            repeat_penalty=repeat_penalty,
-            timeout_seconds=config.world_mind_mode_timeouts_seconds[mode],
-            retries=retries,
+        GAME_REPLY: WorldMindModeProfile(
+            max_tokens=96,
+            temperature=0.0,
+            top_p=0.9,
+            repeat_penalty=1.05,
+            timeout_seconds=90.0,
+            retries=0,
+        ),
+        JUDGE_TURN: WorldMindModeProfile(
+            max_tokens=96,
+            temperature=0.0,
+            top_p=0.9,
+            repeat_penalty=1.05,
+            timeout_seconds=90.0,
+            retries=0,
         )
-        for mode, (
-            max_tokens,
-            temperature,
-            top_p,
-            repeat_penalty,
-            retries,
-        ) in values.items()
     }
 
 
 class BaiWeixiChatService:
-    def __init__(self) -> None:
-        DATA_ROOT.mkdir(parents=True, exist_ok=True)
+    def __init__(
+        self,
+        *,
+        model_profile: str = "primary",
+        database_path: Path = APP_DATABASE_PATH,
+    ) -> None:
+        try:
+            model_manifest = GEMMA_MODEL_MANIFESTS[model_profile]
+        except KeyError as error:
+            raise ValueError(f"unknown model profile: {model_profile}") from error
+        database_path = database_path.resolve()
+        database_path.parent.mkdir(parents=True, exist_ok=True)
+        self.model_profile = model_profile
+        self.model_manifest = model_manifest
         self.config = _runtime_config()
-        self.store = WorldMindStore.open(DATABASE_PATH)
+        self.store = WorldMindStore.open(database_path)
         self.clock = GameClockService(
             self.store,
             initial_game_time=INITIAL_GAME_TIME,
         )
         self.world = PersistentWorldStateProvider(self.store)
-        release = Sys12ReleaseConfig.load(RELEASE_MANIFEST)
-        self.host = Sys12ReleaseHost(release)
         retrieval_assets = LocalRetrievalAssetBundle.load(RETRIEVAL_MANIFEST)
-        self.retrieval = build_real_retrieval_stack(
+        self.reply_asset = LocalGemmaNF4Package.load(model_manifest)
+        self.gemma_stack = build_gemma_nf4_world_mind_stack(
             store=self.store,
-            assets=retrieval_assets,
-        )
-        identity = WorldMindModelIdentity(
-            model_id="llama_cpp/baiweixi-release-interactive",
-            revision="sys12-instruct-interactive-v1",
-            artifact_sha256=release.model_sha256,
+            retrieval_assets=retrieval_assets,
+            reply_asset=self.reply_asset,
+            world_mind_config=self.config,
             character_id="baiweixi",
-            world_id="songjiangfu",
-            protagonist_id="protagonist",
+            mode_profiles=_gemma_profiles(),
         )
-        self.model = LlamaCppWorldMindModel(
-            self.host.backend,
-            identity=identity,
-            mode_profiles=_profiles(release),
-        )
-        prompt = CharacterPackagePromptComposer(self.config).compose(
-            _session("interactive_seed")
-        )
-        self.memory_proposer = LlamaCppHeroineMemoryProposer(
-            self.host.backend,
-            identity=identity,
-            character_prompt=prompt.system_prompt,
-        )
+        self.model = self.gemma_stack.world_mind_model
+        self.memory_proposer = self.gemma_stack.memory_proposer
         self.runtime = WorldMindRuntime(
             config=self.config,
             store=self.store,
             world_state_provider=self.world,
             game_clock=self.clock,
             model=self.model,
-            memory_repository_factory=self.retrieval.memory_repository_factory,
+            memory_repository_factory=self.gemma_stack.memory_repository_factory,
             memory_proposer_provider=lambda _session: self.memory_proposer,
             periodic_reconcile_seconds=300.0,
             required_reconcile_before_foreground=False,
@@ -192,7 +183,6 @@ class BaiWeixiChatService:
 
     async def close(self) -> None:
         await self.runtime.close()
-        await self.host.gate.close()
 
     async def ensure_world(
         self,
@@ -295,7 +285,10 @@ service: BaiWeixiChatService | None = None
 @asynccontextmanager
 async def lifespan(_app: FastAPI):
     global service
-    service = BaiWeixiChatService()
+    service = BaiWeixiChatService(
+        model_profile=APP_MODEL_PROFILE,
+        database_path=APP_DATABASE_PATH,
+    )
     await service.start()
     try:
         yield
@@ -304,7 +297,7 @@ async def lifespan(_app: FastAPI):
         service = None
 
 
-app = FastAPI(title="白未晞 V6 对话测试", lifespan=lifespan)
+app = FastAPI(title="白未晞正式对话", lifespan=lifespan)
 
 
 def _service() -> BaiWeixiChatService:
@@ -333,8 +326,13 @@ async def health() -> dict[str, Any]:
     current = _service()
     return {
         "status": "ready",
-        "model": "白未晞 7B Instruct Q5_K_M",
-        "protocol": "M2 mind patch + plain GAME_REPLY",
+        "model": current.reply_asset.identity.model_id,
+        "adapter_id": GEMMA4_ADAPTER_IDS[current.reply_asset.identity.model_id],
+        "adapter_revision": current.reply_asset.identity.revision,
+        "base_model": current.reply_asset.base_model_id,
+        "revision": current.reply_asset.identity.revision,
+        "model_profile": current.model_profile,
+        "protocol": "plain_reply_v1 with program-owned world state",
         "uptime_seconds": round(time.time() - current.started_at, 1),
     }
 
@@ -353,9 +351,18 @@ async def chat(payload: ChatInput) -> dict[str, Any]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="白未晞 V6 真实模型对话测试页")
+    global APP_MODEL_PROFILE, APP_DATABASE_PATH
+    parser = argparse.ArgumentParser(description="白未晞正式对话服务")
     parser.add_argument("--port", type=int, default=8767)
+    parser.add_argument(
+        "--model-profile",
+        choices=tuple(GEMMA_MODEL_MANIFESTS),
+        default="primary",
+    )
+    parser.add_argument("--database-path", type=Path, default=APP_DATABASE_PATH)
     args = parser.parse_args()
+    APP_MODEL_PROFILE = args.model_profile
+    APP_DATABASE_PATH = args.database_path.resolve()
     uvicorn.run(app, host="127.0.0.1", port=args.port, log_level="info")
     return 0
 

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aipeople-runtime"
-version = "0.1.0"
+version = "0.0.1"
 description = "Local relationship continuity runtime for AiPeople"
 requires-python = ">=3.11,<3.12"
 dependencies = [

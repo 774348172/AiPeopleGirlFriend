@@ -1,0 +1,146 @@
+{
+  "schema_version": "aip.runtime_grounded_real_input_manifest.v1",
+  "created_at": "2026-08-30T17:25:51Z",
+  "teacher_model": "qwen2.5:14b-instruct-q4_K_M",
+  "audit_model": "qwen2.5:14b-instruct-q4_K_M",
+  "model_endpoint": "http://127.0.0.1:11434/v1",
+  "teacher_and_audit_are_separate_calls": true,
+  "human_review_completed": false,
+  "codex_secondary_inspection": {
+    "total": 80,
+    "severe_errors": 0
+  },
+  "counts": {
+    "dataset_id": "baiweixi_v5_pilot_v1",
+    "total": 400,
+    "grounded": 240,
+    "static": 160,
+    "split_counts": {
+      "train": 318,
+      "dev": 39,
+      "test": 43
+    },
+    "task_counts": {
+      "reply_accept_authoritative_update": 30,
+      "reply_reject_stale_claim": 30,
+      "reply_correct_false_premise": 30,
+      "reply_resolve_world_memory_conflict": 30,
+      "reply_confirm_current_state": 30,
+      "reply_subject_attribution": 30,
+      "reply_insufficient_information": 30,
+      "reply_direct_answer": 30,
+      "reply_casual": 160
+    },
+    "source_counts": {
+      "current_protagonist_utterance": 90,
+      "recent_dialogue": 60,
+      "game_feedback": 150,
+      "selected_memory_frame": 60
+    },
+    "status_counts": {
+      "current": 210,
+      "stale": 90,
+      "false": 30,
+      "unknown": 30
+    },
+    "assistant_total": {
+      "runtime_grounded": 240,
+      "static_persona": 323
+    },
+    "supervised_message_total": {
+      "runtime_grounded": 240,
+      "static_persona": 323
+    },
+    "supervised_token_total": {
+      "runtime_grounded": 4183,
+      "static_persona": 6310
+    },
+    "rg_gate_counts": {
+      "RG0": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG1": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG2": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG3": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG4": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG5": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG6": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG7": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG8": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG9": {
+        "passed": 240,
+        "failed": 0
+      },
+      "RG10": {
+        "passed": 240,
+        "failed": 0
+      }
+    },
+    "sealed_total": 40
+  },
+  "files": {
+    "input_manifest.pre_surface_gate.json": "sha256:9e7bb06e43546c8a0443426939e35286b4ed1dc778adfed079d50776c96f41bc",
+    "inputs/grounded_candidates.jsonl": "sha256:397d4373ee367444b9a92571367a52f5baa2aae92701195311e918bc28ad7684",
+    "inputs/grounded_candidates.pre_claim_mapping_fix.jsonl": "sha256:71d09c2d0991a3c6e5ed853305056f34dacf4f26c35c6d13efe87b0e8305ea9a",
+    "inputs/grounded_candidates.pre_ctx8k_fix.jsonl": "sha256:9bd331c69e1b74a1922987878b5a2143f091c568231897196834d65e85ce43b0",
+    "inputs/grounded_candidates.pre_feedback_retry.jsonl": "sha256:982b8140405749dcea049e7f042ea63339fdb2a5708c865e22a115506d6fcd5f",
+    "inputs/grounded_candidates.pre_json_unknown_fix.jsonl": "sha256:99a689041a1d853dcbee739369b8e9555c6c1585834b36b3ba8842d6e43d633b",
+    "inputs/grounded_candidates.pre_native_transport.jsonl": "sha256:682c937db49a3f17d747e7b407eff1f47e4d83e44a29432bba4c5151d18f8664",
+    "inputs/grounded_candidates.pre_player_perspective_fix.jsonl": "sha256:c001f52273a2f6407fd8ab8f35ae80dad065b66f7e43fc9d995ee5cc0aa74d38",
+    "inputs/grounded_candidates.pre_scenario_seed.jsonl": "sha256:50aebebff23e4e7f80d3e9b0cb679878b7231bf05eba931286105473cc4b811f",
+    "inputs/grounded_candidates.pre_subject_claim_split.jsonl": "sha256:9dc888b9f3267d9dbf287c25276b2910753e06d8f676cdbc4301d9fd78cc7357",
+    "inputs/grounded_candidates.pre_subject_contract_fix.jsonl": "sha256:c44a7bac3466111c626e377e8e2316d06dddb02317346256baee13c79ce49154",
+    "inputs/grounded_candidates.pre_surface_gate.jsonl": "sha256:a811cde5548698510fa2ba291db415be3eec42bd01c06426204c090b06394aa3",
+    "inputs/grounded_candidates.pre_surface_obligation.jsonl": "sha256:9adf219ca73fa26279028304927860a70c56d08ec2023d1062b8a3f16802699d",
+    "inputs/grounded_scenarios.jsonl": "sha256:c32e0df7652637caf516787aca59dbd671d9a09f5e9944ce7b7f88c1c54a711b",
+    "inputs/grounded_spot_check_80.json": "sha256:4938daa5bc2c68cb04d16534d5d7d8087eca3d9680d0c820672f16438599e404",
+    "inputs/grounded_spot_check_80.pre_surface_gate.json": "sha256:6e9a6ced151c84f458f0a16573fab3fa1d57584cc78bafd30534a04c1831a463",
+    "inputs/lamp_subject_probe.pre_subject_claim_split.jsonl": "sha256:2e0085c597c128ac31aa1f9868111294463b8e32e4af9c3d22ca502fbfdad481",
+    "inputs/lamp_subject_probe.pre_subject_phrase_fix.jsonl": "sha256:3f9372e806dd547b224a8346ea684eeb507dde840626c20db100d9856787c508",
+    "inputs/sealed.jsonl": "sha256:bcc586424e0d76755695804ac739b2081cdd44831e5d07fb98215b7963da5356",
+    "inputs/sealed_scenarios.jsonl": "sha256:d72e08ea3da873469c43034f6e9f98ed433707984bbbb96277bb8cf8577dced7",
+    "inputs/soup_subject_probe.jsonl": "sha256:3036308cad37f82a439075d80c0f5fe2bfa8e5c8d8550c882ab986450f2a69f1",
+    "inputs/static_reaudit.jsonl": "sha256:29c201b314fed85909b2834ea8ac967326cb94e4f30ffcd20d1b391a7d2d9fd6",
+    "inputs/static_reaudit.pre_canon_calibration.jsonl": "sha256:05703e850a4b36294307bf199139cea648b9a400f82690c51ce9352dd92cbbde",
+    "inputs/static_records.jsonl": "sha256:f0c9deee3123ce71b7839a84a29c324edafa29dfd76bac48df06365c3bec9059",
+    "inputs/surface_obligation_probe.jsonl": "sha256:91690b5335e6d3b53834a47355246429ec96acfb81b391ec9177933c4cbaf405",
+    "package/coverage_report.json": "sha256:9974f5604a8917f1543a068cca5599d709c1528755c1d1a94d1e5cf115bda51c",
+    "package/dev.jsonl": "sha256:83ae2b6fcf5e7e71b3e7f1e7adb91d2a269aedc9e4f685284eeb984271a8eecb",
+    "package/manifest.json": "sha256:10f8366a44ea6afe5864cf9b69be0d65cddba4bd13e857f82acae46cc18875f5",
+    "package/sealed.jsonl": "sha256:2c7c4958e4e15585f554fb55a82b88aa6888d890d8b0b4ad4bb8cf161c3276fa",
+    "package/test.jsonl": "sha256:c74315bfeaeb2b9dc35e46b9a37bcdc377d42ab85654f46c770384353c78e21c",
+    "package/train.jsonl": "sha256:56570cc9a12caa8b1a47da3ef38cd64e8c08255a40a2481966f62710eb189d28",
+    "package.pre_surface_gate/coverage_report.json": "sha256:521117357c25e99ea8e48e1dd03fd868c2203f0b570fe177b930e0cfdc25f6b4",
+    "package.pre_surface_gate/dev.jsonl": "sha256:55791b89501b989afc0237d565469778177d51b2ac25b21518b83753f38294f3",
+    "package.pre_surface_gate/manifest.json": "sha256:45cc17d8d9b87491d44354a33170bd08ea27c3cabbef69f50c703ba98fcfee40",
+    "package.pre_surface_gate/sealed.jsonl": "sha256:4ba042aa8848564263b1d2ab987e154e251c08ed0fb73995a4398cc573079333",
+    "package.pre_surface_gate/test.jsonl": "sha256:ad037bcbcde6e153d4bf3d14ab233f3813c10418f1d849eafaede65b9f642941",
+    "package.pre_surface_gate/train.jsonl": "sha256:bc48fb40c130da82f3545c121fda8156d76557c8f6e731bf06f3673a65155ddc"
+  },
+  "training_started": false
+}

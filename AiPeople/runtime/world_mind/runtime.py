@@ -3,6 +3,7 @@ from __future__ import annotations
 import time
 import uuid
 from collections.abc import Callable
+from dataclasses import replace
 
 from runtime.contracts import Completed, Failed, ReplyEvent, TurnMetrics
 from runtime._selected_memory import SelectedMemoryFrame
@@ -10,15 +11,20 @@ from runtime._selected_memory import SelectedMemoryFrame
 from .background_scheduler import WorldBackgroundScheduler
 from .coordinator import SaveTurnCoordinator, WorldUpdateCoordinator
 from .contracts import RuntimeSessionIdentity
+from .game_interface import ActionOutcome, GameWorldInterface
 from .game_clock import GameClockService
 from .model_gateway import (
     ContinuityReviewRequest,
     ContinuityReviewResult,
     ForegroundSemanticTurnRequest,
     GameReplyRequest,
+    GameReplyResult,
+    JudgeRequest,
     MindAdvanceRequest,
+    MindAdvanceResult,
     MindPatchV2Request,
     WorldMindModel,
+    _snapshot_assertions,
 )
 from .memory_repository import (
     HeroineMemoryRepositoryError,
@@ -35,7 +41,7 @@ from .persistence import (
 from .prompt_composer import CharacterPackagePromptComposer
 from .reconciliation import WorldMindReconcileWorker
 from .settings import WorldMindRuntimeConfig, WorldMindRuntimeConfigError
-from .state import TurnWorldSnapshot
+from .state import HeroineMindPatch, TurnWorldSnapshot
 from .turn_request import TurnRequest
 from .validation import HardInvariantError, HardInvariantValidator
 from .world_state import (
@@ -65,6 +71,7 @@ class WorldMindRuntime:
         periodic_reconcile_seconds: float = 300.0,
         required_reconcile_before_foreground: bool = True,
         coalesce_pending_required_reconcile: bool = True,
+        game_world: GameWorldInterface | None = None,
         id_factory: Callable[[], str] = lambda: str(uuid.uuid4()),
         close_store_on_close: bool = False,
     ) -> None:
@@ -73,6 +80,7 @@ class WorldMindRuntime:
         self.world_state_provider = world_state_provider
         self.game_clock = game_clock
         self.model = model
+        self.game_world = game_world
         self.coordinator = coordinator or WorldUpdateCoordinator()
         self.projection = projection or WorldStateProjection()
         self.validator = validator or HardInvariantValidator()
@@ -267,6 +275,28 @@ class WorldMindRuntime:
                     game_time=captured_game_time,
                 )
             ).frame
+        # 游戏世界投影（接口契约 §二/§五）：游戏是唯一事实源，runtime 只读。
+        # 游戏未接入（game_world=None）时保持原 sqlite 世界状态行为。
+        scene_state = live_world.scene
+        view_runtime = heroine_runtime
+        pending_actions: tuple[dict[str, object], ...] = ()
+        game_feedback: tuple[str, ...] = ()
+        if self.game_world is not None:
+            projection = await self.game_world.project()
+            pending_actions = projection.pending_actions
+            game_feedback = projection.recent_feedback
+            if projection.item_states is not None:
+                scene_state = replace(
+                    scene_state, item_states=projection.item_states
+                )
+            if projection.heroine_activity is not None:
+                view_runtime = replace(
+                    heroine_runtime,
+                    living_mind=replace(
+                        heroine_runtime.living_mind,
+                        current_activity=projection.heroine_activity,
+                    ),
+                )
         snapshot = TurnWorldSnapshot(
             snapshot_id=self._id_factory(),
             request_id=request.request_id,
@@ -276,86 +306,42 @@ class WorldMindRuntime:
             mind_state_version=heroine_runtime.version,
             world_state=self.projection.project(live_world),
             protagonist=live_world.protagonist,
-            scene=live_world.scene,
-            heroine_runtime=heroine_runtime,
+            scene=scene_state,
+            heroine_runtime=view_runtime,
             protagonist_utterance=request.text,
             protagonist_utterance_event_id=self._id_factory(),
             selected_memory_frame=selected_memory_frame,
+            pending_actions=pending_actions,
+            game_feedback=game_feedback,
         )
 
         model_started = time.perf_counter()
         patch_v2 = None
-        if self.config.foreground_protocol == "mind_patch_v2":
-            semantic_turn = None
-            patch_v2 = await self.model.propose_mind_patch_v2(
-                MindPatchV2Request(prompt=prompt, snapshot=snapshot)
+        if self.config.foreground_protocol == "plain_reply_v1":
+            # Dialogue-only model releases do not generate state JSON in the
+            # foreground. Keep program-owned state stable and use GAME_REPLY
+            # with the frozen world/memory snapshot as the sole evidence.
+            mind_result = MindAdvanceResult(
+                patch=HeroineMindPatch(evidence_refs=(snapshot.snapshot_id,)),
+                reply_intent="直接回应男主本轮对白",
+                fact_assertions=_snapshot_assertions(snapshot),
+                parent_mind_state_version=snapshot.mind_state_version,
+                snapshot_id=snapshot.snapshot_id,
+                transition_basis=(snapshot.snapshot_id,),
             )
-            mind_result = patch_v2.mind_result
-        elif self.config.foreground_protocol == "short_semantic_v1":
-            semantic_turn = await self.model.foreground_semantic_turn(
-                ForegroundSemanticTurnRequest(prompt=prompt, snapshot=snapshot)
+            proposed_state = mind_result.patch.apply(heroine_runtime)
+            self.validator.validate_mind_advance(
+                snapshot,
+                heroine_runtime,
+                proposed_state,
+                mind_result,
             )
-            mind_result = semantic_turn.mind_result
-        else:
-            semantic_turn = None
-            mind_result = await self.model.advance_mind(
-                MindAdvanceRequest(prompt=prompt, snapshot=snapshot)
-            )
-        proposed_state = mind_result.patch.apply(heroine_runtime)
-        self.validator.validate_mind_advance(
-            snapshot,
-            heroine_runtime,
-            proposed_state,
-            mind_result,
-        )
-        short_result = patch_v2 if patch_v2 is not None else semantic_turn
-        if short_result is not None and not short_result.review_recommended:
+            approved_state = proposed_state
             review = ContinuityReviewResult(
                 decision="approve",
-                reason="short patch passed hard invariants without semantic risk trigger",
+                reason="plain_reply_v1 keeps program-owned mind state stable",
                 snapshot_id=snapshot.snapshot_id,
             )
-        else:
-            review = await self.model.review_continuity(
-                ContinuityReviewRequest(
-                    prompt=prompt,
-                    snapshot=snapshot,
-                    previous_state=heroine_runtime,
-                    proposed_state=proposed_state,
-                    mind_result=mind_result,
-                )
-            )
-        if not review.approved:
-            return Failed(
-                request_id=request.request_id,
-                user_event_id=None,
-                code="continuity_rejected",
-                retryable=True,
-            )
-        approved_state = proposed_state
-        if review.decision == "revise":
-            if short_result is not None:
-                return Failed(
-                    request_id=request.request_id,
-                    user_event_id=None,
-                    code="continuity_revision_requires_regeneration",
-                    retryable=True,
-                )
-            if review.revision_patch is None:
-                raise HardInvariantError(
-                    "continuity revise decision is missing revision patch"
-                )
-            approved_state = review.revision_patch.revise(proposed_state)
-        self.validator.validate_continuity_review(
-            snapshot,
-            heroine_runtime,
-            proposed_state,
-            approved_state,
-            review,
-        )
-        if semantic_turn is not None:
-            reply = semantic_turn.reply_result
-        else:
             reply = await self.model.generate_reply(
                 GameReplyRequest(
                     prompt=prompt,
@@ -363,11 +349,183 @@ class WorldMindRuntime:
                     approved_state=approved_state,
                     reply_intent=mind_result.reply_intent,
                     fact_assertions=mind_result.fact_assertions,
-                    approved_actions=mind_result.heroine_diegetic_actions,
-                    recent_dialogue=self.store.list_recent_dialogue(request.session),
+                    recent_dialogue=self.store.list_recent_dialogue(
+                        request.session
+                    ),
                 )
             )
-        self.validator.validate_reply(snapshot, approved_state, reply)
+            self.validator.validate_reply(snapshot, approved_state, reply)
+        elif self.config.foreground_protocol == "judge_v1":
+            judge = await self.model.judge_turn(
+                JudgeRequest(
+                    prompt=prompt,
+                    snapshot=snapshot,
+                    recent_dialogue=self.store.list_recent_dialogue(
+                        request.session
+                    ),
+                )
+            )
+            mind_result = MindAdvanceResult(
+                patch=judge.mind_patch
+                if judge.mind_patch is not None
+                else HeroineMindPatch(),
+                reply_intent="单次判断",
+                fact_assertions=_snapshot_assertions(snapshot),
+                parent_mind_state_version=snapshot.mind_state_version,
+                snapshot_id=snapshot.snapshot_id,
+                transition_basis=(snapshot.snapshot_id,),
+                heroine_diegetic_actions=judge.actions,
+            )
+            proposed_state = mind_result.patch.apply(heroine_runtime)
+            self.validator.validate_mind_advance(
+                snapshot,
+                heroine_runtime,
+                proposed_state,
+                mind_result,
+            )
+            approved_state = proposed_state
+            review = ContinuityReviewResult(
+                decision="approve",
+                reason="judge_v1 单次判断（Critic 未启用）",
+                snapshot_id=snapshot.snapshot_id,
+            )
+            if self.config.judge_review_enabled and (
+                judge.actions or judge.mind_patch is not None
+            ):
+                # 定向审查（可选兜底，默认关）：有动作提议或心智变化时
+                # 核对与游戏投影状态的语义一致性。revise 仅修正心智，
+                # 回复以原判断为准（单次判断语义；兜底场景可接受）。
+                review = await self.model.review_continuity(
+                    ContinuityReviewRequest(
+                        prompt=prompt,
+                        snapshot=snapshot,
+                        previous_state=heroine_runtime,
+                        proposed_state=proposed_state,
+                        mind_result=mind_result,
+                    )
+                )
+                if not review.approved:
+                    return Failed(
+                        request_id=request.request_id,
+                        user_event_id=None,
+                        code="continuity_rejected",
+                        retryable=True,
+                    )
+                if review.decision == "revise":
+                    if review.revision_patch is None:
+                        raise HardInvariantError(
+                            "continuity revise decision is missing revision patch"
+                        )
+                    approved_state = review.revision_patch.revise(proposed_state)
+                self.validator.validate_continuity_review(
+                    snapshot,
+                    heroine_runtime,
+                    proposed_state,
+                    approved_state,
+                    review,
+                )
+            reply = GameReplyResult(
+                text=judge.reply,
+                fact_assertions=mind_result.fact_assertions,
+                snapshot_id=snapshot.snapshot_id,
+                approved_mind_state_version=approved_state.version,
+            )
+            self.validator.validate_reply(snapshot, approved_state, reply)
+            # 动作转发（接口契约 §四）：合法动作交给游戏执行；拒绝/失败
+            # 原因由游戏记录，经下一轮投影 recent_feedback 回注给模型。
+            if self.game_world is not None:
+                for action in judge.actions:
+                    try:
+                        await self.game_world.execute_action(
+                            action.action_id, action.params
+                        )
+                    except Exception:
+                        continue
+        else:
+            semantic_turn = None
+            if self.config.foreground_protocol == "mind_patch_v2":
+                patch_v2 = await self.model.propose_mind_patch_v2(
+                    MindPatchV2Request(prompt=prompt, snapshot=snapshot)
+                )
+                mind_result = patch_v2.mind_result
+            elif self.config.foreground_protocol == "short_semantic_v1":
+                semantic_turn = await self.model.foreground_semantic_turn(
+                    ForegroundSemanticTurnRequest(prompt=prompt, snapshot=snapshot)
+                )
+                mind_result = semantic_turn.mind_result
+            else:
+                mind_result = await self.model.advance_mind(
+                    MindAdvanceRequest(prompt=prompt, snapshot=snapshot)
+                )
+            proposed_state = mind_result.patch.apply(heroine_runtime)
+            self.validator.validate_mind_advance(
+                snapshot,
+                heroine_runtime,
+                proposed_state,
+                mind_result,
+            )
+            short_result = patch_v2 if patch_v2 is not None else semantic_turn
+            if short_result is not None and not short_result.review_recommended:
+                review = ContinuityReviewResult(
+                    decision="approve",
+                    reason="short patch passed hard invariants without semantic risk trigger",
+                    snapshot_id=snapshot.snapshot_id,
+                )
+            else:
+                review = await self.model.review_continuity(
+                    ContinuityReviewRequest(
+                        prompt=prompt,
+                        snapshot=snapshot,
+                        previous_state=heroine_runtime,
+                        proposed_state=proposed_state,
+                        mind_result=mind_result,
+                    )
+                )
+            if not review.approved:
+                return Failed(
+                    request_id=request.request_id,
+                    user_event_id=None,
+                    code="continuity_rejected",
+                    retryable=True,
+                )
+            approved_state = proposed_state
+            if review.decision == "revise":
+                if short_result is not None:
+                    return Failed(
+                        request_id=request.request_id,
+                        user_event_id=None,
+                        code="continuity_revision_requires_regeneration",
+                        retryable=True,
+                    )
+                if review.revision_patch is None:
+                    raise HardInvariantError(
+                        "continuity revise decision is missing revision patch"
+                    )
+                approved_state = review.revision_patch.revise(proposed_state)
+            self.validator.validate_continuity_review(
+                snapshot,
+                heroine_runtime,
+                proposed_state,
+                approved_state,
+                review,
+            )
+            if semantic_turn is not None:
+                reply = semantic_turn.reply_result
+            else:
+                reply = await self.model.generate_reply(
+                    GameReplyRequest(
+                        prompt=prompt,
+                        snapshot=snapshot,
+                        approved_state=approved_state,
+                        reply_intent=mind_result.reply_intent,
+                        fact_assertions=mind_result.fact_assertions,
+                        approved_actions=mind_result.heroine_diegetic_actions,
+                        recent_dialogue=self.store.list_recent_dialogue(
+                            request.session
+                        ),
+                    )
+                )
+            self.validator.validate_reply(snapshot, approved_state, reply)
         model_ms = (time.perf_counter() - model_started) * 1000
 
         commit_started = time.perf_counter()

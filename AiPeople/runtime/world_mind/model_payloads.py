@@ -3,14 +3,17 @@ from __future__ import annotations
 import json
 from typing import Any
 
+from .action_manifest import render_action_list
 from .model_gateway import (
     FIVE_MINUTE_WORLD_MIND_RECONCILE,
     GAME_REPLY,
+    JUDGE_TURN,
     POST_REPLY_WORLD_MIND_RECONCILE,
     TURN_MIND_ADVANCE,
     WORLD_CONTINUITY_REVIEW,
     ContinuityReviewRequest,
     GameReplyRequest,
+    JudgeRequest,
     MindAdvanceRequest,
     MindAdvanceResult,
     ReconcileMindRequest,
@@ -27,6 +30,14 @@ RUNTIME_EVIDENCE_VIEW_LIMIT = 8
 RECONCILE_EVENT_VIEW_LIMIT = 8
 
 
+GAME_REPLY_EVIDENCE_BOUNDARY = """[回答依据约束]
+回答具体事实时，只能依据[相关记忆]，以及男主本轮明确告知或明确纠正的事实。
+男主本轮明确告知或纠正的新事实优先于冲突的旧记忆；男主的提问、猜测或反问不能覆盖已有事实。
+[相关记忆]对同一对象有冲突时，只采用其中明确标为最新、当前或仍有效的事实，不采用已取消、已失效或旧错误事实。
+没有直接证据、只有无关信息或仍无法确定时，回答不知道。
+不得用常识、猜测、角色设定或看似合理的细节补全答案，也不得声称自己查询、查看或确认过。"""
+
+
 MODE_SYSTEM_BOUNDARIES = {
     TURN_MIND_ADVANCE: """[模式：TURN_MIND_ADVANCE]
 你只推进当前女主角的心智状态，不生成最终可见回复。
@@ -39,6 +50,7 @@ transition_basis 和所有 evidence_refs 只能逐字复制 evidence_contract.al
     WORLD_CONTINUITY_REVIEW: """[模式：WORLD_CONTINUITY_REVIEW]
 你是连续性审查者，只审查候选女主状态是否有依据、连续、没有越权。
 检查活动、身体、情绪、关系、动机和知识是否无依据跳变；检查是否否认男主程序状态、越权使用记忆、引入第二世界或把意图写成已发生。
+检查候选动作是否与游戏投影状态冲突（进行中动作、实体、位置）；不得断言投影中不存在的事实。
 只能 approve、revise 或 reject。revise 只能给出最小必要女主 Patch，不能创造剧情。
 如果输出 revision_patch，其中 evidence_refs 只能逐字复制 evidence_contract.allowed_evidence_refs 中的真实 ID，禁止使用泛称或字段路径。
 严格输出指定 JSON Schema，不输出解释、Markdown 或额外字段。""",
@@ -48,6 +60,13 @@ transition_basis 和所有 evidence_refs 只能逐字复制 evidence_contract.al
 不得提到现实玩家、外部世界、设备系统时间、模型、JSON、规则或审查过程。
 只能表达批准的女主动作候选，不能替男主行动或声称未发生的客观结果。
 只输出女主对男主说出的自然语言正文，不输出 JSON、字段名、说明、Markdown、角色名前缀或审查过程。""",
+    JUDGE_TURN: """[模式：JUDGE_TURN 单次判断]
+你是当前女主角本人，基于全部上下文完成一轮判断：①回复正文 ②自身心智变化（可选）③提议的动作（可选）。
+输入包含：冻结世界快照、男主状态、当前女主状态、记忆、进行中动作、可用动作列表、游戏反馈（如动作被拒原因）、本轮对白与近期对话。
+可用动作列表是程序固定的白名单：只能从列表中选择 action_id，不得发明或输出列表外的动作；params 按列表语义给出。
+进行中动作、位置等世界事实为只读：不得在回复中否认它们；动作与进行中动作是否冲突、是否打断，由你自己按常识判断。
+回复正文必须是女主对男主说的自然语言；不得提到现实玩家、模型、JSON、规则、审查或本提示。
+只输出指定 JSON Schema，不输出解释、Markdown 或额外字段。""",
     POST_REPLY_WORLD_MIND_RECONCILE: """[模式：POST_REPLY_WORLD_MIND_RECONCILE]
 你只整理刚刚已经正式提交的回合对当前女主心智、关系、即时意图、自我时间线和记忆候选的含义。
 不得重写已显示回复，不得推动游戏时间，不得修改男主、场景客观事实或其他女主角。
@@ -235,6 +254,8 @@ def render_game_reply_context(request: GameReplyRequest) -> str:
             "",
             "[允许表达的动作]",
             *_semantic_lines(actions),
+            "",
+            GAME_REPLY_EVIDENCE_BOUNDARY,
         )
     )
 
@@ -538,3 +559,61 @@ def _memory_frame_payload(frame) -> dict[str, Any]:
             for memory in frame.selected_memories
         ],
     }
+
+
+def judge_payload(
+    snapshot,
+    recent_dialogue: tuple[str, ...] = (),
+) -> dict[str, Any]:
+    """JUDGE_TURN 单次判断的完整上下文（Harness 区块 2-9）。
+
+    区块 8（可用动作列表）由程序固定渲染；区块 6/7（进行中动作/未收口
+    意图）当前为快照预留字段，执行器与意图状态机施工后填充。
+    """
+    return {
+        "mode": JUDGE_TURN,
+        "evidence_contract": {
+            "allowed_evidence_refs": _turn_allowed_evidence_refs(snapshot),
+        },
+        "snapshot": _snapshot_payload(snapshot),
+        "previous_heroine_runtime": _runtime_payload(
+            snapshot.heroine_runtime
+        ),
+        "selected_memory_frame": _memory_frame_payload(
+            snapshot.selected_memory_frame
+        ),
+        "current_protagonist_utterance": snapshot.protagonist_utterance,
+        "recent_dialogue": [str(item) for item in recent_dialogue[-6:]],
+        "pending_actions": [dict(item) for item in snapshot.pending_actions],
+        "game_feedback": [str(item) for item in snapshot.game_feedback[-3:]],
+        "available_actions": render_action_list(),
+    }
+
+
+def build_judge_text_messages(
+    request: JudgeRequest,
+) -> tuple[dict[str, str], dict[str, str]]:
+    """JUDGE_TURN 结构化判断失败后的降级：只请求自然语言回复正文。"""
+    boundary = MODE_SYSTEM_BOUNDARIES[JUDGE_TURN]
+    payload = judge_payload(request.snapshot, request.recent_dialogue)
+    payload_text = json.dumps(
+        payload,
+        ensure_ascii=False,
+        allow_nan=False,
+        sort_keys=True,
+        separators=(",", ":"),
+    )
+    return (
+        {
+            "role": "system",
+            "content": f"{request.prompt.system_prompt}\n\n{boundary}",
+        },
+        {
+            "role": "user",
+            "content": (
+                f"{payload_text}\n\n"
+                "只输出女主对男主说的自然语言回复正文，不输出 JSON、字段名、"
+                "说明、Markdown 或任何额外内容。"
+            ),
+        },
+    )

@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "dataset_id": "baiweixi_counterfactual_rpo_v1",
+  "purpose": "RPO with chosen NLL, clean-base on-policy unknown negatives, known and persona retention",
+  "training": {
+    "rows": 320,
+    "by_condition": {
+      "persona": 40,
+      "known": 120,
+      "unknown": 160
+    },
+    "by_source_type": {
+      "persona_retention_anchor": 40,
+      "known_counterfactual_retention": 120,
+      "clean_base_on_policy_negative": 160
+    },
+    "by_category": {
+      "persona": 40,
+      "choice": 35,
+      "time": 35,
+      "quantity": 35,
+      "status": 35,
+      "location": 35,
+      "code": 35,
+      "person": 35,
+      "deadline": 35
+    }
+  },
+  "controls": {
+    "base_negative_candidates": 240,
+    "unambiguous_on_policy_negative_pool": 221,
+    "selected_balanced_on_policy_negatives": 160,
+    "excluded_ambiguous_or_abstaining_candidates": 19,
+    "eligible_but_not_selected_for_balance": 61,
+    "known_retention_rows": 120,
+    "persona_retention_rows": 40,
+    "legacy_sft_mixed": false,
+    "heldout_reused_only_for_comparison": true
+  },
+  "files": {
+    "base_unknown_candidates.jsonl": "b8e5327103d7b43e61060259978912505dd3a6af3053078c4faa504a1707c0aa",
+    "train.jsonl": "86087cd2d4166c49795103b660cbfaa63ad806c981ab6440d3d952550f9c3697",
+    "dev.jsonl": "6ee165b9d68d50b014024c86fcb81ebfbf0edbf186a29ea03d3e77968273f930",
+    "audit_samples.json": "d66bedfc9eb3d4fa820943e830b10715a87a405ce2b7e851392da01e47965ccb",
+    "source_medium_manifest.json": "0c697e1396e645ca1ee76cae3e26e5bc35993b437caa7c266a42de46850911d2"
+  }
+}

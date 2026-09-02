@@ -1,0 +1,48 @@
+### One-step VRAM and compatibility probe. Same memory-critical settings as full training.
+
+### model
+model_name_or_path: D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-27B
+trust_remote_code: true
+quantization_bit: 4
+quantization_method: bitsandbytes
+freeze_vision_tower: true
+freeze_multi_modal_projector: true
+use_reentrant_gc: true
+upcast_layernorm: true
+
+### method
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 8
+lora_alpha: 16
+lora_dropout: 0.05
+
+### dataset
+dataset: baiweixi_27b_ready
+dataset_dir: data
+template: qwen3_5_nothink
+cutoff_len: 1024
+max_samples: 1
+overwrite_cache: true
+preprocessing_num_workers: 1
+
+### output
+output_dir: outputs/baiweixi_27b_probe
+logging_steps: 1
+save_strategy: 'no'
+plot_loss: false
+overwrite_output_dir: true
+report_to: none
+
+### train
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 1
+learning_rate: 5.0e-5
+max_steps: 1
+bf16: true
+gradient_checkpointing: true
+optim: adamw_bnb_8bit
+seed: 20260825
+data_seed: 20260825

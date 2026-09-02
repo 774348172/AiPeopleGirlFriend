@@ -1,0 +1,52 @@
+### Qwen3.5-27B + 白未晞，RTX 4090 24GB 单卡 NF4 QLoRA
+
+### model
+model_name_or_path: D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3.5-27B
+trust_remote_code: true
+quantization_bit: 4
+quantization_method: bitsandbytes
+freeze_vision_tower: true
+freeze_multi_modal_projector: true
+use_reentrant_gc: true
+upcast_layernorm: true
+
+### method
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_target: all
+lora_rank: 8
+lora_alpha: 16
+lora_dropout: 0.05
+
+### dataset
+dataset: baiweixi_27b_ready
+dataset_dir: data
+template: qwen3_5_nothink
+cutoff_len: 1024
+overwrite_cache: true
+preprocessing_num_workers: 1
+
+### output
+output_dir: outputs/baiweixi_27b
+logging_steps: 5
+save_steps: 100
+save_total_limit: 2
+plot_loss: true
+overwrite_output_dir: true
+report_to: none
+
+### train
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 8
+learning_rate: 5.0e-5
+num_train_epochs: 1.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.05
+weight_decay: 0.01
+max_grad_norm: 1.0
+bf16: true
+gradient_checkpointing: true
+optim: adamw_bnb_8bit
+seed: 20260825
+data_seed: 20260825

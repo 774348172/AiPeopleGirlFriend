@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "model_id": "local/baiweixi-gemma-4-12B-v5-targeted",
+  "base_model_id": "google/gemma-4-12B-it",
+  "revision": "baiweixi-v5-targeted-20260831",
+  "base_revision": "707f0a3b8a3c7ad586ed01e27eafbad8a27dd0f7",
+  "model_role": "heroine_reply",
+  "character_id": "baiweixi",
+  "world_id": "songjiangfu",
+  "protagonist_id": "protagonist",
+  "deployment_profile": "transformers-unsloth-bnb-nf4-peft-lora-text-only",
+  "adapter_id": "baiweixi-v5-targeted-adapter",
+  "network_access": "forbidden",
+  "thinking": false,
+  "adapter_loaded": true,
+  "quantization": "bitsandbytes-nf4-runtime+lora",
+  "model_root": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\training_packages\\models\\Gemma-4-12B-it",
+  "adapter_root": "D:\\AIPeopleGit\\ai-girlfriend\\AiPeople\\training_packages\\training_package_baiweixi_gemma4_12b\\outputs\\baiweixi_v5_targeted_adapter",
+  "artifact_sha256": "f92670cbc66151c8b4484beeb045b4281014681efe4b563e5b3af2d2340c1ab1",
+  "model_files": [
+    {"path": "model.safetensors", "bytes": 23919549408, "sha256": "5a84cb313260ac447237b890387116dfa8682e49a6b44bc585ae8353abbff18d"},
+    {"path": "config.json", "bytes": 4556, "sha256": "f7d3e8ef1db8b3d804b8b58664631ad37c3478b92358d9b88c737b3629eb251e"},
+    {"path": "chat_template.jinja", "bytes": 18683, "sha256": "ae53464bf3be25802b3a5b37def7fd89667067d7577049b3b2d74c4d8de4c6d4"},
+    {"path": "tokenizer.json", "bytes": 32169626, "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"},
+    {"path": "tokenizer_config.json", "bytes": 3089, "sha256": "a62f4e85a47c0c136edaaa3a4f591fd6783717299a9def47e5ad03a49f6a5eb9"},
+    {"path": "generation_config.json", "bytes": 260, "sha256": "a8349d9bd64cc5841297fcb5002f0fdc4749c473c8f1b10ea337f9ce4ee7014e"},
+    {"path": "processor_config.json", "bytes": 1382, "sha256": "6b938e76555b3e9946890770e1abcd442a4718f34041a58e8139dc8ad34545c9"}
+  ],
+  "adapter_files": [
+    {"path": "adapter_model.safetensors", "bytes": 131234472, "sha256": "921e250555824a4551479004f8ae3f67b06d821caee62b69484c1b0ba8fdde61"},
+    {"path": "adapter_config.json", "bytes": 18974, "sha256": "d46f969fb66f75ac256500415f86105ba4c256a8c2759a68fb2451be7fc0a7fa"},
+    {"path": "chat_template.jinja", "bytes": 2445, "sha256": "141fd2a9e82fa241278c4fff33b8251b1eb9ef2b29939d85972a74df3d412cae"},
+    {"path": "tokenizer.json", "bytes": 32169626, "sha256": "cc8d3a0ce36466ccc1278bf987df5f71db1719b9ca6b4118264f45cb627bfe0f"},
+    {"path": "tokenizer_config.json", "bytes": 8065, "sha256": "f4a739949a9286172165faba0b1612e7093c9a3dd1de58a301aa6f9a8dc10359"}
+  ],
+  "runtime": {
+    "max_seq_length": 4096,
+    "dtype": "bfloat16",
+    "device": "cuda",
+    "load_in_4bit": true,
+    "text_only": true,
+    "trust_remote_code": true,
+    "use_exact_model_name": true,
+    "attention_implementation": "eager"
+  }
+}

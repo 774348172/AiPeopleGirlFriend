@@ -1,0 +1,9 @@
+{
+  "baiweixi_27b_ready": {
+    "file_name": "baiweixi_27b_ready.jsonl",
+    "columns": {
+      "messages": "conversations"
+    },
+    "formatting": "sharegpt"
+  }
+}

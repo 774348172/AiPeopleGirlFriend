@@ -94,6 +94,8 @@ class OpenAICompatModelAdapter:
             }
             if isinstance(spec.get("extra_body"), dict):  # provider 特定参数（如禁思考）
                 kwargs["extra_body"] = spec["extra_body"]
+            if isinstance(spec.get("response_format"), dict):
+                kwargs["response_format"] = spec["response_format"]
             seed = spec.get("seed")
             if isinstance(seed, int):  # 真实 API 只接受整数 seed；字符串（如 "42:sim"）不传
                 kwargs["seed"] = seed

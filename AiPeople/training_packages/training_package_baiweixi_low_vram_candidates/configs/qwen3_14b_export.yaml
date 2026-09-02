@@ -1,0 +1,8 @@
+model_name_or_path: D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/models/Qwen3-14B
+adapter_name_or_path: D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/training_package_baiweixi_low_vram_candidates/outputs/baiweixi_qwen3_14b_unsloth
+template: qwen3_nothink
+finetuning_type: lora
+export_dir: D:/AIPeopleGit/ai-girlfriend/AiPeople/training_packages/training_package_baiweixi_low_vram_candidates/outputs/baiweixi_qwen3_14b_merged
+export_size: 4
+export_device: cpu
+export_legacy_format: false
