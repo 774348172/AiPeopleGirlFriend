@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="11" result="Passed" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-09-16 02:55:25Z" end-time="2026-09-16 02:55:29Z" duration="4.7668426">
+  <test-suite type="TestSuite" id="1059" name="CatGirlfriend" fullname="CatGirlfriend" runstate="Runnable" testcasecount="38" result="Passed" start-time="2026-09-16 02:55:25Z" end-time="2026-09-16 02:55:29Z" duration="4.766843" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1053" name="AiPeople.Tests.PlayMode.dll" fullname="D:/AIPeopleGit/UnityClient/AiGirlFriendUnity/Library/ScriptAssemblies/AiPeople.Tests.PlayMode.dll" runstate="Runnable" testcasecount="38" result="Passed" start-time="2026-09-16 02:55:25Z" end-time="2026-09-16 02:55:29Z" duration="4.761041" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="7516" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1054" name="AiPeople" fullname="AiPeople" runstate="Runnable" testcasecount="38" result="Passed" start-time="2026-09-16 02:55:25Z" end-time="2026-09-16 02:55:29Z" duration="4.760372" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1055" name="Tests" fullname="AiPeople.Tests" runstate="Runnable" testcasecount="38" result="Passed" start-time="2026-09-16 02:55:25Z" end-time="2026-09-16 02:55:29Z" duration="4.759889" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1027" name="ChatWindowLatencyTests" fullname="AiPeople.Tests.ChatWindowLatencyTests" classname="AiPeople.Tests.ChatWindowLatencyTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-09-16 02:55:25Z" end-time="2026-09-16 02:55:25Z" duration="0.163514" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1028" name="HiddenPoll_OpensWithoutReadingHistory" fullname="AiPeople.Tests.ChatWindowLatencyTests.HiddenPoll_OpensWithoutReadingHistory" methodname="HiddenPoll_OpensWithoutReadingHistory" classname="AiPeople.Tests.ChatWindowLatencyTests" runstate="Runnable" seed="204249617" result="Passed" start-time="2026-09-16 02:55:25Z" end-time="2026-09-16 02:55:25Z" duration="0.050360" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[AiPeople] 小窗已隐藏 utc=2026-09-16T02:55:25.1173495Z
+[AiPeople] 小窗已显示 utc=2026-09-16T02:55:25.1513390Z
+]]></output>
+            </test-case>
+            <test-case id="1029" name="Hide_IsImmediate_AndStaleResponseCannotReopen" fullname="AiPeople.Tests.ChatWindowLatencyTests.Hide_IsImmediate_AndStaleResponseCannotReopen" methodname="Hide_IsImmediate_AndStaleResponseCannotReopen" classname="AiPeople.Tests.ChatWindowLatencyTests" runstate="Runnable" seed="225376339" result="Passed" start-time="2026-09-16 02:55:25Z" end-time="2026-09-16 02:55:25Z" duration="0.104647" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[AiPeople] 小窗已隐藏 utc=2026-09-16T02:55:25.1635362Z
+[AiPeople] 小窗已显示 utc=2026-09-16T02:55:25.2632469Z
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1036" name="RoomControlsTests" fullname="AiPeople.Tests.RoomControlsTests" classname="AiPeople.Tests.RoomControlsTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-09-16 02:55:25Z" end-time="2026-09-16 02:55:29Z" duration="4.364609" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1037" name="RoomButton_ControlsActualDoor_ThroughMainThreadBridge" fullname="AiPeople.Tests.RoomControlsTests.RoomButton_ControlsActualDoor_ThroughMainThreadBridge" methodname="RoomButton_ControlsActualDoor_ThroughMainThreadBridge" classname="AiPeople.Tests.RoomControlsTests" runstate="Runnable" seed="1595294626" result="Passed" start-time="2026-09-16 02:55:25Z" end-time="2026-09-16 02:55:27Z" duration="2.338688" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+Cannot combine mesh that does not allow access: tripo_node_07f62661
+Cannot combine mesh that does not allow access: tripo_node_8d828bc1
+]]></output>
+            </test-case>
+            <test-case id="1038" name="RoomEndpoint_RejectsInvalidInput_AndDoesNotExecuteExpiredCommands" fullname="AiPeople.Tests.RoomControlsTests.RoomEndpoint_RejectsInvalidInput_AndDoesNotExecuteExpiredCommands" methodname="RoomEndpoint_RejectsInvalidInput_AndDoesNotExecuteExpiredCommands" classname="AiPeople.Tests.RoomControlsTests" runstate="Runnable" seed="143328725" result="Passed" start-time="2026-09-16 02:55:27Z" end-time="2026-09-16 02:55:29Z" duration="2.024896" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+Cannot combine mesh that does not allow access: tripo_node_07f62661
+Cannot combine mesh that does not allow access: tripo_node_8d828bc1
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1042" name="ShellTests" fullname="AiPeople.Tests.ShellTests" classname="AiPeople.Tests.ShellTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-09-16 02:55:29Z" end-time="2026-09-16 02:55:29Z" duration="0.229545" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1049" name="ChatEntryScene_DoesNotLoadApartmentOrCharacterAssets" fullname="AiPeople.Tests.ShellTests.ChatEntryScene_DoesNotLoadApartmentOrCharacterAssets" methodname="ChatEntryScene_DoesNotLoadApartmentOrCharacterAssets" classname="AiPeople.Tests.ShellTests" runstate="Runnable" seed="7555712" result="Passed" start-time="2026-09-16 02:55:29Z" end-time="2026-09-16 02:55:29Z" duration="0.006116" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1047" name="Coverage_HandlesMaximizedBorders_Taskbar_AndOtherMonitors" fullname="AiPeople.Tests.ShellTests.Coverage_HandlesMaximizedBorders_Taskbar_AndOtherMonitors" methodname="Coverage_HandlesMaximizedBorders_Taskbar_AndOtherMonitors" classname="AiPeople.Tests.ShellTests" runstate="Runnable" seed="905783697" result="Passed" start-time="2026-09-16 02:55:29Z" end-time="2026-09-16 02:55:29Z" duration="0.001246" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1048" name="CoveredWallpaper_PreservesCanvasAndCameraState_AndIdleCommandsWakeQuickly" fullname="AiPeople.Tests.ShellTests.CoveredWallpaper_PreservesCanvasAndCameraState_AndIdleCommandsWakeQuickly" methodname="CoveredWallpaper_PreservesCanvasAndCameraState_AndIdleCommandsWakeQuickly" classname="AiPeople.Tests.ShellTests" runstate="Runnable" seed="1570295154" result="Passed" start-time="2026-09-16 02:55:29Z" end-time="2026-09-16 02:55:29Z" duration="0.035181" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1044" name="Hotkey_Parsing_Accepts_Common_Forms" fullname="AiPeople.Tests.ShellTests.Hotkey_Parsing_Accepts_Common_Forms" methodname="Hotkey_Parsing_Accepts_Common_Forms" classname="AiPeople.Tests.ShellTests" runstate="Runnable" seed="1971421107" result="Passed" start-time="2026-09-16 02:55:29Z" end-time="2026-09-16 02:55:29Z" duration="0.001904" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1046" name="Session_State_Toggles_And_Notifies" fullname="AiPeople.Tests.ShellTests.Session_State_Toggles_And_Notifies" methodname="Session_State_Toggles_And_Notifies" classname="AiPeople.Tests.ShellTests" runstate="Runnable" seed="49728960" result="Passed" start-time="2026-09-16 02:55:29Z" end-time="2026-09-16 02:55:29Z" duration="0.069807" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[AiPeople] 进入会话态：前景窗口=0x3138E，本窗口=0x0
+]]></output>
+            </test-case>
+            <test-case id="1045" name="Settings_RoundTrip" fullname="AiPeople.Tests.ShellTests.Settings_RoundTrip" methodname="Settings_RoundTrip" classname="AiPeople.Tests.ShellTests" runstate="Runnable" seed="134269408" result="Passed" start-time="2026-09-16 02:55:29Z" end-time="2026-09-16 02:55:29Z" duration="0.011049" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1043" name="TrayRecovery_RepeatedSelectionNeverSavesNormalMode" fullname="AiPeople.Tests.ShellTests.TrayRecovery_RepeatedSelectionNeverSavesNormalMode" methodname="TrayRecovery_RepeatedSelectionNeverSavesNormalMode" classname="AiPeople.Tests.ShellTests" runstate="Runnable" seed="543865360" result="Passed" start-time="2026-09-16 02:55:29Z" end-time="2026-09-16 02:55:29Z" duration="0.102820" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[AiPeople] 托盘请求恢复桌面壁纸
+[AiPeople] 托盘请求恢复桌面壁纸
+[AiPeople] 托盘请求恢复桌面壁纸
+Saving results to: C:/Users/songa/AppData/LocalLow/AiPeople/CatGirlfriend\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

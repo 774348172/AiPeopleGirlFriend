@@ -1,0 +1,6 @@
+{
+  "endpoint": "http://127.0.0.1:8767",
+  "saveId": "m1check0001",
+  "characterId": "baiweixi",
+  "requestTimeoutSeconds": 120
+}

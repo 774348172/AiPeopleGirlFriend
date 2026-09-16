@@ -1,0 +1,16 @@
+{
+    "name": "AiPeople.Shell",
+    "rootNamespace": "AiPeople.Shell",
+    "references": [
+        "AiPeople.Core"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,22 @@
+{
+    "name": "AiPeople.App",
+    "rootNamespace": "AiPeople.App",
+    "references": [
+        "AiPeople.Core",
+        "AiPeople.World",
+        "AiPeople.Character",
+        "AiPeople.Shell",
+        "AiPeople.UI",
+        "UnityEngine.UI",
+        "Unity.InputSystem"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

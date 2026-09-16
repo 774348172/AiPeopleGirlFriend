@@ -1,0 +1,29 @@
+{
+    "name": "AiPeople.Tests.PlayMode",
+    "rootNamespace": "AiPeople.Tests",
+    "references": [
+        "AiPeople.Core",
+        "AiPeople.World",
+        "AiPeople.Character",
+        "AiPeople.Shell",
+        "AiPeople.UI",
+        "AiPeople.App",
+        "UnityEngine.UI",
+        "Unity.InputSystem",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

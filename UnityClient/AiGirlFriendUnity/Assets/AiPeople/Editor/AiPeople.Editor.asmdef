@@ -1,0 +1,22 @@
+{
+    "name": "AiPeople.Editor",
+    "rootNamespace": "AiPeople.EditorTools",
+    "references": [
+        "AiPeople.Core",
+        "AiPeople.World",
+        "AiPeople.Character",
+        "AiPeople.UI",
+        "AiPeople.App"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="21" result="Passed" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-09-16 03:36:30Z" end-time="2026-09-16 03:37:25Z" duration="55.4156277">
+  <test-suite type="TestSuite" id="1065" name="CatGirlfriend" fullname="CatGirlfriend" runstate="Runnable" testcasecount="42" result="Passed" start-time="2026-09-16 03:36:30Z" end-time="2026-09-16 03:37:25Z" duration="55.415628" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1059" name="AiPeople.Tests.PlayMode.dll" fullname="D:/AIPeopleGit/UnityClient/AiGirlFriendUnity/Library/ScriptAssemblies/AiPeople.Tests.PlayMode.dll" runstate="Runnable" testcasecount="42" result="Passed" start-time="2026-09-16 03:36:30Z" end-time="2026-09-16 03:37:25Z" duration="55.410690" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="27248" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1060" name="AiPeople" fullname="AiPeople" runstate="Runnable" testcasecount="42" result="Passed" start-time="2026-09-16 03:36:30Z" end-time="2026-09-16 03:37:25Z" duration="55.410323" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1061" name="Tests" fullname="AiPeople.Tests" runstate="Runnable" testcasecount="42" result="Passed" start-time="2026-09-16 03:36:30Z" end-time="2026-09-16 03:37:25Z" duration="55.410072" total="21" passed="21" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1003" name="ApartmentCalibrationTests" fullname="AiPeople.Tests.ApartmentCalibrationTests" classname="AiPeople.Tests.ApartmentCalibrationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-09-16 03:36:30Z" end-time="2026-09-16 03:36:31Z" duration="1.152060" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1005" name="Box_SeatedAndStandingViews_ReachActualEntrance_WithDoorsOpenAndClosed" fullname="AiPeople.Tests.ApartmentCalibrationTests.Box_SeatedAndStandingViews_ReachActualEntrance_WithDoorsOpenAndClosed" methodname="Box_SeatedAndStandingViews_ReachActualEntrance_WithDoorsOpenAndClosed" classname="AiPeople.Tests.ApartmentCalibrationTests" runstate="Runnable" seed="1897018233" result="Passed" start-time="2026-09-16 03:36:30Z" end-time="2026-09-16 03:36:30Z" duration="0.699347" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+            </test-case>
+            <test-case id="1004" name="CalibratedHouse_HasHumanSizedDoors_HeadLevelCollision_AndMetreSizedRail" fullname="AiPeople.Tests.ApartmentCalibrationTests.CalibratedHouse_HasHumanSizedDoors_HeadLevelCollision_AndMetreSizedRail" methodname="CalibratedHouse_HasHumanSizedDoors_HeadLevelCollision_AndMetreSizedRail" classname="AiPeople.Tests.ApartmentCalibrationTests" runstate="Runnable" seed="647369072" result="Passed" start-time="2026-09-16 03:36:30Z" end-time="2026-09-16 03:36:30Z" duration="0.012152" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+            </test-case>
+            <test-case id="1006" name="WallpaperCamera_FramesActualCharacter_AndAdaptsToDesktopAspects" fullname="AiPeople.Tests.ApartmentCalibrationTests.WallpaperCamera_FramesActualCharacter_AndAdaptsToDesktopAspects" methodname="WallpaperCamera_FramesActualCharacter_AndAdaptsToDesktopAspects" classname="AiPeople.Tests.ApartmentCalibrationTests" runstate="Runnable" seed="1115218531" result="Passed" start-time="2026-09-16 03:36:30Z" end-time="2026-09-16 03:36:31Z" duration="0.432305" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1007" name="ApartmentDoorTests" fullname="AiPeople.Tests.ApartmentDoorTests" classname="AiPeople.Tests.ApartmentDoorTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-09-16 03:36:31Z" end-time="2026-09-16 03:36:51Z" duration="20.275177" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1008" name="EveryDoor_ClosesPhysically_BlocksNavigation_AndReopensRepeatedly" fullname="AiPeople.Tests.ApartmentDoorTests.EveryDoor_ClosesPhysically_BlocksNavigation_AndReopensRepeatedly" methodname="EveryDoor_ClosesPhysically_BlocksNavigation_AndReopensRepeatedly" classname="AiPeople.Tests.ApartmentDoorTests" runstate="Runnable" seed="2077141662" result="Passed" start-time="2026-09-16 03:36:31Z" end-time="2026-09-16 03:36:46Z" duration="15.645291" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+DOOR_CYCLE_OK KitchenDoor
+DOOR_CYCLE_OK MasterDoor
+DOOR_CYCLE_OK SecondaryDoor
+DOOR_CYCLE_OK BathroomDoor
+DOOR_CYCLE_OK HallDoor
+DOOR_CYCLE_OK BalconyPanel
+]]></output>
+            </test-case>
+            <test-case id="1010" name="Heroine_WaitsForClosedDoor_AndResumesAfterOpening" fullname="AiPeople.Tests.ApartmentDoorTests.Heroine_WaitsForClosedDoor_AndResumesAfterOpening" methodname="Heroine_WaitsForClosedDoor_AndResumesAfterOpening" classname="AiPeople.Tests.ApartmentDoorTests" runstate="Runnable" seed="520051631" result="Passed" start-time="2026-09-16 03:36:46Z" end-time="2026-09-16 03:36:50Z" duration="3.172595" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+            </test-case>
+            <test-case id="1009" name="OccupiedDoor_RejectsClosing_AndPausesIfSomeoneEntersDuringMotion" fullname="AiPeople.Tests.ApartmentDoorTests.OccupiedDoor_RejectsClosing_AndPausesIfSomeoneEntersDuringMotion" methodname="OccupiedDoor_RejectsClosing_AndPausesIfSomeoneEntersDuringMotion" classname="AiPeople.Tests.ApartmentDoorTests" runstate="Runnable" seed="1238633734" result="Passed" start-time="2026-09-16 03:36:50Z" end-time="2026-09-16 03:36:51Z" duration="1.456292" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1011" name="ApartmentFurnishingTests" fullname="AiPeople.Tests.ApartmentFurnishingTests" classname="AiPeople.Tests.ApartmentFurnishingTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:51Z" duration="0.053781" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1018" name="DecorationBatching_PreservesImportedMultiMaterialMesh" fullname="AiPeople.Tests.ApartmentFurnishingTests.DecorationBatching_PreservesImportedMultiMaterialMesh" classname="AiPeople.Tests.ApartmentFurnishingTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:51Z" duration="0.013519" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1016" name="DecorationBatching_PreservesImportedMultiMaterialMesh(False)" fullname="AiPeople.Tests.ApartmentFurnishingTests.DecorationBatching_PreservesImportedMultiMaterialMesh(False)" methodname="DecorationBatching_PreservesImportedMultiMaterialMesh" classname="AiPeople.Tests.ApartmentFurnishingTests" runstate="Runnable" seed="1348625701" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:51Z" duration="0.008005" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+              </test-case>
+              <test-case id="1017" name="DecorationBatching_PreservesImportedMultiMaterialMesh(True)" fullname="AiPeople.Tests.ApartmentFurnishingTests.DecorationBatching_PreservesImportedMultiMaterialMesh(True)" methodname="DecorationBatching_PreservesImportedMultiMaterialMesh" classname="AiPeople.Tests.ApartmentFurnishingTests" runstate="Runnable" seed="285203944" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:51Z" duration="0.005035" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-case id="1020" name="EveryDoor_FullSweptArcAndPortal_RemainClearOfFurniture" fullname="AiPeople.Tests.ApartmentFurnishingTests.EveryDoor_FullSweptArcAndPortal_RemainClearOfFurniture" methodname="EveryDoor_FullSweptArcAndPortal_RemainClearOfFurniture" classname="AiPeople.Tests.ApartmentFurnishingTests" runstate="Runnable" seed="84205958" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:51Z" duration="0.006691" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+            </test-case>
+            <test-case id="1012" name="FurnishedLayout_RetainsInteractions_Appliances_AndSeparateDiningArea" fullname="AiPeople.Tests.ApartmentFurnishingTests.FurnishedLayout_RetainsInteractions_Appliances_AndSeparateDiningArea" methodname="FurnishedLayout_RetainsInteractions_Appliances_AndSeparateDiningArea" classname="AiPeople.Tests.ApartmentFurnishingTests" runstate="Runnable" seed="726442065" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:51Z" duration="0.008149" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+            </test-case>
+            <test-case id="1019" name="FurnitureVolumes_DoNotPierceShell_AndExteriorStillBlocksAboveFurniture" fullname="AiPeople.Tests.ApartmentFurnishingTests.FurnitureVolumes_DoNotPierceShell_AndExteriorStillBlocksAboveFurniture" methodname="FurnitureVolumes_DoNotPierceShell_AndExteriorStillBlocksAboveFurniture" classname="AiPeople.Tests.ApartmentFurnishingTests" runstate="Runnable" seed="1462396207" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:51Z" duration="0.006166" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1015" name="ImportedFurniture_RetainsAllGeometryMaterialsAndTransforms" fullname="AiPeople.Tests.ApartmentFurnishingTests.ImportedFurniture_RetainsAllGeometryMaterialsAndTransforms" classname="AiPeople.Tests.ApartmentFurnishingTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:51Z" duration="0.012359" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1013" name="ImportedFurniture_RetainsAllGeometryMaterialsAndTransforms(&quot;LivingSofa&quot;,&quot;SofaV2&quot;,12453)" fullname="AiPeople.Tests.ApartmentFurnishingTests.ImportedFurniture_RetainsAllGeometryMaterialsAndTransforms(&quot;LivingSofa&quot;,&quot;SofaV2&quot;,12453)" methodname="ImportedFurniture_RetainsAllGeometryMaterialsAndTransforms" classname="AiPeople.Tests.ApartmentFurnishingTests" runstate="Runnable" seed="1089827829" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:51Z" duration="0.006790" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+              </test-case>
+              <test-case id="1014" name="ImportedFurniture_RetainsAllGeometryMaterialsAndTransforms(&quot;LivingCoffeeTable&quot;,&quot;StoolV2&quot;,24287)" fullname="AiPeople.Tests.ApartmentFurnishingTests.ImportedFurniture_RetainsAllGeometryMaterialsAndTransforms(&quot;LivingCoffeeTable&quot;,&quot;StoolV2&quot;,24287)" methodname="ImportedFurniture_RetainsAllGeometryMaterialsAndTransforms" classname="AiPeople.Tests.ApartmentFurnishingTests" runstate="Runnable" seed="1324983586" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:51Z" duration="0.005137" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+              </test-case>
+            </test-suite>
+            <test-case id="1021" name="WorldTeardown_ReleasesGeneratedFurnitureMeshes" fullname="AiPeople.Tests.ApartmentFurnishingTests.WorldTeardown_ReleasesGeneratedFurnitureMeshes" methodname="WorldTeardown_ReleasesGeneratedFurnitureMeshes" classname="AiPeople.Tests.ApartmentFurnishingTests" runstate="Runnable" seed="1187857706" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:51Z" duration="0.005872" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1022" name="ApartmentImportTests" fullname="AiPeople.Tests.ApartmentImportTests" classname="AiPeople.Tests.ApartmentImportTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:57Z" duration="5.737068" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1023" name="ImportedHouse_HasTexturedGeometry_ClearAnchors_AndConnectedRoutes" fullname="AiPeople.Tests.ApartmentImportTests.ImportedHouse_HasTexturedGeometry_ClearAnchors_AndConnectedRoutes" methodname="ImportedHouse_HasTexturedGeometry_ClearAnchors_AndConnectedRoutes" classname="AiPeople.Tests.ApartmentImportTests" runstate="Runnable" seed="899932704" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:51Z" duration="0.008483" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+            </test-case>
+            <test-case id="1024" name="Kitchen_PlayerCrossesDoorway_AndDirectorWalksIntoRoom" fullname="AiPeople.Tests.ApartmentImportTests.Kitchen_PlayerCrossesDoorway_AndDirectorWalksIntoRoom" methodname="Kitchen_PlayerCrossesDoorway_AndDirectorWalksIntoRoom" classname="AiPeople.Tests.ApartmentImportTests" runstate="Runnable" seed="1007182788" result="Passed" start-time="2026-09-16 03:36:51Z" end-time="2026-09-16 03:36:57Z" duration="5.711800" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+            </test-case>
+            <test-case id="1025" name="TinyMovementSteps_CrossReconstructedFloorSeamsWithoutSticking" fullname="AiPeople.Tests.ApartmentImportTests.TinyMovementSteps_CrossReconstructedFloorSeamsWithoutSticking" methodname="TinyMovementSteps_CrossReconstructedFloorSeamsWithoutSticking" classname="AiPeople.Tests.ApartmentImportTests" runstate="Runnable" seed="1621558879" result="Passed" start-time="2026-09-16 03:36:57Z" end-time="2026-09-16 03:36:57Z" duration="0.016005" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1026" name="ApartmentTraversalTests" fullname="AiPeople.Tests.ApartmentTraversalTests" classname="AiPeople.Tests.ApartmentTraversalTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-09-16 03:36:57Z" end-time="2026-09-16 03:37:25Z" duration="28.190699" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1029" name="ExteriorWallsWindowsAndBalcony_BlockEscape_WithoutFalling" fullname="AiPeople.Tests.ApartmentTraversalTests.ExteriorWallsWindowsAndBalcony_BlockEscape_WithoutFalling" methodname="ExteriorWallsWindowsAndBalcony_BlockEscape_WithoutFalling" classname="AiPeople.Tests.ApartmentTraversalTests" runstate="Runnable" seed="2058243416" result="Passed" start-time="2026-09-16 03:36:57Z" end-time="2026-09-16 03:36:57Z" duration="0.106593" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+PLAYER_ROUTE_OK Exterior approach 0 position=(-4.217, 0.044, -0.578)
+BOUNDARY_OK index=0 stopped=(-4.380, 0.044, -0.578)
+PLAYER_ROUTE_OK Exterior return 0 position=(-4.294, 0.044, -0.589)
+PLAYER_ROUTE_OK Exterior approach 1 position=(-3.698, 0.082, 2.958)
+BOUNDARY_OK index=1 stopped=(-4.160, 0.083, 2.958)
+PLAYER_ROUTE_OK Exterior return 1 position=(-3.728, 0.082, 2.997)
+PLAYER_ROUTE_OK Exterior approach 2 position=(-1.202, 0.074, 5.560)
+BOUNDARY_OK index=2 stopped=(-1.202, 0.074, 5.684)
+PLAYER_ROUTE_OK Exterior return 2 position=(-1.201, 0.075, 5.641)
+PLAYER_ROUTE_OK Exterior approach 3 position=(0.301, 0.074, 4.755)
+BOUNDARY_OK index=3 stopped=(0.301, 0.074, 4.873)
+PLAYER_ROUTE_OK Exterior return 3 position=(0.301, 0.074, 4.830)
+PLAYER_ROUTE_OK Exterior approach 4 position=(3.996, 0.074, 4.767)
+BOUNDARY_OK index=4 stopped=(3.996, 0.074, 4.903)
+PLAYER_ROUTE_OK Exterior return 4 position=(3.999, 0.074, 4.816)
+PLAYER_ROUTE_OK Exterior approach 5 position=(4.590, 0.054, 2.416)
+BOUNDARY_OK index=5 stopped=(5.058, 0.053, 2.416)
+PLAYER_ROUTE_OK Exterior return 5 position=(4.625, 0.053, 2.401)
+PLAYER_ROUTE_OK Exterior approach 6 position=(3.953, 0.006, -2.611)
+BOUNDARY_OK index=6 stopped=(4.035, 0.006, -2.611)
+PLAYER_ROUTE_OK Exterior return 6 position=(3.996, 0.005, -2.629)
+PLAYER_ROUTE_OK Exterior approach 7 position=(4.000, -0.015, -4.145)
+BOUNDARY_OK index=7 stopped=(3.997, -0.019, -4.430)
+PLAYER_ROUTE_OK Exterior return 7 position=(4.000, -0.015, -4.214)
+PLAYER_ROUTE_OK Exterior approach 8 position=(-3.058, -0.005, -3.961)
+BOUNDARY_OK index=8 stopped=(-2.658, -0.015, -4.517)
+PLAYER_ROUTE_OK Exterior return 8 position=(-3.039, -0.006, -4.005)
+PLAYER_ROUTE_OK Exterior approach 9 position=(-2.684, -0.136, -5.745)
+BOUNDARY_OK index=9 stopped=(-2.732, -0.136, -5.794)
+PLAYER_ROUTE_OK Exterior return 9 position=(-2.732, -0.136, -5.794)
+PLAYER_ROUTE_OK Exterior approach 10 position=(-0.046, -0.137, -5.751)
+BOUNDARY_OK index=10 stopped=(-0.046, -0.143, -6.090)
+PLAYER_ROUTE_OK Exterior return 10 position=(-0.005, -0.138, -5.789)
+PLAYER_ROUTE_OK Exterior approach 11 position=(1.858, -0.137, -5.751)
+BOUNDARY_OK index=11 stopped=(2.064, -0.110, -5.716)
+PLAYER_ROUTE_OK Exterior return 11 position=(1.938, -0.137, -5.744)
+PLAYER_ROUTE_OK Exterior approach 12 position=(-2.656, -0.136, -5.750)
+BOUNDARY_OK index=12 stopped=(-2.935, -0.089, -5.729)
+PLAYER_ROUTE_OK Exterior return 12 position=(-2.727, -0.136, -5.744)
+PLAYER_ROUTE_OK Exterior approach 13 position=(1.866, -0.137, -5.750)
+BOUNDARY_OK index=13 stopped=(2.065, -0.107, -5.730)
+PLAYER_ROUTE_OK Exterior return 13 position=(1.938, -0.137, -5.744)
+]]></output>
+            </test-case>
+            <test-case id="1028" name="Heroine_WalksEveryRouteWithoutObstacles_OrWritingLocationFacts" fullname="AiPeople.Tests.ApartmentTraversalTests.Heroine_WalksEveryRouteWithoutObstacles_OrWritingLocationFacts" methodname="Heroine_WalksEveryRouteWithoutObstacles_OrWritingLocationFacts" classname="AiPeople.Tests.ApartmentTraversalTests" runstate="Runnable" seed="207715365" result="Passed" start-time="2026-09-16 03:36:57Z" end-time="2026-09-16 03:37:25Z" duration="27.990146" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="Timeout" value="240000" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+HEROINE_ROUTE_OK Entry -> Living position=(-2.000, 0.009, -3.200)
+HEROINE_ROUTE_OK Living -> Entry position=(-1.100, 0.059, 4.500)
+HEROINE_ROUTE_OK Entry -> Kitchen position=(-3.400, 0.089, 3.200)
+HEROINE_ROUTE_OK Kitchen -> Entry position=(-1.100, 0.059, 4.500)
+HEROINE_ROUTE_OK Entry -> Master position=(0.300, 0.059, 2.500)
+HEROINE_ROUTE_OK Master -> Entry position=(-1.100, 0.059, 4.500)
+HEROINE_ROUTE_OK Entry -> Secondary position=(4.000, 0.063, 3.000)
+HEROINE_ROUTE_OK Secondary -> Entry position=(-1.100, 0.059, 4.500)
+HEROINE_ROUTE_OK Entry -> Bathroom position=(4.000, 0.022, -3.000)
+HEROINE_ROUTE_OK Bathroom -> Entry position=(-1.100, 0.059, 4.500)
+HEROINE_ROUTE_OK Entry -> Balcony position=(0.000, -0.135, -5.800)
+HEROINE_ROUTE_OK Balcony -> Entry position=(-1.100, 0.059, 4.500)
+HEROINE_ROUTE_OK Entry -> Hall position=(4.000, 0.050, -0.700)
+HEROINE_ROUTE_OK Hall -> Entry position=(-1.100, 0.059, 4.500)
+]]></output>
+            </test-case>
+            <test-case id="1030" name="InteriorPartitions_BlockDirectCrossing_ButAllowReturnToDoorway" fullname="AiPeople.Tests.ApartmentTraversalTests.InteriorPartitions_BlockDirectCrossing_ButAllowReturnToDoorway" methodname="InteriorPartitions_BlockDirectCrossing_ButAllowReturnToDoorway" classname="AiPeople.Tests.ApartmentTraversalTests" runstate="Runnable" seed="1531570656" result="Passed" start-time="2026-09-16 03:37:25Z" end-time="2026-09-16 03:37:25Z" duration="0.031399" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+PLAYER_ROUTE_OK Partition approach 0 position=(-1.110, 0.060, 3.027)
+PLAYER_ROUTE_OK Partition return 0 position=(-1.103, 0.072, 4.483)
+PARTITION_OK index=0
+PLAYER_ROUTE_OK Partition approach 1 position=(1.265, 0.033, -0.584)
+PLAYER_ROUTE_OK Partition return 1 position=(-1.100, 0.072, 4.484)
+PARTITION_OK index=1
+PLAYER_ROUTE_OK Partition approach 2 position=(2.059, 0.050, 1.976)
+PLAYER_ROUTE_OK Partition return 2 position=(-1.100, 0.072, 4.456)
+PARTITION_OK index=2
+PLAYER_ROUTE_OK Partition approach 3 position=(2.319, 0.012, -2.966)
+PLAYER_ROUTE_OK Partition return 3 position=(-1.100, 0.072, 4.458)
+PARTITION_OK index=3
+]]></output>
+            </test-case>
+            <test-case id="1027" name="Player_WalksFromEntranceToEveryRoom_AndReturns" fullname="AiPeople.Tests.ApartmentTraversalTests.Player_WalksFromEntranceToEveryRoom_AndReturns" methodname="Player_WalksFromEntranceToEveryRoom_AndReturns" classname="AiPeople.Tests.ApartmentTraversalTests" runstate="Runnable" seed="755019377" result="Passed" start-time="2026-09-16 03:37:25Z" end-time="2026-09-16 03:37:25Z" duration="0.061567" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Runtime furniture prefab loaded: SofaV2
+Runtime furniture prefab loaded: StoolV2
+PLAYER_ROUTE_OK Entry -> Living position=(-1.995, 0.011, -3.161)
+PLAYER_ROUTE_OK Living -> Entry position=(-1.105, 0.072, 4.457)
+PLAYER_ROUTE_OK Entry -> Kitchen position=(-3.402, 0.085, 3.182)
+PLAYER_ROUTE_OK Kitchen -> Entry position=(-1.104, 0.072, 4.460)
+PLAYER_ROUTE_OK Entry -> Master position=(0.319, 0.056, 2.458)
+PLAYER_ROUTE_OK Master -> Entry position=(-1.100, 0.072, 4.462)
+PLAYER_ROUTE_OK Entry -> Secondary position=(3.990, 0.062, 2.951)
+PLAYER_ROUTE_OK Secondary -> Entry position=(-1.100, 0.072, 4.485)
+PLAYER_ROUTE_OK Entry -> Bathroom position=(4.000, 0.003, -2.973)
+PLAYER_ROUTE_OK Bathroom -> Entry position=(-1.100, 0.072, 4.482)
+PLAYER_ROUTE_OK Entry -> Balcony position=(-0.005, -0.138, -5.785)
+PLAYER_ROUTE_OK Balcony -> Entry position=(-1.100, 0.072, 4.482)
+PLAYER_ROUTE_OK Entry -> Hall position=(3.988, 0.031, -0.699)
+PLAYER_ROUTE_OK Hall -> Entry position=(-1.101, 0.072, 4.452)
+PLAYER_ROUTE_OK Entry -> Master position=(0.319, 0.056, 2.460)
+PLAYER_ROUTE_OK Master -> Secondary position=(3.995, 0.062, 2.973)
+PLAYER_ROUTE_OK Secondary -> Bathroom position=(4.000, 0.003, -2.963)
+PLAYER_ROUTE_OK Bathroom -> Balcony position=(-0.015, -0.137, -5.751)
+Saving results to: C:/Users/songa/AppData/LocalLow/AiPeople/CatGirlfriend\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
