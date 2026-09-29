@@ -7,6 +7,8 @@ namespace AiPeople.World
 {
     public sealed class PendingAction
     {
+        public string instanceId = Guid.NewGuid().ToString("N");
+        public string status = "queued";
         public string actionId;
         public string description;
         public float remainingSeconds;
@@ -28,8 +30,71 @@ namespace AiPeople.World
         private readonly Dictionary<string, string> _itemStates = new Dictionary<string, string>();
         private readonly List<string> _feedback = new List<string>();
         private readonly List<Dictionary<string, string>> _playerFactReports = new List<Dictionary<string, string>>();
-        private string _heroineActivity = "在纸箱边坐着";
+        private string _heroineActivity = "实际活动尚未采集";
         private string _heroineLocationId = string.Empty;
+        private readonly List<ActionFactData> _receipts = new List<ActionFactData>();
+
+        public void ObserveHeroine(string locationId) { lock (_lock) { _heroineLocationId = locationId; } }
+        public void ObserveEntities(EntityFactData[] entities)
+        {
+            lock (_lock)
+            {
+                _itemStates.Clear();
+                foreach (var e in entities) _itemStates[e.entity_id] = e.label + "；" + e.location_label + "；" + e.state;
+            }
+        }
+
+        public void SetActionStatus(string instanceId, string status)
+        {
+            lock (_lock)
+            {
+                var action = _pending.Find(p => p.instanceId == instanceId);
+                if (action != null)
+                {
+                    action.status = status;
+                    if (_pending[0] == action) _heroineActivity = action.actionId + "：" + status;
+                }
+            }
+        }
+
+        public void ReadyForConfirmation(string instanceId)
+        {
+            lock (_lock)
+            {
+                var action = _pending.Find(p => p.instanceId == instanceId);
+                if (action != null) { action.status = "awaiting_confirmation"; action.remainingSeconds = 0; }
+            }
+        }
+
+        public bool ConfirmAction(string instanceId, bool succeeded, string reason, string resultEntityId = "")
+        {
+            lock (_lock)
+            {
+                var action = _pending.Find(p => p.instanceId == instanceId);
+                if (action == null || (succeeded && action.status != "awaiting_confirmation")) return false;
+                _pending.Remove(action);
+                _heroineActivity = _pending.Count == 0 ? "当前没有执行动作" : "下一个动作等待执行";
+                var receipt = ToFact(action);
+                receipt.status = succeeded ? "completed" : "failed";
+                receipt.reason = reason;
+                receipt.result_entity_id = resultEntityId;
+                _receipts.Add(receipt);
+                if (_receipts.Count > 8) _receipts.RemoveAt(0);
+                // Entity effects are observed from real scene objects, not copied
+                // from the action catalog's proposed effects.
+                PushFeedbackLocked($"动作{action.actionId}：{receipt.status}；{reason}");
+                return true;
+            }
+        }
+
+        private static ActionFactData ToFact(PendingAction p) => new ActionFactData {
+            instance_id = p.instanceId, action_id = p.actionId, status = p.status,
+            target_location_id = p.travelToLocationId, remaining_seconds = p.remainingSeconds,
+            item_id = p.parameters.TryGetValue("item_id", out var item) ? item : "",
+            result_entity_id = "", reason = "" };
+
+        public ActionFactData[] ActionFacts() { lock (_lock) { return _pending.ConvertAll(ToFact).ToArray(); } }
+        public ActionFactData[] ReceiptFacts() { lock (_lock) { return _receipts.ToArray(); } }
 
         public string HeroineActivity
         {
@@ -83,6 +148,10 @@ namespace AiPeople.World
 
                 if (reason.Length > 0)
                 {
+                    _receipts.Add(new ActionFactData { instance_id = Guid.NewGuid().ToString("N"),
+                        action_id = actionId, status = "rejected", reason = reason,
+                        target_location_id = "", item_id = "", result_entity_id = "" });
+                    if (_receipts.Count > 8) _receipts.RemoveAt(0);
                     PushFeedbackLocked($"动作被拒绝：{reason}");
                     return false;
                 }
@@ -91,7 +160,7 @@ namespace AiPeople.World
                 {
                     actionId = definition.id,
                     description = definition.description,
-                    remainingSeconds = definition.durationSeconds,
+                    remainingSeconds = actionId == "cook_meal" ? definition.durationSeconds : 0,
                     travelToLocationId = definition.travelToLocationId,
                     spawnEntityId = definition.spawnEntityId,
                 };
@@ -111,17 +180,13 @@ namespace AiPeople.World
                 }
 
                 _pending.Add(action);
-                _heroineActivity = definition.description;
-                if (action.travelToLocationId.Length > 0)
-                {
-                    _heroineLocationId = action.travelToLocationId;
-                }
+                if (_pending.Count == 1) _heroineActivity = "动作已排队，尚未执行";
 
                 return true;
             }
         }
 
-        /// <summary>推进游戏时间（仅主线程）。返回本帧完成的动作，供导演生成实体。</summary>
+        /// <summary>只推进 running 阶段；到期只进入待确认，不登记完成或物品效果。</summary>
         public List<PendingAction> Tick(float deltaSeconds)
         {
             var completed = new List<PendingAction>();
@@ -135,14 +200,14 @@ namespace AiPeople.World
                 for (int i = _pending.Count - 1; i >= 0; i--)
                 {
                     PendingAction pending = _pending[i];
-                    pending.remainingSeconds -= deltaSeconds;
+                    if (pending.status != "running") continue;
+                    pending.remainingSeconds = Math.Max(0, pending.remainingSeconds - deltaSeconds);
                     if (pending.remainingSeconds > 0f)
                     {
                         continue;
                     }
 
-                    _pending.RemoveAt(i);
-                    ApplyEffectsLocked(pending);
+                    pending.status = "awaiting_confirmation";
                     completed.Add(pending);
                 }
 
@@ -152,7 +217,7 @@ namespace AiPeople.World
                 }
                 else
                 {
-                    _heroineActivity = _pending[0].description;
+                    _heroineActivity = _pending[0].actionId + "：" + _pending[0].status;
                 }
             }
 
@@ -207,8 +272,10 @@ namespace AiPeople.World
 
                     builder.Append('{');
                     builder.Append("\"action_id\":").Append(JsonUtil.Str(pending.actionId)).Append(',');
+                    builder.Append("\"instance_id\":").Append(JsonUtil.Str(pending.instanceId)).Append(',');
+                    builder.Append("\"status\":").Append(JsonUtil.Str(pending.status)).Append(',');
                     builder.Append("\"description\":").Append(JsonUtil.Str(pending.description)).Append(',');
-                    builder.Append("\"remaining_seconds\":").Append(pending.remainingSeconds.ToString("F1")).Append(',');
+                    builder.Append("\"remaining_seconds\":").Append(pending.remainingSeconds.ToString("F1", System.Globalization.CultureInfo.InvariantCulture)).Append(',');
                     builder.Append("\"params\":{");
                     bool first = true;
                     foreach (KeyValuePair<string, string> pair in pending.parameters)
@@ -291,6 +358,8 @@ namespace AiPeople.World
                 {
                     copy.Add(new PendingAction
                     {
+                        instanceId = pending.instanceId,
+                        status = pending.status,
                         actionId = pending.actionId,
                         description = pending.description,
                         remainingSeconds = pending.remainingSeconds,
@@ -309,25 +378,6 @@ namespace AiPeople.World
             lock (_lock)
             {
                 return new Dictionary<string, string>(_itemStates);
-            }
-        }
-
-        private void ApplyEffectsLocked(PendingAction pending)
-        {
-            ActionDefinition definition = ActionCatalog.Get(pending.actionId);
-            if (definition != null)
-            {
-                foreach (KeyValuePair<string, string> pair in definition.itemStateEffects)
-                {
-                    _itemStates[pair.Key] = pair.Value;
-                }
-            }
-
-            if (pending.actionId == "pick_up_item"
-                && pending.parameters.TryGetValue("item_id", out string itemId)
-                && !string.IsNullOrEmpty(itemId))
-            {
-                _itemStates[itemId] = "在白未晞手里";
             }
         }
 

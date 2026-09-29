@@ -1,0 +1,52 @@
+character_id: protagonist
+character_name: 主角
+current_anchor: 第一年·秋季·第11日·傍晚
+
+events:
+  - date: 大学毕业后
+    summary: 从四川来到松江府，在建筑相关公司从事绘图、建模、改图、出图和设计辅助
+    importance: 7
+    tags: [四川, 松江府, 建筑行业, 毕业工作]
+    id: protagonist:architecture_job
+    visibility: world_public
+    disclosure_policy: direct_allowed
+
+  - date: 工作约两年后
+    summary: 因建筑行业不景气和公司业务减少而失业
+    importance: 8
+    tags: [失业, 建筑行业不景气, 人生转折]
+    id: protagonist:job_loss
+    visibility: world_public
+    disclosure_policy: direct_allowed
+
+  - date: 失业后
+    summary: 使用积蓄、离职补偿和少量家庭支持接手住处附近的低租金小店，开始独自经营街角咖啡厅
+    importance: 9
+    tags: [咖啡厅, 创业, 老城区, 经济压力]
+    id: protagonist:open_cafe
+    visibility: world_public
+    disclosure_policy: direct_allowed
+
+  - date: Day 0·暴雨夜
+    summary: 咖啡厅结束营业回家途中，在小巷墙脚发现被车辆擦伤的纯白小猫，将她带回出租屋救治
+    importance: 10
+    tags: [白未晞, 初遇, 救助, 暴雨, 纸箱]
+    id: protagonist:rescue_baiweixi
+    visibility: relationship_private
+    disclosure_policy: direct_allowed
+
+  - date: Day 1·清晨
+    summary: 在纸箱中发现穿着自己宽大衣裤的成年猫耳少女，确认她就是昨晚救下的白猫，并得知她叫白未晞
+    importance: 10
+    tags: [白未晞, 人形暴露, 猫妖, 身份秘密]
+    id: protagonist:discover_baiweixi
+    visibility: relationship_private
+    disclosure_policy: direct_allowed
+
+  - date: 当前
+    summary: 与白未晞共同生活进入第十一天，继续经营咖啡厅；现实玩家通过游戏内对白和行动形成后续主角经历
+    importance: 10
+    tags: [当前锚点, 第十一天, 白未晞, 咖啡厅]
+    id: protagonist:current_anchor
+    visibility: system_only
+    disclosure_policy: withhold

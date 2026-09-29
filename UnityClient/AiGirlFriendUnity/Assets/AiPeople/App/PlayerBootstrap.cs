@@ -1,4 +1,5 @@
 using AiPeople.UI;
+using AiPeople.Shell;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,7 @@ namespace AiPeople.App
         private void Awake()
         {
             string scene = ChatWindowApp.IsChatWindowMode() ? "ChatWindow" : "Apartment";
+            if (scene == "Apartment") DesktopShellController.PrepareStartupWindow();
             Debug.Log("[AiPeople] 进程场景入口：PlayerBootstrap -> " + scene);
             SceneManager.LoadScene(scene);
         }

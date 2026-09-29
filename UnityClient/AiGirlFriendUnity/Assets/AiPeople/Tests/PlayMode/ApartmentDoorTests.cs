@@ -150,6 +150,34 @@ namespace AiPeople.Tests
             Assert.IsEmpty(state.PendingSnapshot());
         }
 
+        [UnityTest]
+        public IEnumerator QueuedMoveDoesNotCompleteWhileDoorBlocksItsPath()
+        {
+            var actor = new GameObject("ActionDoorHeroine");
+            actor.transform.SetParent(_world.Root);
+            actor.transform.position = ImportedApartmentLayout.EntryPosition;
+            var state = new GameWorldState();
+            var director = _world.Root.gameObject.AddComponent<HeroineDirector>();
+            director.Configure(state, actor.transform, null, null, _world.Root, null);
+            director.RegisterAnchor("apartment_kitchen",new Vector3(-3.4f,0,3.2f));
+            state.Execute("move_to",new System.Collections.Generic.Dictionary<string,string>{{"target_location_id","apartment_kitchen"}},out _);
+            yield return null;
+            var door = Find("KitchenDoor");
+            Assert.IsTrue(door.RequestState(false,out _));
+            yield return Finish(door);
+            Assert.AreEqual("blocked",state.ActionFacts()[0].status);
+            Assert.AreEqual(0,state.Tick(10000).Count);
+            Assert.IsEmpty(state.ReceiptFacts(),"Elapsed time must not fake completion through a closed door");
+            Assert.IsTrue(door.RequestState(true,out _));
+            yield return Finish(door);
+            Time.timeScale=4;
+            float deadline=Time.realtimeSinceStartup+15;
+            while(state.PendingSnapshot().Count>0 && Time.realtimeSinceStartup<deadline) yield return null;
+            Assert.IsEmpty(state.PendingSnapshot());
+            Assert.AreEqual("completed",state.ReceiptFacts()[0].status);
+            Assert.Less(Vector3.Distance(actor.transform.position,new Vector3(-3.4f,0,3.2f)),.2f);
+        }
+
         private ApartmentDoor Find(string id) => System.Array.Find(_nav.Doors, door => door.doorId == id);
         private static IEnumerator Finish(ApartmentDoor door)
         {

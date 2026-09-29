@@ -32,6 +32,9 @@ namespace AiPeople.World
 
         public float interactRange = 2.8f;
         public bool HasHeldItem => !string.IsNullOrEmpty(_heldItemLabel);
+        public string HeldItemLabel => _heldItemLabel ?? string.Empty;
+        public string Motion => enabled && _controller != null && _controller.enabled
+            && new Vector2(_controller.velocity.x, _controller.velocity.z).sqrMagnitude > .01f ? "walking" : "idle";
 
         /// <summary>离开/进入某个位置锚点时触发（参数为当前锚点，可为 null）。</summary>
         public event Action<Waypoint> LocationChanged;
@@ -96,12 +99,12 @@ namespace AiPeople.World
             {
                 return new WorldInputData
                 {
-                    location_id = "apartment_door",
-                    location_label = "出租屋",
+                    location_id = "apartment_interior",
+                    location_label = "出租屋内（具体房间未确认）",
                     activity = "站着",
                     body = "没有明显不适",
-                    held_item = "",
-                    scene = "屋里的灯亮着",
+                    held_item = HeldItemLabel,
+                    scene = "出租屋室内",
                 };
             }
 
@@ -111,7 +114,7 @@ namespace AiPeople.World
                 location_label = CurrentWaypoint.locationLabel,
                 activity = CurrentWaypoint.activity,
                 body = CurrentWaypoint.body,
-                held_item = HasHeldItem ? _heldItemLabel : CurrentWaypoint.heldItem,
+                held_item = HeldItemLabel,
                 scene = CurrentWaypoint.scene,
             };
         }

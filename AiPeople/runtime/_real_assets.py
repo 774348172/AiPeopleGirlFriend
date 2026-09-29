@@ -44,9 +44,9 @@ class LocalRetrievalAssetBundle:
         reranker_record = manifest.get("reranker")
         if not isinstance(bge_record, dict) or not isinstance(reranker_record, dict):
             raise RealAssetError("retrieval asset bundle components are invalid")
-        bge = LocalBgePackage.load(_record_path(bge_record, "bge"))
+        bge = LocalBgePackage.load(_record_path(bge_record, "bge", path.parent))
         reranker = LocalRerankerPackage.load(
-            _record_path(reranker_record, "reranker")
+            _record_path(reranker_record, "reranker", path.parent)
         )
         if bge_record.get("revision") != bge.identity.revision or bge_record.get(
             "artifact_sha256"
@@ -284,13 +284,15 @@ def _absolute_file(manifest: dict[str, Any], field: str, label: str) -> Path:
     return path
 
 
-def _record_path(record: dict[str, Any], label: str) -> Path:
+def _record_path(record: dict[str, Any], label: str, manifest_root: Path) -> Path:
     value = record.get("path")
     if not isinstance(value, str) or not value.strip():
         raise RealAssetError(f"retrieval {label} path must be explicit")
     path = Path(value)
-    if not path.is_absolute() or not path.is_dir():
-        raise RealAssetError(f"retrieval {label} path must be an existing absolute directory")
+    if not path.is_absolute():
+        path = manifest_root / path
+    if not path.is_dir():
+        raise RealAssetError(f"retrieval {label} path must be an existing directory")
     return path.resolve()
 
 

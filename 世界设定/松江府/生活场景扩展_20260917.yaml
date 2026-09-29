@@ -1,0 +1,69 @@
+schema_version: aip.shared_world_scene_canon_bundle.v1
+world_id: songjiangfu
+status: approved
+version: 1
+design_source: 用户授权按建议施工；以下名称和设施为本次新增虚构世界设定，不是现实地点资料
+shared_rules:
+  unknown_by_default: [实时营业, 人员在场, 库存价格, 天气变化, 实际行动结果]
+  knowledge_rule: 仅投影可见或明确告知的状态，后台信息不自动成为女主知识
+scenes:
+  - scene_id: songjiangfu.home_downstairs
+    display_name: 出租屋楼下与楼道
+    layout:
+      zones: [六楼门外, 楼梯平台, 一楼门厅, 楼下出入口, 楼下公告栏旁]
+    fixed_fixtures: [楼梯, 扶手, 楼道灯, 一楼信箱, 公告栏, 楼下分类垃圾桶]
+    fixed_details:
+      建筑关系: 与六楼出租屋为同一栋老居民楼，无电梯
+      通行边界: 通过楼梯连接住宅和楼下；不同楼层不能视为已自动到达
+      快递边界: 没有设定智能快递柜；放件位置必须逐次登记
+    runtime_fields:
+      楼道: [照明状态, 通行情况, 当前噪声, 地面干湿]
+      楼下快递: [是否送达, 放置位置, 收件人, 是否已取, 包装状态]
+      邻居: [是否在场, 已获知姓名, 当前活动]
+      公告栏: [当前公告内容, 公告有效期]
+  - scene_id: songjiangfu.community_market
+    display_name: 青禾菜市场
+    location:
+      distance_from_home: {max: 1, unit: 公里}
+    business: {opening_hours: '07:00-19:00'}
+    layout:
+      zones: [入口, 蔬菜区, 肉蛋区, 水产区, 调料区, 出口]
+    fixed_fixtures: [有顶棚通道, 摊位台面, 公共垃圾桶, 分区指示牌]
+    fixed_details:
+      定位: 社区日常买菜市场；具体摊位经营者和当日货品不是永久事实
+      称重边界: 重量价格付款分别登记，不凭看起来一袋推断斤数
+    runtime_fields:
+      青禾菜市场: [是否营业, 人流, 地面干湿, 当前噪声]
+      当前菜摊: [在售食材, 单价, 称重结果, 库存, 摊主身份]
+      本次买菜: [预算, 意向清单, 已选清单, 替代选择, 实付金额, 付款结果, 持有人]
+  - scene_id: songjiangfu.neighborhood_park
+    display_name: 榕荫小园
+    location:
+      distance_from_home: {max: 1, unit: 公里}
+    layout:
+      zones: [公园入口, 环形步道, 树荫长椅区, 小花圃旁, 出口]
+    fixed_fixtures: [步行小径, 长椅, 路灯, 小花圃, 分类垃圾桶]
+    fixed_details:
+      定位: 住宅附近的小型社区公园，不新增河流或湖泊
+      通行规则: 公共步行空间，临时开放和维护情况看当前快照
+      自然观察边界: 固定有树和花圃，不代表本轮开花、有鸟叫或天气舒适
+    runtime_fields:
+      榕荫小园: [是否开放, 当前人流, 光照, 噪声, 路面干湿]
+      树荫长椅: [当前占用, 表面干湿]
+      当前可见自然景物: [花草状态, 动物观察, 声音来源]
+      本次散步: [目的, 已走时长, 休息意愿, 路线, 是否已坐下]
+  - scene_id: songjiangfu.home_style_restaurant
+    display_name: 邻家小馆
+    location:
+      distance_from_home: {max: 1, unit: 公里}
+    business: {opening_hours: '11:00-14:00、17:00-21:00'}
+    layout:
+      zones: [入口, 点单处, 普通餐桌区, 出餐口]
+    fixed_fixtures: [点单台, 四张餐桌, 餐椅, 餐具存放处, 价目展示板]
+    fixed_details:
+      经营方向: 家常炒菜与米饭，不默认每种菜当天都有
+      知情边界: 不公开后厨实时状态，不能从等待时间猜厨师已经下锅
+    runtime_fields:
+      邻家小馆: [是否营业, 空桌, 排队人数, 当班人员, 今日菜单, 售罄菜品]
+      本桌餐单: [已点菜品, 辣度要求, 分量, 价格, 已上菜品, 未上菜品, 付款结果]
+      本次用餐: [开始时间, 是否吃完, 剩余食物, 打包结果, 男主明确评价, 白未晞明确评价]

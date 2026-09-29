@@ -36,8 +36,15 @@ def test_prompt_composer_builds_minimal_foreground_prefixes() -> None:
     assert "外表清冷疏离" in prompt.game_reply_system_prompt
     assert "表达自然、简短、克制" in prompt.game_reply_system_prompt
     assert "只输出你真正说出口的话" in prompt.game_reply_system_prompt
+    assert "cardboard_box" in prompt.game_reply_system_prompt
+    assert "modern_knowledge_gap" in prompt.game_reply_system_prompt
+    assert "不能无依据声称已经完成做饭或家务" in prompt.game_reply_system_prompt
+    assert "妖果准确来源" in prompt.game_reply_system_prompt
+    assert "current_time" not in prompt.game_reply_system_prompt
+    assert "current_injury" not in prompt.game_reply_system_prompt
+    assert "current_relationship" not in prompt.game_reply_system_prompt
     assert "四川" not in prompt.game_reply_system_prompt
-    assert "完整" not in prompt.game_reply_system_prompt
+    assert "完整交通规则" in prompt.game_reply_system_prompt
 
 
 def test_prompt_composer_loads_initial_runtime_from_character_package() -> None:

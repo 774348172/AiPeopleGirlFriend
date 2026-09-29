@@ -1,0 +1,52 @@
+schema_version: aip.shared_world_scene_canon.v1
+scene_id: songjiangfu.neighborhood_convenience_store
+world_id: songjiangfu
+status: draft_pending_confirmation
+version: 1
+last_updated: '2026-09-13'
+display_name: 松江府老城区邻里便利店
+scene_kind: public_convenience_store
+permanence: recurring_public_place
+
+location:
+  district: 松江府老城区
+  indoor_outdoor: indoor
+  address_label: 待确认
+  relation_to_home: 附近街区，步行距离待确认
+
+layout:
+  type: neighborhood_convenience_store
+  zones:
+    entrance: {id: store_entrance, label: 入口}
+    shelves: {id: store_shelves, label: 货架区}
+    cold_storage: {id: store_cold_storage, label: 冷藏柜区域}
+    checkout: {id: store_checkout, label: 收银台}
+
+fixed_fixtures:
+  - 入口
+  - 货架
+  - 收银台
+  - 冷藏柜
+
+participants_defaults:
+  protagonist: visitor
+  baiweixi: visitor
+  clerk: unknown
+
+runtime_only_facts:
+  - 是否营业
+  - 两人的所在区域和正在看的货架
+  - 商品库存、价格、购买和付款结果
+  - 排队情况、店员是否在场、是否携带购物袋
+
+unknown_by_default:
+  - 店名、品牌、营业时间和具体距离
+  - 任意商品是否有货、价格和保质期
+  - 当前排队人数、店员姓名和其他顾客
+  - 尚未完成的购买计划
+
+authority_rules:
+  permanent_scene_facts: [layout, fixed_fixtures]
+  runtime_required: [captured_game_time, weather, people, current_event, visible_items]
+  source_priority: [runtime_snapshot, structured_game_event, world_canon, selected_memory]
+  unsupported_expansion_policy: reject

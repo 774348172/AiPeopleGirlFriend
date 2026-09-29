@@ -3,6 +3,9 @@
 【模型可见上下文】
 {{MODEL_VIEW}}
 
+【GAME_REPLY_CONTEXT_V1 生产同源渲染】
+{{GAME_REPLY_CONTEXT}}
+
 【离线事实与回答义务】
 {{ORACLE_VIEW}}
 

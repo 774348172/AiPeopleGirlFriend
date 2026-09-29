@@ -368,6 +368,8 @@ class TurnWorldSnapshot:
     selected_memory_frame: SelectedMemoryFrame = SelectedMemoryFrame.empty()
     pending_actions: tuple[dict[str, object], ...] = ()
     game_feedback: tuple[str, ...] = ()
+    player_fact_reports: tuple[dict[str, object], ...] = ()
+    unknown_facts: tuple[dict[str, object], ...] = ()
 
     def __post_init__(self) -> None:
         _require_text(self.snapshot_id, "snapshot_id")
@@ -396,6 +398,14 @@ class TurnWorldSnapshot:
             for item in self.game_feedback
         ):
             raise TypeError("game_feedback must contain non-empty strings")
+        if not isinstance(self.player_fact_reports, tuple) or any(
+            not isinstance(item, dict) for item in self.player_fact_reports
+        ):
+            raise TypeError("player_fact_reports must contain dict items")
+        if not isinstance(self.unknown_facts, tuple) or any(
+            not isinstance(item, dict) for item in self.unknown_facts
+        ):
+            raise TypeError("unknown_facts must contain dict items")
 
 
 @dataclass(frozen=True, slots=True)

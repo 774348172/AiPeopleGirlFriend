@@ -98,7 +98,10 @@ def _plain_messages(
 - 男主原定星期五下午看牙，该旧预约已经取消。
 - 男主当前牙医预约是星期六上午十点。
 
-{GAME_REPLY_EVIDENCE_BOUNDARY}"""
+{GAME_REPLY_EVIDENCE_BOUNDARY}
+
+[回复合同]
+只输出一个 JSON 对象，格式严格为 {{"reply":"中文对白"}}。reply 不能为空。"""
     messages: list[dict[str, str]] = [{"role": "system", "content": system}]
     for role, text in recent_dialogue:
         messages.append({"role": role, "content": text})
@@ -107,20 +110,33 @@ def _plain_messages(
 
 
 def _plain_gate(text: str, expectation: str = "appointment") -> dict[str, Any]:
-    has_saturday = "星期六" in text or "周六" in text
-    has_ten = any(value in text for value in ("上午十点", "上午10点", "上午 10 点"))
+    try:
+        value = json.loads(text)
+    except json.JSONDecodeError:
+        value = None
+    reply = value.get("reply") if isinstance(value, dict) else None
+    exact_contract = (
+        isinstance(value, dict)
+        and set(value) == {"reply"}
+        and isinstance(reply, str)
+        and bool(reply.strip())
+    )
+    visible = reply.strip() if exact_contract else ""
+    has_saturday = "星期六" in visible or "周六" in visible
+    has_ten = any(value in visible for value in ("上午十点", "上午10点", "上午 10 点"))
     unknown_markers = ("不知道", "不清楚", "不确定", "没记得", "没有记录")
-    acknowledges_unknown = any(marker in text for marker in unknown_markers)
+    acknowledges_unknown = any(marker in visible for marker in unknown_markers)
     if expectation == "appointment":
         checks = {
+            "exact_reply_json": exact_contract,
             "correct_day_present": has_saturday,
             "correct_time_present": has_ten,
         }
-        passed = has_saturday and has_ten
+        passed = exact_contract and has_saturday and has_ten
     elif expectation == "unknown":
         checks = {
+            "exact_reply_json": exact_contract,
             "unknown_acknowledged": acknowledges_unknown,
-            "no_json_output": not text.startswith(("{", "[")),
         }
         passed = all(checks.values())
     else:
@@ -144,7 +160,8 @@ async def _run(args: argparse.Namespace) -> tuple[int, dict[str, Any]]:
             "thinking": False,
             "adapter_loaded": True,
             "foreground_protocol": "plain_reply_v1",
-            "structured_foreground_calls": False,
+            "reply_output_contract": "reply_json_v1",
+            "structured_foreground_calls": True,
             "temperature": 0.0,
             "network_access": "forbidden",
             "human_adjudication_is_authoritative": True,
@@ -197,6 +214,21 @@ async def _run(args: argparse.Namespace) -> tuple[int, dict[str, Any]]:
                 request_id=f"gemma-nf4-smoke:{label}",
                 messages=_plain_messages(utterance, recent_dialogue),
                 options=GenerationOptions(96, 0.0, 0.9, 1.05, seed),
+                response_format={
+                    "type": "json_schema",
+                    "json_schema": {
+                        "name": "game_reply_v1",
+                        "strict": True,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "reply": {"type": "string", "minLength": 1},
+                            },
+                            "required": ["reply"],
+                            "additionalProperties": False,
+                        },
+                    },
+                },
             )
             expectation = "unknown" if label == "game_reply_unknown" else "appointment"
             report["cases"][label] = {

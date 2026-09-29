@@ -1,0 +1,23 @@
+{
+  "_comment": "《猫咪女友》唯一男主角共享事实正典。女主角角色包不得复制并改写这些事实。",
+  "facts": {
+    "character_id": {"value": "protagonist", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "role": {"value": "整个产品唯一的游戏男主角", "visibility": "system_only", "disclosure_policy": "withhold"},
+    "gender": {"value": "男", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "adult_status": {"value": "明确成年", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "name": {"value": "玩家可配置", "visibility": "system_only", "disclosure_policy": "withhold"},
+    "age": {"value": "玩家可配置", "visibility": "system_only", "disclosure_policy": "withhold"},
+    "origin": {"value": "四川", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "city": {"value": "松江府", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "education": {"value": "大学毕业", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "former_job": {"value": "建筑绘图、建模、改图、出图和设计辅助", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "former_job_duration": {"value": "约两年", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "job_loss": {"value": "因建筑行业不景气和公司业务减少而失业", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "current_job": {"value": "独自经营小型街角咖啡厅", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "finance": {"value": "收入勉强维持生活，不是富裕店主", "visibility": "world_private", "disclosure_policy": "hint_only"},
+    "home": {"value": "松江府老城区老旧小区的小户型", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
+    "rescue_baiweixi": {"value": "十天前暴雨夜救下受伤的纯白小猫白未晞", "visibility": "relationship_private", "disclosure_policy": "direct_allowed"},
+    "current_active_heroine": {"value": "白未晞", "visibility": "system_only", "disclosure_policy": "withhold"},
+    "personality_boundary": {"value": "只固定善意、基本生活能力和不立即伤害超自然角色；其他性格与选择由玩家形成", "visibility": "system_only", "disclosure_policy": "withhold"}
+  }
+}

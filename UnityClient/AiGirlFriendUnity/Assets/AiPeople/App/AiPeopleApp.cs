@@ -22,6 +22,8 @@ namespace AiPeople.App
     {
         private AiPeopleConfig _config;
         private AiPeopleClient _client;
+        private LocalBackendLauncher _backendLauncher;
+        private bool _backendStartupFinished;
         private GameStateModel _state;
         private LocalHistory _history;
         private PlayerController _player;
@@ -32,6 +34,8 @@ namespace AiPeople.App
         private GameWorldState _gameState;
         private GameWorldServer _gameServer;
         private HeroineDirector _director;
+        private readonly List<KitchenDevice> _kitchenDevices = new List<KitchenDevice>();
+        private GameTimeline _timeline;
         private CharacterActor _heroine;
         private DesktopShellController _shell;
         private ShellSettingsData _shellSettings;
@@ -46,6 +50,9 @@ namespace AiPeople.App
         private string _lastBubbledLine = string.Empty;
         private float _launcherTimer;
         private bool _desktopPresentation;
+        private readonly string _snapshotInstance = Guid.NewGuid().ToString("N");
+        private readonly long _snapshotStartedAtMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+        private long _snapshotSequence;
         private bool _busy;
         private float _lastInputProbe;
         private string _connection = "未连接";
@@ -104,6 +111,11 @@ namespace AiPeople.App
 
             _config = AiPeopleConfig.Load();
             _client = new AiPeopleClient(_config.data);
+            if (!Application.isEditor)
+            {
+                _backendLauncher = new LocalBackendLauncher(_config.data);
+                StartCoroutine(StartBackend());
+            }
             _state = new GameStateModel();
             _state.Changed += OnStateChanged;
             _history = new LocalHistory(_config.data.saveId);
@@ -186,19 +198,41 @@ namespace AiPeople.App
 
         private IEnumerator Boot()
         {
+            if (_backendLauncher != null)
+            {
+                while (!_backendStartupFinished) yield return null;
+                if (!string.IsNullOrEmpty(_backendLauncher.Error))
+                {
+                    _connection = _backendLauncher.Error;
+                    UnityEngine.Debug.LogError("[AiPeople] " + _connection);
+                    RefreshHud();
+                    yield break;
+                }
+            }
             yield return _client.Health((ok, detail) =>
             {
                 _connection = ok ? "已连接" : "连接失败：" + detail;
             });
             RefreshHud();
             yield return RefreshStatus();
+            while (_timeline != null && !_timeline.Ready)
+            {
+                yield return new WaitForSecondsRealtime(5);
+                yield return RefreshStatus();
+            }
+        }
+
+        private IEnumerator StartBackend()
+        {
+            yield return _backendLauncher.EnsureReady(message => { _connection = message; RefreshHud(); });
+            _backendStartupFinished = true;
         }
 
         private IEnumerator RefreshStatus()
         {
             yield return _client.FetchStatus(
                 _config.data.saveId,
-                response => _state.Apply(response),
+                response => { _state.Apply(response); _timeline?.Initialize(response.game_clock); },
                 error => _state.ReportError(error));
         }
 
@@ -278,6 +312,32 @@ namespace AiPeople.App
             }
 
             _director = gameObject.AddComponent<HeroineDirector>();
+            _timeline = gameObject.AddComponent<GameTimeline>();
+            _timeline.Configure(_config.data.saveId);
+            _director.Timeline = _timeline;
+            _director.UsesImportedLayout = apartmentShellPrefab != null;
+            if (apartmentShellPrefab != null)
+            {
+                string[] ids = { "apartment_living_room", "apartment_kitchen", "apartment_master_bedroom",
+                    "apartment_secondary_bedroom", "apartment_bathroom", "apartment_balcony", "apartment_hall" };
+                for (int i = 0; i < ids.Length; i++)
+                    _director.RegisterAnchor(ids[i], ImportedApartmentLayout.TraversalPoints[i].Position);
+            }
+            RegisterSceneEntity(_world.Glass, "water_cup", "水杯", "在餐桌上", true);
+            RegisterSceneEntity(_world.CardboardBox, "cardboard_box", "纸箱", "在场景中", false);
+            RegisterKitchenDevice("KitchenStove", "kitchen_stove", "燃气灶", true);
+            RegisterKitchenDevice("KitchenHood", "kitchen_hood", "抽油烟机", true);
+            RegisterKitchenDevice("KitchenFridge", "kitchen_fridge", "冰箱", false);
+            RegisterKitchenDevice("KitchenMicrowave", "kitchen_microwave", "微波炉", false);
+            RegisterKitchenDevice("KitchenRiceCooker", "kitchen_rice_cooker", "电饭煲", false);
+            RegisterKitchenDevice("KitchenKettle", "kitchen_kettle", "电热水壶", false);
+            _director.Stove = FindKitchenDevice("kitchen_stove");
+            _director.Hood = FindKitchenDevice("kitchen_hood");
+            if (_gameServer != null)
+            {
+                _gameServer.SnapshotProvider = () => JsonUtility.ToJson(ComposeWorld());
+                _gameServer.Timeline = _timeline;
+            }
             foreach (Waypoint waypoint in _world.Waypoints)
             {
                 _director.RegisterAnchor(waypoint.locationId, waypoint.transform.position);
@@ -297,6 +357,54 @@ namespace AiPeople.App
                         _hud.ShowToast(message);
                     }
                 });
+        }
+
+        private void RegisterSceneEntity(GameObject target, string id, string label, string state, bool canPickUp)
+        {
+            if (target == null) return;
+            var entity = target.AddComponent<WorldEntity>();
+            entity.entityId = id; entity.displayName = label; entity.state = state; entity.canPickUp = canPickUp;
+            _director.RegisterEntity(entity);
+        }
+
+        private void RegisterKitchenDevice(string node, string id, string label, bool controllable)
+        {
+            Transform target = _world.Root.Find("Furniture/" + node);
+            if (target == null) return;
+            var device = target.gameObject.AddComponent<KitchenDevice>();
+            device.Configure(id, label, controllable);
+            device.Changed += PublishRoomControls;
+            _kitchenDevices.Add(device);
+        }
+
+        private KitchenDevice FindKitchenDevice(string id) =>
+            _kitchenDevices.Find(device => device != null && device.deviceId == id);
+
+        private DeviceFactData[] CaptureKitchenDevices()
+        {
+            var facts = new List<DeviceFactData>();
+            foreach (var device in _kitchenDevices)
+                if (device != null && device.isActiveAndEnabled)
+                    facts.Add(device.Capture(apartmentShellPrefab != null));
+            return facts.ToArray();
+        }
+
+        private string SetKitchenDeviceState(string id, bool running)
+        {
+            var device = FindKitchenDevice(id);
+            if (device == null || !device.controllable)
+                return "{\"accepted\":false,\"reason\":\"设备未登记或没有可操作的开关\"}";
+            device.SetRunning(running, true);
+            PublishRoomControls();
+            return "{\"accepted\":true,\"reason\":\"\"}";
+        }
+
+        private void PublishRoomControls()
+        {
+            if (_uiServer == null) return;
+            var navigation = _world.Root.GetComponentInChildren<ApartmentNavigation>();
+            _uiServer.PublishRoomState(navigation != null ? navigation.DoorsJson() : "{\"doors\":[]}",
+                CaptureKitchenDevices());
         }
 
         private void OnStateChanged()
@@ -325,24 +433,36 @@ namespace AiPeople.App
                 }
                 : _player.ComposeWorldInput();
 
-            var parts = new List<string>();
-            if (!string.IsNullOrEmpty(world.scene))
-            {
-                parts.Add(world.scene);
-            }
-
-            if (_atmosphere != null)
-            {
-                parts.Add(_atmosphere.LightOn ? "屋里的灯亮着" : "灯关着");
-                if (apartmentShellPrefab == null) parts.Add(_atmosphere.WindowOpen ? "窗开着" : "窗关着");
-            }
-
-            if (_player.HasHeldItem)
-            {
-                parts.Add("他手里拿着一杯温水");
-            }
-
-            world.scene = string.Join("；", parts);
+            // Waypoint prose is a design-time hint, not a sensor: it can claim
+            // lights/windows are open even after the player has changed them.
+            world.scene = "出租屋室内";
+            world.held_item = _player != null ? _player.HeldItemLabel : string.Empty;
+            var navigation = _world.Root.GetComponentInChildren<ApartmentNavigation>();
+            world.scene_facts = SceneFactProjection.Capture(
+                navigation, _atmosphere,
+                apartmentShellPrefab == null, _director);
+            var playerFact = ApartmentLocations.Locate("protagonist", _player.transform.position,
+                apartmentShellPrefab != null, _player.Motion);
+            var heroineFact = ApartmentLocations.Locate("baiweixi", _heroine.transform.position,
+                apartmentShellPrefab != null, _director.Motion);
+            world.location_id = playerFact.location_id;
+            world.location_label = playerFact.location_label;
+            var entities = _director.CaptureEntities(_player.transform);
+            _gameState.ObserveHeroine(heroineFact.location_id);
+            _gameState.ObserveEntities(entities);
+            long observedAtMs = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
+            long sequence = ++_snapshotSequence;
+            world.game_snapshot = new GameSnapshotData {
+                save_id = _config.data.saveId,
+                game_clock = _timeline.Capture(),
+                instance_started_at_ms = _snapshotStartedAtMs,
+                observed_at_ms = observedAtMs,
+                instance_id = _snapshotInstance, sequence = sequence,
+                actors = new[] { playerFact, heroineFact }, entities = entities,
+                devices = CaptureKitchenDevices(),
+                facts = SceneFactProjection.CaptureObservations(navigation, _atmosphere,
+                    apartmentShellPrefab == null, _director, sequence, observedAtMs),
+                actions = _gameState.ActionFacts(), receipts = _gameState.ReceiptFacts() };
             return world;
         }
 
@@ -376,6 +496,10 @@ namespace AiPeople.App
                 case InteractKind.ToggleDoor:
                     _hud.SetPrompt(target.GetComponent<ApartmentDoor>()?.Prompt ?? string.Empty);
                     break;
+                case InteractKind.ToggleDevice:
+                    var device = target.GetComponent<KitchenDevice>();
+                    _hud.SetPrompt(device != null ? "按 E " + (device.IsOn ? "关闭" : "打开") + device.displayName : string.Empty);
+                    break;
             }
         }
 
@@ -394,6 +518,13 @@ namespace AiPeople.App
                     if (door != null && !door.RequestState(!door.TargetOpen, out string reason)) _hud.ShowToast(reason);
                     break;
                 }
+                case InteractKind.ToggleDevice:
+                {
+                    var device = target.GetComponent<KitchenDevice>();
+                    if (device != null && device.SetRunning(!device.IsOn, true))
+                        _hud.ShowToast(device.displayName + (device.IsOn ? "已打开。" : "已关闭。"));
+                    break;
+                }
                 case InteractKind.ToggleLight:
                 {
                     bool on = _atmosphere != null && _atmosphere.ToggleLight();
@@ -407,9 +538,13 @@ namespace AiPeople.App
                     break;
                 }
                 case InteractKind.TakeWater:
+                    var entity = _director.FindEntity("water_cup");
+                    if (entity != null && entity.ownerId == "baiweixi")
+                    { _hud.ShowToast("水杯在白未晞手里。"); break; }
                     if (_player.HasHeldItem)
                     {
                         _player.SetHeldItem(string.Empty);
+                        if (entity != null) { entity.ownerId = ""; entity.state = "在餐桌上"; }
                         if (_world.Glass != null)
                         {
                             _world.Glass.SetActive(true);
@@ -419,6 +554,7 @@ namespace AiPeople.App
                     else
                     {
                         _player.SetHeldItem("一杯温水");
+                        if (entity != null) { entity.ownerId = "protagonist"; entity.state = "在男主手中"; }
                         if (_world.Glass != null)
                         {
                             _world.Glass.SetActive(false);
@@ -523,6 +659,8 @@ namespace AiPeople.App
             {
                 characterController.enabled = false;
             }
+            // Desktop mode places the logical protagonist at the table anchor.
+            _player.transform.position = _world.Waypoints[0].transform.position;
 
             _chat.SetVisible(false);
             _hud.SetVisible(_shellSettings.showHud);
@@ -588,9 +726,10 @@ namespace AiPeople.App
             if (roomNavigation != null)
             {
                 _uiServer.ConfigureRoomControls(roomNavigation.SetDoorState);
-                roomNavigation.DoorsChanged += () => _uiServer.PublishRoomState(roomNavigation.DoorsJson());
-                _uiServer.PublishRoomState(roomNavigation.DoorsJson());
+                roomNavigation.DoorsChanged += PublishRoomControls;
             }
+            _uiServer.ConfigureKitchenDevices(SetKitchenDeviceState);
+            PublishRoomControls();
 
             // 系统托盘（构建版）：左键唤出小窗；右键菜单显示/隐藏、切换窗口模式、退出
             if (!Application.isEditor)
@@ -778,8 +917,11 @@ namespace AiPeople.App
             _tray?.Dispose();
             _quitHotkey?.Dispose();
             _chatWindowLauncher?.Shutdown();
+            _backendLauncher?.StopOwned();
             _shell?.QuitApplication();
         }
+
+        private void OnApplicationQuit() => _backendLauncher?.StopOwned();
 
         private void Update()
         {

@@ -185,8 +185,7 @@ namespace AiPeople.Shell
         }
 
         /// <summary>
-        /// 校验桌面层挂载是否正确：窗口必须与 SHELLDLL_DefView 同级，且紧贴在其下方，
-        /// 这样桌面图标始终位于 Unity 窗口之上。
+        /// 校验桌面层挂载是否正确：窗口必须与 SHELLDLL_DefView 同级，且紧贴在其下方。
         /// 返回 "ok" 或失败原因。
         /// </summary>
         internal static string VerifyDesktopLayer(IntPtr hwnd)
@@ -199,6 +198,13 @@ namespace AiPeople.Shell
 
             if (TryFindIconView(out IntPtr iconHost, out IntPtr iconView))
             {
+                IntPtr iconList = NativeMethods.FindWindowEx(iconView, IntPtr.Zero, "SysListView32", null);
+                if (!NativeMethods.IsWindowVisible(iconHost) || !NativeMethods.IsWindowVisible(iconView)
+                    || iconList == IntPtr.Zero || !NativeMethods.IsWindowVisible(iconList))
+                    return "桌面图标视图未显示";
+                if (!NativeMethods.GetWindowRect(iconList, out NativeMethods.RECT iconRect)
+                    || iconRect.Right <= iconRect.Left || iconRect.Bottom <= iconRect.Top)
+                    return "桌面图标视图没有可见区域";
                 if (parent != iconHost)
                 {
                     return "挂载宿主与图标宿主不一致（parent=0x" + parent.ToInt64().ToString("X")
@@ -214,15 +220,7 @@ namespace AiPeople.Shell
                 return "未紧贴图标视图下方（图标下方窗口=0x" + belowIcon.ToInt64().ToString("X") + "）";
             }
 
-            // 找不到图标视图（桌面图标可能被隐藏）→ 退化为"同级最底层"判定
-            IntPtr below = NativeMethods.GetWindow(hwnd, NativeMethods.GW_HWNDNEXT);
-            if (below != IntPtr.Zero)
-            {
-                return "不是同级最底层（下方还有窗口 0x" + below.ToInt64().ToString("X")
-                    + " class=" + GetClassName(below) + "）";
-            }
-
-            return "ok（未找到图标视图，按最底层判定）";
+            return "未找到桌面图标视图，无法确认壁纸在图标下方";
         }
 
         private static bool HasIconView(IntPtr window)
@@ -384,14 +382,19 @@ namespace AiPeople.Shell
         }
 
         /// <summary>
-        /// 精确分层挂载：作为图标视图的同级窗口，并**紧贴在图标视图下方**
-        /// （即：系统壁纸之上、桌面图标之下）。这是 Win11 25H2 上唯一能同时看到房间和图标的层级。
+        /// 精确分层挂载：作为图标视图的同级窗口，并紧贴在图标视图下方。
         /// </summary>
         internal static bool TryAttachUnderIcons(IntPtr hwnd, out string detail)
         {
             if (!TryFindIconView(out IntPtr iconHost, out IntPtr iconView))
             {
                 detail = "未找到图标视图 SHELLDLL_DefView";
+                return false;
+            }
+
+            if (!NativeMethods.IsWindowVisible(iconView))
+            {
+                detail = "图标视图不可见，不能显示壁纸";
                 return false;
             }
 

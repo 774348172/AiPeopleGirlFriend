@@ -70,8 +70,14 @@
         "game_feedback"
       ],
       "properties": {
+        "protagonist_profile": {"type": "object"},
+        "female_character_profile": {"type": "object"},
+        "known_by_baiweixi": {"type": "array", "items": {"type": "object"}},
+        "scene_canon": {"type": "object"},
+        "runtime_snapshot": {"type": "object"},
+        "character_display_name": {"type": "string", "minLength": 1},
         "mode": {
-          "const": "JUDGE_TURN"
+          "enum": ["GAME_REPLY", "JUDGE_TURN"]
         },
         "evidence_contract": {
           "type": "object",
@@ -111,6 +117,28 @@
           "type": "array",
           "maxItems": 3,
           "items": {"type": "string", "minLength": 1}
+        },
+        "unknown_facts": {
+          "type": "array",
+            "maxItems": 32,
+          "items": {"type": "object"}
+        },
+        "player_fact_reports": {
+          "type": "array",
+            "maxItems": 32,
+          "items": {"type": "object"}
+        },
+        "authoritative_world": {
+          "type": "object",
+          "required": ["world_id", "version", "facts", "unknown_facts"],
+          "properties": {
+            "world_id": {"type": "string", "minLength": 1},
+            "version": {"type": "integer", "minimum": 0},
+            "facts": {"type": "array", "items": {"type": "object"}},
+            "unknown_facts": {"type": "array", "items": {"type": "object"}},
+            "scene_canon": {"type": "object"}
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
@@ -186,9 +214,29 @@
               "type": "array",
               "items": {"type": "string", "minLength": 1}
             },
-            "item_states": {"type": "object"}
+            "item_states": {"type": "object"},
+            "player_fact_reports": {
+              "type": "array",
+            "maxItems": 32,
+              "items": {"type": "object"}
+            },
+            "unknown_facts": {
+              "type": "array",
+              "maxItems": 8,
+              "items": {"type": "object"}
+            }
           },
           "additionalProperties": false
+        },
+        "player_fact_reports": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {"type": "object"}
+        },
+        "unknown_facts": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {"type": "object"}
         }
       },
       "additionalProperties": false
@@ -328,6 +376,7 @@
         "required_assertions",
         "forbidden_assertions",
         "must_not_be_vague",
+        "response_contract",
         "unsupported_detail_policy"
       ],
       "properties": {

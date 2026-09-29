@@ -13,7 +13,7 @@ from runtime.adapters.gemma_nf4 import (
 )
 from runtime.adapters.local_bge import BgeBackend, ManifestBgeEncoder
 from runtime.adapters.qwen3_reranker import LocalQwen3Reranker, RerankerBackend
-from runtime.gemma_nf4_assets import LocalGemmaNF4Package
+from runtime.gemma_nf4_assets import GEMMA4_V3_2611_MODEL_ID, LocalGemmaNF4Package
 
 from .memory_proposer import LlamaCppHeroineMemoryProposer
 from .memory_repository import HeroineMemoryRepositoryFactory
@@ -98,6 +98,8 @@ def build_gemma_nf4_world_mind_stack(
         backend,
         identity=model_identity,
         mode_profiles=mode_profiles,
+        game_reply_json_contract=True,
+        game_reply_compact_v3=identity.model_id == GEMMA4_V3_2611_MODEL_ID,
     )
     memory_proposer = LlamaCppHeroineMemoryProposer(
         backend,

@@ -25,6 +25,8 @@ u.GetParent.argtypes=[W.HWND];u.GetParent.restype=W.HWND
 u.GetWindow.argtypes=[W.HWND,C.c_uint];u.GetWindow.restype=W.HWND
 u.GetWindowLongW.argtypes=[W.HWND,C.c_int];u.GetWindowLongW.restype=C.c_long
 u.FindWindowExW.argtypes=[W.HWND,W.HWND,W.LPCWSTR,W.LPCWSTR];u.FindWindowExW.restype=W.HWND
+u.IsWindowVisible.argtypes=[W.HWND];u.IsWindowVisible.restype=W.BOOL
+u.SendMessageTimeoutW.argtypes=[W.HWND,W.UINT,W.WPARAM,W.LPARAM,W.UINT,W.UINT,C.POINTER(C.c_size_t)]
 u.PostMessageW.argtypes=[W.HWND,W.UINT,W.WPARAM,W.LPARAM];u.PostMessageW.restype=W.BOOL
 
 def owner(hwnd):
@@ -65,8 +67,13 @@ def wallpaper(pid):
     parent=u.GetParent(h);style=u.GetWindowLongW(h,-16)&0xffffffff
     if not parent or not(style&0x40000000) or style&0x00c00000:return None
     icon=u.FindWindowExW(parent,None,'SHELLDLL_DefView',None)
-    if not icon or u.GetWindow(h,3)!=icon:return None
-    return {'hwnd':h,'parent':parent,'style':hex(style),'above':cls(icon)}
+    icon_list=u.FindWindowExW(icon,None,'SysListView32',None) if icon else None
+    if (not icon or not icon_list or not u.IsWindowVisible(icon)
+            or not u.IsWindowVisible(icon_list) or u.GetWindow(h,3)!=icon):return None
+    count=C.c_size_t()
+    u.SendMessageTimeoutW(icon_list,0x1004,0,0,2,200,C.byref(count))
+    return {'hwnd':h,'parent':parent,'style':hex(style),'above':cls(icon),
+            'icon_view_visible':True,'icon_count':count.value}
 
 observations=[]
 door_observations=[]

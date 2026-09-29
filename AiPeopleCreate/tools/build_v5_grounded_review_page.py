@@ -1,4 +1,4 @@
-"""Build the human-review page for the V5 grounded 80-row spot check."""
+"""Build the human-review page for a V5 grounded spot-check set."""
 
 from __future__ import annotations
 
@@ -71,8 +71,8 @@ def load_rows(root: Path) -> list[dict]:
                 "auto_pass": review.get("approved") is True,
             }
         )
-    if len(rows) != 80:
-        raise RuntimeError(f"expected 80 spot-check rows, got {len(rows)}")
+    if not rows:
+        raise RuntimeError("spot-check set is empty")
     return rows
 
 

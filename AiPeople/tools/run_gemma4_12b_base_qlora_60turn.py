@@ -181,6 +181,7 @@ def _run_arm(
     temperature: float,
     top_p: float,
     repetition_penalty: float,
+    adapter_sha256: str,
 ) -> dict[str, Any]:
     partial_path = output_dir / f"{key}_responses.partial.jsonl"
     turns = _load_jsonl(partial_path) if partial_path.is_file() else []
@@ -241,7 +242,7 @@ def _run_arm(
         "label": label,
         "model": "google/gemma-4-12B-it",
         "adapter_enabled": adapter_enabled,
-        "adapter_sha256": EXPECTED_ADAPTER_SHA256 if adapter_enabled else None,
+        "adapter_sha256": adapter_sha256 if adapter_enabled else None,
         "surface": "Transformers 5.5 + Unsloth bitsandbytes NF4, Gemma 4 normal chat template",
         "turns": turns,
     }
@@ -294,15 +295,20 @@ def main() -> int:
     parser.add_argument("--temperature", type=float, default=0.75)
     parser.add_argument("--top-p", type=float, default=0.9)
     parser.add_argument("--repetition-penalty", type=float, default=1.1)
+    parser.add_argument("--adapter-path", type=Path, default=ADAPTER_PATH)
+    parser.add_argument("--expected-adapter-sha256", default=EXPECTED_ADAPTER_SHA256)
+    parser.add_argument("--max-seq-length", type=int, default=4096)
     args = parser.parse_args()
     if not 1 <= args.limit <= 60:
         raise ValueError("--limit must be between 1 and 60")
     output_dir = Path(args.output_dir).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
-    adapter_file = ADAPTER_PATH / "adapter_model.safetensors"
+    adapter_path = args.adapter_path.resolve()
+    adapter_file = adapter_path / "adapter_model.safetensors"
     if _sha256(FROZEN_INPUTS) != EXPECTED_INPUT_SHA256:
         raise ValueError("frozen 60-turn input SHA256 mismatch")
-    if _sha256(adapter_file) != EXPECTED_ADAPTER_SHA256:
+    adapter_sha256 = _sha256(adapter_file)
+    if adapter_sha256 != args.expected_adapter_sha256.lower():
         raise ValueError("trained Adapter SHA256 mismatch")
     inputs = _load_jsonl(FROZEN_INPUTS)
     if len(inputs) != 60 or [item["ordinal"] for item in inputs] != list(range(1, 61)):
@@ -312,8 +318,8 @@ def main() -> int:
     from unsloth.chat_templates import get_chat_template
 
     model, tokenizer = FastModel.from_pretrained(
-        model_name=str(ADAPTER_PATH),
-        max_seq_length=4096,
+        model_name=str(adapter_path),
+        max_seq_length=args.max_seq_length,
         dtype=torch.bfloat16,
         load_in_4bit=True,
         text_only=True,
@@ -335,6 +341,7 @@ def main() -> int:
         temperature=args.temperature,
         top_p=args.top_p,
         repetition_penalty=args.repetition_penalty,
+        adapter_sha256=adapter_sha256,
     )
     qlora = _run_arm(
         model,
@@ -349,6 +356,7 @@ def main() -> int:
         temperature=args.temperature,
         top_p=args.top_p,
         repetition_penalty=args.repetition_penalty,
+        adapter_sha256=adapter_sha256,
     )
     if args.limit != 60:
         probe = {"status": "probe_completed", "turns_per_arm": args.limit, "base": base, "qlora": qlora}
@@ -395,7 +403,8 @@ def main() -> int:
                 "seed_base": SEED_BASE,
                 "thinking": False,
             },
-            "adapter_sha256": EXPECTED_ADAPTER_SHA256,
+            "adapter_sha256": adapter_sha256,
+            "adapter_path": str(adapter_path),
             "limitations": [
                 "Each arm keeps its own generated history after turn 1, matching an actual multi-turn trajectory.",
                 "Arms run sequentially in fixed order; this does not eliminate every order effect.",
@@ -424,7 +433,7 @@ def main() -> int:
                 "generated_at": generated_at,
                 "report_sha256": _sha256(report_path),
                 "input_sha256": EXPECTED_INPUT_SHA256,
-                "adapter_sha256": EXPECTED_ADAPTER_SHA256,
+                "adapter_sha256": adapter_sha256,
             },
             ensure_ascii=False,
             indent=2,

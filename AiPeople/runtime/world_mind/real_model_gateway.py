@@ -7,7 +7,7 @@ from copy import deepcopy
 from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
-from typing import Protocol, runtime_checkable
+from typing import Awaitable, Callable, Protocol, runtime_checkable
 
 from runtime.adapters.llama_cpp import GenerationOptions
 
@@ -198,6 +198,8 @@ class LlamaCppWorldMindModel:
         identity: WorldMindModelIdentity,
         mode_profiles: Mapping[str, WorldMindModeProfile] | None = None,
         attempt_observer: ModelAttemptObserver | None = None,
+        game_reply_json_contract: bool = False,
+        game_reply_compact_v3: bool = False,
     ) -> None:
         if not isinstance(backend, WorldMindChatBackend):
             raise TypeError("backend must implement WorldMindChatBackend")
@@ -223,6 +225,14 @@ class LlamaCppWorldMindModel:
         self.identity = identity
         self.mode_profiles = profiles
         self.attempt_observer = attempt_observer
+        if not isinstance(game_reply_json_contract, bool):
+            raise TypeError("game_reply_json_contract must be bool")
+        self.game_reply_json_contract = game_reply_json_contract
+        if not isinstance(game_reply_compact_v3, bool):
+            raise TypeError("game_reply_compact_v3 must be bool")
+        if game_reply_compact_v3 and not game_reply_json_contract:
+            raise ValueError("V3 context requires the reply JSON contract")
+        self.game_reply_compact_v3 = game_reply_compact_v3
         self._schemas = {
             FOREGROUND_SEMANTIC_TURN: _load_schema(
                 "foreground_semantic_turn_m1.schema.json"
@@ -309,17 +319,108 @@ class LlamaCppWorldMindModel:
 
     async def generate_reply(self, request: GameReplyRequest) -> GameReplyResult:
         self._validate_prompt_identity(request.prompt)
-        text = await self._run_text(
-            GAME_REPLY,
-            request.snapshot.request_id,
-            build_game_reply_messages(request),
+        messages = build_game_reply_messages(
+            request,
+            reply_json_contract=self.game_reply_json_contract,
+            compact_v3=self.game_reply_compact_v3,
         )
+        if self.game_reply_json_contract:
+            text = await self._run_reply_json(
+                request.snapshot.request_id,
+                messages,
+            )
+            if request.on_delta is not None:
+                callback_result = request.on_delta(text)
+                if asyncio.iscoroutine(callback_result):
+                    await callback_result
+        elif request.on_delta is not None:
+            text = await self._run_text_stream(
+                GAME_REPLY,
+                request.snapshot.request_id,
+                messages,
+                request.on_delta,
+            )
+        else:
+            text = await self._run_text(GAME_REPLY, request.snapshot.request_id, messages)
         return GameReplyResult(
             text=text,
             fact_assertions=request.fact_assertions,
             snapshot_id=request.snapshot.snapshot_id,
             approved_mind_state_version=request.approved_state.version,
         )
+
+    async def _run_reply_json(
+        self,
+        request_id: str,
+        messages: Sequence[Mapping[str, str]],
+    ) -> str:
+        profile = self.mode_profiles[GAME_REPLY]
+        response_format = {
+            "type": "json_schema",
+            "json_schema": {
+                "name": "game_reply_v1",
+                "strict": True,
+                "schema": {
+                    "type": "object",
+                    "properties": {
+                        "reply": {"type": "string", "minLength": 1},
+                    },
+                    "required": ["reply"],
+                    "additionalProperties": False,
+                },
+            },
+        }
+        last_error: BaseException | None = None
+        for attempt in range(profile.retries + 1):
+            try:
+                async with asyncio.timeout(profile.timeout_seconds):
+                    raw_text = await self.backend.complete_chat(
+                        request_id=f"{request_id}:{GAME_REPLY}:{attempt}",
+                        messages=messages,
+                        options=profile.generation_options(),
+                        # NF4 turns response_format into an extra system suffix.
+                        # V3 already carries its frozen training contract; strict
+                        # JSON validation below remains mandatory in both paths.
+                        response_format=None if self.game_reply_compact_v3 else response_format,
+                    )
+                value = _decode_json_object(raw_text)
+                if set(value) != {"reply"}:
+                    raise WorldMindModelOutputError(
+                        "reply JSON must contain only reply",
+                        mode=GAME_REPLY,
+                    )
+                text = _plain_reply_text(value["reply"])
+                record_attempt(
+                    self.attempt_observer,
+                    request_id=request_id,
+                    mode=GAME_REPLY,
+                    attempt=attempt,
+                )
+                return text
+            except asyncio.CancelledError as error:
+                record_attempt(
+                    self.attempt_observer,
+                    request_id=request_id,
+                    mode=GAME_REPLY,
+                    attempt=attempt,
+                    error=error,
+                )
+                raise
+            except BaseException as error:
+                last_error = error
+                record_attempt(
+                    self.attempt_observer,
+                    request_id=request_id,
+                    mode=GAME_REPLY,
+                    attempt=attempt,
+                    error=error,
+                )
+        assert last_error is not None
+        raise WorldMindModelError(
+            f"{GAME_REPLY} failed after retries",
+            code=classify_model_failure(last_error),
+            mode=GAME_REPLY,
+        ) from last_error
 
     async def judge_turn(self, request: JudgeRequest) -> JudgeResult:
         self._validate_prompt_identity(request.prompt)
@@ -564,6 +665,66 @@ class LlamaCppWorldMindModel:
         assert last_error is not None
         raise WorldMindModelError(
             f"{mode} failed after retries",
+            code=classify_model_failure(last_error),
+            mode=mode,
+        ) from last_error
+
+    async def _run_text_stream(
+        self,
+        mode: str,
+        request_id: str,
+        messages: Sequence[Mapping[str, str]],
+        on_delta: Callable[[str], Awaitable[None] | None],
+    ) -> str:
+        """Run a text generation while forwarding visible chunks when supported."""
+        profile = self.mode_profiles[mode]
+        stream_chat = getattr(self.backend, "stream_chat", None)
+        if not callable(stream_chat):
+            text = await self._run_text(mode, request_id, messages)
+            result = on_delta(text)
+            if asyncio.iscoroutine(result):
+                await result
+            return text
+        last_error: BaseException | None = None
+        for attempt in range(profile.retries + 1):
+            try:
+                async with asyncio.timeout(profile.timeout_seconds):
+                    raw_text = await stream_chat(
+                        request_id=f"{request_id}:{mode}:{attempt}",
+                        messages=messages,
+                        options=profile.generation_options(),
+                        on_delta=on_delta,
+                        response_format=None,
+                    )
+                text = _plain_reply_text(raw_text)
+                record_attempt(
+                    self.attempt_observer,
+                    request_id=request_id,
+                    mode=mode,
+                    attempt=attempt,
+                )
+                return text
+            except asyncio.CancelledError as error:
+                record_attempt(
+                    self.attempt_observer,
+                    request_id=request_id,
+                    mode=mode,
+                    attempt=attempt,
+                    error=error,
+                )
+                raise
+            except BaseException as error:
+                last_error = error
+                record_attempt(
+                    self.attempt_observer,
+                    request_id=request_id,
+                    mode=mode,
+                    attempt=attempt,
+                    error=error,
+                )
+        assert last_error is not None
+        raise WorldMindModelError(
+            f"{mode} streaming generation failed after retries",
             code=classify_model_failure(last_error),
             mode=mode,
         ) from last_error

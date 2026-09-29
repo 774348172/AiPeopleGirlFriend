@@ -92,17 +92,19 @@ Unity 是世界的唯一事实源与执行者，本地监听 `127.0.0.1:8770`（
 
 构建版为 **Windows 桌面背景程序**：主进程的 3D 房间位于桌面图标下方；独立轻量小窗负责对话和房间控制。
 
-2026-09-16 最新本地验收包：`Builds/CatGirlfriend-FurnitureBatchFix-20260916/CatGirlfriend.exe`。
-家具合批修复与 21/21 回归结果见 [家具验收记录](output/furniture-batching-20260916/RESULTS.md)。构建包不随源码上传。
+2026-09-29 壁纸与模型自动启动验证包：`Builds/CatGirlfriend-Wallpaper-20260929-v7/CatGirlfriend.exe`。
+Unity 在首帧绘制前挂载到桌面图标下方；启动时检查本机模型服务，未运行则按
+`Assets/StreamingAssets/aipeople_config.json` 中的脚本与 Python 路径自动启动，退出时关闭自己启动的服务。
+模型仍在独立的本机进程运行；已有健康服务会被复用，Unity 退出时不会关闭它。
 菜单构建与房屋预览共用 `AiPeoplePlayerBuilder.BuildWindowsPlayerAtPath`，固定包含
 `PlayerBootstrap → Apartment → ChatWindow` 三个场景，由启动参数选择进程角色。
 构建前校验轻量入口的资源依赖，采用 D3D11 优先，构建后恢复编辑器图形设置。
 `AIPEOPLE_BUILD_PATH` 可指定新输出目录；未设置时菜单构建仍输出 `Builds/CatGirlfriend`。
-本轮结果与验证边界见 [发布入口验收](output/release-entry-20260916/RESULTS.md)。
+旧发布入口验收见 [发布入口验收](output/release-entry-20260916/RESULTS.md)。
 
 ```bat
 :: 最新已验证构建（旧包保留）
-D:\AIPeopleGit\UnityClient\Builds\CatGirlfriend-EntryFix-20260916\CatGirlfriend.exe
+D:\AIPeopleGit\UnityClient\Builds\CatGirlfriend-Wallpaper-20260929-v7\CatGirlfriend.exe
 :: 重新构建：Unity 菜单 AiPeople/构建 Windows 播放器，或
 :: Unity.exe -batchmode -quit -projectPath AiGirlFriendUnity -executeMethod AiPeople.EditorTools.AiPeoplePlayerBuilder.BuildWindowsPlayer
 ```
@@ -176,35 +178,3 @@ python -m pytest tests\world_mind\test_remote_game_world.py -q
 最新家具布局包：`Builds/CatGirlfriend-Furnished-20260914/CatGirlfriend.exe`，结果见 [家具施工验证](output/apartment-furnishing-layout/RESULTS.md)。保留前版 `CatGirlfriend-UiVerified-20260914` 及其 [小窗实测记录](output/ui-latency/RESULTS.md)。使用新版前先退出旧播放器，避免单实例保护唤出旧版。
 
 家具调整后的相关回归 29 项通过。用户已明确跳过 8 小时稳定性测试，记为未测试并继续施工；目标 12GB 显卡与实际后端同跑仍未验证。该决定覆盖上文历史待验描述。
-
-
-## 从 GitHub 获取本次 Unity 基线
-
-本目录位于 `774348172/AiPeopleGirlFriend` 仓库的 `UnityClient/` 下；仓库根目录既有后端保持原样。
-本次上传分支为 `codex/unity-client-20260916`，包含 Unity 6000.1.1f1 工程、Assets 与 .meta、包锁定文件、项目设置、工具和源模型 ZIP。
-
-```powershell
-git lfs install
-$env:GIT_LFS_SKIP_SMUDGE = '1'
-git clone --branch codex/unity-client-20260916 https://github.com/774348172/AiPeopleGirlFriend.git
-Remove-Item Env:GIT_LFS_SKIP_SMUDGE
-cd AiPeopleGirlFriend
-git lfs pull --include='UnityClient/**'
-```
-
-用 Unity Hub 打开 `UnityClient/AiGirlFriendUnity`。先安装 Git LFS 并下载完整资源，不能直接把 GitHub Download ZIP 中的 LFS 指针当作模型使用。
-
-后台服务代码位于仓库根目录的 `AiPeople/`；上文机器绝对路径是原开发环境示例，其他机器请替换为本机克隆目录。此次仅添加 Unity 工程，没有同步开发机上后端的其他未发布修改，也不代表远端旧后端与当前客户端已经做过端到端验收。
-
-上传检查还发现远端原有 `AiPeople/training_packages/models/Qwen3.5-4B/tokenizer.json` 的 LFS 对象返回 404。这是后端原有缺失，未在本次 Unity 上传中修改；上面的下载命令限定为 UnityClient，避免被该后端缺失项阻断。
-
-可在 UnityClient 目录用 PowerShell 构建（编辑器路径按安装位置调整）：
-
-```powershell
-$projectPath = (Resolve-Path AiGirlFriendUnity).Path
-$env:AIPEOPLE_BUILD_PATH = Join-Path (Get-Location) 'Builds/CatGirlfriend/CatGirlfriend.exe'
-$buildLog = Join-Path (Get-Location) 'build.log'
-& 'D:/unityeditor/6000.1.1f1/Editor/Unity.exe' -batchmode -quit -projectPath $projectPath -executeMethod AiPeople.EditorTools.AiPeoplePlayerBuilder.BuildWindowsPlayer -logFile $buildLog
-```
-
-已有 PlayMode 结果保留在 `output/` 的指定 XML/RESULTS 文件中。其余日志、历史截图、生成中间产物仅在开发机保留；历史文档中的这些本地证据链接不一定随源码提供。Library、Temp、Builds、工具临时依赖和聊天存档未纳入本次上传。

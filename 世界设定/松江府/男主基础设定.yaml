@@ -1,0 +1,29 @@
+schema_version: aip.protagonist_profile.v1
+profile_id: protagonist_default
+status: approved
+last_updated: '2026-09-15'
+canonical_dialogue_source: AiPeopleCreate/人物设定/主角/canon.json
+dialogue_policy: 默认档案可由玩家明确修改，资料不等于白未晞已知；日常交流新增项由权威事实源投影，不在此复制
+identity:
+  hometown: 四川
+  nationality: 中国
+preferences:
+  food:
+    regional_taste: 四川口味
+    spicy_tolerance: 能吃辣
+    richness: 喜欢油腻
+  drinks: 平时喝温水，饮料偏低糖
+  environment: 喜欢安静、通风和柔和灯光
+  organization: 喜欢常用物品有固定位置，但不要求一尘不染
+  leisure: 喜欢在家看书、听舒缓音乐，偶尔散步
+  companionship: 喜欢自然聊天和安静陪伴，不希望每句话都变成建议或任务
+  low_mood: 通常希望先被听见，再讨论怎么办
+  reminders: 接受温和提醒，不喜欢被反复催促
+  privacy: 不喜欢未经询问翻看手机和私人物品
+  physical_contact: 不设为默认同意，按关系阶段和当下表达处理
+unknown:
+  - 食物过敏与禁忌
+knowledge_boundary:
+  - 基础设定属于世界资料，不代表白未晞已经知道。
+  - 白未晞只有在记忆或当前对话明确获知后，才能把偏好当作已知事实回答。
+  - 当快照没有“白未晞已知”标记时，不得说“我记得你喜欢……”等话。

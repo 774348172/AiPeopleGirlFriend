@@ -22,6 +22,8 @@ namespace AiPeople.World
 
         public GameWorldState State { get; private set; }
         public bool IsRunning { get; private set; }
+        public Func<string> SnapshotProvider;
+        public GameTimeline Timeline;
 
         private TcpListener _listener;
         private Thread _thread;
@@ -242,7 +244,20 @@ namespace AiPeople.World
 
             if (method == "GET" && path == "/game/project")
             {
-                return InvokeOnMainThread(() => State.ProjectJson());
+                return InvokeOnMainThread(() => { SnapshotProvider?.Invoke(); return State.ProjectJson(); });
+            }
+            if (method == "GET" && path == "/game/snapshot")
+                return InvokeOnMainThread(() => SnapshotProvider != null ? SnapshotProvider() : "{}");
+            if (method == "POST" && path == "/game/clock")
+            {
+                bool accepted = false;
+                InvokeOnMainThread(() => {
+                    var control = JsonUtility.FromJson<GameClockData>(body);
+                    if (control != null && Timeline != null)
+                        accepted = Timeline.Control(control.paused, control.time_scale);
+                });
+                if (!accepted) status = 400;
+                return accepted ? "{\"accepted\":true}" : "{\"accepted\":false,\"detail\":\"时钟未同步或倍速超出0.1至8范围\"}";
             }
 
             if (method == "POST" && path == "/game/execute_action")

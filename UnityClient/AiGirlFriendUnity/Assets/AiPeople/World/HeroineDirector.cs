@@ -15,6 +15,9 @@ namespace AiPeople.World
         public float walkSpeed = 1.1f;
         public float turnSpeed = 8f;
         public float arriveDistance = 0.12f;
+        public GameTimeline Timeline;
+        public KitchenDevice Stove;
+        public KitchenDevice Hood;
 
         private GameWorldState _state;
         private Transform _heroine;
@@ -25,8 +28,23 @@ namespace AiPeople.World
         private Action<string> _toast;
 
         private readonly Dictionary<string, Vector3> _anchors = new Dictionary<string, Vector3>();
-        private readonly HashSet<string> _tracked = new HashSet<string>();
-        private readonly List<GameObject> _entities = new List<GameObject>();
+        private readonly List<WorldEntity> _entities = new List<WorldEntity>();
+        private string _activeActionId;
+        private bool _restoreStove, _restoreHood;
+        private bool _cookingStarted;
+        private int _stoveManualRevision, _hoodManualRevision;
+        public bool UsesImportedLayout { get; set; }
+        public Transform ActorTransform => _heroine;
+        public string Motion => Timeline != null && (!Timeline.Ready || Timeline.Paused) ? "idle"
+            : IsWaitingForPassage ? "blocked" : IsWalking ? "walking" : "idle";
+        public void RegisterEntity(WorldEntity entity) { if (entity != null && !_entities.Contains(entity)) _entities.Add(entity); }
+        public WorldEntity FindEntity(string id) => _entities.Find(e => e != null && e.entityId == id);
+        public EntityFactData[] CaptureEntities(Transform player)
+        {
+            _entities.RemoveAll(e => e == null);
+            return _entities.ConvertAll(e => e.Capture(UsesImportedLayout,
+                e.ownerId == "baiweixi" ? _heroine : e.ownerId == "protagonist" ? player : null)).ToArray();
+        }
         private string _walkingTo = string.Empty;
         private Vector3 _walkTarget;
         private ApartmentNavigation _navigation;
@@ -36,8 +54,6 @@ namespace AiPeople.World
         private Vector3 _destination;
         public bool IsWaitingForPassage { get; private set; }
         private string _currentState = string.Empty;
-        private float _snapshotTimer;
-        private List<PendingAction> _pendingCache = new List<PendingAction>();
 
         public void Configure(
             GameWorldState state,
@@ -69,6 +85,7 @@ namespace AiPeople.World
         public bool TryWalkToInteriorPoint(Vector3 target)
         {
             if (_state == null || _heroine == null || _navigation == null) return false;
+            if (_state.PendingSnapshot().Count != 0) return false;
             return StartWalking(target, "interior");
         }
 
@@ -105,64 +122,122 @@ namespace AiPeople.World
                 return;
             }
 
-            foreach (PendingAction completed in _state.Tick(Time.deltaTime))
+            var pending = _state.PendingSnapshot();
+            float delta = Timeline != null ? Timeline.Delta : Time.deltaTime;
+            if (Timeline != null && (!Timeline.Ready || Timeline.Paused || delta <= 0)) return;
+            var action = pending.Count > 0 ? pending[0] : null;
+            if (action != null && _activeActionId != action.instanceId)
             {
-                OnCompleted(completed);
+                _activeActionId = action.instanceId;
+                if (!OnStarted(action)) { _activeActionId = null; return; }
             }
-
-            _snapshotTimer -= Time.deltaTime;
-            if (_snapshotTimer <= 0f)
+            Walk(delta);
+            if (action == null) { _activeActionId = null; return; }
+            if (IsWalking)
             {
-                _snapshotTimer = 0.1f;
-                _pendingCache = _state.PendingSnapshot();
+                _state.SetActionStatus(action.instanceId, IsWaitingForPassage ? "blocked" : "moving");
+                return;
             }
-
-            List<PendingAction> pending = _pendingCache;
-            var active = new HashSet<string>();
-            foreach (PendingAction action in pending)
+            if (action.actionId == "move_to" || action.actionId == "pick_up_item")
             {
-                active.Add(action.actionId);
-                if (_tracked.Add(action.actionId))
-                {
-                    OnStarted(action);
-                }
+                _state.ReadyForConfirmation(action.instanceId);
+                OnCompleted(action);
+                return;
             }
-
-            _tracked.RemoveWhere(id => !active.Contains(id));
-            Walk(Time.deltaTime);
+            if (action.actionId == "cook_meal")
+            {
+                if (!_cookingStarted) { StartCookingDevices(); _cookingStarted = true; }
+                if (Stove == null || !Stove.IsOn) { Fail(action, "灶台已关闭，做饭未完成"); return; }
+            }
+            _state.SetActionStatus(action.instanceId, "running");
+            foreach (PendingAction ready in _state.Tick(delta)) OnCompleted(ready);
         }
 
-        private void OnStarted(PendingAction action)
+        private bool OnStarted(PendingAction action)
         {
-            if (!string.IsNullOrEmpty(action.travelToLocationId)
-                && _anchors.TryGetValue(action.travelToLocationId, out Vector3 target))
+            if (action.actionId == "cook_meal") _cookingStarted = false;
+            Vector3 target;
+            if (action.actionId == "pick_up_item")
             {
-                if (!StartWalking(target, action.travelToLocationId))
-                {
-                    Debug.LogWarning("[AiPeople] 房屋内没有可达的表现路径：" + action.travelToLocationId);
-                }
+                action.parameters.TryGetValue("item_id", out var id);
+                var entity = FindEntity(id);
+                if (entity == null || !entity.canPickUp || entity.ownerId.Length != 0)
+                    return Fail(action, "物品不存在、不可拾取或已被持有");
+                // Approach beside the item, not through its supporting table.
+                var delta = _heroine.position - entity.transform.position;
+                delta.y = 0;
+                target = entity.transform.position + (delta.sqrMagnitude > .01f ? delta.normalized : Vector3.back)*.65f;
+                target.y = _heroine.position.y;
             }
-            else
-            {
-                PlayState("Idle");
-                _presentation?.SetWalking(false);
-            }
+            else if (!_anchors.TryGetValue(action.travelToLocationId, out target))
+                return Fail(action, "目标位置未登记");
+            if (!StartWalking(target, string.IsNullOrEmpty(action.travelToLocationId) ? action.instanceId : action.travelToLocationId))
+                return Fail(action, "没有可达路径，尚未到达目标");
+            _state.SetActionStatus(action.instanceId, "moving");
+            return true;
+        }
+
+        private bool Fail(PendingAction action, string reason)
+        {
+            if (action.actionId == "cook_meal") RestoreCookingDevices();
+            _state.ConfirmAction(action.instanceId, false, reason);
+            _walkingTo = string.Empty;
+            IsWaitingForPassage = false;
+            _presentation?.SetWalking(false);
+            PlayState("Idle");
+            _activeActionId = null;
+            _cookingStarted = false;
+            return false;
+        }
+
+        private void StartCookingDevices()
+        {
+            _restoreStove = Stove != null && !Stove.IsOn;
+            _restoreHood = Hood != null && !Hood.IsOn;
+            Stove?.SetRunning(true);
+            Hood?.SetRunning(true);
+            _stoveManualRevision = Stove != null ? Stove.ManualRevision : 0;
+            _hoodManualRevision = Hood != null ? Hood.ManualRevision : 0;
+        }
+
+        private void RestoreCookingDevices()
+        {
+            if (_restoreStove && Stove != null && Stove.ManualRevision == _stoveManualRevision)
+                Stove.SetRunning(false);
+            if (_restoreHood && Hood != null && Hood.ManualRevision == _hoodManualRevision)
+                Hood.SetRunning(false);
+            _restoreStove = _restoreHood = false;
         }
 
         private void OnCompleted(PendingAction action)
         {
-            _tracked.Remove(action.actionId);
-            if (!string.IsNullOrEmpty(action.spawnEntityId))
+            string resultId = "";
+            if (action.actionId == "pick_up_item")
             {
-                SpawnEntity(action.spawnEntityId);
+                action.parameters.TryGetValue("item_id", out var id);
+                var entity = FindEntity(id);
+                if (entity == null || !entity.canPickUp || entity.ownerId.Length != 0
+                    || Vector3.Distance(_heroine.position, new Vector3(entity.transform.position.x, _heroine.position.y, entity.transform.position.z)) > 1.1f)
+                { Fail(action, "拾取前校验失败，物品未转移"); return; }
+                entity.transform.SetParent(_heroine, true);
+                entity.transform.localPosition = new Vector3(0, 1f, .35f);
+                foreach (var collider in entity.GetComponentsInChildren<Collider>()) collider.enabled = false;
+                entity.ownerId = "baiweixi";
+                entity.state = "在白未晞手中";
+                resultId = entity.entityId;
             }
-
-            if (_pendingCache.Count == 0)
+            else if (!string.IsNullOrEmpty(action.spawnEntityId))
             {
-                _walkingTo = string.Empty;
-                _presentation?.SetWalking(false);
-                PlayState("Idle");
+                var entity = SpawnEntity(action.spawnEntityId);
+                if (entity == null) { Fail(action, "实体未能生成，动作未完成"); return; }
+                resultId = entity.entityId;
             }
+            if (action.actionId == "cook_meal") RestoreCookingDevices();
+            _state.ConfirmAction(action.instanceId, true, "执行器已确认结果", resultId);
+            _activeActionId = null;
+            _cookingStarted = false;
+            _presentation?.SetWalking(false);
+            PlayState("Idle");
         }
 
         private void Walk(float deltaSeconds)
@@ -208,6 +283,7 @@ namespace AiPeople.World
                     return;
                 }
                 _walkingTo = string.Empty;
+                _presentation?.SetWalking(false);
                 PlayState("Idle");
                 return;
             }
@@ -244,8 +320,10 @@ namespace AiPeople.World
             _currentState = stateName;
         }
 
-        private void SpawnEntity(string entityId)
+        private WorldEntity SpawnEntity(string entityId)
         {
+            _entities.RemoveAll(e => e == null);
+            if (_entities.Count >= 32 || _tableTop == null) return null;
             if (entityId == "bowl")
             {
                 var bowl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
@@ -256,9 +334,16 @@ namespace AiPeople.World
                 bowl.transform.localScale = new Vector3(0.18f, 0.03f, 0.18f);
                 bowl.GetComponent<MeshRenderer>().sharedMaterial =
                     MaterialLibrary.Get("Bowl", new Color(0.92f, 0.90f, 0.86f));
-                _entities.Add(bowl);
+                var entity = bowl.AddComponent<WorldEntity>();
+                entity.entityId = "bowl_" + Guid.NewGuid().ToString("N");
+                entity.displayName = "一碗热汤面";
+                entity.state = "在餐桌上";
+                entity.canPickUp = true;
+                RegisterEntity(entity);
                 _toast?.Invoke("桌上多了一碗热汤面。");
+                return entity;
             }
+            return null;
         }
     }
 }

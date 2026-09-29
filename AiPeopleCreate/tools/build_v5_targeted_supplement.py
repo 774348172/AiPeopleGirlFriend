@@ -14,9 +14,14 @@ sys.path.insert(0, str(ROOT))
 
 from data_gen_v4.runtime_grounded import evaluate_runtime_grounded_candidate  # noqa: E402
 from data_gen_v4.runtime_grounded.renderer import render_runtime_grounded_training_record  # noqa: E402
-from tools.build_v5_pilot_dataset import Concept, _scenario, generate_grounded  # noqa: E402
+from tools.build_v5_pilot_dataset import (
+    Concept,
+    _load_baiweixi_render_context,
+    _scenario,
+    generate_grounded,
+)  # noqa: E402
 
-SYSTEM_ANCHOR = "你是白未晞。只输出角色说出口的自然回复。"
+_, _, SYSTEM_ANCHOR = _load_baiweixi_render_context()
 
 UNKNOWN_CONCEPTS = (
     Concept("targeted.airpurifier.mode", "air_purifier", "空气净化器", "state", "自动模式运行", "已关闭"),

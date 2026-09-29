@@ -11,11 +11,13 @@ from .world_mind.contracts import _require_identifier
 
 
 GEMMA4_BASE_MODEL_ID = "google/gemma-4-12B-it"
+GEMMA4_V3_2611_MODEL_ID = "local/baiweixi-gemma-4-12B-v3-2611-epoch1"
 GEMMA4_FULL_MIXED_MODEL_ID = "local/baiweixi-gemma-4-12B-v5-full-mixed"
 GEMMA4_TARGETED_MODEL_ID = "local/baiweixi-gemma-4-12B-v5-targeted"
 # The default runtime identity is the promoted production Adapter.
-GEMMA4_MODEL_ID = GEMMA4_FULL_MIXED_MODEL_ID
+GEMMA4_MODEL_ID = GEMMA4_V3_2611_MODEL_ID
 GEMMA4_ADAPTER_IDS = {
+    GEMMA4_V3_2611_MODEL_ID: "baiweixi-v3-2611-epoch1-final-adapter",
     GEMMA4_FULL_MIXED_MODEL_ID: "baiweixi-v5-full-mixed-adapter",
     GEMMA4_TARGETED_MODEL_ID: "baiweixi-v5-targeted-adapter",
 }
@@ -67,7 +69,9 @@ class LocalGemmaNF4Package:
         if manifest.get("quantization") != "bitsandbytes-nf4-runtime+lora":
             raise RealAssetError("Gemma NF4 quantization profile is invalid")
 
-        model_root = _absolute_directory(manifest.get("model_root"), "model_root")
+        model_root = _manifest_directory(
+            manifest.get("model_root"), "model_root", path.parent
+        )
         model_files = _verify_files(model_root, manifest.get("model_files"))
         required = {
             "model.safetensors",
@@ -80,8 +84,8 @@ class LocalGemmaNF4Package:
         if not required <= relative:
             raise RealAssetError("Gemma NF4 package is missing required model files")
 
-        adapter_root = _absolute_directory(
-            manifest.get("adapter_root"), "adapter_root"
+        adapter_root = _manifest_directory(
+            manifest.get("adapter_root"), "adapter_root", path.parent
         )
         adapter_files = _verify_files(adapter_root, manifest.get("adapter_files"))
         required_adapter = {
@@ -134,8 +138,12 @@ class LocalGemmaNF4Package:
 def canonical_gemma_nf4_artifact_sha256(manifest_path: str | Path) -> str:
     path = Path(manifest_path).resolve()
     manifest = _load_manifest(path)
-    model_root = _absolute_directory(manifest.get("model_root"), "model_root")
-    adapter_root = _absolute_directory(manifest.get("adapter_root"), "adapter_root")
+    model_root = _manifest_directory(
+        manifest.get("model_root"), "model_root", path.parent
+    )
+    adapter_root = _manifest_directory(
+        manifest.get("adapter_root"), "adapter_root", path.parent
+    )
     return _canonical_artifact_sha256(
         manifest, model_root, adapter_root, verify_files=True
     )
@@ -168,7 +176,7 @@ def _runtime_profile(value: Any) -> GemmaNF4RuntimeProfile:
     attention = _text(
         value.get("attention_implementation"), "runtime.attention_implementation"
     )
-    if dtype != "bfloat16" or device != "cuda" or attention != "eager":
+    if dtype != "bfloat16" or device != "cuda" or attention not in {"eager", "sdpa"}:
         raise RealAssetError("Gemma NF4 runtime profile does not match the frozen stack")
     return GemmaNF4RuntimeProfile(max_seq_length, dtype, device, attention)
 
@@ -259,16 +267,23 @@ def _verify_adapter_profile(adapter_root: Path, model_root: Path) -> None:
     if config.get("inference_mode") is not True:
         raise RealAssetError("Gemma NF4 Adapter must freeze inference_mode=true")
     configured_base = config.get("base_model_name_or_path")
-    if not isinstance(configured_base, str) or Path(configured_base).resolve() != model_root:
+    if not isinstance(configured_base, str) or not configured_base.strip():
+        raise RealAssetError("Gemma NF4 Adapter base model path mismatch")
+    configured_path = Path(configured_base)
+    if not configured_path.is_absolute():
+        configured_path = adapter_root / configured_path
+    if configured_path.resolve() != model_root:
         raise RealAssetError("Gemma NF4 Adapter base model path mismatch")
 
 
-def _absolute_directory(value: Any, field: str) -> Path:
+def _manifest_directory(value: Any, field: str, manifest_root: Path) -> Path:
     if not isinstance(value, str) or not value.strip():
         raise RealAssetError(f"Gemma NF4 {field} must be explicit")
     path = Path(value)
-    if not path.is_absolute() or not path.is_dir():
-        raise RealAssetError(f"Gemma NF4 {field} must be an existing absolute directory")
+    if not path.is_absolute():
+        path = manifest_root / path
+    if not path.is_dir():
+        raise RealAssetError(f"Gemma NF4 {field} must be an existing directory")
     return path.resolve()
 
 

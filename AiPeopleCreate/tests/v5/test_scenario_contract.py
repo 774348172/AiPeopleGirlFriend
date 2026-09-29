@@ -108,6 +108,15 @@ def test_response_contract_is_task_consistent_when_present(scenarios: list[dict]
     validate_scenario(subject)
 
 
+def test_response_contract_is_required_for_every_scenario(scenarios: list[dict]) -> None:
+    value = copy.deepcopy(scenarios[0])
+    del value["oracle_view"]["response_contract"]
+    errors = scenario_contract_errors(value)
+    assert any("response_contract" in error and "required" in error for error in errors)
+    with pytest.raises(ScenarioContractError):
+        validate_scenario(value)
+
+
 def test_exactly_two_unique_scenarios_per_task(scenarios: list[dict]) -> None:
     counts = Counter(item["task_type"] for item in scenarios)
     assert set(counts) == TASK_TYPES
@@ -249,14 +258,13 @@ def test_teacher_target_schema_accepts_minimal_valid_target() -> None:
     "value",
     [
         {"reply": "", "declared_claims": []},
-        {"reply": "可以。"},
         {"reply": "可以。", "declared_claims": [], "scenario": {}},
         {
             "reply": "是星期六上午十点。",
             "declared_claims": [{**_claim(), "source_fact_ids": []}],
         },
     ],
-    ids=["empty_reply", "missing_claims", "teacher_generates_scenario", "ungrounded_claim"],
+    ids=["empty_reply", "teacher_generates_scenario", "ungrounded_claim"],
 )
 def test_teacher_target_schema_rejects_invalid_targets(value: dict) -> None:
     assert _schema_errors("runtime_grounded_teacher_target.schema.json", value)

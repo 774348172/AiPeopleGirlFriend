@@ -10,9 +10,15 @@ from runtime._real_assets import (
     LocalBgePackage,
     LocalQwen35Package,
     LocalRealAssetBundle,
+    LocalRetrievalAssetBundle,
     RealAssetError,
 )
-from tests.real_select_e2e._assets import make_bge_package, make_bundle, make_reply_package
+from tests.real_select_e2e._assets import (
+    make_bge_package,
+    make_bundle,
+    make_reranker_package,
+    make_reply_package,
+)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -83,6 +89,39 @@ def test_bundle_requires_absolute_paths_and_exact_component_hashes(tmp_path) -> 
     bundle_path.write_text(json.dumps(manifest), encoding="utf-8")
     with pytest.raises(RealAssetError, match="component SHA256"):
         LocalRealAssetBundle.load(bundle_path)
+
+
+def test_retrieval_bundle_supports_movable_relative_paths(tmp_path) -> None:
+    source = tmp_path / "source package"
+    bge_root = make_bge_package(source / "bge")
+    reranker_root = make_reranker_package(source / "reranker")
+    bge = json.loads((bge_root / "bge_manifest.json").read_text(encoding="utf-8"))
+    reranker = json.loads(
+        (reranker_root / "reranker_manifest.json").read_text(encoding="utf-8")
+    )
+    manifest = {
+        "schema_version": 1,
+        "network_access_at_runtime": "forbidden",
+        "bge": {
+            "path": "bge",
+            "revision": bge["revision"],
+            "artifact_sha256": bge["artifact_sha256"],
+        },
+        "reranker": {
+            "path": "reranker",
+            "revision": reranker["revision"],
+            "artifact_sha256": reranker["artifact_sha256"],
+        },
+    }
+    manifest_path = source / "retrieval_assets.json"
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    moved = tmp_path / "moved package"
+    source.rename(moved)
+
+    bundle = LocalRetrievalAssetBundle.load(moved / manifest_path.name)
+
+    assert bundle.bge.root == (moved / "bge").resolve()
+    assert bundle.reranker.root == (moved / "reranker").resolve()
 
 
 @pytest.mark.parametrize(

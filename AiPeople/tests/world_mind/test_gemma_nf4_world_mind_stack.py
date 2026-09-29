@@ -87,6 +87,8 @@ def test_gemma_nf4_stack_binds_reply_identity_and_retrieval(tmp_path) -> None:
         assert stack.world_mind_model.identity.revision == "adapter-revision-test"
         assert stack.world_mind_model.identity.character_id == "baiweixi"
         assert stack.world_mind_model.identity.world_id == "songjiangfu"
+        assert stack.world_mind_model.game_reply_json_contract is True
+        assert stack.world_mind_model.game_reply_compact_v3 is True
         assert stack.memory_proposer.identity == stack.world_mind_model.identity
         assert repository.owner_character_id == "baiweixi"
     finally:

@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 import yaml
+import pytest
 
 from data_gen_v4.adapters.models.pool import ModelPool, StrictTestModelAdapter
 from data_gen_v4.core.engine import GenerationEngineV4
@@ -66,8 +67,19 @@ def _package(scenario: dict) -> dict:
     return {
         "profile": {"profile_id": "baiweixi", "display_name": "白未晞"},
         "protocol": {"package_version": "v5", "reply_runtime_rules": ["只说出口的话。"]},
+        "canonical_system_anchor": "你是白未晞。只输出说出口的话。",
         "runtime_grounded_scenarios": {scenario["scenario_id"]: scenario},
     }
+
+
+def test_adapter_rejects_package_without_production_anchor() -> None:
+    scenario = _scenario()
+    package = _package(scenario)
+    del package["canonical_system_anchor"]
+    adapter = RuntimeGroundedReplyAdapter()
+
+    with pytest.raises(ValueError, match="canonical_system_anchor"):
+        adapter.generate(adapter.prepare(_item(scenario), package), ScriptedCallExecutor([]))
 
 
 def _item(scenario: dict) -> dict:
@@ -106,7 +118,8 @@ def test_adapter_runs_teacher_then_independent_audit_and_renders_training() -> N
     assert "required_assertions" not in training_text
     assert "oracle_view" not in training_text
     assert "available_actions" not in training_text
-    assert "required_assertions" in executor.calls[0][0]["messages"][0]["content"]
+    assert "required_assertions" not in executor.calls[0][0]["messages"][0]["content"]
+    assert "oracle_view" not in executor.calls[0][0]["messages"][0]["content"]
     assert "required_assertions" in executor.calls[1][0]["messages"][0]["content"]
 
     candidate = {
@@ -116,7 +129,9 @@ def test_adapter_runs_teacher_then_independent_audit_and_renders_training() -> N
     }
     record = adapter.render_training(candidate, package)
     assert record.sample_id == "candidate-v5-1"
-    assert record.supervised_message_indexes == [1]
+    assert record.render_profile_id == "GAME_REPLY_CONTEXT_V1"
+    assert record.supervised_message_indexes == [len(record.messages) - 1]
+    assert "[当前权威事实]" in (record.system_anchor or "")
     assert record.messages[-1]["content"] == teacher["reply"]
 
 

@@ -30,13 +30,95 @@ import httpx
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from data_gen_v4.adapters.modes.training import TrainingRecordV4, estimate_token_count  # noqa: E402
+WORLD_SCENE_CANON_PATH = ROOT.parent / "世界设定" / "松江府" / "老城区六楼两室一厅出租屋_场景正典.yaml"
+EXTERNAL_SCENE_BUNDLE_PATH = ROOT.parent / "世界设定" / "松江府" / "外出场景正典.yaml"
+
+
+def _load_home_scene_canon() -> dict[str, Any]:
+    """Load the approved shared home scene once for every generated sample."""
+    if not WORLD_SCENE_CANON_PATH.exists():
+        raise FileNotFoundError(f"missing authoritative scene canon: {WORLD_SCENE_CANON_PATH}")
+    value = yaml.safe_load(WORLD_SCENE_CANON_PATH.read_text(encoding="utf-8"))
+    if not isinstance(value, dict) or value.get("status") != "approved":
+        raise ValueError("authoritative home scene canon must be an approved object")
+    return value
+
+
+def _load_scene_bundle() -> dict[str, Any]:
+    """Load the approved shared bundle containing non-home scenes.
+
+    The home canon remains the backwards-compatible default.  The bundle is
+    deliberately loaded by scene id so a component cannot silently borrow
+    facts from another location.
+    """
+    if not EXTERNAL_SCENE_BUNDLE_PATH.exists():
+        raise FileNotFoundError(f"missing external scene bundle: {EXTERNAL_SCENE_BUNDLE_PATH}")
+    value = yaml.safe_load(EXTERNAL_SCENE_BUNDLE_PATH.read_text(encoding="utf-8"))
+    if not isinstance(value, dict) or not isinstance(value.get("scenes"), list):
+        raise ValueError("external scene bundle must contain a scenes list")
+    if value.get("status") not in {"approved", "approved_with_provisional_labels"}:
+        raise ValueError("external scene bundle is not approved")
+    return value
+
+
+def _load_scene_canon(scene_id: str | None) -> tuple[dict[str, Any], Path, bool]:
+    """Return ``(scene_canon, source_path, is_home)`` for a component scene id."""
+    if not scene_id or str(scene_id).startswith("home."):
+        return _load_home_scene_canon(), WORLD_SCENE_CANON_PATH, True
+    bundle = _load_scene_bundle()
+    for scene in bundle["scenes"]:
+        if isinstance(scene, dict) and scene.get("scene_id") == scene_id:
+            selected = dict(scene)
+            # Preserve shared authority rules alongside the selected scene.
+            selected["schema_version"] = bundle.get("schema_version")
+            selected["world_id"] = bundle.get("world_id")
+            selected["bundle_version"] = bundle.get("version")
+            selected["shared_rules"] = bundle.get("shared_rules", {})
+            return selected, EXTERNAL_SCENE_BUNDLE_PATH, False
+    extension = ROOT.parent / '世界设定/松江府/生活场景扩展_20260917.yaml'
+    extra = yaml.safe_load(extension.read_text(encoding='utf-8'))
+    if extra.get('status') != 'approved':
+        raise ValueError('Life scene extension is not approved')
+    for scene in extra['scenes']:
+        if scene.get('scene_id') == scene_id:
+            selected = copy.deepcopy(scene)
+            selected['shared_rules'] = extra.get('shared_rules', {})
+            selected['bundle_version'] = extra['version']
+            return selected, extension, False
+    raise ValueError(f"unknown authoritative scene_id: {scene_id}")
+
+
+def _home_scene_projection(canon: dict[str, Any]) -> dict[str, Any]:
+    spaces = canon.get("layout", {}).get("spaces", {})
+    equipment = canon.get("equipment", [])
+    fixed = canon.get("fixed_objects", {}).get("baiweixi_cardboard_box", {})
+    labels = [str(item.get("label")) for item in equipment if isinstance(item, dict) and item.get("label")]
+    space_labels = [str(item.get("label")) for item in spaces.values() if isinstance(item, dict) and item.get("label")]
+    return {
+        "scene_id": canon.get("scene_id"),
+        "canon_version": canon.get("version"),
+        "building": {
+            "district": canon.get("building", {}).get("district"),
+            "floor": canon.get("building", {}).get("floor"),
+            "elevator": canon.get("building", {}).get("elevator"),
+            "condition": canon.get("building", {}).get("condition"),
+        },
+        "spaces": space_labels,
+        "permanent_equipment": labels,
+        "fixed_objects": {
+            "baiweixi_cardboard_box_default_location": fixed.get("default_location"),
+        },
+    }
+
+from data_gen_v4.adapters.modes.renderers import ProductionRenderers  # noqa: E402
 from data_gen_v4.runtime_grounded import (  # noqa: E402
     RuntimeGroundedReplyAdapter,
     build_pilot_package,
     evaluate_runtime_grounded_candidate,
+    render_game_reply_training_record,
     validate_scenario_collection,
 )
+from data_gen_v4.runtime_grounded.pilot import _validate_rg1_provenance  # noqa: E402
 
 TASKS = (
     "reply_accept_authoritative_update",
@@ -137,8 +219,22 @@ def _load_env(path: Path) -> None:
 
 def _base_model_view(index: int) -> dict[str, Any]:
     suffix = f"v5-{index:04d}"
+    scene_canon = _load_home_scene_canon()
+    scene_projection = _home_scene_projection(scene_canon)
+    from data_gen_v4.runtime_grounded.persona_projection import load_persona_profiles
+    protagonist_canon, heroine_canon = load_persona_profiles()
+    scene_text = (
+        "傍晚，两人在出租屋客厅说话。"
+        "房屋是松江府老城区六楼无电梯的老破小两室一厅，设有客厅、主卧、次卧、厨房、卫生间和小阳台。"
+        "楼道偏暗、隔音较差、上下水偶尔不稳定。"
+    )
     return {
-        "mode": "JUDGE_TURN",
+        "mode": "GAME_REPLY",
+        "protagonist_profile": protagonist_canon,
+        "female_character_profile": heroine_canon,
+        "known_by_baiweixi": [],
+        "scene_canon": scene_projection,
+        "runtime_snapshot": {},
         "evidence_contract": {"allowed_evidence_refs": [f"snap-{suffix}", f"evt-{suffix}"]},
         "snapshot": {
             "snapshot_id": f"snap-{suffix}",
@@ -153,7 +249,7 @@ def _base_model_view(index: int) -> dict[str, Any]:
             "mind_state_version": 8,
             "world_state": {
                 "live_world_version": 20 + index,
-                "scene_text": "傍晚，两人在出租屋客厅说话。",
+                "scene_text": scene_text,
                 "protagonist_text": "男主正在询问一件日常事情。",
             },
             "protagonist": {
@@ -205,6 +301,15 @@ def _base_model_view(index: int) -> dict[str, Any]:
         "recent_dialogue": [],
         "pending_actions": [],
         "game_feedback": [],
+        # Every generated sample carries an explicit authoritative-world
+        # projection.  This is the source-of-truth input, not teacher advice.
+        "authoritative_world": {
+            "world_id": "world-songjiang",
+            "version": 20 + index,
+            "facts": [],
+            "unknown_facts": [],
+            "scene_canon": scene_projection,
+        },
     }
 
 
@@ -345,19 +450,49 @@ def _scenario(concept: Concept, task: str, index: int, *, sealed: bool) -> dict[
         wrong_subject = "baiweixi" if actor_fact["subject"] == "protagonist" else "protagonist"
         wrong = {**actor_fact, "subject": wrong_subject}
         view["current_protagonist_utterance"] = f"刚才是谁说{statement}？"
-        view["recent_dialogue"] = [f"{actor_name}：{statement}。"]
+        view["recent_dialogue"] = [
+            "男主：你刚才听到了吗？",
+            f"{actor_name}：{statement}。",
+        ]
         facts = [actor_fact]
         current_fact = actor_fact
         forbidden = [_assertion(wrong)]
     elif task == "reply_insufficient_information":
         unknown = _fact(current_id, concept, "", "selected_memory_frame", "unknown")
         view["current_protagonist_utterance"] = f"上一次{player_label}变成现在这样，具体是哪一天？"
+        view["unknown_facts"] = [{
+            "subject": concept.subject,
+            "predicate": concept.predicate,
+            "source": "selected_memory_frame",
+            "reason": "没有可靠的日期证据",
+            "status": "unknown",
+        }]
         facts = [unknown]
         current_fact = unknown
     else:
         view["current_protagonist_utterance"] = f"{player_label}现在是什么情况？"
         view["game_feedback"] = [f"当前状态：{world_label}是{concept.current}。"]
         facts = [current_fact]
+    view["authoritative_world"] = {
+        "world_id": view["snapshot"]["world_id"],
+        "version": view["snapshot"]["live_world_version"],
+        "facts": facts,
+        "unknown_facts": view.get("unknown_facts") or [],
+    }
+    # Keep the authoritative projection visible through the same field that
+    # production already consumes.  This avoids a generator-only prompt path.
+    authoritative_lines = [
+        f"权威世界状态：{fact['subject']}的{fact['predicate']}是{fact['object']}。"
+        for fact in facts
+        if fact.get("status") == "current" and fact.get("object")
+    ]
+    # A player report is deliberately pending confirmation; it must not be
+    # promoted into the authoritative world block for this sample.
+    if any(view.get("player_fact_reports") or ()):
+        authoritative_lines = []
+    for line in authoritative_lines:
+        if line not in view["game_feedback"]:
+            view["game_feedback"].append(line)
     prefix = "sealed" if sealed else "pilot"
     return {
         "schema_version": "aip.runtime_grounded_reply_scenario.v1",
@@ -383,7 +518,9 @@ def _scenario(concept: Concept, task: str, index: int, *, sealed: bool) -> dict[
             },
             "unsupported_detail_policy": "reject",
         },
-        "split_anchors": [f"task:{task}", f"family:{prefix}.{concept.key}", f"predicate:{current_fact['predicate']}"],
+        # A rewrite family is task-scoped: the same object may appear in two
+        # response tasks, but those are different supervision contracts.
+        "split_anchors": [f"task:{task}", f"family:{prefix}.{task}.{concept.key}", f"predicate:{current_fact['predicate']}"],
     }
 
 
@@ -461,11 +598,53 @@ class _DirectExecutor:
         return list(self._ids)
 
 
+def _load_baiweixi_production_contract() -> tuple[str, Any]:
+    # GAME_REPLY training must consume the exact dynamic prompt used by the
+    # production runtime, not a second generator-owned approximation.
+    from runtime.world_mind import (
+        CharacterPackagePromptComposer,
+        RuntimeSessionIdentity,
+        WorldMindRuntimeConfig,
+    )
+
+    ai_root = ROOT.parent / "AiPeople"
+    runtime_config = WorldMindRuntimeConfig(
+        expected_world_id="songjiangfu",
+        expected_protagonist_id="protagonist",
+        world_canon_dir=ai_root / "世界设定" / "松江府",
+        protagonist_canon_dir=ai_root / "人物设定" / "主角",
+        character_package_dirs={"baiweixi": ai_root / "人物设定" / "白未晞"},
+        p0_allowed_character_ids=("baiweixi",),
+        foreground_protocol="plain_reply_v1",
+    )
+    runtime_session = RuntimeSessionIdentity(
+        save_id="training_render",
+        world_id="songjiangfu",
+        protagonist_id="protagonist",
+        active_character_id="baiweixi",
+        conversation_id="training_render",
+    )
+    composer = CharacterPackagePromptComposer(runtime_config)
+    anchor = composer.compose(runtime_session).game_reply_system_prompt
+    return anchor, composer.initial_runtime_seed("baiweixi")
+
+
+def _load_baiweixi_render_context() -> tuple[dict[str, Any], dict[str, Any], str]:
+    profile = yaml.safe_load((ROOT / "profiles" / "baiweixi" / "profile.yaml").read_text(encoding="utf-8"))
+    protocol = yaml.safe_load(
+        (ROOT / "data_gen_v4" / "packages" / "protocols" / "relationship-runtime-v1.yaml").read_text(encoding="utf-8")
+    )
+    anchor, _ = _load_baiweixi_production_contract()
+    return profile, protocol, anchor
+
+
 def _package(scenarios: list[dict[str, Any]]) -> dict[str, Any]:
+    profile, protocol, anchor = _load_baiweixi_render_context()
     return {
-        "profile": {"profile_id": "baiweixi", "display_name": "白未晞"},
-        "protocol": {"reply_runtime_rules": ["只输出说出口的自然对白，不写动作旁白。"]},
+        "profile": profile,
+        "protocol": protocol,
         "runtime_grounded_scenarios": {row["scenario_id"]: row for row in scenarios},
+        "canonical_system_anchor": anchor,
     }
 
 
@@ -515,6 +694,7 @@ def generate_grounded(
         scenario = row.get("scenario") or {}
         sid = scenario.get("scenario_id")
         try:
+            _validate_rg1_provenance(row, scenario, index=0)
             report = evaluate_runtime_grounded_candidate(
                 scenario,
                 row.get("teacher_target") or {},
@@ -574,9 +754,13 @@ def generate_grounded(
                     "semantic_audit": target["semantic_audit"],
                     "gate_report": target["runtime_grounded_gate_report"],
                     "provenance": {
+                        "scenario_id": sid,
+                        "fixture_hash": _canonical_hash(scenario),
+                        "package_lock_hash": _canonical_hash({"profile": "baiweixi", "protocol": "relationship-runtime-v1", "prompt": "runtime-grounded-reply-audit-v1"}),
                         "teacher_model": model_name,
                         "audit_model": model_name,
                         "teacher_and_audit_are_separate_calls": True,
+                        "source_event_ids": list(scenario["model_view"]["evidence_contract"]["allowed_evidence_refs"]),
                         "context_window": 8192,
                         "model_transport": "ollama_native_api_chat_json",
                         "attempt": attempt,
@@ -746,8 +930,12 @@ def _reference_reply(scenario: dict[str, Any]) -> str:
         return "这个具体时间我没有可靠记录，不能确定。你还记得别的线索吗？"
     if direction == "preserve_subject":
         dialogue = scenario["model_view"].get("recent_dialogue") or []
-        speaker = dialogue[0].split("：", 1)[0].strip() if dialogue and "：" in dialogue[0] else ""
-        statement = dialogue[0].split("：", 1)[1].strip().rstrip("。！？") if speaker else ""
+        speaker_line = next(
+            (line for line in dialogue if "：" in line and line.split("：", 1)[0].strip() not in {"男主", "白未晞"}),
+            "",
+        )
+        speaker = speaker_line.split("：", 1)[0].strip() if speaker_line else ""
+        statement = speaker_line.split("：", 1)[1].strip().rstrip("。！？") if speaker else ""
         if not speaker:
             raise RuntimeError(f"sealed 主体归属场景缺具体说话者: {scenario['scenario_id']}")
         return f"是{speaker}说的，他说{statement}。"
@@ -763,28 +951,39 @@ def _reference_reply(scenario: dict[str, Any]) -> str:
     return f"现在{value_phrase}。"
 
 
-def build_sealed_rows(scenarios: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def build_sealed_rows(
+    scenarios: list[dict[str, Any]], *, system_anchor: str = "系统锚"
+) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for scenario in scenarios:
         reply = _reference_reply(scenario)
-        record = TrainingRecordV4(
-            sample_id=scenario["scenario_id"],
-            mode="RUNTIME_GROUNDED_REPLY",
-            render_profile_id="runtime-grounded-reply-v1",
-            messages=[
-                {"role": "human", "content": json.dumps(scenario["model_view"], ensure_ascii=False, sort_keys=True)},
-                {"role": "assistant", "content": reply},
-            ],
-            supervised_message_indexes=[1],
-            supervised_token_count=estimate_token_count(
-                [
-                    {"role": "human", "content": json.dumps(scenario["model_view"], ensure_ascii=False, sort_keys=True)},
-                    {"role": "assistant", "content": reply},
-                ],
-                [1],
-            ),
+        facts = {
+            fact["fact_id"]: fact
+            for fact in scenario["oracle_view"]["facts"]
+        }
+        declared_claims = [
+            {
+                "subject": assertion["subject"],
+                "predicate": assertion["predicate"],
+                "object": assertion["object"],
+                "polarity": "positive",
+                "temporal_status": (
+                    "unknown"
+                    if any(
+                        facts[reference]["status"] == "unknown"
+                        for reference in assertion["source_fact_ids"]
+                    )
+                    else "current"
+                ),
+                "source_fact_ids": list(assertion["source_fact_ids"]),
+            }
+            for assertion in scenario["oracle_view"]["required_assertions"]
+        ]
+        record = render_game_reply_training_record(
+            scenario,
+            {"reply": reply, "declared_claims": declared_claims},
+            system_anchor=system_anchor,
             protocol_snapshot_id="runtime-grounded-sealed-v1",
-            system_anchor="你是白未晞。只输出说出口的自然回复。",
         )
         rows.append(
             {
@@ -850,6 +1049,11 @@ def _sha256(path: Path) -> str:
     return "sha256:" + digest.hexdigest()
 
 
+def _canonical_hash(value: Any) -> str:
+    payload = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return "sha256:" + hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-root", type=Path, default=ROOT / "训练数据" / "baiweixi_v5_pilot_v1")
@@ -865,6 +1069,7 @@ def main() -> int:
 
     grounded_scenarios = build_scenarios(TRAIN_CONCEPTS, sealed=False)
     sealed_scenarios = build_scenarios(SEALED_CONCEPTS, sealed=True)
+    _, _, system_anchor = _load_baiweixi_render_context()
     _write_jsonl(inputs / "grounded_scenarios.jsonl", grounded_scenarios)
     _write_jsonl(inputs / "sealed_scenarios.jsonl", sealed_scenarios)
     grounded = generate_grounded(
@@ -883,7 +1088,7 @@ def main() -> int:
         model_name=args.model,
         workers=args.workers,
     )
-    sealed = build_sealed_rows(sealed_scenarios)
+    sealed = build_sealed_rows(sealed_scenarios, system_anchor=system_anchor)
     _write_jsonl(inputs / "sealed.jsonl", sealed)
     inspection = inspect_grounded(grounded, inputs / "grounded_spot_check_80.json")
     report = build_pilot_package(
@@ -892,6 +1097,7 @@ def main() -> int:
         static_reaudit=static_audits,
         sealed_rows=sealed,
         output_dir=package_dir,
+        system_anchor=system_anchor,
     )
     manifest = {
         "schema_version": "aip.runtime_grounded_real_input_manifest.v1",

@@ -29,16 +29,23 @@ namespace AiPeople.Tests
                 state.Execute("move_to", new Dictionary<string, string> { { "target_location_id", "apartment_door" } }, out string duplicateReason));
             StringAssert.Contains("同一件事", duplicateReason);
 
-            Assert.AreEqual(0, state.Tick(30f).Count, "未到期不应完成");
-            List<PendingAction> completed = state.Tick(40f);
-            Assert.AreEqual(1, completed.Count);
-            Assert.AreEqual("move_to", completed[0].actionId);
+            Assert.AreEqual(0, state.Tick(10000f).Count, "排队/行走不得因计时完成");
+            Assert.IsEmpty(state.HeroineLocationId, "提交目标不能提前到达");
+            var move = state.PendingSnapshot()[0];
+            Assert.IsFalse(state.ConfirmAction(move.instanceId, true, "尚未到达"));
+            state.ReadyForConfirmation(move.instanceId);
+            Assert.IsTrue(state.ConfirmAction(move.instanceId, true, "已到达"));
+            Assert.IsFalse(state.ConfirmAction(move.instanceId, true, "重复确认"));
 
             Assert.IsTrue(state.Execute("cook_meal", new Dictionary<string, string>(), out string cookReason), cookReason);
             Assert.AreEqual("apartment_kitchen", state.PendingSnapshot()[0].travelToLocationId, "做饭应先走到厨房");
+            var cook = state.PendingSnapshot()[0];
+            state.SetActionStatus(cook.instanceId, "running");
             Assert.AreEqual(1, state.Tick(1200f).Count);
-            Assert.AreEqual("一碗热汤面", state.ItemStatesSnapshot()["桌上"]);
-            StringAssert.Contains("一碗热汤面", state.ProjectJson());
+            Assert.IsEmpty(state.ItemStatesSnapshot(), "计时结束不能凭空生成实体");
+            Assert.AreEqual("awaiting_confirmation", state.PendingSnapshot()[0].status);
+            Assert.IsTrue(state.ConfirmAction(cook.instanceId, false, "生成失败"));
+            Assert.IsEmpty(state.ItemStatesSnapshot());
             yield return null;
         }
 

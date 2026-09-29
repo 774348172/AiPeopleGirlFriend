@@ -18,6 +18,10 @@ namespace AiPeople.Core
             public string saveId = "m1check0001";
             public string characterId = "baiweixi";
             public float requestTimeoutSeconds = 120f;
+            public bool autoStartBackend;
+            public string backendScriptPath = string.Empty;
+            public string backendPythonExe = string.Empty;
+            public string backendPortableRoot = string.Empty;
         }
 
         public Data data = new Data();

@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import dataclasses
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
@@ -17,7 +18,7 @@ from data_gen_v4.adapters.exporters.export import ShareGPTReplyExportAdapter
 from data_gen_v4.adapters.modes.training import TrainingRecordV4, estimate_token_count
 
 from .gates import evaluate_runtime_grounded_candidate
-from .renderer import render_runtime_grounded_training_record
+from .renderer import render_game_reply_training_record
 from .scenario import validate_scenario
 
 GROUNDED_TASKS = (
@@ -114,7 +115,7 @@ def build_pilot_package(
     sealed_rows: Iterable[dict[str, Any]],
     output_dir: str | Path,
     dataset_id: str = "baiweixi_v5_pilot_v1",
-    system_anchor: str = "你是白未晞。只输出角色说出口的自然回复。",
+    system_anchor: str | None = None,
     golden_scenario_ids: frozenset[str] = GOLDEN_SCENARIO_IDS,
 ) -> PilotBuildReport:
     """Build C-block train/dev/test/sealed files from already audited inputs.
@@ -125,13 +126,21 @@ def build_pilot_package(
     ledger and is mandatory for every selected static sample.
     """
 
+    if not isinstance(system_anchor, str) or not system_anchor.strip():
+        raise PilotPackageError(
+            "必须显式传入生产同源 system_anchor；禁止使用短角色锚或隐式默认值"
+        )
     grounded = _load_grounded(
         grounded_candidates,
         system_anchor=system_anchor,
         golden_scenario_ids=golden_scenario_ids,
     )
     static = _load_static(static_records, static_reaudit, system_anchor=system_anchor)
-    sealed = _load_sealed(sealed_rows, golden_scenario_ids=golden_scenario_ids)
+    sealed = _load_sealed(
+        sealed_rows,
+        system_anchor=system_anchor,
+        golden_scenario_ids=golden_scenario_ids,
+    )
     if len(grounded) != GROUNDED_TOTAL:
         raise PilotPackageError(
             f"grounded 必须为 {GROUNDED_TOTAL} 条，实际 {len(grounded)}；"
@@ -193,12 +202,13 @@ def _load_grounded(
         scenario_id = scenario["scenario_id"]
         if scenario_id in golden_scenario_ids:
             raise PilotPackageError(f"黄金场景不得进入训练: {scenario_id}")
+        _validate_rg1_provenance(value, scenario, index=index)
         report = evaluate_runtime_grounded_candidate(scenario, teacher, audit)
         if not report.approved:
             raise PilotPackageError(
                 f"grounded[{index}] RG 硬门未通过: {scenario_id}: {report.to_dict()}"
             )
-        record = render_runtime_grounded_training_record(
+        record = render_game_reply_training_record(
             scenario,
             teacher,
             system_anchor=system_anchor,
@@ -210,6 +220,9 @@ def _load_grounded(
         seen.add(sample_id)
         anchors = scenario.get("split_anchors") or []
         family_key = _family_key(anchors, fallback=scenario_id)
+        report_dict = report.to_dict()
+        report_dict["verdicts"]["RG1"] = True
+        report_dict["verdicts"]["RG11"] = True
         rows.append(
             _PackRow(
                 kind="runtime_grounded",
@@ -218,7 +231,7 @@ def _load_grounded(
                 task_type=scenario["task_type"],
                 record=record,
                 scenario=scenario,
-                audit_report=report.to_dict(),
+                audit_report=report_dict,
             )
         )
     return rows
@@ -303,7 +316,8 @@ def _load_static(
 
 
 def _load_sealed(
-    values: Iterable[dict[str, Any]], *, golden_scenario_ids: frozenset[str]
+    values: Iterable[dict[str, Any]], *, system_anchor: str,
+    golden_scenario_ids: frozenset[str]
 ) -> list[_PackRow]:
     rows: list[_PackRow] = []
     for index, value in enumerate(values):
@@ -319,6 +333,7 @@ def _load_sealed(
             training = TrainingRecordV4.from_dict(record)
         except (KeyError, TypeError, ValueError) as error:
             raise PilotPackageError(f"sealed[{index}] training_record 非法: {error}") from error
+        training = dataclasses.replace(training, system_anchor=system_anchor)
         anchors = value.get("split_anchors") or []
         rows.append(
             _PackRow(
@@ -351,13 +366,36 @@ def _family_key(anchors: Iterable[Any], *, fallback: str) -> str:
 
 def _assert_family_isolation(rows: list[_PackRow]) -> None:
     groups: dict[str, list[str]] = {}
+    tasks: dict[str, set[str]] = {}
+    fingerprints: dict[tuple[str, str], str] = {}
     for row in rows:
         if not row.family_key:
             raise PilotPackageError(f"{row.sample_id} 缺 split family anchor")
+        if not row.family_key.startswith("family:"):
+            raise PilotPackageError(f"{row.sample_id} family anchor 必须以 family: 开头")
         groups.setdefault(row.family_key, []).append(row.sample_id)
-    # Within a source collection, repeated family keys are allowed only for
-    # the same task: cross-task reuse would make the split label ambiguous.
-    del groups
+        tasks.setdefault(row.family_key, set()).add(row.task_type)
+        if row.scenario is not None:
+            fingerprint = _canonical_hash(row.scenario)
+            key = (row.family_key, fingerprint)
+            previous = fingerprints.get(key)
+            if previous is not None and previous != row.sample_id:
+                raise PilotPackageError(
+                    f"RG11 重复 scenario 内容: family={row.family_key}, "
+                    f"sample_id={previous},{row.sample_id}"
+                )
+            fingerprints[key] = row.sample_id
+        reply = row.record.messages[-1]["content"] if row.record.messages else ""
+        reply_key = (row.family_key, hashlib.sha256(reply.encode("utf-8")).hexdigest())
+        if reply_key in fingerprints and fingerprints[reply_key] != row.sample_id:
+            raise PilotPackageError(
+                f"RG11 同一 family 重复回复: family={row.family_key}, "
+                f"sample_id={fingerprints[reply_key]},{row.sample_id}"
+            )
+        fingerprints[reply_key] = row.sample_id
+    cross_task = {family: sorted(values) for family, values in tasks.items() if len(values) > 1}
+    if cross_task:
+        raise PilotPackageError(f"RG11 family 跨 task 复用: {cross_task}")
 
 
 def _assign_splits(rows: list[_PackRow]) -> dict[str, list[_PackRow]]:
@@ -377,7 +415,50 @@ def _assign_splits(rows: list[_PackRow]) -> dict[str, list[_PackRow]]:
             key=lambda name: (len(splits[name]) / max(total, 1) - target[name], len(splits[name])),
         )
         splits[best].extend(family_rows)
+    split_by_family = {
+        row.family_key: split_name
+        for split_name, split_rows in splits.items()
+        for row in split_rows
+    }
+    if len(split_by_family) != len(groups):
+        raise PilotPackageError("RG11 同一 family 被拆到多个 split")
     return splits
+
+
+def _canonical_hash(value: Any) -> str:
+    payload = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return "sha256:" + hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _validate_rg1_provenance(
+    value: dict[str, Any], scenario: dict[str, Any], *, index: int
+) -> None:
+    provenance = value.get("provenance")
+    if not isinstance(provenance, dict):
+        raise PilotPackageError(f"grounded[{index}] RG1 缺 provenance")
+    if provenance.get("scenario_id") != scenario.get("scenario_id"):
+        raise PilotPackageError(f"grounded[{index}] RG1 scenario_id provenance 不一致")
+    if provenance.get("fixture_hash") != _canonical_hash(scenario):
+        raise PilotPackageError(f"grounded[{index}] RG1 fixture_hash 不一致")
+    for key in ("package_lock_hash",):
+        candidate = provenance.get(key)
+        if not isinstance(candidate, str) or not candidate.startswith("sha256:") or len(candidate) != 71:
+            raise PilotPackageError(f"grounded[{index}] RG1 {key} 非法")
+    for key in ("teacher_model", "audit_model"):
+        if not isinstance(provenance.get(key), str) or not provenance[key].strip():
+            raise PilotPackageError(f"grounded[{index}] RG1 缺 {key}")
+    if provenance.get("teacher_and_audit_are_separate_calls") is not True:
+        raise PilotPackageError(f"grounded[{index}] RG1 teacher/audit 未证明为独立调用")
+    refs = scenario["model_view"]["evidence_contract"]["allowed_evidence_refs"]
+    if provenance.get("source_event_ids") != refs:
+        raise PilotPackageError(f"grounded[{index}] RG1 source_event_ids 与 evidence_contract 不一致")
+    call_hashes = provenance.get("call_hashes")
+    if (
+        not isinstance(call_hashes, list)
+        or len(call_hashes) < 2
+        or any(not isinstance(item, str) or not item.startswith("sha256:") or len(item) != 71 for item in call_hashes)
+    ):
+        raise PilotPackageError(f"grounded[{index}] RG1 缺少至少两个合法 call_hashes")
 
 
 def _build_report(
@@ -398,7 +479,8 @@ def _build_report(
         for gate, passed in row.audit_report["verdicts"].items():
             bucket = rg_gate_counts.setdefault(gate, {"passed": 0, "failed": 0})
             bucket["passed" if passed else "failed"] += 1
-    rg_gate_counts["RG11"] = {"passed": len(grounded), "failed": 0}
+    for gate in ("RG1", "RG11"):
+        rg_gate_counts.setdefault(gate, {"passed": 0, "failed": 0})
     assistant_total: Counter[str] = Counter()
     supervised_total: Counter[str] = Counter()
     supervised_tokens: Counter[str] = Counter()

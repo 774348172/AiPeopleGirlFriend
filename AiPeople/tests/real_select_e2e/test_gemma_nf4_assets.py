@@ -32,7 +32,7 @@ ADAPTER_FILES = (
 )
 
 
-def make_asset(tmp_path: Path) -> Path:
+def make_asset(tmp_path: Path, *, relative_paths: bool = False) -> Path:
     root = tmp_path / "model"
     root.mkdir()
     entries = []
@@ -57,7 +57,9 @@ def make_asset(tmp_path: Path) -> Path:
                 {
                     "peft_type": "LORA",
                     "inference_mode": True,
-                    "base_model_name_or_path": str(root.resolve()),
+                    "base_model_name_or_path": (
+                        "../model" if relative_paths else str(root.resolve())
+                    ),
                 }
             ).encode()
         else:
@@ -86,8 +88,8 @@ def make_asset(tmp_path: Path) -> Path:
         "thinking": False,
         "adapter_loaded": True,
         "quantization": "bitsandbytes-nf4-runtime+lora",
-        "model_root": str(root.resolve()),
-        "adapter_root": str(adapter_root.resolve()),
+        "model_root": "model" if relative_paths else str(root.resolve()),
+        "adapter_root": "adapter" if relative_paths else str(adapter_root.resolve()),
         "artifact_sha256": None,
         "model_files": entries,
         "adapter_files": adapter_entries,
@@ -129,3 +131,34 @@ def test_gemma_nf4_asset_rejects_changed_model_file(tmp_path: Path) -> None:
 
     with pytest.raises(RealAssetError, match="size mismatch|SHA256 mismatch"):
         LocalGemmaNF4Package.load(manifest)
+
+
+@pytest.mark.parametrize("attention", ["eager", "sdpa", "unverified_backend"])
+def test_attention_profile_is_explicit_and_integrity_checked(tmp_path, attention):
+    path = make_asset(tmp_path)
+    manifest = json.loads(path.read_text())
+    manifest["runtime"]["attention_implementation"] = attention
+    path.write_text(json.dumps(manifest))
+    manifest["artifact_sha256"] = canonical_gemma_nf4_artifact_sha256(path)
+    path.write_text(json.dumps(manifest))
+    if attention == "unverified_backend":
+        with pytest.raises(RealAssetError, match="frozen stack"):
+            LocalGemmaNF4Package.load(path)
+    else:
+        assert LocalGemmaNF4Package.load(path).runtime.attention_implementation == attention
+
+
+def test_gemma_nf4_asset_supports_movable_relative_paths(tmp_path: Path) -> None:
+    source = tmp_path / "source package"
+    source.mkdir()
+    manifest = make_asset(source, relative_paths=True)
+    moved = tmp_path / "moved package"
+    source.rename(moved)
+
+    asset = LocalGemmaNF4Package.load(moved / manifest.name)
+
+    assert asset.model_root == (moved / "model").resolve()
+    assert asset.adapter_root == (moved / "adapter").resolve()
+    assert asset.identity.artifact_sha256 == canonical_gemma_nf4_artifact_sha256(
+        moved / manifest.name
+    )

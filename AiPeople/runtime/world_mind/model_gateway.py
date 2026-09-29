@@ -29,6 +29,7 @@ RECONCILE_MODES = frozenset(
     {POST_REPLY_WORLD_MIND_RECONCILE, FIVE_MINUTE_WORLD_MIND_RECONCILE}
 )
 CONTINUITY_DECISIONS = frozenset({"approve", "revise", "reject"})
+ReplyDeltaCallback = Callable[[str], Awaitable[None] | None]
 
 
 @dataclass(frozen=True, slots=True)
@@ -209,6 +210,7 @@ class GameReplyRequest:
     fact_assertions: ReplyFactAssertions
     approved_actions: tuple[HeroineDiegeticAction, ...] = ()
     recent_dialogue: tuple[tuple[str, str], ...] = ()
+    on_delta: ReplyDeltaCallback | None = None
 
     def __post_init__(self) -> None:
         if not isinstance(self.reply_intent, str) or not self.reply_intent.strip():
@@ -221,12 +223,15 @@ class GameReplyRequest:
         if not isinstance(self.recent_dialogue, tuple) or any(
             not isinstance(item, tuple)
             or len(item) != 2
-            or item[0] not in {"protagonist", "heroine"}
+            or not isinstance(item[0], str)
+            or not item[0].strip()
             or not isinstance(item[1], str)
             or not item[1].strip()
             for item in self.recent_dialogue
         ):
-            raise TypeError("recent_dialogue must contain actor/text pairs")
+            raise TypeError("recent_dialogue must contain non-empty actor/text pairs")
+        if self.on_delta is not None and not callable(self.on_delta):
+            raise TypeError("on_delta must be callable or None")
 
 
 @dataclass(frozen=True, slots=True)

@@ -1,0 +1,51 @@
+schema_version: aip.shared_world_scene_canon.v1
+scene_id: songjiangfu.shopping_walk
+world_id: songjiangfu
+status: draft_pending_confirmation
+version: 1
+last_updated: '2026-09-13'
+display_name: 松江府老城区逛街途中
+scene_kind: outdoor_moving_route
+permanence: episodic_route
+
+location:
+  district: 松江府老城区
+  indoor_outdoor: outdoor
+  route_label: 待确认
+  default_start: 待确认
+  default_destination: 待确认
+
+layout:
+  type: changing_public_street_segment
+  zones:
+    sidewalk: {id: street_sidewalk, label: 人行道}
+    storefronts: {id: street_storefronts, label: 沿街店铺一侧}
+    crossing: {id: street_crossing, label: 路口或过街处}
+
+fixed_fixtures:
+  - 人行道
+  - 沿街建筑和店铺界面
+
+participants_defaults:
+  protagonist: walking_companion
+  baiweixi: walking_companion
+  other_people: unknown
+
+runtime_only_facts:
+  - 起点、目的地和当前路段
+  - 两人的当前位置、行进方向和是否停留
+  - 当前天气、光线、路面和人流
+  - 看见的店铺、物品、交通工具和购买结果
+  - 是否迷路、是否改变路线、是否已经到达
+
+unknown_by_default:
+  - 具体路口、距离和预计到达时间
+  - 沿途店铺名称、营业状态和商品
+  - 周围人数、车辆、噪声和临时事件
+  - 尚未登记的携带物品和已经完成的购买
+
+authority_rules:
+  permanent_scene_facts: [layout, fixed_fixtures]
+  runtime_required: [captured_game_time, weather, people, route, current_event, visible_items]
+  source_priority: [runtime_snapshot, structured_game_event, world_canon, selected_memory]
+  unsupported_expansion_policy: reject

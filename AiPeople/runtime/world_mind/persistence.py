@@ -276,6 +276,8 @@ class WorldMindStore:
         protagonist: ProtagonistLiveState,
         scene: ActiveSceneState,
         game_time: datetime,
+        *,
+        unity_observation: dict | None = None,
     ) -> tuple[LiveWorldState, WorldEventDelta | None]:
         if protagonist.protagonist_id != session.protagonist_id:
             raise WorldMindStoreError("protagonist state identity mismatch")
@@ -297,6 +299,12 @@ class WorldMindStore:
                     self._require_live_identity(protagonist_row, session)
                 if scene_row is not None and str(scene_row["world_id"]) != session.world_id:
                     raise WorldMindStoreError("scene world identity mismatch")
+                if unity_observation is not None:
+                    connection.execute(
+                        "INSERT INTO unity_observations(save_id, payload_json) VALUES (?, ?) "
+                        "ON CONFLICT(save_id) DO UPDATE SET payload_json=excluded.payload_json",
+                        (session.save_id, _json(unity_observation)),
+                    )
                 if (
                     protagonist_row is not None
                     and scene_row is not None
@@ -412,6 +420,13 @@ class WorldMindStore:
             game_time=game_time,
         )
         return state, delta
+
+    def load_unity_observation(self, save_id: str) -> dict | None:
+        with self._lock:
+            row = self._connection.execute(
+                "SELECT payload_json FROM unity_observations WHERE save_id = ?", (save_id,)
+            ).fetchone()
+        return json.loads(row[0]) if row is not None else None
 
     def load_live_world(self, session: RuntimeSessionIdentity) -> LiveWorldState | None:
         with self._lock:

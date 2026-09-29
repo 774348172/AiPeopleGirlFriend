@@ -1,0 +1,64 @@
+schema_version: aip.shared_world_scene_canon.v1
+scene_id: songjiangfu.protagonist_cafe
+world_id: songjiangfu
+status: draft_pending_confirmation
+version: 1
+last_updated: '2026-09-13'
+display_name: 男主经营的咖啡馆
+scene_kind: protagonist_owned_cafe
+permanence: recurring_personal_place
+
+ownership:
+  owner: protagonist
+  operator: protagonist
+  ownership_basis: 用户已确认“男主自己的咖啡馆”
+  business_name: 待确认
+  address_label: 待确认
+
+location:
+  district: 松江府，具体街区待确认
+  indoor_outdoor: indoor
+  relation_to_home: 待确认
+
+layout:
+  type: small_cafe_operated_by_protagonist
+  zones:
+    entrance: {id: protagonist_cafe_entrance, label: 入口}
+    counter: {id: protagonist_cafe_counter, label: 吧台和收银区}
+    seating: {id: protagonist_cafe_seating, label: 顾客座位区}
+    back_area: {id: protagonist_cafe_back_area, label: 后场}
+  optional_zones:
+    window_seats: 待确认
+    storage: 待确认
+
+fixed_fixtures:
+  - 吧台
+  - 收银区
+  - 顾客座位区
+  - 咖啡制作设备
+
+participants_defaults:
+  protagonist: owner_or_operator
+  baiweixi: companion_or_guest
+  staff: unknown
+  customers: unknown
+
+runtime_only_facts:
+  - 当前是否营业、谁在值班
+  - 两人的所在区域和当前分工
+  - 当前订单、制作进度、库存和收款结果
+  - 顾客数量、噪声、设备运行状态和当日营业情况
+  - 男主是否刚刚完成某项经营动作
+
+unknown_by_default:
+  - 店名、地址、营业时间和店面规模
+  - 菜单、价格、库存、订单和营业额
+  - 员工、熟客、顾客身份及其对话
+  - 任意设备是否开机、正在制作什么饮品
+
+authority_rules:
+  permanent_scene_facts: [ownership, layout, fixed_fixtures]
+  runtime_required: [captured_game_time, weather, people, current_event, visible_items, business_state]
+  source_priority: [runtime_snapshot, structured_game_event, world_canon, selected_memory]
+  protagonist_ownership_does_not_imply: [营业中, 有顾客, 有库存, 已接订单, 已完成制作]
+  unsupported_expansion_policy: reject

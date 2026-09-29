@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import time
 import uuid
-from collections.abc import Callable
+from collections.abc import Awaitable, Callable
 from dataclasses import replace
 
 from runtime.contracts import Completed, Failed, ReplyEvent, TurnMetrics
@@ -182,7 +182,12 @@ class WorldMindRuntime:
                 self._started = False
                 self._closed = True
 
-    async def handle_turn(self, request: TurnRequest) -> ReplyEvent:
+    async def handle_turn(
+        self,
+        request: TurnRequest,
+        *,
+        on_delta: Callable[[str], Awaitable[None] | None] | None = None,
+    ) -> ReplyEvent:
         started = time.perf_counter()
         if not isinstance(request, TurnRequest):
             raise TypeError("request must be a TurnRequest")
@@ -197,7 +202,7 @@ class WorldMindRuntime:
             self.config.validate_session(request.session)
             async with self.background_scheduler.foreground(request.session):
                 async with self.coordinator.foreground_turn(request.session.save_id):
-                    return await self._handle_locked_turn(request, started)
+                    return await self._handle_locked_turn(request, started, on_delta)
         except WorldMindRuntimeConfigError:
             return _failed(request, "identity_mismatch", False)
         except TurnRequestConflictError:
@@ -241,6 +246,7 @@ class WorldMindRuntime:
         self,
         request: TurnRequest,
         started: float,
+        on_delta: Callable[[str], Awaitable[None] | None] | None = None,
     ) -> ReplyEvent:
         replay = self.store.find_committed_turn(request)
         if replay is not None:
@@ -283,10 +289,14 @@ class WorldMindRuntime:
         view_runtime = heroine_runtime
         pending_actions: tuple[dict[str, object], ...] = ()
         game_feedback: tuple[str, ...] = ()
+        player_fact_reports: tuple[dict[str, object], ...] = ()
+        unknown_facts: tuple[dict[str, object], ...] = ()
         if self.game_world is not None:
             projection = await self.game_world.project()
             pending_actions = projection.pending_actions
             game_feedback = projection.recent_feedback
+            player_fact_reports = projection.player_fact_reports
+            unknown_facts = projection.unknown_facts
             if projection.item_states is not None:
                 scene_state = replace(
                     scene_state, item_states=projection.item_states
@@ -315,6 +325,8 @@ class WorldMindRuntime:
             selected_memory_frame=selected_memory_frame,
             pending_actions=pending_actions,
             game_feedback=game_feedback,
+            player_fact_reports=player_fact_reports,
+            unknown_facts=unknown_facts,
         )
 
         model_started = time.perf_counter()
@@ -354,6 +366,7 @@ class WorldMindRuntime:
                     recent_dialogue=self.store.list_recent_dialogue(
                         request.session
                     ),
+                    on_delta=on_delta,
                 )
             )
             self.validator.validate_reply(snapshot, approved_state, reply)
@@ -525,6 +538,7 @@ class WorldMindRuntime:
                         recent_dialogue=self.store.list_recent_dialogue(
                             request.session
                         ),
+                        on_delta=on_delta,
                     )
                 )
             self.validator.validate_reply(snapshot, approved_state, reply)

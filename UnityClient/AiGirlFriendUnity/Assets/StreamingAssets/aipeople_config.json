@@ -1,6 +1,10 @@
 {
   "endpoint": "http://127.0.0.1:8767",
-  "saveId": "m1check0001",
+  "saveId": "portablev1default",
   "characterId": "baiweixi",
-  "requestTimeoutSeconds": 120
+  "requestTimeoutSeconds": 120,
+  "autoStartBackend": true,
+  "backendScriptPath": "",
+  "backendPythonExe": "",
+  "backendPortableRoot": "Backend"
 }

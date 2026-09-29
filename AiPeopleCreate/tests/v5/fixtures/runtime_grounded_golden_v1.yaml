@@ -3,7 +3,7 @@ schema_version: aip.runtime_grounded_golden_fixture.v1
 # All scenarios inherit this complete production-shaped model view. Individual
 # scenarios replace only evidence-bearing fields; oracle data never enters it.
 model_view_template: &model_view_template
-  mode: JUDGE_TURN
+  mode: GAME_REPLY
   evidence_contract:
     allowed_evidence_refs: [snap-golden, evt-player-current]
   snapshot:
@@ -87,6 +87,10 @@ scenarios:
       forbidden_assertions:
         - {subject: protagonist, predicate: dentist_appointment, object: 星期五下午, source_fact_ids: [fact.dentist.fri]}
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_accept_authoritative_update, family:dentist_schedule, predicate:appointment_time]
 
@@ -109,6 +113,10 @@ scenarios:
       forbidden_assertions:
         - {subject: baiweixi, predicate: coffee_preference, object: 不加糖, source_fact_ids: [fact.protagonist.coffee.unsweetened]}
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_accept_authoritative_update, family:coffee_preference_update, subject:protagonist]
 
@@ -132,6 +140,10 @@ scenarios:
       forbidden_assertions:
         - {subject: protagonist, predicate: dentist_appointment, object: 星期五下午, source_fact_ids: [fact.dentist.stale_fri]}
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_reject_stale_claim, family:dentist_schedule, predicate:appointment_time]
 
@@ -154,6 +166,10 @@ scenarios:
       forbidden_assertions:
         - {subject: rice_cooker, predicate: operating_mode, object: 煮饭, source_fact_ids: [fact.cooker.cooking.false]}
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_reject_stale_claim, family:rice_cooker_mode, predicate:operating_mode]
 
@@ -176,6 +192,10 @@ scenarios:
       forbidden_assertions:
         - {subject: takeout_order, predicate: delivery_status, object: 已到达, source_fact_ids: [fact.takeout.arrived.false]}
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_correct_false_premise, family:takeout_arrival, predicate:delivery_status]
 
@@ -198,6 +218,10 @@ scenarios:
       forbidden_assertions:
         - {subject: scissors, predicate: location, object: 衣柜, source_fact_ids: [fact.scissors.wardrobe.false]}
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_correct_false_premise, family:item_location_correction, predicate:location]
 
@@ -237,6 +261,10 @@ scenarios:
       forbidden_assertions:
         - {subject: protagonist_keys, predicate: location, object: 玄关抽屉, source_fact_ids: [fact.keys.drawer]}
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_resolve_world_memory_conflict, family:keys_world_memory, predicate:location]
 
@@ -276,6 +304,10 @@ scenarios:
       forbidden_assertions:
         - {subject: rice_cooker, predicate: operating_mode, object: 保温, source_fact_ids: [fact.cooker.past.warm]}
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_resolve_world_memory_conflict, family:cooker_world_memory, predicate:operating_mode]
 
@@ -296,6 +328,10 @@ scenarios:
         - {subject: protagonist, predicate: dentist_appointment, object: 星期六上午十点, source_fact_ids: [fact.dentist.confirm.sat]}
       forbidden_assertions: []
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_confirm_current_state, family:dentist_confirmation, predicate:appointment_time]
 
@@ -316,6 +352,10 @@ scenarios:
         - {subject: bedroom_window, predicate: state, object: 已关闭, source_fact_ids: [fact.window.closed]}
       forbidden_assertions: []
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_confirm_current_state, family:window_state, predicate:state]
 
@@ -337,6 +377,10 @@ scenarios:
       forbidden_assertions:
         - {subject: baiweixi, predicate: coffee_preference, object: 不加糖, source_fact_ids: [fact.subject.protagonist.no_sugar]}
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: required
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_subject_attribution, family:preference_subject, subject:protagonist]
 
@@ -358,6 +402,10 @@ scenarios:
       forbidden_assertions:
         - {subject: protagonist, predicate: travel_plan, object: 明天去苏州出差, source_fact_ids: [fact.xiaolin.trip]}
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: required
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_subject_attribution, family:third_party_plan, subject:xiaolin]
 
@@ -379,6 +427,10 @@ scenarios:
       forbidden_assertions:
         - {subject: protagonist_and_baiweixi, predicate: first_seaside_date, object: 任意具体日期, source_fact_ids: [fact.seaside.date.unknown]}
       must_not_be_vague: false
+      response_contract:
+        unknown_acknowledgement: required
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_insufficient_information, family:unsupported_shared_history, predicate:first_seaside_date]
 
@@ -400,6 +452,10 @@ scenarios:
       forbidden_assertions:
         - {subject: gifted_flower, predicate: color, object: 任意具体颜色, source_fact_ids: [fact.flower.color.unknown]}
       must_not_be_vague: false
+      response_contract:
+        unknown_acknowledgement: required
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_insufficient_information, family:unsupported_gift_detail, predicate:color]
 
@@ -420,6 +476,10 @@ scenarios:
         - {subject: thermos, predicate: location, object: 厨房操作台, source_fact_ids: [fact.thermos.counter]}
       forbidden_assertions: []
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_direct_answer, family:item_location_question, predicate:location]
 
@@ -440,5 +500,9 @@ scenarios:
         - {subject: protagonist_phone, predicate: location, object: 沙发右侧坐垫上, source_fact_ids: [fact.phone.sofa]}
       forbidden_assertions: []
       must_not_be_vague: true
+      response_contract:
+        unknown_acknowledgement: not_applicable
+        subject_proposition_binding: not_applicable
+        unsupported_expansion_policy: reject
       unsupported_detail_policy: reject
     split_anchors: [task:reply_direct_answer, family:item_location_question, predicate:location]

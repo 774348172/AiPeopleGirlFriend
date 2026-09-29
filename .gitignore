@@ -32,3 +32,18 @@ AiPeople/**/*.sqlite*
 
 # 训练输出备份（含模型权重，GB 级），不入库
 **/outputs_bak_*/
+
+# Desktop client builds, local model assets, and generated test output.
+UnityClient/Builds/
+UnityClient/output/
+UnityClient/AiGirlFriendUnity/[Ll]ibrary/
+UnityClient/AiGirlFriendUnity/[Tt]emp/
+UnityClient/AiGirlFriendUnity/[Oo]bj/
+UnityClient/AiGirlFriendUnity/[Ll]ogs/
+UnityClient/AiGirlFriendUnity/[Uu]ser[Ss]ettings/
+AiPeople/portable_launcher/bin/
+AiPeople/portable_launcher/obj/
+AiPeople/local_runtime/adapters/
+AiPeople/release_assets/
+release/build/
+release/dist/

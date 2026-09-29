@@ -1,0 +1,223 @@
+schema_version: aip.shared_world_scene_canon.v1
+scene_id: songjiangfu.old_district.apartment_6f_2br1lr
+world_id: songjiangfu
+status: approved
+version: 3
+last_updated: '2026-09-14'
+display_name: 松江府老城区六楼老破小出租屋
+
+building:
+  district: 松江府老城区
+  building_type: 老旧居民楼
+  floor: 6
+  elevator: absent
+  condition: 老破小
+  environment:
+    corridor_lighting: old_building_dim
+    sound_insulation: poor
+    water_supply_stability: occasionally_unstable
+  notes:
+    - 楼道和公共区域保持老旧居民楼特征。
+    - 无电梯，上下楼通过楼梯。
+    - 隔音差、楼道偏暗、上下水偶尔不稳是稳定环境倾向，不代表每一轮都发生对应事件。
+
+layout:
+  type: two_bedrooms_one_living_room
+  spaces:
+    entrance:
+      id: apartment_entrance
+      label: 狭窄玄关
+      fixtures: [shoe_cabinet, key_hooks, umbrella_bucket]
+    living_room:
+      id: apartment_living_room
+      label: 客厅
+      role: shared_social_space
+      fixtures: [sofa, small_table, basic_storage, television, fan, television_cabinet, dining_table, two_chairs, floor_lamp]
+      connected_to: [entrance, kitchen, bathroom, master_bedroom, spare_bedroom, small_balcony]
+    master_bedroom:
+      id: apartment_master_bedroom
+      label: 主卧
+      occupant: protagonist
+      assignment_status: fixed
+      fixtures: [bed, wardrobe, desk, desk_outlet]
+    spare_bedroom:
+      id: apartment_spare_bedroom
+      label: 次卧
+      current_role: storage_and_spare_space
+      occupant: none
+      assignment_status: not_assigned_to_baiweixi
+      fixtures: [bookshelf, storage_shelf, spare_bedding]
+    kitchen:
+      id: apartment_kitchen
+      label: 厨房
+      role: cooking_and_appliance_space
+      fixtures: [sink, gas_stove, range_hood, refrigerator, basic_cabinets, cup_rack, rice_bin, spice_rack, cutting_board, two_bowls]
+    bathroom:
+      id: apartment_bathroom
+      label: 卫生间
+      role: bathing_and_washing_space
+      fixtures: [toilet, washbasin, shower_area, towel_rack, mirror, mop_corner]
+      water_heater: 60升储水式电热水器
+    small_balcony:
+      id: apartment_small_balcony
+      label: 小阳台
+      role: ventilation_and_clothes_drying
+      connected_to: [living_room]
+      fixtures: [drying_rod, laundry_basket]
+
+equipment:
+  - id: electric_storage_water_heater
+    label: 储水式电热水器
+    location: bathroom
+    existence: permanent
+    capacity: 60升
+  - id: washing_machine
+    label: 洗衣机
+    location: small_balcony
+    existence: permanent
+  - id: refrigerator
+    label: 冰箱
+    location: kitchen
+    existence: permanent
+  - id: gas_stove
+    label: 燃气灶
+    location: kitchen
+    existence: permanent
+  - id: range_hood
+    label: 抽油烟机
+    location: kitchen
+    existence: permanent
+  - id: rice_cooker
+    label: 电饭煲
+    location: kitchen
+    existence: permanent
+  - id: microwave_oven
+    label: 微波炉
+    location: kitchen
+    existence: permanent
+  - id: electric_kettle
+    label: 电热水壶
+    location: kitchen
+    existence: permanent
+  - id: fan
+    label: 风扇
+    location: living_room
+    existence: permanent
+  - id: television
+    label: 电视
+    location: living_room
+    existence: permanent
+
+fixed_objects:
+  baiweixi_cardboard_box:
+    label: 白未晞的纸箱
+    default_location: apartment_living_room.window_side_corner
+    purpose: safety_place
+    can_move_at_runtime: true
+    rule: 默认位于客厅靠窗边角、能看到出口的位置；移动后必须由世界事件或快照记录。
+
+fixed_details:
+  空调配置: 本轮不设空调，仅保留现有风扇；将来新增须更新正典
+  洗衣机安装点: 小阳台
+routine_locations:
+  常用钥匙: 玄关常用钥匙挂钩
+  备用钥匙: 玄关备用钥匙挂钩，与常用钥匙分开
+  折叠伞: 玄关雨伞桶
+  遥控器: 电视柜
+  杯子: 厨房杯架
+  手机充电器: 主卧书桌抽屉
+  白围巾: 主卧衣柜抽屉
+  借来的书: 次卧书架第二层
+  洗衣液: 小阳台洗衣机旁
+routine_location_rule: 通常归位点不是当前所在位置；移动需独立事件或快照，不能根据旧记录补写当前位置。
+fixed_presence:
+  空调: 无
+  电视柜: 有
+runtime_fields:
+  小阳台: [空衣架数量]
+  男主的灰色拖鞋: [当前位置]
+  常用钥匙: [当前位置, 持有人]
+  手机: [当前位置, 持有人]
+  遥控器: [当前位置, 持有人]
+  钱包: [当前位置, 持有人]
+  购物袋: [当前位置, 持有人, 袋内物品]
+  白未晞的纸箱: [箱内物品]
+  冰箱食材: [逐项名称和份数, 备菜状态, 获知来源]
+  剩饭: [制作日期, 保存记录, 当前位置]
+  米桶: [剩余米量]
+  调料架: [油盐辣椒面剩余量]
+  毛巾: [干湿状态]
+  住宅: [当前是否停水, 当前是否停电]
+  当前行程: [上一地点, 当前地点, 下一目的地, 移动事件, 出发时间, 到达时间]
+  当前约定: [内容, 时间, 确认状态, 取消状态, 完成状态]
+  随身物品: [物品清单与持有人, 获知来源]
+  昨日晚饭: [发生时间, 获知来源]
+  男主当前报告: [饥饿程度, 疲劳程度, 情绪, 原话与来源]
+  白未晞当前状态: [饥饿程度, 疲劳程度, 当前形态]
+knowledge_rule: 男主未说出口的想法、后台支付和未观察到的物品内容不自动给白未晞；每条相关事实须附时间和来源。
+
+occupancy:
+  protagonist: apartment_master_bedroom
+  baiweixi:
+    current_status: temporary_cohabitant
+    private_bedroom: none
+    safety_place: baiweixi_cardboard_box
+    rule: 白未晞暂住但未获得固定独立房间；次卧也不自动视为她的房间。
+
+protagonist_profile:
+  status: stable_baseline_preference
+  identity:
+    hometown: 四川
+    note: 男主是四川人；居住在松江府不改变籍贯设定。
+  food:
+    regional_taste: 四川口味
+    spicy_tolerance: 能吃辣
+    richness: 喜欢油腻
+  drinks: 平时喝温水，饮料偏低糖
+  environment: 喜欢安静、通风和柔和灯光
+  organization: 喜欢常用物品有固定位置，但不要求一尘不染
+  leisure: 喜欢在家看书、听舒缓音乐，偶尔散步
+  companionship: 喜欢自然聊天和安静陪伴，不希望每句话都变成建议或任务
+  low_mood: 通常希望先被听见，再讨论怎么办
+  reminders: 接受温和提醒，不喜欢被反复催促
+  privacy: 不喜欢未经询问翻看手机和私人物品
+  physical_contact: 不设为默认同意，按关系阶段和当下表达处理
+  food_allergy: unknown
+  disclosure_rule: 基础设定不等于白未晞已经知道；只有已登记记忆或男主明确告知后才能作为对话事实使用。
+
+authority_rules:
+  permanent_scene_facts:
+    - building.floor
+    - building.elevator
+    - building.condition
+    - layout
+    - equipment.*.existence
+    - fixed_objects.baiweixi_cardboard_box.default_location
+  runtime_only_facts:
+    - equipment.*.power_state
+    - equipment.*.operating_mode
+    - equipment.*.remaining_time
+    - equipment.*.finish_eta
+    - doors_and_windows
+    - item_current_location
+    - current_light_state
+    - current_water_state
+    - completed_household_action
+  unknown_by_default:
+    - 是否正在洗衣
+    - 洗衣机当前程序和剩余时间
+    - 电饭煲当前模式和剩余时间
+    - 微波炉是否正在运行
+    - 燃气灶是否点火
+    - 热水器是否开启及热水剩余量
+    - 当前门窗是否打开
+    - 任何没有快照或事件来源的家务结果
+  source_priority:
+    authoritative:
+      - runtime_snapshot
+      - structured_game_event
+      - world_canon
+      - selected_memory
+    non_authoritative_until_confirmed:
+      - current_player_report_pending_confirmation
+  unsupported_expansion_policy: reject

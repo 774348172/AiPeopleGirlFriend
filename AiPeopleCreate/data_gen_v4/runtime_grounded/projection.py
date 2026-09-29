@@ -28,9 +28,16 @@ MODEL_VIEW_KEYS = frozenset(
         "recent_dialogue",
         "pending_actions",
         "game_feedback",
+        "player_fact_reports",
+        "unknown_facts",
+        "authoritative_world",
     }
 )
-FULL_JUDGE_PAYLOAD_KEYS = MODEL_VIEW_KEYS | {"available_actions"}
+# authoritative_world is a new generator-side projection.  It is optional for
+# legacy runtime payloads until the production payload publisher is migrated;
+# new generated scenarios always include it.
+REQUIRED_MODEL_VIEW_KEYS = MODEL_VIEW_KEYS - {"player_fact_reports", "unknown_facts", "authoritative_world"}
+FULL_JUDGE_PAYLOAD_KEYS = (MODEL_VIEW_KEYS - {"authoritative_world"}) | {"available_actions"}
 
 
 class ProjectionContractError(ValueError):
@@ -67,7 +74,7 @@ def project_judge_payload(payload: dict[str, Any]) -> dict[str, Any]:
         )
     model_view = copy.deepcopy(payload)
     del model_view["available_actions"]
-    if set(model_view) != MODEL_VIEW_KEYS:
+    if not set(model_view).issubset(MODEL_VIEW_KEYS):
         raise ProjectionContractError("projection removed or retained unexpected fields")
     errors = [
         f"$.{'.'.join(map(str, error.absolute_path))}:{error.message}"
@@ -79,4 +86,3 @@ def project_judge_payload(payload: dict[str, Any]) -> dict[str, Any]:
     if errors:
         raise ProjectionContractError("; ".join(errors))
     return model_view
-

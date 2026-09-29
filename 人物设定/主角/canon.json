@@ -18,6 +18,16 @@
     "home": {"value": "松江府老城区老旧小区的小户型", "visibility": "world_public", "disclosure_policy": "direct_allowed"},
     "rescue_baiweixi": {"value": "十天前暴雨夜救下受伤的纯白小猫白未晞", "visibility": "relationship_private", "disclosure_policy": "direct_allowed"},
     "current_active_heroine": {"value": "白未晞", "visibility": "system_only", "disclosure_policy": "withhold"},
-    "personality_boundary": {"value": "只固定善意、基本生活能力和不立即伤害超自然角色；其他性格与选择由玩家形成", "visibility": "system_only", "disclosure_policy": "withhold"}
+    "personality_boundary": {"value": "善意和基本生活能力保留；日常交流偏好是可由玩家明确修改的默认档案，不替玩家决定重大行为，也不自动成为女主已知记忆", "visibility": "system_only", "disclosure_policy": "withhold"},
+    "dialogue_M01": {"label":"开店愿望","value":"希望心愿稳定经营，有愿意常来的客人，也给自己留出生活时间；没有确定开连锁店或回建筑行业的计划","visibility":"world_private","disclosure_policy":"hint_only"},
+    "dialogue_M02": {"label":"旧工作态度","value":"仍喜欢画清空间和安排布局的过程，厌倦反复无意义修改；对专业的兴趣与失业的挫败可以并存","visibility":"world_private","disclosure_policy":"hint_only"},
+    "dialogue_M03": {"label":"小兴趣","value":"散步时会留意招牌、门窗和小店布局，喜欢讨论怎样摆更舒服，但不必每次分析建筑","visibility":"world_private","disclosure_policy":"hint_only"},
+    "dialogue_M04": {"label":"审美","value":"偏爱有使用痕迹但干净实用的物件，喜欢暖色、木质感和不刺眼的布置，不固定品牌或收藏清单","visibility":"world_private","disclosure_policy":"hint_only"},
+    "dialogue_M05": {"label":"休息方式","value":"休息日不喜欢排满行程，可以闲坐、看电影或临时散步；某次是否出门由当次选择决定","visibility":"world_private","disclosure_policy":"hint_only"},
+    "dialogue_M06": {"label":"食物兴趣","value":"喜欢比较家常菜做法，对街边小吃有兴趣；能吃辣不等于每顿必须吃辣，也不要求白未晞同口味","visibility":"world_private","disclosure_policy":"hint_only"},
+    "dialogue_M07": {"label":"幽默方式","value":"偶尔轻微自嘲或提出荒唐假设，逗熟悉的人接话；不用救助恩情、流浪经历或贫困作伤人笑料","visibility":"world_private","disclosure_policy":"hint_only"},
+    "dialogue_M08": {"label":"接受关心","value":"不喜欢被训话，能接受具体不过度的关心；可以说累、说没想好，不必总是隐忍照顾者","visibility":"world_private","disclosure_policy":"hint_only"},
+    "dialogue_M09": {"label":"日常分歧","value":"会在实用与好看、多赚一点与早点休息、计划与临时决定之间犹豫；可以被说服，也可以坚持选择","visibility":"world_private","disclosure_policy":"hint_only"},
+    "dialogue_M10": {"label":"学习愿望","value":"想改善饮品口感、给店里拍更好看的照片；愿望不证明已经掌握摄影、拉花或新配方","visibility":"world_private","disclosure_policy":"hint_only"}
   }
 }

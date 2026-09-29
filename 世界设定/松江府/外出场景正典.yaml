@@ -1,0 +1,233 @@
+schema_version: aip.shared_world_scene_canon_bundle.v1
+world_id: songjiangfu
+status: approved
+version: 2
+last_updated: '2026-09-14'
+display_name: 松江府外出场景正典
+description: 用户已采纳五场景扩充草案；固定设定、经营资料和动态快照分开保存。
+
+shared_rules:
+  relation_to_home:
+    home_scene_id: songjiangfu.old_district.apartment_6f_2br1lr
+    neighborhood_distance: {max: 1, unit: 公里}
+    neighborhood_places: [songjiangfu.neighborhood_cafe, songjiangfu.neighborhood_convenience_store]
+    shopping_district_distance: {min: 3, max: 4, unit: 公里}
+  permanent_facts:
+    - 场景名称和 scene_id
+    - 场景之间的相对距离范围
+    - 固定空间、固定设施和固定店铺锚点
+    - 营业时间（若场景明确规定）
+    - 男主咖啡馆的所有权和经营关系
+    - 白未晞已经去过男主咖啡馆并帮助过经营
+  runtime_facts:
+    - 当前时间和天气
+    - 两人的当前位置、活动、身体状态和情绪
+    - 当前是否营业、是否开门、是否有顾客或排队
+    - 商品、饮品、库存、价格、订单、付款和制作进度
+    - 街道当前可见店铺、摊位商品、人流、噪声和路线进度
+    - 本轮刚刚发生的动作和事件结果
+  unknown_by_default:
+    - 没有快照或事件来源的经营状态、库存和购买结果
+    - 没有明确记录的店员、顾客、摊主和路人身份
+    - 没有明确记录的具体路线、距离、到达时间和动作结果
+    - 任何由“想去、准备买、打算点”推导出的完成事实
+  source_priority: [runtime_snapshot, structured_game_event, world_canon, selected_memory]
+  unsupported_expansion_policy: reject
+  business_record_rule: 常规目录和常规价格不代表当前供应或实售价；人员名册不代表在场，也不代表白未晞已知道姓名。
+  knowledge_rule: 当前可见、明确告知、历史原话和后台未公开分别记录；男主想法、支付后台结果不自动成为白未晞的知识。
+  common_runtime_fields:
+    当前行程: [上一地点, 当前地点, 下一目的地, 移动事件, 出发时间, 到达时间]
+    当前约定: [内容, 时间, 确认状态, 取消状态, 完成状态]
+    昨日晚饭: [地点与菜品, 发生时间, 获知来源]
+    随身物品: [物品清单与持有人, 获知来源]
+    白未晞的纸箱: [箱内物品]
+
+scenes:
+  - scene_id: songjiangfu.neighborhood_cafe
+    scene_kind: public_cafe
+    display_name: 街角咖啡
+    name_status: confirmed
+    permanence: recurring_public_place
+    location:
+      district: 松江府老城区附近街区
+      indoor_outdoor: indoor
+      distance_from_home: {max: 1, unit: 公里}
+      address_label: 具体门牌未登记
+      usual_walk_from_home_m: 600
+      area_sqm: 45
+    business:
+      opening_hours: '11:00-20:00'
+      owner: 周宁
+      operator: 周宁
+    layout:
+      zones: [入口, 点单收银区, 饮品制作区, 普通座位区, 窗边座位, 洗手间, 插座区, 饮水区]
+      optional_zones: []
+    fixed_fixtures: [点单收银台, 饮品制作区, 四张双人桌, 靠窗长桌三个座位, 两处窗边插座, 独立洗手间, 饮水区, 小冷藏展示柜]
+    fixed_details:
+      空间规模: 约45平方米
+      常用步行路线离家距离: 约600米，不代表精确到达时间
+      常规岗位: 点单收款、制作、清洁；本轮人员分工须看快照
+    equipment: [咖啡机, 磨豆机, 冷藏柜, 制冰机, 电热水壶]
+    business_records:
+      version: 1
+      staff_roster:
+        - {name: 周宁, role: 店主兼咖啡师}
+        - {name: 林晓, role: 兼职店员}
+      public_catalog: [美式, 拿铁, 热可可, 热牛奶, 桂花拿铁]
+      public_reference_prices: {美式: 16元, 拿铁: 22元, 热可可: 20元, 热牛奶: 12元, 桂花拿铁: 24元}
+      visibility: 常规菜单和价目作为店内公开资料；人员姓名仅在本轮明确获知后可用
+    variable_items: [当日饮品, 甜点, 菜单具体内容, 店内消耗品]
+    runtime_only_facts: [是否营业, 是否有空位, 排队情况, 两人所在区域, 点单内容, 制作进度, 付款结果, 店内顾客, 顾客总数, 座位使用情况, 店员是否在场, 店员当前活动, 收银负责人, 是否接受订单, 今日供应, 已售罄品项, 实售价, 预计等待时间, 是否已交付, 已获知人员姓名]
+    runtime_fields:
+      本次茶杯: [饮品, 当前温度状态]
+      街角咖啡: [当前桌旁插座存在性, 当前桌旁插座可用性, 当班店员数量, 当前播放音乐, 当前曲名]
+      当前订单: [取单号]
+    unknown_by_default: [是否营业, 具体饮品和甜点库存, 价格, 店员身份, 噪声, 气味, 室内温度, 窗边座位是否可用]
+
+  - scene_id: songjiangfu.neighborhood_convenience_store
+    scene_kind: public_convenience_store
+    display_name: 邻里便利店
+    name_status: confirmed
+    permanence: recurring_public_place
+    location:
+      district: 松江府老城区附近街区
+      indoor_outdoor: indoor
+      distance_from_home: {max: 1, unit: 公里}
+      address_label: 具体门牌未登记
+    business:
+      opening_hours: '08:00-20:00'
+      owner: 陈惠
+      operator: 陈惠
+    layout:
+      zones: [入口, 日用品货架区, 食品货架区, 冷藏柜区域, 收银台]
+    fixed_fixtures: [入口, 货架, 冷藏柜, 收银台, 购物篮存放处, 收银扫码设备, 明码标价牌]
+    fixed_details:
+      空间规模: 约35平方米
+      常用步行路线离家距离: 约350米，与街角咖啡同处一个生活街区；两店之间精确距离未登记
+      食品分区: 零食、方便食品、基础食材
+      日用品分区: 清洁用品、洗护用品
+      服务边界: 本轮未设关东煮、现制咖啡和加热服务，不自动推断存在
+    equipment: [冷藏柜, 收银扫码设备]
+    business_records:
+      version: 1
+      staff_roster:
+        - {name: 陈惠, role: 店主}
+        - {name: 赵明, role: 代班店员}
+      public_catalog: [瓶装水, 牛奶, 酸奶, 鸡蛋, 面包, 原味薯片, 海苔, 方便面, 纸巾, 洗衣液, 垃圾袋]
+      public_reference_prices: {瓶装水常规规格: 2元, 原味薯片常规规格: 6元, 纸巾常规规格: 3元}
+      visibility: 常规货架分类及价目为公开资料；具体规格、实售价和姓名获知另记
+    variable_items: [食品, 饮料, 日用品, 当日库存, 当日价格]
+    runtime_only_facts: [是否营业, 两人所在区域, 目标商品是否在货架, 库存, 价格, 购买数量, 付款结果, 排队情况, 店员是否在场, 收银负责人, 收银是否开放, 支付设备是否可用, 购物阶段, 购买品项, 购买金额, 是否已拿走, 已获知人员姓名]
+    runtime_fields:
+      鸡蛋: [库存, 数量, 所在货架, 规格, 当前价格, 包装完整性, 有效期]
+      原味薯片: [库存, 数量, 所在货架, 规格, 当前价格, 包装完整性, 有效期, 今日优惠]
+      所问原味牛奶: [容量]
+      单包纸巾: [单价]
+      原味小面包: [当前货架数量]
+      瓶装水: [库存, 数量, 所在货架, 规格, 当前价格, 包装完整性, 有效期]
+      本次购物: [意向清单, 已挑选清单, 是否已结算, 付款结果, 是否已拿走, 获知来源]
+    unknown_by_default: [是否营业, 任意商品库存, 价格, 品牌, 保质期, 店员身份, 其他顾客, 尚未完成的购买计划]
+
+  - scene_id: songjiangfu.shopping_walk
+    scene_kind: outdoor_moving_route
+    display_name: 百花里小街逛街途中
+    name_status: confirmed
+    permanence: recurring_public_district
+    location:
+      district: 松江府老城区东侧生活街区
+      indoor_outdoor: outdoor
+      distance_from_home: {min: 3, max: 4, unit: 公里}
+      route_label: 百花里小街
+      route_length: 约900米（主街入口至出口），不是离家距离
+    district_scale:
+      shop_count: 100至200家小商铺
+      fixed_character: 小吃、日用品和售卖新奇小玩意儿的沿街小店
+      fixed_shop_anchors: [百花小吃铺, 拾趣杂货铺, 老街书铺]
+      anchor_status: confirmed
+    default_route:
+      start: 街道入口
+      destination: 街道出口
+      route_can_change: true
+    layout:
+      zones: [街道入口, 人行道, 沿街店铺一侧, 小摊区域, 普通路口, 街道出口, 小吃集中段, 杂货与新奇小店段, 出口小广场, 顶棚休息处]
+    fixed_fixtures: [人行道, 沿街建筑界面, 街道入口指路牌, 街道出口, 两处长椅, 顶棚休息处, 分类垃圾桶]
+    fixed_details:
+      主街长度: 入口至出口约900米，不等于离家3至4公里的距离
+      主路分段: 街道入口指路牌→小吃集中段→杂货与新奇小店段→出口小广场
+      百花小吃铺经营方向: 小吃、简餐；今日菜品和出餐速度另记
+      拾趣杂货铺经营方向: 小摆件、钥匙扣、手工小物；当前款式和售价另记
+      老街书铺经营方向: 旧书及少量文具；在售书名和折扣另记
+      花间小摊位区: 允许临时花摊等出现的区域，不代表每天有花摊
+    variable_items: [小摊商品, 当日营业店铺, 橱窗内容, 路边临时摊位]
+    runtime_only_facts: [当前路段, 行进方向, 是否停留, 天气, 光线, 路面, 人流, 看见的店铺和物品, 是否购买, 是否改变路线, 是否到达, 当前位置, 已走路段, 剩余路段, 已走距离, 剩余距离, 是否坐下, 遮雨处是否可用, 临时摊位是否在场, 购物袋持有人]
+    runtime_fields:
+      当前路线: [起点, 目的地, 当前地点, 已走距离, 剩余距离, 预计到达时间]
+      百花小吃铺: [是否营业, 今日菜品, 当前价格, 是否辣, 出餐时间]
+      拾趣杂货铺: [是否营业, 橱窗物品, 库存, 当前价格, 关闭原因]
+      路口木椅: [当前占用]
+      随身物品: [是否带伞]
+      老街书铺: [是否营业, 在售书名, 当前折扣]
+      花间小摊位区: [是否有花摊, 当前商品, 摊主身份, 当前价格]
+    unknown_by_default: [具体路口, 距离, 到达时间, 未登记店铺, 摊贩身份, 商品库存和价格, 周围人数, 临时交通事件]
+
+  - scene_id: songjiangfu.protagonist_cafe
+    scene_kind: protagonist_owned_cafe
+    display_name: 心愿咖啡馆
+    name_status: confirmed
+    permanence: recurring_personal_place
+    ownership:
+      owner: protagonist
+      operator: protagonist
+      staff: none
+      relationship_fact: 男主一个人经营，没有员工
+    location:
+      district: 松江府，具体街区待补充
+      indoor_outdoor: indoor
+      area_sqm: {min: 20, max: 29}
+      address_label: 具体门牌未登记
+    business:
+      opening_hours: '11:00-20:00'
+      menu_size: 十几种饮品
+      menu_items: runtime_or_business_record
+      inventory_and_prices: runtime_only
+    layout:
+      zones: [入口, 吧台和收银区, 顾客座位区, 咖啡制作区, 后场, 储物区]
+      optional_zones: [窗边座位]
+    fixed_fixtures: [制作兼收银吧台, 两张双人桌, 靠墙两个座位, 杯具架, 小储物柜, 后场洗手池]
+    fixed_details:
+      空间规模: 约25平方米
+      餐饮边界: 以饮品为主，未新增复杂厨房和大批餐食
+      白未晞参与边界: 不是员工；营业时不接触经营和服务，打烊后可在明确同意下帮小忙；过去帮过忙不代表本轮已执行动作
+    equipment: [半自动咖啡机, 磨豆机, 小冰箱, 小制冰机, 电热水壶, 电子秤, 收银设备]
+    business_records:
+      version: 1
+      staff_roster: []
+      public_catalog: [美式, 拿铁, 卡布奇诺, 摩卡, 焦糖拿铁, 香草拿铁, 桂花拿铁, 冷萃, 热可可, 热牛奶, 柠檬茶, 蜂蜜柚子茶, 红茶, 茉莉茶]
+      public_reference_prices: {}
+      visibility: 常规菜单为公开资料，冷热规格、配方、价格和今日供应另记；试做饮品不是常规可售菜单
+    variable_items: [当日饮品, 菜单明细, 库存, 价格, 订单和营业记录]
+    character_relation:
+      baiweixi_status: 已去过并帮助过男主经营咖啡馆
+      baiweixi_is_employee: false
+      current_role_must_be_from_snapshot: true
+    runtime_only_facts: [是否营业, 是否开门, 男主当前所在区域, 白未晞当前所在区域, 当班分工, 顾客数量, 当前订单, 制作进度, 库存, 收款结果, 设备运行状态, 当日营业情况, 是否接受订单, 是否临时离开, 排队情况, 订单交付状态, 待清洁杯具, 白未晞本轮是否帮忙, 白未晞本轮获准事项, 白未晞当前形态, 是否已打烊]
+    runtime_fields:
+      试做饮品: [名称或未命名状态, 配方, 是否已经制作, 是否已试饮, 口味反馈, 反馈来源]
+      心愿咖啡馆: [干净白杯数量, 室内温度, 所问靠门客人的姓名]
+      当前订单: [品项, 数量, 付款状态, 制作阶段, 是否已交付, 预计完成时间]
+    unknown_by_default: [是否营业, 具体门牌, 菜单明细, 价格, 库存, 顾客和熟客身份, 营业额, 设备是否开机, 白未晞本轮是否帮忙]
+    authority_rules:
+      ownership_does_not_imply: [当前营业, 当前有顾客, 当前有库存, 已接订单, 已完成制作, 白未晞正在帮忙]
+
+cross_scene_continuity:
+  allowed: true
+  examples:
+    - home_to_store_to_home
+    - home_to_shopping_walk_to_neighborhood_cafe
+    - home_to_protagonist_cafe_to_home
+    - shopping_walk_to_neighborhood_convenience_store
+  requirement: 每次跨场景移动必须由结构化事件或连续快照写明起点、当前地点、目的地和时间，不能只靠模型对白跳转。
+
+pending_replacements:
+  - 心愿咖啡馆的具体街区和门牌
+  - 街角咖啡与邻里便利店的具体门牌

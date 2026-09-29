@@ -9,6 +9,7 @@ namespace AiPeople.World
         TakeWater,
         ExamineBox,
         ToggleDoor,
+        ToggleDevice,
     }
 
     /// <summary>

@@ -2,9 +2,9 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://aipeople.local/schemas/mode_v5/runtime_grounded_teacher_target.schema.json",
   "title": "RuntimeGroundedReplyTeacherTargetV1",
-  "description": "离线教师只生成当前角色回复和审计辅助 claims，不得生成场景或历史。",
+  "description": "离线教师只生成当前角色回复；declared_claims 仅为旧流水线兼容字段，不作为教师必填目标。",
   "type": "object",
-  "required": ["reply", "declared_claims"],
+  "required": ["reply"],
   "properties": {
     "reply": {
       "type": "string",

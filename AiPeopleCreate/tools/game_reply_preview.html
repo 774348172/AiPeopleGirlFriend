@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>白未晞 · 训练数据审核</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f7f8;color:#242b30;font:15px/1.65 system-ui;letter-spacing:0}header,main{max-width:1060px;margin:auto;padding:20px}header{border-bottom:1px solid #cbd2d7}h1{font-size:24px;margin:0}h2{font-size:18px}section{padding:24px 0;border-bottom:1px solid #cbd2d7}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:14px/1.65 system-ui;margin:8px 0 20px}.target{border-left:3px solid #15836b;padding:8px 16px;background:#edf6f2}button{padding:8px 14px;cursor:pointer}fieldset{border:0;padding:10px 0;display:flex;gap:24px}textarea{width:100%;min-height:65px;font:inherit;padding:8px}summary{cursor:pointer;color:#426372}label{cursor:pointer}#status{color:#754820}.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:12px}
+</style>
+<header><h1>白未晞 · 24 条训练数据审核</h1><div class="toolbar"><span id="count"></span><button id="download">下载人工审核结果</button><label>导入审核结果 <input id="import" type="file" accept=".json"></label></div><p id="status" role="status"></p></header><main id="cases"></main>
+<script>
+const original=__REPORT__;
+let report=structuredClone(original);
+const key=original.dataset_id+':'+original.regression_sha256;
+const status=document.getElementById('status');
+function validate(value){
+ if(value.dataset_id!==original.dataset_id||value.regression_sha256!==original.regression_sha256||value.cases.length!==original.cases.length)throw Error('审核文件不属于本批数据');
+ value.cases.forEach((c,i)=>{if(c.sample_id!==original.cases[i].sample_id||JSON.stringify(c.messages)!==JSON.stringify(original.cases[i].messages)||!['','好','差'].includes(c.rating)||typeof c.note!=='string')throw Error('条目或评分格式不匹配')});
+}
+try{const saved=localStorage.getItem(key);if(saved){const parsed=JSON.parse(saved);validate(parsed);report=parsed}}catch(e){status.textContent='无法恢复本地判断：'+e.message}
+function progress(){document.getElementById('count').textContent=`已审核 ${report.cases.filter(c=>c.rating).length} / ${report.cases.length}`}
+function save(){try{localStorage.setItem(key,JSON.stringify(report));status.textContent='判断已保存在本机'}catch(e){status.textContent='本机保存失败，请立即下载审核结果：'+e.message}progress()}
+function render(){
+ const main=document.getElementById('cases');main.replaceChildren();
+ report.cases.forEach((c,i)=>{
+  const section=document.createElement('section');const title=document.createElement('h2');title.textContent=`${i+1}. ${c.category}`;section.append(title);
+  c.messages.forEach((m,j)=>{
+   const pre=document.createElement('pre');pre.textContent=m.content;
+   if(m.role==='system'){const details=document.createElement('details');const summary=document.createElement('summary');summary.textContent='系统上下文 · 角色、状态与证据';details.append(summary,pre);section.append(details)}
+   else{const label=document.createElement('strong');label.textContent=j===c.messages.length-1?'目标回复':m.role==='user'?'男主':'白未晞 · 历史';section.append(label,pre);if(j===c.messages.length-1)pre.className='target'}
+  });
+  const field=document.createElement('fieldset');const legend=document.createElement('legend');legend.textContent='人工判断';field.append(legend);
+  ['好','差'].forEach(value=>{const label=document.createElement('label');const input=document.createElement('input');input.type='radio';input.name='rating-'+i;input.value=value;input.checked=c.rating===value;input.onchange=()=>{c.rating=value;save()};label.append(input,document.createTextNode(value));field.append(label)});
+  const note=document.createElement('textarea');note.placeholder='审核意见';note.setAttribute('aria-label',`第${i+1}条审核意见`);note.value=c.note;note.oninput=()=>{c.note=note.value;save()};section.append(field,note);main.append(section);
+ });progress();
+}
+document.getElementById('download').onclick=()=>{
+ if(!report.cases.some(c=>c.rating)){status.textContent='尚无人工判断，未导出空审核文件';return}
+ report.status=report.cases.every(c=>c.rating)?(report.cases.every(c=>c.rating==='好')?'human_approved':'human_rejected'):'partially_reviewed';
+ report.reviewed_at=new Date().toISOString();save();const url=URL.createObjectURL(new Blob([JSON.stringify(report,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='game_reply_preview24_user_review.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+document.getElementById('import').onchange=async event=>{try{const parsed=JSON.parse(await event.target.files[0].text());validate(parsed);report=parsed;save();render()}catch(e){status.textContent=e.message}};
+render();
+</script></html>

@@ -81,8 +81,11 @@ class PersistentWorldStateProvider:
         protagonist: ProtagonistLiveState,
         scene: ActiveSceneState,
         game_time,
+        *,
+        unity_observation: dict | None = None,
     ) -> tuple[LiveWorldState, WorldEventDelta | None]:
-        return self._store.put_live_world(session, protagonist, scene, game_time)
+        return self._store.put_live_world(session, protagonist, scene, game_time,
+                                          unity_observation=unity_observation)
 
     async def get_latest(
         self,

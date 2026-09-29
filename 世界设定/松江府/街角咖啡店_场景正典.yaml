@@ -1,0 +1,59 @@
+schema_version: aip.shared_world_scene_canon.v1
+scene_id: songjiangfu.neighborhood_cafe
+world_id: songjiangfu
+status: draft_pending_confirmation
+version: 1
+last_updated: '2026-09-13'
+display_name: 松江府老城区街角咖啡店
+scene_kind: public_cafe
+permanence: recurring_public_place
+
+location:
+  district: 松江府老城区
+  indoor_outdoor: indoor
+  address_label: 待确认
+  relation_to_home: 附近街区，具体距离待确认
+
+layout:
+  type: small_neighborhood_cafe
+  zones:
+    entrance: {id: cafe_entrance, label: 入口}
+    counter: {id: cafe_counter, label: 点单收银区}
+    seating: {id: cafe_seating, label: 普通座位区}
+  optional_zones:
+    window_seats: 待确认
+    restroom: 待确认
+
+fixed_fixtures:
+  - 点单收银台
+  - 普通座位
+  - 饮品制作区
+
+fixed_objects:
+  menu: {existence: permanent, details: 未登记}
+  dessert_case: {existence: unknown, details: 未登记}
+  power_outlets: {existence: unknown, details: 未登记}
+
+participants_defaults:
+  protagonist: visitor
+  baiweixi: visitor
+  owner_or_operator: unknown
+
+runtime_only_facts:
+  - 是否营业
+  - 当前空位和排队情况
+  - 两人的所在区域
+  - 点单内容、制作进度和付款结果
+  - 店内其他人物、声音、气味和温度
+
+unknown_by_default:
+  - 店名、品牌、营业时间和具体地址
+  - 菜单、库存、价格和甜点
+  - 窗边座位、插座和洗手间
+  - 当前是否营业、拥挤程度和订单状态
+
+authority_rules:
+  permanent_scene_facts: [layout, fixed_fixtures]
+  runtime_required: [captured_game_time, weather, people, current_event, visible_items]
+  source_priority: [runtime_snapshot, structured_game_event, world_canon, selected_memory]
+  unsupported_expansion_policy: reject

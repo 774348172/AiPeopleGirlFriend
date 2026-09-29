@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 from pathlib import Path
 
@@ -26,6 +27,11 @@ def _grounded_rows(golden_scenarios: list[dict]) -> list[dict]:
         for variant in range(30):
             scenario = copy.deepcopy(base)
             scenario["scenario_id"] = f"pilot.{task_index:02d}.{variant:02d}"
+            scenario["model_view"]["current_protagonist_utterance"] += f"（变体{variant:02d}）"
+            scenario["split_anchors"] = [
+                anchor if not anchor.startswith("family:") else f"family:{task}.{anchor.split(':', 1)[1]}"
+                for anchor in scenario["split_anchors"]
+            ]
             scenario["split_anchors"] = [
                 *scenario["split_anchors"],
                 f"variant:{task_index:02d}:{variant:02d}",
@@ -50,14 +56,14 @@ def _grounded_rows(golden_scenarios: list[dict]) -> list[dict]:
             )
             if task == "reply_subject_attribution":
                 speaker = scenario["model_view"]["recent_dialogue"][0].split("：", 1)[0]
-                reply = f"是{speaker}说的，当前事实是{objects}。"
+                reply = f"是{speaker}说的，当前事实是{objects}（变体{variant:02d}）。"
             elif any(
                 assertion["predicate"] == "location"
                 for assertion in scenario["oracle_view"]["required_assertions"]
             ):
-                reply = f"当前在{objects}。"
+                reply = f"当前在{objects}（变体{variant:02d}）。"
             else:
-                reply = f"当前事实是{objects}。"
+                reply = f"当前事实是{objects}（变体{variant:02d}）。"
             teacher = {
                 "reply": reply,
                 "declared_claims": claims,
@@ -74,6 +80,16 @@ def _grounded_rows(golden_scenarios: list[dict]) -> list[dict]:
                     "scenario": scenario,
                     "teacher_target": teacher,
                     "semantic_audit": audit,
+                    "provenance": {
+                        "scenario_id": scenario["scenario_id"],
+                        "fixture_hash": "sha256:" + hashlib.sha256(json.dumps(scenario, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest(),
+                        "package_lock_hash": "sha256:" + "b" * 64,
+                        "teacher_model": "fixture-teacher",
+                        "audit_model": "fixture-audit",
+                        "teacher_and_audit_are_separate_calls": True,
+                        "source_event_ids": list(scenario["model_view"]["evidence_contract"]["allowed_evidence_refs"]),
+                        "call_hashes": ["sha256:" + "c" * 64, "sha256:" + "d" * 64],
+                    },
                 }
             )
     return rows
@@ -89,7 +105,7 @@ def _static_rows_and_audits() -> tuple[list[dict], list[dict]]:
                 "sample_id": sample_id,
                 "task_type": "reply_casual",
                 "conversations": [
-                    {"from": "system", "value": "你是白未晞。只输出自然对白。"},
+                    {"from": "system", "value": "系统锚"},
                     {"from": "human", "value": f"第{index}个问题。"},
                     {"from": "gpt", "value": "我听到了。"},
                 ],
@@ -100,7 +116,7 @@ def _static_rows_and_audits() -> tuple[list[dict], list[dict]]:
                 "sample_id": sample_id,
                 "approved": True,
                 "audit_version": "runtime-grounded-static-v1",
-                "split_anchor_ids": [f"static-family:{index:03d}"],
+                "split_anchor_ids": [f"family:static-family:{index:03d}"],
             }
         )
     return records, audits
@@ -126,7 +142,7 @@ def _sealed_rows() -> list[dict]:
             {
                 "scenario_id": f"sealed.scenario.{index:03d}",
                 "task_type": "reply_direct_answer",
-                "split_anchors": [f"sealed-family:{index:03d}"],
+                "split_anchors": [f"family:sealed-family:{index:03d}"],
                 "training_record": training.to_dict(),
             }
         )
@@ -140,6 +156,7 @@ def test_build_exact_v5_pilot_package(tmp_path: Path, golden_scenarios: list[dic
         static_reaudit=_static_rows_and_audits()[1],
         sealed_rows=_sealed_rows(),
         output_dir=tmp_path / "baiweixi_v5_pilot_v1",
+        system_anchor="系统锚",
     )
     assert report.total == 400
     assert report.grounded == 240
@@ -147,7 +164,8 @@ def test_build_exact_v5_pilot_package(tmp_path: Path, golden_scenarios: list[dic
     assert report.sealed_total == 40
     assert report.task_counts["reply_accept_authoritative_update"] == 30
     assert report.task_counts["reply_direct_answer"] == 30
-    assert report.assistant_total["runtime_grounded"] == report.supervised_message_total["runtime_grounded"] == 240
+    assert report.assistant_total["runtime_grounded"] == 300
+    assert report.supervised_message_total["runtime_grounded"] == 240
     assert report.assistant_total["static_persona"] == report.supervised_message_total["static_persona"] == 160
     assert sum(report.split_counts.values()) == 400
     assert all(
@@ -188,6 +206,7 @@ def test_pilot_builder_rejects_sealed_family_overlap(
             static_reaudit=_static_rows_and_audits()[1],
             sealed_rows=sealed,
             output_dir=tmp_path / "family-overlap",
+            system_anchor="系统锚",
         )
 
 
@@ -212,6 +231,7 @@ def test_pilot_builder_rejects_incomplete_inputs(
             static_reaudit=audits,
             sealed_rows=sealed,
             output_dir=tmp_path / kind,
+            system_anchor="系统锚",
         )
 
 
@@ -227,6 +247,7 @@ def test_pilot_builder_rejects_old_correction_and_unreviewed_static(
             static_reaudit=audits,
             sealed_rows=_sealed_rows(),
             output_dir=tmp_path / "correction",
+            system_anchor="系统锚",
         )
     static, audits = _static_rows_and_audits()
     audits[0]["approved"] = False
@@ -237,6 +258,7 @@ def test_pilot_builder_rejects_old_correction_and_unreviewed_static(
             static_reaudit=audits,
             sealed_rows=_sealed_rows(),
             output_dir=tmp_path / "unreviewed",
+            system_anchor="系统锚",
         )
 
 
@@ -252,4 +274,72 @@ def test_pilot_builder_rejects_gold_scenario_in_grounded_input(
             static_reaudit=_static_rows_and_audits()[1],
             sealed_rows=_sealed_rows(),
             output_dir=tmp_path / "gold",
+            system_anchor="系统锚",
+        )
+
+
+def test_pilot_builder_rg1_rejects_missing_provenance(
+    tmp_path: Path, golden_scenarios: list[dict]
+) -> None:
+    grounded = _grounded_rows(golden_scenarios)
+    del grounded[0]["provenance"]
+    with pytest.raises(PilotPackageError, match="RG1"):
+        build_pilot_package(
+            grounded_candidates=grounded,
+            static_records=_static_rows_and_audits()[0],
+            static_reaudit=_static_rows_and_audits()[1],
+            sealed_rows=_sealed_rows(),
+            output_dir=tmp_path / "rg1",
+            system_anchor="系统锚",
+        )
+
+
+def test_pilot_builder_rg11_rejects_cross_task_family(
+    tmp_path: Path, golden_scenarios: list[dict]
+) -> None:
+    grounded = _grounded_rows(golden_scenarios)
+    grounded[30]["scenario"]["split_anchors"] = [
+        anchor
+        if not anchor.startswith("family:")
+        else grounded[0]["scenario"]["split_anchors"][1]
+        for anchor in grounded[30]["scenario"]["split_anchors"]
+    ]
+    grounded[30]["provenance"]["fixture_hash"] = "sha256:" + hashlib.sha256(
+        json.dumps(
+            grounded[30]["scenario"], ensure_ascii=False, sort_keys=True, separators=(",", ":")
+        ).encode("utf-8")
+    ).hexdigest()
+    with pytest.raises(PilotPackageError, match="RG11"):
+        build_pilot_package(
+            grounded_candidates=grounded,
+            static_records=_static_rows_and_audits()[0],
+            static_reaudit=_static_rows_and_audits()[1],
+            sealed_rows=_sealed_rows(),
+            output_dir=tmp_path / "rg11-cross-task",
+            system_anchor="系统锚",
+        )
+
+
+def test_pilot_builder_rg11_rejects_duplicate_reply_in_family(
+    tmp_path: Path, golden_scenarios: list[dict]
+) -> None:
+    grounded = _grounded_rows(golden_scenarios)
+    grounded[1]["scenario"]["split_anchors"] = [
+        anchor
+        if not anchor.startswith("family:")
+        else grounded[0]["scenario"]["split_anchors"][1]
+        for anchor in grounded[1]["scenario"]["split_anchors"]
+    ]
+    grounded[1]["teacher_target"]["reply"] = grounded[0]["teacher_target"]["reply"]
+    grounded[1]["semantic_audit"]["extracted_claims"] = copy.deepcopy(
+        grounded[1]["teacher_target"]["declared_claims"]
+    )
+    with pytest.raises(PilotPackageError, match="RG11"):
+        build_pilot_package(
+            grounded_candidates=grounded,
+            static_records=_static_rows_and_audits()[0],
+            static_reaudit=_static_rows_and_audits()[1],
+            sealed_rows=_sealed_rows(),
+            output_dir=tmp_path / "rg11-duplicate-reply",
+            system_anchor="系统锚",
         )

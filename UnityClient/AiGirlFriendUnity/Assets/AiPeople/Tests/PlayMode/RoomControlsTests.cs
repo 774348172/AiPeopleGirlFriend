@@ -4,6 +4,7 @@ using System.Collections;
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using AiPeople.Core;
 using AiPeople.Shell;
 using AiPeople.UI;
 using AiPeople.World;
@@ -25,8 +26,9 @@ namespace AiPeople.Tests
         private GameObject _window;
         private Canvas _canvas;
         private RoomControlsPanel _panel;
+        private KitchenDevice _stove, _fridge;
         private string _endpoint;
-        private int _calls, _mainThread;
+        private int _calls, _deviceCalls, _mainThread;
         private const BindingFlags Private = BindingFlags.NonPublic | BindingFlags.Instance;
 
         [UnitySetUp]
@@ -34,6 +36,7 @@ namespace AiPeople.Tests
         {
             _mainThread = Thread.CurrentThread.ManagedThreadId;
             _calls = 0;
+            _deviceCalls = 0;
             _world = ApartmentBuilder.Build(AssetDatabase.LoadAssetAtPath<GameObject>(
                 "Assets/Art/Apartment/ImportedShell/ApartmentShell.prefab"));
             _nav = _world.Root.GetComponentInChildren<ApartmentNavigation>();
@@ -47,6 +50,19 @@ namespace AiPeople.Tests
                 Assert.AreEqual(_mainThread, Thread.CurrentThread.ManagedThreadId, "HTTP worker touched Unity scene");
                 _calls++;
                 return _nav.SetDoorState(id, open);
+            });
+            _stove = _world.Root.Find("Furniture/KitchenStove").gameObject.AddComponent<KitchenDevice>();
+            _stove.Configure("kitchen_stove", "燃气灶", true);
+            _fridge = _world.Root.Find("Furniture/KitchenFridge").gameObject.AddComponent<KitchenDevice>();
+            _fridge.Configure("kitchen_fridge", "冰箱", false);
+            _stove.Changed += Publish;
+            _server.ConfigureKitchenDevices((id, on) =>
+            {
+                Assert.AreEqual(_mainThread, Thread.CurrentThread.ManagedThreadId, "HTTP worker touched Unity scene");
+                _deviceCalls++;
+                if (id != _stove.deviceId) return "{\"accepted\":false}";
+                _stove.SetRunning(on, true);
+                return "{\"accepted\":true}";
             });
             _server.StartServer(null, () => true, () => {}, () => {});
             _nav.DoorsChanged += Publish;
@@ -63,7 +79,47 @@ namespace AiPeople.Tests
             _panel.WindowVisible = true;
         }
 
-        private void Publish() => _server.PublishRoomState(_nav.DoorsJson());
+        private void Publish() => _server.PublishRoomState(_nav.DoorsJson(), new DeviceFactData[] {
+            _stove.Capture(true), _fridge.Capture(true),
+        });
+
+        [UnityTest]
+        public IEnumerator DeviceButton_TogglesStove_AndLeavesUnknownFridgeDisabled()
+        {
+            var root = _canvas.transform.Find("ChatWindow");
+            root.Find("Header/RoomButton").GetComponent<Button>().onClick.Invoke();
+            root.Find("RoomControls/DevicesTab").GetComponent<Button>().onClick.Invoke();
+            var stoveAction = root.Find("RoomControls/Door0/Action").GetComponent<Button>();
+            var fridgeAction = root.Find("RoomControls/Door1/Action").GetComponent<Button>();
+            yield return Await(() => stoveAction.interactable && !fridgeAction.interactable);
+            Assert.IsFalse(_stove.IsOn);
+            stoveAction.onClick.Invoke();
+            yield return Await(() => _stove.IsOn && stoveAction.GetComponentInChildren<Text>().text == "关闭");
+            Assert.AreEqual(1, _deviceCalls);
+            Assert.IsFalse(fridgeAction.interactable);
+            stoveAction.onClick.Invoke();
+            yield return Await(() => !_stove.IsOn && stoveAction.GetComponentInChildren<Text>().text == "打开");
+            Assert.AreEqual(2, _deviceCalls);
+        }
+
+        [UnityTest]
+        public IEnumerator DeviceEndpoint_RejectsInvalidInput_AndDoesNotExecuteExpiredCommands()
+        {
+            using (var bad = Post("/ui/device", "{\"id\":\"kitchen_stove\",\"state\":\"toggle\"}"))
+            {
+                yield return bad.SendWebRequest();
+                Assert.AreEqual(400, bad.responseCode);
+                Assert.AreEqual(0, _deviceCalls);
+            }
+            using (var expired = Post("/ui/device", "{\"id\":\"kitchen_stove\",\"state\":\"on\"}"))
+            {
+                yield return expired.SendWebRequest();
+                Assert.AreEqual(503, expired.responseCode);
+                while (_server.TryDequeueMainThreadCommand(out var command)) command();
+                Assert.AreEqual(0, _deviceCalls);
+                Assert.IsFalse(_stove.IsOn);
+            }
+        }
 
         [UnityTest]
         public IEnumerator RoomButton_ControlsActualDoor_ThroughMainThreadBridge()
@@ -111,9 +167,11 @@ namespace AiPeople.Tests
             }
         }
 
-        private UnityWebRequest Post(string body)
+        private UnityWebRequest Post(string body) => Post("/ui/door", body);
+
+        private UnityWebRequest Post(string path, string body)
         {
-            var request = new UnityWebRequest(_endpoint + "/ui/door", "POST");
+            var request = new UnityWebRequest(_endpoint + path, "POST");
             request.uploadHandler = new UploadHandlerRaw(System.Text.Encoding.UTF8.GetBytes(body));
             request.uploadHandler.contentType = "application/json";
             request.downloadHandler = new DownloadHandlerBuffer();
@@ -165,6 +223,7 @@ namespace AiPeople.Tests
         public IEnumerator TearDown()
         {
             _nav.DoorsChanged -= Publish;
+            _stove.Changed -= Publish;
             Object.Destroy(_window);
             if (_canvas != null) Object.Destroy(_canvas.gameObject);
             Object.Destroy(_world.Root.gameObject);

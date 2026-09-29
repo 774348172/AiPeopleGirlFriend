@@ -25,6 +25,8 @@ class GameWorldProjection:
     item_states: Mapping[str, str] | None = None
     heroine_activity: str | None = None
     recent_feedback: tuple[str, ...] = ()
+    player_fact_reports: tuple[dict[str, object], ...] = ()
+    unknown_facts: tuple[dict[str, object], ...] = ()
 
     def __post_init__(self) -> None:
         if not isinstance(self.pending_actions, tuple) or any(
@@ -45,6 +47,14 @@ class GameWorldProjection:
             for item in self.recent_feedback
         ):
             raise TypeError("recent_feedback must contain non-empty strings")
+        if not isinstance(self.player_fact_reports, tuple) or any(
+            not isinstance(item, dict) for item in self.player_fact_reports
+        ):
+            raise TypeError("player_fact_reports must contain dict items")
+        if not isinstance(self.unknown_facts, tuple) or any(
+            not isinstance(item, dict) for item in self.unknown_facts
+        ):
+            raise TypeError("unknown_facts must contain dict items")
 
 
 @dataclass(frozen=True, slots=True)
@@ -71,6 +81,8 @@ class GameWorldInterface(Protocol):
         self, action_id: str, params: Mapping[str, object] | None
     ) -> ActionOutcome: ...
 
+    async def submit_player_fact_report(self, report: Mapping[str, object]) -> None: ...
+
 
 class StubGameWorld:
     """桩实现：内存状态，供联调与测试（真实游戏接入后替换）。
@@ -87,10 +99,13 @@ class StubGameWorld:
         *,
         item_states: Mapping[str, str] | None = None,
         reject: Mapping[str, str] | None = None,
+        unknown_facts: tuple[dict[str, object], ...] = (),
     ) -> None:
         self._item_states: dict[str, str] = dict(item_states or {})
         self._pending: list[dict[str, object]] = []
         self._feedback: list[str] = []
+        self._player_fact_reports: list[dict[str, object]] = []
+        self._unknown_facts = tuple(dict(item) for item in unknown_facts)
         self._reject: dict[str, str] = dict(reject or {})
         self.execute_calls: list[tuple[str, Mapping[str, object] | None]] = []
 
@@ -102,6 +117,27 @@ class StubGameWorld:
                 str(self._pending[0]["description"]) if self._pending else None
             ),
             recent_feedback=tuple(self._feedback[-3:]),
+            player_fact_reports=tuple(dict(item) for item in self._player_fact_reports[-8:]),
+            unknown_facts=tuple(dict(item) for item in self._unknown_facts[-8:]),
+        )
+
+    async def submit_player_fact_report(self, report: Mapping[str, object]) -> None:
+        """Record a player report without silently changing objective state."""
+        required = ("report_id", "subject", "predicate", "value")
+        if any(not str(report.get(key, "")).strip() for key in required):
+            raise ValueError("player fact report requires report_id, subject, predicate and value")
+        status = str(report.get("status", "pending_confirmation"))
+        if status != "pending_confirmation":
+            raise ValueError("player fact reports must remain pending_confirmation until a game event confirms them")
+        self._player_fact_reports.append(
+            {
+                "report_id": str(report["report_id"]),
+                "subject": str(report["subject"]),
+                "predicate": str(report["predicate"]),
+                "value": str(report["value"]),
+                "reported_by": str(report.get("reported_by", "protagonist")),
+                "status": status,
+            }
         )
 
     async def execute_action(

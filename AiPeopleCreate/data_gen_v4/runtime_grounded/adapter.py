@@ -8,7 +8,6 @@ import re
 from pathlib import Path
 from typing import Any
 
-from data_gen_v4.adapters.modes.renderers import ProductionRenderers
 from data_gen_v4.adapters.modes.training import TrainingRecordV4
 
 from .contracts import (
@@ -17,7 +16,10 @@ from .contracts import (
     validate_teacher_target,
 )
 from .gates import evaluate_runtime_grounded_candidate
-from .renderer import render_runtime_grounded_training_record
+from .renderer import (
+    render_game_reply_context_from_model_view,
+    render_game_reply_training_record,
+)
 from .scenario import ScenarioContractError, validate_scenario
 
 PROMPTS_DIR = Path(__file__).resolve().parents[1] / "prompts"
@@ -79,8 +81,9 @@ class RuntimeGroundedReplyAdapter:
             "runtime_grounded_reply",
             PROFILE_STYLE=system_anchor,
             MODEL_VIEW=_json_text(scenario["model_view"]),
-            ORACLE_VIEW=_json_text(scenario["oracle_view"]),
-            SURFACE_OBLIGATIONS=_surface_obligations(scenario),
+            GAME_REPLY_CONTEXT=render_game_reply_context_from_model_view(
+                scenario["model_view"]
+            ),
         )
         last_failure = item.get("_last_failure")
         if last_failure:
@@ -114,6 +117,9 @@ class RuntimeGroundedReplyAdapter:
         audit_prompt = self._render_prompt(
             "runtime_grounded_audit",
             MODEL_VIEW=_json_text(scenario["model_view"]),
+            GAME_REPLY_CONTEXT=render_game_reply_context_from_model_view(
+                scenario["model_view"]
+            ),
             ORACLE_VIEW=_json_text(scenario["oracle_view"]),
             REPLY=teacher_target["reply"],
             SURFACE_OBLIGATIONS=_surface_obligations(scenario),
@@ -147,7 +153,6 @@ class RuntimeGroundedReplyAdapter:
                 f"runtime-grounded hard gates rejected: {failed}; {report.reasons}",
             )
 
-        model_view_text = _json_text(scenario["model_view"])
         return {
             "input": {
                 "scenario_id": scenario["scenario_id"],
@@ -155,8 +160,15 @@ class RuntimeGroundedReplyAdapter:
             },
             "target": {
                 "messages": [
-                    {"role": "human", "content": model_view_text},
-                    {"role": "assistant", "content": teacher_target["reply"]},
+                    {
+                        "role": message["role"],
+                        "content": message["content"],
+                    }
+                    for message in render_game_reply_training_record(
+                        scenario,
+                        teacher_target,
+                        system_anchor=_system_anchor(package_set),
+                    ).messages
                 ],
                 "teacher_target": teacher_target,
                 "semantic_audit": semantic_audit,
@@ -190,7 +202,7 @@ class RuntimeGroundedReplyAdapter:
             scenario = _resolve_scenario(scenario_id, package_set)
         if not scenario:
             raise ValueError("runtime-grounded fixture is unavailable during rendering")
-        return render_runtime_grounded_training_record(
+        return render_game_reply_training_record(
             scenario,
             target["teacher_target"],
             system_anchor=_system_anchor(package_set),
@@ -244,14 +256,12 @@ def _resolve_scenario(
 
 
 def _system_anchor(package_set: dict[str, Any]) -> str:
-    profile = package_set.get("profile") or {}
-    protocol = package_set.get("protocol") or {}
-    return ProductionRenderers.reply_system_anchor(
-        profile,
-        anchor_facts=package_set.get("anchor_facts") or {},
-        beliefs=str(package_set.get("beliefs", "")),
-        rules=protocol.get("reply_runtime_rules") or [],
-    )
+    anchor = package_set.get("canonical_system_anchor")
+    if not isinstance(anchor, str) or not anchor.strip():
+        raise ValueError(
+            "GAME_REPLY package requires canonical_system_anchor from the production prompt composer"
+        )
+    return anchor.strip()
 
 
 def _surface_obligations(scenario: dict[str, Any]) -> str:

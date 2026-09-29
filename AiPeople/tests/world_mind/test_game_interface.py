@@ -3,6 +3,8 @@ from __future__ import annotations
 import asyncio
 from dataclasses import replace
 
+import pytest
+
 from runtime.contracts import Completed
 from runtime.world_mind import FakeWorldMindModel
 from runtime.world_mind.game_interface import (
@@ -71,6 +73,43 @@ def test_stub_rejects_unknown_configured_and_missing_params() -> None:
         assert any("不在游戏清单内" in item for item in projection.recent_feedback)
         assert any("男主正在使用厨房" in item for item in projection.recent_feedback)
         assert any("缺少必要参数" in item for item in projection.recent_feedback)
+
+    asyncio.run(scenario())
+
+
+def test_player_fact_report_stays_pending_and_is_visible_on_next_projection() -> None:
+    async def scenario() -> None:
+        game = StubGameWorld(item_states={"抽屉": "空"})
+        await game.submit_player_fact_report(
+            {
+                "report_id": "report-kettle-1",
+                "subject": "水壶",
+                "predicate": "状态",
+                "value": "保温",
+            }
+        )
+        projection = await game.project()
+        assert projection.item_states == {"抽屉": "空"}
+        assert projection.player_fact_reports == (
+            {
+                "report_id": "report-kettle-1",
+                "subject": "水壶",
+                "predicate": "状态",
+                "value": "保温",
+                "reported_by": "protagonist",
+                "status": "pending_confirmation",
+            },
+        )
+        with pytest.raises(ValueError, match="pending_confirmation"):
+            await game.submit_player_fact_report(
+                {
+                    "report_id": "report-kettle-2",
+                    "subject": "水壶",
+                    "predicate": "状态",
+                    "value": "保温",
+                    "status": "confirmed",
+                }
+            )
 
     asyncio.run(scenario())
 

@@ -49,6 +49,44 @@ async function api(path, body) {
   return value;
 }
 
+async function streamChat(body, onDelta) {
+  const response = await fetch("/api/chat/stream", {
+    method: "POST",
+    headers: {"Content-Type": "application/json", "Accept": "application/x-ndjson"},
+    body: JSON.stringify(body),
+  });
+  if (!response.ok || !response.body) {
+    let detail = `HTTP ${response.status}`;
+    try {
+      const value = await response.json();
+      detail = typeof value.detail === "string" ? value.detail : JSON.stringify(value.detail || value);
+    } catch {}
+    throw new Error(detail);
+  }
+  const reader = response.body.getReader();
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let finalValue = null;
+  const consume = (line) => {
+    if (!line.trim()) return;
+    const event = JSON.parse(line);
+    if (event.type === "delta") onDelta(event.text || "");
+    else if (event.type === "done") finalValue = event.value;
+    else if (event.type === "error") throw new Error(typeof event.detail === "string" ? event.detail : JSON.stringify(event.detail));
+  };
+  while (true) {
+    const chunk = await reader.read();
+    buffer += decoder.decode(chunk.value || new Uint8Array(), {stream: !chunk.done});
+    const lines = buffer.split("\n");
+    buffer = lines.pop() || "";
+    for (const line of lines) consume(line);
+    if (chunk.done) break;
+  }
+  if (buffer.trim()) consume(buffer);
+  if (!finalValue) throw new Error("流式响应未完成");
+  return finalValue;
+}
+
 function renderMessages() {
   const root = $("messages");
   root.querySelectorAll(".message").forEach((item) => item.remove());
@@ -123,11 +161,25 @@ async function sendMessage(event) {
   renderMessages();
   $("messageInput").value = "";
   resizeInput();
-  const waiting = {role: "heroine", text: "……", meta: "白未晞正在回应"};
+  const waiting = {role: "heroine", text: "", meta: "白未晞正在回应"};
+  let streamedVisible = false;
   state.messages.push(waiting);
   renderMessages();
   try {
-    const value = await api("/api/chat", {save_id: state.saveId, text, world: worldPayload()});
+    const value = await streamChat(
+      {save_id: state.saveId, text, world: worldPayload()},
+      (delta) => {
+        const current = state.messages[state.messages.length - 1];
+        if (current !== waiting) return;
+        if (!streamedVisible && delta.trim()) {
+          waiting.text = "";
+          streamedVisible = true;
+        }
+        waiting.text += delta;
+        if (!streamedVisible) waiting.text = "……";
+        renderMessages();
+      },
+    );
     state.messages[state.messages.length - 1] = {
       role: "heroine",
       text: value.reply,

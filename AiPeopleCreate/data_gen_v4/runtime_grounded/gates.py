@@ -7,7 +7,7 @@ from dataclasses import dataclass
 from typing import Any
 
 from .contracts import validate_semantic_audit, validate_teacher_target
-from .projection import MODEL_VIEW_KEYS
+from .projection import MODEL_VIEW_KEYS, REQUIRED_MODEL_VIEW_KEYS
 from .scenario import validate_scenario
 
 RG_GATE_IDS = tuple(f"RG{index}" for index in range(11))
@@ -264,7 +264,8 @@ def evaluate_runtime_grounded_candidate(
     verdicts = {gate: True for gate in RG_GATE_IDS}
 
     model_view = scenario["model_view"]
-    if set(model_view) != set(MODEL_VIEW_KEYS):
+    model_view_keys = set(model_view)
+    if not REQUIRED_MODEL_VIEW_KEYS.issubset(model_view_keys) or not model_view_keys.issubset(MODEL_VIEW_KEYS):
         reasons["RG3"].append("runtime_context_shape_drift")
 
     reply = teacher_target["reply"]
@@ -280,7 +281,9 @@ def evaluate_runtime_grounded_candidate(
     reasons["RG8"].extend(surface_shape)
 
     extracted = semantic_audit["extracted_claims"]
-    declared = teacher_target["declared_claims"]
+    # Teacher no longer sees oracle_view, so declared_claims is optional legacy
+    # metadata. The independent audit is authoritative for extracted claims.
+    declared = teacher_target.get("declared_claims")
     extracted_assertions = {
         key for claim in extracted if (key := _claim_assertion_key(claim)) is not None
     }
@@ -311,7 +314,7 @@ def evaluate_runtime_grounded_candidate(
             reasons[gate].append("semantic_audit_failed")
     reasons["RG9"].extend(spoken_errors)
 
-    if sorted(map(_claim_key, declared)) != sorted(map(_claim_key, extracted)):
+    if declared is not None and sorted(map(_claim_key, declared)) != sorted(map(_claim_key, extracted)):
         reasons["RG10"].append("declared_extracted_claim_mismatch")
 
     for gate in RG_GATE_IDS:

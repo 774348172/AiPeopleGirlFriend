@@ -23,6 +23,14 @@ from .model_gateway import (
     GameReplyResult,
 )
 from .state import HeroineMindPatch, HeroineRuntime, ReplyFactAssertions
+from .compact_game_reply_context import encode_system_v2
+from .compact_game_reply_context_v3 import encode_system_v3
+from .game_reply_context import (
+    GAME_REPLY_EVIDENCE_BOUNDARY_V1,
+    build_game_reply_chat_messages,
+    partition_game_reply_dialogue,
+    render_game_reply_context_v1,
+)
 
 
 RUNTIME_MAPPING_VIEW_LIMIT = 12
@@ -30,12 +38,20 @@ RUNTIME_EVIDENCE_VIEW_LIMIT = 8
 RECONCILE_EVENT_VIEW_LIMIT = 8
 
 
-GAME_REPLY_EVIDENCE_BOUNDARY = """[回答依据约束]
-回答具体事实时，只能依据[相关记忆]，以及男主本轮明确告知或明确纠正的事实。
-男主本轮明确告知或纠正的新事实优先于冲突的旧记忆；男主的提问、猜测或反问不能覆盖已有事实。
-[相关记忆]对同一对象有冲突时，只采用其中明确标为最新、当前或仍有效的事实，不采用已取消、已失效或旧错误事实。
-没有直接证据、只有无关信息或仍无法确定时，回答不知道。
-不得用常识、猜测、角色设定或看似合理的细节补全答案，也不得声称自己查询、查看或确认过。"""
+GAME_REPLY_EVIDENCE_BOUNDARY = GAME_REPLY_EVIDENCE_BOUNDARY_V1
+
+# Frozen V3 training contract. Keep this text identical to the reviewed inputs.
+V3_REPLY_CONTRACT = (
+    "\n\n[回复合同]\n"
+    '只输出一个 JSON 对象，格式严格为 {"reply":"中文对白"}。'
+    "reply 必须是白未晞直接说的话，不能为空，不能包含动作描写、字段名或解释生成过程。"
+    "只依据当前权威事实、明确来源的记忆和最近对话；没有权威证据的具体状态必须明确说不知道。\n"
+)
+
+
+def prepare_v3_reply_system(system: str) -> str:
+    """Apply the reversible training codecs to facts already selected by runtime."""
+    return encode_system_v3(encode_system_v2(system)) + V3_REPLY_CONTRACT
 
 
 MODE_SYSTEM_BOUNDARIES = {
@@ -186,26 +202,48 @@ def game_reply_payload(request: GameReplyRequest) -> dict[str, Any]:
 
 def build_game_reply_messages(
     request: GameReplyRequest,
+    *,
+    reply_json_contract: bool = False,
+    compact_v3: bool = False,
 ) -> tuple[dict[str, str], ...]:
+    if compact_v3 and not reply_json_contract:
+        raise ValueError("V3 context requires the reply JSON contract")
+    dialogue_messages = build_game_reply_chat_messages(
+        request.recent_dialogue,
+        character_display_name=request.prompt.character_display_name,
+        current_protagonist_utterance=request.snapshot.protagonist_utterance,
+    )
+    reply_contract = (
+        "\n\n[回复合同]\n"
+        "只输出一个 JSON 对象，格式严格为 {\"reply\":\"中文对白\"}。"
+        "reply 必须是白未晞直接说的话，不能为空，不能包含动作描写、字段名或解释生成过程。"
+        if reply_json_contract
+        else ""
+    )
     messages: list[dict[str, str]] = [
         {
             "role": "system",
             "content": (
                 f"{request.prompt.game_reply_system_prompt}\n\n"
-                f"{render_game_reply_context(request)}"
+                f"{render_game_reply_context(request)}{reply_contract}"
             ),
         }
     ]
-    for actor, text in request.recent_dialogue:
-        messages.append(
-            {
-                "role": "user" if actor == "protagonist" else "assistant",
-                "content": text,
-            }
-        )
-    messages.append(
-        {"role": "user", "content": request.snapshot.protagonist_utterance}
+    messages.extend(
+        {"role": role, "content": text}
+        for role, text in dialogue_messages
     )
+    if compact_v3:
+        messages[0]["content"] = prepare_v3_reply_system(
+            f"{request.prompt.game_reply_system_prompt}\n\n"
+            f"{render_game_reply_context(request)}"
+        )
+        # Keep at most two real prior exchanges and the current user message.
+        # Short/new saves stay short: never synthesize missing dialogue.
+        dialogue = messages[1:][-5:]
+        while dialogue and dialogue[0]["role"] != "user":
+            dialogue.pop(0)
+        messages = [messages[0], *dialogue]
     return tuple(messages)
 
 
@@ -215,49 +253,103 @@ def render_game_reply_context(request: GameReplyRequest) -> str:
     living = runtime.living_mind
     relationship = runtime.relationship
     body = _semantic_values(snapshot.protagonist.body_state)
-    memories = tuple(
-        memory.statement
-        for memory in snapshot.selected_memory_frame.selected_memories
+    memories = tuple(_memory_context_line(memory) for memory in snapshot.selected_memory_frame.selected_memories)
+    pending_actions = tuple(
+        _pending_action_context_line(action) for action in snapshot.pending_actions
+    )
+    player_fact_reports = tuple(
+        _player_fact_report_context_line(report)
+        for report in snapshot.player_fact_reports
+    )
+    _, third_party_dialogue_evidence = partition_game_reply_dialogue(
+        request.recent_dialogue,
+        character_display_name=request.prompt.character_display_name,
     )
     actions = tuple(action.description for action in request.approved_actions)
-    # 身份锚定：名字与核心身份必须进入 GAME_REPLY 输入。
-    # 短身份锚（164 字符）在多轮情感对话后不足以维持身份锚定，
-    # 模型会答错"你叫什么"类问题（2026-08-19 实测）。
-    return "\n".join(
-        (
-            "[你的身份]",
-            f"你是{request.prompt.character_display_name}，生活在松江府。",
-            "",
-            "[当前世界]",
-            f"时间：第{snapshot.captured_game_time.day}天 {snapshot.captured_game_time:%H:%M}",
-            f"地点：{snapshot.scene.location_label}",
-            f"场景：{snapshot.world_state.scene_text}",
-            (
-                f"男主：在{snapshot.protagonist.location_label}，"
-                f"正在{snapshot.protagonist.activity}；身体：{body}"
-            ),
-            "",
-            "[你此刻的状态]",
-            f"形态：{living.form}",
-            f"身体：{living.body}",
-            f"情绪：{living.emotion}",
-            f"注意：{living.attention}",
-            f"活动：{living.current_activity}",
-            f"意图：{living.immediate_intent}",
-            (
-                f"关系：{relationship.stage}；{relationship.trust}；"
-                f"{relationship.unresolved_tension}"
-            ),
-            "",
-            "[相关记忆]",
-            *_semantic_lines(memories),
-            "",
-            "[允许表达的动作]",
-            *_semantic_lines(actions),
-            "",
-            GAME_REPLY_EVIDENCE_BOUNDARY,
-        )
+    return render_game_reply_context_v1(
+        character_display_name=request.prompt.character_display_name,
+        game_time=snapshot.captured_game_time,
+        location=snapshot.scene.location_label,
+        scene_text=snapshot.world_state.scene_text,
+        protagonist_location=snapshot.protagonist.location_label,
+        protagonist_activity=snapshot.protagonist.activity,
+        protagonist_body=body,
+        heroine={
+            "form": living.form,
+            "body": living.body,
+            "emotion": living.emotion,
+            "attention": living.attention,
+            "current_activity": living.current_activity,
+            "immediate_intent": living.immediate_intent,
+        },
+        relationship={
+            "stage": relationship.stage,
+            "trust": relationship.trust,
+            "unresolved_tension": relationship.unresolved_tension,
+        },
+        item_states=snapshot.scene.item_states,
+        unknown_facts=tuple(
+            _unknown_fact_context_line(value)
+            for value in snapshot.unknown_facts
+        ),
+        player_fact_reports=player_fact_reports,
+        memories=memories,
+        third_party_dialogue_evidence=third_party_dialogue_evidence,
+        pending_actions=pending_actions,
+        game_feedback=tuple(
+            value for value in snapshot.game_feedback
+            if not (
+                snapshot.player_fact_reports
+                and str(value).strip().startswith("权威世界状态：")
+            )
+        ),
+        approved_actions=actions,
+        evidence_boundary=GAME_REPLY_EVIDENCE_BOUNDARY,
     )
+
+
+def _memory_context_line(memory) -> str:
+    suffix: list[str] = []
+    if getattr(memory, "subject_display_name", None):
+        suffix.append(f"主体：{memory.subject_display_name}")
+    if getattr(memory, "temporal_relation", None):
+        suffix.append(f"时间关系：{memory.temporal_relation}")
+    if getattr(memory, "epistemic_modality", None):
+        suffix.append(f"证据状态：{memory.epistemic_modality}")
+    suffix.append("来源：已选择记忆")
+    return f"{memory.statement}（{'；'.join(suffix)}）" if suffix else memory.statement
+
+
+def _pending_action_context_line(action: dict[str, object]) -> str:
+    description = str(action.get("description") or action.get("action_id") or "未命名动作")
+    remaining = action.get("remaining_seconds")
+    if remaining is None:
+        return description
+    return f"{description}（剩余{remaining}秒）"
+
+
+def _player_fact_report_context_line(report: dict[str, object]) -> str:
+    subject = str(report.get("subject") or "未知主体")
+    predicate = str(report.get("predicate") or "事实")
+    value = str(report.get("value") or "")
+    raw_status = str(report.get("status") or "pending_confirmation")
+    status = {
+        "current": "当前有效",
+        "unknown": "未知",
+        "pending_confirmation": "待确认",
+        "stale": "已过期",
+        "false": "已否定",
+    }.get(raw_status, raw_status)
+    reporter = str(report.get("reported_by") or "protagonist")
+    return f"{subject}的{predicate}：{value}（来源：{reporter}；状态：{status}）"
+
+
+def _unknown_fact_context_line(fact: dict[str, object]) -> str:
+    subject = str(fact.get("subject") or "未知主体")
+    predicate = str(fact.get("predicate") or "事实")
+    reason = str(fact.get("reason") or "没有直接证据")
+    source = str(fact.get("source") or "游戏状态")
+    return f"{subject}的{predicate}：未知（来源：{source}；原因：{reason}）"
 
 
 def _semantic_values(values) -> str:
@@ -429,6 +521,13 @@ def _snapshot_payload(snapshot) -> dict[str, Any]:
             "present_character_ids": list(snapshot.scene.present_character_ids),
             "item_states": dict(snapshot.scene.item_states),
         },
+        "player_fact_reports": [
+            dict(item)
+            for item in getattr(snapshot, "player_fact_reports", ())
+        ],
+        "unknown_facts": [
+            dict(item) for item in getattr(snapshot, "unknown_facts", ())
+        ],
     }
 
 
@@ -586,6 +685,10 @@ def judge_payload(
         "recent_dialogue": [str(item) for item in recent_dialogue[-6:]],
         "pending_actions": [dict(item) for item in snapshot.pending_actions],
         "game_feedback": [str(item) for item in snapshot.game_feedback[-3:]],
+        "player_fact_reports": [
+            dict(item) for item in snapshot.player_fact_reports[-8:]
+        ],
+        "unknown_facts": [dict(item) for item in snapshot.unknown_facts[-8:]],
         "available_actions": render_action_list(),
     }
 

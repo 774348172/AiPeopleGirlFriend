@@ -70,6 +70,25 @@ namespace AiPeople.Shell
         private float _fullscreenTimer;
         private Coroutine _windowModeRetry;
         private Coroutine _wallpaperAttach;
+        private float _layerCheckTimer;
+
+        public static void PrepareStartupWindow()
+        {
+            if (Application.platform != RuntimePlatform.WindowsPlayer
+                || ShellSettingsStore.Load().windowMode == (int)ShellWindowMode.Normal) return;
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+            IntPtr hwnd = DesktopWindowNative.FindUnityWindow();
+            if (hwnd == IntPtr.Zero) return;
+            NativeMethods.ShowWindow(hwnd, NativeMethods.SW_HIDE);
+            DesktopWindowNative.ApplyOverlayStyles(hwnd);
+            DesktopWindowNative.ResizeToPrimaryMonitor(hwnd);
+            if (DesktopWindowNative.TryAttachUnderIcons(hwnd, out string detail)
+                && DesktopWindowNative.VerifyDesktopLayer(hwnd).StartsWith("ok"))
+            {
+                NativeMethods.ShowWindow(hwnd, NativeMethods.SW_SHOWNOACTIVATE);
+                Debug.Log("[AiPeople] 首帧前壁纸挂载：" + detail);
+            }
+        }
 
         public void Initialize(ShellSettingsData settings, Camera viewCamera, Canvas presentationCanvas = null)
         {
@@ -143,6 +162,13 @@ namespace AiPeople.Shell
             Debug.Log("[AiPeople] 主窗口识别：" + DesktopWindowNative.DescribeWindow(_hwnd));
             DesktopWindowNative.LogDesktopTree();
 
+            if (mode != ShellWindowMode.Normal
+                && DesktopWindowNative.VerifyDesktopLayer(_hwnd).StartsWith("ok"))
+            {
+                FinishWallpaperSuccess("首帧前已挂载");
+                return;
+            }
+
             if (mode == ShellWindowMode.Normal)
             {
                 ApplyNormalWindow();
@@ -155,10 +181,6 @@ namespace AiPeople.Shell
             // 壁纸挂载完成前隐藏启动窗口，避免用户看到短暂的普通窗口/全屏覆盖。
             NativeMethods.ShowWindow(_hwnd, NativeMethods.SW_HIDE);
 
-            Screen.SetResolution(
-                NativeMethods.GetSystemMetrics(NativeMethods.SM_CXSCREEN),
-                NativeMethods.GetSystemMetrics(NativeMethods.SM_CYSCREEN),
-                FullScreenMode.Windowed);
             DesktopWindowNative.ApplyOverlayStyles(_hwnd);
             DesktopWindowNative.ResizeToPrimaryMonitor(_hwnd);
 
@@ -257,6 +279,7 @@ namespace AiPeople.Shell
 
             IsWallpaperMode = true;
             Status = ShellStatus.Wallpaper;
+            _layerCheckTimer = 1f;
             NativeMethods.ShowWindow(_hwnd, NativeMethods.SW_SHOWNOACTIVATE);
             LastDetail = "壁纸层已挂载并通过校验（" + detail + "）";
             Notify?.Invoke(LastDetail);
@@ -270,7 +293,6 @@ namespace AiPeople.Shell
             }
 
             Screen.fullScreenMode = FullScreenMode.Windowed;
-            Screen.SetResolution(1600, 900, FullScreenMode.Windowed);
             DesktopWindowNative.DetachFromDesktop(_hwnd);
             DesktopWindowNative.ApplyNormalWindowStyles(_hwnd);
             NativeMethods.ShowWindow(_hwnd, NativeMethods.SW_SHOWNOACTIVATE);
@@ -341,8 +363,14 @@ namespace AiPeople.Shell
             if (IsWallpaperMode && _hwnd != IntPtr.Zero)
             {
                 DesktopWindowNative.ApplyOverlayStyles(_hwnd);
-                DesktopWindowNative.TryAttachToDesktopWallpaper(_hwnd, out _);
-                DesktopWindowNative.SendToBottom(_hwnd);
+                if (!DesktopWindowNative.TryAttachUnderIcons(_hwnd, out string detail)
+                    || !DesktopWindowNative.VerifyDesktopLayer(_hwnd).StartsWith("ok"))
+                {
+                    NativeMethods.ShowWindow(_hwnd, NativeMethods.SW_HIDE);
+                    IsWallpaperMode = false;
+                    _wallpaperAttach = StartCoroutine(AttachWallpaperWithRetries());
+                    Debug.LogWarning("[AiPeople] 会话退出后重新挂载壁纸层：" + detail);
+                }
             }
 
             SessionStateChanged?.Invoke(false);
@@ -355,6 +383,8 @@ namespace AiPeople.Shell
 
         private void StartHotkey()
         {
+            if (_hotkey?.Registered == true) return;
+            StopHotkey();
             _hotkey = new GlobalHotkey();
             if (!_hotkey.Start(Settings.hotkey))
             {
@@ -381,6 +411,20 @@ namespace AiPeople.Shell
             if (Status == ShellStatus.Wallpaper)
             {
                 PollDesktopClick();
+                _layerCheckTimer -= Time.unscaledDeltaTime;
+                if (_layerCheckTimer <= 0f && _hwnd != IntPtr.Zero)
+                {
+                    _layerCheckTimer = 1f;
+                    string verify = DesktopWindowNative.VerifyDesktopLayer(_hwnd);
+                    if (!verify.StartsWith("ok"))
+                    {
+                        Debug.LogWarning("[AiPeople] 壁纸层失去图标下方位置，重新挂载：" + verify);
+                        NativeMethods.ShowWindow(_hwnd, NativeMethods.SW_HIDE);
+                        IsWallpaperMode = false;
+                        Status = ShellStatus.Normal;
+                        _wallpaperAttach = StartCoroutine(AttachWallpaperWithRetries());
+                    }
+                }
             }
 
             if (IsSessionActive)

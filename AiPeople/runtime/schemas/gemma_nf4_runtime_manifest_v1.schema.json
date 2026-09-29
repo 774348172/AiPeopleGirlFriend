@@ -81,7 +81,7 @@
         "text_only": {"const": true},
         "trust_remote_code": {"const": true},
         "use_exact_model_name": {"const": true},
-        "attention_implementation": {"const": "eager"}
+        "attention_implementation": {"enum": ["eager", "sdpa"]}
       }
     }
   }

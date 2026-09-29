@@ -225,8 +225,8 @@ def test_real_gateway_reply_uses_only_semantic_context_and_dialogue() -> None:
         assert "memory-private-001" not in context
         assert "event-memory" not in context
         assert "selector-secret-v7" not in context
-        assert "男主本轮明确告知或纠正的新事实优先于冲突的旧记忆" in context
-        assert "男主的提问、猜测或反问不能覆盖已有事实" in context
+        assert "当前游戏事实和男主本轮已经确认的更新优先于冲突的旧记忆" in context
+        assert "玩家的提问、猜测或反问不能单独覆盖客观事实" in context
         assert context.endswith(
             "不得用常识、猜测、角色设定或看似合理的细节补全答案，"
             "也不得声称自己查询、查看或确认过。"
@@ -241,6 +241,143 @@ def test_real_gateway_reply_uses_only_semantic_context_and_dialogue() -> None:
         }
         assert call["response_format"] is None
         assert call["options"].temperature == 0.0
+
+    asyncio.run(scenario())
+
+
+def test_real_gateway_reply_json_contract_is_unwrapped_for_foreground() -> None:
+    async def scenario() -> None:
+        prompt, heroine, snapshot = _requests()
+        backend = ScriptedChatBackend(['{"reply":"记得。"}'])
+        model = LlamaCppWorldMindModel(
+            backend,
+            identity=_identity(),
+            game_reply_json_contract=True,
+        )
+        deltas: list[str] = []
+
+        result = await model.generate_reply(
+            GameReplyRequest(
+                prompt=prompt,
+                snapshot=snapshot,
+                approved_state=heroine,
+                reply_intent="直接回应男主",
+                fact_assertions=heroine_assertions(snapshot),
+                on_delta=deltas.append,
+            )
+        )
+
+        assert result.text == "记得。"
+        assert deltas == ["记得。"]
+        call = backend.calls[0]
+        assert call["response_format"]["json_schema"]["name"] == "game_reply_v1"
+        assert '{"reply":"中文对白"}' in call["messages"][0]["content"]
+
+    asyncio.run(scenario())
+
+
+def test_v3_reply_uses_compact_facts_two_real_turns_and_no_schema_suffix() -> None:
+    from runtime.world_mind.model_payloads import V3_REPLY_CONTRACT
+
+    async def scenario() -> None:
+        prompt, heroine, snapshot = _requests()
+        backend = ScriptedChatBackend(['{"reply":"记得。"}'])
+        model = LlamaCppWorldMindModel(
+            backend, identity=_identity(), game_reply_json_contract=True,
+            game_reply_compact_v3=True,
+        )
+        result = await model.generate_reply(GameReplyRequest(
+            prompt=prompt, snapshot=snapshot, approved_state=heroine,
+            reply_intent="直接回答", fact_assertions=heroine_assertions(snapshot),
+            recent_dialogue=tuple((actor, f"{i}-{actor}") for i in range(4)
+                                  for actor in ("protagonist", "白未晞")),
+        ))
+        call = backend.calls[0]
+        assert result.text == "记得。"
+        assert call["response_format"] is None
+        messages = call["messages"]
+        assert [m["role"] for m in messages] == ["system", "user", "assistant", "user", "assistant", "user"]
+        assert messages[1]["content"] == "2-protagonist"
+        assert messages[-1]["content"] == snapshot.protagonist_utterance
+        assert "【共同披露规则】" in messages[0]["content"]
+        assert "【合并回答约束V3】" in messages[0]["content"]
+        assert messages[0]["content"].endswith(V3_REPLY_CONTRACT)
+        assert "[机器可读输出约束]" not in messages[0]["content"]
+
+    asyncio.run(scenario())
+
+
+def test_v3_runtime_context_roundtrip_preserves_all_selected_facts() -> None:
+    from runtime.world_mind.model_payloads import build_game_reply_messages, V3_REPLY_CONTRACT
+    from runtime.world_mind.compact_game_reply_context import decode_system_v2
+    from runtime.world_mind.compact_game_reply_context_v3 import decode_system_v3
+
+    prompt, heroine, snapshot = _requests()
+    request = GameReplyRequest(
+        prompt=prompt, snapshot=snapshot, approved_state=heroine,
+        reply_intent="直接回答", fact_assertions=heroine_assertions(snapshot),
+    )
+    original = build_game_reply_messages(request)[0]["content"]
+    compact = build_game_reply_messages(request, reply_json_contract=True, compact_v3=True)[0]["content"]
+    assert decode_system_v2(decode_system_v3(compact[:-len(V3_REPLY_CONTRACT)])) == original
+
+
+@pytest.mark.parametrize("response", ['纯文本', '{"reply":""}', '{"reply":"好。","action":"move"}', '{"reply":null}'])
+def test_v3_rejects_invalid_json_without_displaying_it(response) -> None:
+    async def scenario() -> None:
+        prompt, heroine, snapshot = _requests()
+        backend = ScriptedChatBackend([response] * 5)
+        model = LlamaCppWorldMindModel(
+            backend, identity=_identity(), game_reply_json_contract=True,
+            game_reply_compact_v3=True,
+        )
+        visible = []
+        with pytest.raises(WorldMindModelError):
+            await model.generate_reply(GameReplyRequest(
+                prompt=prompt, snapshot=snapshot, approved_state=heroine,
+                reply_intent="直接回答", fact_assertions=heroine_assertions(snapshot),
+                on_delta=visible.append,
+            ))
+        assert visible == []
+        assert [m["role"] for m in backend.calls[0]["messages"]] == ["system", "user"]
+
+    asyncio.run(scenario())
+
+
+def test_real_gateway_projects_third_party_dialogue_as_named_evidence() -> None:
+    async def scenario() -> None:
+        prompt, heroine, snapshot = _requests()
+        backend = ScriptedChatBackend(["是程野说的。"])
+        model = LlamaCppWorldMindModel(backend, identity=_identity())
+
+        await model.generate_reply(
+            GameReplyRequest(
+                prompt=prompt,
+                snapshot=snapshot,
+                approved_state=heroine,
+                reply_intent="回答说话人来源",
+                fact_assertions=heroine_assertions(snapshot),
+                recent_dialogue=(
+                    ("protagonist", "你刚才听到了吗？"),
+                    ("程野", "借书证在书桌收纳盒。"),
+                ),
+            )
+        )
+
+        messages = backend.calls[0]["messages"]
+        context = messages[0]["content"]
+        assert "[第三方对话证据]" in context
+        assert "说话人：程野；原话：借书证在书桌收纳盒。；来源：近期对话" in context
+        assert messages[1:] == (
+            {
+                "role": "user",
+                "content": "你刚才听到了吗？\n\n[本轮男主]\n你是不是有点担心我？",
+            },
+        )
+        assert all(
+            message["content"] != "借书证在书桌收纳盒。"
+            for message in messages[1:]
+        )
 
     asyncio.run(scenario())
 

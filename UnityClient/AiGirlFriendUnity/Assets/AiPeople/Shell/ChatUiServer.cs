@@ -34,11 +34,28 @@ namespace AiPeople.Shell
         private Action _activateRequested;
         private Action<string> _modeRequested;
         private Func<string, bool, string> _doorRequested;
-        private volatile string _roomJson = "{\"doors\":[]}";
+        private Func<string, bool, string> _deviceRequested;
+        [Serializable] private sealed class RoomState
+        {
+            public DoorView[] doors = Array.Empty<DoorView>();
+            public DeviceFactData[] devices = Array.Empty<DeviceFactData>();
+        }
+        [Serializable] private sealed class DoorView
+        {
+            public string id, label;
+            public bool open, targetOpen, moving, blocked;
+        }
+        private volatile string _roomJson = "{\"doors\":[],\"devices\":[]}";
 
         public void ConfigureRoomControls(Func<string, bool, string> request) { _doorRequested = request; }
+        public void ConfigureKitchenDevices(Func<string, bool, string> request) { _deviceRequested = request; }
         // Publish immutable JSON on Unity's thread; HTTP workers never inspect scene objects.
-        public void PublishRoomState(string json) { _roomJson = json; }
+        public void PublishRoomState(string json, DeviceFactData[] devices = null)
+        {
+            var state = JsonUtility.FromJson<RoomState>(json) ?? new RoomState();
+            state.devices = devices ?? Array.Empty<DeviceFactData>();
+            _roomJson = JsonUtility.ToJson(state);
+        }
 
         public bool IsRunning { get; private set; }
         public string LastRequestSummary { get; private set; } = string.Empty;
@@ -178,6 +195,38 @@ namespace AiPeople.Shell
                     Interlocked.CompareExchange(ref dispatched, 2, 0); // Do not execute an expired queued click.
                     status = 503;
                     return "{\"accepted\":false,\"reason\":\"房间暂未响应，请重试\"}";
+                }
+                return completed.Task.Result;
+            }
+
+            if (method == "POST" && path == "/ui/device")
+            {
+                if (!JsonLine.TryGetString(body, "id", out string id)
+                    || !JsonLine.TryGetString(body, "state", out string desired)
+                    || (desired != "on" && desired != "off"))
+                {
+                    status = 400;
+                    return "{\"accepted\":false,\"reason\":\"需要设备 id 和 on/off 状态\"}";
+                }
+                if (_deviceRequested == null || !_running)
+                {
+                    status = 503;
+                    return "{\"accepted\":false,\"reason\":\"厨房尚未就绪\"}";
+                }
+                var completed = new TaskCompletionSource<string>();
+                int dispatched = 0;
+                _mainThreadCommands.Enqueue(() =>
+                {
+                    if (Interlocked.CompareExchange(ref dispatched, 1, 0) != 0) return;
+                    try { completed.TrySetResult(_running ? _deviceRequested(id, desired == "on")
+                        : "{\"accepted\":false,\"reason\":\"程序正在关闭\"}"); }
+                    catch (Exception error) { completed.TrySetException(error); }
+                });
+                if (!completed.Task.Wait(2000))
+                {
+                    Interlocked.CompareExchange(ref dispatched, 2, 0);
+                    status = 503;
+                    return "{\"accepted\":false,\"reason\":\"厨房暂未响应，请重试\"}";
                 }
                 return completed.Task.Result;
             }
